@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from . import models
 
 
 
@@ -7,12 +8,18 @@ def testview(request):
 
 
 def get_all_flights():
-    pass
+    flight_list = list(models.Flight.objects.all())
+    return flight_list
+
+
 
 def get_flight_by_id(id):
-    pass
+    flight_by_id = list(models.Flight.objects.filter(pk=id))
+    return flight_by_id 
+    
 
 def get_flights_by_parameters(origin_country_id, destination_country_id, date):
+    #flight_by_params = list(models.Flight.objects.filter(origin_country_id = origin_country_id))
     pass
 
 def get_all_airlines():
