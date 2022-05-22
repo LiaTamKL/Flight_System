@@ -5,13 +5,13 @@ from . import models
 def show_flight_info (request):
     all_flights = get_all_flights()
     flight_by_id = get_flight_by_id(2)
-    #flights_by_param = get_flights_by_parameters()
+    flights_by_param = get_flights_by_parameters(1,2 , 50 )
     context = {
         'all_flights' : all_flights,
         'flight_by_id' :flight_by_id,
-     #   'flights_by_param' : flights_by_param,
+        'flights_by_param' : flights_by_param,
     }
-    return render(request, "flight_by_id.html", context)
+    return render(request, "flight_by_param.html", context)
 
 
 def show_airline_info(request):
@@ -53,9 +53,12 @@ def get_flight_by_id(id):
     return flight_by_id 
     
 
-def get_flights_by_parameters(origin_country_id, destination_country_id, date):
-    flight_by_params = list(models.Flight.objects.filter(origin_country_id = origin_country_id))
-    pass
+def get_flights_by_parameters(origin_country_id, destination_country_id, remaining_tickets):
+    flight_by_params = list(models.Flight.objects
+    .filter(Origin_country_id_id = origin_country_id)
+    .filter(Destination_country_id_id = destination_country_id)
+    .filter(Remaining_tickets = remaining_tickets))    
+    return flight_by_params
 
 def get_all_airlines():
         airline_list = list(models.Airline.all())
