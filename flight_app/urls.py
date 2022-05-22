@@ -7,8 +7,9 @@ urlpatterns = [
     path('airlineinfo/', views.show_airline_info),
     path('countryinfo/', views.show_countries_info),
     path('countryinfo/<country_id>' ,views.show_country_by_id),
-    path('searchcountry/', views.show_country_search_from),
     path('seachcountrybyid/', views.show_country_search_from),
+
+
     path('airline/<airline_id>', views.view_flights_by_airline),
     path('airline/delete/<flight_id>', views.delete_flight_for_airline),
 

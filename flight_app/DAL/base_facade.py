@@ -12,7 +12,7 @@ def get_flight_by_id(id):
     return flight_by_id 
     
 
-def get_flights_by_parameters(origin_country_id1, destination_country_id1, remaining_tickets1):
+def get_flights_by_parameters(origin_country_id1, destination_country_id1, remaining_tickets1): # fix it later
     flight_by_params = list(models.Flight.objects
     .filter(origin_country_id = origin_country_id1)
     .filter(destination_country_id = destination_country_id1)

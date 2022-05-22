@@ -33,50 +33,26 @@ def show_airline_info(request):
     return render(request, "airline_info.html", context)
 
 
+
+
 def show_country_by_id(request, country_id):
     country_by_id = base_facade.get_country_by_id(country_id)
     context = {
         'country_by_id' :country_by_id,
     }
-    return render(request, "countries_info.html", context)
+    return render(request, "country_by_id.html", context)
 
 
+
+#shows contries info , if no argument was sent it shows all 
 def show_countries_info(request):
 
     all_countries = base_facade.get_all_countries()
-    country_by_id = base_facade.get_country_by_id(1)
     context = {
         'all_countries' : all_countries,
-        'country_by_id' :country_by_id,
     }
-    return render(request, "countries_info.html", context)
+    return render(request, "all_countries.html", context)
 
-
-
-
-
-
-
-
-def view_flights_by_airline(request, airline_id):
-    flights = airline_facade.Airline_Facade.get_my_flights(airline_id)
-    airline = (base_facade.get_airline_by_id(airline_id))[0]
-    context = { 
-        'Flights': flights,
-        'Airline': airline
-    }
-    return render(request, 'airline_get_flights.html', context)
-
-
-
-def view_flights_by_airline(request, airline_id):
-    flights = airline_facade.Airline_Facade.get_my_flights(airline_id)
-    airline = (base_facade.get_airline_by_id(airline_id))[0]
-    context = { 
-        'Flights': flights,
-        'Airline': airline
-    }
-    return render(request, 'airline_get_flights.html', context)
 
 
 def view_flights_by_airline(request, airline_id):
@@ -116,4 +92,4 @@ def show_country_search_from(request):
     context = {
         'form' : contact_from,
     }
-    return render(request,'country_id_search_form.html' , context)
+    return render(request,'search_country_page.html' , context)
