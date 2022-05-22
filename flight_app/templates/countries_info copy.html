@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>countries</title>
+</head>
+<body>
+    <h1>all countries </h1>
+    <ul>
+    {% for info in all_countries %}
+    <li>{{info.id}},{{info.country_name}},{{info.flag}}</li>
+    {% endfor %} 
+    </ul>
+    
+    <h1>country by id </h1>
+    <ul>
+    {% for info in country_by_id %}
+    <li>{{info.id}},{{info.country_name}},{{info.flag}}</li>
+    {% endfor %} 
+    </ul>
+</body>
+</html>

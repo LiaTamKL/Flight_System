@@ -3,17 +3,10 @@ from . import models
 from . import forms
 from .DAL import base_facade,airline_facade  
 from django.http import HttpResponse
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 
 def homeview(request):
     return render(request, 'home.html')
-=======
->>>>>>> 75f967abe5426d2c6240a58e22df21797101f685
-=======
->>>>>>> 75f967abe5426d2c6240a58e22df21797101f685
-
 
 def show_flight_info (request):
     all_flights = base_facade.get_all_flights()
@@ -60,9 +53,56 @@ def show_countries_info(request):
 
 
 
+
+
+
+
+
+def view_flights_by_airline(request, airline_id):
+    flights = airline_facade.Airline_Facade.get_my_flights(airline_id)
+    airline = (base_facade.get_airline_by_id(airline_id))[0]
+    context = { 
+        'Flights': flights,
+        'Airline': airline
+    }
+    return render(request, 'airline_get_flights.html', context)
+
+
+
+def view_flights_by_airline(request, airline_id):
+    flights = airline_facade.Airline_Facade.get_my_flights(airline_id)
+    airline = (base_facade.get_airline_by_id(airline_id))[0]
+    context = { 
+        'Flights': flights,
+        'Airline': airline
+    }
+    return render(request, 'airline_get_flights.html', context)
+
+
+def view_flights_by_airline(request, airline_id):
+    flights = airline_facade.Airline_Facade.get_my_flights(airline_id)
+    airline = (base_facade.get_airline_by_id(airline_id))[0]
+    context = { 
+        'Flights': flights,
+        'Airline': airline
+    }
+    return render(request, 'airline_get_flights.html', context)
+
+
+def delete_flight_for_airline(request, flight_id):
+    result = airline_facade.Airline_Facade.remove_flight(flight_id)
+    if result == 1:
+        return HttpResponse(f'Flight #{flight_id} removed successfully')
+    
+
+
+
+
+
+
 def show_country_search_from(request):
   
-    f = contact_from = forms.ContactForm(request.POST or None) # reteins data even if the submit was invalid. 
+    f = contact_from = forms.country_id_search_form(request.POST or None) # reteins data even if the submit was invalid. 
     # print(request.GET)
     if f.is_valid():
         #print(f.cleaned_data.get('coutry_id')) 
@@ -77,43 +117,3 @@ def show_country_search_from(request):
         'form' : contact_from,
     }
     return render(request,'country_id_search_form.html' , context)
-
-def view_flights_by_airline(request, airline_id):
-    flights = airline_facade.Airline_Facade.get_my_flights(airline_id)
-    airline = (base_facade.get_airline_by_id(airline_id))[0]
-    context = { 
-        'Flights': flights,
-        'Airline': airline
-    }
-    return render(request, 'airline_get_flights.html', context)
-
-<<<<<<< HEAD
-
-def view_flights_by_airline(request, airline_id):
-    flights = airline_facade.Airline_Facade.get_my_flights(airline_id)
-    airline = (base_facade.get_airline_by_id(airline_id))[0]
-    context = { 
-        'Flights': flights,
-        'Airline': airline
-    }
-    return render(request, 'airline_get_flights.html', context)
-
-<<<<<<< HEAD
-def view_flights_by_airline(request, airline_id):
-    flights = airline_facade.Airline_Facade.get_my_flights(airline_id)
-    airline = (base_facade.get_airline_by_id(airline_id))[0]
-    context = { 
-        'Flights': flights,
-        'Airline': airline
-    }
-    return render(request, 'airline_get_flights.html', context)
-
-=======
->>>>>>> 75f967abe5426d2c6240a58e22df21797101f685
-=======
->>>>>>> 75f967abe5426d2c6240a58e22df21797101f685
-def delete_flight_for_airline(request, flight_id):
-    result = airline_facade.Airline_Facade.remove_flight(flight_id)
-    if result == 1:
-        return HttpResponse(f'Flight #{flight_id} removed successfully')
-    
