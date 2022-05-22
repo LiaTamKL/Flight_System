@@ -105,7 +105,7 @@ def show_contact_from(request):
     if f.is_valid():
         #print(f.cleaned_data.get('coutry_id')) 
         # cleans everything but the raw data submitted, prints only selected by get 'subject in this case
-        country_id = f.cleaned_data.get('coutry_id')
+        country_id = f.cleaned_data.get('country_id')
         
         address = f'/flight_app/countryinfo/{country_id}'
 
