@@ -5,29 +5,29 @@ from .models import *
 
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
-    list_display = ['Country_name', 'Flag', 'link']
+    list_display = ['country_name', 'flag', 'link']
     list_display_links = ('link',)
-    list_editable = ['Flag']
+    list_editable = ['flag']
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['Username', 'email', 'user_role']
+    list_display = ['username', 'email', 'user_role']
 
 @admin.register(Airline)
 class AirlineAdmin(admin.ModelAdmin):
-    list_display = ['Name', 'User_id', 'Country_id']
+    list_display = ['name', 'user', 'country']
 
 @admin.register(Flight)
 class FlightAdmin(admin.ModelAdmin):
-    list_display = ['Airline_id', 'Origin_country_id', 'Destination_country_id', 'Departure_time', 'Landing_time', 'Remaining_tickets']
+    list_display = ['airline', 'origin_country', 'destination_country', 'departure_time', 'landing_time', 'remaining_tickets']
 
 @admin.register(User_Role)
 class UserRoleAdmin(admin.ModelAdmin):
-    list_display =['Role_name']
+    list_display =['role_name']
 
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
-    list_display =['Last_name', 'First_name', 'Phone_Number']
+    list_display =['last_name', 'user', 'first_name']
 
 
 
