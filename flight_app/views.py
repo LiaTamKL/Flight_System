@@ -4,10 +4,13 @@ from . import forms
 from .DAL import base_facade,airline_facade  
 from django.http import HttpResponse
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 def homeview(request):
     return render(request, 'home.html')
+=======
+>>>>>>> 75f967abe5426d2c6240a58e22df21797101f685
 =======
 >>>>>>> 75f967abe5426d2c6240a58e22df21797101f685
 
@@ -86,7 +89,6 @@ def view_flights_by_airline(request, airline_id):
 
 <<<<<<< HEAD
 
-
 def view_flights_by_airline(request, airline_id):
     flights = airline_facade.Airline_Facade.get_my_flights(airline_id)
     airline = (base_facade.get_airline_by_id(airline_id))[0]
@@ -96,6 +98,18 @@ def view_flights_by_airline(request, airline_id):
     }
     return render(request, 'airline_get_flights.html', context)
 
+<<<<<<< HEAD
+def view_flights_by_airline(request, airline_id):
+    flights = airline_facade.Airline_Facade.get_my_flights(airline_id)
+    airline = (base_facade.get_airline_by_id(airline_id))[0]
+    context = { 
+        'Flights': flights,
+        'Airline': airline
+    }
+    return render(request, 'airline_get_flights.html', context)
+
+=======
+>>>>>>> 75f967abe5426d2c6240a58e22df21797101f685
 =======
 >>>>>>> 75f967abe5426d2c6240a58e22df21797101f685
 def delete_flight_for_airline(request, flight_id):
