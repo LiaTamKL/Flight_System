@@ -20,10 +20,12 @@ class User(models.Model):
         return self.Username
 
 class Country(models.Model):
+    link = "Edit"
     Country_name = models.TextField(max_length=100, null=False, unique=True)
-    Flag = models.ImageField()
+    Flag = models.ImageField(upload_to="static\\flags")
     class Meta:
         ordering = ['Country_name']
+        verbose_name_plural = 'Countries'
     def __str__(self) -> str:
         return self.Country_name
 

@@ -5,7 +5,9 @@ from .models import *
 
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
-    list_display = ['Country_name', 'Flag']
+    list_display = ['Country_name', 'Flag', 'link']
+    list_display_links = ('link',)
+    list_editable = ['Flag']
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
@@ -22,5 +24,11 @@ class FlightAdmin(admin.ModelAdmin):
 @admin.register(User_Role)
 class UserRoleAdmin(admin.ModelAdmin):
     list_display =['Role_name']
+
+@admin.register(Customer)
+class CustomerAdmin(admin.ModelAdmin):
+    list_display =['Last_name', 'First_name', 'Phone_Number']
+
+
 
 
