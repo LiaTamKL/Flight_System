@@ -1,8 +1,8 @@
 from ..models import *
 from ..forms import *
 from django.http import Http404
-
-class AnonymusFancade():
+from .base_facade import BaseFuncade
+class AnonymusFancade(BaseFuncade):
     
     def login(username, password):
         pass

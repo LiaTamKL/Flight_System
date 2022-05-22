@@ -1,10 +1,11 @@
 from ..models import *
 from ..forms import *
 from django.http import Http404
+from .base_facade import BaseFuncade
 
 #This is for actions only someone with an airline login token can do
 
-class Airline_Facade():
+class Airline_Facade(BaseFuncade):
 
     #updates airline details via a form where the existing details are shown
     #this SHOULD NOT allow other companies to update other companies. We need logincheck later

@@ -3,7 +3,7 @@ from ..forms import *
 from django.http import Http404
 
 class BaseFuncade():
-
+ 
     def get_all_flights():
         flight_list = list(models.Flight.objects.all())
         return flight_list
@@ -44,7 +44,10 @@ class BaseFuncade():
             country_by_id = list(models.Country.objects.filter(pk=id))
             return country_by_id
 
-
+    # new user creation , user will be in list format to extract usernmae and password
+    # create login screen form with Create new user button which moves to user details page
+    # on commit login details will be sent here for user creation.
+    # also will generate token for the user?
     def create_new_user(user):
         pass
 
