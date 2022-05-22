@@ -1,7 +1,10 @@
 from django.shortcuts import render ,redirect
 from . import models
 from . import forms
-from .DAL import base_facade,airline_facade  
+from .DAL.base_facade import BaseFuncade
+from .DAL.airline_facade import Airline_Facade
+from .DAL.customer_facade import CustomerFancade
+from .DAL.anony_facade import AnonymusFancade
 from django.http import HttpResponse
 
 
@@ -9,9 +12,9 @@ def homeview(request):
     return render(request, 'home.html')
 
 def show_flight_info (request):
-    all_flights = base_facade.get_all_flights()
-    flight_by_id = base_facade.get_flight_by_id(2)
-    flights_by_param = base_facade.get_flights_by_parameters(1,2 , 50)
+    all_flights = BaseFuncade.get_all_flights()
+    flight_by_id = BaseFuncade.get_flight_by_id(2)
+    flights_by_param = BaseFuncade.get_flights_by_parameters(1,2 , 50)
     context = {
         'all_flights' : all_flights,
         'flight_by_id' :flight_by_id,
@@ -21,9 +24,9 @@ def show_flight_info (request):
 
 
 def show_airline_info(request):
-    all_airlines = base_facade.get_all_airlines()
-    airline_by_id = base_facade.get_airline_by_id(1)
-    airline_by_params = base_facade.get_airline_by_parameters('CrashAir', 1 , 2)
+    all_airlines = BaseFuncade.get_all_airlines()
+    airline_by_id = BaseFuncade.get_airline_by_id(1)
+    airline_by_params = BaseFuncade.get_airline_by_parameters('CrashAir', 1 , 2)
 
     context = {
         'all_airlines' : all_airlines,
@@ -36,7 +39,7 @@ def show_airline_info(request):
 
 
 def show_country_by_id(request, country_id):
-    country_by_id = base_facade.get_country_by_id(country_id)
+    country_by_id = BaseFuncade.get_country_by_id(country_id)
     context = {
         'country_by_id' :country_by_id,
     }
@@ -47,17 +50,16 @@ def show_country_by_id(request, country_id):
 #shows contries info , if no argument was sent it shows all 
 def show_countries_info(request):
 
-    all_countries = base_facade.get_all_countries()
+    all_countries = BaseFuncade.get_all_countries()
     context = {
         'all_countries' : all_countries,
     }
     return render(request, "all_countries.html", context)
 
 
-
 def view_flights_by_airline(request, airline_id):
-    flights = airline_facade.Airline_Facade.get_my_flights(airline_id)
-    airline = (base_facade.get_airline_by_id(airline_id))[0]
+    flights = Airline_Facade.get_my_flights(airline_id)
+    airline = (BaseFuncade.get_airline_by_id(airline_id))[0]
     context = { 
         'Flights': flights,
         'Airline': airline
@@ -66,7 +68,7 @@ def view_flights_by_airline(request, airline_id):
 
 
 def delete_flight_for_airline(request, flight_id):
-    result = airline_facade.Airline_Facade.remove_flight(flight_id)
+    result = Airline_Facade.remove_flight(flight_id)
     if result == 1:
         return HttpResponse(f'Flight #{flight_id} removed successfully')
     
