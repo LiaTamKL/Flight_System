@@ -3,15 +3,15 @@ from . import models
 
 
 def show_flight_info (request):
-    all_filights = get_all_flights()
-    flight_by_id = get_flight_by_id(1)
-    flights_by_param = get_flights_by_parameters()
+    all_flights = get_all_flights()
+    flight_by_id = get_flight_by_id(2)
+    #flights_by_param = get_flights_by_parameters()
     context = {
-        'all_filights' : all_filights,
+        'all_flights' : all_flights,
         'flight_by_id' :flight_by_id,
-        'flights_by_param' : flights_by_param,
+     #   'flights_by_param' : flights_by_param,
     }
-    return render(request, "index.html", context)
+    return render(request, "flight_by_id.html", context)
 
 
 def show_airline_info(request):
