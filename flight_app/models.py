@@ -31,7 +31,7 @@ class Country(models.Model):
 class Airline(models.Model):
     Name = models.TextField(max_length=255, null=False, unique=True)
     Country_id = models.ForeignKey(Country, null=False, on_delete=models.PROTECT)
-    User_id = models.ForeignKey(User, null=False, on_delete=models.CASCADE, unique=True)
+    User_id = models.OneToOneField(User, null=False, on_delete=models.CASCADE)
     class Meta:
         ordering = ['Name']
     def __str__(self) -> str:
@@ -43,7 +43,7 @@ class Customer(models.Model):
     Address = models.TextField(max_length=100, null=False)
     Phone_Number = models.TextField(max_length=16, null=False, unique=True)
     Credit_card_no = models.TextField(max_length=16, null=False, unique=True)
-    User_id = models.ForeignKey(User, null=False, on_delete=models.CASCADE, unique=True)
+    User_id = models.OneToOneField(User, null=False, on_delete=models.CASCADE)
     class Meta:
         ordering = ['Last_name']
     def __str__(self) -> str:
@@ -51,8 +51,8 @@ class Customer(models.Model):
 
 class Flight(models.Model):
     Airline_id = models.ForeignKey(Airline, null=False, on_delete=models.PROTECT)
-    Origin_country_id = models.ForeignKey(Country, null=False, on_delete=models.PROTECT)
-    Destination_country_id = models.ForeignKey(Country, null=False, on_delete=models.PROTECT)
+    Origin_country_id = models.ForeignKey(Country, null=False,related_name="origin", on_delete=models.PROTECT)
+    Destination_country_id = models.ForeignKey(Country, null=False,related_name="destination", on_delete=models.PROTECT)
     Departure_time = models.DateTimeField(null=False)
     Landing_time = models.DateTimeField(null=False)
     Remaining_tickets = models.IntegerField(null=False)
@@ -62,7 +62,7 @@ class Flight(models.Model):
         return (f"Flight from {self.Origin_country_id} to {self.Destination_country_id}, by {self.Airline_id}, at {self.Departure_time}")
 
 class Flight_Ticket(models.Model):
-    Customer_id = models.ForeignKey(Customer, null=False, on_delete=models.PROTECT, unique=True)
+    Customer_id = models.ForeignKey(Customer, null=False, on_delete=models.PROTECT)
     Flight_id = models.ForeignKey(Flight, null=False, on_delete=models.PROTECT)
     class Meta:
         ordering = ['Flight_id']
@@ -70,7 +70,7 @@ class Flight_Ticket(models.Model):
 class Administrator(models.Model):
     First_name = models.TextField(max_length=50, null=False)
     Last_name = models.TextField(max_length=50, null=False)
-    User_id = models.ForeignKey(User, null=False, on_delete=models.CASCADE, unique=True)
+    User_id = models.OneToOneField(User, null=False, on_delete=models.CASCADE)
     class Meta:
         ordering = ['Last_name']
     def __str__(self) -> str:
