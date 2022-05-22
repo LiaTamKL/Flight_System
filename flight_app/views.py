@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render ,redirect
 from . import models
-
+from . import forms
 
 def show_flight_info (request):
     all_flights = get_all_flights()
@@ -27,7 +27,17 @@ def show_airline_info(request):
     return render(request, "airline_info.html", context)
 
 
+
+def show_country_by_id(request, country_id):
+    country_by_id = get_country_by_id(country_id)
+    context = {
+        'country_by_id' :country_by_id,
+    }
+    return render(request, "countries_info.html", context)
+
+
 def show_countries_info(request):
+
     all_countries = get_all_countries()
     country_by_id = get_country_by_id(1)
     context = {
@@ -38,6 +48,7 @@ def show_countries_info(request):
 
 
 
+
 def testview(request):
     return render(request, "test_temp.html")
 
@@ -45,7 +56,6 @@ def testview(request):
 def get_all_flights():
     flight_list = list(models.Flight.objects.all())
     return flight_list
-
 
 
 def get_flight_by_id(id):
@@ -86,3 +96,25 @@ def get_country_by_id(id):
 
 def create_new_user(user):
     pass
+
+
+def show_contact_from(request):
+  
+    f = contact_from = forms.ContactForm(request.POST or None) # reteins data even if the submit was invalid. 
+    # print(request.GET)
+    if f.is_valid():
+        #print(f.cleaned_data.get('coutry_id')) 
+        # cleans everything but the raw data submitted, prints only selected by get 'subject in this case
+        country_id = f.cleaned_data.get('coutry_id')
+        
+        address = f'/flight_app/countryinfo/{country_id}'
+
+        return redirect(address)
+
+    context = {
+        'form' : contact_from,
+    }
+    return render(request,'contact_form.html' , context)
+
+
+    
