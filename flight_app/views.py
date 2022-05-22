@@ -3,8 +3,10 @@ from . import models
 from . import forms
 from .DAL import base_facade  
 
-def testview(request):
-    return render(request, "test_temp.html")
+
+def homeview(request):
+    return render(request, 'home.html')
+
 
 def show_flight_info (request):
     all_flights = base_facade.get_all_flights()
@@ -31,7 +33,6 @@ def show_airline_info(request):
     return render(request, "airline_info.html", context)
 
 
-
 def show_country_by_id(request, country_id):
     country_by_id = base_facade.get_country_by_id(country_id)
     context = {
@@ -52,8 +53,7 @@ def show_countries_info(request):
 
 
 
-
-def show_contact_from(request):
+def show_country_search_from(request):
   
     f = contact_from = forms.ContactForm(request.POST or None) # reteins data even if the submit was invalid. 
     # print(request.GET)
@@ -69,7 +69,10 @@ def show_contact_from(request):
     context = {
         'form' : contact_from,
     }
-    return render(request,'contact_form.html' , context)
+    return render(request,'country_id_search_form.html' , context)
+
+
+
 
 
     

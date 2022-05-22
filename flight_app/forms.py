@@ -5,8 +5,11 @@ from tkinter import Widget
 from django import forms
 from . import models
 
+class MainForm(forms.Form):
+    pass
 
-class ContactForm(forms.Form):
+
+class country_id_search_form(forms.Form):
     country_id = forms.IntegerField(min_value=1)
 
     def clean_message(self):
