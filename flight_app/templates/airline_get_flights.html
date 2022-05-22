@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flights by {{Airline.name}}</title>
+</head>
+<body>
+    <div>
+        <div>Flights by {{Airline.name}}</div>
+    {% for flight in Flights %}
+        <div>
+            <h1> Flight #:{{flight.id}}</h1>
+            <h2>From {{flight.origin_country}} to {{flight.destination_country}}</h2>
+            <h3>Departing at {{flight.departure_time}} and landing at {{flight.landing_time}}</h3>
+            <h7>Remaining tickets: {{flight.remaining_tickets}}</h7>
+        </div>
+    {%endfor%}
+        
+
+
+    </div>
+</body>
+</html>

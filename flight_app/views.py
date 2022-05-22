@@ -1,7 +1,8 @@
 from django.shortcuts import render ,redirect
 from . import models
 from . import forms
-from .DAL import base_facade  
+from .DAL import base_facade,airline_facade  
+from django.http import HttpResponse
 
 def testview(request):
     return render(request, "test_temp.html")
@@ -71,5 +72,17 @@ def show_contact_from(request):
     }
     return render(request,'contact_form.html' , context)
 
+def view_flights_by_airline(request, airline_id):
+    flights = airline_facade.Airline_Facade.get_my_flights(airline_id)
+    airline = (base_facade.get_airline_by_id(airline_id))[0]
+    context = { 
+        'Flights': flights,
+        'Airline': airline
+    }
+    return render(request, 'airline_get_flights.html', context)
 
+def delete_flight_for_airline(request, flight_id):
+    result = airline_facade.Airline_Facade.remove_flight(flight_id)
+    if result == 1:
+        return HttpResponse(f'Flight #{flight_id} removed successfully')
     
