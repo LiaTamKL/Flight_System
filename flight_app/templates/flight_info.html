@@ -11,21 +11,21 @@
     <h1>List of All Flights</h1>
     <ul>
     {% for info in all_flights %}
-   <li>{{info.Airline_id}},{{info.Origin_country_id}},{{info.Destination_country_id}}, {{info.Departure_time}}, {{info.Landing_time}}, {{info.Remaining_tickets}}</li>
+   <li>{{info.Airline_id}},{{info.origin_country_id}},{{info.destination_country_id}}, {{info.departure_time}}, {{info.landing_time}}, {{info.remaining_tickets}}</li>
     {% endfor %} 
     </ul>
 
     <h1>Flight by id </h1>
     <ul>
     {% for info in flight_by_id %}
-    <li>{{info.Airline_id}},{{info.Origin_country_id}},{{info.Destination_country_id}}, {{info.Departure_time}}, {{info.Landing_time}}, {{info.Remaining_tickets}}</li>
+    <li>{{info.airline_id}},{{info.origin_country_id}},{{info.destination_country_id}}, {{info.departure_time}}, {{info.landing_time}}, {{info.remaining_tickets}}</li>
     {% endfor %} 
     </ul>
 
     <h1>Flight by param </h1>
     <ul>
     {% for info in flights_by_param %}
-    <li>{{info.Airline_id}},{{info.Origin_country_id}},{{info.Destination_country_id}}, {{info.Departure_time}}, {{info.Landing_time}}, {{info.Remaining_tickets}}</li>
+    <li>{{info.airline_id}},{{info.origin_country_id}},{{info.destination_country_id}}, {{info.departure_time}}, {{info.landing_time}}, {{info.remaining_tickets}}</li>
     {% endfor %} 
     </ul>
 

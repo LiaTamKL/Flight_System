@@ -10,21 +10,21 @@
     <h1>all airlines </h1>
     <ul>
     {% for info in all_airlines %}
-    <li>{{info.id}},{{info.Name}},{{info.Country_id_id}}, {{info.User_id_id}}</li>
+    <li>{{info.id}},{{info.name}},{{info.country_id}}, {{info.user_id}}</li>
     {% endfor %} 
     </ul>
     
     <h1>airline by id  </h1>
     <ul>
     {% for info in airline_by_id %}
-    <li>{{info.id}},{{info.Name}},{{info.Country_id_id}}, {{info.User_id_id}}</li>
+    <li>{{info.id}},{{info.Name}},{{info.country_id}}, {{info.user_id}}</li>
     {% endfor %} 
     </ul>
     
     <h1>airline by params </h1>
     <ul>
     {% for info in airline_by_params %}
-    <li>{{info.id}},{{info.Name}},{{info.Country_id_id}}, {{info.User_id_id}}</li>
+    <li>{{info.id}},{{info.name}},{{info.country_id}}, {{info.user_id}}</li>
     {% endfor %} 
     </ul>
 

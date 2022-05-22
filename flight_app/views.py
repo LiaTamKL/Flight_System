@@ -63,11 +63,11 @@ def get_flight_by_id(id):
     return flight_by_id 
     
 
-def get_flights_by_parameters(origin_country_id, destination_country_id, remaining_tickets):
+def get_flights_by_parameters(origin_country_id1, destination_country_id1, remaining_tickets1):
     flight_by_params = list(models.Flight.objects
-    .filter(Origin_country_id_id = origin_country_id)
-    .filter(Destination_country_id_id = destination_country_id)
-    .filter(Remaining_tickets = remaining_tickets))    
+    .filter(origin_country_id = origin_country_id1)
+    .filter(destination_country_id = destination_country_id1)
+    .filter(remaining_tickets = remaining_tickets1))    
     return flight_by_params
 
 def get_all_airlines():
@@ -80,9 +80,9 @@ def get_airline_by_id(id):
 
 def get_airline_by_parameters(airline_name, country_id , user_id): 
     airline_by_params = list(models.Airline.objects
-    .filter(Name = airline_name)
-    .filter(Country_id_id = int(country_id))
-    .filter(User_id_id = int(user_id)))    
+    .filter(name = airline_name)
+    .filter(country_id = int(country_id))
+    .filter(user_id = int(user_id)))    
     return airline_by_params
 
 def get_all_countries():
