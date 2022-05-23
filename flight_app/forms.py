@@ -70,7 +70,7 @@ class NewCustomerForm(forms.ModelForm):
     credit_card_no = forms.IntegerField(max_value = 9999999999999999, label="Credit card , you can trust me..., to buy some expensive shit!") 
 
     class Meta:
-        model = models.Flight_Ticket
+        model = models.Customer
         fields = ['first_name', 'last_name', 'address', 'phone_number', 'credit_card_no']
         
 

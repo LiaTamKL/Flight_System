@@ -7,8 +7,6 @@ class CustomerFancade(BaseFuncade):
 
     def update_customer(customer_id, form):
         customer = Customer.objects.get(pk = customer_id)
-         
-
 
     def add_ticket(form):
         flight_Ticket = Flight_Ticket()

@@ -100,6 +100,7 @@ def airline_add_flight(request):
     #for now this is hardcoded to medair flights only, we'll do it via a login token later
     airline_id = 1
     flightform = forms.NewFlightForm(request.POST or None)
+
     message = None
     if request.method =='POST':
         if flightform.is_valid():
@@ -143,7 +144,6 @@ def remove_ticket(request, ticket_id):
 def add_ticket(request):
     message = None
     new_ticket_form = forms.NewTicketForm(request.POST or None)
-    raise Exception({len(new_ticket_form)})
     if request.method =='POST':
         if new_ticket_form.is_valid():
             CustomerFancade.add_ticket(new_ticket_form.cleaned_data)     
