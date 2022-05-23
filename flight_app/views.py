@@ -136,17 +136,25 @@ def airline_update_flight(request, flight_id):
     return render(request, 'add_flight.html', context)
     
 
+def remove_ticket(request, ticket_id):
+    result = CustomerFancade.remove_ticket(ticket_id)
+    if result == 1:
+        return HttpResponse(f'ticket #{ticket_id} removed successfully')
+
 class FormPlace:
     def add_ticket(request):
         ticket_id = 1 
         message = None
-        new_ticket_form = forms.NewTicketForm(request.POST  or request.GET)
+        f = new_ticket_form = forms.NewTicketForm(request.POST  or None)
         if request.method =='POST':
-            if new_ticket_form.is_valid():
-                CustomerFancade.add_ticket(ticket_id, new_ticket_form)     
+            if f.is_valid():
+                CustomerFancade.add_ticket(ticket_id, new_ticket_form.cleaned_data)     
                 message = 'Ticket added successfully'
         context = {
             'form': new_ticket_form,
             'message': message
          }
         return render(request, 'add_ticket.html', context)
+
+
+

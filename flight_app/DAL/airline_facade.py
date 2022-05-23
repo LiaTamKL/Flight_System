@@ -34,8 +34,7 @@ class Airline_Facade(BaseFuncade):
         tickets = Flight_Ticket.objects.filter(flight=flight)
         if tickets.count() > 0:
             for ticket in tickets: ticket.delete()
-        f.delete()
-        return 1
+
 
     #takes the login token, returns the filter for all flight objects by said airline
     #this SHOULD NOT be id in the final product. it needs to be based on logintokens

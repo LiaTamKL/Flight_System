@@ -29,9 +29,9 @@ class NewTicketForm(forms.ModelForm):
 
     class Meta:
         model = models.Flight_Ticket
-        fields = ('customer_id', 'flight_id')
+        fields = ['customer_id', 'flight_id']
 
-    def clean_data(self)  :
+    def clean_message(self):
         customer_id = self.cleaned_data['customer_id']
         return customer_id
 
