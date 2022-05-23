@@ -7,14 +7,8 @@ from .base_facade import BaseFuncade
 
 class Airline_Facade(BaseFuncade):
 
-    #updates airline details via a form where the existing details are shown
-    #this SHOULD NOT allow other companies to update other companies. We need logincheck later
-    def update_airline(airline):
-        pass
-
     #add a flight. uses form. in the future, should use logincheck
-    def add_flight(airline, form):
-        flight = Flight()
+    def add_flight(airline, form, flight):
         airli = Airline.objects.get(pk = airline)
         flight.airline = airli
         flight.origin_country = form['origin_country']
@@ -23,6 +17,12 @@ class Airline_Facade(BaseFuncade):
         flight.landing_time = form['landing_time']
         flight.remaining_tickets = form['remaining_tickets']
         flight.save()
+
+    #updates airline details via a form where the existing details are shown
+    #this SHOULD NOT allow other companies to update other companies. We need logincheck later
+    def update_airline(airline, form, flight):
+        Airline_Facade.add_flight(airline, form, flight)
+
 
     #remove a flight. in the future, should use logincheck. returns 1 if successful
     def remove_flight(flight):
