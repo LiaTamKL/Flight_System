@@ -32,6 +32,10 @@ class NewTicketForm(forms.Form):
         
 
 class NewFlightForm(forms.Form):
+
+    def __init__(self, *args, **qwargs):
+        super(models.Flight, self).__init__(*args, **qwargs)
+
     origin_country = forms.ModelChoiceField(queryset=models.Country.objects.all(), required=True, label = 'From')
     destination_country = forms.ModelChoiceField(queryset=models.Country.objects.all(), required=True, label = 'To')
     departure_time = forms.DateTimeField(required=True, label = 'Departure at', input_formats=[r'%d/%m/%Y %H:%M'])
@@ -44,26 +48,17 @@ class NewFlightForm(forms.Form):
     #checks if the destination and origin countries are the same, if they are, raises an error
     def clean_destination_country(self):
         origin = self.cleaned_data['origin_country']
-        print(f'origin: {origin}')
         destination = self.cleaned_data['destination_country']
-        print(f'origin: {destination}')
         if origin == destination:
-            print('invalid.... d=o')
             raise forms.ValidationError('Destination and origin countries must not be the same')
         return destination
 
     #checks if departure is actually not in the past, and whether the landing time is after the departure
     def clean_landing_time(self):
-        print('cleaning data')
         departure = self.cleaned_data['departure_time']
-        print(f'Departure: {departure}')
-        print(utc.localize(datetime.now()))
         if departure < utc.localize(datetime.now()):
-            print('invalid.... de < now')
             raise forms.ValidationError('You cannot choose a date in the past')
         landing = self.cleaned_data['landing_time']
-        print(f'Landing: {landing}')
         if landing <= departure:
-            print('invalid.... la <= de')
             raise forms.ValidationError('A landing must be after a departure')
         return landing
