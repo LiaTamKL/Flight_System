@@ -24,8 +24,8 @@ class country_id_search_form(forms.Form):
 
 class NewFlightForm(forms.Form):
 
-    def __init__(self, *args, **qwargs):
-        super(models.Flight, self).__init__(*args, **qwargs)
+    #def __init__(self, *args, **qwargs):
+    #    super(models.Flight, self).__init__(*args, **qwargs)
 
     origin_country = forms.ModelChoiceField(queryset=models.Country.objects.all(), required=True, label = 'From')
     destination_country = forms.ModelChoiceField(queryset=models.Country.objects.all(), required=True, label = 'To')
