@@ -97,17 +97,18 @@ def show_country_search_from(request):
     }
     return render(request,'search_country_page.html' , context)
 
-
+#lets airline fill in form for new flight
 def airline_add_flight(request):
+    #for now this is hardcoded to medair flights only, we'll do it via a login token later
     airline_id = 1
-    flightform = forms.NewFlightForm(request.POST or request.GET)
+    flightform = forms.NewFlightForm(request.POST or None)
     message = None
     if request.method =='POST':
         if flightform.is_valid():
-            #Airline_Facade.add_flight(airline_id, flightform)
+            Airline_Facade.add_flight(airline_id, flightform.cleaned_data)
             message = 'Flight added successfully'
     context = {
         'form': flightform,
         'message': message
     }
-    return(request, '', context)
+    return render(request, 'add_flight.html', context)
