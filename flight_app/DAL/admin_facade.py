@@ -17,7 +17,8 @@ class AdministratorFuncade(BaseFuncade):
     
 
     def get_all_customers():
-        pass
+        cus = Customer.objects.all()
+        return cus
 
     def add_airline():
         pass
