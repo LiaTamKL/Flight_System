@@ -12,7 +12,7 @@ urlpatterns = [
 
     path('airline/<airline_id>', views.view_flights_by_airline),
     path('airline/delete/<flight_id>', views.delete_flight_for_airline),
-
+    path('airline/add/', views.airline_add_flight),
 
     #path('test/', views.testview)
 ]

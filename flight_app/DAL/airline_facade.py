@@ -13,8 +13,15 @@ class Airline_Facade(BaseFuncade):
         pass
 
     #add a flight. uses form. in the future, should use logincheck
-    def add_flight(airline):
-        pass
+    def add_flight(airline, form):
+        flight = Flight()
+        flight.airline = airline
+        flight.origin_country = form.cleaned_data['origin_country']
+        flight.destination_country =form.cleaned_data['destination_country']
+        flight.departure_time = form.cleaned_data['departure_time']
+        flight.landing_time = form.cleaned_data['landing_time']
+        flight.remaining_tickets = form.cleaned_data['remaining_tickets']
+        flight.save()
 
     #remove a flight. in the future, should use logincheck. returns 1 if successful
     def remove_flight(flight):

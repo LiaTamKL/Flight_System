@@ -59,7 +59,7 @@ def show_countries_info(request):
 
 def view_flights_by_airline(request, airline_id):
     flights = Airline_Facade.get_my_flights(airline_id)
-    airline = (BaseFuncade.get_airline_by_id(airline_id))[0]
+    airline = (Airline_Facade.get_airline_by_id(airline_id))[0]
     context = { 
         'Flights': flights,
         'Airline': airline
@@ -69,6 +69,7 @@ def view_flights_by_airline(request, airline_id):
 
 def delete_flight_for_airline(request, flight_id):
     result = Airline_Facade.remove_flight(flight_id)
+    #proper "delete" page should be added later instead of an httpresponse
     if result == 1:
         return HttpResponse(f'Flight #{flight_id} removed successfully')
     
@@ -95,3 +96,18 @@ def show_country_search_from(request):
         'form' : contact_from,
     }
     return render(request,'search_country_page.html' , context)
+
+
+def airline_add_flight(request):
+    airline_id = 1
+    flightform = forms.NewFlightForm(request.POST or request.GET)
+    message = None
+    if request.method =='POST':
+        if flightform.is_valid():
+            #Airline_Facade.add_flight(airline_id, flightform)
+            message = 'Flight added successfully'
+    context = {
+        'form': flightform,
+        'message': message
+    }
+    return(request, '', context)
