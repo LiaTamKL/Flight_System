@@ -162,7 +162,7 @@ class FormPlace:
         new_user = forms.NewUserForm(request.POST  or None)
         if request.method =='POST':
             if new_user.is_valid():
-                BaseFuncade.create_new_user(user_id , new_user.cleaned_data)     
+                BaseFuncade.create_new_user(new_user.cleaned_data)     
                 message = 'New user added successfully'
         context = {
             'form': new_user,
