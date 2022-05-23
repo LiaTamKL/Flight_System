@@ -43,7 +43,7 @@ class NewTicketForm(forms.ModelForm):
 
 class NewUserForm(forms.ModelForm):
     username = forms.CharField(max_length=10 , required=True, label="The most impressing nickname you ever had")
-    forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password, why bother probably you will use password" )
+    password = forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password, why bother probably you will use password" )
     # password = forms.CharField(max_length=16 , required=True , label= "Password, why bother probably you will use 1-6") 
     email = forms.CharField(max_length=255 ,  required=True, label="email, Prepare for shitload of SPAM baby")
 
