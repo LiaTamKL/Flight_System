@@ -3,11 +3,13 @@ from email import message
 from tkinter import Widget
 from django import forms
 from . import models
-
+from django.contrib import auth
 #these three are meant to compare datetime.now() with times fetched from the form. it helps validate them
 from datetime import datetime
 import pytz
 utc=pytz.UTC
+
+
 
 class MainForm(forms.Form):
     pass
@@ -38,6 +40,37 @@ class NewTicketForm(forms.ModelForm):
     # def __str__(self) -> str:
     #     customer_id = customer_id.id
     #     return customer_id
+
+class NewUserForm(forms.ModelForm):
+    username = forms.CharField(max_length=10 , required=True, label="The most impressing nickname you ever had")
+    forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password, why bother probably you will use password" )
+    # password = forms.CharField(max_length=16 , required=True , label= "Password, why bother probably you will use 1-6") 
+    email = forms.CharField(max_length=255 ,  required=True, label="email, Prepare for shitload of SPAM baby")
+
+    password = forms.CharField(widget=forms.PasswordInput())
+    class Meta:
+        model = models.User
+        fields = ['username', 'password', 'email']
+
+    # def clean_message(self):
+    #     customer_id = self.cleaned_data['customer_id']
+    #     return customer_id
+
+
+# class NewCustomerForm(forms.ModelForm):
+#     first_name = forms.CharField(max_length=50 , required=True, label="Yo name ")
+#     last_name = forms.CharField(max_length=50 , required=True , label= "Yo fam name") 
+#     address = forms.CharField(max_length=255 ,  required=True, label="Where Yo live fool?")
+#     phone_number = forms.IntegerField(label="Yo phone , real one this time ")
+#     credit_card_no = forms.IntegerField(label="Credit card , you can trust me, to but some expensive shit!") 
+
+#     class Meta:
+#         model = models.Flight_Ticket
+#         fields = ['customer_id', 'flight_id']
+
+#     def clean_message(self):
+#         customer_id = self.cleaned_data['customer_id']
+#         return customer_id
 
 class NewFlightForm(forms.ModelForm):
 

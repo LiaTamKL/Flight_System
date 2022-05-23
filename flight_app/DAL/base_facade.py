@@ -48,7 +48,17 @@ class BaseFuncade():
     # create login screen form with Create new user button which moves to user details page
     # on commit login details will be sent here for user creation.
     # also will generate token for the user?
-    def create_new_user(user):
-        pass
+    
+    def create_new_user(new_id, form):
+        new_user = User()
+        id = User.objects.get(pk = new_id)
+        new_user.id = id
+        new_user.address = form['address']
+        new_user.credit_card_no = form['credit_card_no']
+        new_user.first_name = form['first_name']
+        new_user.last_name = form['last_name']
+        new_user.user = form['user_id']
+        new_user.save()
+
 
 

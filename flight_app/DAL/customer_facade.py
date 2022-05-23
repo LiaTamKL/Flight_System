@@ -11,8 +11,8 @@ class CustomerFancade(BaseFuncade):
     def add_ticket(ticket_id , form):
         flight_Ticket = Flight_Ticket()
         flight_Ticket.id = ticket_id
-        flight_Ticket.customer_id = form.cleaned_data["customer_id"]
-        flight_Ticket.flight_id = form.cleaned_data['flight_id']
+        flight_Ticket.customer_id = form["customer_id"]
+        flight_Ticket.flight_id = form['flight_id']
         flight_Ticket.save()
 
     def remove_ticket(ticket):
@@ -31,9 +31,9 @@ class CustomerFancade(BaseFuncade):
     def add_flight(airline, form):
         flight = Flight()
         flight.airline = airline
-        flight.origin_country = form.cleaned_data['origin_country']
-        flight.destination_country =form.cleaned_data['destination_country']
-        flight.departure_time = form.cleaned_data['departure_time']
-        flight.landing_time = form.cleaned_data['landing_time']
-        flight.remaining_tickets = form.cleaned_data['remaining_tickets']
+        flight.origin_country = form['origin_country']
+        flight.destination_country = form['destination_country']
+        flight.departure_time = form['departure_time']
+        flight.landing_time = form['landing_time']
+        flight.remaining_tickets = form['remaining_tickets']
         flight.save()

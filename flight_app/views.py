@@ -7,6 +7,7 @@ from .DAL.customer_facade import CustomerFancade
 from .DAL.anony_facade import AnonymusFancade
 from django.http import HttpResponse, Http404
 from django.core.exceptions import PermissionDenied
+from django.contrib.auth.hashers import make_password
 
 
 def homeview(request):
@@ -157,4 +158,19 @@ class FormPlace:
         return render(request, 'add_ticket.html', context)
 
 
+#with 'from django.contrib.auth.hashers import make_password'
+#encripts the pasword from form 
 
+    def add_new_user(request):
+        user_id = 1 
+        message = None
+        new_user = forms.NewUserForm(request.POST  or None)
+        if request.method =='POST':
+            if new_user.is_valid():
+                CustomerFancade.add_ticket(customer_id, new_ticket_form.cleaned_data)     
+                message = 'Ticket added successfully'
+        context = {
+            'form': new_ticket_form,
+            'message': message
+         }
+        return render(request, 'add_ticket.html', context)
