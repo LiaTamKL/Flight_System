@@ -8,11 +8,10 @@ class CustomerFancade(BaseFuncade):
     def update_customer(customer):
         pass
 
-    def add_ticket(ticket_id , form):
+    def add_ticket(form):
         flight_Ticket = Flight_Ticket()
-        flight_Ticket.id = ticket_id
-        flight_Ticket.customer_id = form["customer_id"]
-        flight_Ticket.flight_id = form['flight_id']
+        flight_Ticket.customer = Customer.objects.get(pk = form["customer_id"])
+        flight_Ticket.flight = Flight.objects.get(pk = form['flight_id'])
         flight_Ticket.save()
 
     def remove_ticket(ticket):

@@ -144,12 +144,11 @@ def remove_ticket(request, ticket_id):
 
 class FormPlace:
     def add_ticket(request):
-        ticket_id = 1 
         message = None
         f = new_ticket_form = forms.NewTicketForm(request.POST  or None)
         if request.method =='POST':
             if f.is_valid():
-                CustomerFancade.add_ticket(ticket_id, new_ticket_form.cleaned_data)     
+                CustomerFancade.add_ticket(new_ticket_form.cleaned_data)     
                 message = 'Ticket added successfully'
         context = {
             'form': new_ticket_form,
@@ -158,19 +157,18 @@ class FormPlace:
         return render(request, 'add_ticket.html', context)
 
 
-#with 'from django.contrib.auth.hashers import make_password'
-#encripts the pasword from form 
-
     def add_new_user(request):
-        user_id = 1 
         message = None
         new_user = forms.NewUserForm(request.POST  or None)
         if request.method =='POST':
             if new_user.is_valid():
-                CustomerFancade.add_ticket(customer_id, new_ticket_form.cleaned_data)     
-                message = 'Ticket added successfully'
+                BaseFuncade.create_new_user(user_id , new_user.cleaned_data)     
+                message = 'New user added successfully'
         context = {
-            'form': new_ticket_form,
+            'form': new_user,
             'message': message
          }
-        return render(request, 'add_ticket.html', context)
+        return render(request, 'create_user_form.html', context)
+
+
+

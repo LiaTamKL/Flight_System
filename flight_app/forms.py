@@ -1,9 +1,6 @@
 
-from email import message
-from tkinter import Widget
 from django import forms
 from . import models
-from django.contrib import auth
 #these three are meant to compare datetime.now() with times fetched from the form. it helps validate them
 from datetime import datetime
 import pytz
@@ -41,13 +38,17 @@ class NewTicketForm(forms.ModelForm):
     #     customer_id = customer_id.id
     #     return customer_id
 
+
+#add password validator 
+#https://medium.com/geekculture/django-shorts-password-validators-95285c0936de
 class NewUserForm(forms.ModelForm):
     username = forms.CharField(max_length=10 , required=True, label="The most impressing nickname you ever had")
     password = forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password, why bother probably you will use password" )
     # password = forms.CharField(max_length=16 , required=True , label= "Password, why bother probably you will use 1-6") 
     email = forms.CharField(max_length=255 ,  required=True, label="email, Prepare for shitload of SPAM baby")
 
-    password = forms.CharField(widget=forms.PasswordInput())
+
+
     class Meta:
         model = models.User
         fields = ['username', 'password', 'email']

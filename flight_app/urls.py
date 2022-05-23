@@ -10,7 +10,7 @@ urlpatterns = [
     path('seachcountrybyid/', views.show_country_search_from),
     path('ticket/add', views.FormPlace.add_ticket),
     path('ticket/remove/<ticket_id>', views.remove_ticket),
-    path('members/newuser/', views.FormPlace.add_new_user), 
+    path('newuser/', views.FormPlace.add_new_user), 
 
     path('airline/view/<airline_id>', views.view_flights_by_airline),
     path('airline/delete/<flight_id>', views.delete_flight_for_airline),

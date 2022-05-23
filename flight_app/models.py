@@ -9,7 +9,7 @@ class User_Role(models.Model):
 
 class User(models.Model):
     username = models.TextField(max_length=50, null=False, unique=True)
-    Password = models.CharField(null=False,max_length=12)
+    password = models.CharField(null=False,max_length=12)
     email = models.EmailField(max_length=50, null=False, unique=True)
     user_role = models.ForeignKey(User_Role, null=False, on_delete=models.PROTECT)
     class Meta:
