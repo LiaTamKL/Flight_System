@@ -75,10 +75,6 @@ def delete_flight_for_airline(request, flight_id):
     
 
 
-
-
-
-
 def show_country_search_from(request):
   
     f = contact_from = forms.country_id_search_form(request.POST or None) # reteins data even if the submit was invalid. 
@@ -111,3 +107,18 @@ def airline_add_flight(request):
         'message': message
     }
     return(request, '', context)
+
+
+class FormPlace:
+    def add_ticket(request):
+        ticket_id = 1 
+        message = None
+        new_ticket_form = forms.NewTicketForm(request.Post or request.GET)
+        if request.method =='POST':
+            if new_ticket_form.is_valid():     
+                message = 'Ticket added successfully'
+        context = {
+            'form': new_ticket_form,
+            'message': message
+         }
+        return(request, '', context)   
