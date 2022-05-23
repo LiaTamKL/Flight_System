@@ -158,20 +158,39 @@ class FormPlace:
         return render(request, 'add_ticket.html', context)
 
 
-    def add_new_user(request):
-        #temp
-        user_id = 0
-        message = None
+    # def add_new_user(request):
+    #     #temp
+    #     user_id = 0
+    #     message = None
+    #     new_user = forms.NewUserForm(request.POST  or None)
+    #     if request.method =='POST':
+    #         if new_user.is_valid():
+    #             # BaseFuncade.create_new_user(user_id , new_user.cleaned_data)
+    #             new_user_id = BaseFuncade.create_new_user(user_id , new_user.cleaned_data)          
+    #             message = 'New user added successfully'
+    #             return new_user_id
+    #     context = {
+    #         'form': new_user,
+    #         'message': message
+    #      }
+    #     return render(request, 'create_user_form.html', context)
+
+    def add_new_customer_anonymous(request):
         new_user = forms.NewUserForm(request.POST  or None)
+        new_customer = forms.NewCustomerForm(request.POST or None)
         if request.method =='POST':
             if new_user.is_valid():
-                BaseFuncade.create_new_user(user_id , new_user.cleaned_data)     
-                message = 'New user added successfully'
+                # 2 for customer role 
+                new_user_id = BaseFuncade.create_new_user(2 , new_user.cleaned_data)
+                if new_customer.is_valid():
+                    AnonymusFancade.add_customer(new_user_id, new_customer.cleaned_data)          
+                    # message = 'New customer added successfully'
         context = {
-            'form': new_user,
-            'message': message
+            'userform': new_user,
+            'custform': new_customer,
+            # 'message': message
          }
-        return render(request, 'create_user_form.html', context)
+        return render(request, 'create_customer_form.html', context)
 
 
 

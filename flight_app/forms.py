@@ -63,7 +63,7 @@ class NewCustomerForm(forms.ModelForm):
     last_name = forms.CharField(max_length=50 , required=True , label= "Yo fam name") 
     address = forms.CharField(max_length=255 ,  required=True, label="Where Yo live fool?")
     phone_number = forms.IntegerField(max_value = 9999999999, label="Yo phone , real one this time ")
-    credit_card_no = forms.IntegerField(max_value = 9999999999999999, label="Credit card , you can trust me, to but some expensive shit!") 
+    credit_card_no = forms.IntegerField(max_value = 9999999999999999, label="Credit card , you can trust me..., to buy some expensive shit!") 
 
     class Meta:
         model = models.Flight_Ticket

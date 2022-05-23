@@ -51,11 +51,13 @@ class BaseFuncade():
     
     def create_new_user(user_role, form):
         new_user = User()
+        user_role = 2
         new_user.username = form['username']
         new_user.password = form['password']
         new_user.email = form['email']
         new_user.user_role =  User_Role.objects.get(pk = user_role)
         new_user.save()
+        return  new_user.id
 
 
 
