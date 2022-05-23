@@ -7,7 +7,8 @@ from .DAL.customer_facade import CustomerFancade
 from .DAL.anony_facade import AnonymusFancade
 from django.http import HttpResponse, Http404
 from django.core.exceptions import PermissionDenied
-from django.contrib.auth.hashers import make_password
+# from django.contrib.auth.hashers import make_password
+from django.db import transaction
 
 
 def homeview(request):
@@ -183,14 +184,18 @@ class FormPlace:
                 # 2 for customer role 
                 new_user_id = BaseFuncade.create_new_user(2 , new_user.cleaned_data)
                 if new_customer.is_valid():
-                    AnonymusFancade.add_customer(new_user_id, new_customer.cleaned_data)          
-                    # message = 'New customer added successfully'
+                    AnonymusFancade.add_customer(new_user_id, new_customer.cleaned_data)
+                    redirect_address =  f'/flight_app/loggedin/{new_user_id}'
+                    return redirect(redirect_address)
+                   
         context = {
             'userform': new_user,
             'custform': new_customer,
-            # 'message': message
          }
         return render(request, 'create_customer_form.html', context)
 
 
 
+def test_login(request, user_id): 
+    context = {'id': user_id}
+    return render( request, 'user_creation_login_sucsess.html', context)

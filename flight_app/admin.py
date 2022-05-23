@@ -27,7 +27,7 @@ class UserRoleAdmin(admin.ModelAdmin):
 
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
-    list_display =['last_name', 'user', 'first_name']
+    list_display =['user' , 'first_name' , 'last_name']
 
 
 

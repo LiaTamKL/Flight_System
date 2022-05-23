@@ -68,6 +68,7 @@ class NewCustomerForm(forms.ModelForm):
     class Meta:
         model = models.Flight_Ticket
         fields = ['first_name', 'last_name', 'address', 'phone_number', 'credit_card_no']
+        
 
     # def clean_message(self):
     #     customer_id = self.cleaned_data['customer_id']
