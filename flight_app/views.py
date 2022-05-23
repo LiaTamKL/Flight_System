@@ -107,7 +107,8 @@ def airline_add_flight(request):
     message = None
     if request.method =='POST':
         if flightform.is_valid():
-            Airline_Facade.add_flight(airline_id, flightform.cleaned_data)
+            flight = models.Flight()
+            Airline_Facade.add_flight(airline_id, flightform.cleaned_data, flight)
             message = 'Flight added successfully'
     context = {
         'form': flightform,
@@ -128,7 +129,7 @@ def airline_update_flight(request, flight_id):
     flightform = forms.NewFlightForm(request.POST, instance=instance)
     if request.method =='POST':
         if flightform.is_valid():
-            Airline_Facade.add_flight(1, flightform.clean_data)
+            #Airline_Facade.add_flight(1, flightform.clean_data)
             message = 'Flight added successfully'
     context = {
         'form': flightform,
