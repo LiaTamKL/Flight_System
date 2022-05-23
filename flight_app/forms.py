@@ -3,6 +3,8 @@ from email import message
 from tkinter import Widget
 from django import forms
 from . import models
+
+#these three are meant to compare datetime.now() with times fetched from the form. it helps validate them
 from datetime import datetime
 import pytz
 utc=pytz.UTC
@@ -37,7 +39,7 @@ class NewTicketForm(forms.ModelForm):
     #     customer_id = customer_id.id
     #     return customer_id
 
-class NewFlightForm(forms.Form):
+class NewFlightForm(forms.ModelForm):
 
     #def __init__(self, *args, **qwargs):
     #    super(models.Flight, self).__init__(*args, **qwargs)
@@ -49,7 +51,7 @@ class NewFlightForm(forms.Form):
     remaining_tickets = forms.IntegerField(required=True, min_value=0)
     class Meta:
         model = models.Flight
-        fields = ('origin_country', 'destination_country', 'departure_time', 'landing_time', 'remaining_tickets')
+        fields = ['origin_country', 'destination_country', 'departure_time', 'landing_time', 'remaining_tickets']
 
     #checks if the destination and origin countries are the same, if they are, raises an error
     def clean_destination_country(self):
