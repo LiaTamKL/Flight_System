@@ -127,7 +127,7 @@ def airline_update_flight(request, flight_id):
     flightform = forms.NewFlightForm(request.POST, instance=theFlight)
     if request.method =='POST':
         if flightform.is_valid():
-            #Airline_Facade.add_flight(1, flightform.cleaned_data)
+            Airline_Facade.add_flight(1, flightform.clean_data)
             message = 'Flight added successfully'
     context = {
         'form': flightform,
@@ -143,7 +143,7 @@ class FormPlace:
         new_ticket_form = forms.NewTicketForm(request.POST  or request.GET)
         if request.method =='POST':
             if new_ticket_form.is_valid():
-                CustomerFancade.add_ticket(ticket_id, new_ticket_form.cleaned_data)     
+                CustomerFancade.add_ticket(ticket_id, new_ticket_form)     
                 message = 'Ticket added successfully'
         context = {
             'form': new_ticket_form,

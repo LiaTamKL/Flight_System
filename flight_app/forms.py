@@ -12,7 +12,7 @@ class MainForm(forms.Form):
 
 
 
-class country_id_search_form(forms.Form):
+class country_id_search_form(forms.ModelForm):
     country_id = forms.IntegerField(min_value=1)
     def clean_message(self):
         country_id_m = self.cleaned_data['country_id']
@@ -21,15 +21,21 @@ class country_id_search_form(forms.Form):
         
         return country_id_m
 
-class NewTicketForm(forms.Form):
+class NewTicketForm(forms.ModelForm):
     customer_id = forms.ModelChoiceField(queryset=models.Customer.objects.all(),required=True, label='Customer ID')
-    flight_id = forms.ModelChoiceField(queryset=models.Flight.objects.all(),required=True, label='Flight ID')
+    flight_id = forms.ModelChoiceField(queryset=models.Flight.objects.all(), required=True , label='Flight ID')
 
     class Meta:
         model = models.Flight_Ticket
         fields = ('customer_id', 'flight_id')
 
-        
+    def clean_data(self)  :
+        customer_id = self.cleaned_data['customer_id']
+        return customer_id
+
+    # def __str__(self) -> str:
+    #     customer_id = customer_id.id
+    #     return customer_id
 
 class NewFlightForm(forms.Form):
 
