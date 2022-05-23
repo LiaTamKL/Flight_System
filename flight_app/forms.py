@@ -8,9 +8,6 @@ utc=pytz.UTC
 
 
 
-class MainForm(forms.Form):
-    pass
-
 
 
 class country_id_search_form(forms.ModelForm):
@@ -25,14 +22,15 @@ class country_id_search_form(forms.ModelForm):
 class NewTicketForm(forms.ModelForm):
     customer_id = forms.ModelChoiceField(queryset=models.Customer.objects.all(),required=True, label='Customer ID')
     flight_id = forms.ModelChoiceField(queryset=models.Flight.objects.all(), required=True , label='Flight ID')
+   
 
     class Meta:
         model = models.Flight_Ticket
         fields = ['customer_id', 'flight_id']
 
-    def clean_message(self):
-        customer_id = self.cleaned_data['customer_id']
-        return customer_id
+    # def clean_message(self):
+    #     customer_id = self.cleaned_data['customer_id']
+    #     return customer_id
 
     # def __str__(self) -> str:
     #     customer_id = customer_id.id
@@ -41,14 +39,20 @@ class NewTicketForm(forms.ModelForm):
 
 #add password validator 
 #https://medium.com/geekculture/django-shorts-password-validators-95285c0936de
+
+class LoginForm(forms.ModelForm):
+    username_or_mail = forms.CharField(max_length=10 , required=True, label="Username or Mail")
+    password = forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password")
+    
+    class Meta:
+        model = models.User
+        fields = ['username_or_mail', 'password']
+        
+
 class NewUserForm(forms.ModelForm):
     username = forms.CharField(max_length=10 , required=True, label="The most impressing nickname you ever had")
     password = forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password, why bother probably you will use 123456")
-    # password = forms.CharField(max_length=16 , required=True , label= "Password, why bother probably you will use 1-6") 
-    email = forms.CharField(max_length=255 ,  required=True, label="email, Prepare for shitload of SPAM baby")
-
-
-
+    email = forms.EmailField(max_length=255 ,  required=True, label="email, Prepare for shitload of SPAM baby")
     class Meta:
         model = models.User
         fields = ['username', 'password', 'email']

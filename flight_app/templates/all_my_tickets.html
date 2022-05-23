@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OK</title>
+    <title>My tickets</title>
 </head>
 <body>
-    <h1>Welcome home Agent {{id}}</h1>
+    <h1>All My Tickets </h1>
+    <ul>
+    {% for info in all_tickets %}
+    <li>ticket id {{info.id}},
+        flight id {{info.flight.id}}</li>
+    {% endfor %} 
+    </ul>
 </body>
 </html>

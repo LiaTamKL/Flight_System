@@ -5,13 +5,15 @@ from .base_facade import BaseFuncade
 
 class CustomerFancade(BaseFuncade):
 
-    def update_customer(customer):
-        pass
+    def update_customer(customer_id, form):
+        customer = Customer.objects.get(pk = customer_id)
+         
+
 
     def add_ticket(form):
         flight_Ticket = Flight_Ticket()
-        flight_Ticket.customer = Customer.objects.get(pk = form["customer_id"])
-        flight_Ticket.flight = Flight.objects.get(pk = form['flight_id'])
+        flight_Ticket.customer = form["customer_id"]
+        flight_Ticket.flight = form['flight_id']
         flight_Ticket.save()
 
     def remove_ticket(ticket):
@@ -22,9 +24,11 @@ class CustomerFancade(BaseFuncade):
         ticket_to_remove.delete()
         return 1
 
+    #need to be logged in
+    def get_my_tickets(id):
+            ticket_list = list(models.Flight_Ticket.objects.filter(customer_id = id))
+            return ticket_list
 
-    def get_my_tickets():
-        pass
 
 
     def add_flight(airline, form):

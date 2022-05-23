@@ -77,11 +77,6 @@ def delete_flight_for_airline(request, flight_id):
         return HttpResponse(f'Flight #{flight_id} removed successfully')
     
 
-
-
-
-
-
 def show_country_search_from(request):
   
     f = contact_from = forms.country_id_search_form(request.POST or None) # reteins data even if the submit was invalid. 
@@ -144,19 +139,26 @@ def remove_ticket(request, ticket_id):
     if result == 1:
         return HttpResponse(f'ticket #{ticket_id} removed successfully')
 
-class FormPlace:
-    def add_ticket(request):
-        message = None
-        f = new_ticket_form = forms.NewTicketForm(request.POST  or None)
-        if request.method =='POST':
-            if f.is_valid():
-                CustomerFancade.add_ticket(new_ticket_form.cleaned_data)     
-                message = 'Ticket added successfully'
-        context = {
-            'form': new_ticket_form,
-            'message': message
-         }
-        return render(request, 'add_ticket.html', context)
+
+def add_ticket(request):
+    message = None
+    new_ticket_form = forms.NewTicketForm(request.POST or None)
+    raise Exception({len(new_ticket_form)})
+    if request.method =='POST':
+        if new_ticket_form.is_valid():
+            CustomerFancade.add_ticket(new_ticket_form.cleaned_data)     
+            message = 'Ticket added successfully'
+    context = {
+        'form': new_ticket_form,
+        'message': message
+        }
+    return render(request, 'add_ticket.html', context)
+ 
+def get_my_tickets(request, cust_id):
+    all_my_tickets = CustomerFancade.get_my_tickets(cust_id)
+    return render(request, "all_my_tickets.html", {'all_tickets': all_my_tickets})
+
+
 
 
     # def add_new_user(request):
@@ -176,26 +178,43 @@ class FormPlace:
     #      }
     #     return render(request, 'create_user_form.html', context)
 
-    def add_new_customer_anonymous(request):
-        new_user = forms.NewUserForm(request.POST  or None)
-        new_customer = forms.NewCustomerForm(request.POST or None)
-        if request.method =='POST':
-            if new_user.is_valid():
-                # 2 for customer role 
-                new_user_id = BaseFuncade.create_new_user(2 , new_user.cleaned_data)
-                if new_customer.is_valid():
-                    AnonymusFancade.add_customer(new_user_id, new_customer.cleaned_data)
-                    redirect_address =  f'/flight_app/loggedin/{new_user_id}'
-                    return redirect(redirect_address)
-                   
-        context = {
-            'userform': new_user,
-            'custform': new_customer,
-         }
-        return render(request, 'create_customer_form.html', context)
+def add_new_customer_anonymous(request):
+    new_user = forms.NewUserForm(request.POST  or None)
+    new_customer = forms.NewCustomerForm(request.POST or None)
+    if request.method =='POST':
+        if new_user.is_valid():
+            # 2 for customer role 
+            new_user_id = BaseFuncade.create_new_user(2 , new_user.cleaned_data)
+            if new_customer.is_valid():
+                AnonymusFancade.add_customer(new_user_id, new_customer.cleaned_data)
+                redirect_address =  f'/flight_app/loggedin/{new_user_id}'
+                return redirect(redirect_address)
+                
+    context = {
+        'userform': new_user,
+        'custform': new_customer,
+        }
+    return render(request, 'create_customer_form.html', context)
 
 
 
-def test_login(request, user_id): 
+def cust_login(request, user_id): 
     context = {'id': user_id}
-    return render( request, 'user_creation_login_sucsess.html', context)
+    return render( request, 'customer_login_ok.html', context)
+
+def airline_login(request, user_id): 
+    context = {'id': user_id}
+    return render( request, 'airline_login.ok', context)
+
+def login_page(request):
+    new_login = forms.LoginForm(request.POST or None)
+    if request.method == 'POST':
+        if new_login.is_valid():
+            user_role , user_id = AnonymusFancade.login(new_login.cleaned_data)
+            if user_role == 2 :
+                redirect_address =f'/flight_app/custloggedin/{user_id}'
+            if user_role == 1:
+                redirect_address =f'/flight_app/airlineloggedin/{user_id}'
+                return redirect(redirect_address)
+              
+    return render(request, 'login_page.html', {'form': new_login})
