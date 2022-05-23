@@ -15,12 +15,13 @@ class Airline_Facade(BaseFuncade):
     #add a flight. uses form. in the future, should use logincheck
     def add_flight(airline, form):
         flight = Flight()
-        flight.airline = airline
-        flight.origin_country = form.cleaned_data['origin_country']
-        flight.destination_country =form.cleaned_data['destination_country']
-        flight.departure_time = form.cleaned_data['departure_time']
-        flight.landing_time = form.cleaned_data['landing_time']
-        flight.remaining_tickets = form.cleaned_data['remaining_tickets']
+        airli = Airline.objects.get(pk = airline)
+        flight.airline = airli
+        flight.origin_country = form['origin_country']
+        flight.destination_country =form['destination_country']
+        flight.departure_time = form['departure_time']
+        flight.landing_time = form['landing_time']
+        flight.remaining_tickets = form['remaining_tickets']
         flight.save()
 
     #remove a flight. in the future, should use logincheck. returns 1 if successful

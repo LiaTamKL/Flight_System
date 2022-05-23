@@ -4,6 +4,8 @@ from tkinter import Widget
 from django import forms
 from . import models
 from datetime import datetime
+import pytz
+utc=pytz.UTC
 
 class MainForm(forms.Form):
     pass
@@ -32,8 +34,8 @@ class NewTicketForm(forms.Form):
 class NewFlightForm(forms.Form):
     origin_country = forms.ModelChoiceField(queryset=models.Country.objects.all(), required=True, label = 'From')
     destination_country = forms.ModelChoiceField(queryset=models.Country.objects.all(), required=True, label = 'To')
-    departure_time = forms.DateTimeField(required=True, label = 'Departure at')
-    landing_time = forms.DateTimeField(required=True, label = 'Landing at')
+    departure_time = forms.DateTimeField(required=True, label = 'Departure at', input_formats=[r'%d/%m/%Y %H:%M'])
+    landing_time = forms.DateTimeField(required=True, label = 'Landing at', input_formats=[r'%d/%m/%Y %H:%M'])
     remaining_tickets = forms.IntegerField(required=True, min_value=0)
     class Meta:
         model = models.Flight
@@ -52,9 +54,11 @@ class NewFlightForm(forms.Form):
 
     #checks if departure is actually not in the past, and whether the landing time is after the departure
     def clean_landing_time(self):
+        print('cleaning data')
         departure = self.cleaned_data['departure_time']
         print(f'Departure: {departure}')
-        if departure < datetime.now():
+        print(utc.localize(datetime.now()))
+        if departure < utc.localize(datetime.now()):
             print('invalid.... de < now')
             raise forms.ValidationError('You cannot choose a date in the past')
         landing = self.cleaned_data['landing_time']
