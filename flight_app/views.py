@@ -5,7 +5,8 @@ from .DAL.base_facade import BaseFuncade
 from .DAL.airline_facade import Airline_Facade
 from .DAL.customer_facade import CustomerFancade
 from .DAL.anony_facade import AnonymusFancade
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
+from django.core.exceptions import PermissionDenied
 
 
 def homeview(request):
@@ -112,3 +113,26 @@ def airline_add_flight(request):
         'message': message
     }
     return render(request, 'add_flight.html', context)
+
+def airline_update_flight(request, flight_id):
+    airline_id = (BaseFuncade.get_airline_by_id(1))[0]
+    try:
+        theFlight = (BaseFuncade.get_flight_by_id(flight_id))[0]
+    except:
+        raise Http404('Flight does not exist')
+    if airline_id != theFlight.airline:
+        raise PermissionDenied()
+
+    message = None
+    flightform = forms.NewFlightForm(request.POST, instance=theFlight)
+    if request.method =='POST':
+        if flightform.is_valid():
+            #Airline_Facade.add_flight(1, flightform.cleaned_data)
+            message = 'Flight added successfully'
+    context = {
+        'form': flightform,
+        'message': message
+    }
+    return render(request, 'add_flight.html', context)
+    
+
