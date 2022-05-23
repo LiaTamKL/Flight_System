@@ -14,13 +14,22 @@ class MainForm(forms.Form):
 
 class country_id_search_form(forms.Form):
     country_id = forms.IntegerField(min_value=1)
-
     def clean_message(self):
         country_id_m = self.cleaned_data['country_id']
         # if not str.isdigit(country_id_m):
             # raise forms.ValidationError('Please Enter valid country id')
         
         return country_id_m
+
+class NewTicketForm(forms.Form):
+    customer_id = forms.ModelChoiceField(queryset=models.Customer.objects.all(),required=True, label='Customer ID')
+    flight_id = forms.ModelChoiceField(queryset=models.Flight.objects.all(),required=True, label='Flight ID')
+
+    class Meta:
+        model = models.Flight_Ticket
+        fields = ('customer_id', 'flight_id')
+
+        
 
 class NewFlightForm(forms.Form):
 
