@@ -14,4 +14,24 @@ class AdministratorFuncade(BaseFuncade):
     #     cust.last_name = form['last_name']
     #     cust.user = form['user_id']
     #     cust.save()
-    pass
+    
+
+    def get_all_customers():
+        cus = Customer.objects.all()
+        return cus
+
+    def add_airline():
+        pass
+    
+    def add_customer():
+        pass
+    def add_admin():
+        pass
+    def remove_airline(airline):
+        pass
+    def remove_customer(customer):
+        pass
+    def remove_admin(admin):
+        pass
+
+
