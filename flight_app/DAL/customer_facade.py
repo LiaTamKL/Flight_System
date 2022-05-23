@@ -11,6 +11,7 @@ class CustomerFancade(BaseFuncade):
     def add_ticket(ticket , form):
         # ticket_id, customer_id, flight_id =  ticket.split() 
         flight_Ticket= Flight_Ticket()
+        flight_Ticket.id = ticket
         flight_Ticket.customer_id = form.cleaned_data["customer_id"]
         flight_Ticket.flight_id = form.cleaned_data['flight_id']
         flight_Ticket.save()
