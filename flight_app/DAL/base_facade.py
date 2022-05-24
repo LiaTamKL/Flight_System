@@ -1,7 +1,7 @@
 from ..models import *
 from ..forms import *
 from django.http import Http404
-
+from django.contrib.auth.models import User
 class BaseFuncade():
  
     def get_all_flights():
@@ -49,15 +49,23 @@ class BaseFuncade():
     # on commit login details will be sent here for user creation.
     # also will generate token for the user?
     
-    def create_new_user(user_role, form):
-        new_user = User()
-        user_role = 2
-        new_user.username = form['username']
-        new_user.password = form['password']
-        new_user.email = form['email']
-        new_user.user_role =  User_Role.objects.get(pk = user_role)
-        new_user.save()
-        return  new_user.id
+    # def create_new_user(user_role, form):
+    def create_new_user():
+        user = User.objects.create_user(username='test', password='pass')
+        # user.username = 'test'
+        # user.password = 'passs'
+        user.save
+
+        # new_user = User()
+        # user_role = 2
+        # new_user.username = form['username']
+        # new_user.password = form['password']
+        # new_user.email = form['email']
+        # new_user.user_role =  User_Role.objects.get(pk = user_role)
+        # new_user.save()
+        # return  new_user.id
+
+
 
 
 

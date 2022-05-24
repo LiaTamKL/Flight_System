@@ -3,14 +3,23 @@ from ..forms import *
 from django.http import Http404
 from .base_facade import BaseFuncade
 from django.db import transaction
+from django.contrib.auth import authenticate, login
+
 
 class AnonymusFancade(BaseFuncade):
     
-    def login(form):
-        username_or_mail = form["username_or_mail"]
-        password = form["password"]
-        cl = (models.User.objects.get(username = username_or_mail)).username
-        pass
+
+    # def login(username. password):
+    #     pass
+
+    # def login(form):
+        
+        
+        
+        # username_or_mail = form["username_or_mail"]
+        # password = form["password"]
+        # cl = (models.User.objects.get(username = username_or_mail)).username
+        # pass
        
         # raise Exception({cl})
         # # models.User.objects.filter
