@@ -1,8 +1,8 @@
 from flight_app.DAL.airline_facade import Airline_Facade
-from ..models import *
-from ..forms import *
+from ..models import Customer, Airline, Administrator, Flight
 from django.http import Http404
 from .base_facade import BaseFuncade
+from django.db import transaction
 
 class AdministratorFuncade(BaseFuncade):
     # def add_customer(customer_id, form):
@@ -23,31 +23,34 @@ class AdministratorFuncade(BaseFuncade):
 
     #receives clean_data form, adds a customer based on that to the database.
     def add_customer2(form):
-        cus = Customer()
-        cus.address = form['address']
-        cus.credit_card_no = form['credit_card_no']
-        cus.first_name = form['first_name']
-        cus.last_name = form['last_name']
-        cus.user = form['user_id']
-        cus.save()
+        with transaction.Atomic():
+            cus = Customer()
+            cus.address = form['address']
+            cus.credit_card_no = form['credit_card_no']
+            cus.first_name = form['first_name']
+            cus.last_name = form['last_name']
+            cus.user = form['user_id']
+            cus.save()
 
 
     #receives clean_data form, adds an airline based on that to the database.
     def add_airline(form):
-        airline = Airline()
-        airline.name = form['name']
-        airline.country = form['airline']
-        airline.user = form['user_id']
-        airline.save()
+        with transaction.Atomic():
+            airline = Airline()
+            airline.name = form['name']
+            airline.country = form['airline']
+            airline.user = form['user_id']
+            airline.save()
 
 
     #receives clean_data form, adds an admin based on that to the database.
     def add_admin(form):
-        admin = Administrator()
-        admin.first_name = form['first_name']
-        admin.last_name = form['last_name']
-        admin.user = form['user_id']
-        admin.save()
+        with transaction.Atomic():
+            admin = Administrator()
+            admin.first_name = form['first_name']
+            admin.last_name = form['last_name']
+            admin.user = form['user_id']
+            admin.save()
 
     #receives an airline id, deletes said airline
     def remove_airline(airline):
