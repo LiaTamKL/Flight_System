@@ -51,12 +51,12 @@ class NewTicketForm(forms.ModelForm):
 #https://medium.com/geekculture/django-shorts-password-validators-95285c0936de
 
 class LoginForm(forms.ModelForm):
-    # username = forms.CharField(max_length=10 , required=True, label="Username or Mail")
+    username = forms.CharField(max_length=10 , required=True, label="Username", widget=forms.TextInput(attrs={'class': 'form-control'}))
     # password = forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password")
-    
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     class Meta:
         model = models.User
-        fields = ['username', 'password', 'email']
+        fields = ['username', 'password']
         
 
 username_validator = UnicodeUsernameValidator()

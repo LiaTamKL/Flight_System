@@ -10,7 +10,7 @@ urlpatterns = [
     path('seachcountrybyid/', views.show_country_search_from),
     path('ticket/add', views.add_ticket),
     path('ticket/remove/<ticket_id>', views.remove_ticket),
-    
+    path('login/',views.user_login),
 
     path('register/', views.new_user),
     

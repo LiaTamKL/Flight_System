@@ -7,11 +7,21 @@ from django.contrib.auth import authenticate, login
 
 
 class AnonymusFancade(BaseFuncade):
-    # def login(username. password):
-        # pass
+    def login(request, form):
+        logged = False
+       
+        username = form["username"]
+        password = form["password"]
+        # raise Exception[{username,password}]
 
 
-
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            logged = True
+         
+        return logged
+            
 
     def add_customer(created_user_id,form):
         with transaction.atomic():

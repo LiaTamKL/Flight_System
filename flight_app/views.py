@@ -11,6 +11,7 @@ from django.core.exceptions import PermissionDenied
 from django.db import transaction
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login 
+from django.contrib.auth.decorators import login_required
 
 
 def homeview(request):
@@ -187,10 +188,10 @@ def new_user(request):
 
         if new_user_form.is_valid(): 
             BaseFuncade.create_new_user(new_user_form.cleaned_data)
-            return HttpResponse("ok")
+            return HttpResponse("UserCreated")
         else :
             dict = list(new_user_form.errors)
-            return HttpResponse(dict , 'not Ok')
+            return HttpResponse(dict)
     return render(request, 'register.html', {'form': new_user_form})
 
     
@@ -198,23 +199,38 @@ def new_user(request):
 
 #cannot be named 'login' 
 def user_login(request):
-    # username = request.POST['username']
-    # password = request.POST['password']
-    username = "userkna"
-    password = 'myuser86645'
-
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-        login(request, user)
-
-        redirect_address =f'/flight_app/loggedin'
-        return redirect(redirect_address)
-    else:
-       return HttpResponse("NO")
+    logged = False
+    new_login = forms.LoginForm(request.POST)
+    if request.method == 'POST':
+        if new_login.is_valid():
+            logged = AnonymusFancade.login(request,new_login.cleaned_data)  
         
+            if logged:
+                redirect_address =f'/flight_app/loggedin'
+                return redirect(redirect_address)
+            else:
+                raise PermissionDenied()
+                
+    return render(request, 'login_page.html', {'form': new_login})
 
 
 
+
+
+    
+#old login method
+# def login_page(request):
+#     new_login = forms.LoginForm(request.POST or None)
+#     if request.method == 'POST':
+#         if new_login.is_valid():
+#             user_role , user_id = AnonymusFancade.login(new_login.cleaned_data)
+#             if user_role == 2 :
+#                 redirect_address =f'/flight_app/custloggedin/{user_id}'
+#             if user_role == 1:
+#                 redirect_address =f'/flight_app/airlineloggedin/{user_id}'
+#                 return redirect(redirect_address)
+              
+#     return render(request, 'login_page.html', {'form': new_login})
 
 
 
