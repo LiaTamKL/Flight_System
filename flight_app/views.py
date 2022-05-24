@@ -117,17 +117,22 @@ def airline_update_flight(request, flight_id):
     airline_id = (BaseFuncade.get_airline_by_id(1))[0]
     try:
         instance = (BaseFuncade.get_flight_by_id(flight_id))[0]
+        print(instance)
+        print(instance.origin_country)
     except:
         raise Http404('Flight does not exist')
     if airline_id != instance.airline:
         raise PermissionDenied()
 
     message = None
-    flightform = forms.NewFlightForm(request.POST, instance=instance)
-    if request.method =='POST':
+    flightform = forms.NewFlightForm(instance=instance)
+    if request.method == 'POST':
+        flightform = forms.NewFlightForm(request.POST, instance=instance)
         if flightform.is_valid():
-            #Airline_Facade.add_flight(1, flightform.clean_data)
-            message = 'Flight added successfully'
+            flight = (BaseFuncade.get_flight_by_id(flight_id))[0]
+            print(flightform.cleaned_data)
+            Airline_Facade.update_airline(airline = 1, form = flightform.cleaned_data, flight = flight)
+            message = 'Flight updated successfully'
     context = {
         'form': flightform,
         'message': message

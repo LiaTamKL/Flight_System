@@ -1,5 +1,5 @@
 from flight_app.DAL.airline_facade import Airline_Facade
-from ..models import Customer, Airline, Administrator, Flight
+from ..models import Customer, Airline, Administrator, Flight, Flight_Ticket
 from django.http import Http404
 from .base_facade import BaseFuncade
 from django.db import transaction

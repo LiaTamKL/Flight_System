@@ -10,7 +10,6 @@ class Airline_Facade(BaseFuncade):
     #add a flight. uses form. in the future, should use logincheck
     def add_flight(airline, form, flight):
         
-        print(f'im here with airline {airline}, coming in with  {form}')
         with transaction.Atomic():
             airli = Airline.objects.get(pk = airline)
             flight.airline = airli
@@ -24,14 +23,7 @@ class Airline_Facade(BaseFuncade):
     #updates airline details via a form where the existing details are shown
     #this SHOULD NOT allow other companies to update other companies. We need logincheck later
     def update_airline(airline, form, flight):
-        airli = Airline.objects.get(pk = airline)
-        flight.airline = airli
-        flight.origin_country = form['origin_country']
-        flight.destination_country =form['destination_country']
-        flight.departure_time = form['departure_time']
-        flight.landing_time = form['landing_time']
-        flight.remaining_tickets = form['remaining_tickets']
-        flight.save()
+        Airline_Facade.add_flight(airline, form, flight)
 
 
     #remove a flight. in the future, should use logincheck. returns 1 if successful
