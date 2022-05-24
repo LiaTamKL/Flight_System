@@ -4,6 +4,16 @@ from . import models
 #these three are meant to compare datetime.now() with times fetched from the form. it helps validate them
 from datetime import datetime
 import pytz
+from django.contrib.auth.forms import UserCreationForm 
+from django.contrib.auth.models import User
+from django.contrib.auth import password_validation
+from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.validators import UnicodeUsernameValidator
+
+
+
+
+
 utc=pytz.UTC
 
 
@@ -41,25 +51,29 @@ class NewTicketForm(forms.ModelForm):
 #https://medium.com/geekculture/django-shorts-password-validators-95285c0936de
 
 class LoginForm(forms.ModelForm):
-    username_or_mail = forms.CharField(max_length=10 , required=True, label="Username or Mail")
-    password = forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password")
+    # username = forms.CharField(max_length=10 , required=True, label="Username or Mail")
+    # password = forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password")
     
     class Meta:
         model = models.User
-        fields = ['username_or_mail', 'password']
+        fields = ['username', 'password', 'email']
         
 
-class NewUserForm(forms.ModelForm):
-    username = forms.CharField(max_length=10 , required=True, label="The most impressing nickname you ever had")
-    password = forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password, why bother probably you will use 123456")
-    email = forms.EmailField(max_length=255 ,  required=True, label="email, Prepare for shitload of SPAM baby")
+class SignUpForm(UserCreationForm):
+    # username = forms.CharField(max_length=10 , required=True, label="The most impressing nickname you ever had")
+    # password = forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password, why bother probably you will use 123456")
+    # email = forms.EmailField(max_length=255 ,  required=True, label="email, Prepare for shitload of SPAM baby")
     class Meta:
-        model = models.User
-        fields = ['username', 'password', 'email']
+        model = User
+        fields = ['username','email','password',  ]
 
     # def clean_message(self):
     #     customer_id = self.cleaned_data['customer_id']
     #     return customer_id
+
+
+
+
 
 
 class NewCustomerForm(forms.ModelForm):

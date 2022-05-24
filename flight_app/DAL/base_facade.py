@@ -2,6 +2,7 @@ from ..models import *
 from ..forms import *
 from django.http import Http404
 from django.contrib.auth.models import User
+from django.http import HttpResponse, Http404
 class BaseFuncade():
  
     def get_all_flights():
@@ -50,11 +51,14 @@ class BaseFuncade():
     # also will generate token for the user?
     
     # def create_new_user(user_role, form):
-    def create_new_user():
-        user = User.objects.create_user(username='test', password='pass')
-        # user.username = 'test'
-        # user.password = 'passs'
-        user.save
+    def create_new_user(form):
+
+        user = User.objects.create_user(
+            username = form['username'], 
+            password = form['password'],
+            email = form['email']
+        )
+        user.save()
 
         # new_user = User()
         # user_role = 2
