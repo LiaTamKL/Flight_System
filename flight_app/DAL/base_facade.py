@@ -55,7 +55,7 @@ class BaseFuncade():
 
         user = User.objects.create_user(
             username = form['username'], 
-            password = form['password'],
+            password = form['password1'],
             email = form['email']
         )
         user.save()
