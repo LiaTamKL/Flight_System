@@ -4,7 +4,7 @@ from . import models
 #these three are meant to compare datetime.now() with times fetched from the form. it helps validate them
 from datetime import datetime
 import pytz
-from django.contrib.auth.forms import UserCreationForm 
+from django.contrib.auth.forms import UserCreationForm , AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import password_validation
 from django.utils.translation import gettext_lazy as _
@@ -51,26 +51,42 @@ class NewTicketForm(forms.ModelForm):
 #add password validator 
 #https://medium.com/geekculture/django-shorts-password-validators-95285c0936de
 
-class LoginForm(forms.ModelForm):
-    username = forms.CharField(max_length=10 , required=True, label="Username", widget=forms.TextInput(attrs={'class': 'form-control'}))
+# class LoginForm(AuthenticationForm):
+#     # email = forms.EmailField( max_length=60, help_text='required')
+#     # username = forms.CharField(max_length=10 , required=True, label="Username", widget=forms.TextInput(attrs={'class': 'form-control'}))
+#     # password = forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password")
+#     # password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+#     class Meta:
+#         model = Account
+#         # fields = '__all__'
+#         fields = ['email', 'password1']
+        
+
+
+class Login(AuthenticationForm):
+
+    #by deafult it takes an email as username 
+    username = forms.CharField( label="Email")
+    # email = forms.EmailField( max_length=60, help_text='required', label="Emule")
     # password = forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password")
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-    class Meta:
-        model = models.Account
-        fields = ['username', 'password']
+    class Meta: 
+        model = Account
+        # fields = '__all__'
+        fields = ("username", 'password',) 
         
 
 username_validator = UnicodeUsernameValidator()
 
 
+# UserCreationForm does not support item assigments
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField( max_length=60, help_text='required')
-    first_name = forms.CharField(max_length=50 , required=True, label="Yo name ")
-    last_name = forms.CharField(max_length=50 , required=True , label= "Yo fam name") 
-    address = forms.CharField(max_length=255 ,  required=True, label="Where Yo live fool?")
-    phone_number = forms.IntegerField(max_value = 9999999999, label="Yo phone , real one this time ")
-    credit_card_no = forms.IntegerField(max_value = 9999999999999999, label="Credit card , you can trust me..., to buy some expensive shit!") 
-
+    # first_name = forms.CharField(max_length=50 , required=True, label="Yo name ")
+    # last_name = forms.CharField(max_length=50 , required=True , label= "Yo fam name") 
+    # address = forms.CharField(max_length=255 ,  required=True, label="Where Yo live fool?")
+    # phone_number = forms.IntegerField(max_value = 9999999999, label="Yo phone , real one this time ")
+    # credit_card_no = forms.IntegerField(max_value = 9999999999999999, label="Credit card , you can trust me..., to buy some expensive shit!") 
+    # account_role = forms.IntegerField(widget=forms.HiddenInput() , required=False, label="")
     class Meta:
         model = Account
         fields = ("email", 'username',) #'password1', 'password2' )

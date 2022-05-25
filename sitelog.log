@@ -669,3 +669,1616 @@ Traceback (most recent call last):
 django.urls.exceptions.NoReverseMatch: Reverse for 'home' not found. 'home' is not a valid view function or pattern name.
 INFO 2022-05-25 17:47:55,018 autoreload 1516 34268 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\urls.py changed, reloading.
 INFO 2022-05-25 17:47:55,641 autoreload 60772 30468 Watching for file changes with StatReloader
+INFO 2022-05-25 18:24:01,347 autoreload 24092 21580 Watching for file changes with StatReloader
+WARNING 2022-05-25 18:24:13,415 log 24092 12420 Not Found: /
+WARNING 2022-05-25 18:24:28,205 log 24092 12420 Not Found: /flight_app/login/
+INFO 2022-05-25 19:22:37,065 autoreload 24092 21580 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\base_facade.py changed, reloading.
+INFO 2022-05-25 19:22:37,441 autoreload 17028 21124 Watching for file changes with StatReloader
+WARNING 2022-05-25 19:23:10,143 log 17028 25980 Not Found: /flight_app/login/
+INFO 2022-05-25 19:31:05,670 autoreload 17028 21124 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 19:31:06,025 autoreload 4164 624 Watching for file changes with StatReloader
+INFO 2022-05-25 19:31:07,226 autoreload 4164 624 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-25 19:31:07,566 autoreload 17480 23508 Watching for file changes with StatReloader
+INFO 2022-05-25 19:31:48,701 autoreload 17480 23508 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-25 19:31:49,040 autoreload 21516 12236 Watching for file changes with StatReloader
+ERROR 2022-05-25 19:32:33,635 log 21516 21980 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 214, in register
+    raise Exception(new_customer.is_valid())
+Exception: False
+INFO 2022-05-25 19:33:53,406 autoreload 21516 12236 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 19:33:53,757 autoreload 700 2560 Watching for file changes with StatReloader
+ERROR 2022-05-25 19:34:16,022 log 700 16412 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 247, in register
+    context['registration_form'] = form
+UnboundLocalError: local variable 'form' referenced before assignment
+INFO 2022-05-25 19:34:58,548 autoreload 700 2560 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 19:34:58,870 autoreload 16496 7364 Watching for file changes with StatReloader
+ERROR 2022-05-25 19:35:37,104 log 16496 14424 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 217, in register
+    AnonymusFancade.create_new_user(new_customer.cleaned_data , account_role , user_id)
+TypeError: create_new_user() takes 1 positional argument but 3 were given
+INFO 2022-05-25 19:48:42,517 autoreload 16496 7364 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 19:48:42,895 autoreload 11140 26136 Watching for file changes with StatReloader
+ERROR 2022-05-25 19:50:01,733 log 11140 25788 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 212, in register
+    user_id = BaseFuncade.create_new_user(new_user)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\base_facade.py", line 54, in create_new_user
+    form.save()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\contrib\auth\forms.py", line 143, in save
+    user.save()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\contrib\auth\base_user.py", line 68, in save
+    super().save(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 857, in save_base
+    updated = self._save_table(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 1000, in _save_table
+    results = self._do_insert(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 1041, in _do_insert
+    return manager._insert(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1434, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: database is locked
+ERROR 2022-05-25 19:50:21,339 log 11140 25788 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 217, in register
+    AnonymusFancade.create_new_user(new_customer.cleaned_data , account_role , user_id)
+TypeError: create_new_user() takes 1 positional argument but 3 were given
+INFO 2022-05-25 19:55:03,039 autoreload 11140 26136 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 19:55:03,405 autoreload 8048 18996 Watching for file changes with StatReloader
+INFO 2022-05-25 19:55:42,667 autoreload 8048 18996 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 19:55:43,031 autoreload 13680 25388 Watching for file changes with StatReloader
+ERROR 2022-05-25 19:56:08,854 log 13680 23972 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 218, in register
+    AnonymusFancade.create_new_user(new_customer.cleaned_data , account_role , user_id)
+TypeError: create_new_user() takes 1 positional argument but 3 were given
+INFO 2022-05-25 19:56:36,759 autoreload 13680 25388 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 19:56:37,140 autoreload 13660 14420 Watching for file changes with StatReloader
+ERROR 2022-05-25 19:56:49,207 log 13660 16852 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 211, in register
+    raise Exception(new_user)
+Exception: <tr>
+    <th><label for="id_email">Email:</label></th>
+    <td>
+      <ul class="errorlist"><li>Account with this Email already exists.</li></ul>
+      <input type="email" name="email" value="teen@tee222221.com" maxlength="60" autofocus required id="id_email">
+      
+        <br>
+        <span class="helptext">required</span>
+      
+      
+    </td>
+  </tr>
+
+  <tr>
+    <th><label for="id_username">Username:</label></th>
+    <td>
+      <ul class="errorlist"><li>Account with this Username already exists.</li></ul>
+      <input type="text" name="username" value="teenee" maxlength="30" required id="id_username">
+      
+      
+    </td>
+  </tr>
+
+  <tr>
+    <th><label for="id_password1">Password:</label></th>
+    <td>
+      
+      <input type="password" name="password1" autocomplete="new-password" required id="id_password1">
+      
+        <br>
+        <span class="helptext"><ul><li>Your password can’t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can’t be a commonly used password.</li><li>Your password can’t be entirely numeric.</li></ul></span>
+      
+      
+    </td>
+  </tr>
+
+  <tr>
+    <th><label for="id_password2">Password confirmation:</label></th>
+    <td>
+      
+      <input type="password" name="password2" autocomplete="new-password" required id="id_password2">
+      
+        <br>
+        <span class="helptext">Enter the same password as before, for verification.</span>
+      
+      
+    </td>
+  </tr>
+
+  <tr>
+    <th><label for="id_first_name">Yo name :</label></th>
+    <td>
+      
+      <input type="text" name="first_name" value="heyo" maxlength="50" required id="id_first_name">
+      
+      
+    </td>
+  </tr>
+
+  <tr>
+    <th><label for="id_last_name">Yo fam name:</label></th>
+    <td>
+      
+      <input type="text" name="last_name" value="maya" maxlength="50" required id="id_last_name">
+      
+      
+    </td>
+  </tr>
+
+  <tr>
+    <th><label for="id_address">Where Yo live fool?</label></th>
+    <td>
+      
+      <input type="text" name="address" value="kjsjkadbkj" maxlength="255" required id="id_address">
+      
+      
+    </td>
+  </tr>
+
+  <tr>
+    <th><label for="id_phone_number">Yo phone , real one this time :</label></th>
+    <td>
+      
+      <input type="number" name="phone_number" value="25812354" max="9999999999" required id="id_phone_number">
+      
+      
+    </td>
+  </tr>
+
+  <tr>
+    <th><label for="id_credit_card_no">Credit card , you can trust me..., to buy some expensive shit!</label></th>
+    <td>
+      
+      <input type="number" name="credit_card_no" value="222135812358" max="9999999999999999" required id="id_credit_card_no">
+      
+      
+        
+      
+    </td>
+  </tr>
+INFO 2022-05-25 19:59:18,512 autoreload 13660 14420 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 19:59:18,878 autoreload 16756 9240 Watching for file changes with StatReloader
+INFO 2022-05-25 20:17:21,123 autoreload 16756 9240 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 20:17:21,450 autoreload 10160 24932 Watching for file changes with StatReloader
+WARNING 2022-05-25 20:17:30,706 log 10160 17860 Not Found: /
+WARNING 2022-05-25 20:17:31,027 log 10160 17860 Not Found: /favicon.ico
+ERROR 2022-05-25 20:17:45,909 log 10160 21180 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 243, in register
+    context['registration_form'] = user_form  , cust_form
+UnboundLocalError: local variable 'cust_form' referenced before assignment
+INFO 2022-05-25 20:18:45,785 autoreload 10160 24932 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 20:18:46,094 autoreload 25604 11608 Watching for file changes with StatReloader
+ERROR 2022-05-25 20:18:54,528 log 25604 25152 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 243, in register
+    context['registration_form'] = user_form  , cust_form
+UnboundLocalError: local variable 'cust_form' referenced before assignment
+INFO 2022-05-25 20:19:34,507 autoreload 25604 11608 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 20:19:34,824 autoreload 22812 13988 Watching for file changes with StatReloader
+ERROR 2022-05-25 20:19:40,165 log 22812 12084 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 243, in register
+    context['registration_form'] = user_form  , cust_form
+UnboundLocalError: local variable 'cust_form' referenced before assignment
+INFO 2022-05-25 20:36:46,984 autoreload 22812 13988 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 20:36:47,291 autoreload 16460 25964 Watching for file changes with StatReloader
+ERROR 2022-05-25 20:37:03,078 log 16460 15248 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 246, in register
+    context['registration_form'] = form + form2
+TypeError: unsupported operand type(s) for +: 'RegistrationForm' and 'NewCustomerForm'
+INFO 2022-05-25 20:38:16,657 autoreload 16460 25964 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 20:38:16,965 autoreload 12276 22888 Watching for file changes with StatReloader
+ERROR 2022-05-25 20:38:20,209 log 12276 23560 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 246, in register
+    context['registration_form'] = (form + form2)
+TypeError: unsupported operand type(s) for +: 'RegistrationForm' and 'NewCustomerForm'
+INFO 2022-05-25 20:50:38,089 autoreload 12276 22888 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 20:50:38,397 autoreload 11532 22056 Watching for file changes with StatReloader
+ERROR 2022-05-25 20:50:45,658 log 11532 9208 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 208, in register
+    ArticleFormSet = formset_factory(forms.ArticleForm)
+AttributeError: module 'flight_app.forms' has no attribute 'ArticleForm'
+INFO 2022-05-25 21:03:29,947 autoreload 11532 22056 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 21:03:30,254 autoreload 9160 21448 Watching for file changes with StatReloader
+INFO 2022-05-25 21:03:31,447 autoreload 9160 21448 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 21:03:31,765 autoreload 22276 26144 Watching for file changes with StatReloader
+INFO 2022-05-25 21:03:37,069 autoreload 22276 26144 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-25 21:03:37,371 autoreload 22452 5612 Watching for file changes with StatReloader
+INFO 2022-05-25 21:04:24,697 autoreload 22452 5612 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 21:04:25,013 autoreload 384 25808 Watching for file changes with StatReloader
+INFO 2022-05-25 21:05:27,658 autoreload 384 25808 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 21:05:27,997 autoreload 4180 20548 Watching for file changes with StatReloader
+INFO 2022-05-25 21:06:12,226 autoreload 4180 20548 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 21:06:12,542 autoreload 24564 6156 Watching for file changes with StatReloader
+ERROR 2022-05-25 21:06:14,560 log 24564 11880 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 249, in register
+    context['registration_form'] = comb_from
+UnboundLocalError: local variable 'comb_from' referenced before assignment
+INFO 2022-05-25 21:06:58,858 autoreload 24564 6156 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 21:06:59,156 autoreload 10904 2160 Watching for file changes with StatReloader
+ERROR 2022-05-25 21:07:01,183 log 10904 11604 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 248, in register
+    comb_from = formset_factory(form, form2)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\formsets.py", line 553, in formset_factory
+    return type(form.__name__ + "FormSet", (formset,), attrs)
+AttributeError: 'RegistrationForm' object has no attribute '__name__'
+INFO 2022-05-25 21:09:06,406 autoreload 10904 2160 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 21:09:06,723 autoreload 15592 1888 Watching for file changes with StatReloader
+ERROR 2022-05-25 21:09:11,933 log 15592 14772 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 248, in register
+    comb_from = form | form2
+TypeError: unsupported operand type(s) for |: 'RegistrationForm' and 'NewCustomerForm'
+WARNING 2022-05-25 21:09:11,989 log 15592 14772 Not Found: /favicon.ico
+INFO 2022-05-25 21:14:07,807 autoreload 15592 1888 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 21:14:08,106 autoreload 4748 11168 Watching for file changes with StatReloader
+ERROR 2022-05-25 21:14:13,199 log 4748 21672 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 248, in register
+    context= {
+TypeError: unhashable type: 'list'
+INFO 2022-05-25 21:22:11,770 autoreload 4748 11168 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-25 21:22:12,076 autoreload 24896 8280 Watching for file changes with StatReloader
+WARNING 2022-05-25 21:22:22,869 log 24896 4620 Not Found: /flight_app/login/
+INFO 2022-05-25 21:22:27,684 autoreload 24896 8280 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-25 21:22:27,983 autoreload 18120 19040 Watching for file changes with StatReloader
+INFO 2022-05-25 21:24:57,813 autoreload 18120 19040 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 21:24:58,119 autoreload 26528 9992 Watching for file changes with StatReloader
+WARNING 2022-05-25 21:25:50,359 log 26528 2272 Not Found: /flight_app/login/login
+INFO 2022-05-25 21:26:40,703 autoreload 26528 9992 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 21:26:41,003 autoreload 20608 20872 Watching for file changes with StatReloader
+WARNING 2022-05-25 21:28:25,263 log 20608 20844 Not Found: /flight_app/l
+WARNING 2022-05-25 21:28:42,328 log 20608 20844 Not Found: /flight_app/register/login
+WARNING 2022-05-25 21:28:57,075 log 20608 20844 Not Found: /flight_app/register/login
+WARNING 2022-05-25 21:29:09,099 log 20608 20844 Not Found: /flight_app/register/login
+WARNING 2022-05-25 21:30:32,505 log 20608 20844 Not Found: /flight_app/login/register
+ERROR 2022-05-25 21:31:12,149 log 20608 20844 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 213, in register
+    comb_from = formset_factory(form, form2)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\formsets.py", line 553, in formset_factory
+    return type(form.__name__ + "FormSet", (formset,), attrs)
+AttributeError: 'RegistrationForm' object has no attribute '__name__'
+INFO 2022-05-25 21:31:48,283 autoreload 20608 20872 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 21:31:48,593 autoreload 18384 18992 Watching for file changes with StatReloader
+ERROR 2022-05-25 21:32:22,563 log 18384 4672 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 213, in register
+    comb_from = formset_factory(form, form2)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\formsets.py", line 553, in formset_factory
+    return type(form.__name__ + "FormSet", (formset,), attrs)
+AttributeError: 'RegistrationForm' object has no attribute '__name__'
+INFO 2022-05-25 21:33:33,218 autoreload 18384 18992 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 21:33:33,548 autoreload 19908 18912 Watching for file changes with StatReloader
+INFO 2022-05-25 21:36:54,346 autoreload 19908 18912 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-25 21:36:54,679 autoreload 4732 24192 Watching for file changes with StatReloader
+INFO 2022-05-25 21:42:26,519 autoreload 4732 24192 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 21:42:26,819 autoreload 11844 11928 Watching for file changes with StatReloader
+WARNING 2022-05-25 21:42:47,840 log 11844 25780 Not Found: /flight_app/login/register
+INFO 2022-05-25 21:44:08,431 autoreload 11844 11928 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-25 21:44:08,735 autoreload 16652 25512 Watching for file changes with StatReloader
+INFO 2022-05-25 21:44:56,055 autoreload 16652 25512 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-25 21:44:56,358 autoreload 2020 3928 Watching for file changes with StatReloader
+INFO 2022-05-25 21:45:42,665 autoreload 2020 3928 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 21:45:42,983 autoreload 25132 7884 Watching for file changes with StatReloader
+ERROR 2022-05-25 21:45:45,511 log 25132 24436 Internal Server Error: /flight_app/login/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 185, in user_login
+    raise Exception [{new_login.is_valid()}]
+TypeError: 'type' object is not subscriptable
+INFO 2022-05-25 21:46:08,804 autoreload 25132 7884 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 21:46:09,133 autoreload 3916 4300 Watching for file changes with StatReloader
+ERROR 2022-05-25 21:46:11,322 log 3916 8308 Internal Server Error: /flight_app/login/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 185, in user_login
+    raise Exception [{new_login.is_valid}]
+TypeError: 'type' object is not subscriptable
+INFO 2022-05-25 21:46:33,951 autoreload 3916 4300 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 21:46:34,262 autoreload 17784 20660 Watching for file changes with StatReloader
+INFO 2022-05-25 21:53:52,899 autoreload 17784 20660 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 21:53:53,231 autoreload 26400 9048 Watching for file changes with StatReloader
+INFO 2022-05-25 21:54:25,085 autoreload 26400 9048 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 21:54:25,392 autoreload 18280 16664 Watching for file changes with StatReloader
+INFO 2022-05-25 21:54:50,075 autoreload 18280 16664 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 21:54:50,409 autoreload 4296 11532 Watching for file changes with StatReloader
+INFO 2022-05-25 21:55:04,897 autoreload 4296 11532 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 21:55:05,204 autoreload 23128 19100 Watching for file changes with StatReloader
+INFO 2022-05-25 21:56:20,090 autoreload 23128 19100 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 21:56:20,398 autoreload 5804 16836 Watching for file changes with StatReloader
+INFO 2022-05-25 21:57:25,067 autoreload 5804 16836 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 21:57:25,369 autoreload 2916 15848 Watching for file changes with StatReloader
+INFO 2022-05-25 21:57:57,373 autoreload 2916 15848 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 21:57:57,678 autoreload 22104 24868 Watching for file changes with StatReloader
+INFO 2022-05-25 21:58:42,935 autoreload 22104 24868 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-25 21:58:43,261 autoreload 18264 8732 Watching for file changes with StatReloader
+INFO 2022-05-25 22:01:31,315 autoreload 18264 8732 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:01:31,627 autoreload 2340 17544 Watching for file changes with StatReloader
+ERROR 2022-05-25 22:01:46,404 log 2340 21344 Internal Server Error: /flight_app/login/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 198, in user_login
+    raise Exception( new_login.errors)
+Exception
+INFO 2022-05-25 22:02:04,644 autoreload 2340 17544 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:02:04,964 autoreload 22952 21876 Watching for file changes with StatReloader
+ERROR 2022-05-25 22:02:07,697 log 22952 4452 Internal Server Error: /flight_app/login/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 198, in user_login
+    raise Exception( {new_login.errors})
+TypeError: unhashable type: 'ErrorDict'
+INFO 2022-05-25 22:02:43,111 autoreload 22952 21876 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:02:43,421 autoreload 7016 21544 Watching for file changes with StatReloader
+ERROR 2022-05-25 22:02:47,046 log 7016 10016 Internal Server Error: /flight_app/login/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 198, in user_login
+    raise Exception( {lis})
+TypeError: unhashable type: 'ErrorDict'
+INFO 2022-05-25 22:03:42,997 autoreload 7016 21544 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:03:43,300 autoreload 26084 15228 Watching for file changes with StatReloader
+ERROR 2022-05-25 22:04:15,607 log 26084 6256 Internal Server Error: /flight_app/login/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 198, in user_login
+    raise Exception( {lis})
+TypeError: unhashable type: 'ErrorDict'
+INFO 2022-05-25 22:05:15,797 autoreload 26084 15228 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:05:16,121 autoreload 24056 4020 Watching for file changes with StatReloader
+INFO 2022-05-25 22:05:19,361 autoreload 24056 4020 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-25 22:05:19,665 autoreload 2232 6720 Watching for file changes with StatReloader
+ERROR 2022-05-25 22:05:27,019 log 2232 9384 Internal Server Error: /flight_app/login/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 198, in user_login
+    raise Exception( {})
+Exception: {}
+INFO 2022-05-25 22:06:30,593 autoreload 2232 6720 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:06:30,908 autoreload 16140 5256 Watching for file changes with StatReloader
+INFO 2022-05-25 22:07:30,519 autoreload 16140 5256 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:07:30,827 autoreload 6192 8916 Watching for file changes with StatReloader
+INFO 2022-05-25 22:08:52,887 autoreload 6192 8916 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:08:53,186 autoreload 25176 17900 Watching for file changes with StatReloader
+INFO 2022-05-25 22:09:24,129 autoreload 25176 17900 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:09:24,440 autoreload 700 18152 Watching for file changes with StatReloader
+INFO 2022-05-25 22:09:45,153 autoreload 700 18152 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:09:45,470 autoreload 23196 18988 Watching for file changes with StatReloader
+INFO 2022-05-25 22:10:52,221 autoreload 23196 18988 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:10:52,542 autoreload 1184 14432 Watching for file changes with StatReloader
+INFO 2022-05-25 22:16:31,163 autoreload 1184 14432 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:16:31,465 autoreload 2148 20780 Watching for file changes with StatReloader
+WARNING 2022-05-25 22:16:55,535 log 2148 23656 Not Found: /flight_app/login/register
+INFO 2022-05-25 22:21:48,188 autoreload 2148 20780 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 22:21:48,504 autoreload 25824 26268 Watching for file changes with StatReloader
+INFO 2022-05-25 22:23:05,491 autoreload 25824 26268 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 22:23:05,784 autoreload 12340 13748 Watching for file changes with StatReloader
+INFO 2022-05-25 22:23:32,623 autoreload 12340 13748 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 22:23:32,939 autoreload 26344 26336 Watching for file changes with StatReloader
+INFO 2022-05-25 22:23:52,643 autoreload 26344 26336 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 22:23:52,942 autoreload 16060 18028 Watching for file changes with StatReloader
+INFO 2022-05-25 22:24:29,009 autoreload 16060 18028 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 22:24:29,308 autoreload 10504 12696 Watching for file changes with StatReloader
+INFO 2022-05-25 22:25:28,923 autoreload 10504 12696 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:25:29,236 autoreload 14232 24192 Watching for file changes with StatReloader
+ERROR 2022-05-25 22:25:33,040 log 14232 696 Internal Server Error: /flight_app/login/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 196, in user_login
+    print({new_login.errors})
+TypeError: unhashable type: 'ErrorDict'
+INFO 2022-05-25 22:25:48,933 autoreload 14232 24192 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:25:49,239 autoreload 11168 15168 Watching for file changes with StatReloader
+INFO 2022-05-25 22:28:12,910 autoreload 11168 15168 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:28:13,213 autoreload 11368 16532 Watching for file changes with StatReloader
+INFO 2022-05-25 22:28:49,124 autoreload 10060 15760 Watching for file changes with StatReloader
+INFO 2022-05-25 22:29:22,152 autoreload 10060 15760 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 22:29:22,458 autoreload 22104 7736 Watching for file changes with StatReloader
+INFO 2022-05-25 22:30:02,656 autoreload 22104 7736 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:30:02,977 autoreload 22412 24996 Watching for file changes with StatReloader
+INFO 2022-05-25 22:31:15,956 autoreload 22412 24996 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:31:16,287 autoreload 24400 23908 Watching for file changes with StatReloader
+INFO 2022-05-25 22:32:09,855 autoreload 24400 23908 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:32:10,164 autoreload 11088 22536 Watching for file changes with StatReloader
+INFO 2022-05-25 22:35:38,185 autoreload 11088 22536 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:35:38,489 autoreload 12560 19548 Watching for file changes with StatReloader
+INFO 2022-05-25 22:39:01,567 autoreload 12560 19548 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:39:01,887 autoreload 19724 6048 Watching for file changes with StatReloader
+INFO 2022-05-25 22:39:26,692 autoreload 19724 6048 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:39:27,015 autoreload 3468 724 Watching for file changes with StatReloader
+INFO 2022-05-25 22:39:33,325 autoreload 3468 724 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:39:33,623 autoreload 11048 17524 Watching for file changes with StatReloader
+INFO 2022-05-25 22:42:25,853 autoreload 11048 17524 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:42:26,164 autoreload 9148 13096 Watching for file changes with StatReloader
+INFO 2022-05-25 22:42:35,556 autoreload 9148 13096 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:42:35,871 autoreload 12772 20744 Watching for file changes with StatReloader
+INFO 2022-05-25 22:43:13,986 autoreload 12772 20744 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:43:14,283 autoreload 23020 18248 Watching for file changes with StatReloader
+INFO 2022-05-25 22:44:58,034 autoreload 23020 18248 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:44:58,343 autoreload 17532 15848 Watching for file changes with StatReloader
+INFO 2022-05-25 22:45:38,539 autoreload 17532 15848 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:45:38,859 autoreload 18152 6004 Watching for file changes with StatReloader
+INFO 2022-05-25 22:46:33,621 autoreload 21992 22204 Watching for file changes with StatReloader
+INFO 2022-05-25 22:46:35,838 autoreload 21992 22204 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:46:36,159 autoreload 9976 22580 Watching for file changes with StatReloader
+INFO 2022-05-25 22:46:37,359 autoreload 9976 22580 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-25 22:46:37,667 autoreload 23680 25752 Watching for file changes with StatReloader
+INFO 2022-05-25 22:58:40,770 autoreload 23680 25752 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:58:41,072 autoreload 21960 21056 Watching for file changes with StatReloader
+INFO 2022-05-25 22:59:15,124 autoreload 21960 21056 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 22:59:15,441 autoreload 26436 14788 Watching for file changes with StatReloader
+ERROR 2022-05-25 22:59:17,509 log 26436 16060 Internal Server Error: /flight_app/login/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 202, in user_login
+    return HttpResponse({{ new_login.title.errors }})
+AttributeError: 'LoginForm' object has no attribute 'title'
+INFO 2022-05-25 23:02:15,979 autoreload 26436 14788 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 23:02:16,302 autoreload 22372 12832 Watching for file changes with StatReloader
+INFO 2022-05-25 23:04:42,007 autoreload 22372 12832 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 23:04:42,302 autoreload 696 24692 Watching for file changes with StatReloader
+INFO 2022-05-25 23:07:00,779 autoreload 696 24692 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 23:07:01,104 autoreload 12936 23480 Watching for file changes with StatReloader
+INFO 2022-05-25 23:10:43,707 autoreload 12936 23480 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:10:44,036 autoreload 17660 1492 Watching for file changes with StatReloader
+ERROR 2022-05-25 23:10:59,985 log 17660 9596 Internal Server Error: /flight_app/login/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 183, in user_login
+    new_login = forms.LoginForm(request.POST or request.GET)
+AttributeError: module 'flight_app.forms' has no attribute 'LoginForm'
+INFO 2022-05-25 23:11:19,085 autoreload 17660 1492 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 23:11:19,386 autoreload 2208 17940 Watching for file changes with StatReloader
+ERROR 2022-05-25 23:11:39,119 log 2208 5192 Internal Server Error: /flight_app/login/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 204, in user_login
+    new_login = forms.LoginForm()
+AttributeError: module 'flight_app.forms' has no attribute 'LoginForm'
+ERROR 2022-05-25 23:11:52,981 log 2208 5192 Internal Server Error: /flight_app/login/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 204, in user_login
+    new_login = forms.LoginForm()
+AttributeError: module 'flight_app.forms' has no attribute 'LoginForm'
+INFO 2022-05-25 23:12:06,791 autoreload 2208 17940 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 23:12:07,103 autoreload 16728 16340 Watching for file changes with StatReloader
+INFO 2022-05-25 23:12:34,958 autoreload 16728 16340 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 23:12:35,263 autoreload 23976 5916 Watching for file changes with StatReloader
+INFO 2022-05-25 23:13:10,345 autoreload 23976 5916 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:13:10,675 autoreload 12696 8324 Watching for file changes with StatReloader
+INFO 2022-05-25 23:13:31,367 autoreload 12696 8324 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:13:31,673 autoreload 8840 21808 Watching for file changes with StatReloader
+INFO 2022-05-25 23:14:07,772 autoreload 8840 21808 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:14:08,070 autoreload 22456 18184 Watching for file changes with StatReloader
+INFO 2022-05-25 23:14:28,766 autoreload 22456 18184 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:14:29,082 autoreload 11980 25044 Watching for file changes with StatReloader
+INFO 2022-05-25 23:20:44,288 autoreload 11980 25044 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 23:20:44,593 autoreload 12696 23428 Watching for file changes with StatReloader
+ERROR 2022-05-25 23:20:57,908 log 12696 26556 Internal Server Error: /flight_app/login/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 190, in user_login
+    logged = AnonymusFancade.login(request, new_login.cleaned_data)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py", line 14, in login
+    email = form["email"]
+KeyError: 'email'
+INFO 2022-05-25 23:24:11,882 autoreload 12696 23428 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:24:12,189 autoreload 17120 25844 Watching for file changes with StatReloader
+INFO 2022-05-25 23:24:50,289 autoreload 17120 25844 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:24:50,592 autoreload 8176 120 Watching for file changes with StatReloader
+INFO 2022-05-25 23:24:51,778 autoreload 8176 120 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 23:24:52,096 autoreload 15964 14144 Watching for file changes with StatReloader
+INFO 2022-05-25 23:24:55,358 autoreload 15964 14144 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:24:55,666 autoreload 1420 6372 Watching for file changes with StatReloader
+INFO 2022-05-25 23:27:26,524 autoreload 1420 6372 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:27:26,832 autoreload 22628 8856 Watching for file changes with StatReloader
+INFO 2022-05-25 23:29:45,382 autoreload 22628 8856 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 23:29:45,688 autoreload 17752 22692 Watching for file changes with StatReloader
+INFO 2022-05-25 23:29:48,965 autoreload 17752 22692 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:29:49,270 autoreload 17012 21072 Watching for file changes with StatReloader
+INFO 2022-05-25 23:30:28,449 autoreload 17012 21072 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:30:28,744 autoreload 23016 14244 Watching for file changes with StatReloader
+INFO 2022-05-25 23:30:42,288 autoreload 23016 14244 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:30:42,594 autoreload 3632 25844 Watching for file changes with StatReloader
+INFO 2022-05-25 23:31:22,742 autoreload 3632 25844 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:31:23,056 autoreload 25080 25372 Watching for file changes with StatReloader
+INFO 2022-05-25 23:31:31,430 autoreload 25080 25372 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:31:31,742 autoreload 23512 11940 Watching for file changes with StatReloader
+INFO 2022-05-25 23:31:44,279 autoreload 23512 11940 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:31:44,589 autoreload 25856 21604 Watching for file changes with StatReloader
+INFO 2022-05-25 23:32:15,528 autoreload 25856 21604 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:32:15,833 autoreload 18404 1416 Watching for file changes with StatReloader
+INFO 2022-05-25 23:32:26,319 autoreload 18404 1416 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:32:26,632 autoreload 18380 1388 Watching for file changes with StatReloader
+INFO 2022-05-25 23:32:29,864 autoreload 18380 1388 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:32:30,185 autoreload 25500 22684 Watching for file changes with StatReloader
+INFO 2022-05-25 23:33:11,387 autoreload 25500 22684 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:33:11,693 autoreload 7384 4036 Watching for file changes with StatReloader
+INFO 2022-05-25 23:33:27,300 autoreload 7384 4036 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:33:27,607 autoreload 5612 21216 Watching for file changes with StatReloader
+INFO 2022-05-25 23:33:33,883 autoreload 5612 21216 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:33:34,193 autoreload 10904 24500 Watching for file changes with StatReloader
+ERROR 2022-05-25 23:34:25,972 log 10904 25848 Internal Server Error: /flight_app/login/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 182, in __getitem__
+    field = self.fields[name]
+KeyError: 'email'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in user_login
+    print(new_login["email"])
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 184, in __getitem__
+    raise KeyError(
+KeyError: "Key 'email' not found in 'Login'. Choices are: password, username."
+INFO 2022-05-25 23:34:58,411 autoreload 10904 24500 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:34:58,708 autoreload 25788 25800 Watching for file changes with StatReloader
+INFO 2022-05-25 23:35:05,083 autoreload 25788 25800 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:35:05,402 autoreload 12604 15848 Watching for file changes with StatReloader
+INFO 2022-05-25 23:36:21,455 autoreload 12604 15848 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:36:21,758 autoreload 22048 4280 Watching for file changes with StatReloader
+INFO 2022-05-25 23:36:57,858 autoreload 22048 4280 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:36:58,161 autoreload 26608 4600 Watching for file changes with StatReloader
+INFO 2022-05-25 23:38:01,897 autoreload 26608 4600 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-25 23:38:02,203 autoreload 12076 23224 Watching for file changes with StatReloader
+INFO 2022-05-25 23:38:15,726 autoreload 12076 23224 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:38:16,050 autoreload 18120 8284 Watching for file changes with StatReloader
+WARNING 2022-05-25 23:39:08,501 log 18120 8260 Not Found: /flight_app/loggedin
+INFO 2022-05-25 23:39:41,135 autoreload 18120 8284 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 23:39:41,445 autoreload 23624 7932 Watching for file changes with StatReloader
+INFO 2022-05-25 23:40:42,073 autoreload 23624 7932 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:40:42,384 autoreload 20892 23936 Watching for file changes with StatReloader
+INFO 2022-05-25 23:41:14,391 autoreload 20892 23936 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:41:14,695 autoreload 19136 26372 Watching for file changes with StatReloader
+INFO 2022-05-25 23:41:26,141 autoreload 19136 26372 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:41:26,443 autoreload 13356 11272 Watching for file changes with StatReloader
+WARNING 2022-05-25 23:41:42,265 log 13356 24516 Not Found: /flight_app/loggedin
+INFO 2022-05-25 23:42:06,633 autoreload 13356 11272 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 23:42:06,940 autoreload 18556 17304 Watching for file changes with StatReloader
+INFO 2022-05-25 23:43:51,654 autoreload 18556 17304 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 23:43:51,984 autoreload 16792 22608 Watching for file changes with StatReloader
+INFO 2022-05-25 23:45:09,109 autoreload 16792 22608 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 23:45:09,427 autoreload 16984 24336 Watching for file changes with StatReloader
+INFO 2022-05-25 23:45:15,777 autoreload 16984 24336 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-25 23:45:16,076 autoreload 11084 9748 Watching for file changes with StatReloader
+INFO 2022-05-25 23:46:52,640 autoreload 11084 9748 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 23:46:52,966 autoreload 21812 24340 Watching for file changes with StatReloader
+WARNING 2022-05-25 23:48:42,497 log 21812 11992 Not Found: /flight_app/l
+INFO 2022-05-25 23:48:50,238 autoreload 21644 18128 Watching for file changes with StatReloader
+WARNING 2022-05-25 23:48:54,502 log 21644 16912 Not Found: /flight_app/airline/
+WARNING 2022-05-25 23:49:01,984 log 21644 16912 Not Found: /flight_app/admin
+INFO 2022-05-25 23:50:55,517 autoreload 21644 18128 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 23:50:55,829 autoreload 13356 9160 Watching for file changes with StatReloader
+INFO 2022-05-25 23:50:59,066 autoreload 13356 9160 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 23:50:59,365 autoreload 14636 16768 Watching for file changes with StatReloader
+WARNING 2022-05-25 23:51:32,984 log 14636 16196 Not Found: /flight_app/loggedin
+INFO 2022-05-25 23:52:24,575 autoreload 14636 16768 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-25 23:52:24,902 autoreload 25368 3928 Watching for file changes with StatReloader
+INFO 2022-05-25 23:52:35,327 autoreload 25368 3928 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 23:52:35,624 autoreload 7384 21772 Watching for file changes with StatReloader
+INFO 2022-05-26 00:03:44,964 autoreload 7384 21772 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-26 00:03:45,278 autoreload 14432 24972 Watching for file changes with StatReloader
+WARNING 2022-05-26 00:04:13,454 log 14432 24448 Not Found: /flight_app/flight_app/login
+WARNING 2022-05-26 00:04:50,348 log 14432 24448 Not Found: /login
+WARNING 2022-05-26 00:05:14,971 log 14432 24448 Not Found: /flight_app/.login
+WARNING 2022-05-26 00:05:30,785 log 14432 24448 Not Found: /flight_app/.login
+WARNING 2022-05-26 00:05:35,999 log 14432 24448 Not Found: /flight_app/.login
+WARNING 2022-05-26 00:05:52,930 log 14432 5364 Not Found: /flight_app/login/register
+ERROR 2022-05-26 00:06:34,487 log 14432 5364 Internal Server Error: /flight_app/logout/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 213, in logout
+    return render(request,'blog/logout.html')
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: blog/logout.html
+INFO 2022-05-26 00:09:20,537 autoreload 14432 24972 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 00:09:20,859 autoreload 8252 16532 Watching for file changes with StatReloader
+INFO 2022-05-26 00:09:33,347 autoreload 8252 16532 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 00:09:33,681 autoreload 14440 24352 Watching for file changes with StatReloader
+INFO 2022-05-26 00:11:58,431 autoreload 14440 24352 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 00:11:58,747 autoreload 10120 14296 Watching for file changes with StatReloader
+INFO 2022-05-26 00:35:07,936 autoreload 10120 14296 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 00:35:08,255 autoreload 7732 4920 Watching for file changes with StatReloader
+INFO 2022-05-26 00:35:09,458 autoreload 7732 4920 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-26 00:35:09,755 autoreload 24960 24564 Watching for file changes with StatReloader
+ERROR 2022-05-26 00:35:23,923 log 24960 23464 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 262, in register
+    return render(request, 'register.html', [context, context2] )
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\engine.py", line 176, in get_template
+    template, origin = self.find_template(template_name)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\engine.py", line 158, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\defaulttags.py", line 854, in do_for
+    nodelist_loop = parser.parse(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 558, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 36: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+ERROR 2022-05-26 00:37:11,067 log 24960 23464 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 262, in register
+    return render(request, 'register.html', [context, context2] )
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\engine.py", line 176, in get_template
+    template, origin = self.find_template(template_name)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\engine.py", line 158, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\defaulttags.py", line 854, in do_for
+    nodelist_loop = parser.parse(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 558, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 37: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+ERROR 2022-05-26 00:37:24,186 log 24960 23464 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 262, in register
+    return render(request, 'register.html', [context, context2] )
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\engine.py", line 176, in get_template
+    template, origin = self.find_template(template_name)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\engine.py", line 158, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\defaulttags.py", line 854, in do_for
+    nodelist_loop = parser.parse(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 558, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 37: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+ERROR 2022-05-26 00:37:48,647 log 24960 23464 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 262, in register
+    return render(request, 'register.html', [context, context2] )
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\backends\django.py", line 58, in render
+    context = make_context(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\context.py", line 278, in make_context
+    raise TypeError(
+TypeError: context must be a dict rather than list.
+INFO 2022-05-26 00:38:33,802 autoreload 24960 24564 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 00:38:34,105 autoreload 12768 4704 Watching for file changes with StatReloader
+INFO 2022-05-26 00:38:55,873 autoreload 12768 4704 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 00:38:56,203 autoreload 21812 23712 Watching for file changes with StatReloader
+ERROR 2022-05-26 00:40:49,723 log 21812 24512 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 262, in register
+    return render(request, 'register.html', context )
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\engine.py", line 176, in get_template
+    template, origin = self.find_template(template_name)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\engine.py", line 158, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\defaulttags.py", line 854, in do_for
+    nodelist_loop = parser.parse(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 558, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 35: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+INFO 2022-05-26 00:42:26,425 autoreload 21812 23712 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 00:42:26,734 autoreload 9804 15980 Watching for file changes with StatReloader
+ERROR 2022-05-26 00:42:33,525 log 9804 18104 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 262, in register
+    return render(request, 'register.html', context )
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\engine.py", line 176, in get_template
+    template, origin = self.find_template(template_name)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\engine.py", line 158, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\defaulttags.py", line 854, in do_for
+    nodelist_loop = parser.parse(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 558, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 35: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+INFO 2022-05-26 00:42:45,387 autoreload 9804 15980 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 00:42:45,689 autoreload 6140 20352 Watching for file changes with StatReloader
+INFO 2022-05-26 00:50:12,695 autoreload 6140 20352 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 00:50:12,993 autoreload 23196 10204 Watching for file changes with StatReloader
+ERROR 2022-05-26 00:50:21,231 log 23196 9936 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 257, in register
+    return render(request, 'register.html', contenxt )
+NameError: name 'contenxt' is not defined
+INFO 2022-05-26 00:50:30,624 autoreload 23196 10204 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 00:50:30,944 autoreload 24240 15576 Watching for file changes with StatReloader
+INFO 2022-05-26 00:50:33,179 autoreload 24240 15576 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-26 00:50:33,504 autoreload 22836 16992 Watching for file changes with StatReloader
+ERROR 2022-05-26 00:50:35,361 log 22836 16928 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 257, in register
+    return render(request, 'register.html', contenxt )
+NameError: name 'contenxt' is not defined
+INFO 2022-05-26 00:50:43,983 autoreload 22836 16992 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 00:50:44,288 autoreload 19864 3176 Watching for file changes with StatReloader
+ERROR 2022-05-26 00:51:54,219 log 19864 26256 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: flight_app_customer.account_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 229, in register
+    AnonymusFancade.add_customer(customer_form, account_role , user_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py", line 25, in add_customer
+    form.save()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 548, in save
+    self.instance.save()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 857, in save_base
+    updated = self._save_table(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 1000, in _save_table
+    results = self._do_insert(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 1041, in _do_insert
+    return manager._insert(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1434, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: flight_app_customer.account_id
+INFO 2022-05-26 00:57:05,608 autoreload 19864 3176 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 00:57:05,931 autoreload 20168 24336 Watching for file changes with StatReloader
+INFO 2022-05-26 00:57:08,147 autoreload 20168 24336 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-26 00:57:08,439 autoreload 11532 8288 Watching for file changes with StatReloader
+ERROR 2022-05-26 00:58:34,828 log 11532 2644 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 228, in register
+    user_id = BaseFuncade.create_new_user(user_form)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\base_facade.py", line 54, in create_new_user
+    form.save()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\contrib\auth\forms.py", line 143, in save
+    user.save()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\contrib\auth\base_user.py", line 68, in save
+    super().save(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 857, in save_base
+    updated = self._save_table(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 1000, in _save_table
+    results = self._do_insert(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 1041, in _do_insert
+    return manager._insert(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1434, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: database is locked
+ERROR 2022-05-26 00:58:49,034 log 11532 2644 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: flight_app_customer.account_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 229, in register
+    AnonymusFancade.add_customer(customer_form, account_role , user_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py", line 25, in add_customer
+    form.save()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 548, in save
+    self.instance.save()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 857, in save_base
+    updated = self._save_table(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 1000, in _save_table
+    results = self._do_insert(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 1041, in _do_insert
+    return manager._insert(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1434, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: flight_app_customer.account_id
+INFO 2022-05-26 01:07:19,180 autoreload 11532 8288 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 01:07:19,526 autoreload 23308 15500 Watching for file changes with StatReloader
+INFO 2022-05-26 01:07:41,274 autoreload 23308 15500 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\base_facade.py changed, reloading.
+INFO 2022-05-26 01:07:41,575 autoreload 22692 16236 Watching for file changes with StatReloader
+INFO 2022-05-26 01:09:37,616 autoreload 22692 16236 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 01:09:37,928 autoreload 5652 23556 Watching for file changes with StatReloader
+INFO 2022-05-26 01:10:48,782 autoreload 5652 23556 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\base_facade.py changed, reloading.
+INFO 2022-05-26 01:10:49,088 autoreload 20328 18396 Watching for file changes with StatReloader
+INFO 2022-05-26 01:10:51,303 autoreload 20328 18396 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 01:10:51,623 autoreload 17048 1960 Watching for file changes with StatReloader
+INFO 2022-05-26 01:12:03,599 autoreload 17048 1960 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 01:12:03,913 autoreload 5296 25216 Watching for file changes with StatReloader
+INFO 2022-05-26 01:12:19,513 autoreload 5296 25216 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 01:12:19,826 autoreload 1268 6712 Watching for file changes with StatReloader
+INFO 2022-05-26 01:14:47,619 autoreload 1268 6712 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 01:14:47,947 autoreload 20940 1160 Watching for file changes with StatReloader
+INFO 2022-05-26 01:15:17,857 autoreload 20940 1160 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 01:15:18,177 autoreload 24928 25844 Watching for file changes with StatReloader
+ERROR 2022-05-26 01:15:49,297 log 24928 17332 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 225, in register
+    user_form.fields['account_role'].widget = forms.HiddenInput()
+AttributeError: module 'flight_app.forms' has no attribute 'HiddenInput'
+INFO 2022-05-26 01:16:18,870 autoreload 24928 25844 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 01:16:19,214 autoreload 23752 25656 Watching for file changes with StatReloader
+ERROR 2022-05-26 01:16:21,796 log 23752 10036 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 228, in register
+    user_form["account_role"] = models.Account_Role.objects.get(pk = 2)
+TypeError: 'RegistrationForm' object does not support item assignment
+INFO 2022-05-26 01:17:16,795 autoreload 23752 25656 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 01:17:17,124 autoreload 11268 21300 Watching for file changes with StatReloader
+INFO 2022-05-26 01:18:07,524 autoreload 11268 21300 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 01:18:07,848 autoreload 24604 26144 Watching for file changes with StatReloader
+INFO 2022-05-26 01:18:41,859 autoreload 24604 26144 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 01:18:42,189 autoreload 22924 12236 Watching for file changes with StatReloader
+INFO 2022-05-26 01:19:06,015 autoreload 22924 12236 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 01:19:06,332 autoreload 23212 25216 Watching for file changes with StatReloader
+ERROR 2022-05-26 01:19:09,520 log 23212 12604 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 228, in register
+    user_form["account_role"] = models.Account_Role.objects.get(pk = 2)
+TypeError: 'RegistrationForm' object does not support item assignment
+INFO 2022-05-26 01:19:27,040 autoreload 23212 25216 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 01:19:27,343 autoreload 22220 7008 Watching for file changes with StatReloader
+INFO 2022-05-26 01:20:37,825 autoreload 1468 25036 Watching for file changes with StatReloader
+ERROR 2022-05-26 01:21:52,127 log 1468 2232 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 228, in register
+    user_form["account_role"] = models.Account_Role.objects.get(pk = 2)
+TypeError: 'RegistrationForm' object does not support item assignment
+INFO 2022-05-26 01:30:11,535 autoreload 1468 25036 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 01:30:11,880 autoreload 16880 12564 Watching for file changes with StatReloader
+INFO 2022-05-26 01:38:24,826 autoreload 16880 12564 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-26 01:38:25,144 autoreload 16768 24300 Watching for file changes with StatReloader
+INFO 2022-05-26 01:39:03,217 autoreload 16768 24300 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\models.py changed, reloading.
+INFO 2022-05-26 01:39:03,520 autoreload 24208 22484 Watching for file changes with StatReloader
+INFO 2022-05-26 01:39:04,716 autoreload 24208 22484 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\base_facade.py changed, reloading.
+INFO 2022-05-26 01:39:05,020 autoreload 2492 26020 Watching for file changes with StatReloader
+INFO 2022-05-26 01:39:21,778 autoreload 1788 26376 Watching for file changes with StatReloader
+ERROR 2022-05-26 01:39:27,157 log 1788 16860 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 232, in register
+    AnonymusFancade.add_customer(customer_form , created_account)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py", line 26, in add_customer
+    account_id = created_account[id]
+TypeError: 'Account' object is not subscriptable
+ERROR 2022-05-26 01:42:23,248 log 1788 25500 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 232, in register
+    AnonymusFancade.add_customer(customer_form , created_account)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py", line 26, in add_customer
+    account_id = created_account[id]
+TypeError: 'Account' object is not subscriptable
+INFO 2022-05-26 01:43:16,713 autoreload 1788 26376 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-26 01:43:17,069 autoreload 16456 16948 Watching for file changes with StatReloader
+INFO 2022-05-26 01:47:23,162 autoreload 16456 16948 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\base_facade.py changed, reloading.
+INFO 2022-05-26 01:47:23,470 autoreload 20500 25844 Watching for file changes with StatReloader
+ERROR 2022-05-26 01:47:40,675 log 20500 24408 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 229, in register
+    created_account = BaseFuncade.create_new_user(user_form , account_role)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\base_facade.py", line 58, in create_new_user
+    raise Exception({created_account})
+Exception: {<Account: aaaaaaaa>}
+ERROR 2022-05-26 01:48:33,906 log 20500 24408 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 229, in register
+    created_account = BaseFuncade.create_new_user(user_form , account_role)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\base_facade.py", line 58, in create_new_user
+    raise Exception({created_account})
+Exception: {<Account: aaaaaaaa>}
+INFO 2022-05-26 01:48:39,484 autoreload 20500 25844 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\base_facade.py changed, reloading.
+INFO 2022-05-26 01:48:39,822 autoreload 15808 22328 Watching for file changes with StatReloader
+ERROR 2022-05-26 01:48:57,181 log 15808 18388 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 229, in register
+    created_account = BaseFuncade.create_new_user(user_form , account_role)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\base_facade.py", line 58, in create_new_user
+    raise Exception({account_role})
+Exception: {<Account_Role: Customer>}
+INFO 2022-05-26 01:49:52,760 autoreload 15808 22328 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 01:49:53,070 autoreload 17456 24292 Watching for file changes with StatReloader
+INFO 2022-05-26 01:49:54,267 autoreload 17456 24292 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\base_facade.py changed, reloading.
+INFO 2022-05-26 01:49:54,564 autoreload 22756 11644 Watching for file changes with StatReloader
+ERROR 2022-05-26 01:51:22,365 log 22756 8176 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 230, in register
+    created_account = BaseFuncade.create_new_user(user_form , account_role)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\base_facade.py", line 59, in create_new_user
+    created_account.account_role = account_role
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 235, in __set__
+    raise ValueError(
+ValueError: Cannot assign "2": "Account.account_role" must be a "Account_Role" instance.
+INFO 2022-05-26 01:52:01,816 autoreload 22756 11644 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\base_facade.py changed, reloading.
+INFO 2022-05-26 01:52:02,131 autoreload 6292 8032 Watching for file changes with StatReloader
+ERROR 2022-05-26 01:52:22,142 log 6292 10284 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 232, in register
+    AnonymusFancade.add_customer(customer_form , created_account)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py", line 26, in add_customer
+    account_id = created_account['id']
+TypeError: 'Account' object is not subscriptable
+INFO 2022-05-26 01:57:42,307 autoreload 6292 8032 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-26 01:57:43,075 autoreload 13688 23708 Watching for file changes with StatReloader
+INFO 2022-05-26 01:57:44,273 autoreload 13688 23708 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\admin_facade.py changed, reloading.
+INFO 2022-05-26 01:57:44,575 autoreload 17352 19732 Watching for file changes with StatReloader
+INFO 2022-05-26 02:02:11,076 autoreload 17352 19732 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-26 02:02:11,399 autoreload 10632 16720 Watching for file changes with StatReloader
+ERROR 2022-05-26 02:03:03,202 log 10632 26168 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 232, in register
+    AnonymusFancade.add_customer(customer_form , created_account)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py", line 26, in add_customer
+    account_id = created_account['id']
+TypeError: 'Account' object is not subscriptable
+INFO 2022-05-26 02:05:15,072 autoreload 10632 16720 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-26 02:05:15,388 autoreload 7908 11916 Watching for file changes with StatReloader
+ERROR 2022-05-26 02:06:50,603 log 7908 12284 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 232, in register
+    AnonymusFancade.add_customer(customer_form , created_account)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py", line 26, in add_customer
+    raise Exception({created_account})
+Exception: {<Account: please>}
+INFO 2022-05-26 02:08:16,992 autoreload 7908 11916 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-26 02:08:17,299 autoreload 1088 24436 Watching for file changes with StatReloader
+INFO 2022-05-26 02:09:51,725 autoreload 1088 24436 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 02:09:52,048 autoreload 25300 22260 Watching for file changes with StatReloader
+ERROR 2022-05-26 02:10:31,953 log 25300 11932 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 232, in register
+    AnonymusFancade.add_customer(customer_form , created_account)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py", line 26, in add_customer
+    account_id = created_account['id']
+TypeError: 'Account' object is not subscriptable
+INFO 2022-05-26 02:12:17,809 autoreload 25300 22260 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 02:12:18,127 autoreload 21672 6228 Watching for file changes with StatReloader
+INFO 2022-05-26 02:12:33,695 autoreload 21672 6228 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-26 02:12:33,999 autoreload 21316 16672 Watching for file changes with StatReloader
+ERROR 2022-05-26 02:13:33,165 log 21316 9200 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 230, in register
+    created_account = BaseFuncade.create_new_user(user_form.cleaned_data , account_role)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\base_facade.py", line 54, in create_new_user
+    form.save()
+AttributeError: 'dict' object has no attribute 'save'
+INFO 2022-05-26 02:14:38,194 autoreload 21316 16672 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 02:14:38,521 autoreload 1420 23100 Watching for file changes with StatReloader
+ERROR 2022-05-26 02:15:27,026 log 1420 23544 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 232, in register
+    AnonymusFancade.add_customer(customer_form.cleaned_data , created_account)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py", line 25, in add_customer
+    form.save()
+AttributeError: 'dict' object has no attribute 'save'
+INFO 2022-05-26 02:15:58,734 autoreload 1420 23100 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 02:15:59,058 autoreload 15544 24192 Watching for file changes with StatReloader
+ERROR 2022-05-26 02:16:19,071 log 15544 18484 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 232, in register
+    AnonymusFancade.add_customer(customer_form , created_account)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py", line 26, in add_customer
+    account_id = created_account.cleaned_data["id"]
+AttributeError: 'Account' object has no attribute 'cleaned_data'
+INFO 2022-05-26 02:16:46,521 autoreload 15544 24192 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-26 02:16:46,843 autoreload 23060 20756 Watching for file changes with StatReloader
+INFO 2022-05-26 02:28:04,142 autoreload 23060 20756 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 02:28:04,465 autoreload 18928 24892 Watching for file changes with StatReloader
+INFO 2022-05-26 02:28:07,714 autoreload 18928 24892 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\base_facade.py changed, reloading.
+INFO 2022-05-26 02:28:08,022 autoreload 21968 24640 Watching for file changes with StatReloader
+ERROR 2022-05-26 02:28:38,866 log 21968 23124 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\utils\deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+AttributeError: type object 'Http404' has no attribute 'get'
+ERROR 2022-05-26 02:29:22,594 log 21968 23124 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 232, in register
+    raise Exception({created_account.id})
+Exception: {29}
+INFO 2022-05-26 02:35:31,813 autoreload 21968 24640 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-26 02:35:32,125 autoreload 12484 12124 Watching for file changes with StatReloader
+ERROR 2022-05-26 02:35:59,696 log 12484 3404 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 232, in register
+    raise Exception({created_account.id})
+Exception: {30}
+INFO 2022-05-26 02:36:11,319 autoreload 12484 12124 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 02:36:11,628 autoreload 2080 12264 Watching for file changes with StatReloader
+ERROR 2022-05-26 02:36:32,744 log 2080 5888 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 233, in register
+    AnonymusFancade.add_customer(customer_form , created_account)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py", line 26, in add_customer
+    created_customer = models.Customer.objects.get(id =  form.cleaned_data['id'])
+KeyError: 'id'
+INFO 2022-05-26 02:38:20,905 autoreload 2080 12264 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-26 02:38:21,211 autoreload 23816 16288 Watching for file changes with StatReloader
+ERROR 2022-05-26 02:38:34,841 log 23816 25872 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\utils\deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+AttributeError: type object 'Http404' has no attribute 'get'
+INFO 2022-05-26 02:46:01,070 autoreload 23816 16288 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 02:46:01,384 autoreload 11608 12696 Watching for file changes with StatReloader
+INFO 2022-05-26 02:46:33,308 autoreload 11608 12696 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-26 02:46:33,617 autoreload 13760 20544 Watching for file changes with StatReloader
+INFO 2022-05-26 02:46:54,284 autoreload 13760 20544 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-26 02:46:54,593 autoreload 5816 1720 Watching for file changes with StatReloader
+INFO 2022-05-26 02:47:16,249 autoreload 5816 1720 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\anony_facade.py changed, reloading.
+INFO 2022-05-26 02:47:16,572 autoreload 25572 24388 Watching for file changes with StatReloader
+ERROR 2022-05-26 02:47:26,653 log 25572 25472 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view flight_app.views.register_customer didn't return an HttpResponse object. It returned None instead.
+INFO 2022-05-26 02:47:51,640 autoreload 25572 24388 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 02:47:51,959 autoreload 24556 8088 Watching for file changes with StatReloader
+INFO 2022-05-26 02:47:53,149 autoreload 24556 8088 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\admin_facade.py changed, reloading.
+INFO 2022-05-26 02:47:53,442 autoreload 25872 8668 Watching for file changes with StatReloader
+ERROR 2022-05-26 02:47:57,191 log 25872 16032 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view flight_app.views.register_customer didn't return an HttpResponse object. It returned None instead.
+INFO 2022-05-26 02:49:11,451 autoreload 25872 8668 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 02:49:11,764 autoreload 12696 24016 Watching for file changes with StatReloader

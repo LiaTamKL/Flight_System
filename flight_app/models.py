@@ -90,7 +90,7 @@ class Customer(models.Model):
     address = models.TextField(max_length=100, null=False)
     phone_number = models.TextField(max_length=16, null=False, unique=True)
     credit_card_no = models.TextField(max_length=16, null=False, unique=True)
-    account = models.OneToOneField(Account, null=False, on_delete=models.CASCADE)
+    account = models.OneToOneField(Account, null=True, on_delete=models.CASCADE)
     class Meta:
         ordering = ['last_name']
     def __str__(self) -> str:

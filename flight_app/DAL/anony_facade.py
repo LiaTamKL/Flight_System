@@ -7,15 +7,13 @@ from django.contrib.auth import authenticate, login
 
 
 class AnonymusFancade(BaseFuncade):
+
+
     def login(request, form):
-        logged = False
-       
+
         username = form["username"]
         password = form["password"]
-        # raise Exception[{username,password}]
-
-
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
             logged = True
@@ -23,29 +21,54 @@ class AnonymusFancade(BaseFuncade):
         return logged
             
 
-    def add_customer(created_user_id,form):
-        with transaction.atomic():
-            # if one of the settings is empty do not write to db
-            cust = Customer()
-            created_user = User.objects.get(pk = created_user_id)
-            cust.first_name = form['first_name']
-            cust.last_name = form['last_name']
-            cust.address = form['address']
-            cust.phone_number = form['phone_number']
-            cust.credit_card_no = form['credit_card_no']
-            cust.user = created_user
-            cust.save()
+    def add_customer(form , created_account) :
+        form.save()
+        created_customer = models.Customer.objects.get(phone_number =  form.cleaned_data['phone_number'])
+        created_customer.account_id = created_account.id
+        created_customer.save()
 
-
-
-
-
-
+        
+        
+  
 
             
             ###############################################
                             # Old methods
             ###############################################
+            #         with transaction.atomic():
+            # # if one of the settings is empty do not write to db
+            # # cust = Customer()
+            # # created_user = User.objects.get(pk = created_user_id)
+            # # cust.first_name = form['first_name']
+            # # cust.last_name = form['last_name']
+            # # cust.address = form['address']
+            # # cust.phone_number = form['phone_number']
+            # # cust.credit_card_no = form['credit_card_no']
+            # # cust.user = created_user
+            # # cust.save()
+
+
+                  # cus = Customer()
+        # cus.address = form['address']
+        # cus.credit_card_no = form['credit_card_no']
+        # cus.first_name = form['first_name']
+        # cus.last_name = form['last_name']
+        # cus.account = form['account_id']
+        # cus.phone_number = form['phone_number']
+        # cus.save()
+       
+       
+        # form.save()
+        # account_id = created_account["id"]
+        # # raise Exception({account_id})
+        # created_customer_id = form.cleaned_data['id']
+        # created_customer = models.Customer.objects.get(id = created_customer_id)
+        # # raise Exception({account_id , created_customer})
+        # created_customer.account_id = account_id
+        # created_customer.save()
+
+            
+            
                 # def login(username. password):
             #     pass
 

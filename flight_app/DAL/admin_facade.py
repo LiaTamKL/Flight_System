@@ -3,18 +3,9 @@ from ..models import Customer, Airline, Administrator, Flight, Flight_Ticket
 from django.http import Http404
 from .base_facade import BaseFuncade
 from django.db import transaction
+from django.shortcuts import render ,redirect
 
 class AdministratorFuncade(BaseFuncade):
-    # def add_customer(customer_id, form):
-    #     cust = Customer()
-    #     id = Airline.objects.get(pk = customer_id)
-    #     cust.id = id
-    #     cust.address = form['address']
-    #     cust.credit_card_no = form['credit_card_no']
-    #     cust.first_name = form['first_name']
-    #     cust.last_name = form['last_name']
-    #     cust.user = form['user_id']
-    #     cust.save()
     
     #returns all customer objects
     def get_all_customers():
@@ -22,15 +13,16 @@ class AdministratorFuncade(BaseFuncade):
         return cus
 
     #receives clean_data form, adds a customer based on that to the database.
-    def add_customer2(form):
-            cus = Customer()
-            cus.address = form['address']
-            cus.credit_card_no = form['credit_card_no']
-            cus.first_name = form['first_name']
-            cus.last_name = form['last_name']
-            cus.account = form['user_id']
-            cus.phone_number = form['phone_number']
-            cus.save()
+    def add_customer(form):
+        return redirect('home')
+            # cus = Customer()
+            # cus.address = form['address']
+            # cus.credit_card_no = form['credit_card_no']
+            # cus.first_name = form['first_name']
+            # cus.last_name = form['last_name']
+            # cus.account = form['account_id']
+            # cus.phone_number = form['phone_number']
+            # cus.save()
 
 
     #receives clean_data form, adds an airline based on that to the database.

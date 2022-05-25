@@ -10,13 +10,15 @@ urlpatterns = [
     path('seachcountrybyid/', views.show_country_search_from),
     path('ticket/add', views.add_ticket),
     path('ticket/remove/<ticket_id>', views.remove_ticket),
-    # path('login/',views.user_login),
+    path('login/',views.user_login),
 
-    path('register/', views.register),
+    path('register/', views.register_customer),
+    path('logout/', views.logout),
+
     
 
     # path('airlineloggedin/<user_id>' , views.airline_login),
-
+    path('loggedin' , views.logged_in),
 
 
     path('ticket/view/<cust_id>', views.get_my_tickets),
@@ -40,5 +42,4 @@ urlpatterns = [
     # path('custloggedin/<user_id>' , views.cust_login),
     # path("accounts/login/[name='login']", views.login_page ),
     #path('test/', views.testview)
-    # # path('loggedin' , views.logged_in),
-    #path('login/',views.user_login),
+    # # 

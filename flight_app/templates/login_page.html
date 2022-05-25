@@ -1,3 +1,5 @@
+{% extends 'home.html' %}
+
 <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +10,22 @@
 </head>
 <body> -->
     {% block content %}
-    <h1>Login Page</h1>
-    <form action="#" method="POST" class="uniForm">
-        {% csrf_token%}
-        {{form.as_p}}
-        <input type="submit"/>
-    </form>
-    {% endblock %}
+
+    <h2>login</h2>
+    <form method="post", >
+        {%csrf_token%}
+        {%for field in login_form%}
+            <p>{{field.label_tag}}</p>
+            <p>{{field}}</p>
+            {%if field.help_text%}
+                <small>{{field.help_text}}</small>
+            {%endif%}
+
+            {% for error in field.errors%}
+                <p style="color:red">{{error}}</p>
+            {%endfor%}
+        {%endfor%}
+        <button type="submit">Login</button>
+        {% endblock %}
 <!-- </body>
 </html> -->

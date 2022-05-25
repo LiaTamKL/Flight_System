@@ -13,6 +13,8 @@ from django.db import transaction
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.forms import formset_factory
+from django.contrib import auth
 
 
 def homeview(request):
@@ -177,56 +179,79 @@ def airline_login(request, user_id):
 
 #cannot be named 'login'
 def user_login(request):
+    context = {}
     logged = False
-    new_login = forms.LoginForm(request.POST)
-    if request.method == 'POST':
-        if new_login.is_valid():
-            logged = AnonymusFancade.login(request,new_login.cleaned_data)
+    #data = data=request.POST is the only way to get AuthenticationForm to pass
+    new_login = forms.Login(data=request.POST)
 
+    if request.method == 'POST':
+        
+        if new_login.is_valid():
+            logged = AnonymusFancade.login(request, new_login.cleaned_data)
             if logged:
                 redirect_address =f'/flight_app/loggedin'
                 return redirect(redirect_address)
             else:
+           
                 raise PermissionDenied()
+        else:
+            context['login_form'] = new_login 
+            # return render(request, 'form_test.html', {'form':new_login})
+    else:
+        new_login = forms.Login()
+        context['login_form'] = new_login 
 
-    return render(request, 'login_page.html', {'form': new_login})
+    return render(request, 'login_page.html', context)
+
+def logout(request):
+    auth.logout(request)
+    return render(request,'logged_out.html')
+
+
+def register_customer(request):
+    return register(request , account_role=2)
 
 
 
+def register_airline(request):
+    register(request , account_role=1)
 
-def register(request):
+
+
+def register(request, account_role):
     context = {}
-    if request.POST:
-        form = forms.RegistrationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            print(form.cleaned_data)
-            email = form.cleaned_data['email']
-            raw_password = form.cleaned_data['password1']
-            account = authenticate(email = email, password = raw_password)
-            login(request,account)
-            id = models.Account.objects.get(email = email) 
-            print(id.id)
-            print(id)
-            form2 = {'user_id': id, 
-                    'first_name': form.cleaned_data['first_name'], 
-                    'last_name': form.cleaned_data['last_name'],
-                    'credit_card_no': form.cleaned_data['credit_card_no'],
-                    'address': form.cleaned_data['address'],
-                    'phone_number': form.cleaned_data['phone_number']}
-            AdministratorFuncade.add_customer2(form2)
-            account_role = models.Account_Role.objects.get(pk = 1)
-            id.account_role = account_role
-            id.save()
+    account_role = models.Account_Role.objects.get(pk = account_role)
+    # account_role = 2
+    if request.POST:    
+        user_form = forms.RegistrationForm(request.POST)
+        customer_form = forms.NewCustomerForm(request.POST)
+
+        if user_form.is_valid():
+            created_account = BaseFuncade.create_new_user(user_form , account_role)
+            if customer_form.is_valid():
+                AnonymusFancade.add_customer(customer_form , created_account)
+            
+            else:
+                return Http404
             return redirect('home')
         else:
-            context['registration_form'] = form
+            
+            context['user_registration_form'] = user_form 
+            context['customer_registration_form'] = customer_form 
     else:
-        form = forms.RegistrationForm()
-        context['registration_form'] = form
-    return render(request, 'register.html', context)
+        user_form = forms.RegistrationForm()
+        customer_form = forms.NewCustomerForm()
+        context['user_registration_form'] = user_form 
+        context['customer_registration_form'] = customer_form 
+        # context2['customer_registration_form'] = customer_form 
+        
+    return render(request, 'register.html', context )
 
 
+
+
+# def logged_in(request):
+#     return render(request, 'logged_in.html')
 
 
 def logged_in(request):
@@ -280,6 +305,7 @@ def logged_in(request):
     #     }
     # return render(request, 'create_user_form.html', context)
 
+
 #old user creation method
 # def add_new_customer_anonymous(request):
 #     new_user = forms.NewUserForm(request.POST  or None)
@@ -316,3 +342,51 @@ def logged_in(request):
 #             dict = list(new_user_form.errors)
 #             return HttpResponse(dict)
 #     return render(request, 'register.html', {'form': new_user_form})
+
+
+
+# def register(request):
+#     context = {}
+#     if request.POST:    
+#         form = forms.RegistrationForm(request.POST)
+        
+#         if form.is_valid():
+#             BaseFuncade.create_new_user(form)
+#             # print(form.cleaned_data)
+
+#             # email = form.cleaned_data['email']
+#             # raw_password = form.cleaned_data['password1']
+
+
+#             # account = authenticate(email = email, password = raw_password)
+#             # login(request,account)
+#             # id = models.Account.objects.get(email = email) 
+#             # print(id.id)
+#             # print(id)
+
+
+#             # form2 = {'user_id': id, 
+#             #         'first_name': form.cleaned_data['first_name'], 
+#             #         'last_name': form.cleaned_data['last_name'],
+#             #         'credit_card_no': form.cleaned_data['credit_card_no'],
+#             #         'address': form.cleaned_data['address'],
+#             #         'phone_number': form.cleaned_data['phone_number']}
+#             # AdministratorFuncade.add_customer2(form2)
+
+
+#             account_role = models.Account_Role.objects.get(pk = 1)
+#             id.account_role = account_role
+#             id.save()
+#             return redirect('home')
+#         else:
+#             context['registration_form'] = form
+#     else:
+#         form = forms.RegistrationForm()
+#         context['registration_form'] = form
+#     return render(request, 'register.html', context)
+
+
+
+
+# def logged_in(request):
+#     return render(request, 'logged_in.html')
