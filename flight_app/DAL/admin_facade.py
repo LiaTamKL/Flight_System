@@ -23,13 +23,13 @@ class AdministratorFuncade(BaseFuncade):
 
     #receives clean_data form, adds a customer based on that to the database.
     def add_customer2(form):
-        with transaction.Atomic():
             cus = Customer()
             cus.address = form['address']
             cus.credit_card_no = form['credit_card_no']
             cus.first_name = form['first_name']
             cus.last_name = form['last_name']
-            cus.user = form['user_id']
+            cus.account = form['user_id']
+            cus.phone_number = form['phone_number']
             cus.save()
 
 
@@ -39,7 +39,7 @@ class AdministratorFuncade(BaseFuncade):
             airline = Airline()
             airline.name = form['name']
             airline.country = form['airline']
-            airline.user = form['user_id']
+            airline.account = form['user_id']
             airline.save()
 
 
@@ -49,7 +49,7 @@ class AdministratorFuncade(BaseFuncade):
             admin = Administrator()
             admin.first_name = form['first_name']
             admin.last_name = form['last_name']
-            admin.user = form['user_id']
+            admin.account = form['user_id']
             admin.save()
 
     #receives an airline id, deletes said airline

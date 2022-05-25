@@ -47,7 +47,7 @@ class Account(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-    account_role = models.ForeignKey(Account_Role, null=False, on_delete=models.PROTECT)
+    account_role = models.ForeignKey(Account_Role, null=True, on_delete=models.PROTECT)
     # is_airline = models.BooleanField(default=False) #switch this with userrole
     # is_customer = models.BooleanField(default=False) #switch this with userrole
 

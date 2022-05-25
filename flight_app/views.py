@@ -6,6 +6,7 @@ from .DAL.base_facade import BaseFuncade
 from .DAL.airline_facade import Airline_Facade
 from .DAL.customer_facade import CustomerFancade
 from .DAL.anony_facade import AnonymusFancade
+from .DAL.admin_facade import AdministratorFuncade
 from django.http import HttpResponse, Http404
 from django.core.exceptions import PermissionDenied
 # from django.contrib.auth.hashers import make_password
@@ -170,12 +171,22 @@ def register(request):
     if request.POST:
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            form.account_role = models.Account_Role.objects.get(pk = 1)
             form.save()
             email = form.cleaned_data['email']
             raw_password = form.cleaned_data['password1']
             account = authenticate(email = email, password = raw_password)
             login(request,account)
+            id = Account.objects.get(email = email) 
+            form2 = {'user_id': id, 
+                    'first_name': form.cleaned_data['first_name'], 
+                    'last_name': form.cleaned_data['last_name'],
+                    'credit_card_no': form.cleaned_data['credit_card_no'],
+                    'address': form.cleaned_data['address'],
+                    'phone_number': form.cleaned_data['phone_number']}
+            AdministratorFuncade.add_customer2(form2)
+            account_role = models.Account_Role.objects.get(pk = 1)
+            id.account_role = account_role
+            id.save()
             return redirect('home')
         else:
             context['registration_form'] = form
