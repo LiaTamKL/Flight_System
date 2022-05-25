@@ -1,7 +1,6 @@
 from django.shortcuts import render ,redirect
 from . import models
-# from . import forms
-from .forms import *
+from . import forms
 from .DAL.base_facade import BaseFuncade
 from .DAL.airline_facade import Airline_Facade
 from .DAL.customer_facade import CustomerFancade
@@ -165,11 +164,40 @@ def get_my_tickets(request, cust_id):
 
 
 
+
+def cust_login(request, user_id): 
+    context = {'id': user_id}
+    return render( request, 'customer_login_ok.html', context)
+
+def airline_login(request, user_id): 
+    context = {'id': user_id}
+    return render( request, 'airline_login.ok', context)
+
+
+#cannot be named 'login' 
+def user_login(request):
+    logged = False
+    new_login = forms.LoginForm(request.POST)
+    if request.method == 'POST':
+        if new_login.is_valid():
+            logged = AnonymusFancade.login(request,new_login.cleaned_data)  
+        
+            if logged:
+                redirect_address =f'/flight_app/loggedin'
+                return redirect(redirect_address)
+            else:
+                raise PermissionDenied()
+                
+    return render(request, 'login_page.html', {'form': new_login})
+
+
+
+
 def register(request):
     context = {}
     if request.POST:
         form = RegistrationForm(request.POST)
-        form.account_role_id =  models.Account_Role.objects.get(pk = 2)
+        # form. =  models.User_Role.objects.get(pk = 2)
 
        
         if form.is_valid():
@@ -196,7 +224,8 @@ def register(request):
 def logged_in(request):
     return render(request, 'logged_in.html')
 
-    
+
+
 
 
 
@@ -280,38 +309,5 @@ def logged_in(request):
 #             return HttpResponse(dict)
 #     return render(request, 'register.html', {'form': new_user_form})
 
-
-
-# def cust_login(request, user_id): 
-#     context = {'id': user_id}
-#     return render( request, 'customer_login_ok.html', context)
-
-# def airline_login(request, user_id): 
-#     context = {'id': user_id}
-#     return render( request, 'airline_login.ok', context)
-
-
-# def logged_in(request):
-#      return render( request,'logged_in.html')
-
-
-
-
     
 
-
-# #cannot be named 'login' 
-# def user_login(request):
-#     logged = False
-#     new_login = forms.LoginForm(request.POST)
-#     if request.method == 'POST':
-#         if new_login.is_valid():
-#             logged = AnonymusFancade.login(request,new_login.cleaned_data)  
-        
-#             if logged:
-#                 redirect_address =f'/flight_app/loggedin'
-#                 return redirect(redirect_address)
-#             else:
-#                 raise PermissionDenied()
-                
-#     return render(request, 'login_page.html', {'form': new_login})

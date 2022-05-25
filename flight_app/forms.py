@@ -9,23 +9,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth import password_validation
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.validators import UnicodeUsernameValidator
-from .models import Account
-
-
-
 
 
 utc=pytz.UTC
 
 
-
-class RegistrationForm(UserCreationForm):
-    email = forms.EmailField( max_length=60, help_text='required')
-    account_role_id = forms.IntegerField(widget = forms.HiddenInput(), required = False )
-    class Meta:
-        model = Account
-        fields = ("email", 'username', 'password1', 'password2')
-        
 
 class country_id_search_form(forms.ModelForm):
     country_id = forms.IntegerField(min_value=1)
@@ -62,11 +50,12 @@ class LoginForm(forms.ModelForm):
     # password = forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password")
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     class Meta:
-        model = models.Account
+        model = models.User
         fields = ['username', 'password']
         
 
 username_validator = UnicodeUsernameValidator()
+
 
 
 
@@ -125,11 +114,13 @@ class NewFlightForm(forms.ModelForm):
 
 
 
-#####################################
-            #Old forms
-#####################################
 
-# class SignUpForm(UserCreationForm):
+
+
+
+
+#################################################################
+#class SignUpForm(UserCreationForm):
 #     # first_name = forms.CharField(max_length=12, min_length=4, required=True, help_text='Required: First Name',
 #     #                             widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}))
 #     # # last_name = forms.CharField(max_length=12, min_length=4, required=True, help_text='Required: Last Name',
@@ -154,16 +145,14 @@ class NewFlightForm(forms.ModelForm):
 #         model = User
 #         fields = ('username', 'email', 'password1', 'password2',)
 
-# class SignUpForm(UserCreationForm):
-#     username = forms.CharField(max_length=10 , required=True, label="The most impressing nickname you ever had")
-#     # password = forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password, why bother probably you will use 123456")
-#     email = forms.EmailField(max_length=255 ,  required=True, label="email, Prepare for shitload of SPAM baby")
-#     class Meta:
-#         model = User
-#         fields = ['username','email','password1','password2' ]
+# # class SignUpForm(UserCreationForm):
+# #     username = forms.CharField(max_length=10 , required=True, label="The most impressing nickname you ever had")
+# #     # password = forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password, why bother probably you will use 123456")
+# #     email = forms.EmailField(max_length=255 ,  required=True, label="email, Prepare for shitload of SPAM baby")
+# #     class Meta:
+# #         model = User
+# #         fields = ['username','email','password1','password2' ]
 
-#     # def clean_message(self):
-#     #     customer_id = self.cleaned_data['customer_id']
-#     #     return customer_id
-
-
+# #     # def clean_message(self):
+# #     #     customer_id = self.cleaned_data['customer_id']
+# #     #     return customer_id
