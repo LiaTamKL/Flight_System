@@ -10,12 +10,21 @@
 </head> -->
 <!-- <body> -->
     {% block content %}
-    <div>{{message}}</div>
-    <form action="#" method="POST" class="uniForm">
-        {% csrf_token%}
-        {{form.as_p}}
-        <input type="submit"/>
-    </form>
+    <h2>register</h2>
+    <form method="post", >
+        {%csrf_token%}
+        {%for field in registration_form%}
+            <p>{{field.label_tag}}</p>
+            <p>{{field}}</p>
+            {%if field.help_text%}
+                <small>{{field.help_text}}</small>
+            {%endif%}
+
+            {% for error in field.errors%}
+                <p style="color:red">{{error}}</p>
+            {%endfor%}
+        {%endfor%}
+        <button type="submit">register</button>
     {% endblock %}
 <!-- </body>
 </html> -->
