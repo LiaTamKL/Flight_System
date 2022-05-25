@@ -169,10 +169,12 @@ def register(request):
     context = {}
     if request.POST:
         form = RegistrationForm(request.POST)
-        if form.is_valid():
-            form.account_role = 2
-            form.save()
+        form.account_role_id =  models.Account_Role.objects.get(pk = 2)
 
+       
+        if form.is_valid():
+            form.save()
+            # raise Exception ({})
             # user_to_update = models.Account.objects.get(username = user)
             
 
