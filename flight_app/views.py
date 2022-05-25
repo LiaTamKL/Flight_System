@@ -196,7 +196,7 @@ def user_login(request):
 def register(request):
     context = {}
     if request.POST:
-        form = RegistrationForm(request.POST)
+        form = forms.RegistrationForm(request.POST)
         # form. =  models.User_Role.objects.get(pk = 2)
 
        
@@ -208,13 +208,13 @@ def register(request):
 
             email = form.cleaned_data['email']
             raw_password = form.cleaned_data['password1']
-            account = authenticate(email = email, password = raw_password)
-            login(request,account)
+            user = authenticate(email = email, password = raw_password)
+            login(request,user)
             return redirect('home')
         else:
             context['registration_form'] = form
     else:
-        form = RegistrationForm()
+        form = forms.RegistrationForm()
         context['registration_form'] = form
     return render(request, 'register.html', context)
 

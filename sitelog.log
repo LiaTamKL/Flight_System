@@ -618,3 +618,4 @@ Traceback (most recent call last):
   File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
     return Database.Cursor.execute(self, query, params)
 django.db.utils.IntegrityError: NOT NULL constraint failed: flight_app_account.account_role_id
+INFO 2022-05-25 17:17:25,404 autoreload 18164 23396 Watching for file changes with StatReloader

@@ -13,7 +13,12 @@ from django.contrib.auth.validators import UnicodeUsernameValidator
 
 utc=pytz.UTC
 
-
+class RegistrationForm(UserCreationForm):
+    email = forms.EmailField( max_length=60, help_text='required')
+    user_role_id = forms.IntegerField(widget = forms.HiddenInput(), required = False )
+    class Meta:
+        model = User
+        fields = ("email", 'username', 'password1', 'password2')
 
 class country_id_search_form(forms.ModelForm):
     country_id = forms.IntegerField(min_value=1)
@@ -55,9 +60,6 @@ class LoginForm(forms.ModelForm):
         
 
 username_validator = UnicodeUsernameValidator()
-
-
-
 
 
 

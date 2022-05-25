@@ -37,7 +37,6 @@ class MyAccountManager(BaseUserManager):
         user.is_superuser = True
         user.save(using=self._db)
         return user
-
 class User(AbstractBaseUser):
     email = models.EmailField(verbose_name='email', max_length=60, unique=True)
     username = models.CharField(max_length=30, unique=True)
@@ -47,7 +46,7 @@ class User(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-    User_role = models.ForeignKey(User_Role, null=False, on_delete=models.PROTECT)
+    user_role = models.ForeignKey(User_Role, null=False, on_delete=models.PROTECT)
     # is_airline = models.BooleanField(default=False) #switch this with userrole
     # is_customer = models.BooleanField(default=False) #switch this with userrole
 
@@ -78,7 +77,7 @@ class Country(models.Model):
 class Airline(models.Model):
     name = models.TextField(max_length=255, null=False, unique=True)
     country = models.ForeignKey(Country, null=False, on_delete=models.PROTECT)
-    User = models.OneToOneField(User, null=False, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null=False, on_delete=models.CASCADE)
     class Meta:
         ordering = ['name']
     def __str__(self) -> str:
@@ -90,7 +89,7 @@ class Customer(models.Model):
     address = models.TextField(max_length=100, null=False)
     phone_number = models.TextField(max_length=16, null=False, unique=True)
     credit_card_no = models.TextField(max_length=16, null=False, unique=True)
-    User = models.OneToOneField(User, null=False, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null=False, on_delete=models.CASCADE)
     class Meta:
         ordering = ['last_name']
     def __str__(self) -> str:
@@ -120,7 +119,7 @@ class Flight_Ticket(models.Model):
 class Administrator(models.Model):
     first_name = models.TextField(max_length=50, null=False)
     last_name = models.TextField(max_length=50, null=False)
-    User = models.OneToOneField(User, null=False, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null=False, on_delete=models.CASCADE)
     class Meta:
         ordering = ['last_name']
     def __str__(self) -> str:
