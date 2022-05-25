@@ -147,7 +147,7 @@ class Administrator(models.Model):
 
 # from django.db import models
 
-# class User_Role(models.Model):
+
 #     role_name = models.CharField(max_length=30, unique=True, null=False)
 #     def __str__(self):
 #         return self.role_name
@@ -158,7 +158,7 @@ class Administrator(models.Model):
 #     username = models.TextField(max_length=50, null=False, unique=True)
 #     password = models.CharField(null=False,max_length=12)
 #     email = models.EmailField(max_length=50, null=False, unique=True)
-#     user_role = models.ForeignKey(User_Role, null=False, on_delete=models.PROTECT)
+
 #     class Meta:
 #         ordering = ['username']
 #     def __str__(self) -> str:
