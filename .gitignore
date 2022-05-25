@@ -4,3 +4,4 @@ __pycache__/
 todo
 db.sqlite3
 *.pyc
+sitelog.log
