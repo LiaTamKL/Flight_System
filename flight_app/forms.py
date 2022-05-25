@@ -65,6 +65,7 @@ username_validator = UnicodeUsernameValidator()
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField( max_length=60, help_text='required')
+    account_role_id = forms.IntegerField(widget = forms.HiddenInput(), required = False )
     class Meta:
         model = Account
         fields = ("email", 'username', 'password1', 'password2' )
