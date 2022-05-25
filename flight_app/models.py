@@ -3,13 +3,13 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
-class Account_Role(models.Model):
+class User_Role(models.Model):
     role_name = models.CharField(max_length=30, unique=True, null=False)
     def __str__(self):
         return self.role_name
     class Meta:
         ordering = ['role_name']
-        
+
 class MyAccountManager(BaseUserManager):
     def create_user(self, email, username, password=None):
         if not email:
@@ -17,28 +17,27 @@ class MyAccountManager(BaseUserManager):
         if not username:
             raise ValueError("User must have an username")
 
-        account = self.model(
+        user = self.model(
             email = self.normalize_email(email),
             username = username,
         )
 
-        account.set_password(password)
-        account.save(using=self._db)
-        return account
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
 
     def create_superuser(self, email,username, password):
-        account = self.create_user(
+        user = self.create_user(
         email=self.normalize_email(email),
         password=password,
         username=username,
         )
-        account.is_admin = True
-        account.is_staff = True
-        account.is_superuser = True
-        account.save(using=self._db)
-        return account
-
-class Account(AbstractBaseUser):
+        user.is_admin = True
+        user.is_staff = True
+        user.is_superuser = True
+        user.save(using=self._db)
+        return user
+class User(AbstractBaseUser):
     email = models.EmailField(verbose_name='email', max_length=60, unique=True)
     username = models.CharField(max_length=30, unique=True)
     date_joined = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
@@ -78,7 +77,7 @@ class Country(models.Model):
 class Airline(models.Model):
     name = models.TextField(max_length=255, null=False, unique=True)
     country = models.ForeignKey(Country, null=False, on_delete=models.PROTECT)
-    account = models.OneToOneField(Account, null=False, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null=False, on_delete=models.CASCADE)
     class Meta:
         ordering = ['name']
     def __str__(self) -> str:
@@ -90,7 +89,7 @@ class Customer(models.Model):
     address = models.TextField(max_length=100, null=False)
     phone_number = models.TextField(max_length=16, null=False, unique=True)
     credit_card_no = models.TextField(max_length=16, null=False, unique=True)
-    account = models.OneToOneField(Account, null=False, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null=False, on_delete=models.CASCADE)
     class Meta:
         ordering = ['last_name']
     def __str__(self) -> str:
@@ -120,7 +119,7 @@ class Flight_Ticket(models.Model):
 class Administrator(models.Model):
     first_name = models.TextField(max_length=50, null=False)
     last_name = models.TextField(max_length=50, null=False)
-    account = models.OneToOneField(Account, null=False, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null=False, on_delete=models.CASCADE)
     class Meta:
         ordering = ['last_name']
     def __str__(self) -> str:
@@ -224,4 +223,3 @@ class Administrator(models.Model):
 #         ordering = ['last_name']
 #     def __str__(self) -> str:
 #         return (self.first_name + self.last_name)
-

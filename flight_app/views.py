@@ -1,7 +1,6 @@
 from django.shortcuts import render ,redirect
 from . import models
-# from . import forms
-from .forms import *
+from . import forms
 from .DAL.base_facade import BaseFuncade
 from .DAL.airline_facade import Airline_Facade
 from .DAL.customer_facade import CustomerFancade
@@ -12,7 +11,7 @@ from django.core.exceptions import PermissionDenied
 # from django.contrib.auth.hashers import make_password
 from django.db import transaction
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate, login 
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 
 
@@ -55,7 +54,7 @@ def show_country_by_id(request, country_id):
 
 
 
-#shows contries info , if no argument was sent it shows all 
+#shows contries info , if no argument was sent it shows all
 def show_countries_info(request):
 
     all_countries = BaseFuncade.get_all_countries()
@@ -68,7 +67,7 @@ def show_countries_info(request):
 def view_flights_by_airline(request, airline_id):
     flights = Airline_Facade.get_my_flights(airline_id)
     airline = (Airline_Facade.get_airline_by_id(airline_id))[0]
-    context = { 
+    context = {
         'Flights': flights,
         'Airline': airline
     }
@@ -80,17 +79,17 @@ def delete_flight_for_airline(request, flight_id):
     #proper "delete" page should be added later instead of an httpresponse
     if result == 1:
         return HttpResponse(f'Flight #{flight_id} removed successfully')
-    
+
 
 def show_country_search_from(request):
-  
-    f = contact_from = forms.country_id_search_form(request.POST or None) # reteins data even if the submit was invalid. 
+
+    f = contact_from = forms.country_id_search_form(request.POST or None) # reteins data even if the submit was invalid.
     # print(request.GET)
     if f.is_valid():
-        #print(f.cleaned_data.get('coutry_id')) 
+        #print(f.cleaned_data.get('coutry_id'))
         # cleans everything but the raw data submitted, prints only selected by get 'subject in this case
         country_id = f.cleaned_data.get('country_id')
-        
+
         redirect_address = f'/flight_app/countryinfo/{country_id}'
 
         return redirect(redirect_address)
@@ -138,7 +137,7 @@ def airline_update_flight(request, flight_id):
         'message': message
     }
     return render(request, 'add_flight.html', context)
-    
+
 
 def remove_ticket(request, ticket_id):
     result = CustomerFancade.remove_ticket(ticket_id)
@@ -151,34 +150,70 @@ def add_ticket(request):
     new_ticket_form = forms.NewTicketForm(request.POST or None)
     if request.method =='POST':
         if new_ticket_form.is_valid():
-            
-            CustomerFancade.add_ticket(new_ticket_form.cleaned_data)     
+
+            CustomerFancade.add_ticket(new_ticket_form.cleaned_data)
             message = 'Ticket added successfully'
     context = {
         'form': new_ticket_form,
         'message': message
         }
     return render(request, 'add_ticket.html', context)
- 
+
 def get_my_tickets(request, cust_id):
     all_my_tickets = CustomerFancade.get_my_tickets(cust_id)
     return render(request, "all_my_tickets.html", {'all_tickets': all_my_tickets})
 
 
 
+
+def cust_login(request, user_id):
+    context = {'id': user_id}
+    return render( request, 'customer_login_ok.html', context)
+
+def airline_login(request, user_id):
+    context = {'id': user_id}
+    return render( request, 'airline_login.ok', context)
+
+
+#cannot be named 'login'
+def user_login(request):
+    logged = False
+    new_login = forms.LoginForm(request.POST)
+    if request.method == 'POST':
+        if new_login.is_valid():
+            logged = AnonymusFancade.login(request,new_login.cleaned_data)
+
+            if logged:
+                redirect_address =f'/flight_app/loggedin'
+                return redirect(redirect_address)
+            else:
+                raise PermissionDenied()
+
+    return render(request, 'login_page.html', {'form': new_login})
+
+
+
+
 def register(request):
     context = {}
     if request.POST:
-        form = RegistrationForm(request.POST)
+        form = forms.RegistrationForm(request.POST)
+        # form. =  models.User_Role.objects.get(pk = 2)
+
+
         if form.is_valid():
             form.save()
+            # raise Exception ({})
+            # user_to_update = models.Account.objects.get(username = user)
+
+
             email = form.cleaned_data['email']
             raw_password = form.cleaned_data['password1']
             account = authenticate(email = email, password = raw_password)
             login(request,account)
-            id = Account.objects.get(email = email) 
-            form2 = {'user_id': id, 
-                    'first_name': form.cleaned_data['first_name'], 
+            id = Account.objects.get(email = email)
+            form2 = {'user_id': id,
+                    'first_name': form.cleaned_data['first_name'],
                     'last_name': form.cleaned_data['last_name'],
                     'credit_card_no': form.cleaned_data['credit_card_no'],
                     'address': form.cleaned_data['address'],
@@ -191,7 +226,7 @@ def register(request):
         else:
             context['registration_form'] = form
     else:
-        form = RegistrationForm()
+        form = forms.RegistrationForm()
         context['registration_form'] = form
     return render(request, 'register.html', context)
 
@@ -201,12 +236,13 @@ def register(request):
 def logged_in(request):
     return render(request, 'logged_in.html')
 
-    
+
+
 
 
 
 ################################################
-                # Old Methods 
+                # Old Methods
 ################################################
 
 
@@ -221,25 +257,25 @@ def logged_in(request):
 #             if user_role == 1:
 #                 redirect_address =f'/flight_app/airlineloggedin/{user_id}'
 #                 return redirect(redirect_address)
-              
+
 #     return render(request, 'login_page.html', {'form': new_login})
 
 
 
 
-        
+
 
 # def add_new_user(request):
 #     #temp
 #     user_id = 0
 #     message = None
-#     new_user_id = BaseFuncade.create_new_user()    
+#     new_user_id = BaseFuncade.create_new_user()
 
     # # new_user = forms.NewUserForm(request.POST  or None)
     # if request.method =='POST':
     #     if new_user.is_valid():
     #         # BaseFuncade.create_new_user(user_id , new_user.cleaned_data)
-    #         new_user_id = BaseFuncade.create_new_user(user_id , new_user.cleaned_data)          
+    #         new_user_id = BaseFuncade.create_new_user(user_id , new_user.cleaned_data)
     #         message = 'New user added successfully'
     #         return new_user_id
     # context = {
@@ -254,13 +290,13 @@ def logged_in(request):
 #     new_customer = forms.NewCustomerForm(request.POST or None)
 #     if request.method =='POST':
 #         if new_user.is_valid():
-#             # 2 for customer role 
+#             # 2 for customer role
 #             new_user_id = BaseFuncade.create_new_user(2 , new_user.cleaned_data)
 #             if new_customer.is_valid():
 #                 AnonymusFancade.add_customer(new_user_id, new_customer.cleaned_data)
 #                 redirect_address =  f'/flight_app/loggedin/{new_user_id}'
 #                 return redirect(redirect_address)
-                
+
 #     context = {
 #         'userform': new_user,
 #         'custform': new_customer,
@@ -277,46 +313,10 @@ def logged_in(request):
 
 #         # raise Exception({new_user_form.errors})
 
-#         if new_user_form.is_valid(): 
+#         if new_user_form.is_valid():
 #             BaseFuncade.create_new_user(new_user_form.cleaned_data)
 #             return HttpResponse("UserCreated")
 #         else :
 #             dict = list(new_user_form.errors)
 #             return HttpResponse(dict)
 #     return render(request, 'register.html', {'form': new_user_form})
-
-
-
-# def cust_login(request, user_id): 
-#     context = {'id': user_id}
-#     return render( request, 'customer_login_ok.html', context)
-
-# def airline_login(request, user_id): 
-#     context = {'id': user_id}
-#     return render( request, 'airline_login.ok', context)
-
-
-# def logged_in(request):
-#      return render( request,'logged_in.html')
-
-
-
-
-    
-
-
-# #cannot be named 'login' 
-# def user_login(request):
-#     logged = False
-#     new_login = forms.LoginForm(request.POST)
-#     if request.method == 'POST':
-#         if new_login.is_valid():
-#             logged = AnonymusFancade.login(request,new_login.cleaned_data)  
-        
-#             if logged:
-#                 redirect_address =f'/flight_app/loggedin'
-#                 return redirect(redirect_address)
-#             else:
-#                 raise PermissionDenied()
-                
-#     return render(request, 'login_page.html', {'form': new_login})

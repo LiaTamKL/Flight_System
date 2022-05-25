@@ -298,3 +298,324 @@ Traceback (most recent call last):
 flight_app.models.Account_Role.DoesNotExist: Account_Role matching query does not exist.
 INFO 2022-05-25 14:15:36,272 autoreload 50688 41524 Watching for file changes with StatReloader
 WARNING 2022-05-25 14:15:38,424 log 50688 55044 Not Found: /
+INFO 2022-05-25 15:31:53,707 autoreload 26588 18232 Watching for file changes with StatReloader
+ERROR 2022-05-25 15:32:07,600 log 26588 26216 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: flight_app_account.account_role_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 174, in register
+    form.save()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\contrib\auth\forms.py", line 143, in save
+    user.save()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\contrib\auth\base_user.py", line 68, in save
+    super().save(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 857, in save_base
+    updated = self._save_table(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 1000, in _save_table
+    results = self._do_insert(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 1041, in _do_insert
+    return manager._insert(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1434, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: flight_app_account.account_role_id
+INFO 2022-05-25 15:32:45,178 autoreload 26588 18232 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 15:32:45,494 autoreload 16748 2132 Watching for file changes with StatReloader
+ERROR 2022-05-25 15:32:49,156 log 16748 4108 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: flight_app_account.account_role_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 175, in register
+    form.save()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\contrib\auth\forms.py", line 143, in save
+    user.save()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\contrib\auth\base_user.py", line 68, in save
+    super().save(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 857, in save_base
+    updated = self._save_table(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 1000, in _save_table
+    results = self._do_insert(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 1041, in _do_insert
+    return manager._insert(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1434, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: flight_app_account.account_role_id
+INFO 2022-05-25 15:33:20,550 autoreload 16748 2132 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 15:33:20,872 autoreload 15144 2736 Watching for file changes with StatReloader
+INFO 2022-05-25 15:33:24,121 autoreload 15144 2736 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 15:33:24,414 autoreload 18948 16728 Watching for file changes with StatReloader
+ERROR 2022-05-25 15:33:27,788 log 18948 22044 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 173, in register
+    raise Exception ({form.account_role_id})
+Exception: {2}
+INFO 2022-05-25 15:33:52,276 autoreload 18948 16728 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 15:33:52,579 autoreload 25684 24900 Watching for file changes with StatReloader
+ERROR 2022-05-25 15:33:58,133 log 25684 26272 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 174, in register
+    raise Exception ({form})
+Exception: {<RegistrationForm bound=True, valid=Unknown, fields=(email;username;password1;password2;account_role_id)>}
+INFO 2022-05-25 15:34:21,458 autoreload 25684 24900 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 15:34:21,766 autoreload 6948 22416 Watching for file changes with StatReloader
+ERROR 2022-05-25 15:34:24,468 log 6948 1620 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 174, in register
+    raise Exception ({form.is_valid()})
+Exception: {True}
+INFO 2022-05-25 15:34:53,742 autoreload 6948 22416 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 15:34:54,056 autoreload 16436 8360 Watching for file changes with StatReloader
+ERROR 2022-05-25 15:34:57,228 log 16436 25256 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 174, in register
+    raise Exception ({form.is_valid()})
+Exception: {True}
+INFO 2022-05-25 15:35:03,524 autoreload 16436 8360 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 15:35:03,850 autoreload 22452 10232 Watching for file changes with StatReloader
+ERROR 2022-05-25 15:35:06,828 log 22452 23632 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 174, in register
+    raise Exception ({})
+Exception: {}
+INFO 2022-05-25 15:35:38,879 autoreload 22452 10232 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 15:35:39,201 autoreload 15848 18568 Watching for file changes with StatReloader
+INFO 2022-05-25 15:35:49,653 autoreload 15848 18568 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 15:35:50,086 autoreload 22264 25824 Watching for file changes with StatReloader
+INFO 2022-05-25 15:36:08,731 autoreload 22264 25824 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 15:36:09,051 autoreload 12196 1784 Watching for file changes with StatReloader
+ERROR 2022-05-25 15:36:11,901 log 12196 18488 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: flight_app_account.account_role_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 176, in register
+    form.save()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\contrib\auth\forms.py", line 143, in save
+    user.save()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\contrib\auth\base_user.py", line 68, in save
+    super().save(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 857, in save_base
+    updated = self._save_table(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 1000, in _save_table
+    results = self._do_insert(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 1041, in _do_insert
+    return manager._insert(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1434, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: flight_app_account.account_role_id
+INFO 2022-05-25 15:36:48,191 autoreload 12196 1784 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-25 15:36:48,497 autoreload 16212 23984 Watching for file changes with StatReloader
+ERROR 2022-05-25 15:36:55,381 log 16212 26160 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: flight_app_account.account_role_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 176, in register
+    form.save()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\contrib\auth\forms.py", line 143, in save
+    user.save()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\contrib\auth\base_user.py", line 68, in save
+    super().save(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 857, in save_base
+    updated = self._save_table(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 1000, in _save_table
+    results = self._do_insert(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 1041, in _do_insert
+    return manager._insert(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1434, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: flight_app_account.account_role_id
+INFO 2022-05-25 15:37:05,134 autoreload 16212 23984 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-25 15:37:05,458 autoreload 976 18292 Watching for file changes with StatReloader
+ERROR 2022-05-25 15:37:09,111 log 976 23948 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: flight_app_account.account_role_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 176, in register
+    form.save()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\contrib\auth\forms.py", line 143, in save
+    user.save()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\contrib\auth\base_user.py", line 68, in save
+    super().save(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 857, in save_base
+    updated = self._save_table(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 1000, in _save_table
+    results = self._do_insert(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 1041, in _do_insert
+    return manager._insert(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1434, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: flight_app_account.account_role_id
+INFO 2022-05-25 17:17:25,404 autoreload 18164 23396 Watching for file changes with StatReloader
