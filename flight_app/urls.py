@@ -15,7 +15,7 @@ urlpatterns = [
     path('register/', views.register),
     
 
-    path('airlineloggedin/<user_id>' , views.airline_login),
+    # path('airlineloggedin/<user_id>' , views.airline_login),
 
 
 

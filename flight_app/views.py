@@ -170,6 +170,7 @@ def register(request):
     if request.POST:
         form = RegistrationForm(request.POST)
         if form.is_valid():
+            form.account_role = models.Account_Role.objects.get(pk = 1)
             form.save()
             email = form.cleaned_data['email']
             raw_password = form.cleaned_data['password1']

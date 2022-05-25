@@ -26,7 +26,7 @@ class CountryAdmin(admin.ModelAdmin):
 
 @admin.register(Airline)
 class AirlineAdmin(admin.ModelAdmin):
-    list_display = ['name', 'user', 'country']
+    list_display = ['name', 'account', 'country']
 
 @admin.register(Flight)
 class FlightAdmin(admin.ModelAdmin):
@@ -37,7 +37,7 @@ class FlightAdmin(admin.ModelAdmin):
 
 @admin.register(Customer)
 class CustomerAdmin(admin.ModelAdmin):
-    list_display =['user' , 'first_name' , 'last_name']
+    list_display =['account' , 'first_name' , 'last_name']
 
 
 @admin.register(Account_Role)

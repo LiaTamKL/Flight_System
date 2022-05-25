@@ -56,7 +56,7 @@ class LoginForm(forms.ModelForm):
     # password = forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password")
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     class Meta:
-        model = models.User
+        model = models.Account
         fields = ['username', 'password']
         
 
@@ -65,10 +65,9 @@ username_validator = UnicodeUsernameValidator()
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField( max_length=60, help_text='required')
-
     class Meta:
         model = Account
-        fields = ("email", 'username', 'password1', 'password2')
+        fields = ("email", 'username', 'password1', 'password2' )
         
 
 
