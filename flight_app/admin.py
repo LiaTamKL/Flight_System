@@ -4,7 +4,6 @@ from .models import *
 from django.contrib.auth.admin import UserAdmin
 # Register your models here.
 
-
 class AccountAdmin(UserAdmin):
     def has_add_permission(self, request, obj=None):
          return False
@@ -23,12 +22,6 @@ class CountryAdmin(admin.ModelAdmin):
     list_display = ['country_name', 'flag', 'link']
     list_display_links = ('link',)
     list_editable = ['flag']
-
-
-@admin.register(Account)
-class UserAdmin(admin.ModelAdmin):
-    list_display = ['username', 'email', 'account_role']
-    list_editable = ['account_role']
 
 
 @admin.register(Airline)

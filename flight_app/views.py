@@ -1,7 +1,7 @@
 from django.shortcuts import render ,redirect
 from . import models
 # from . import forms
-from forms import *
+from .forms import *
 from .DAL.base_facade import BaseFuncade
 from .DAL.airline_facade import Airline_Facade
 from .DAL.customer_facade import CustomerFancade
