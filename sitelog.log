@@ -619,3 +619,53 @@ Traceback (most recent call last):
     return Database.Cursor.execute(self, query, params)
 django.db.utils.IntegrityError: NOT NULL constraint failed: flight_app_account.account_role_id
 INFO 2022-05-25 17:17:25,404 autoreload 18164 23396 Watching for file changes with StatReloader
+INFO 2022-05-25 17:35:17,831 autoreload 49892 13148 Watching for file changes with StatReloader
+INFO 2022-05-25 17:38:31,564 autoreload 10920 59820 Watching for file changes with StatReloader
+INFO 2022-05-25 17:43:29,637 autoreload 57236 39368 Watching for file changes with StatReloader
+INFO 2022-05-25 17:43:41,258 autoreload 53196 56420 Watching for file changes with StatReloader
+WARNING 2022-05-25 17:43:42,718 log 53196 51740 Not Found: /
+INFO 2022-05-25 17:44:12,654 autoreload 17284 43332 Watching for file changes with StatReloader
+WARNING 2022-05-25 17:44:24,097 log 17284 29176 Not Found: /
+ERROR 2022-05-25 17:44:30,824 log 17284 29176 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 225, in register
+    form = RegistrationForm()
+NameError: name 'RegistrationForm' is not defined
+INFO 2022-05-25 17:44:47,906 autoreload 17284 43332 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-25 17:44:48,407 autoreload 1516 34268 Watching for file changes with StatReloader
+ERROR 2022-05-25 17:45:23,461 log 1516 12308 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 218, in register
+    account_role = models.Account_Role.objects.get(pk = 1)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+flight_app.models.Account_Role.DoesNotExist: Account_Role matching query does not exist.
+ERROR 2022-05-25 17:47:11,163 log 1516 46280 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 221, in register
+    return redirect('home')
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\shortcuts.py", line 48, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'home' not found. 'home' is not a valid view function or pattern name.
+INFO 2022-05-25 17:47:55,018 autoreload 1516 34268 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\urls.py changed, reloading.
+INFO 2022-05-25 17:47:55,641 autoreload 60772 30468 Watching for file changes with StatReloader

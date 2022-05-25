@@ -9,16 +9,17 @@ from django.contrib.auth.models import User
 from django.contrib.auth import password_validation
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.validators import UnicodeUsernameValidator
+from .models import Account
+
+
+
 
 
 utc=pytz.UTC
 
-class RegistrationForm(UserCreationForm):
-    email = forms.EmailField( max_length=60, help_text='required')
-    user_role_id = forms.IntegerField(widget = forms.HiddenInput(), required = False )
-    class Meta:
-        model = User
-        fields = ("email", 'username', 'password1', 'password2')
+
+
+
 
 class country_id_search_form(forms.ModelForm):
     country_id = forms.IntegerField(min_value=1)
@@ -55,12 +56,25 @@ class LoginForm(forms.ModelForm):
     # password = forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password")
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     class Meta:
-        model = models.User
+        model = models.Account
         fields = ['username', 'password']
         
 
 username_validator = UnicodeUsernameValidator()
 
+
+class RegistrationForm(UserCreationForm):
+    email = forms.EmailField( max_length=60, help_text='required')
+    first_name = forms.CharField(max_length=50 , required=True, label="Yo name ")
+    last_name = forms.CharField(max_length=50 , required=True , label= "Yo fam name") 
+    address = forms.CharField(max_length=255 ,  required=True, label="Where Yo live fool?")
+    phone_number = forms.IntegerField(max_value = 9999999999, label="Yo phone , real one this time ")
+    credit_card_no = forms.IntegerField(max_value = 9999999999999999, label="Credit card , you can trust me..., to buy some expensive shit!") 
+
+    class Meta:
+        model = Account
+        fields = ("email", 'username',) #'password1', 'password2' )
+        
 
 
 
@@ -111,6 +125,7 @@ class NewFlightForm(forms.ModelForm):
         if landing <= departure:
             raise forms.ValidationError('A landing must be after a departure')
         return landing
+
 
 
 

@@ -198,22 +198,18 @@ def register(request):
     context = {}
     if request.POST:
         form = forms.RegistrationForm(request.POST)
-        # form. =  models.User_Role.objects.get(pk = 2)
-
-
         if form.is_valid():
             form.save()
-            # raise Exception ({})
-            # user_to_update = models.Account.objects.get(username = user)
-
-
+            print(form.cleaned_data)
             email = form.cleaned_data['email']
             raw_password = form.cleaned_data['password1']
             account = authenticate(email = email, password = raw_password)
             login(request,account)
-            id = Account.objects.get(email = email)
-            form2 = {'user_id': id,
-                    'first_name': form.cleaned_data['first_name'],
+            id = models.Account.objects.get(email = email) 
+            print(id.id)
+            print(id)
+            form2 = {'user_id': id, 
+                    'first_name': form.cleaned_data['first_name'], 
                     'last_name': form.cleaned_data['last_name'],
                     'credit_card_no': form.cleaned_data['credit_card_no'],
                     'address': form.cleaned_data['address'],

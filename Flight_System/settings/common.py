@@ -129,8 +129,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'flight_app.User'
-
+AUTH_USER_MODEL = 'flight_app.Account'
 
 
 LOGGING = {
