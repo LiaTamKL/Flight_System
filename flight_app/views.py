@@ -1,6 +1,7 @@
 from django.shortcuts import render ,redirect
 from . import models
-from . import forms
+# from . import forms
+from .forms import *
 from .DAL.base_facade import BaseFuncade
 from .DAL.airline_facade import Airline_Facade
 from .DAL.customer_facade import CustomerFancade
@@ -164,75 +165,38 @@ def get_my_tickets(request, cust_id):
 
 
 
+def register(request):
+    context = {}
+    if request.POST:
+        form = RegistrationForm(request.POST)
+        form.account_role_id =  models.Account_Role.objects.get(pk = 2)
 
-def cust_login(request, user_id): 
-    context = {'id': user_id}
-    return render( request, 'customer_login_ok.html', context)
+       
+        if form.is_valid():
+            form.save()
+            # raise Exception ({})
+            # user_to_update = models.Account.objects.get(username = user)
+            
 
-def airline_login(request, user_id): 
-    context = {'id': user_id}
-    return render( request, 'airline_login.ok', context)
+            email = form.cleaned_data['email']
+            raw_password = form.cleaned_data['password1']
+            account = authenticate(email = email, password = raw_password)
+            login(request,account)
+            return redirect('home')
+        else:
+            context['registration_form'] = form
+    else:
+        form = RegistrationForm()
+        context['registration_form'] = form
+    return render(request, 'register.html', context)
+
+
 
 
 def logged_in(request):
-     return render( request,'logged_in.html')
-
-
-def new_user(request):
-    # new_user_form =  forms.SignUpForm(request.POST or None)
-    new_user_form = forms.SignUpForm(request.POST)
-
-    if request.method == 'POST':
-
-        # raise Exception({new_user_form.errors})
-
-        if new_user_form.is_valid(): 
-            BaseFuncade.create_new_user(new_user_form.cleaned_data)
-            return HttpResponse("UserCreated")
-        else :
-            dict = list(new_user_form.errors)
-            return HttpResponse(dict)
-    return render(request, 'register.html', {'form': new_user_form})
+    return render(request, 'logged_in.html')
 
     
-
-
-#cannot be named 'login' 
-def user_login(request):
-    logged = False
-    new_login = forms.LoginForm(request.POST)
-    if request.method == 'POST':
-        if new_login.is_valid():
-            logged = AnonymusFancade.login(request,new_login.cleaned_data)  
-        
-            if logged:
-                redirect_address =f'/flight_app/loggedin'
-                return redirect(redirect_address)
-            else:
-                raise PermissionDenied()
-                
-    return render(request, 'login_page.html', {'form': new_login})
-
-
-
-
-
-    
-#old login method
-# def login_page(request):
-#     new_login = forms.LoginForm(request.POST or None)
-#     if request.method == 'POST':
-#         if new_login.is_valid():
-#             user_role , user_id = AnonymusFancade.login(new_login.cleaned_data)
-#             if user_role == 2 :
-#                 redirect_address =f'/flight_app/custloggedin/{user_id}'
-#             if user_role == 1:
-#                 redirect_address =f'/flight_app/airlineloggedin/{user_id}'
-#                 return redirect(redirect_address)
-              
-#     return render(request, 'login_page.html', {'form': new_login})
-
-
 
 
 
@@ -298,3 +262,56 @@ def user_login(request):
 #         }
 #     return render(request, 'create_customer_form.html', context)
 
+
+
+# def new_user(request):
+#     # new_user_form =  forms.SignUpForm(request.POST or None)
+#     new_user_form = forms.SignUpForm(request.POST)
+
+#     if request.method == 'POST':
+
+#         # raise Exception({new_user_form.errors})
+
+#         if new_user_form.is_valid(): 
+#             BaseFuncade.create_new_user(new_user_form.cleaned_data)
+#             return HttpResponse("UserCreated")
+#         else :
+#             dict = list(new_user_form.errors)
+#             return HttpResponse(dict)
+#     return render(request, 'register.html', {'form': new_user_form})
+
+
+
+# def cust_login(request, user_id): 
+#     context = {'id': user_id}
+#     return render( request, 'customer_login_ok.html', context)
+
+# def airline_login(request, user_id): 
+#     context = {'id': user_id}
+#     return render( request, 'airline_login.ok', context)
+
+
+# def logged_in(request):
+#      return render( request,'logged_in.html')
+
+
+
+
+    
+
+
+# #cannot be named 'login' 
+# def user_login(request):
+#     logged = False
+#     new_login = forms.LoginForm(request.POST)
+#     if request.method == 'POST':
+#         if new_login.is_valid():
+#             logged = AnonymusFancade.login(request,new_login.cleaned_data)  
+        
+#             if logged:
+#                 redirect_address =f'/flight_app/loggedin'
+#                 return redirect(redirect_address)
+#             else:
+#                 raise PermissionDenied()
+                
+#     return render(request, 'login_page.html', {'form': new_login})

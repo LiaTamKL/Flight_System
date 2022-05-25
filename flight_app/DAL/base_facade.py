@@ -62,7 +62,7 @@ class BaseFuncade():
 
         # new_user = User()
         # user_role = 2
-        # new_user.username = form['username']
+        # new_user.username = form[username']
         # new_user.password = form['password']
         # new_user.email = form['email']
         # new_user.user_role =  User_Role.objects.get(pk = user_role)

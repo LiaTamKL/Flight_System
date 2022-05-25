@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import password_validation
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.validators import UnicodeUsernameValidator
+from .models import Account
 
 
 
@@ -18,7 +19,13 @@ utc=pytz.UTC
 
 
 
-
+class RegistrationForm(UserCreationForm):
+    email = forms.EmailField( max_length=60, help_text='required')
+    account_role_id = forms.IntegerField(widget = forms.HiddenInput(), required = False )
+    class Meta:
+        model = Account
+        fields = ("email", 'username', 'password1', 'password2')
+        
 
 class country_id_search_form(forms.ModelForm):
     country_id = forms.IntegerField(min_value=1)
@@ -55,48 +62,11 @@ class LoginForm(forms.ModelForm):
     # password = forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password")
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     class Meta:
-        model = models.User
+        model = models.Account
         fields = ['username', 'password']
         
 
 username_validator = UnicodeUsernameValidator()
-
-class SignUpForm(UserCreationForm):
-    # first_name = forms.CharField(max_length=12, min_length=4, required=True, help_text='Required: First Name',
-    #                             widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}))
-    # # last_name = forms.CharField(max_length=12, min_length=4, required=True, help_text='Required: Last Name',
-    #                            widget=(forms.TextInput(attrs={'class': 'form-control'})))
-    email = forms.EmailField(max_length=50, help_text='Required. Inform a valid email address.',
-                             widget=(forms.TextInput(attrs={'class': 'form-control'})))
-    password1 = forms.CharField(label=_('Password'),
-                                widget=(forms.PasswordInput(attrs={'class': 'form-control'})),
-                                help_text=password_validation.password_validators_help_text_html())
-    password2 = forms.CharField(label=_('Password Confirmation'), widget=forms.PasswordInput(attrs={'class': 'form-control'}),
-                                help_text=_('Just Enter the same password, for confirmation'))
-    username = forms.CharField(
-        label=_('Username'),
-        max_length=150,
-        help_text=_('Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.'),
-        validators=[username_validator],
-        error_messages={'unique': _("A user with that username already exists.")},
-        widget=forms.TextInput(attrs={'class': 'form-control'})
-    )
-
-    class Meta:
-        model = User
-        fields = ('username', 'email', 'password1', 'password2',)
-
-# class SignUpForm(UserCreationForm):
-#     username = forms.CharField(max_length=10 , required=True, label="The most impressing nickname you ever had")
-#     # password = forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password, why bother probably you will use 123456")
-#     email = forms.EmailField(max_length=255 ,  required=True, label="email, Prepare for shitload of SPAM baby")
-#     class Meta:
-#         model = User
-#         fields = ['username','email','password1','password2' ]
-
-#     # def clean_message(self):
-#     #     customer_id = self.cleaned_data['customer_id']
-#     #     return customer_id
 
 
 
@@ -150,3 +120,50 @@ class NewFlightForm(forms.ModelForm):
         if landing <= departure:
             raise forms.ValidationError('A landing must be after a departure')
         return landing
+
+
+
+
+
+#####################################
+            #Old forms
+#####################################
+
+# class SignUpForm(UserCreationForm):
+#     # first_name = forms.CharField(max_length=12, min_length=4, required=True, help_text='Required: First Name',
+#     #                             widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}))
+#     # # last_name = forms.CharField(max_length=12, min_length=4, required=True, help_text='Required: Last Name',
+#     #                            widget=(forms.TextInput(attrs={'class': 'form-control'})))
+#     email = forms.EmailField(max_length=50, help_text='Required. Inform a valid email address.',
+#                              widget=(forms.TextInput(attrs={'class': 'form-control'})))
+#     password1 = forms.CharField(label=_('Password'),
+#                                 widget=(forms.PasswordInput(attrs={'class': 'form-control'})),
+#                                 help_text=password_validation.password_validators_help_text_html())
+#     password2 = forms.CharField(label=_('Password Confirmation'), widget=forms.PasswordInput(attrs={'class': 'form-control'}),
+#                                 help_text=_('Just Enter the same password, for confirmation'))
+#     username = forms.CharField(
+#         label=_('Username'),
+#         max_length=150,
+#         help_text=_('Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.'),
+#         validators=[username_validator],
+#         error_messages={'unique': _("A user with that username already exists.")},
+#         widget=forms.TextInput(attrs={'class': 'form-control'})
+#     )
+
+#     class Meta:
+#         model = User
+#         fields = ('username', 'email', 'password1', 'password2',)
+
+# class SignUpForm(UserCreationForm):
+#     username = forms.CharField(max_length=10 , required=True, label="The most impressing nickname you ever had")
+#     # password = forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password, why bother probably you will use 123456")
+#     email = forms.EmailField(max_length=255 ,  required=True, label="email, Prepare for shitload of SPAM baby")
+#     class Meta:
+#         model = User
+#         fields = ['username','email','password1','password2' ]
+
+#     # def clean_message(self):
+#     #     customer_id = self.cleaned_data['customer_id']
+#     #     return customer_id
+
+
