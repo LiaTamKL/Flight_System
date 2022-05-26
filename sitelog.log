@@ -803,11 +803,11 @@ Exception: <tr>
     <td>
       <ul class="errorlist"><li>Account with this Email already exists.</li></ul>
       <input type="email" name="email" value="teen@tee222221.com" maxlength="60" autofocus required id="id_email">
-      
+
         <br>
         <span class="helptext">required</span>
-      
-      
+
+
     </td>
   </tr>
 
@@ -816,86 +816,86 @@ Exception: <tr>
     <td>
       <ul class="errorlist"><li>Account with this Username already exists.</li></ul>
       <input type="text" name="username" value="teenee" maxlength="30" required id="id_username">
-      
-      
+
+
     </td>
   </tr>
 
   <tr>
     <th><label for="id_password1">Password:</label></th>
     <td>
-      
+
       <input type="password" name="password1" autocomplete="new-password" required id="id_password1">
-      
+
         <br>
-        <span class="helptext"><ul><li>Your password can’t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can’t be a commonly used password.</li><li>Your password can’t be entirely numeric.</li></ul></span>
-      
-      
+        <span class="helptext"><ul><li>Your password canï¿½t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password canï¿½t be a commonly used password.</li><li>Your password canï¿½t be entirely numeric.</li></ul></span>
+
+
     </td>
   </tr>
 
   <tr>
     <th><label for="id_password2">Password confirmation:</label></th>
     <td>
-      
+
       <input type="password" name="password2" autocomplete="new-password" required id="id_password2">
-      
+
         <br>
         <span class="helptext">Enter the same password as before, for verification.</span>
-      
-      
+
+
     </td>
   </tr>
 
   <tr>
     <th><label for="id_first_name">Yo name :</label></th>
     <td>
-      
+
       <input type="text" name="first_name" value="heyo" maxlength="50" required id="id_first_name">
-      
-      
+
+
     </td>
   </tr>
 
   <tr>
     <th><label for="id_last_name">Yo fam name:</label></th>
     <td>
-      
+
       <input type="text" name="last_name" value="maya" maxlength="50" required id="id_last_name">
-      
-      
+
+
     </td>
   </tr>
 
   <tr>
     <th><label for="id_address">Where Yo live fool?</label></th>
     <td>
-      
+
       <input type="text" name="address" value="kjsjkadbkj" maxlength="255" required id="id_address">
-      
-      
+
+
     </td>
   </tr>
 
   <tr>
     <th><label for="id_phone_number">Yo phone , real one this time :</label></th>
     <td>
-      
+
       <input type="number" name="phone_number" value="25812354" max="9999999999" required id="id_phone_number">
-      
-      
+
+
     </td>
   </tr>
 
   <tr>
     <th><label for="id_credit_card_no">Credit card , you can trust me..., to buy some expensive shit!</label></th>
     <td>
-      
+
       <input type="number" name="credit_card_no" value="222135812358" max="9999999999999999" required id="id_credit_card_no">
-      
-      
-        
-      
+
+
+
+
     </td>
   </tr>
 INFO 2022-05-25 19:59:18,512 autoreload 13660 14420 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
