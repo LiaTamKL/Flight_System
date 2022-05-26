@@ -65,7 +65,7 @@ def show_countries_info(request):
     }
     return render(request, "all_countries.html", context)
 
-
+#shows all flights for the airline that's logged in. shows nothing if not logged in as an airline
 def view_flights_by_airline(request):
     #if not request.user.is_authenticated:
     #    redirect('login')
@@ -76,18 +76,23 @@ def view_flights_by_airline(request):
         context = {
             'Flights': flights,
             'Airline': airline,
-            
             }
     except: 
         context = {'Flights': None, 
                     'Airline': 'You are not logged in as an airline. You may not view this',
                     }
+
     return render(request, 'airline_get_flights.html', context)
 
-
+#takes a flight_id, deletes it if you're logged in as the airline that flight belongs to.
 def delete_flight_for_airline(request, flight_id):
-    result = Airline_Facade.remove_flight(flight_id)
-    #proper "delete" page should be added later instead of an httpresponse
+    airline = models.Airline.objects.filter(account=request.user.id)
+    try:
+        airline = airline[0]
+    except:
+        return HttpResponse('You are not logged in as an airline. Please login')
+    
+    result = Airline_Facade.remove_flight(flight_id, airline)
     if result == 1:
         return HttpResponse(f'Flight #{flight_id} removed successfully')
 
@@ -112,7 +117,6 @@ def show_country_search_from(request):
 
 #lets airline fill in form for new flight
 def airline_add_flight(request):
-    #for now this is hardcoded to medair flights only, we'll do it via a login token later
     airline = models.Airline.objects.filter(account=request.user.id)
     try:
         airline = airline[0]

@@ -2626,3 +2626,22 @@ Traceback (most recent call last):
 TypeError: __init__() missing 3 required positional arguments: 'using', 'savepoint', and 'durable'
 INFO 2022-05-26 10:46:14,866 autoreload 7360 18108 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\DAL\airline_facade.py changed, reloading.
 INFO 2022-05-26 10:46:15,330 autoreload 17768 884 Watching for file changes with StatReloader
+WARNING 2022-05-26 11:05:59,782 log 17768 14736 Not Found: /
+INFO 2022-05-26 11:21:38,009 autoreload 17768 884 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 11:21:38,447 autoreload 1356 9136 Watching for file changes with StatReloader
+INFO 2022-05-26 11:21:57,652 autoreload 1356 9136 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 11:21:58,161 autoreload 8524 10968 Watching for file changes with StatReloader
+INFO 2022-05-26 11:23:54,335 autoreload 8524 10968 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\DAL\airline_facade.py changed, reloading.
+INFO 2022-05-26 11:23:54,788 autoreload 3620 12208 Watching for file changes with StatReloader
+INFO 2022-05-26 11:24:37,988 autoreload 3620 12208 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\DAL\airline_facade.py changed, reloading.
+INFO 2022-05-26 11:24:38,457 autoreload 5324 2848 Watching for file changes with StatReloader
+INFO 2022-05-26 11:25:07,026 autoreload 5324 2848 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\DAL\airline_facade.py changed, reloading.
+INFO 2022-05-26 11:25:07,595 autoreload 12348 14868 Watching for file changes with StatReloader
+WARNING 2022-05-26 11:25:32,357 log 12348 11688 Not Found: /flight_app/airline/delete/2
+WARNING 2022-05-26 11:25:54,982 log 12348 11688 Not Found: /flight_app/admin
+WARNING 2022-05-26 11:25:57,885 log 12348 11688 Not Found: //admin
+WARNING 2022-05-26 11:29:27,331 log 12348 11688 Not Found: /flight_app/view
+WARNING 2022-05-26 11:30:39,882 log 12348 11688 Not Found: /flight_app/airline/delete/1
+WARNING 2022-05-26 11:30:53,881 log 12348 11688 Not Found: /flight_app/airline/delete/2
+INFO 2022-05-26 11:31:08,947 autoreload 12348 14868 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\DAL\airline_facade.py changed, reloading.
+INFO 2022-05-26 11:31:09,424 autoreload 908 12220 Watching for file changes with StatReloader
