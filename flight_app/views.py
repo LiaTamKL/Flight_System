@@ -19,23 +19,26 @@ from django.contrib import auth
 def homeview(request):
 
     if request.user.is_authenticated:
+
         account_type = request.user.account_role
         red = f"members/{account_type}/homepage"
         return redirect(red)
 
-
     return render(request, 'home.html', )
 
 
+
 def customer_home(request):
-    account_id = request.user.id
+    if request.user.is_authenticated:
+        account_id = request.user.id
+        account_id = models.Customer.objects.get(account_id = account_id)
 
-    account_id = models.Customer.objects.get(account_id = account_id)
+        context = {
+            'name': account_id.first_name
+        }
+        return render(request, 'cust_home.html', context)
+    return render(request, 'home.html', )
 
-    context = {
-        'name': account_id.first_name
-    }
-    return render(request, 'cust_home.html', context)
 
 
 
@@ -254,10 +257,8 @@ def user_login(request):
 
 def logout(request):
     if request.user.is_authenticated:
-        account_id = request.user.id
-        account_id = models.Customer.objects.get(account_id = account_id)
         auth.logout(request)
-        return render(request,'logged_out.html' , {{"user":account_id.first_name}})
+        return render(request,'logged_out.html')
     else:
         return redirect('home')
 
