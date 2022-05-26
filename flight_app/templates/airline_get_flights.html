@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <title>Flights by {{Airline.name}}</title>
+    <title>{{Airline}}</title>
 </head>
 <body>
     <div>
         <div class="card text-center">
-        <h1 class="display-1">Flights by {{Airline.name}}</h1></div>
+        <h1 class="display-1">  {{Airline}}</h1></div>
     {% for flight in Flights %}
         <div  class="list-group-item list-group-item-action flex-column align-items-start">
         <div class="d-flex w-100 justify-content-between">

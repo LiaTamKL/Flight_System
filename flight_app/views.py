@@ -66,13 +66,22 @@ def show_countries_info(request):
     return render(request, "all_countries.html", context)
 
 
-def view_flights_by_airline(request, airline_id):
-    flights = Airline_Facade.get_my_flights(airline_id)
-    airline = (Airline_Facade.get_airline_by_id(airline_id))[0]
-    context = {
-        'Flights': flights,
-        'Airline': airline
-    }
+def view_flights_by_airline(request):
+    #if not request.user.is_authenticated:
+    #    redirect('login')
+    airline = models.Airline.objects.filter(account=request.user.id)
+    try:
+        airline = airline[0]
+        flights = Airline_Facade.get_my_flights(airline.id)
+        context = {
+            'Flights': flights,
+            'Airline': airline,
+            
+            }
+    except: 
+        context = {'Flights': None, 
+                    'Airline': 'You are not logged in as an airline. You may not view this',
+                    }
     return render(request, 'airline_get_flights.html', context)
 
 
@@ -104,14 +113,18 @@ def show_country_search_from(request):
 #lets airline fill in form for new flight
 def airline_add_flight(request):
     #for now this is hardcoded to medair flights only, we'll do it via a login token later
-    airline_id = 1
-    flightform = forms.NewFlightForm(request.POST or None)
+    airline = models.Airline.objects.filter(account=request.user.id)
+    try:
+        airline = airline[0]
+    except:
+        return HttpResponse('You are not logged in as an airline. Please login')
 
+    flightform = forms.NewFlightForm(request.POST or None)
     message = None
     if request.method =='POST':
         if flightform.is_valid():
             flight = models.Flight()
-            Airline_Facade.add_flight(airline_id, flightform.cleaned_data, flight)
+            Airline_Facade.add_flight(airline.id, flightform.cleaned_data, flight)
             message = 'Flight added successfully'
     context = {
         'form': flightform,

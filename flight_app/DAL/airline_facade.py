@@ -9,8 +9,6 @@ class Airline_Facade(BaseFuncade):
 
     #add a flight. uses form. in the future, should use logincheck
     def add_flight(airline, form, flight):
-        
-        with transaction.Atomic():
             airli = Airline.objects.get(pk = airline)
             flight.airline = airli
             flight.origin_country = form['origin_country']

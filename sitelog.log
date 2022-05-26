@@ -2282,3 +2282,347 @@ Traceback (most recent call last):
 ValueError: The view flight_app.views.register_customer didn't return an HttpResponse object. It returned None instead.
 INFO 2022-05-26 02:49:11,451 autoreload 25872 8668 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
 INFO 2022-05-26 02:49:11,764 autoreload 12696 24016 Watching for file changes with StatReloader
+INFO 2022-05-26 08:54:36,196 autoreload 36564 37112 Watching for file changes with StatReloader
+INFO 2022-05-26 08:55:34,621 autoreload 60920 26344 Watching for file changes with StatReloader
+WARNING 2022-05-26 08:55:35,843 log 60920 31196 Not Found: /
+INFO 2022-05-26 09:57:35,756 autoreload 15828 14612 Watching for file changes with StatReloader
+WARNING 2022-05-26 09:57:37,007 log 15828 17496 Not Found: /
+WARNING 2022-05-26 09:57:37,230 log 15828 17496 Not Found: /favicon.ico
+INFO 2022-05-26 10:01:19,120 autoreload 15828 14612 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:01:19,716 autoreload 3092 2452 Watching for file changes with StatReloader
+ERROR 2022-05-26 10:01:22,991 log 3092 11380 Internal Server Error: /flight_app/airline/view/1
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 71, in view_flights_by_airline
+    redirect('login')
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\shortcuts.py", line 48, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'login' not found. 'login' is not a valid view function or pattern name.
+INFO 2022-05-26 10:01:42,250 autoreload 3092 2452 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\urls.py changed, reloading.
+INFO 2022-05-26 10:01:42,704 autoreload 18088 9428 Watching for file changes with StatReloader
+INFO 2022-05-26 10:02:53,366 autoreload 18088 9428 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:02:53,818 autoreload 5528 2428 Watching for file changes with StatReloader
+INFO 2022-05-26 10:03:54,116 autoreload 5528 2428 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:03:54,552 autoreload 7660 14736 Watching for file changes with StatReloader
+INFO 2022-05-26 10:04:19,035 autoreload 7660 14736 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:04:19,515 autoreload 14848 15972 Watching for file changes with StatReloader
+INFO 2022-05-26 10:04:51,125 autoreload 14848 15972 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:04:51,591 autoreload 2948 3524 Watching for file changes with StatReloader
+ERROR 2022-05-26 10:04:53,068 log 2948 3760 Internal Server Error: /flight_app/airline/view/1
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 74, in view_flights_by_airline
+    adm = models.Administrator.objects.get(account=request.user.id)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+flight_app.models.Administrator.DoesNotExist: Administrator matching query does not exist.
+INFO 2022-05-26 10:05:22,367 autoreload 2948 3524 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:05:22,808 autoreload 7340 18396 Watching for file changes with StatReloader
+INFO 2022-05-26 10:06:07,224 autoreload 7340 18396 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:06:07,651 autoreload 7328 1884 Watching for file changes with StatReloader
+INFO 2022-05-26 10:07:19,440 autoreload 7328 1884 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:07:19,879 autoreload 9728 2116 Watching for file changes with StatReloader
+ERROR 2022-05-26 10:07:22,324 log 9728 3676 Internal Server Error: /flight_app/airline/view/1
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 75, in view_flights_by_airline
+    if models.Administrator.objects.get(account=request.user.id) == None:
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+flight_app.models.Administrator.DoesNotExist: Administrator matching query does not exist.
+INFO 2022-05-26 10:07:31,827 autoreload 9728 2116 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:07:32,359 autoreload 18380 3504 Watching for file changes with StatReloader
+INFO 2022-05-26 10:08:15,951 autoreload 18380 3504 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:08:16,443 autoreload 18368 11548 Watching for file changes with StatReloader
+INFO 2022-05-26 10:08:24,003 autoreload 18368 11548 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:08:24,465 autoreload 588 10772 Watching for file changes with StatReloader
+INFO 2022-05-26 10:08:32,220 autoreload 588 10772 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:08:32,698 autoreload 11320 8068 Watching for file changes with StatReloader
+INFO 2022-05-26 10:09:08,559 autoreload 11320 8068 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:09:09,036 autoreload 2648 18112 Watching for file changes with StatReloader
+INFO 2022-05-26 10:09:58,806 autoreload 2648 18112 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:09:59,248 autoreload 11948 16992 Watching for file changes with StatReloader
+INFO 2022-05-26 10:10:44,695 autoreload 11948 16992 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:10:45,172 autoreload 14352 6308 Watching for file changes with StatReloader
+INFO 2022-05-26 10:11:19,153 autoreload 14352 6308 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:11:19,573 autoreload 4280 8604 Watching for file changes with StatReloader
+INFO 2022-05-26 10:14:28,962 autoreload 4280 8604 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:14:29,419 autoreload 10900 32 Watching for file changes with StatReloader
+INFO 2022-05-26 10:15:06,273 autoreload 10900 32 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:15:06,754 autoreload 3100 14420 Watching for file changes with StatReloader
+ERROR 2022-05-26 10:15:08,363 log 3100 16244 Internal Server Error: /flight_app/airline/view/1
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 76, in view_flights_by_airline
+    airline = models.Airline.objects.get(account=request.user.id)[0]
+TypeError: 'Airline' object is not subscriptable
+INFO 2022-05-26 10:15:25,895 autoreload 3100 14420 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:15:26,393 autoreload 13276 3792 Watching for file changes with StatReloader
+ERROR 2022-05-26 10:15:27,179 log 13276 15176 Internal Server Error: /flight_app/airline/view/1
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 77, in view_flights_by_airline
+    airline = models.Airline.objects.get(account=request.user.id)[0]
+TypeError: 'Airline' object is not subscriptable
+INFO 2022-05-26 10:16:08,790 autoreload 13276 3792 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:16:09,243 autoreload 3028 284 Watching for file changes with StatReloader
+INFO 2022-05-26 10:17:32,562 autoreload 3028 284 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:17:33,001 autoreload 9740 7840 Watching for file changes with StatReloader
+INFO 2022-05-26 10:17:55,322 autoreload 9740 7840 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:17:55,766 autoreload 7256 10376 Watching for file changes with StatReloader
+INFO 2022-05-26 10:18:05,443 autoreload 7256 10376 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\urls.py changed, reloading.
+INFO 2022-05-26 10:18:05,912 autoreload 15172 9704 Watching for file changes with StatReloader
+WARNING 2022-05-26 10:18:06,881 log 15172 4524 Not Found: /flight_app/airline/view/1
+WARNING 2022-05-26 10:18:27,557 log 15172 4524 Not Found: /flight_app/airline/view/1
+INFO 2022-05-26 10:19:04,169 autoreload 15172 9704 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:19:04,638 autoreload 15480 2532 Watching for file changes with StatReloader
+INFO 2022-05-26 10:19:28,086 autoreload 15480 2532 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:19:28,558 autoreload 6424 5596 Watching for file changes with StatReloader
+INFO 2022-05-26 10:19:41,411 autoreload 6424 5596 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:19:41,923 autoreload 4308 16964 Watching for file changes with StatReloader
+INFO 2022-05-26 10:20:01,217 autoreload 4308 16964 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:20:01,689 autoreload 2948 15536 Watching for file changes with StatReloader
+INFO 2022-05-26 10:20:14,573 autoreload 2948 15536 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:20:15,065 autoreload 15044 15380 Watching for file changes with StatReloader
+INFO 2022-05-26 10:20:25,844 autoreload 15044 15380 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:20:26,325 autoreload 10736 14260 Watching for file changes with StatReloader
+INFO 2022-05-26 10:21:07,554 autoreload 10736 14260 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:21:08,023 autoreload 3748 17956 Watching for file changes with StatReloader
+INFO 2022-05-26 10:21:34,557 autoreload 3748 17956 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:21:35,013 autoreload 12232 8488 Watching for file changes with StatReloader
+INFO 2022-05-26 10:23:21,849 autoreload 12232 8488 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:23:22,383 autoreload 13360 1236 Watching for file changes with StatReloader
+INFO 2022-05-26 10:23:51,035 autoreload 13360 1236 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:23:51,517 autoreload 11856 8512 Watching for file changes with StatReloader
+ERROR 2022-05-26 10:24:20,419 log 11856 6516 Internal Server Error: /flight_app/airline/view/
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 78, in view_flights_by_airline
+    airline = airline[0]
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\models\query.py", line 362, in __getitem__
+    return qs._result_cache[0]
+IndexError: list index out of range
+INFO 2022-05-26 10:24:48,904 autoreload 11856 8512 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:24:49,386 autoreload 4524 14392 Watching for file changes with StatReloader
+ERROR 2022-05-26 10:24:50,320 log 4524 15016 Internal Server Error: /flight_app/airline/view/
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 73, in view_flights_by_airline
+    print(not airline[0])
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\models\query.py", line 362, in __getitem__
+    return qs._result_cache[0]
+IndexError: list index out of range
+INFO 2022-05-26 10:26:13,570 autoreload 4524 14392 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:26:14,016 autoreload 456 12100 Watching for file changes with StatReloader
+ERROR 2022-05-26 10:26:43,347 log 456 14372 Internal Server Error: /flight_app/airline/view/
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 77, in view_flights_by_airline
+    if airline.exists() == True:
+AttributeError: 'Airline' object has no attribute 'exists'
+INFO 2022-05-26 10:27:03,922 autoreload 456 12100 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:27:04,362 autoreload 17332 924 Watching for file changes with StatReloader
+ERROR 2022-05-26 10:27:05,925 log 17332 9340 Internal Server Error: /flight_app/airline/view/
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 79, in view_flights_by_airline
+    airline = airline[0]
+TypeError: 'Airline' object is not subscriptable
+INFO 2022-05-26 10:27:20,374 autoreload 17332 924 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:27:20,846 autoreload 11320 6236 Watching for file changes with StatReloader
+INFO 2022-05-26 10:28:21,266 autoreload 11320 6236 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:28:21,747 autoreload 13504 8808 Watching for file changes with StatReloader
+INFO 2022-05-26 10:29:03,014 autoreload 13504 8808 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:29:03,489 autoreload 3664 9536 Watching for file changes with StatReloader
+INFO 2022-05-26 10:30:06,659 autoreload 3664 9536 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:30:07,138 autoreload 12388 5880 Watching for file changes with StatReloader
+INFO 2022-05-26 10:30:41,056 autoreload 12388 5880 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:30:41,527 autoreload 1192 13932 Watching for file changes with StatReloader
+INFO 2022-05-26 10:31:44,815 autoreload 1192 13932 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:31:45,270 autoreload 5104 15224 Watching for file changes with StatReloader
+INFO 2022-05-26 10:32:24,389 autoreload 5104 15224 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:32:24,870 autoreload 976 13916 Watching for file changes with StatReloader
+INFO 2022-05-26 10:33:12,374 autoreload 976 13916 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:33:12,874 autoreload 16160 3664 Watching for file changes with StatReloader
+INFO 2022-05-26 10:33:41,555 autoreload 16160 3664 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:33:42,032 autoreload 3672 11792 Watching for file changes with StatReloader
+INFO 2022-05-26 10:34:06,358 autoreload 3672 11792 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:34:06,789 autoreload 13912 13724 Watching for file changes with StatReloader
+ERROR 2022-05-26 10:35:34,831 log 13912 11696 Internal Server Error: /flight_app/airline/view/
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\smartif.py", line 179, in translate_token
+    op = OPERATORS[token]
+KeyError: 'check==1'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 86, in view_flights_by_airline
+    return render(request, 'airline_get_flights.html', context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\engine.py", line 176, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\engine.py", line 158, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\defaulttags.py", line 953, in do_if
+    condition = TemplateIfParser(parser, bits).parse()
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\defaulttags.py", line 886, in __init__
+    super().__init__(*args, **kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\smartif.py", line 170, in __init__
+    mapped_tokens.append(self.translate_token(token))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\smartif.py", line 181, in translate_token
+    return self.create_var(token)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\defaulttags.py", line 889, in create_var
+    return TemplateLiteral(self.template_parser.compile_filter(value), value)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 600, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 701, in __init__
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '==1' from 'check==1'
+INFO 2022-05-26 10:37:33,380 autoreload 13912 13724 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:37:33,818 autoreload 15844 17316 Watching for file changes with StatReloader
+INFO 2022-05-26 10:38:53,251 autoreload 15844 17316 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:38:53,706 autoreload 17956 12352 Watching for file changes with StatReloader
+INFO 2022-05-26 10:39:00,265 autoreload 17956 12352 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:39:00,721 autoreload 3864 1192 Watching for file changes with StatReloader
+INFO 2022-05-26 10:40:52,539 autoreload 3864 1192 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:40:53,017 autoreload 13796 5476 Watching for file changes with StatReloader
+INFO 2022-05-26 10:41:35,298 autoreload 13796 5476 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 10:41:35,743 autoreload 17608 18228 Watching for file changes with StatReloader
+ERROR 2022-05-26 10:43:00,093 log 17608 13912 Internal Server Error: /admin/flight_app/country/add/
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\contrib\admin\options.py", line 683, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\views\decorators\cache.py", line 62, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\contrib\admin\sites.py", line 242, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\contrib\admin\options.py", line 1885, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\utils\decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\utils\decorators.py", line 133, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\contrib\admin\options.py", line 1745, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\contrib\admin\options.py", line 1797, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\contrib\admin\options.py", line 1220, in save_model
+    obj.save()
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\models\base.py", line 806, in save
+    self.save_base(
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\models\base.py", line 857, in save_base
+    updated = self._save_table(
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\models\base.py", line 1000, in _save_table
+    results = self._do_insert(
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\models\base.py", line 1041, in _do_insert
+    return manager._insert(
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\models\query.py", line 1434, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\models\sql\compiler.py", line 1621, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: database is locked
+INFO 2022-05-26 10:44:11,429 autoreload 7360 18108 Watching for file changes with StatReloader
+WARNING 2022-05-26 10:44:12,517 log 7360 960 Not Found: /
+ERROR 2022-05-26 10:45:43,177 log 7360 960 Internal Server Error: /flight_app/airline/add
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 127, in airline_add_flight
+    Airline_Facade.add_flight(airline.id, flightform.cleaned_data, flight)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\DAL\airline_facade.py", line 13, in add_flight
+    with transaction.Atomic():
+TypeError: __init__() missing 3 required positional arguments: 'using', 'savepoint', and 'durable'
+INFO 2022-05-26 10:46:14,866 autoreload 7360 18108 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\DAL\airline_facade.py changed, reloading.
+INFO 2022-05-26 10:46:15,330 autoreload 17768 884 Watching for file changes with StatReloader
