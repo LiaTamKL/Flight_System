@@ -31,13 +31,15 @@ class country_id_search_form(forms.ModelForm):
         return country_id_m
 
 class NewTicketForm(forms.ModelForm):
-    customer_id = forms.ModelChoiceField(queryset=models.Customer.objects.all(),required=True, label='Customer ID')
+    # customer_id = forms.CharField(max_length=128, widget=forms.TextInput(attrs={'placeholder': 'Please enter the title'}))
+    # customer_id = forms.ModelChoiceField(queryset=models.Customer.objects.all(),required=True, label='Customer ID')
+
     flight_id = forms.ModelChoiceField(queryset=models.Flight.objects.all(), required=True , label='Flight ID')
    
-
     class Meta:
         model = models.Flight_Ticket
-        fields = ['customer_id', 'flight_id']
+        # fields = ['customer_id', 'flight_id']
+        fields = ['flight_id']
 
     # def clean_message(self):
     #     customer_id = self.cleaned_data['customer_id']
@@ -51,16 +53,6 @@ class NewTicketForm(forms.ModelForm):
 #add password validator 
 #https://medium.com/geekculture/django-shorts-password-validators-95285c0936de
 
-# class LoginForm(AuthenticationForm):
-#     # email = forms.EmailField( max_length=60, help_text='required')
-#     # username = forms.CharField(max_length=10 , required=True, label="Username", widget=forms.TextInput(attrs={'class': 'form-control'}))
-#     # password = forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password")
-#     # password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-#     class Meta:
-#         model = Account
-#         # fields = '__all__'
-#         fields = ['email', 'password1']
-        
 
 
 class Login(AuthenticationForm):
@@ -147,9 +139,37 @@ class NewFlightForm(forms.ModelForm):
 
 
 
+class RemoveTicket(forms.ModelForm):
 
+    def __init__(self, user, *args, **kwargs):
+        self.user = user
+        super(RemoveTicket, self).__init__(*args, **kwargs)
 
+        # self.id = forms.ModelChoiceField(queryset=models.Account.objects.filter(pk = self.user), required=True , label='Flight ID')
+        self.fields['flight'].queryset=models.Flight_Ticket.objects.filter(customer_id = self.user)
 
+    class Meta:
+        model = models.Flight_Ticket
+        fields = ('flight',)
+
+# class NewTicketForm(forms.ModelForm):
+#     # customer_id = forms.CharField(max_length=128, widget=forms.TextInput(attrs={'placeholder': 'Please enter the title'}))
+#     # customer_id = forms.ModelChoiceField(queryset=models.Customer.objects.all(),required=True, label='Customer ID')
+
+#     flight_id = forms.ModelChoiceField(queryset=models.Flight.objects.all(), required=True , label='Flight ID')
+   
+#     class Meta:
+#         model = models.Flight_Ticket
+#         # fields = ['customer_id', 'flight_id']
+#         fields = ['flight_id']
+
+#     # def clean_message(self):
+#     #     customer_id = self.cleaned_data['customer_id']
+#     #     return customer_id
+
+#     # def __str__(self) -> str:
+#     #     customer_id = customer_id.id
+#     #     return customer_id
 
 
 #################################################################
@@ -189,3 +209,14 @@ class NewFlightForm(forms.ModelForm):
 # #     # def clean_message(self):
 # #     #     customer_id = self.cleaned_data['customer_id']
 # #     #     return customer_id
+
+# class LoginForm(AuthenticationForm):
+#     # email = forms.EmailField( max_length=60, help_text='required')
+#     # username = forms.CharField(max_length=10 , required=True, label="Username", widget=forms.TextInput(attrs={'class': 'form-control'}))
+#     # password = forms.CharField(max_length=16 ,  widget=forms.PasswordInput() , label="Password")
+#     # password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+#     class Meta:
+#         model = Account
+#         # fields = '__all__'
+#         fields = ['email', 'password1']
+        

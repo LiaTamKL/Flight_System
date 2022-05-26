@@ -17,6 +17,8 @@ from django.forms import formset_factory
 from django.contrib import auth
 
 
+
+
 def homeview(request):
 
     if request.user.is_authenticated:
@@ -30,12 +32,12 @@ def members_homepage(request):
     if request.user.is_authenticated:
         account_id = request.user.id
         account_type = request.user.account_role
-        print(account_type)
+        # print(account_type)
         if request.user.is_superuser:
             context = {
             'account_type': 'superuser'
             }
-            return render(request, 'cust_home.html', context)
+            return render(request, 'members_home.html', context)
         
 
         elif account_type == models.Account_Role.objects.get(id = 2):
@@ -51,12 +53,22 @@ def members_homepage(request):
             'first_name': account_id.first_name,
             'account_type': account_type
         }
-        return render(request, 'cust_home.html', context)
+        return render(request, 'members_home.html', context)
 
     return redirect('login')
 
 
+def members_tickets(request):
+    if request.user.is_authenticated:
 
+        return render(request , 'add_ticket.html')
+
+        
+
+
+    
+    
+    return redirect('home.html')
 
 def show_flight_info (request):
     all_flights = BaseFuncade.get_all_flights()
@@ -211,40 +223,73 @@ def airline_update_flight(request, flight_id):
     return render(request, 'add_flight.html', context)
 
 
-def remove_ticket(request, ticket_id):
-    result = CustomerFancade.remove_ticket(ticket_id)
-    if result == 1:
-        return HttpResponse(f'ticket #{ticket_id} removed successfully')
 
+
+
+
+
+########################################################
+#show remaning tickets , reduce tickets on addition
+#flight_tickets.objects.filter(pk=flight_id).count()')
 
 def add_ticket(request):
-    message = None
-    new_ticket_form = forms.NewTicketForm(request.POST or None)
-    if request.method =='POST':
-        if new_ticket_form.is_valid():
+    if request.user.is_authenticated:
+        customer = models.Customer.objects.get(account_id = request.user.id )
+        message = None
+        new_ticket_form = forms.NewTicketForm(request.POST)
+        if request.method =='POST':
+            if new_ticket_form.is_valid():
+            # if models.Flight_Ticket.filter(account_id = customer.id):
 
-            CustomerFancade.add_ticket(new_ticket_form.cleaned_data)
-            message = 'Ticket added successfully'
-    context = {
-        'form': new_ticket_form,
-        'message': message
-        }
-    return render(request, 'add_ticket.html', context)
-
-def get_my_tickets(request, cust_id):
-    all_my_tickets = CustomerFancade.get_my_tickets(cust_id)
-    return render(request, "all_my_tickets.html", {'all_tickets': all_my_tickets})
-
+                CustomerFancade.add_ticket(new_ticket_form.cleaned_data , customer.id)
+                message = 'Ticket added successfully'
+        context = {
+            'form': new_ticket_form,
+            'message': message
+            }
+        return render(request, 'add_tickFet.html', context)
+    
+    else:
+        return redirect('home')
 
 
 
-def cust_login(request, user_id):
-    context = {'id': user_id}
-    return render( request, 'customer_login_ok.html', context)
 
-def airline_login(request, user_id):
-    context = {'id': user_id}
-    return render( request, 'airline_login.ok', context)
+def get_my_tickets(request):
+    if request.user.is_authenticated:
+        customer = models.Customer.objects.get(account_id = request.user.id)
+        all_my_tickets = CustomerFancade.get_my_tickets(customer.id)
+
+        
+        return render(request, "all_my_tickets.html", {'all_tickets': all_my_tickets})
+
+
+
+
+    else:
+        return redirect('home')
+
+def remove_ticket(request):
+    if request.user.is_authenticated:
+        customer = models.Customer.objects.get(account_id = request.user.id)
+
+        
+        # if request.method =='POST':
+        form = forms.RemoveTicket(customer.id ,request.POST)
+        # form.fields['flight_id'].queryset = models.Flight_Ticket.objects.filter(customer_id=customer.id)""
+        # form.fields['flight_id'] = models.Flight_Ticket.objects.get(customer_id=customer.id)
+        # return HttpResponse(form)
+        # if form.is_valid():
+
+        # form = forms.RemoveTicket(request=request)
+        # raise print(form)
+        return render(request, 'login_page.html', {'login_form':form})
+
+
+                    # result = CustomerFancade.remove_ticket(ticket_id)
+                # if result == 1:
+                #     return HttpResponse(f'ticket #{ticket_id} removed successfully')
+
 
 
 #cannot be named 'login'
@@ -270,6 +315,7 @@ def user_login(request):
         context['login_form'] = new_login 
 
     return render(request, 'login_page.html', context)
+
 
 def logout(request):
     if request.user.is_authenticated:
@@ -322,13 +368,6 @@ def register(request, account_role):
 
 
 
-
-# def logged_in(request):
-#     return render(request, 'logged_in.html')
-
-
-def logged_in(request):
-    return render(request, 'logged_in.html')
 
 
 
@@ -463,3 +502,15 @@ def logged_in(request):
 
 # def logged_in(request):
 #     return render(request, 'logged_in.html')
+
+
+# def logged_in(request):
+#     return render(request, 'logged_in.html')
+
+# def cust_login(request, user_id):
+#     context = {'id': user_id}
+#     return render( request, 'customer_login_ok.html', context)
+
+# def airline_login(request, user_id):
+#     context = {'id': user_id}
+#     return render( request, 'airline_login.ok', context)

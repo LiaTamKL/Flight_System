@@ -5,29 +5,42 @@ from django.shortcuts import redirect
 urlpatterns = [
     path('', views.homeview, name='home') ,
     path('admin/', lambda request: redirect('/admin/login/', permanent=True)),
+    path('members/', lambda request: redirect('home', permanent=True)),
+
 
     path('flightinfo/', views.show_flight_info),
     path('airlineinfo/', views.show_airline_info),
     path('countryinfo/', views.show_countries_info),
     path('countryinfo/<country_id>' ,views.show_country_by_id),
     path('seachcountrybyid/', views.show_country_search_from),
-    path('ticket/add', views.add_ticket),
-    path('ticket/remove/<ticket_id>', views.remove_ticket),
+
+    # path('ticket/remove/<ticket_id>', views.remove_ticket),
     path('login/',views.user_login, name='login'),
 
     # path('memebers/')
     path('members/homepage/',views.members_homepage),
+    
+    path('members/tickets/add',views.add_ticket),
+    # path('members/tickets/remove/<ticket_id>', views.remove_ticket),
+    path('members/tickets/remove/', views.remove_ticket),
+    path('members/tickets/all/', views.get_my_tickets),
+    # path('members/update_account/', views.update),
+    
+    # path('denied',views.members_tickets),
+
+
+
+
+
 
     path('register/', views.register_customer),
     path('logout/', views.logout),
 
     
 
-    # path('airlineloggedin/<user_id>' , views.airline_login),
-    path('loggedin' , views.logged_in),
 
 
-    path('ticket/view/<cust_id>', views.get_my_tickets),
+    # path('ticket/view/<cust_id>', views.get_my_tickets),
     
     path('airline/view/', views.view_flights_by_airline),
     path('airline/delete/<flight_id>', views.delete_flight_for_airline),
@@ -49,3 +62,5 @@ urlpatterns = [
     # path("accounts/login/[name='login']", views.login_page ),
     #path('test/', views.testview)
     # # 
+    # path('airlineloggedin/<user_id>' , views.airline_login),
+    # path('loggedin' , views.logged_in),
