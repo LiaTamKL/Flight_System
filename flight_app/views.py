@@ -136,21 +136,36 @@ def airline_add_flight(request):
     }
     return render(request, 'add_flight.html', context)
 
+
+#takes flight id as peremeter, let's user update said flight. denies them if flight does not exist or user is not the airline for this flight
 def airline_update_flight(request, flight_id):
-    airline_id = (BaseFuncade.get_airline_by_id(1))[0]
+    airline = models.Airline.objects.filter(account=request.user.id)
+
+    #if you're not logged in as an airline, tell you to go log in
+    try:
+        airline = airline[0]
+    except:
+        return HttpResponse('You are not logged in as an airline. Please login')
+
+    #if flight does not exist, raises http404
     try:
         instance = (BaseFuncade.get_flight_by_id(flight_id))[0]
     except:
         raise Http404('Flight does not exist')
-    if airline_id != instance.airline:
-        raise PermissionDenied()
+
+    #if you're not logged in as the airline for this flight, raises permission deny
+    if airline != instance.airline:
+        raise PermissionDenied("This is not your flight! You may not update it")
 
     message = None
-    flightform = forms.NewFlightForm(request.POST, instance=instance)
     if request.method =='POST':
+        flightform = forms.NewFlightForm(request.POST, instance=instance)
         if flightform.is_valid():
-            #Airline_Facade.add_flight(1, flightform.clean_data)
-            message = 'Flight added successfully'
+            
+            flightform.save()
+            #Airline_Facade.update_flight(airline.id, flightform.cleaned_data, instance)
+            message = 'Flight updated successfully'
+    else: flightform = forms.NewFlightForm(instance=instance)
     context = {
         'form': flightform,
         'message': message

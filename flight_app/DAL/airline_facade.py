@@ -19,7 +19,7 @@ class Airline_Facade(BaseFuncade):
             flight.save()
 
     #same as the above, just a different name to clarify
-    def update_airline(airline, form, flight):
+    def update_flight(airline, form, flight):
         Airline_Facade.add_flight(airline, form, flight)
 
 
