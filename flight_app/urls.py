@@ -3,6 +3,8 @@ from . import views
 
 urlpatterns = [
     path('', views.homeview, name='home') ,
+    
+
     path('flightinfo/', views.show_flight_info),
     path('airlineinfo/', views.show_airline_info),
     path('countryinfo/', views.show_countries_info),
@@ -12,6 +14,8 @@ urlpatterns = [
     path('ticket/remove/<ticket_id>', views.remove_ticket),
     path('login/',views.user_login, name='login'),
 
+    # path('memebers/')
+    path('members/Customer/homepage/',views.customer_home),
 
     path('register/', views.register_customer),
     path('logout/', views.logout),

@@ -16,9 +16,28 @@ from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
 from django.contrib import auth
 
-
 def homeview(request):
-    return render(request, 'home.html')
+
+    if request.user.is_authenticated:
+        account_type = request.user.account_role
+        red = f"members/{account_type}/homepage"
+        return redirect(red)
+
+
+    return render(request, 'home.html', )
+
+
+def customer_home(request):
+    account_id = request.user.id
+
+    account_id = models.Customer.objects.get(account_id = account_id)
+
+    context = {
+        'name': account_id.first_name
+    }
+    return render(request, 'cust_home.html', context)
+
+
 
 def show_flight_info (request):
     all_flights = BaseFuncade.get_all_flights()
@@ -198,12 +217,10 @@ def user_login(request):
     new_login = forms.Login(data=request.POST)
 
     if request.method == 'POST':
-        
         if new_login.is_valid():
             logged = AnonymusFancade.login(request, new_login.cleaned_data)
             if logged:
-                redirect_address =f'/flight_app/loggedin'
-                return redirect(redirect_address)
+                return redirect('home')
             else:
            
                 raise PermissionDenied()
@@ -217,11 +234,18 @@ def user_login(request):
     return render(request, 'login_page.html', context)
 
 def logout(request):
-    auth.logout(request)
-    return render(request,'logged_out.html')
+    if request.user.is_authenticated:
+        account_id = request.user.id
+        account_id = models.Customer.objects.get(account_id = account_id)
+        auth.logout(request)
+        return render(request,'logged_out.html' , {{"user":account_id.first_name}})
+    else:
+        return redirect('home')
+
 
 
 def register_customer(request):
+    
     return register(request , account_role=2)
 
 
@@ -246,7 +270,7 @@ def register(request, account_role):
             
             else:
                 return Http404
-            return redirect('home')
+            return redirect('login/')
         else:
             
             context['user_registration_form'] = user_form 
