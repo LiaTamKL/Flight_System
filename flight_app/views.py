@@ -84,7 +84,7 @@ def show_countries_info(request):
     }
     return render(request, "all_countries.html", context)
 
-
+#shows all flights for the airline that's logged in. shows nothing if not logged in as an airline
 def view_flights_by_airline(request):
     #if not request.user.is_authenticated:
     #    redirect('login')
@@ -95,18 +95,23 @@ def view_flights_by_airline(request):
         context = {
             'Flights': flights,
             'Airline': airline,
-            
             }
     except: 
         context = {'Flights': None, 
                     'Airline': 'You are not logged in as an airline. You may not view this',
                     }
+
     return render(request, 'airline_get_flights.html', context)
 
-
+#takes a flight_id, deletes it if you're logged in as the airline that flight belongs to.
 def delete_flight_for_airline(request, flight_id):
-    result = Airline_Facade.remove_flight(flight_id)
-    #proper "delete" page should be added later instead of an httpresponse
+    airline = models.Airline.objects.filter(account=request.user.id)
+    try:
+        airline = airline[0]
+    except:
+        return HttpResponse('You are not logged in as an airline. Please login')
+    
+    result = Airline_Facade.remove_flight(flight_id, airline)
     if result == 1:
         return HttpResponse(f'Flight #{flight_id} removed successfully')
 
@@ -131,7 +136,6 @@ def show_country_search_from(request):
 
 #lets airline fill in form for new flight
 def airline_add_flight(request):
-    #for now this is hardcoded to medair flights only, we'll do it via a login token later
     airline = models.Airline.objects.filter(account=request.user.id)
     try:
         airline = airline[0]
@@ -151,21 +155,36 @@ def airline_add_flight(request):
     }
     return render(request, 'add_flight.html', context)
 
+
+#takes flight id as peremeter, let's user update said flight. denies them if flight does not exist or user is not the airline for this flight
 def airline_update_flight(request, flight_id):
-    airline_id = (BaseFuncade.get_airline_by_id(1))[0]
+    airline = models.Airline.objects.filter(account=request.user.id)
+
+    #if you're not logged in as an airline, tell you to go log in
+    try:
+        airline = airline[0]
+    except:
+        return HttpResponse('You are not logged in as an airline. Please login')
+
+    #if flight does not exist, raises http404
     try:
         instance = (BaseFuncade.get_flight_by_id(flight_id))[0]
     except:
         raise Http404('Flight does not exist')
-    if airline_id != instance.airline:
-        raise PermissionDenied()
+
+    #if you're not logged in as the airline for this flight, raises permission deny
+    if airline != instance.airline:
+        raise PermissionDenied("This is not your flight! You may not update it")
 
     message = None
-    flightform = forms.NewFlightForm(request.POST, instance=instance)
     if request.method =='POST':
+        flightform = forms.NewFlightForm(request.POST, instance=instance)
         if flightform.is_valid():
-            #Airline_Facade.add_flight(1, flightform.clean_data)
-            message = 'Flight added successfully'
+            
+            flightform.save()
+            #Airline_Facade.update_flight(airline.id, flightform.cleaned_data, instance)
+            message = 'Flight updated successfully'
+    else: flightform = forms.NewFlightForm(instance=instance)
     context = {
         'form': flightform,
         'message': message

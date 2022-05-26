@@ -7,7 +7,7 @@ from django.db import transaction
 
 class Airline_Facade(BaseFuncade):
 
-    #add a flight. uses form. in the future, should use logincheck
+    #add a flight. 
     def add_flight(airline, form, flight):
             airli = Airline.objects.get(pk = airline)
             flight.airline = airli
@@ -18,27 +18,30 @@ class Airline_Facade(BaseFuncade):
             flight.remaining_tickets = form['remaining_tickets']
             flight.save()
 
-    #updates airline details via a form where the existing details are shown
-    #this SHOULD NOT allow other companies to update other companies. We need logincheck later
-    def update_airline(airline, form, flight):
+    #same as the above, just a different name to clarify
+    def update_flight(airline, form, flight):
         Airline_Facade.add_flight(airline, form, flight)
 
 
-    #remove a flight. in the future, should use logincheck. returns 1 if successful
-    def remove_flight(flight):
-        #needs login check first to avoid other companies deleting flights for this company
+    #remove a flight.returns 1 if successful
+    def remove_flight(flight, airline):
+        #if the flight doesn't exist, returns 404
         try:
             f = Flight.objects.get(pk = flight)
         except Flight.DoesNotExist:
             raise Http404("Flight does not exist")
+        #if this flight doesn't belong to said airline, returns 404
+        if airline != f.airline:
+            raise Http404("This is not your flight! You may not delete it")
         tickets = Flight_Ticket.objects.filter(flight=flight)
+        #makes sure to delete all tickets for deleted flights
         if tickets.count() > 0:
             for ticket in tickets: ticket.delete()
         f.delete()
+        return 1
 
 
-    #takes the login token, returns the filter for all flight objects by said airline
-    #this SHOULD NOT be id in the final product. it needs to be based on logintokens
+    #gets all flight for an airline
     def get_my_flights(id):
         f = Flight.objects.filter(airline=id)
         return f
