@@ -20,10 +20,7 @@ from django.contrib import auth
 def homeview(request):
 
     if request.user.is_authenticated:
-
-        account_type = request.user.account_role
-        red = f"members/homepage/"
-        return redirect(red)
+        return redirect("members/homepage/")
 
     return render(request, 'home.html')
 
