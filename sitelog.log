@@ -803,11 +803,11 @@ Exception: <tr>
     <td>
       <ul class="errorlist"><li>Account with this Email already exists.</li></ul>
       <input type="email" name="email" value="teen@tee222221.com" maxlength="60" autofocus required id="id_email">
-      
+
         <br>
         <span class="helptext">required</span>
-      
-      
+
+
     </td>
   </tr>
 
@@ -816,86 +816,86 @@ Exception: <tr>
     <td>
       <ul class="errorlist"><li>Account with this Username already exists.</li></ul>
       <input type="text" name="username" value="teenee" maxlength="30" required id="id_username">
-      
-      
+
+
     </td>
   </tr>
 
   <tr>
     <th><label for="id_password1">Password:</label></th>
     <td>
-      
+
       <input type="password" name="password1" autocomplete="new-password" required id="id_password1">
-      
+
         <br>
-        <span class="helptext"><ul><li>Your password can’t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can’t be a commonly used password.</li><li>Your password can’t be entirely numeric.</li></ul></span>
-      
-      
+        <span class="helptext"><ul><li>Your password canï¿½t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password canï¿½t be a commonly used password.</li><li>Your password canï¿½t be entirely numeric.</li></ul></span>
+
+
     </td>
   </tr>
 
   <tr>
     <th><label for="id_password2">Password confirmation:</label></th>
     <td>
-      
+
       <input type="password" name="password2" autocomplete="new-password" required id="id_password2">
-      
+
         <br>
         <span class="helptext">Enter the same password as before, for verification.</span>
-      
-      
+
+
     </td>
   </tr>
 
   <tr>
     <th><label for="id_first_name">Yo name :</label></th>
     <td>
-      
+
       <input type="text" name="first_name" value="heyo" maxlength="50" required id="id_first_name">
-      
-      
+
+
     </td>
   </tr>
 
   <tr>
     <th><label for="id_last_name">Yo fam name:</label></th>
     <td>
-      
+
       <input type="text" name="last_name" value="maya" maxlength="50" required id="id_last_name">
-      
-      
+
+
     </td>
   </tr>
 
   <tr>
     <th><label for="id_address">Where Yo live fool?</label></th>
     <td>
-      
+
       <input type="text" name="address" value="kjsjkadbkj" maxlength="255" required id="id_address">
-      
-      
+
+
     </td>
   </tr>
 
   <tr>
     <th><label for="id_phone_number">Yo phone , real one this time :</label></th>
     <td>
-      
+
       <input type="number" name="phone_number" value="25812354" max="9999999999" required id="id_phone_number">
-      
-      
+
+
     </td>
   </tr>
 
   <tr>
     <th><label for="id_credit_card_no">Credit card , you can trust me..., to buy some expensive shit!</label></th>
     <td>
-      
+
       <input type="number" name="credit_card_no" value="222135812358" max="9999999999999999" required id="id_credit_card_no">
-      
-      
-        
-      
+
+
+
+
     </td>
   </tr>
 INFO 2022-05-25 19:59:18,512 autoreload 13660 14420 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
@@ -2626,717 +2626,123 @@ Traceback (most recent call last):
 TypeError: __init__() missing 3 required positional arguments: 'using', 'savepoint', and 'durable'
 INFO 2022-05-26 10:46:14,866 autoreload 7360 18108 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\DAL\airline_facade.py changed, reloading.
 INFO 2022-05-26 10:46:15,330 autoreload 17768 884 Watching for file changes with StatReloader
-INFO 2022-05-26 11:19:36,518 autoreload 17052 2384 Watching for file changes with StatReloader
-WARNING 2022-05-26 11:19:39,693 log 17052 13148 Not Found: /
-WARNING 2022-05-26 11:19:39,774 log 17052 13148 Not Found: /favicon.ico
-INFO 2022-05-26 11:20:31,051 autoreload 17052 2384 D:\Full_Stack\Projects\Second_Project\Flight_System\Flight_System\urls.py changed, reloading.
-INFO 2022-05-26 11:20:31,370 autoreload 10220 15284 Watching for file changes with StatReloader
-WARNING 2022-05-26 11:20:35,493 log 10220 17452 Not Found: /favicon.ico
-INFO 2022-05-26 11:20:37,761 autoreload 10220 15284 D:\Full_Stack\Projects\Second_Project\Flight_System\Flight_System\urls.py changed, reloading.
-INFO 2022-05-26 11:20:38,061 autoreload 18236 9600 Watching for file changes with StatReloader
-WARNING 2022-05-26 11:20:53,378 log 18236 17824 Not Found: /favicon.ico
-INFO 2022-05-26 11:24:02,416 autoreload 18236 9600 D:\Full_Stack\Projects\Second_Project\Flight_System\Flight_System\urls.py changed, reloading.
-INFO 2022-05-26 11:24:02,727 autoreload 7372 5056 Watching for file changes with StatReloader
-WARNING 2022-05-26 11:24:07,739 log 7372 14288 Not Found: /favicon.ico
-INFO 2022-05-26 11:29:27,600 autoreload 7372 5056 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
-INFO 2022-05-26 11:29:27,906 autoreload 16872 10216 Watching for file changes with StatReloader
-INFO 2022-05-26 11:48:39,541 autoreload 16872 10216 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 11:48:39,856 autoreload 24064 11532 Watching for file changes with StatReloader
-ERROR 2022-05-26 11:48:47,513 log 24064 6968 Internal Server Error: /flight_app/
+WARNING 2022-05-26 11:05:59,782 log 17768 14736 Not Found: /
+INFO 2022-05-26 11:21:38,009 autoreload 17768 884 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 11:21:38,447 autoreload 1356 9136 Watching for file changes with StatReloader
+INFO 2022-05-26 11:21:57,652 autoreload 1356 9136 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 11:21:58,161 autoreload 8524 10968 Watching for file changes with StatReloader
+INFO 2022-05-26 11:23:54,335 autoreload 8524 10968 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\DAL\airline_facade.py changed, reloading.
+INFO 2022-05-26 11:23:54,788 autoreload 3620 12208 Watching for file changes with StatReloader
+INFO 2022-05-26 11:24:37,988 autoreload 3620 12208 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\DAL\airline_facade.py changed, reloading.
+INFO 2022-05-26 11:24:38,457 autoreload 5324 2848 Watching for file changes with StatReloader
+INFO 2022-05-26 11:25:07,026 autoreload 5324 2848 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\DAL\airline_facade.py changed, reloading.
+INFO 2022-05-26 11:25:07,595 autoreload 12348 14868 Watching for file changes with StatReloader
+WARNING 2022-05-26 11:25:32,357 log 12348 11688 Not Found: /flight_app/airline/delete/2
+WARNING 2022-05-26 11:25:54,982 log 12348 11688 Not Found: /flight_app/admin
+WARNING 2022-05-26 11:25:57,885 log 12348 11688 Not Found: //admin
+WARNING 2022-05-26 11:29:27,331 log 12348 11688 Not Found: /flight_app/view
+WARNING 2022-05-26 11:30:39,882 log 12348 11688 Not Found: /flight_app/airline/delete/1
+WARNING 2022-05-26 11:30:53,881 log 12348 11688 Not Found: /flight_app/airline/delete/2
+INFO 2022-05-26 11:31:08,947 autoreload 12348 14868 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\DAL\airline_facade.py changed, reloading.
+INFO 2022-05-26 11:31:09,424 autoreload 908 12220 Watching for file changes with StatReloader
+INFO 2022-05-26 11:51:36,996 autoreload 12884 17232 Watching for file changes with StatReloader
+WARNING 2022-05-26 11:51:43,428 log 12884 11260 Not Found: /flight_app/airline/update/4
+WARNING 2022-05-26 11:51:46,751 log 12884 11260 Not Found: /flight_app/airline/update/1
+INFO 2022-05-26 11:53:03,140 autoreload 12884 17232 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 11:53:03,623 autoreload 8568 18228 Watching for file changes with StatReloader
+INFO 2022-05-26 11:53:54,366 autoreload 8568 18228 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 11:53:54,831 autoreload 11552 17356 Watching for file changes with StatReloader
+ERROR 2022-05-26 11:53:57,685 log 11552 700 Internal Server Error: /flight_app/airline/update/2
 Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
     response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 21, in homeview
-    if request.user.is_authenticated():
-TypeError: 'bool' object is not callable
-INFO 2022-05-26 11:49:14,954 autoreload 24064 11532 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 11:49:15,273 autoreload 3772 20888 Watching for file changes with StatReloader
-INFO 2022-05-26 11:49:17,485 autoreload 3772 20888 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
-INFO 2022-05-26 11:49:17,802 autoreload 15628 11488 Watching for file changes with StatReloader
-ERROR 2022-05-26 11:49:19,863 log 15628 19068 Internal Server Error: /flight_app/
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 157, in airline_update_flight
+    print(flightform.cleaned_data)
+AttributeError: 'NewFlightForm' object has no attribute 'cleaned_data'
+INFO 2022-05-26 11:54:22,543 autoreload 11552 17356 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 11:54:23,031 autoreload 17936 15356 Watching for file changes with StatReloader
+ERROR 2022-05-26 11:54:25,406 log 17936 15464 Internal Server Error: /flight_app/airline/update/2
 Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
     response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 21, in homeview
-    if request.user.is_authenticated():
-TypeError: 'bool' object is not callable
-INFO 2022-05-26 11:50:11,364 autoreload 15628 11488 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 11:50:11,674 autoreload 23288 25168 Watching for file changes with StatReloader
-ERROR 2022-05-26 11:50:17,972 log 23288 3436 Internal Server Error: /flight_app/
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 157, in airline_update_flight
+    print(flightform.cleaned_data())
+AttributeError: 'NewFlightForm' object has no attribute 'cleaned_data'
+ERROR 2022-05-26 11:54:29,209 log 17936 15464 Internal Server Error: /flight_app/airline/update/2
 Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
     response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 21, in homeview
-    if request.Account.is_authenticated():
-AttributeError: 'WSGIRequest' object has no attribute 'Account'
-INFO 2022-05-26 11:50:51,876 autoreload 23288 25168 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 11:50:52,182 autoreload 16496 22060 Watching for file changes with StatReloader
-ERROR 2022-05-26 11:50:56,122 log 16496 13672 Internal Server Error: /flight_app/
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 157, in airline_update_flight
+    print(flightform.cleaned_data())
+AttributeError: 'NewFlightForm' object has no attribute 'cleaned_data'
+INFO 2022-05-26 11:55:29,676 autoreload 17936 15356 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 11:55:30,170 autoreload 18108 10256 Watching for file changes with StatReloader
+INFO 2022-05-26 11:55:45,123 autoreload 18108 10256 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 11:55:45,558 autoreload 10704 8184 Watching for file changes with StatReloader
+ERROR 2022-05-26 11:55:47,223 log 10704 3752 Internal Server Error: /flight_app/airline/update/2
 Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
     response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 21, in homeview
-    if request.user.is_authenticated():
-TypeError: 'bool' object is not callable
-INFO 2022-05-26 11:51:31,397 autoreload 16496 22060 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 11:51:31,727 autoreload 704 22092 Watching for file changes with StatReloader
-INFO 2022-05-26 11:51:55,203 autoreload 23436 23296 Watching for file changes with StatReloader
-ERROR 2022-05-26 11:54:41,796 log 23436 6120 Internal Server Error: /flight_app/
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 157, in airline_update_flight
+    print(flightform.cleaned_data)
+AttributeError: 'NewFlightForm' object has no attribute 'cleaned_data'
+INFO 2022-05-26 11:55:59,535 autoreload 10704 8184 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 11:56:00,051 autoreload 10888 9600 Watching for file changes with StatReloader
+ERROR 2022-05-26 11:56:01,032 log 10888 6024 Internal Server Error: /flight_app/airline/update/2
 Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
     response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 24, in homeview
-    user_id = models.Account.objects.filter(account=request.user)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1071, in filter
-    return self._filter_or_exclude(False, args, kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1089, in _filter_or_exclude
-    clone._filter_or_exclude_inplace(negate, args, kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1096, in _filter_or_exclude_inplace
-    self._query.add_q(Q(*args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1502, in add_q
-    clause, _ = self._add_q(q_object, self.used_aliases)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1532, in _add_q
-    child_clause, needed_inner = self.build_filter(
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1377, in build_filter
-    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1187, in solve_lookup_type
-    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1677, in names_to_path
-    raise FieldError(
-django.core.exceptions.FieldError: Cannot resolve keyword 'account' into field. Choices are: account_role, account_role_id, administrator, airline, customer, date_joined, email, id, is_active, is_admin, is_staff, is_superuser, last_login, logentry, password, username
-ERROR 2022-05-26 11:56:23,629 log 23436 6120 Internal Server Error: /flight_app/
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 157, in airline_update_flight
+    print(flightform.cleaned_data())
+AttributeError: 'NewFlightForm' object has no attribute 'cleaned_data'
+ERROR 2022-05-26 11:56:11,759 log 10888 6024 Internal Server Error: /flight_app/airline/update/2
 Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
     response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 24, in homeview
-    user_id = models.Account.objects.filter(account=request.user)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1071, in filter
-    return self._filter_or_exclude(False, args, kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1089, in _filter_or_exclude
-    clone._filter_or_exclude_inplace(negate, args, kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1096, in _filter_or_exclude_inplace
-    self._query.add_q(Q(*args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1502, in add_q
-    clause, _ = self._add_q(q_object, self.used_aliases)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1532, in _add_q
-    child_clause, needed_inner = self.build_filter(
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1377, in build_filter
-    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1187, in solve_lookup_type
-    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1677, in names_to_path
-    raise FieldError(
-django.core.exceptions.FieldError: Cannot resolve keyword 'account' into field. Choices are: account_role, account_role_id, administrator, airline, customer, date_joined, email, id, is_active, is_admin, is_staff, is_superuser, last_login, logentry, password, username
-INFO 2022-05-26 11:56:26,295 autoreload 23436 23296 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 11:56:26,622 autoreload 22428 692 Watching for file changes with StatReloader
-INFO 2022-05-26 12:00:35,229 autoreload 22428 692 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:00:35,543 autoreload 9268 20964 Watching for file changes with StatReloader
-INFO 2022-05-26 12:01:00,302 autoreload 9268 20964 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:01:00,612 autoreload 11224 24600 Watching for file changes with StatReloader
-INFO 2022-05-26 12:11:19,908 autoreload 11224 24600 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:11:20,224 autoreload 18888 18924 Watching for file changes with StatReloader
-INFO 2022-05-26 12:12:35,291 autoreload 18888 18924 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:12:35,600 autoreload 7248 2044 Watching for file changes with StatReloader
-INFO 2022-05-26 12:12:40,911 autoreload 7248 2044 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
-INFO 2022-05-26 12:12:41,249 autoreload 604 21824 Watching for file changes with StatReloader
-ERROR 2022-05-26 12:12:44,961 log 604 8996 Internal Server Error: /flight_app/
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 157, in airline_update_flight
+    print(flightform.cleaned_data())
+AttributeError: 'NewFlightForm' object has no attribute 'cleaned_data'
+INFO 2022-05-26 11:56:52,785 autoreload 10888 9600 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 11:56:53,289 autoreload 18128 13544 Watching for file changes with StatReloader
+INFO 2022-05-26 11:57:15,707 autoreload 18128 13544 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 11:57:16,164 autoreload 11620 11760 Watching for file changes with StatReloader
+WARNING 2022-05-26 11:57:40,553 log 11620 5528 Not Found: /flight_app/airline/update/4
+INFO 2022-05-26 11:58:38,565 autoreload 11620 11760 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 11:58:39,082 autoreload 17356 5116 Watching for file changes with StatReloader
+WARNING 2022-05-26 11:59:29,292 log 17356 9600 Not Found: /flight_app/airline/update/4
+WARNING 2022-05-26 12:00:46,515 log 17356 9600 Forbidden (Permission denied): /flight_app/airline/update/2
 Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
     response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 23, in homeview
-    redirect(request, f'members/{account_type}/homepage')
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 48, in redirect
-    return redirect_class(resolve_url(to, *args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
-    return reverse(to, args=args, kwargs=kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/flight_app/'>' not found. '<WSGIRequest: GET '/flight_app/'>' is not a valid view function or pattern name.
-WARNING 2022-05-26 12:12:45,018 log 604 8996 Not Found: /favicon.ico
-INFO 2022-05-26 12:13:19,383 autoreload 604 21824 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:13:19,700 autoreload 19512 10840 Watching for file changes with StatReloader
-INFO 2022-05-26 12:13:40,393 autoreload 19512 10840 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:13:40,731 autoreload 19616 5204 Watching for file changes with StatReloader
-INFO 2022-05-26 12:14:02,412 autoreload 19616 5204 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:14:02,725 autoreload 4776 7204 Watching for file changes with StatReloader
-INFO 2022-05-26 12:15:17,618 autoreload 4776 7204 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:15:17,934 autoreload 9744 22360 Watching for file changes with StatReloader
-INFO 2022-05-26 12:15:27,318 autoreload 9744 22360 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:15:27,631 autoreload 2236 3404 Watching for file changes with StatReloader
-INFO 2022-05-26 12:15:28,855 autoreload 2236 3404 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:15:29,185 autoreload 17800 5080 Watching for file changes with StatReloader
-ERROR 2022-05-26 12:15:29,957 log 17800 24560 Internal Server Error: /flight_app/
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 151, in airline_update_flight
+    raise PermissionDenied()
+django.core.exceptions.PermissionDenied
+INFO 2022-05-26 12:01:34,165 autoreload 17356 5116 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 12:01:34,669 autoreload 4532 5064 Watching for file changes with StatReloader
+WARNING 2022-05-26 12:01:35,888 log 4532 12588 Forbidden (Permission denied): /flight_app/airline/update/2
 Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
     response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 23, in homeview
-    redirect(request, red)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 48, in redirect
-    return redirect_class(resolve_url(to, *args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
-    return reverse(to, args=args, kwargs=kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/flight_app/'>' not found. '<WSGIRequest: GET '/flight_app/'>' is not a valid view function or pattern name.
-INFO 2022-05-26 12:16:51,453 autoreload 17800 5080 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
-INFO 2022-05-26 12:16:51,773 autoreload 8696 22996 Watching for file changes with StatReloader
-ERROR 2022-05-26 12:17:13,917 log 8696 12880 Internal Server Error: /flight_app/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 23, in homeview
-    redirect(request, red)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 48, in redirect
-    return redirect_class(resolve_url(to, *args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
-    return reverse(to, args=args, kwargs=kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/flight_app/'>' not found. '<WSGIRequest: GET '/flight_app/'>' is not a valid view function or pattern name.
-ERROR 2022-05-26 12:18:04,977 log 8696 12880 Internal Server Error: /flight_app/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 23, in homeview
-    redirect(request, red)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 48, in redirect
-    return redirect_class(resolve_url(to, *args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
-    return reverse(to, args=args, kwargs=kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/flight_app/'>' not found. '<WSGIRequest: GET '/flight_app/'>' is not a valid view function or pattern name.
-INFO 2022-05-26 12:18:26,351 autoreload 8696 22996 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:18:26,669 autoreload 21564 8732 Watching for file changes with StatReloader
-ERROR 2022-05-26 12:18:27,569 log 21564 11200 Internal Server Error: /flight_app/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 24, in homeview
-    redirect(request, red)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 48, in redirect
-    return redirect_class(resolve_url(to, *args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
-    return reverse(to, args=args, kwargs=kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/flight_app/'>' not found. '<WSGIRequest: GET '/flight_app/'>' is not a valid view function or pattern name.
-INFO 2022-05-26 12:19:52,967 autoreload 21564 8732 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:19:53,305 autoreload 24068 4460 Watching for file changes with StatReloader
-ERROR 2022-05-26 12:19:54,558 log 24068 23368 Internal Server Error: /flight_app/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 23, in homeview
-    redirect(request, red)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 48, in redirect
-    return redirect_class(resolve_url(to, *args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
-    return reverse(to, args=args, kwargs=kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/flight_app/'>' not found. '<WSGIRequest: GET '/flight_app/'>' is not a valid view function or pattern name.
-INFO 2022-05-26 12:20:11,476 autoreload 7660 24776 Watching for file changes with StatReloader
-ERROR 2022-05-26 12:20:14,753 log 7660 3112 Internal Server Error: /flight_app/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 23, in homeview
-    redirect(request, red)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 48, in redirect
-    return redirect_class(resolve_url(to, *args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
-    return reverse(to, args=args, kwargs=kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/flight_app/'>' not found. '<WSGIRequest: GET '/flight_app/'>' is not a valid view function or pattern name.
-ERROR 2022-05-26 12:20:21,177 log 7660 3112 Internal Server Error: /flight_app/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 23, in homeview
-    redirect(request, red)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 48, in redirect
-    return redirect_class(resolve_url(to, *args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
-    return reverse(to, args=args, kwargs=kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/flight_app/'>' not found. '<WSGIRequest: GET '/flight_app/'>' is not a valid view function or pattern name.
-ERROR 2022-05-26 12:20:30,119 log 7660 3112 Internal Server Error: /flight_app/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 23, in homeview
-    redirect(request, red)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 48, in redirect
-    return redirect_class(resolve_url(to, *args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
-    return reverse(to, args=args, kwargs=kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/flight_app/'>' not found. '<WSGIRequest: GET '/flight_app/'>' is not a valid view function or pattern name.
-INFO 2022-05-26 12:20:51,798 autoreload 7660 24776 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:20:52,124 autoreload 15228 1864 Watching for file changes with StatReloader
-INFO 2022-05-26 12:21:23,140 autoreload 15228 1864 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:21:23,456 autoreload 18712 2848 Watching for file changes with StatReloader
-ERROR 2022-05-26 12:22:07,913 log 18712 9560 Internal Server Error: /flight_app/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 23, in homeview
-    redirect(request, red)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 48, in redirect
-    return redirect_class(resolve_url(to, *args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
-    return reverse(to, args=args, kwargs=kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/flight_app/'>' not found. '<WSGIRequest: GET '/flight_app/'>' is not a valid view function or pattern name.
-INFO 2022-05-26 12:22:22,039 autoreload 18712 2848 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
-INFO 2022-05-26 12:22:22,379 autoreload 19600 8692 Watching for file changes with StatReloader
-ERROR 2022-05-26 12:22:24,541 log 19600 12552 Internal Server Error: /flight_app/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 23, in homeview
-    redirect(request, red)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 48, in redirect
-    return redirect_class(resolve_url(to, *args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
-    return reverse(to, args=args, kwargs=kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/flight_app/'>' not found. '<WSGIRequest: GET '/flight_app/'>' is not a valid view function or pattern name.
-INFO 2022-05-26 12:23:05,706 autoreload 19600 8692 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:23:06,025 autoreload 19448 14268 Watching for file changes with StatReloader
-ERROR 2022-05-26 12:23:07,742 log 19448 2336 Internal Server Error: /flight_app/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 23, in homeview
-    redirect(request, red)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 48, in redirect
-    return redirect_class(resolve_url(to, *args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
-    return reverse(to, args=args, kwargs=kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/flight_app/'>' not found. '<WSGIRequest: GET '/flight_app/'>' is not a valid view function or pattern name.
-INFO 2022-05-26 12:23:43,202 autoreload 19448 14268 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:23:43,508 autoreload 9528 6232 Watching for file changes with StatReloader
-ERROR 2022-05-26 12:23:45,260 log 9528 21756 Internal Server Error: /flight_app/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 23, in homeview
-    redirect(request, "register")
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 48, in redirect
-    return redirect_class(resolve_url(to, *args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
-    return reverse(to, args=args, kwargs=kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/flight_app/'>' not found. '<WSGIRequest: GET '/flight_app/'>' is not a valid view function or pattern name.
-INFO 2022-05-26 12:24:05,266 autoreload 9528 6232 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:24:05,594 autoreload 25388 20072 Watching for file changes with StatReloader
-INFO 2022-05-26 12:24:26,362 autoreload 25388 20072 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:24:26,671 autoreload 8992 3964 Watching for file changes with StatReloader
-INFO 2022-05-26 12:24:41,265 autoreload 8992 3964 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:24:41,572 autoreload 21340 17040 Watching for file changes with StatReloader
-INFO 2022-05-26 12:24:52,070 autoreload 21340 17040 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:24:52,379 autoreload 24196 22052 Watching for file changes with StatReloader
-ERROR 2022-05-26 12:24:54,008 log 24196 8996 Internal Server Error: /flight_app/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 23, in homeview
-    redirect(request, "register")
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 48, in redirect
-    return redirect_class(resolve_url(to, *args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
-    return reverse(to, args=args, kwargs=kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/flight_app/'>' not found. '<WSGIRequest: GET '/flight_app/'>' is not a valid view function or pattern name.
-INFO 2022-05-26 12:25:11,045 autoreload 24196 22052 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:25:11,357 autoreload 19760 6232 Watching for file changes with StatReloader
-ERROR 2022-05-26 12:25:13,260 log 19760 12776 Internal Server Error: /flight_app/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 23, in homeview
-    redirect(request, red)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 48, in redirect
-    return redirect_class(resolve_url(to, *args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
-    return reverse(to, args=args, kwargs=kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/flight_app/'>' not found. '<WSGIRequest: GET '/flight_app/'>' is not a valid view function or pattern name.
-ERROR 2022-05-26 12:25:19,478 log 19760 12776 Internal Server Error: /flight_app/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 23, in homeview
-    redirect(request, red)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 48, in redirect
-    return redirect_class(resolve_url(to, *args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
-    return reverse(to, args=args, kwargs=kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/flight_app/'>' not found. '<WSGIRequest: GET '/flight_app/'>' is not a valid view function or pattern name.
-INFO 2022-05-26 12:25:55,728 autoreload 19760 6232 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:25:56,028 autoreload 2292 24596 Watching for file changes with StatReloader
-ERROR 2022-05-26 12:25:57,632 log 2292 352 Internal Server Error: /flight_app/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 23, in homeview
-    redirect(request, 'members/homepage')
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 48, in redirect
-    return redirect_class(resolve_url(to, *args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
-    return reverse(to, args=args, kwargs=kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/flight_app/'>' not found. '<WSGIRequest: GET '/flight_app/'>' is not a valid view function or pattern name.
-INFO 2022-05-26 12:26:36,244 autoreload 2292 24596 D:\Full_Stack\Projects\Second_Project\Flight_System\Flight_System\urls.py changed, reloading.
-INFO 2022-05-26 12:26:36,549 autoreload 4156 15592 Watching for file changes with StatReloader
-WARNING 2022-05-26 12:26:38,415 log 4156 22556 Not Found: /flight_app/
-INFO 2022-05-26 12:26:53,152 autoreload 4156 15592 D:\Full_Stack\Projects\Second_Project\Flight_System\Flight_System\urls.py changed, reloading.
-INFO 2022-05-26 12:26:53,480 autoreload 13204 23836 Watching for file changes with StatReloader
-ERROR 2022-05-26 12:26:54,624 log 13204 448 Internal Server Error: /flight_app/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 23, in homeview
-    redirect(request, 'members/homepage')
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 48, in redirect
-    return redirect_class(resolve_url(to, *args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
-    return reverse(to, args=args, kwargs=kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/flight_app/'>' not found. '<WSGIRequest: GET '/flight_app/'>' is not a valid view function or pattern name.
-INFO 2022-05-26 12:26:59,836 autoreload 13204 23836 D:\Full_Stack\Projects\Second_Project\Flight_System\Flight_System\urls.py changed, reloading.
-INFO 2022-05-26 12:27:00,155 autoreload 24736 23008 Watching for file changes with StatReloader
-ERROR 2022-05-26 12:27:01,619 log 24736 3744 Internal Server Error: /flight_app/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 23, in homeview
-    redirect(request, 'members/homepage')
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 48, in redirect
-    return redirect_class(resolve_url(to, *args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
-    return reverse(to, args=args, kwargs=kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/flight_app/'>' not found. '<WSGIRequest: GET '/flight_app/'>' is not a valid view function or pattern name.
-INFO 2022-05-26 12:27:05,542 autoreload 24736 23008 D:\Full_Stack\Projects\Second_Project\Flight_System\Flight_System\urls.py changed, reloading.
-INFO 2022-05-26 12:27:05,863 autoreload 23360 11408 Watching for file changes with StatReloader
-INFO 2022-05-26 12:28:36,246 autoreload 23360 11408 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:28:36,558 autoreload 23788 24508 Watching for file changes with StatReloader
-ERROR 2022-05-26 12:28:39,548 log 23788 1552 Internal Server Error: /flight_app/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 23, in homeview
-    redirect(request, 'members/homepage')
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 48, in redirect
-    return redirect_class(resolve_url(to, *args, **kwargs))
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 145, in resolve_url
-    return reverse(to, args=args, kwargs=kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\base.py", line 88, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\urls\resolvers.py", line 802, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for '<WSGIRequest: GET '/flight_app/'>' not found. '<WSGIRequest: GET '/flight_app/'>' is not a valid view function or pattern name.
-INFO 2022-05-26 12:29:39,326 autoreload 23788 24508 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:29:39,625 autoreload 10328 25172 Watching for file changes with StatReloader
-ERROR 2022-05-26 12:29:42,434 log 10328 5580 Internal Server Error: /flight_app/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 23, in homeview
-    return render(request, 'cust_home.html')
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 24, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 61, in render_to_string
-    template = get_template(template_name, using=using)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 15, in get_template
-    return engine.get_template(template_name)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\backends\django.py", line 34, in get_template
-    return Template(self.engine.get_template(template_name), self)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\engine.py", line 176, in get_template
-    template, origin = self.find_template(template_name)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\engine.py", line 158, in find_template
-    template = loader.get_template(name, skip=skip)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loaders\base.py", line 28, in get_template
-    return Template(
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 154, in __init__
-    self.nodelist = self.compile_nodelist()
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 200, in compile_nodelist
-    return parser.parse()
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 484, in parse
-    raise self.error(token, e)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 482, in parse
-    filter_expression = self.compile_filter(token.contents)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 600, in compile_filter
-    return FilterExpression(token, self)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 701, in __init__
-    raise TemplateSyntaxError(
-django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '% user %' from '% user %'
-INFO 2022-05-26 12:31:12,242 autoreload 10328 25172 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:31:12,567 autoreload 24136 17856 Watching for file changes with StatReloader
-INFO 2022-05-26 12:31:40,379 autoreload 24136 17856 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:31:40,695 autoreload 7604 15572 Watching for file changes with StatReloader
-INFO 2022-05-26 12:32:21,962 autoreload 7604 15572 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:32:22,290 autoreload 23032 24044 Watching for file changes with StatReloader
-WARNING 2022-05-26 12:32:58,940 log 23032 21668 Not Found: /flight_app/Customer/homepage
-INFO 2022-05-26 12:33:04,606 autoreload 23032 24044 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:33:04,929 autoreload 21776 15528 Watching for file changes with StatReloader
-INFO 2022-05-26 12:33:11,263 autoreload 21776 15528 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
-INFO 2022-05-26 12:33:11,572 autoreload 3120 12540 Watching for file changes with StatReloader
-WARNING 2022-05-26 12:33:13,333 log 3120 2676 Not Found: /flight_app/Customer/homepage
-WARNING 2022-05-26 12:33:52,261 log 3120 2676 Not Found: /flight_app/ members/Customer/homepage
-ERROR 2022-05-26 12:34:02,771 log 3120 2676 Internal Server Error: /flight_app/members/Customer/homepage
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 31, in customer_home
-    account_id = models.Customer.objects.get(account_id = account_id)
-UnboundLocalError: local variable 'account_id' referenced before assignment
-INFO 2022-05-26 12:35:28,256 autoreload 3120 12540 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:35:28,579 autoreload 19112 7800 Watching for file changes with StatReloader
-INFO 2022-05-26 12:36:36,441 autoreload 19112 7800 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:36:36,749 autoreload 22448 5868 Watching for file changes with StatReloader
-INFO 2022-05-26 12:38:37,468 autoreload 20112 18716 Watching for file changes with StatReloader
-INFO 2022-05-26 12:42:00,544 autoreload 20112 18716 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:42:00,871 autoreload 25924 18632 Watching for file changes with StatReloader
-INFO 2022-05-26 12:43:44,570 autoreload 25924 18632 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
-INFO 2022-05-26 12:43:44,880 autoreload 18404 11400 Watching for file changes with StatReloader
-INFO 2022-05-26 12:44:11,770 autoreload 18404 11400 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:44:12,092 autoreload 1800 12648 Watching for file changes with StatReloader
-ERROR 2022-05-26 12:44:15,005 log 1800 21080 Internal Server Error: /flight_app/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
-    self.check_response(response, callback)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
-    raise ValueError(
-ValueError: The view flight_app.views.homeview didn't return an HttpResponse object. It returned None instead.
-INFO 2022-05-26 12:45:20,976 autoreload 1800 12648 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:45:21,286 autoreload 6980 20080 Watching for file changes with StatReloader
-WARNING 2022-05-26 12:45:24,161 log 6980 304 Not Found: /flight_app/members/Customer/homepage/
-INFO 2022-05-26 12:45:56,365 autoreload 6980 20080 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
-INFO 2022-05-26 12:45:56,692 autoreload 18912 18024 Watching for file changes with StatReloader
-INFO 2022-05-26 12:45:57,893 autoreload 18912 18024 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:45:58,195 autoreload 18580 10304 Watching for file changes with StatReloader
-INFO 2022-05-26 12:46:07,579 autoreload 18580 10304 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:46:07,909 autoreload 23432 19388 Watching for file changes with StatReloader
-WARNING 2022-05-26 12:46:09,082 log 23432 2116 Not Found: /flight_app/members/Customer/homepage/
-INFO 2022-05-26 12:46:20,420 autoreload 23432 19388 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:46:20,731 autoreload 21028 18272 Watching for file changes with StatReloader
-WARNING 2022-05-26 12:46:22,399 log 21028 24352 Not Found: /flight_app/members/Customer/homepage/
-INFO 2022-05-26 12:46:29,143 autoreload 21028 18272 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
-INFO 2022-05-26 12:46:29,437 autoreload 21736 3436 Watching for file changes with StatReloader
-ERROR 2022-05-26 12:46:31,234 log 21736 8004 Internal Server Error: /flight_app/members/Customer/homepage/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 32, in customer_home
-    account_id = models.Customer.objects.get(account_id = account_id)
-UnboundLocalError: local variable 'account_id' referenced before assignment
-INFO 2022-05-26 12:49:23,759 autoreload 21736 3436 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:49:24,098 autoreload 19176 23020 Watching for file changes with StatReloader
-ERROR 2022-05-26 12:49:25,006 log 19176 15920 Internal Server Error: /flight_app/members/Customer/homepage/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 35, in customer_home
-    'name': account_id.name
-AttributeError: 'Customer' object has no attribute 'name'
-INFO 2022-05-26 12:49:42,722 autoreload 19176 23020 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:49:43,049 autoreload 7936 25256 Watching for file changes with StatReloader
-INFO 2022-05-26 12:49:45,302 autoreload 7936 25256 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:49:45,607 autoreload 22448 10000 Watching for file changes with StatReloader
-INFO 2022-05-26 12:49:46,815 autoreload 22448 10000 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:49:47,122 autoreload 3816 26036 Watching for file changes with StatReloader
-INFO 2022-05-26 12:50:00,625 autoreload 3816 26036 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 12:50:00,935 autoreload 5396 24916 Watching for file changes with StatReloader
-ERROR 2022-05-26 12:50:02,290 log 5396 25204 Internal Server Error: /flight_app/members/Customer/homepage/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 37, in customer_home
-    return render(request, 'cust_home.html', context)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 24, in render
-    content = loader.render_to_string(template_name, context, request, using=using)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 61, in render_to_string
-    template = get_template(template_name, using=using)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 15, in get_template
-    return engine.get_template(template_name)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\backends\django.py", line 34, in get_template
-    return Template(self.engine.get_template(template_name), self)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\engine.py", line 176, in get_template
-    template, origin = self.find_template(template_name)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\engine.py", line 158, in find_template
-    template = loader.get_template(name, skip=skip)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loaders\base.py", line 28, in get_template
-    return Template(
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 154, in __init__
-    self.nodelist = self.compile_nodelist()
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 200, in compile_nodelist
-    return parser.parse()
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 484, in parse
-    raise self.error(token, e)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 482, in parse
-    filter_expression = self.compile_filter(token.contents)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 600, in compile_filter
-    return FilterExpression(token, self)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 701, in __init__
-    raise TemplateSyntaxError(
-django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '% user %' from '% user %'
-INFO 2022-05-26 12:54:58,586 autoreload 6820 4760 Watching for file changes with StatReloader
-INFO 2022-05-26 13:00:24,059 autoreload 6820 4760 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 13:00:24,366 autoreload 18452 10376 Watching for file changes with StatReloader
-ERROR 2022-05-26 13:00:26,615 log 18452 5140 Internal Server Error: /flight_app/logout/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 239, in logout
-    account_id = models.Customer.objects.get(account_id = account_id)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 499, in get
-    raise self.model.MultipleObjectsReturned(
-flight_app.models.Customer.MultipleObjectsReturned: get() returned more than one Customer -- it returned 4!
-ERROR 2022-05-26 13:01:27,938 log 18452 5140 Internal Server Error: /flight_app/logout/
-Traceback (most recent call last):
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
-    response = get_response(request)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 243, in logout
-    return render(request,'logged_out.html' , {{"user":account_id}})
-TypeError: unhashable type: 'dict'
-INFO 2022-05-26 13:02:03,198 autoreload 18452 10376 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 13:02:03,521 autoreload 25652 15508 Watching for file changes with StatReloader
-INFO 2022-05-26 13:04:09,798 autoreload 25652 15508 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 13:04:10,102 autoreload 19052 5052 Watching for file changes with StatReloader
-INFO 2022-05-26 13:04:23,676 autoreload 19052 5052 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 13:04:23,987 autoreload 12528 20984 Watching for file changes with StatReloader
-INFO 2022-05-26 13:04:28,271 autoreload 12528 20984 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 13:04:28,604 autoreload 25808 24012 Watching for file changes with StatReloader
-INFO 2022-05-26 13:04:52,363 autoreload 25808 24012 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
-INFO 2022-05-26 13:04:52,670 autoreload 17776 26224 Watching for file changes with StatReloader
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 151, in airline_update_flight
+    raise PermissionDenied("This is not your flight! You may not update it")
+django.core.exceptions.PermissionDenied: This is not your flight! You may not update it
+INFO 2022-05-26 12:02:44,269 autoreload 4532 5064 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 12:02:44,750 autoreload 2892 2820 Watching for file changes with StatReloader
+INFO 2022-05-26 12:04:05,739 autoreload 2892 2820 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-26 12:04:06,179 autoreload 3100 14924 Watching for file changes with StatReloader
