@@ -16,28 +16,44 @@ from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
 from django.contrib import auth
 
+
 def homeview(request):
 
     if request.user.is_authenticated:
+        return redirect("members/homepage/")
 
-        account_type = request.user.account_role
-        red = f"members/{account_type}/homepage"
-        return redirect(red)
-
-    return render(request, 'home.html', )
+    return render(request, 'home.html')
 
 
 
-def customer_home(request):
+def members_homepage(request):
     if request.user.is_authenticated:
         account_id = request.user.id
-        account_id = models.Customer.objects.get(account_id = account_id)
+        account_type = request.user.account_role
+        print(account_type)
+        if request.user.is_superuser:
+            context = {
+            'account_type': 'superuser'
+            }
+            return render(request, 'cust_home.html', context)
+        
 
+        elif account_type == models.Account_Role.objects.get(id = 2):
+          account_id = models.Customer.objects.get(account_id = account_id)
+        elif account_type == models.Account_Role.objects.get(id = 1):
+            account_id = models.Airline.objects.get(account_id = account_id)
+
+
+        
+        
         context = {
-            'name': account_id.first_name
+
+            'first_name': account_id.first_name,
+            'account_type': account_type
         }
         return render(request, 'cust_home.html', context)
-    return render(request, 'home.html', )
+
+    return redirect('login')
 
 
 

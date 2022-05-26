@@ -2787,3 +2787,440 @@ INFO 2022-05-26 13:34:21,853 autoreload 27324 24892 D:\Full_Stack\Projects\Secon
 INFO 2022-05-26 13:34:22,191 autoreload 27936 22332 Watching for file changes with StatReloader
 INFO 2022-05-26 13:34:45,824 autoreload 27936 22332 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
 INFO 2022-05-26 13:34:46,131 autoreload 27744 15628 Watching for file changes with StatReloader
+INFO 2022-05-26 13:42:15,324 autoreload 27744 15628 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 13:42:15,620 autoreload 15908 3780 Watching for file changes with StatReloader
+INFO 2022-05-26 13:42:56,721 autoreload 15908 3780 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-26 13:42:57,031 autoreload 13004 26320 Watching for file changes with StatReloader
+WARNING 2022-05-26 13:42:58,626 log 13004 27172 Not Found: /flight_app/members/Customer/homepage/
+INFO 2022-05-26 13:44:12,974 autoreload 13004 26320 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-26 13:44:13,282 autoreload 1356 10216 Watching for file changes with StatReloader
+WARNING 2022-05-26 13:44:17,895 log 1356 23908 Not Found: /flight_app/members/Customer/homepage/
+WARNING 2022-05-26 13:44:19,688 log 1356 23908 Not Found: /flight_app/members/Customer/homepage/
+INFO 2022-05-26 13:45:41,513 autoreload 1356 10216 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-26 13:45:41,838 autoreload 14716 27372 Watching for file changes with StatReloader
+WARNING 2022-05-26 13:45:43,715 log 14716 19228 Not Found: /flight_app/members/Customer/homepage/
+WARNING 2022-05-26 13:45:49,232 log 14716 19228 Not Found: /flight_app/members//homepage/Customer
+INFO 2022-05-26 13:46:40,420 autoreload 14716 27372 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 13:46:40,730 autoreload 26448 28080 Watching for file changes with StatReloader
+WARNING 2022-05-26 13:46:42,508 log 26448 28096 Not Found: /flight_app/members//homepage/Customer
+INFO 2022-05-26 13:47:15,732 autoreload 26448 28080 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 13:47:16,051 autoreload 20156 4336 Watching for file changes with StatReloader
+INFO 2022-05-26 13:47:17,270 autoreload 20156 4336 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-26 13:47:17,618 autoreload 1144 16560 Watching for file changes with StatReloader
+WARNING 2022-05-26 13:47:20,945 log 1144 21012 Not Found: /flight_app/members//homepage/
+INFO 2022-05-26 13:47:47,093 autoreload 3620 26776 Watching for file changes with StatReloader
+INFO 2022-05-26 13:52:06,173 autoreload 3620 26776 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 13:52:06,506 autoreload 24896 18248 Watching for file changes with StatReloader
+ERROR 2022-05-26 13:52:09,988 log 24896 18360 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 38, in customer_home
+    'name': account_id.first_name,
+AttributeError: 'int' object has no attribute 'first_name'
+INFO 2022-05-26 13:56:03,126 autoreload 24896 18248 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 13:56:03,439 autoreload 28528 27104 Watching for file changes with StatReloader
+ERROR 2022-05-26 13:56:06,039 log 28528 28636 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: customer_home() missing 1 required positional argument: 'account_type'
+ERROR 2022-05-26 13:56:16,673 log 28528 28636 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: customer_home() missing 1 required positional argument: 'account_type'
+ERROR 2022-05-26 13:56:19,829 log 28528 28636 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: customer_home() missing 1 required positional argument: 'account_type'
+INFO 2022-05-26 13:56:38,502 autoreload 28528 27104 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 13:56:38,814 autoreload 12144 13484 Watching for file changes with StatReloader
+ERROR 2022-05-26 13:56:40,402 log 12144 26596 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: customer_home() missing 1 required positional argument: 'account_type'
+ERROR 2022-05-26 13:56:43,406 log 12144 26596 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: customer_home() missing 1 required positional argument: 'account_type'
+INFO 2022-05-26 13:56:52,360 autoreload 12144 13484 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 13:56:52,673 autoreload 26604 3584 Watching for file changes with StatReloader
+ERROR 2022-05-26 13:56:54,605 log 26604 5428 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: customer_home() missing 1 required positional argument: 'account_type'
+ERROR 2022-05-26 13:56:57,394 log 26604 5428 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+TypeError: customer_home() missing 1 required positional argument: 'account_type'
+INFO 2022-05-26 13:57:35,902 autoreload 26604 3584 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 13:57:36,231 autoreload 25488 5128 Watching for file changes with StatReloader
+INFO 2022-05-26 13:59:01,396 autoreload 25488 5128 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 13:59:01,695 autoreload 20148 25164 Watching for file changes with StatReloader
+WARNING 2022-05-26 13:59:03,151 log 20148 10424 Not Found: /flight_app/members/homepage/home.html
+INFO 2022-05-26 13:59:17,299 autoreload 20148 25164 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 13:59:17,605 autoreload 25988 20448 Watching for file changes with StatReloader
+WARNING 2022-05-26 13:59:19,714 log 25988 21644 Not Found: /flight_app/members/homepage/home.html
+INFO 2022-05-26 13:59:39,339 autoreload 25988 20448 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 13:59:39,650 autoreload 18284 1696 Watching for file changes with StatReloader
+WARNING 2022-05-26 13:59:41,815 log 18284 26536 Not Found: /flight_app/members/homepage/home.html
+WARNING 2022-05-26 13:59:48,944 log 18284 26536 Not Found: /flight_app/members/homepage/login/
+INFO 2022-05-26 14:00:01,391 autoreload 18284 1696 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:00:01,731 autoreload 13264 21000 Watching for file changes with StatReloader
+WARNING 2022-05-26 14:00:02,688 log 13264 7796 Not Found: /flight_app/members/homepage/login/
+WARNING 2022-05-26 14:00:05,479 log 13264 7796 Not Found: /flight_app/members/homepage/l
+INFO 2022-05-26 14:00:16,280 autoreload 13264 21000 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:00:16,578 autoreload 6988 23816 Watching for file changes with StatReloader
+INFO 2022-05-26 14:02:39,049 autoreload 25724 12292 Watching for file changes with StatReloader
+ERROR 2022-05-26 14:03:05,999 log 25724 19204 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 35, in customer_home
+    account_id = models.Customer.objects.get(account_id = account_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+flight_app.models.Customer.DoesNotExist: Customer matching query does not exist.
+INFO 2022-05-26 14:05:14,660 autoreload 25724 12292 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:05:14,966 autoreload 24572 18460 Watching for file changes with StatReloader
+INFO 2022-05-26 14:06:20,502 autoreload 24572 18460 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:06:20,799 autoreload 21668 26416 Watching for file changes with StatReloader
+INFO 2022-05-26 14:07:01,852 autoreload 21668 26416 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-26 14:07:02,147 autoreload 5868 8864 Watching for file changes with StatReloader
+ERROR 2022-05-26 14:07:04,917 log 5868 19284 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 42, in members_homepage
+    'name': account_id.first_name,
+AttributeError: 'int' object has no attribute 'first_name'
+INFO 2022-05-26 14:17:24,988 autoreload 5868 8864 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:17:25,312 autoreload 24240 25920 Watching for file changes with StatReloader
+INFO 2022-05-26 14:17:26,498 autoreload 24240 25920 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:17:26,816 autoreload 13904 13516 Watching for file changes with StatReloader
+ERROR 2022-05-26 14:17:28,540 log 13904 13444 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 38, in members_homepage
+    if account_id == models.Account.objects.get(account_id = account_id):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 482, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1071, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1089, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1096, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1502, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1532, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1377, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1187, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1677, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'account_id' into field. Choices are: account_role, account_role_id, administrator, airline, customer, date_joined, email, id, is_active, is_admin, is_staff, is_superuser, last_login, logentry, password, username
+INFO 2022-05-26 14:21:28,494 autoreload 13904 13516 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:21:28,798 autoreload 28168 28044 Watching for file changes with StatReloader
+ERROR 2022-05-26 14:21:30,714 log 28168 16872 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 35, in members_homepage
+    account_id == models.Account.objects.get(account_id = account_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 482, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1071, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1089, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1096, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1502, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1532, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1377, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1187, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1677, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'account_id' into field. Choices are: account_role, account_role_id, administrator, airline, customer, date_joined, email, id, is_active, is_admin, is_staff, is_superuser, last_login, logentry, password, username
+INFO 2022-05-26 14:27:17,982 autoreload 28168 28044 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:27:18,272 autoreload 21528 1972 Watching for file changes with StatReloader
+INFO 2022-05-26 14:27:21,518 autoreload 21528 1972 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:27:21,803 autoreload 24304 15132 Watching for file changes with StatReloader
+ERROR 2022-05-26 14:27:28,517 log 24304 26492 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 38, in members_homepage
+    'name': account_id.first_name,
+AttributeError: 'int' object has no attribute 'first_name'
+INFO 2022-05-26 14:28:30,548 autoreload 24304 15132 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:28:30,852 autoreload 24116 22252 Watching for file changes with StatReloader
+ERROR 2022-05-26 14:29:50,907 log 24116 16844 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 49, in members_homepage
+    'name': account_id.first_name,
+AttributeError: 'int' object has no attribute 'first_name'
+INFO 2022-05-26 14:30:20,476 autoreload 24116 22252 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:30:20,780 autoreload 15436 23928 Watching for file changes with StatReloader
+INFO 2022-05-26 14:31:46,875 autoreload 15436 23928 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:31:47,195 autoreload 27996 22556 Watching for file changes with StatReloader
+INFO 2022-05-26 14:32:01,697 autoreload 27996 22556 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:32:02,011 autoreload 6060 11428 Watching for file changes with StatReloader
+ERROR 2022-05-26 14:32:04,956 log 6060 23868 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 54, in members_homepage
+    'first_name': account_id.first_name,
+AttributeError: 'int' object has no attribute 'first_name'
+INFO 2022-05-26 14:33:36,364 autoreload 6060 11428 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:33:36,673 autoreload 12300 18772 Watching for file changes with StatReloader
+ERROR 2022-05-26 14:33:39,448 log 12300 8372 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 53, in members_homepage
+    'first_name': account_id.first_name,
+AttributeError: 'int' object has no attribute 'first_name'
+INFO 2022-05-26 14:34:16,827 autoreload 12300 18772 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:34:17,146 autoreload 1896 4124 Watching for file changes with StatReloader
+ERROR 2022-05-26 14:34:20,174 log 1896 25632 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 54, in members_homepage
+    'first_name': account_id.first_name,
+AttributeError: 'int' object has no attribute 'first_name'
+INFO 2022-05-26 14:34:46,059 autoreload 1896 4124 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:34:46,355 autoreload 21452 25676 Watching for file changes with StatReloader
+ERROR 2022-05-26 14:34:53,402 log 21452 10836 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 54, in members_homepage
+    'first_name': account_id.first_name,
+AttributeError: 'int' object has no attribute 'first_name'
+INFO 2022-05-26 14:35:02,978 autoreload 21452 25676 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:35:03,293 autoreload 8780 10852 Watching for file changes with StatReloader
+ERROR 2022-05-26 14:35:05,734 log 8780 26968 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 53, in members_homepage
+    'first_name': account_id.first_name,
+AttributeError: 'int' object has no attribute 'first_name'
+INFO 2022-05-26 14:35:30,104 autoreload 8780 10852 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:35:30,424 autoreload 4568 17964 Watching for file changes with StatReloader
+ERROR 2022-05-26 14:35:37,498 log 4568 10656 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 54, in members_homepage
+    'first_name': account_id.first_name,
+AttributeError: 'int' object has no attribute 'first_name'
+INFO 2022-05-26 14:36:33,031 autoreload 4568 17964 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:36:33,336 autoreload 18224 7072 Watching for file changes with StatReloader
+INFO 2022-05-26 14:36:34,535 autoreload 18224 7072 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:36:34,866 autoreload 18228 9328 Watching for file changes with StatReloader
+ERROR 2022-05-26 14:36:36,701 log 18228 27708 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 54, in members_homepage
+    'first_name': account_id.first_name,
+AttributeError: 'int' object has no attribute 'first_name'
+INFO 2022-05-26 14:37:06,907 autoreload 18228 9328 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:37:07,218 autoreload 26080 5140 Watching for file changes with StatReloader
+INFO 2022-05-26 14:37:24,748 autoreload 26080 5140 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:37:25,066 autoreload 24652 26500 Watching for file changes with StatReloader
+ERROR 2022-05-26 14:37:26,745 log 24652 1912 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 43, in members_homepage
+    raise Exception({account_type == "Customer"})
+Exception: {False}
+INFO 2022-05-26 14:37:38,596 autoreload 24652 26500 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:37:38,895 autoreload 3620 18912 Watching for file changes with StatReloader
+ERROR 2022-05-26 14:37:40,430 log 3620 28612 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 43, in members_homepage
+    raise Exception({account_type})
+Exception: {<Account_Role: Customer>}
+INFO 2022-05-26 14:39:22,500 autoreload 3620 18912 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:39:22,814 autoreload 26820 26580 Watching for file changes with StatReloader
+ERROR 2022-05-26 14:39:24,440 log 26820 26040 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 42, in members_homepage
+    raise Exception({'Customer' == models.Account_Role.objects.get(account_type)})
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 482, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1071, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1089, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1096, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1502, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1532, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1374, in build_filter
+    arg, value = filter_expr
+TypeError: cannot unpack non-iterable Account_Role object
+INFO 2022-05-26 14:41:45,344 autoreload 26820 26580 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:41:45,668 autoreload 27284 22968 Watching for file changes with StatReloader
+ERROR 2022-05-26 14:41:46,428 log 27284 23480 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 44, in members_homepage
+    elif account_type == models.Customer.objects.get(account_role = account_type):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 482, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1071, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1089, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1096, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1502, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1532, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1377, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1187, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1677, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'account_role' into field. Choices are: account, account_id, address, credit_card_no, first_name, flight_ticket, id, last_name, phone_number
+INFO 2022-05-26 14:43:36,204 autoreload 27284 22968 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:43:36,520 autoreload 26900 24516 Watching for file changes with StatReloader
+ERROR 2022-05-26 14:43:38,113 log 26900 26372 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 44, in members_homepage
+    elif 2 == models.Account.objects.get(account_role = account_type):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 499, in get
+    raise self.model.MultipleObjectsReturned(
+flight_app.models.Account.MultipleObjectsReturned: get() returned more than one Account -- it returned 10!
+INFO 2022-05-26 14:44:55,493 autoreload 26900 24516 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:44:55,788 autoreload 20028 28028 Watching for file changes with StatReloader
+INFO 2022-05-26 14:45:06,172 autoreload 20028 28028 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:45:06,466 autoreload 24040 1656 Watching for file changes with StatReloader
+ERROR 2022-05-26 14:45:10,160 log 24040 13388 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 47, in members_homepage
+    raise Exception({account_id})
+Exception: {<Customer: fleafam>}
+ERROR 2022-05-26 14:45:19,375 log 24040 13388 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 47, in members_homepage
+    raise Exception({account_id})
+Exception: {<Customer: fleafam>}
+INFO 2022-05-26 14:45:21,010 autoreload 24040 1656 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:45:21,336 autoreload 22396 22532 Watching for file changes with StatReloader
+INFO 2022-05-26 14:46:04,527 autoreload 22396 22532 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:46:04,846 autoreload 9336 16456 Watching for file changes with StatReloader
+INFO 2022-05-26 14:50:20,065 autoreload 9336 16456 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-26 14:50:20,363 autoreload 26212 12116 Watching for file changes with StatReloader
+INFO 2022-05-26 14:50:43,097 autoreload 26212 12116 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-26 14:50:43,403 autoreload 19688 7272 Watching for file changes with StatReloader
+INFO 2022-05-26 14:51:26,562 autoreload 19688 7272 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:51:26,857 autoreload 26100 27412 Watching for file changes with StatReloader
+INFO 2022-05-26 14:53:47,185 autoreload 26100 27412 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 14:53:47,526 autoreload 5948 10816 Watching for file changes with StatReloader

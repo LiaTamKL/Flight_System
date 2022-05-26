@@ -1,9 +1,10 @@
 from django.urls import path
 from . import views
+from django.shortcuts import redirect
 
 urlpatterns = [
     path('', views.homeview, name='home') ,
-    
+    path('admin/', lambda request: redirect('/admin/login/', permanent=True)),
 
     path('flightinfo/', views.show_flight_info),
     path('airlineinfo/', views.show_airline_info),
@@ -15,7 +16,7 @@ urlpatterns = [
     path('login/',views.user_login, name='login'),
 
     # path('memebers/')
-    path('members/Customer/homepage/',views.customer_home),
+    path('members/homepage/',views.members_homepage),
 
     path('register/', views.register_customer),
     path('logout/', views.logout),
