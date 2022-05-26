@@ -17,12 +17,10 @@ class CustomerFancade(BaseFuncade):
         flight_Ticket.save()
 
     def remove_ticket(ticket):
-        try:
-            ticket_to_remove = Flight_Ticket.objects.get(pk = ticket)
-        except Flight_Ticket.DoesNotExist:
-            raise Http404("Ticket does not exist")
+        ticket_to_remove = Flight_Ticket.objects.get(pk = ticket["ticket_id"].id)
         ticket_to_remove.delete()
-        return 1
+
+
 
     #need to be logged in
     def get_my_tickets(id):

@@ -138,19 +138,23 @@ class NewFlightForm(forms.ModelForm):
 
 
 
-
+# do not use tags simular to bulit in functions
 class RemoveTicket(forms.ModelForm):
 
+
+    ticket_id = forms.ModelChoiceField(queryset=models.Flight_Ticket.objects.all(), required=False , label='',)
+
     def __init__(self, user, *args, **kwargs):
-        self.user = user
+        self.customer_id = user
         super(RemoveTicket, self).__init__(*args, **kwargs)
 
-        # self.id = forms.ModelChoiceField(queryset=models.Account.objects.filter(pk = self.user), required=True , label='Flight ID')
-        self.fields['flight'].queryset=models.Flight_Ticket.objects.filter(customer_id = self.user)
+        self.fields['ticket_id'].queryset=models.Flight_Ticket.objects.filter(customer_id = self.customer_id)
 
     class Meta:
         model = models.Flight_Ticket
-        fields = ('flight',)
+        fields = ['ticket_id']
+
+
 
 # class NewTicketForm(forms.ModelForm):
 #     # customer_id = forms.CharField(max_length=128, widget=forms.TextInput(attrs={'placeholder': 'Please enter the title'}))

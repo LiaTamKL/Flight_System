@@ -4674,3 +4674,1548 @@ INFO 2022-05-26 21:32:06,625 autoreload 23688 13720 D:\Full_Stack\Projects\Secon
 INFO 2022-05-26 21:32:06,976 autoreload 7260 13584 Watching for file changes with StatReloader
 INFO 2022-05-26 21:32:23,526 autoreload 7260 13584 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
 INFO 2022-05-26 21:32:23,821 autoreload 29556 26976 Watching for file changes with StatReloader
+INFO 2022-05-26 21:44:13,395 autoreload 29556 26976 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 21:44:13,766 autoreload 21100 26680 Watching for file changes with StatReloader
+ERROR 2022-05-26 21:44:26,020 log 21100 18728 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view flight_app.views.remove_ticket didn't return an HttpResponse object. It returned None instead.
+INFO 2022-05-26 21:46:44,666 autoreload 21100 26680 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 21:46:45,046 autoreload 17788 3816 Watching for file changes with StatReloader
+ERROR 2022-05-26 21:46:51,856 log 17788 3036 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view flight_app.views.remove_ticket didn't return an HttpResponse object. It returned None instead.
+INFO 2022-05-26 21:47:36,496 autoreload 17788 3816 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 21:47:36,875 autoreload 8860 23636 Watching for file changes with StatReloader
+ERROR 2022-05-26 21:47:50,639 log 8860 6780 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 276, in remove_ticket
+    raise Exception({request.method =='POST'})
+Exception: {False}
+INFO 2022-05-26 21:48:23,246 autoreload 8860 23636 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 21:48:23,594 autoreload 10676 4472 Watching for file changes with StatReloader
+INFO 2022-05-26 21:49:02,745 autoreload 10676 4472 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 21:49:03,103 autoreload 6036 22904 Watching for file changes with StatReloader
+ERROR 2022-05-26 21:49:11,644 log 6036 4288 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view flight_app.views.remove_ticket didn't return an HttpResponse object. It returned None instead.
+INFO 2022-05-26 21:50:20,219 autoreload 6036 22904 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 21:50:20,582 autoreload 6048 24376 Watching for file changes with StatReloader
+INFO 2022-05-26 21:51:07,639 autoreload 24976 27788 Watching for file changes with StatReloader
+INFO 2022-05-26 21:51:49,889 autoreload 24976 27788 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 21:51:50,243 autoreload 27052 22040 Watching for file changes with StatReloader
+INFO 2022-05-26 21:52:03,384 autoreload 18016 21940 Watching for file changes with StatReloader
+INFO 2022-05-26 21:52:15,657 autoreload 24540 27600 Watching for file changes with StatReloader
+INFO 2022-05-26 21:52:35,298 autoreload 24540 27600 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 21:52:35,657 autoreload 26064 5880 Watching for file changes with StatReloader
+ERROR 2022-05-26 21:53:28,037 log 26064 7072 Internal Server Error: /flight_app/members/tickets/add
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 250, in add_ticket
+    return render(request, 'add_tickFet.html', context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: add_tickFet.html
+INFO 2022-05-26 21:53:58,012 autoreload 26064 5880 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 21:53:58,371 autoreload 10316 23052 Watching for file changes with StatReloader
+WARNING 2022-05-26 21:54:36,372 log 10316 26020 Not Found: /flight_app/members/tickets/tickets/remove
+WARNING 2022-05-26 21:57:05,789 log 10316 16284 Not Found: /flight_app/members/tickets/tickets/add
+INFO 2022-05-26 22:00:27,113 autoreload 10316 23052 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:00:27,452 autoreload 7988 28492 Watching for file changes with StatReloader
+INFO 2022-05-26 22:01:30,172 autoreload 7988 28492 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:01:30,511 autoreload 1252 5284 Watching for file changes with StatReloader
+ERROR 2022-05-26 22:01:34,772 log 1252 26672 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1988, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'QueryDict'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 276, in remove_ticket
+    form = forms.RemoveTicket( request.POST, customer.id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py", line 149, in __init__
+    self.fields['flight'].queryset=models.Flight_Ticket.objects.filter(customer_id = self.user)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1071, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1089, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1096, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1502, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1532, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1448, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1273, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\related_lookups.py", line 154, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1990, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <QueryDict: {}>.
+INFO 2022-05-26 22:02:28,057 autoreload 1252 5284 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:02:28,362 autoreload 13364 26088 Watching for file changes with StatReloader
+ERROR 2022-05-26 22:02:32,319 log 13364 8868 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1988, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'QueryDict'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 276, in remove_ticket
+    form = forms.RemoveTicket( request.POST, customer.id or None)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py", line 149, in __init__
+    self.fields['flight'].queryset=models.Flight_Ticket.objects.filter(customer_id = self.user)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1071, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1089, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1096, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1502, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1532, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1448, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1273, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\related_lookups.py", line 154, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1990, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <QueryDict: {}>.
+INFO 2022-05-26 22:02:57,346 autoreload 13364 26088 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:02:57,653 autoreload 10656 29108 Watching for file changes with StatReloader
+INFO 2022-05-26 22:03:53,233 autoreload 10656 29108 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 22:03:53,547 autoreload 22488 7564 Watching for file changes with StatReloader
+INFO 2022-05-26 22:04:26,609 autoreload 22488 7564 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:04:26,925 autoreload 20044 27960 Watching for file changes with StatReloader
+INFO 2022-05-26 22:07:00,890 autoreload 20044 27960 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:07:01,209 autoreload 10424 11024 Watching for file changes with StatReloader
+ERROR 2022-05-26 22:07:17,440 log 10424 4780 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 275, in remove_ticket
+    raise Exception ({request.method})
+Exception: {'GET'}
+INFO 2022-05-26 22:08:57,239 autoreload 10424 11024 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-26 22:08:57,575 autoreload 9480 25648 Watching for file changes with StatReloader
+WARNING 2022-05-26 22:09:07,300 log 9480 21292 Not Found: /flight_app/members/tickets/remove/
+WARNING 2022-05-26 22:09:18,636 log 9480 21292 Not Found: /flight_app/members/tickets/remove/
+INFO 2022-05-26 22:09:34,747 autoreload 9480 25648 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-26 22:09:35,089 autoreload 22220 28636 Watching for file changes with StatReloader
+WARNING 2022-05-26 22:10:01,679 log 22220 3608 Not Found: /flight_app/members/tickets/remove/
+INFO 2022-05-26 22:10:04,040 autoreload 22220 28636 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:10:04,373 autoreload 19148 27036 Watching for file changes with StatReloader
+INFO 2022-05-26 22:10:20,957 autoreload 19148 27036 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 22:10:21,295 autoreload 2772 23248 Watching for file changes with StatReloader
+WARNING 2022-05-26 22:10:32,948 log 2772 11008 Not Found: /flight_app/members/tickets/remove/
+WARNING 2022-05-26 22:10:45,502 log 2772 11008 Not Found: /flight_app/members/tickets/all/
+WARNING 2022-05-26 22:11:25,920 log 2772 11008 Not Found: /flight_app/members/tickets/all/
+WARNING 2022-05-26 22:11:44,867 log 2772 11008 Not Found: /flight_app/members/tickets/all/
+WARNING 2022-05-26 22:12:24,310 log 2772 11008 Not Found: /flight_app/members/tickets/all/
+WARNING 2022-05-26 22:12:30,560 log 2772 11008 Not Found: /flight_app/members/tickets/remove/
+INFO 2022-05-26 22:12:51,385 autoreload 2772 23248 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-26 22:12:51,741 autoreload 24656 22432 Watching for file changes with StatReloader
+WARNING 2022-05-26 22:13:04,823 log 24656 23664 Not Found: /flight_app/members/tickets/tickets/all
+WARNING 2022-05-26 22:13:10,942 log 24656 23664 Not Found: /flight_app/members/tickets/
+INFO 2022-05-26 22:14:45,782 autoreload 24656 22432 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:14:46,121 autoreload 10816 5136 Watching for file changes with StatReloader
+INFO 2022-05-26 22:15:38,723 autoreload 10816 5136 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:15:39,065 autoreload 23948 4352 Watching for file changes with StatReloader
+INFO 2022-05-26 22:15:41,319 autoreload 23948 4352 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 22:15:41,661 autoreload 11204 27228 Watching for file changes with StatReloader
+WARNING 2022-05-26 22:15:49,674 log 11204 25224 Not Found: /flight_app/members/tickets/tickets/remove
+WARNING 2022-05-26 22:16:40,639 log 11204 25224 Not Found: /flight_app/members/remove
+WARNING 2022-05-26 22:18:01,925 log 11204 27672 Not Found: /flight_app/members/update_account
+INFO 2022-05-26 22:24:50,859 autoreload 11204 27228 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:24:51,167 autoreload 19440 20108 Watching for file changes with StatReloader
+INFO 2022-05-26 22:30:08,238 autoreload 19440 20108 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:30:08,557 autoreload 17868 9760 Watching for file changes with StatReloader
+INFO 2022-05-26 22:30:59,974 autoreload 17868 9760 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:31:00,281 autoreload 14696 21644 Watching for file changes with StatReloader
+INFO 2022-05-26 22:31:21,985 autoreload 14696 21644 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:31:22,285 autoreload 16588 24528 Watching for file changes with StatReloader
+WARNING 2022-05-26 22:31:33,643 log 16588 29008 Not Found: /flight_app/members/tickets/tickets/remove
+INFO 2022-05-26 22:33:45,005 autoreload 16588 24528 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 22:33:45,303 autoreload 2332 5464 Watching for file changes with StatReloader
+INFO 2022-05-26 22:34:11,118 autoreload 2332 5464 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 22:34:11,428 autoreload 5160 24452 Watching for file changes with StatReloader
+INFO 2022-05-26 22:34:33,150 autoreload 5160 24452 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 22:34:33,450 autoreload 6064 14744 Watching for file changes with StatReloader
+INFO 2022-05-26 22:34:34,667 autoreload 6064 14744 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:34:34,969 autoreload 27476 17800 Watching for file changes with StatReloader
+WARNING 2022-05-26 22:34:46,187 log 27476 17596 Not Found: /flight_app/members/tickets/
+INFO 2022-05-26 22:38:20,811 autoreload 27476 17800 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:38:21,131 autoreload 26076 20424 Watching for file changes with StatReloader
+INFO 2022-05-26 22:38:43,853 autoreload 26076 20424 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:38:44,194 autoreload 3324 22524 Watching for file changes with StatReloader
+ERROR 2022-05-26 22:38:50,163 log 3324 29188 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 284, in remove_ticket
+    'form':form,
+UnboundLocalError: local variable 'form' referenced before assignment
+INFO 2022-05-26 22:39:50,104 autoreload 3324 22524 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:39:50,422 autoreload 12880 16848 Watching for file changes with StatReloader
+ERROR 2022-05-26 22:39:55,962 log 12880 7680 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 276, in remove_ticket
+    form = forms.RemoveTicket(request.POST , customer )
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py", line 145, in __init__
+    self.user = kwargs.pop("customer")
+KeyError: 'customer'
+INFO 2022-05-26 22:40:22,410 autoreload 12880 16848 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 22:40:22,718 autoreload 13756 12372 Watching for file changes with StatReloader
+INFO 2022-05-26 22:40:40,324 autoreload 13756 12372 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 22:40:40,644 autoreload 25824 25820 Watching for file changes with StatReloader
+ERROR 2022-05-26 22:40:46,586 log 25824 21360 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1988, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'QueryDict'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 276, in remove_ticket
+    form = forms.RemoveTicket(request.POST , customer )
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py", line 149, in __init__
+    self.fields['flight'].queryset=models.Flight_Ticket.objects.filter(customer_id = self.user)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1071, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1089, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1096, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1502, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1532, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1448, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1273, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\related_lookups.py", line 154, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1990, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <QueryDict: {}>.
+INFO 2022-05-26 22:41:37,230 autoreload 25824 25820 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:41:37,533 autoreload 20068 27304 Watching for file changes with StatReloader
+ERROR 2022-05-26 22:41:41,418 log 20068 18656 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 287, in remove_ticket
+    return render(request, 'form_tamplate.html', context)
+UnboundLocalError: local variable 'context' referenced before assignment
+INFO 2022-05-26 22:42:35,244 autoreload 20068 27304 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:42:35,564 autoreload 13932 20032 Watching for file changes with StatReloader
+INFO 2022-05-26 22:44:27,551 autoreload 13932 20032 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:44:27,861 autoreload 25300 9048 Watching for file changes with StatReloader
+INFO 2022-05-26 22:44:36,258 autoreload 25300 9048 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:44:36,582 autoreload 28764 27128 Watching for file changes with StatReloader
+INFO 2022-05-26 22:46:38,795 autoreload 28764 27128 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 22:46:39,120 autoreload 28012 22572 Watching for file changes with StatReloader
+INFO 2022-05-26 22:47:48,056 autoreload 28012 22572 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 22:47:48,361 autoreload 23980 8696 Watching for file changes with StatReloader
+INFO 2022-05-26 22:48:24,456 autoreload 23980 8696 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 22:48:24,778 autoreload 25660 24972 Watching for file changes with StatReloader
+ERROR 2022-05-26 22:48:32,164 log 25660 8336 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 279, in remove_ticket
+    if form.is_valid():
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 205, in is_valid
+    return self.is_bound and not self.errors
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 200, in errors
+    self.full_clean()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 435, in full_clean
+    self._post_clean()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 485, in _post_clean
+    self.instance = construct_instance(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 82, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 991, in save_form_data
+    setattr(instance, self.name, data)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 235, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<Flight_Ticket: Ticket for fleafam on the flight from zamba to aaa, by Fartair, at None>": "Flight_Ticket.flight" must be a "Flight" instance.
+INFO 2022-05-26 22:53:36,903 autoreload 25660 24972 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-26 22:53:37,208 autoreload 14788 3956 Watching for file changes with StatReloader
+INFO 2022-05-26 22:53:52,750 autoreload 14788 3956 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 22:53:53,060 autoreload 12408 15228 Watching for file changes with StatReloader
+INFO 2022-05-26 22:54:11,665 autoreload 12408 15228 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-26 22:54:11,968 autoreload 28084 21424 Watching for file changes with StatReloader
+ERROR 2022-05-26 22:54:28,244 log 28084 20996 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 279, in remove_ticket
+    if form.is_valid():
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 205, in is_valid
+    return self.is_bound and not self.errors
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 200, in errors
+    self.full_clean()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 435, in full_clean
+    self._post_clean()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 485, in _post_clean
+    self.instance = construct_instance(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 82, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 991, in save_form_data
+    setattr(instance, self.name, data)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 235, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<Flight_Ticket: Ticket for fleafam on the flight from zamba to aaa, by Fartair, at None>": "Flight_Ticket.flight" must be a "Flight" instance.
+INFO 2022-05-26 22:55:23,012 autoreload 28084 21424 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 22:55:23,321 autoreload 28188 3280 Watching for file changes with StatReloader
+INFO 2022-05-26 22:56:19,339 autoreload 2128 6992 Watching for file changes with StatReloader
+INFO 2022-05-26 22:56:37,972 autoreload 28280 27736 Watching for file changes with StatReloader
+ERROR 2022-05-26 22:56:44,337 log 28280 504 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 279, in remove_ticket
+    if form.is_valid():
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 205, in is_valid
+    return self.is_bound and not self.errors
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 200, in errors
+    self.full_clean()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 435, in full_clean
+    self._post_clean()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 485, in _post_clean
+    self.instance = construct_instance(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 82, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 991, in save_form_data
+    setattr(instance, self.name, data)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 235, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<Flight_Ticket: Ticket for fleafam on the flight from zamba to aaa, by Fartair, at None>": "Flight_Ticket.flight" must be a "Flight" instance.
+ERROR 2022-05-26 22:56:56,003 log 28280 504 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 279, in remove_ticket
+    if form.is_valid():
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 205, in is_valid
+    return self.is_bound and not self.errors
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 200, in errors
+    self.full_clean()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 435, in full_clean
+    self._post_clean()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 485, in _post_clean
+    self.instance = construct_instance(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 82, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 991, in save_form_data
+    setattr(instance, self.name, data)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 235, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<Flight_Ticket: Ticket for fleafam on the flight from zamba to aaa, by Fartair, at None>": "Flight_Ticket.flight" must be a "Flight" instance.
+INFO 2022-05-26 22:57:38,904 autoreload 28280 27736 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 22:57:39,212 autoreload 24896 12736 Watching for file changes with StatReloader
+INFO 2022-05-26 22:58:27,900 autoreload 7136 2816 Watching for file changes with StatReloader
+ERROR 2022-05-26 22:58:32,608 log 7136 24860 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 182, in __getitem__
+    field = self.fields[name]
+KeyError: <built-in function id>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 281, in remove_ticket
+    CustomerFancade.remove_ticket(form)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py", line 21, in remove_ticket
+    ticket_to_remove = Flight_Ticket.objects.get(pk = ticket[id])
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 184, in __getitem__
+    raise KeyError(
+KeyError: "Key '<built-in function id>' not found in 'RemoveTicket'. Choices are: customer."
+INFO 2022-05-26 23:00:37,355 autoreload 7136 2816 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 23:00:37,672 autoreload 25524 20624 Watching for file changes with StatReloader
+ERROR 2022-05-26 23:00:42,015 log 25524 11140 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 277, in remove_ticket
+    form = forms.RemoveTicket(customer.id, request.POST )
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py", line 149, in __init__
+    self.fields['id'].queryset=models.Flight_Ticket.objects.filter(customer_id = self.user)
+KeyError: 'id'
+INFO 2022-05-26 23:00:56,376 autoreload 25524 20624 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 23:00:56,681 autoreload 3776 12292 Watching for file changes with StatReloader
+INFO 2022-05-26 23:01:58,077 autoreload 20868 21772 Watching for file changes with StatReloader
+ERROR 2022-05-26 23:02:02,552 log 20868 7196 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 279, in remove_ticket
+    if form.is_valid():
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 205, in is_valid
+    return self.is_bound and not self.errors
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 200, in errors
+    self.full_clean()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 435, in full_clean
+    self._post_clean()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 485, in _post_clean
+    self.instance = construct_instance(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 82, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 991, in save_form_data
+    setattr(instance, self.name, data)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 235, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<Flight_Ticket: Ticket for fleafam on the flight from zamba to aaa, by Fartair, at None>": "Flight_Ticket.flight" must be a "Flight" instance.
+INFO 2022-05-26 23:04:55,792 autoreload 20868 21772 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 23:04:56,175 autoreload 12532 26896 Watching for file changes with StatReloader
+INFO 2022-05-26 23:06:15,338 autoreload 12532 26896 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-26 23:06:15,652 autoreload 11024 4568 Watching for file changes with StatReloader
+ERROR 2022-05-26 23:06:19,967 log 11024 21588 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 182, in __getitem__
+    field = self.fields[name]
+KeyError: <built-in function id>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 281, in remove_ticket
+    CustomerFancade.remove_ticket(form)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py", line 21, in remove_ticket
+    ticket_to_remove = Flight_Ticket.objects.get(Customer = ticket[id])
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 184, in __getitem__
+    raise KeyError(
+KeyError: "Key '<built-in function id>' not found in 'RemoveTicket'. Choices are: customer."
+INFO 2022-05-26 23:07:47,260 autoreload 11024 4568 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-26 23:07:47,573 autoreload 19176 15728 Watching for file changes with StatReloader
+INFO 2022-05-26 23:07:50,814 autoreload 19176 15728 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-26 23:07:51,132 autoreload 3488 25964 Watching for file changes with StatReloader
+ERROR 2022-05-26 23:08:06,393 log 3488 28440 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 182, in __getitem__
+    field = self.fields[name]
+KeyError: 'flight_id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 281, in remove_ticket
+    CustomerFancade.remove_ticket(form)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py", line 21, in remove_ticket
+    ticket_to_remove = Flight_Ticket.objects.get(id = ticket['flight_id'])
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 184, in __getitem__
+    raise KeyError(
+KeyError: "Key 'flight_id' not found in 'RemoveTicket'. Choices are: customer."
+INFO 2022-05-26 23:09:06,244 autoreload 3488 25964 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 23:09:06,554 autoreload 21736 20616 Watching for file changes with StatReloader
+INFO 2022-05-26 23:09:09,804 autoreload 21736 20616 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 23:09:10,108 autoreload 28976 18592 Watching for file changes with StatReloader
+INFO 2022-05-26 23:09:14,379 autoreload 28976 18592 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-26 23:09:14,680 autoreload 18632 3700 Watching for file changes with StatReloader
+INFO 2022-05-26 23:14:11,822 autoreload 18632 3700 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-26 23:14:12,194 autoreload 2664 19356 Watching for file changes with StatReloader
+ERROR 2022-05-26 23:14:16,685 log 2664 13204 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 280, in remove_ticket
+    print(form.customer)
+AttributeError: 'RemoveTicket' object has no attribute 'customer'
+INFO 2022-05-26 23:14:35,042 autoreload 2664 19356 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-26 23:14:35,367 autoreload 9368 17884 Watching for file changes with StatReloader
+ERROR 2022-05-26 23:14:39,835 log 9368 6576 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 182, in __getitem__
+    field = self.fields[name]
+KeyError: <Customer: fleafam>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 280, in remove_ticket
+    print(form[customer])
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 184, in __getitem__
+    raise KeyError(
+KeyError: "Key 'fleafam' not found in 'RemoveTicket'. Choices are: customer."
+INFO 2022-05-26 23:15:57,570 autoreload 9368 17884 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 23:15:57,895 autoreload 13764 21748 Watching for file changes with StatReloader
+INFO 2022-05-26 23:16:23,172 autoreload 12908 29040 Watching for file changes with StatReloader
+INFO 2022-05-26 23:20:15,773 autoreload 15592 11808 Watching for file changes with StatReloader
+INFO 2022-05-26 23:21:17,438 autoreload 15592 11808 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 23:21:17,741 autoreload 25232 20340 Watching for file changes with StatReloader
+ERROR 2022-05-26 23:21:22,560 log 25232 26676 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 182, in __getitem__
+    field = self.fields[name]
+KeyError: <Customer: fleafam>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 280, in remove_ticket
+    print(form[customer])
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 184, in __getitem__
+    raise KeyError(
+KeyError: "Key 'fleafam' not found in 'RemoveTicket'. Choices are: customer."
+INFO 2022-05-26 23:23:04,605 autoreload 25232 20340 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-26 23:23:04,923 autoreload 25804 6608 Watching for file changes with StatReloader
+INFO 2022-05-26 23:23:17,379 autoreload 25804 6608 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-26 23:23:17,695 autoreload 28492 6268 Watching for file changes with StatReloader
+ERROR 2022-05-26 23:23:24,258 log 28492 20236 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 182, in __getitem__
+    field = self.fields[name]
+KeyError: <Customer: fleafam>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 280, in remove_ticket
+    print(form[customer])
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 184, in __getitem__
+    raise KeyError(
+KeyError: "Key 'fleafam' not found in 'RemoveTicket'. Choices are: customer."
+ERROR 2022-05-26 23:23:48,335 log 28492 20236 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 279, in remove_ticket
+    if form.is_valid():
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 205, in is_valid
+    return self.is_bound and not self.errors
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 200, in errors
+    self.full_clean()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 435, in full_clean
+    self._post_clean()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 485, in _post_clean
+    self.instance = construct_instance(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 82, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 991, in save_form_data
+    setattr(instance, self.name, data)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 235, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<Flight_Ticket: Ticket for fleafam on the flight from zamba to aaa, by Fartair, at None>": "Flight_Ticket.customer" must be a "Customer" instance.
+INFO 2022-05-26 23:29:34,176 autoreload 28492 6268 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 23:29:34,491 autoreload 26344 17472 Watching for file changes with StatReloader
+INFO 2022-05-26 23:29:55,203 autoreload 17548 12548 Watching for file changes with StatReloader
+INFO 2022-05-26 23:29:58,427 autoreload 17548 12548 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 23:29:58,760 autoreload 20804 20932 Watching for file changes with StatReloader
+ERROR 2022-05-26 23:30:04,986 log 20804 28720 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 277, in remove_ticket
+    form = forms.RemoveTicket(customer.id, request.POST )
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py", line 149, in __init__
+    self.fields['id'].queryset=models.Flight_Ticket.objects.filter(customer_id = self.customer_id)
+KeyError: 'id'
+INFO 2022-05-26 23:31:36,400 autoreload 20804 20932 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-26 23:31:36,707 autoreload 16640 8524 Watching for file changes with StatReloader
+INFO 2022-05-26 23:42:27,941 autoreload 16640 8524 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 23:42:28,297 autoreload 18964 8436 Watching for file changes with StatReloader
+INFO 2022-05-26 23:47:58,856 autoreload 25316 25664 Watching for file changes with StatReloader
+WARNING 2022-05-26 23:48:07,327 log 25316 10424 Not Found: /flight_app/members/tickets/
+ERROR 2022-05-26 23:48:24,239 log 25316 3344 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 279, in remove_ticket
+    if form.is_valid():
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 205, in is_valid
+    return self.is_bound and not self.errors
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 200, in errors
+    self.full_clean()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 435, in full_clean
+    self._post_clean()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 485, in _post_clean
+    self.instance = construct_instance(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 82, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 991, in save_form_data
+    setattr(instance, self.name, data)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 235, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<Flight_Ticket: Ticket for fleafam on the flight from zamba to aaa, by Fartair, at None>": "Flight_Ticket.customer" must be a "Customer" instance.
+INFO 2022-05-26 23:50:56,494 autoreload 29288 7012 Watching for file changes with StatReloader
+ERROR 2022-05-26 23:51:06,829 log 29288 19400 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 279, in remove_ticket
+    if form.is_valid():
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 205, in is_valid
+    return self.is_bound and not self.errors
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 200, in errors
+    self.full_clean()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 435, in full_clean
+    self._post_clean()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 485, in _post_clean
+    self.instance = construct_instance(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 82, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 991, in save_form_data
+    setattr(instance, self.name, data)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 235, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<Flight_Ticket: Ticket for fleafam on the flight from zamba to aaa, by Fartair, at None>": "Flight_Ticket.customer" must be a "Customer" instance.
+INFO 2022-05-26 23:51:24,518 autoreload 29288 7012 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 23:51:24,895 autoreload 24764 13080 Watching for file changes with StatReloader
+ERROR 2022-05-26 23:51:28,532 log 24764 2252 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 277, in remove_ticket
+    form = forms.RemoveTicket(customer.id, request.POST )
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py", line 150, in __init__
+    self.fields['customer'].queryset=models.Flight_Ticket.objects.filter(customer_id = self.customer_id)
+KeyError: 'customer'
+INFO 2022-05-26 23:52:30,763 autoreload 24764 13080 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-26 23:52:31,131 autoreload 23400 7924 Watching for file changes with StatReloader
+INFO 2022-05-26 23:52:50,666 autoreload 5072 1224 Watching for file changes with StatReloader
+INFO 2022-05-26 23:53:32,962 autoreload 648 10272 Watching for file changes with StatReloader
+INFO 2022-05-26 23:54:44,122 autoreload 28620 12184 Watching for file changes with StatReloader
+ERROR 2022-05-26 23:54:48,197 log 28620 14024 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 277, in remove_ticket
+    form = forms.RemoveTicket(customer.id, request.POST )
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py", line 150, in __init__
+    self.fields['customer'].queryset=models.Flight_Ticket.objects.get(customer_id = self.customer_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 499, in get
+    raise self.model.MultipleObjectsReturned(
+flight_app.models.Flight_Ticket.MultipleObjectsReturned: get() returned more than one Flight_Ticket -- it returned 4!
+INFO 2022-05-27 00:04:20,817 autoreload 28620 12184 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-27 00:04:21,131 autoreload 28000 27996 Watching for file changes with StatReloader
+INFO 2022-05-27 00:04:43,323 autoreload 13264 27976 Watching for file changes with StatReloader
+INFO 2022-05-27 00:05:38,651 autoreload 27368 11376 Watching for file changes with StatReloader
+INFO 2022-05-27 00:05:50,063 autoreload 27368 11376 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 00:05:50,399 autoreload 27248 28728 Watching for file changes with StatReloader
+ERROR 2022-05-27 00:06:21,271 log 27248 28904 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 280, in remove_ticket
+    if form.is_valid():
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 205, in is_valid
+    return self.is_bound and not self.errors
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 200, in errors
+    self.full_clean()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 435, in full_clean
+    self._post_clean()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 485, in _post_clean
+    self.instance = construct_instance(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 82, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 991, in save_form_data
+    setattr(instance, self.name, data)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 235, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<Flight_Ticket: Ticket for fleafam on the flight from zamba to aaa, by Fartair, at None>": "Flight_Ticket.flight" must be a "Flight" instance.
+WARNING 2022-05-27 00:06:48,185 log 27248 28904 Not Found: /flight_app/members/tickets
+INFO 2022-05-27 00:09:55,965 autoreload 27248 28728 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 00:09:56,326 autoreload 19708 25892 Watching for file changes with StatReloader
+WARNING 2022-05-27 00:10:06,577 log 19708 22876 Not Found: /flight_app/members/tickets/tickets/remove
+ERROR 2022-05-27 00:10:16,884 log 19708 22876 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 281, in remove_ticket
+    CustomerFancade.remove_ticket(form.cleaned_data)
+AttributeError: 'RemoveTicket' object has no attribute 'cleaned_data'
+INFO 2022-05-27 00:11:47,490 autoreload 19708 25892 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 00:11:47,840 autoreload 18196 18760 Watching for file changes with StatReloader
+ERROR 2022-05-27 00:11:53,531 log 18196 21204 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 281, in remove_ticket
+    CustomerFancade.remove_ticket(form)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py", line 20, in remove_ticket
+    print(form)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\utils.py", line 55, in render
+    context or self.get_context(),
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 322, in get_context
+    top_errors = self.non_field_errors().copy()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 358, in non_field_errors
+    return self.errors.get(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 200, in errors
+    self.full_clean()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\forms.py", line 435, in full_clean
+    self._post_clean()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 485, in _post_clean
+    self.instance = construct_instance(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\forms\models.py", line 82, in construct_instance
+    f.save_form_data(instance, cleaned_data[f.name])
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 991, in save_form_data
+    setattr(instance, self.name, data)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 235, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<Flight_Ticket: Ticket for fleafam on the flight from zamba to aaa, by Fartair, at None>": "Flight_Ticket.flight" must be a "Flight" instance.
+INFO 2022-05-27 00:17:10,010 autoreload 18196 18760 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-27 00:17:10,365 autoreload 19912 29504 Watching for file changes with StatReloader
+ERROR 2022-05-27 00:17:15,600 log 19912 12940 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 278, in remove_ticket
+    form = forms.RemoveTicket(customer.id, request.POST )
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py", line 154, in __init__
+    self.fields['flight'].queryset=models.Flight_Ticket.objects.filter(customer_id = self.customer_id)
+KeyError: 'flight'
+INFO 2022-05-27 00:17:30,134 autoreload 19912 29504 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-27 00:17:30,481 autoreload 14612 21384 Watching for file changes with StatReloader
+INFO 2022-05-27 00:18:44,530 autoreload 14612 21384 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-27 00:18:44,871 autoreload 7204 688 Watching for file changes with StatReloader
+INFO 2022-05-27 00:19:23,044 autoreload 7204 688 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-27 00:19:23,369 autoreload 14280 20288 Watching for file changes with StatReloader
+INFO 2022-05-27 00:20:46,532 autoreload 11444 22180 Watching for file changes with StatReloader
+INFO 2022-05-27 00:21:14,485 autoreload 11444 22180 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 00:21:14,821 autoreload 27156 25228 Watching for file changes with StatReloader
+INFO 2022-05-27 00:22:48,335 autoreload 27156 25228 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-27 00:22:48,670 autoreload 22416 18796 Watching for file changes with StatReloader
+INFO 2022-05-27 00:22:56,022 autoreload 22416 18796 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 00:22:56,350 autoreload 29568 18692 Watching for file changes with StatReloader
+INFO 2022-05-27 00:23:39,588 autoreload 29568 18692 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-27 00:23:39,917 autoreload 2352 18724 Watching for file changes with StatReloader
+ERROR 2022-05-27 00:24:02,222 log 2352 27332 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 281, in remove_ticket
+    CustomerFancade.remove_ticket(form.ticket_id)
+AttributeError: 'RemoveTicket' object has no attribute 'ticket_id'
+INFO 2022-05-27 00:24:27,331 autoreload 2352 18724 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-27 00:24:27,654 autoreload 6028 28396 Watching for file changes with StatReloader
+ERROR 2022-05-27 00:25:00,081 log 6028 19056 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 281, in remove_ticket
+    CustomerFancade.remove_ticket(form.ticket_id)
+AttributeError: 'RemoveTicket' object has no attribute 'ticket_id'
+INFO 2022-05-27 00:25:57,121 autoreload 6028 28396 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 00:25:57,451 autoreload 4156 25848 Watching for file changes with StatReloader
+ERROR 2022-05-27 00:26:02,568 log 4156 16496 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1988, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'BoundField'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 281, in remove_ticket
+    CustomerFancade.remove_ticket(form["ticket_id"])
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py", line 20, in remove_ticket
+    ticket_to_remove = Flight_Ticket.objects.get(pk = ticket_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 482, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1071, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1089, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1096, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1502, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1532, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1448, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1273, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\lookups.py", line 85, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1990, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <django.forms.boundfield.BoundField object at 0x0000026C15E5FE20>.
+INFO 2022-05-27 00:26:39,731 autoreload 4156 25848 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 00:26:40,078 autoreload 26448 25532 Watching for file changes with StatReloader
+INFO 2022-05-27 00:26:44,370 autoreload 26448 25532 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-27 00:26:44,720 autoreload 25284 8984 Watching for file changes with StatReloader
+ERROR 2022-05-27 00:26:51,466 log 25284 27864 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1988, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'list'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 281, in remove_ticket
+    CustomerFancade.remove_ticket(form.changed_data)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py", line 21, in remove_ticket
+    ticket_to_remove = Flight_Ticket.objects.get(pk = ticket_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 482, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1071, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1089, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1096, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1502, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1532, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1448, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1273, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\lookups.py", line 85, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1990, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got [].
+INFO 2022-05-27 00:27:24,900 autoreload 25284 8984 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-27 00:27:25,269 autoreload 29544 26824 Watching for file changes with StatReloader
+ERROR 2022-05-27 00:27:31,132 log 29544 24376 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 281, in remove_ticket
+    CustomerFancade.remove_ticket(form.changed_data)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py", line 20, in remove_ticket
+    ticket_to_remove = Flight_Ticket.objects.get(pk = ticket_id["ticket_id"])
+TypeError: list indices must be integers or slices, not str
+INFO 2022-05-27 00:29:07,008 autoreload 29544 26824 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-27 00:29:07,349 autoreload 17324 20540 Watching for file changes with StatReloader
+ERROR 2022-05-27 00:29:12,451 log 17324 12616 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 281, in remove_ticket
+    CustomerFancade.remove_ticket(form.changed_data)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py", line 20, in remove_ticket
+    raise Exception({ticket_id})
+TypeError: unhashable type: 'list'
+INFO 2022-05-27 00:30:01,009 autoreload 17324 20540 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-27 00:30:01,340 autoreload 1144 18772 Watching for file changes with StatReloader
+INFO 2022-05-27 00:30:03,582 autoreload 1144 18772 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-27 00:30:03,908 autoreload 24684 15836 Watching for file changes with StatReloader
+INFO 2022-05-27 00:30:39,941 autoreload 24684 15836 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-27 00:30:40,279 autoreload 28436 25772 Watching for file changes with StatReloader
+ERROR 2022-05-27 00:30:53,693 log 28436 12064 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 281, in remove_ticket
+    CustomerFancade.remove_ticket(form.changed_data)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py", line 20, in remove_ticket
+    raise Exception({ticket_id})
+TypeError: unhashable type: 'list'
+INFO 2022-05-27 00:33:41,031 autoreload 28436 25772 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-27 00:33:41,390 autoreload 26360 2596 Watching for file changes with StatReloader
+ERROR 2022-05-27 00:33:47,505 log 26360 22044 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1988, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'list'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 281, in remove_ticket
+    CustomerFancade.remove_ticket(form.changed_data)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py", line 21, in remove_ticket
+    ticket_to_remove = Flight_Ticket.objects.get(pk = ticket_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 482, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1071, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1089, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1096, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1502, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1532, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1448, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1273, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\lookups.py", line 85, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1990, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got ['ticket_id'].
+WARNING 2022-05-27 00:35:41,209 log 26360 22044 Not Found: /flight_app/members/tickets/tickets/add
+WARNING 2022-05-27 00:37:31,237 log 26360 22044 Not Found: /flight_app/members/tickets/tickets/add
+WARNING 2022-05-27 00:41:12,880 log 26360 22044 Not Found: /flight_app/members/remove
+WARNING 2022-05-27 00:41:45,980 log 26360 22044 Not Found: /flight_app/members/remove
+WARNING 2022-05-27 00:41:51,929 log 26360 22044 Not Found: /flight_app/members/all
+ERROR 2022-05-27 00:42:26,676 log 26360 22044 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1988, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'list'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 281, in remove_ticket
+    CustomerFancade.remove_ticket(form.changed_data)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py", line 21, in remove_ticket
+    ticket_to_remove = Flight_Ticket.objects.get(pk = ticket_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 482, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1071, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1089, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1096, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1502, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1532, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1448, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1273, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\lookups.py", line 85, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1990, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got ['ticket_id'].
+INFO 2022-05-27 00:45:31,116 autoreload 26360 2596 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 00:45:31,404 autoreload 21688 18992 Watching for file changes with StatReloader
+ERROR 2022-05-27 00:45:37,098 log 21688 13780 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1988, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'RemoveTicket'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 281, in remove_ticket
+    CustomerFancade.remove_ticket(form)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py", line 21, in remove_ticket
+    ticket_to_remove = Flight_Ticket.objects.get(pk = ticket_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 482, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1071, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1089, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1096, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1502, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1532, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1448, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1273, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\lookups.py", line 85, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1990, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <RemoveTicket bound=True, valid=True, fields=(ticket_id)>.
+ERROR 2022-05-27 00:45:52,127 log 21688 13780 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1988, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'RemoveTicket'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 281, in remove_ticket
+    CustomerFancade.remove_ticket(form)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py", line 21, in remove_ticket
+    ticket_to_remove = Flight_Ticket.objects.get(pk = ticket_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 482, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1071, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1089, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1096, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1502, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1532, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1448, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1273, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\lookups.py", line 85, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1990, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got <RemoveTicket bound=True, valid=True, fields=(ticket_id)>.
+INFO 2022-05-27 00:46:21,938 autoreload 21688 18992 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-27 00:46:22,237 autoreload 7680 18544 Watching for file changes with StatReloader
+INFO 2022-05-27 00:46:30,592 autoreload 7680 18544 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 00:46:30,894 autoreload 23112 13424 Watching for file changes with StatReloader
+INFO 2022-05-27 00:47:07,983 autoreload 23112 13424 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-27 00:47:08,289 autoreload 29520 26472 Watching for file changes with StatReloader
+INFO 2022-05-27 00:47:23,889 autoreload 29520 26472 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-27 00:47:24,185 autoreload 29204 27496 Watching for file changes with StatReloader
+INFO 2022-05-27 00:48:26,859 autoreload 11248 18680 Watching for file changes with StatReloader
+INFO 2022-05-27 00:53:22,737 autoreload 11248 18680 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 00:53:23,039 autoreload 26584 29436 Watching for file changes with StatReloader
+INFO 2022-05-27 00:53:26,276 autoreload 26584 29436 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 00:53:26,576 autoreload 10400 25332 Watching for file changes with StatReloader
+WARNING 2022-05-27 00:53:34,313 log 10400 28236 Not Found: /flight_app/members/tickets/
+WARNING 2022-05-27 00:53:36,660 log 10400 28236 Not Found: /flight_app/members/t
+ERROR 2022-05-27 00:53:44,779 log 10400 28236 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 283, in remove_ticket
+    return HttpResponse(form['ticket_id'].id)
+AttributeError: 'BoundField' object has no attribute 'id'
+INFO 2022-05-27 00:57:24,449 autoreload 10400 25332 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-27 00:57:24,791 autoreload 26168 24324 Watching for file changes with StatReloader
+INFO 2022-05-27 00:57:48,534 autoreload 26168 24324 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 00:57:48,888 autoreload 14924 5928 Watching for file changes with StatReloader
+ERROR 2022-05-27 00:57:58,787 log 14924 3768 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 282, in remove_ticket
+    CustomerFancade.remove_ticket(form['ticket_id'])
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py", line 22, in remove_ticket
+    ticket.delete()
+AttributeError: 'BoundField' object has no attribute 'delete'
+INFO 2022-05-27 00:59:16,344 autoreload 14924 5928 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 00:59:16,713 autoreload 26652 23464 Watching for file changes with StatReloader
+ERROR 2022-05-27 00:59:25,819 log 26652 7188 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 282, in remove_ticket
+    CustomerFancade.remove_ticket(form.cleaned_data)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py", line 22, in remove_ticket
+    ticket.delete()
+AttributeError: 'dict' object has no attribute 'delete'
+INFO 2022-05-27 01:10:08,311 autoreload 26652 23464 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 01:10:08,680 autoreload 18360 3544 Watching for file changes with StatReloader
+INFO 2022-05-27 01:10:10,929 autoreload 18360 3544 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 01:10:11,278 autoreload 22408 19396 Watching for file changes with StatReloader
+INFO 2022-05-27 01:10:12,514 autoreload 22408 19396 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-27 01:10:12,877 autoreload 14684 23872 Watching for file changes with StatReloader
+ERROR 2022-05-27 01:10:20,005 log 14684 7260 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 282, in remove_ticket
+    lis = CustomerFancade.remove_ticket(form.cleaned_data)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py", line 20, in remove_ticket
+    lis = list(ticket["ticket_id"])
+TypeError: 'Flight_Ticket' object is not iterable
+INFO 2022-05-27 01:10:55,236 autoreload 14684 23872 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-27 01:10:55,588 autoreload 11280 29400 Watching for file changes with StatReloader
+ERROR 2022-05-27 01:11:19,332 log 11280 4316 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 282, in remove_ticket
+    lis = CustomerFancade.remove_ticket(form.cleaned_data)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py", line 20, in remove_ticket
+    lis = ticket["ticket_id"][id]
+TypeError: 'Flight_Ticket' object is not subscriptable
+INFO 2022-05-27 01:11:38,923 autoreload 11280 29400 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-27 01:11:39,284 autoreload 29608 13236 Watching for file changes with StatReloader
+INFO 2022-05-27 01:12:16,418 autoreload 29608 13236 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\DAL\customer_facade.py changed, reloading.
+INFO 2022-05-27 01:12:16,791 autoreload 25260 3308 Watching for file changes with StatReloader
+INFO 2022-05-27 01:12:39,608 autoreload 25260 3308 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 01:12:39,974 autoreload 14688 9728 Watching for file changes with StatReloader
+INFO 2022-05-27 01:13:16,098 autoreload 14688 9728 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-27 01:13:16,442 autoreload 10112 3096 Watching for file changes with StatReloader
+INFO 2022-05-27 01:13:26,939 autoreload 26408 14924 Watching for file changes with StatReloader
+ERROR 2022-05-27 01:13:37,070 log 26408 21616 Internal Server Error: /flight_app/members/tickets/remove/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 278, in remove_ticket
+    form = forms.RemoveTicket(customer.id, request.POST )
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py", line 152, in __init__
+    self.fields['flight_id'].label = ""
+KeyError: 'flight_id'
+INFO 2022-05-27 01:14:03,113 autoreload 26408 14924 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-27 01:14:03,473 autoreload 21184 9332 Watching for file changes with StatReloader
+INFO 2022-05-27 01:15:27,714 autoreload 21184 9332 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-27 01:15:28,080 autoreload 28644 18688 Watching for file changes with StatReloader
+INFO 2022-05-27 01:24:50,049 autoreload 9304 17052 Watching for file changes with StatReloader
+INFO 2022-05-27 01:25:12,780 autoreload 9304 17052 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-27 01:25:13,133 autoreload 1252 14936 Watching for file changes with StatReloader
+INFO 2022-05-27 01:25:20,490 autoreload 1252 14936 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-27 01:25:20,856 autoreload 23296 8452 Watching for file changes with StatReloader
+ERROR 2022-05-27 01:26:36,851 log 23296 23016 Internal Server Error: /flight_app/logout/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 342, in logout
+    auth.logout(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\contrib\auth\__init__.py", line 158, in logout
+    request.session.flush()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\contrib\sessions\backends\base.py", line 289, in flush
+    self.delete()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\contrib\sessions\backends\db.py", line 104, in delete
+    self.model.objects.get(session_key=session_key).delete()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\base.py", line 1094, in delete
+    return collector.delete()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\deletion.py", line 446, in delete
+    count = sql.DeleteQuery(model).delete_batch(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\subqueries.py", line 42, in delete_batch
+    num_deleted += self.do_query(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\subqueries.py", line 20, in do_query
+    cursor = self.get_compiler(using).execute_sql(CURSOR)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1361, in execute_sql
+    cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 477, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: database is locked
+ERROR 2022-05-27 01:27:38,597 log 23296 23016 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 46, in members_homepage
+    account_id = models.Airline.objects.get(account_id = account_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+flight_app.models.Airline.DoesNotExist: Airline matching query does not exist.
+ERROR 2022-05-27 01:29:36,777 log 23296 29080 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 46, in members_homepage
+    account_id = models.Airline.objects.get(account_id = account_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+flight_app.models.Airline.DoesNotExist: Airline matching query does not exist.
+ERROR 2022-05-27 01:29:40,185 log 23296 29080 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 46, in members_homepage
+    account_id = models.Airline.objects.get(account_id = account_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+flight_app.models.Airline.DoesNotExist: Airline matching query does not exist.
+ERROR 2022-05-27 01:31:09,705 log 23296 29080 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 46, in members_homepage
+    account_id = models.Airline.objects.get(account_id = account_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+flight_app.models.Airline.DoesNotExist: Airline matching query does not exist.
+ERROR 2022-05-27 01:31:18,771 log 23296 29080 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 46, in members_homepage
+    account_id = models.Airline.objects.get(account_id = account_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+flight_app.models.Airline.DoesNotExist: Airline matching query does not exist.
+ERROR 2022-05-27 01:34:06,022 log 23296 12240 Internal Server Error: /flight_app/members/tickets/add/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 238, in add_ticket
+    customer = models.Customer.objects.get(account_id = request.user.id )
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+flight_app.models.Customer.DoesNotExist: Customer matching query does not exist.
+ERROR 2022-05-27 01:40:15,862 log 23296 14196 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 46, in members_homepage
+    account_id = models.Airline.objects.get(account_id = account_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+flight_app.models.Airline.DoesNotExist: Airline matching query does not exist.
+INFO 2022-05-27 01:41:15,861 autoreload 23296 8452 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\models.py changed, reloading.
+INFO 2022-05-27 01:41:16,209 autoreload 14104 18276 Watching for file changes with StatReloader
+ERROR 2022-05-27 01:45:41,585 log 14104 21424 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 53, in members_homepage
+    'first_name': account_id.first_name,
+AttributeError: 'Airline' object has no attribute 'first_name'
+INFO 2022-05-27 01:59:13,451 autoreload 14104 18276 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-27 01:59:13,794 autoreload 16800 27820 Watching for file changes with StatReloader
+ERROR 2022-05-27 02:01:32,831 log 16800 28632 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 44, in members_homepage
+    account_id = models.Customer.objects.get(account_id = account_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+flight_app.models.Customer.DoesNotExist: Customer matching query does not exist.
+WARNING 2022-05-27 02:01:45,257 log 16800 28632 Not Found: /flight_app/members/logout
+WARNING 2022-05-27 02:01:49,195 log 16800 28632 Not Found: /flight_app//logout
+WARNING 2022-05-27 02:01:57,847 log 16800 28632 Not Found: /flight_app//logout/
+ERROR 2022-05-27 02:02:28,328 log 16800 28632 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 44, in members_homepage
+    account_id = models.Customer.objects.get(account_id = account_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+flight_app.models.Customer.DoesNotExist: Customer matching query does not exist.
+ERROR 2022-05-27 02:03:03,770 log 16800 28632 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 44, in members_homepage
+    account_id = models.Customer.objects.get(account_id = account_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+flight_app.models.Customer.DoesNotExist: Customer matching query does not exist.
+ERROR 2022-05-27 02:03:23,256 log 16800 28632 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 44, in members_homepage
+    account_id = models.Customer.objects.get(account_id = account_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+flight_app.models.Customer.DoesNotExist: Customer matching query does not exist.
+ERROR 2022-05-27 02:03:32,878 log 16800 28632 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 44, in members_homepage
+    account_id = models.Customer.objects.get(account_id = account_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+flight_app.models.Customer.DoesNotExist: Customer matching query does not exist.
+INFO 2022-05-27 02:04:00,756 autoreload 29432 23564 Watching for file changes with StatReloader
+ERROR 2022-05-27 02:04:31,225 log 29432 7668 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 44, in members_homepage
+    account_id = models.Customer.objects.get(account_id = account_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+flight_app.models.Customer.DoesNotExist: Customer matching query does not exist.
+WARNING 2022-05-27 02:04:58,484 log 29432 7668 Forbidden (CSRF token from POST incorrect.): /flight_app/login/
+ERROR 2022-05-27 02:05:16,790 log 29432 7668 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 44, in members_homepage
+    account_id = models.Customer.objects.get(account_id = account_id)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+flight_app.models.Customer.DoesNotExist: Customer matching query does not exist.
+WARNING 2022-05-27 02:07:43,695 log 29432 7668 Not Found: /flight_app/register/login/
+INFO 2022-05-27 02:09:02,524 autoreload 29432 23564 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 02:09:02,828 autoreload 12880 23032 Watching for file changes with StatReloader
+WARNING 2022-05-27 02:24:42,849 log 12880 26276 Not Found: /flight_app/members/flights/all
+WARNING 2022-05-27 02:24:47,417 log 12880 26276 Not Found: /flight_app/members/airline/all
+INFO 2022-05-27 02:26:38,203 autoreload 12880 23032 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-27 02:26:38,556 autoreload 18424 17048 Watching for file changes with StatReloader
+INFO 2022-05-27 02:26:41,784 autoreload 18424 17048 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 02:26:42,088 autoreload 2800 25300 Watching for file changes with StatReloader
+INFO 2022-05-27 02:26:50,436 autoreload 2800 25300 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-27 02:26:50,737 autoreload 21428 26264 Watching for file changes with StatReloader
+INFO 2022-05-27 02:31:55,686 autoreload 21428 26264 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-27 02:31:56,013 autoreload 26052 11428 Watching for file changes with StatReloader
+WARNING 2022-05-27 02:33:25,436 log 26052 4308 Not Found: /flight_app/members/flights/all
+WARNING 2022-05-27 02:33:45,142 log 26052 4308 Not Found: /flight_app/members/airline/byid
+INFO 2022-05-27 02:38:41,244 autoreload 26052 11428 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 02:38:41,552 autoreload 22984 24248 Watching for file changes with StatReloader

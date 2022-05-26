@@ -41,21 +41,24 @@ def members_homepage(request):
         
 
         elif account_type == models.Account_Role.objects.get(id = 2):
-          account_id = models.Customer.objects.get(account_id = account_id)
+          account = models.Customer.objects.get(account_id = account_id).first_name
+
         elif account_type == models.Account_Role.objects.get(id = 1):
-            account_id = models.Airline.objects.get(account_id = account_id)
+            account = models.Airline.objects.get(account_id = account_id).name
 
 
         
         
         context = {
 
-            'first_name': account_id.first_name,
+            'account': account,
             'account_type': account_type
         }
         return render(request, 'members_home.html', context)
 
     return redirect('login')
+
+
 
 
 def members_tickets(request):
@@ -80,6 +83,10 @@ def show_flight_info (request):
         'flights_by_param' : flights_by_param,
     }
     return render(request, "flight_info.html", context)
+
+
+
+
 
 
 def show_airline_info(request):
@@ -107,13 +114,16 @@ def show_country_by_id(request, country_id):
 
 
 #shows contries info , if no argument was sent it shows all
-def show_countries_info(request):
+def all_countries(request):
 
     all_countries = BaseFuncade.get_all_countries()
     context = {
         'all_countries' : all_countries,
     }
     return render(request, "all_countries.html", context)
+
+
+
 
 #shows all flights for the airline that's logged in. shows nothing if not logged in as an airline
 def view_flights_by_airline(request):
@@ -133,6 +143,9 @@ def view_flights_by_airline(request):
                     }
 
     return render(request, 'airline_get_flights.html', context)
+
+
+
 
 #takes a flight_id, deletes it if you're logged in as the airline that flight belongs to.
 def delete_flight_for_airline(request, flight_id):
@@ -234,8 +247,10 @@ def airline_update_flight(request, flight_id):
 
 def add_ticket(request):
     if request.user.is_authenticated:
+
         customer = models.Customer.objects.get(account_id = request.user.id )
         message = None
+
         new_ticket_form = forms.NewTicketForm(request.POST)
         if request.method =='POST':
             if new_ticket_form.is_valid():
@@ -247,10 +262,27 @@ def add_ticket(request):
             'form': new_ticket_form,
             'message': message
             }
-        return render(request, 'add_tickFet.html', context)
+        return render(request, 'add_ticket.html', context)
     
     else:
         return redirect('home')
+
+
+
+
+
+def update_account(requset):
+    form = {}     
+            
+    context = {
+        'form':form,
+        'designation': "Update User", 
+        "button": "Update"
+    }
+
+    return render(requset, 'form_tamplate.html', context)
+
+
 
 
 
@@ -263,32 +295,33 @@ def get_my_tickets(request):
         
         return render(request, "all_my_tickets.html", {'all_tickets': all_my_tickets})
 
-
-
-
     else:
         return redirect('home')
 
+
+
 def remove_ticket(request):
+    context= {}
     if request.user.is_authenticated:
         customer = models.Customer.objects.get(account_id = request.user.id)
+        # raise Except|ion{{}}  
+        form = forms.RemoveTicket(customer.id, request.POST )
+        if request.method =='POST':
+            if form.is_valid():
+               
+                lis = CustomerFancade.remove_ticket(form.cleaned_data)   
+                # return HttpResponse(lis)
+       
+       
+        context = {
+            'form':form,
+            'designation': "Remove Ticket", 
+            "button": "remove"
+        }
 
-        
-        # if request.method =='POST':
-        form = forms.RemoveTicket(customer.id ,request.POST)
-        # form.fields['flight_id'].queryset = models.Flight_Ticket.objects.filter(customer_id=customer.id)""
-        # form.fields['flight_id'] = models.Flight_Ticket.objects.get(customer_id=customer.id)
-        # return HttpResponse(form)
-        # if form.is_valid():
-
-        # form = forms.RemoveTicket(request=request)
-        # raise print(form)
-        return render(request, 'login_page.html', {'login_form':form})
-
-
-                    # result = CustomerFancade.remove_ticket(ticket_id)
-                # if result == 1:
-                #     return HttpResponse(f'ticket #{ticket_id} removed successfully')
+        return render(request, 'form_tamplate.html', context)
+    else:
+        return redirect('home')
 
 
 
@@ -352,7 +385,7 @@ def register(request, account_role):
             
             else:
                 return Http404
-            return redirect('login/')
+            return redirect('../login/')
         else:
             
             context['user_registration_form'] = user_form 

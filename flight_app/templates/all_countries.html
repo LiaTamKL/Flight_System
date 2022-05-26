@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>countries</title>
+{% extends 'members_home.html' %}
+
+
+{% block content %}
+    <title>All Countries</title>
 </head>
 <body>
     <h1>All countries </h1>
@@ -13,5 +11,4 @@
     <li>{{info.id}},{{info.country_name}},{{info.flag}}</li>
     {% endfor %} 
     </ul>
-</body>
-</html>
+    {% endblock %}
