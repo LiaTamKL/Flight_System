@@ -134,6 +134,17 @@ def delete_flight_for_airline(request, flight_id):
     if result == 1:
         return HttpResponse(f'Flight #{flight_id} removed successfully')
 
+#shows all customers (or accounts if we mark in that line). if not admin, doesn't let access
+def show_all_customers(request):
+    admin = models.Administrator.objects.filter(account=request.user.id)
+    try:
+        admin = admin[0]
+    except:
+        return HttpResponse('You are not logged in as an Admin. Please login')
+    customers = AdministratorFuncade.get_all_customers()
+    context = {'customers':customers}
+    return context['customers']
+
 
 def show_country_search_from(request):
 

@@ -1,5 +1,5 @@
 from flight_app.DAL.airline_facade import Airline_Facade
-from ..models import Customer, Airline, Administrator, Flight, Flight_Ticket
+from ..models import Account, Customer, Airline, Administrator, Flight, Flight_Ticket
 from django.http import Http404
 from .base_facade import BaseFuncade
 from django.db import transaction
@@ -11,6 +11,11 @@ class AdministratorFuncade(BaseFuncade):
     def get_all_customers():
         cus = Customer.objects.all()
         return cus
+
+    #returns all account objects
+    def get_all_accounts():
+        account = Account.objects.all()
+        return account
 
     #receives clean_data form, adds a customer based on that to the database.
     def add_customer(form):
