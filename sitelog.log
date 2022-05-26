@@ -2626,3 +2626,15 @@ Traceback (most recent call last):
 TypeError: __init__() missing 3 required positional arguments: 'using', 'savepoint', and 'durable'
 INFO 2022-05-26 10:46:14,866 autoreload 7360 18108 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\DAL\airline_facade.py changed, reloading.
 INFO 2022-05-26 10:46:15,330 autoreload 17768 884 Watching for file changes with StatReloader
+INFO 2022-05-26 11:19:36,518 autoreload 17052 2384 Watching for file changes with StatReloader
+WARNING 2022-05-26 11:19:39,693 log 17052 13148 Not Found: /
+WARNING 2022-05-26 11:19:39,774 log 17052 13148 Not Found: /favicon.ico
+INFO 2022-05-26 11:20:31,051 autoreload 17052 2384 D:\Full_Stack\Projects\Second_Project\Flight_System\Flight_System\urls.py changed, reloading.
+INFO 2022-05-26 11:20:31,370 autoreload 10220 15284 Watching for file changes with StatReloader
+WARNING 2022-05-26 11:20:35,493 log 10220 17452 Not Found: /favicon.ico
+INFO 2022-05-26 11:20:37,761 autoreload 10220 15284 D:\Full_Stack\Projects\Second_Project\Flight_System\Flight_System\urls.py changed, reloading.
+INFO 2022-05-26 11:20:38,061 autoreload 18236 9600 Watching for file changes with StatReloader
+WARNING 2022-05-26 11:20:53,378 log 18236 17824 Not Found: /favicon.ico
+INFO 2022-05-26 11:24:02,416 autoreload 18236 9600 D:\Full_Stack\Projects\Second_Project\Flight_System\Flight_System\urls.py changed, reloading.
+INFO 2022-05-26 11:24:02,727 autoreload 7372 5056 Watching for file changes with StatReloader
+WARNING 2022-05-26 11:24:07,739 log 7372 14288 Not Found: /favicon.ico
