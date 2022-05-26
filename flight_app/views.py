@@ -142,6 +142,7 @@ def show_all_customers(request):
     except:
         return HttpResponse('You are not logged in as an Admin. Please login')
     customers = AdministratorFuncade.get_all_customers()
+    #accounts = AdministratorFuncade.get_all_accounts()
     context = {'customers':customers}
     return context['customers']
 
