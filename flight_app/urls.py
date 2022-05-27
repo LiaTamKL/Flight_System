@@ -47,7 +47,8 @@ urlpatterns = [
     path('airline/add', views.airline_add_flight),
     path('airline/update/<flight_id>', views.airline_update_flight),
 
-   path('ouradmin/', views.view_all_customers)
+   path('ouradmin/', views.view_all_customers, name="admin home"),
+   path('ouradmin/delete/<customer_id>',views.delete_customer, name="delete customer"),
 ]
 
 

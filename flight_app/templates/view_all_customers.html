@@ -12,7 +12,7 @@
         </br>
         <a href="#" class="btn btn-primary btn-sm">Add as Admin</a>
         <a href="#" class="btn btn-primary btn-sm">Add as Airline</a>
-        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+        <a href="{% url 'delete customer' customer.pk %}" class="btn btn-danger btn-sm">Delete</a>
         </div>
     {%endfor%}
 {% endblock %}

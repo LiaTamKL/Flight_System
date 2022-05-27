@@ -36,7 +36,7 @@ class AdministratorFuncade(BaseFuncade):
             f = Airline.objects.get(pk = airline)
         except Airline.DoesNotExist:
             raise Http404("Airline does not exist")
-        flights =Flight.objects.filter(pk=f)
+        flights =Flight.objects.filter(airline=f)
         for flight in flights:
             Airline_Facade.remove_flight(flight.id)
         f.delete()
@@ -47,18 +47,23 @@ class AdministratorFuncade(BaseFuncade):
             f = Customer.objects.get(pk = customer)
         except Customer.DoesNotExist:
             raise Http404("Customer does not exist")
-        tickets =Flight_Ticket.objects.filter(pk=f)
+        tickets =Flight_Ticket.objects.filter(customer=f)
         for ticket in tickets:
             ticket.delete()
+        a = f.account
         f.delete()
+        a.delete()
+        
+    def remove_account(account):
+        account.delete()
 
     #receives a admin id, deletes said admin
     def remove_admin(admin):
         try:
-            f = Administrator.objects.get(pk = admin)
+            a = Administrator.objects.get(pk = admin)
         except Administrator.DoesNotExist:
             raise Http404("Admin does not exist")
-        f.delete()
+        a.delete()
 
     #receives clean_data form, adds an airline based on that to the database.
     #marked out parts will work once i change models
@@ -95,5 +100,5 @@ class AdministratorFuncade(BaseFuncade):
             admin.account = form['user_id']
             admin.save()
     
-    
+
 
