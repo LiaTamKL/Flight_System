@@ -197,7 +197,7 @@ def delete_admin(request, admin_id):
         admin = admin[0]
     except:
         return HttpResponse('You are not logged in as an Admin. Please login')
-    AdministratorFuncade.remove_airline(admin_id)
+    AdministratorFuncade.remove_admin(admin_id)
     return HttpResponse(f'Admin #{admin_id} removed successfully')
 
 def show_country_search_from(request):
