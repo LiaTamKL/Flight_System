@@ -17,8 +17,6 @@ from django.forms import formset_factory
 from django.contrib import auth
 
 
-
-
 def homeview(request):
 
     if request.user.is_authenticated:
@@ -126,6 +124,7 @@ def all_countries(request):
 
 
 #shows all flights for the airline that's logged in. shows nothing if not logged in as an airline
+@login_required()
 def view_flights_by_airline(request):
     #if not request.user.is_authenticated:
     #    redirect('login')
@@ -148,6 +147,7 @@ def view_flights_by_airline(request):
 
 
 #takes a flight_id, deletes it if you're logged in as the airline that flight belongs to.
+@login_required()
 def delete_flight_for_airline(request, flight_id):
     airline = models.Airline.objects.filter(account=request.user.id)
     try:
@@ -160,6 +160,7 @@ def delete_flight_for_airline(request, flight_id):
         return HttpResponse(f'Flight #{flight_id} removed successfully')
 
 #shows all customers (or accounts if we mark in that line). if not admin, doesn't let access
+@login_required()
 def show_all_customers(request):
     admin = models.Administrator.objects.filter(account=request.user.id)
     try:
@@ -171,6 +172,7 @@ def show_all_customers(request):
     context = {'customers':customers}
     return context['customers']
 
+@login_required()
 def delete_customer(request, customer_id):
     admin = models.Administrator.objects.filter(account=request.user.id)
     try:
@@ -180,6 +182,7 @@ def delete_customer(request, customer_id):
     AdministratorFuncade.remove_customer(customer_id)
     return HttpResponse(f'Customer #{customer_id} removed successfully')
 
+@login_required()
 def delete_airline(request, airline_id):
     admin = models.Administrator.objects.filter(account=request.user.id)
     try:
@@ -189,6 +192,7 @@ def delete_airline(request, airline_id):
     AdministratorFuncade.remove_airline(airline_id)
     return HttpResponse(f'Airline #{airline_id} removed successfully')
 
+@login_required()
 def delete_admin(request, admin_id):
     admin = models.Administrator.objects.filter(account=request.user.id)
     try:
@@ -217,6 +221,7 @@ def show_country_search_from(request):
     return render(request,'search_country_page.html' , context)
 
 #lets airline fill in form for new flight
+@login_required()
 def airline_add_flight(request):
     airline = models.Airline.objects.filter(account=request.user.id)
     try:
@@ -239,6 +244,7 @@ def airline_add_flight(request):
 
 
 #takes flight id as peremeter, let's user update said flight. denies them if flight does not exist or user is not the airline for this flight
+@login_required()
 def airline_update_flight(request, flight_id):
     airline = models.Airline.objects.filter(account=request.user.id)
 
@@ -275,6 +281,7 @@ def airline_update_flight(request, flight_id):
 
 
 #these three will not work yet due to there not being a way to delete a customer but not a user. Leaving this as a template for later
+@login_required()
 def add_customer_admin(request):
     admin = models.Administrator.objects.filter(account=request.user.id)
     try:
@@ -294,6 +301,7 @@ def add_customer_admin(request):
     #}
     #return render(request, 'Add_customer.html', context)
 
+@login_required()
 def add_airline(request):
     admin = models.Administrator.objects.filter(account=request.user.id)
     try:
@@ -313,6 +321,7 @@ def add_airline(request):
     #}
     #return render(request, 'Add_Airline.html', context)
 
+@login_required()
 def add_admin(request):
     admin = models.Administrator.objects.filter(account=request.user.id)
     try:
