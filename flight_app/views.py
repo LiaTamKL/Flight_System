@@ -161,16 +161,14 @@ def delete_flight_for_airline(request, flight_id):
 
 #shows all customers (or accounts if we mark in that line). if not admin, doesn't let access
 @login_required()
-def show_all_customers(request):
-    admin = models.Administrator.objects.filter(account=request.user.id)
-    try:
-        admin = admin[0]
-    except:
+def view_all_customers(request):
+    admin_role = models.Account_Role.objects.get(role_name='Admin')
+    if request.user.account_role != admin_role:
         return HttpResponse('You are not logged in as an Admin. Please login')
     customers = AdministratorFuncade.get_all_customers()
     #accounts = AdministratorFuncade.get_all_accounts()
     context = {'customers':customers}
-    return context['customers']
+    return render(request, 'view_all_customers.html', context)
 
 @login_required()
 def delete_customer(request, customer_id):

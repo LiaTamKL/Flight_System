@@ -47,7 +47,7 @@ urlpatterns = [
     path('airline/add', views.airline_add_flight),
     path('airline/update/<flight_id>', views.airline_update_flight),
 
-   
+   path('ouradmin/', views.view_all_customers)
 ]
 
 
