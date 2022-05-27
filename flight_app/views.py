@@ -275,7 +275,7 @@ def airline_update_flight(request, flight_id):
 
 
 #these three will not work yet due to there not being a way to delete a customer but not a user. Leaving this as a template for later
-def add_customer(request):
+def add_customer_admin(request):
     admin = models.Administrator.objects.filter(account=request.user.id)
     try:
         admin = admin[0]
