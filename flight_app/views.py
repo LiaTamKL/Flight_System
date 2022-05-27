@@ -286,7 +286,7 @@ def add_customer(request):
     message = None
     #if request.method =='POST':
     #    if customerform.is_valid():
-    #        AdministratorFuncade.add_cus(customerform.cleaned_data)
+    #        AdministratorFuncade.add_cus_as_admin(customerform.cleaned_data)
     #        message = 'Cus added successfully'
     #context = {
     #    'form': customerform,

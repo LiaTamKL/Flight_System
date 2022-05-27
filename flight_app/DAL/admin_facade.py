@@ -30,25 +30,6 @@ class AdministratorFuncade(BaseFuncade):
             # cus.save()
 
 
-    #receives clean_data form, adds an airline based on that to the database.
-    def add_airline(form):
-        with transaction.Atomic():
-            airline = Airline()
-            airline.name = form['name']
-            airline.country = form['airline']
-            airline.account = form['user_id']
-            airline.save()
-
-
-    #receives clean_data form, adds an admin based on that to the database.
-    def add_admin(form):
-        with transaction.Atomic():
-            admin = Administrator()
-            admin.first_name = form['first_name']
-            admin.last_name = form['last_name']
-            admin.account = form['user_id']
-            admin.save()
-
     #receives an airline id, deletes said airline
     def remove_airline(airline):
         try:
@@ -79,4 +60,40 @@ class AdministratorFuncade(BaseFuncade):
             raise Http404("Admin does not exist")
         f.delete()
 
+    #receives clean_data form, adds an airline based on that to the database.
+    #marked out parts will work once i change models
+    def add_airline(form):
+            #account = form['account']
+            #if account.account_role == 1:
+            #    cus = Customer.objects.get(account = account)
+            #    AdministratorFuncade.remove_customer(cus)
+            #elif account.account_role == 3:
+            #     admin = Administrator.objects.get(account = account)
+            #     AdministratorFuncade.remove_admin(admin)
+            airline = Airline()
+            #airline.account = account
+            airline.name = form['name']
+            airline.country = form['airline']
+            airline.account = form['user_id']
+            airline.save()
+
+
+    #receives clean_data form, adds an admin based on that to the database.
+    #marked out parts will work once i change models
+    def add_admin(form):
+            #account = form['account']
+            #if account.account_role == 1:
+            #    cus = Customer.objects.get(account = account)
+            #    AdministratorFuncade.remove_customer(cus)
+            #elif account.account_role == 2:
+            #     airline = Airline.objects.get(account = account)
+            #     AdministratorFuncade.remove_airline(airline)
+            admin = Administrator()
+            #admin.account = account
+            admin.first_name = form['first_name']
+            admin.last_name = form['last_name']
+            admin.account = form['user_id']
+            admin.save()
+    
+    
 
