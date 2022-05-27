@@ -1,5 +1,5 @@
 from flight_app.DAL.airline_facade import Airline_Facade
-from ..models import Account, Customer, Airline, Administrator, Flight, Flight_Ticket
+from ..models import *
 from django.http import Http404
 from .base_facade import BaseFuncade
 from django.db import transaction
@@ -101,4 +101,22 @@ class AdministratorFuncade(BaseFuncade):
             admin.save()
     
 
-
+    def add_admin_from_customer(customer_id):
+        try:
+            customer = Customer.objects.get(pk=customer_id)
+        except Customer.DoesNotExist:
+            raise Http404("Customer does not exist")
+        admin = Administrator()
+        admin.first_name = customer.first_name
+        admin.last_name = customer.last_name
+        admin.account = customer.account
+        account = customer.account
+        account.account_role = Account_Role.objects.get(role_name='Admin')
+        account.is_admin = True
+        account.is_staff = True
+        print(account)
+        print(customer)
+        print(admin)
+        customer.delete()
+        account.save()
+        admin.save()

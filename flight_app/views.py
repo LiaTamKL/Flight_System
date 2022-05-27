@@ -194,6 +194,14 @@ def delete_admin(request, admin_id):
     AdministratorFuncade.remove_admin(admin_id)
     return HttpResponse(f'Admin #{admin_id} removed successfully')
 
+@login_required()
+def add_admin_from_customer(request, customer_id):
+    admin_role = models.Account_Role.objects.get(role_name='Admin')
+    if request.user.account_role != admin_role:
+        return HttpResponse('You are not logged in as an Admin. Please login')
+    AdministratorFuncade.add_admin_from_customer(customer_id)
+    return redirect('admin home')
+
 def show_country_search_from(request):
 
     f = contact_from = forms.country_id_search_form(request.POST or None) # reteins data even if the submit was invalid.
