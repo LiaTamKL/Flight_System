@@ -94,7 +94,7 @@ class Customer(models.Model):
     class Meta:
         ordering = ['last_name']
     def __str__(self) -> str:
-        return (self.first_name + self.last_name)
+        return (self.first_name + ' ' + self.last_name)
 
 class Flight(models.Model):
     airline = models.ForeignKey(Airline, null=False, on_delete=models.PROTECT)
@@ -124,7 +124,7 @@ class Administrator(models.Model):
     class Meta:
         ordering = ['last_name']
     def __str__(self) -> str:
-        return (self.first_name + self.last_name)
+        return (self.first_name + ' ' + self.last_name)
 
 
 

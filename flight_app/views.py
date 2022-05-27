@@ -300,7 +300,7 @@ def add_customer_admin(request):
     #return render(request, 'Add_customer.html', context)
 
 @login_required()
-def add_airline(request):
+def add_airline(request, customer_id):
     admin = models.Administrator.objects.filter(account=request.user.id)
     try:
         admin = admin[0]
@@ -320,7 +320,7 @@ def add_airline(request):
     #return render(request, 'Add_Airline.html', context)
 
 @login_required()
-def add_admin(request):
+def add_admin(request, customer_id):
     admin = models.Administrator.objects.filter(account=request.user.id)
     try:
         admin = admin[0]
