@@ -17,18 +17,6 @@ from django.forms import formset_factory
 from django.contrib import auth
 
 
-
-def test(request):
-
-
-    context = {
-
-        'account': test,
-        'account_type': test
-    }
-    return render(request, 'extention.html' , context)
-
-
 def homeview(request):
 
     if request.user.is_authenticated:
@@ -136,6 +124,7 @@ def all_countries(request):
 
 
 #shows all flights for the airline that's logged in. shows nothing if not logged in as an airline
+@login_required()
 def view_flights_by_airline(request):
     #if not request.user.is_authenticated:
     #    redirect('login')
@@ -158,6 +147,7 @@ def view_flights_by_airline(request):
 
 
 #takes a flight_id, deletes it if you're logged in as the airline that flight belongs to.
+@login_required()
 def delete_flight_for_airline(request, flight_id):
     airline = models.Airline.objects.filter(account=request.user.id)
     try:
@@ -167,46 +157,50 @@ def delete_flight_for_airline(request, flight_id):
     
     result = Airline_Facade.remove_flight(flight_id, airline)
     if result == 1:
-        return HttpResponse(f'Flight #{flight_id} removed successfully')
+        return redirect("airline view flights")
 
 #shows all customers (or accounts if we mark in that line). if not admin, doesn't let access
-def show_all_customers(request):
-    admin = models.Administrator.objects.filter(account=request.user.id)
-    try:
-        admin = admin[0]
-    except:
+@login_required()
+def view_all_customers(request):
+    admin_role = models.Account_Role.objects.get(role_name='Admin')
+    if request.user.account_role != admin_role:
         return HttpResponse('You are not logged in as an Admin. Please login')
     customers = AdministratorFuncade.get_all_customers()
     #accounts = AdministratorFuncade.get_all_accounts()
     context = {'customers':customers}
-    return context['customers']
+    return render(request, 'view_all_customers.html', context)
 
+@login_required()
 def delete_customer(request, customer_id):
-    admin = models.Administrator.objects.filter(account=request.user.id)
-    try:
-        admin = admin[0]
-    except:
+    admin_role = models.Account_Role.objects.get(role_name='Admin')
+    if request.user.account_role != admin_role:
         return HttpResponse('You are not logged in as an Admin. Please login')
     AdministratorFuncade.remove_customer(customer_id)
-    return HttpResponse(f'Customer #{customer_id} removed successfully')
+    return redirect('admin home')
 
+@login_required()
 def delete_airline(request, airline_id):
-    admin = models.Administrator.objects.filter(account=request.user.id)
-    try:
-        admin = admin[0]
-    except:
+    admin_role = models.Account_Role.objects.get(role_name='Admin')
+    if request.user.account_role != admin_role:
         return HttpResponse('You are not logged in as an Admin. Please login')
     AdministratorFuncade.remove_airline(airline_id)
     return HttpResponse(f'Airline #{airline_id} removed successfully')
 
+@login_required()
 def delete_admin(request, admin_id):
-    admin = models.Administrator.objects.filter(account=request.user.id)
-    try:
-        admin = admin[0]
-    except:
+    admin_role = models.Account_Role.objects.get(role_name='Admin')
+    if request.user.account_role != admin_role:
         return HttpResponse('You are not logged in as an Admin. Please login')
-    AdministratorFuncade.remove_airline(admin_id)
+    AdministratorFuncade.remove_admin(admin_id)
     return HttpResponse(f'Admin #{admin_id} removed successfully')
+
+@login_required()
+def add_admin_from_customer(request, customer_id):
+    admin_role = models.Account_Role.objects.get(role_name='Admin')
+    if request.user.account_role != admin_role:
+        return HttpResponse('You are not logged in as an Admin. Please login')
+    AdministratorFuncade.add_admin_from_customer(customer_id)
+    return redirect('admin home')
 
 def show_country_search_from(request):
 
@@ -227,6 +221,7 @@ def show_country_search_from(request):
     return render(request,'search_country_page.html' , context)
 
 #lets airline fill in form for new flight
+@login_required()
 def airline_add_flight(request):
     airline = models.Airline.objects.filter(account=request.user.id)
     try:
@@ -235,20 +230,19 @@ def airline_add_flight(request):
         return HttpResponse('You are not logged in as an airline. Please login')
 
     flightform = forms.NewFlightForm(request.POST or None)
-    message = None
     if request.method =='POST':
         if flightform.is_valid():
             flight = models.Flight()
             Airline_Facade.add_flight(airline.id, flightform.cleaned_data, flight)
-            message = 'Flight added successfully'
+            return redirect("airline view flights")
     context = {
         'form': flightform,
-        'message': message
     }
-    return render(request, 'add_flight.html', context)
+    return render(request, 'form_tamplate.html', context)
 
 
 #takes flight id as peremeter, let's user update said flight. denies them if flight does not exist or user is not the airline for this flight
+@login_required()
 def airline_update_flight(request, flight_id):
     airline = models.Airline.objects.filter(account=request.user.id)
 
@@ -268,23 +262,80 @@ def airline_update_flight(request, flight_id):
     if airline != instance.airline:
         raise PermissionDenied("This is not your flight! You may not update it")
 
-    message = None
     if request.method =='POST':
         flightform = forms.NewFlightForm(request.POST, instance=instance)
         if flightform.is_valid():
             
             flightform.save()
             #Airline_Facade.update_flight(airline.id, flightform.cleaned_data, instance)
-            message = 'Flight updated successfully'
+            return redirect("airline view flights")
     else: flightform = forms.NewFlightForm(instance=instance)
     context = {
         'form': flightform,
-        'message': message
     }
-    return render(request, 'add_flight.html', context)
+    return render(request, 'form_tamplate.html', context)
 
 
+#these three will not work yet due to there not being a way to delete a customer but not a user. Leaving this as a template for later
+@login_required()
+def add_customer_admin(request):
+    admin = models.Administrator.objects.filter(account=request.user.id)
+    try:
+        admin = admin[0]
+    except:
+        return HttpResponse('You are not logged in as an Admin. Please login')
 
+    #customerform = forms.CustomerAdminform(request.POST or None)
+    message = None
+    #if request.method =='POST':
+    #    if customerform.is_valid():
+    #        AdministratorFuncade.add_cus_as_admin(customerform.cleaned_data)
+    #        message = 'Cus added successfully'
+    #context = {
+    #    'form': customerform,
+    #    'message': message
+    #}
+    #return render(request, 'Add_customer.html', context)
+
+@login_required()
+def add_airline(request, customer_id):
+    admin = models.Administrator.objects.filter(account=request.user.id)
+    try:
+        admin = admin[0]
+    except:
+        return HttpResponse('You are not logged in as an Admin. Please login')
+
+    #airlineform = forms.AirlineForm(request.POST or None)
+    message = None
+    #if request.method =='POST':
+    #    if airlineform.is_valid():
+    #        AdministratorFuncade.add_airline(airlineform.cleaned_data)
+    #        message = 'Airline added successfully'
+    #context = {
+    #    'form': airlineform,
+    #    'message': message
+    #}
+    #return render(request, 'Add_Airline.html', context)
+
+@login_required()
+def add_admin(request, customer_id):
+    admin = models.Administrator.objects.filter(account=request.user.id)
+    try:
+        admin = admin[0]
+    except:
+        return HttpResponse('You are not logged in as an Admin. Please login')
+
+    #adminform = forms.AdminForm(request.POST or None)
+    message = None
+    #if request.method =='POST':
+    #    if adminform.is_valid():
+    #        AdministratorFuncade.add_admin(adminform.cleaned_data)
+    #        message = 'Admin added successfully'
+    #context = {
+    #    'form': adminform,
+    #    'message': message
+    #}
+    #return render(request, 'Add_Admin.html', context)
 
 
 

@@ -131,6 +131,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'flight_app.Account'
 
+LOGIN_URL= '/flight_app/login/'
+LOGIN_REDIRECT_URL = '/flight_app/login/'
 
 LOGGING = {
     'version': 1,

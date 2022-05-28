@@ -78,7 +78,7 @@ class Country(models.Model):
 class Airline(models.Model):
     name = models.TextField(max_length=255, null=False, unique=True)
     country = models.ForeignKey(Country, null=False, on_delete=models.PROTECT)
-    account = models.OneToOneField(Account, null=False, on_delete=models.CASCADE)
+    account = models.OneToOneField(Account, null=False, on_delete=models.PROTECT)
     class Meta:
         ordering = ['name']
     def __str__(self) -> str:
@@ -90,11 +90,11 @@ class Customer(models.Model):
     address = models.TextField(max_length=100, null=False)
     phone_number = models.TextField(max_length=16, null=False, unique=True)
     credit_card_no = models.TextField(max_length=16, null=False, unique=True)
-    account = models.OneToOneField(Account, null=True, on_delete=models.CASCADE)
+    account = models.OneToOneField(Account, null=True, on_delete=models.PROTECT)
     class Meta:
         ordering = ['last_name']
     def __str__(self) -> str:
-        return (self.first_name + self.last_name)
+        return (self.first_name + ' ' + self.last_name)
 
 class Flight(models.Model):
     airline = models.ForeignKey(Airline, null=False, on_delete=models.PROTECT)
@@ -120,11 +120,11 @@ class Flight_Ticket(models.Model):
 class Administrator(models.Model):
     first_name = models.TextField(max_length=50, null=False)
     last_name = models.TextField(max_length=50, null=False)
-    account = models.OneToOneField(Account, null=False, on_delete=models.CASCADE)
+    account = models.OneToOneField(Account, null=False, on_delete=models.PROTECT)
     class Meta:
         ordering = ['last_name']
     def __str__(self) -> str:
-        return (self.first_name + self.last_name)
+        return (self.first_name + ' ' + self.last_name)
 
 
 
