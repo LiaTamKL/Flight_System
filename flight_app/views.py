@@ -170,28 +170,34 @@ def view_all_customers(request):
     context = {'customers':customers}
     return render(request, 'view_all_customers.html', context)
 
+#takes customer id, deletes the customer and the account
 @login_required()
 def delete_customer(request, customer_id):
     admin_role = models.Account_Role.objects.get(role_name='Admin')
     if request.user.account_role != admin_role:
         return HttpResponse('You are not logged in as an Admin. Please login')
-    AdministratorFuncade.remove_customer(customer_id)
+    account = AdministratorFuncade.remove_customer(customer_id)
+    AdministratorFuncade.remove_account(account)
     return redirect('admin home')
 
+#takes airline id, deletes the airline and the account
 @login_required()
 def delete_airline(request, airline_id):
     admin_role = models.Account_Role.objects.get(role_name='Admin')
     if request.user.account_role != admin_role:
         return HttpResponse('You are not logged in as an Admin. Please login')
-    AdministratorFuncade.remove_airline(airline_id)
+    account = AdministratorFuncade.remove_airline(airline_id)
+    AdministratorFuncade.remove_account(account)
     return HttpResponse(f'Airline #{airline_id} removed successfully')
 
+#takes admin id, deletes the admin and the account
 @login_required()
 def delete_admin(request, admin_id):
     admin_role = models.Account_Role.objects.get(role_name='Admin')
     if request.user.account_role != admin_role:
         return HttpResponse('You are not logged in as an Admin. Please login')
-    AdministratorFuncade.remove_admin(admin_id)
+    account = AdministratorFuncade.remove_admin(admin_id)
+    AdministratorFuncade.remove_account(account)
     return HttpResponse(f'Admin #{admin_id} removed successfully')
 
 @login_required()
@@ -298,7 +304,7 @@ def add_customer_admin(request):
     #return render(request, 'Add_customer.html', context)
 
 @login_required()
-def add_airline(request, customer_id):
+def add_airline(request, account):
     admin = models.Administrator.objects.filter(account=request.user.id)
     try:
         admin = admin[0]
@@ -318,7 +324,7 @@ def add_airline(request, customer_id):
     #return render(request, 'Add_Airline.html', context)
 
 @login_required()
-def add_admin(request, customer_id):
+def add_admin(request, account):
     admin = models.Administrator.objects.filter(account=request.user.id)
     try:
         admin = admin[0]

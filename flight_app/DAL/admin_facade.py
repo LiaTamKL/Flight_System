@@ -30,77 +30,75 @@ class AdministratorFuncade(BaseFuncade):
             # cus.save()
 
 
-    #receives an airline id, deletes said airline
-    def remove_airline(airline):
+    #receives an airline id, deletes said airline, returns the account
+    def remove_airline(airline_id):
         try:
-            f = Airline.objects.get(pk = airline)
+            airline = Airline.objects.get(pk = airline_id)
         except Airline.DoesNotExist:
             raise Http404("Airline does not exist")
-        flights =Flight.objects.filter(airline=f)
+        flights =Flight.objects.filter(airline=airline)
         for flight in flights:
             Airline_Facade.remove_flight(flight.id)
-        f.delete()
+        a = airline.account
+        airline.delete()
+        return a
 
-    #receives a customer id, deletes said customer
-    def remove_customer(customer):
+    #receives a customer id, deletes said customer, returns the account
+    def remove_customer(customer_id):
         try:
-            f = Customer.objects.get(pk = customer)
+            customer = Customer.objects.get(pk = customer_id)
         except Customer.DoesNotExist:
             raise Http404("Customer does not exist")
-        tickets =Flight_Ticket.objects.filter(customer=f)
+        tickets =Flight_Ticket.objects.filter(customer=customer)
         for ticket in tickets:
             ticket.delete()
-        a = f.account
-        f.delete()
-        a.delete()
-        
+        a = customer.account
+        customer.delete()
+        return a
+
+    #deletes an account
     def remove_account(account):
         account.delete()
 
-    #receives a admin id, deletes said admin
-    def remove_admin(admin):
+    #receives a admin id, deletes said admin, returns the account
+    def remove_admin(admin_id):
         try:
-            a = Administrator.objects.get(pk = admin)
+            admin = Administrator.objects.get(pk = admin_id)
         except Administrator.DoesNotExist:
             raise Http404("Admin does not exist")
-        a.delete()
-
+        a = admin.account
+        admin.delete()
+        return a
+        
     #receives clean_data form, adds an airline based on that to the database.
     #marked out parts will work once i change models
     def add_airline(form):
-            #account = form['account']
-            #if account.account_role == 1:
-            #    cus = Customer.objects.get(account = account)
-            #    AdministratorFuncade.remove_customer(cus)
-            #elif account.account_role == 3:
-            #     admin = Administrator.objects.get(account = account)
-            #     AdministratorFuncade.remove_admin(admin)
             airline = Airline()
-            #airline.account = account
             airline.name = form['name']
             airline.country = form['airline']
             airline.account = form['user_id']
             airline.save()
 
 
-    #receives clean_data form, adds an admin based on that to the database.
-    #marked out parts will work once i change models
-    def add_admin(form):
-            #account = form['account']
-            #if account.account_role == 1:
-            #    cus = Customer.objects.get(account = account)
-            #    AdministratorFuncade.remove_customer(cus)
-            #elif account.account_role == 2:
-            #     airline = Airline.objects.get(account = account)
-            #     AdministratorFuncade.remove_airline(airline)
+    #takes airline_id and form data, makes airline an admin while deleting the customer object
+    def add_admin_from_airline(form, airline_id):
+            try:
+                airline = Airline.objects.get(pk = airline_id)
+            except Airline.DoesNotExist:
+                raise Http404("Airline does not exist")
+            account = airline.account
+            account.account_role = Account_Role.objects.get(role_name='Admin')
+            account.is_admin = True
+            account.is_staff = True
             admin = Administrator()
-            #admin.account = account
             admin.first_name = form['first_name']
             admin.last_name = form['last_name']
-            admin.account = form['user_id']
+            admin.account = account
+            AdministratorFuncade.remove_airline(airline)
+            account.save()
             admin.save()
     
-
+    #takes customer_id, makes customer an admin while deleting the customer object
     def add_admin_from_customer(customer_id):
         try:
             customer = Customer.objects.get(pk=customer_id)
@@ -114,9 +112,6 @@ class AdministratorFuncade(BaseFuncade):
         account.account_role = Account_Role.objects.get(role_name='Admin')
         account.is_admin = True
         account.is_staff = True
-        print(account)
-        print(customer)
-        print(admin)
-        customer.delete()
+        AdministratorFuncade.remove_customer(customer.id)
         account.save()
         admin.save()
