@@ -127,7 +127,7 @@ def byid_countries(request):
             return render(request, "countries_disp.html", {'country_list': country_list,'title': 'Country By ID' })
      
         else:
-            return HttpResponse ("countries not found")
+            forms.country_by_id()
 
     context = {
         'form':country_id_form,
@@ -160,10 +160,12 @@ def byid_flights(request):
 
 
 
+
+
 def byid_airlines(request):
-    airline_id_form = forms.flight_by_id(request.POST)   
+    airline_id_form = forms.airline_by_id(request.POST)   
     if request.POST:
-        if airline_id_form.is_valid():   
+        if airline_id_form.is_valid():
             airline_list = BaseFuncade.get_airline_by_id(airline_id_form.cleaned_data['airline_id'])
               
             

@@ -23,7 +23,7 @@ utc=pytz.UTC
 
 
 class country_by_id(forms.ModelForm):
-    country_id = forms.IntegerField(min_value=1, label="Search Country By ID" )
+    country_id = forms.IntegerField(min_value=1,widget=forms.TextInput(), label="Search Country By ID" )
     # def clean_message(self):
     #     country_id = self.cleaned_data['country_id']
     #     # if not str.isdigit(country_id_m):
@@ -32,16 +32,16 @@ class country_by_id(forms.ModelForm):
         model = models.Country 
         fields = ['country_id']
 
-    def valid_id_checker(self):
-        country_id = self.cleaned_data['country_id']
-        if BaseFuncade.get_country_by_id(country_by_id) == "":
-            raise forms.ValidationError('invalid country id')
+    def clean_country_id(self):
+        country_id = int(self.cleaned_data['country_id'])
+        if len(BaseFuncade.get_country_by_id(country_id))== 0:
+            raise forms.ValidationError('Invalid country id')
         return country_id
         
         
 
 class flight_by_id(forms.ModelForm):
-    flight_id = forms.IntegerField(min_value=1, label="Search Flight By ID" )
+    flight_id = forms.IntegerField(min_value=1, widget=forms.TextInput(), label="Search Flight By ID" )
     # def clean_message(self):
     #     country_id = self.cleaned_data['country_id']
     #     # if not str.isdigit(country_id_m):
@@ -49,6 +49,13 @@ class flight_by_id(forms.ModelForm):
     class Meta:
         model = models.Flight 
         fields = ['flight_id']
+
+    def clean_flight_id(self):
+        flight_id = int(self.cleaned_data['country_id'])
+        if len(BaseFuncade.get_flight_by_id(flight_id))== 0:
+            raise forms.ValidationError('Invalid flight id')
+        return flight_id
+
 
     # def valid_id_checker(self):
     #     country_id = self.cleaned_data['country_id']
@@ -59,14 +66,21 @@ class flight_by_id(forms.ModelForm):
 
     
 class airline_by_id(forms.ModelForm):
-    airline_id = forms.IntegerField(min_value=1, label="Search airline By ID" )
+    airline_id = forms.IntegerField(min_value=1,widget=forms.TextInput(), label="Search Airline By ID")
     # def clean_message(self):
     #     country_id = self.cleaned_data['country_id']
     #     # if not str.isdigit(country_id_m):
     #         # raise forms.ValidationError('Please Enter valid country id')
+
     class Meta:
         model = models.Airline 
         fields = ['airline_id']
+
+    def clean_airline_id(self):
+        airline_id = int(self.cleaned_data['country_id'])
+        if len(BaseFuncade.get_airline_by_id(airline_id))== 0:
+            raise forms.ValidationError('Invalid airline id')
+        return airline_id
 
 
 
