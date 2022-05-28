@@ -24,13 +24,13 @@ urlpatterns = [
     path('members/tickets/all/', views.get_my_tickets),
     path('members/update_account/', views.update_account),
     path('members/country/all/', views.all_countries),
-    
+    # path('members/flights/all/', views.all_flights),
 
     # path('denied',views.members_tickets),
 
 
 
-
+    path('test/', views.test),
 
 
     path('register/', views.register_customer),

@@ -1,0 +1,22 @@
+{% extends 'members_home.html' %}
+
+
+{% block content %}
+
+<h2>{{designation}}</h2>
+<form method="post", >
+    {%csrf_token%}
+    {%for field in form%}
+        <p>{{field.label_tag}}</p>
+        <p>{{field}}</p>
+        {%if field.help_text%}
+            <small>{{field.help_text}}</small>
+        {%endif%}
+
+        {% for error in field.errors%}
+            <p style="color:red">{{error}}</p>
+        {%endfor%}
+    {%endfor%}
+    <button type="submit">{{button}}</button>
+    
+    {% endblock %}

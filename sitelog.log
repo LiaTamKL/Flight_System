@@ -6219,3 +6219,183 @@ WARNING 2022-05-27 02:33:25,436 log 26052 4308 Not Found: /flight_app/members/fl
 WARNING 2022-05-27 02:33:45,142 log 26052 4308 Not Found: /flight_app/members/airline/byid
 INFO 2022-05-27 02:38:41,244 autoreload 26052 11428 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
 INFO 2022-05-27 02:38:41,552 autoreload 22984 24248 Watching for file changes with StatReloader
+INFO 2022-05-27 10:25:07,598 autoreload 11672 12160 Watching for file changes with StatReloader
+WARNING 2022-05-27 10:25:11,247 log 11672 9424 Not Found: /favicon.ico
+INFO 2022-05-27 10:25:32,401 autoreload 11672 12160 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-27 10:25:32,708 autoreload 22088 2492 Watching for file changes with StatReloader
+INFO 2022-05-27 10:28:02,086 autoreload 22088 2492 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-27 10:28:02,397 autoreload 7996 8880 Watching for file changes with StatReloader
+INFO 2022-05-27 10:28:04,626 autoreload 7996 8880 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 10:28:04,928 autoreload 15884 20408 Watching for file changes with StatReloader
+INFO 2022-05-27 11:00:40,438 autoreload 15884 20408 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-27 11:00:40,764 autoreload 24960 21516 Watching for file changes with StatReloader
+INFO 2022-05-27 11:00:44,994 autoreload 24960 21516 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 11:00:45,309 autoreload 25080 23556 Watching for file changes with StatReloader
+INFO 2022-05-27 11:03:15,164 autoreload 25080 23556 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 11:03:15,469 autoreload 23888 20880 Watching for file changes with StatReloader
+ERROR 2022-05-27 11:03:30,252 log 23888 13964 Internal Server Error: /flight_app/test/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 29, in test
+    return render(request, 'basetemplate.html', context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: basetemplate.html
+INFO 2022-05-27 11:03:39,261 autoreload 23888 20880 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 11:03:39,559 autoreload 22712 3260 Watching for file changes with StatReloader
+INFO 2022-05-27 11:04:08,526 autoreload 22712 3260 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 11:04:08,832 autoreload 22812 24212 Watching for file changes with StatReloader
+INFO 2022-05-27 11:08:41,650 autoreload 22812 24212 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 11:08:41,953 autoreload 12352 17844 Watching for file changes with StatReloader
+ERROR 2022-05-27 11:08:46,269 log 12352 22844 Internal Server Error: /flight_app/test/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 29, in test
+    return render(request, 'test_template.html' , context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: test_template.html
+WARNING 2022-05-27 11:08:46,318 log 12352 22844 Not Found: /favicon.ico
+INFO 2022-05-27 11:10:49,363 autoreload 12352 17844 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 11:10:49,669 autoreload 25452 17700 Watching for file changes with StatReloader
+WARNING 2022-05-27 11:10:51,884 log 25452 17468 Not Found: /favicon.ico
+WARNING 2022-05-27 11:14:50,235 log 25452 6904 Not Found: /favicon.ico
+INFO 2022-05-27 11:17:44,976 autoreload 25452 17700 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 11:17:45,288 autoreload 24784 12164 Watching for file changes with StatReloader
+INFO 2022-05-27 11:17:46,482 autoreload 24784 12164 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 11:17:46,820 autoreload 24596 3260 Watching for file changes with StatReloader
+INFO 2022-05-27 11:18:00,328 autoreload 24596 3260 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 11:18:00,668 autoreload 10144 9904 Watching for file changes with StatReloader
+INFO 2022-05-27 11:19:21,884 autoreload 10144 9904 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 11:19:22,186 autoreload 13824 6264 Watching for file changes with StatReloader
+ERROR 2022-05-27 11:19:24,821 log 13824 18520 Internal Server Error: /flight_app/test/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 29, in test
+    return render(request, 'test_template.html' , context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: test_template.html
+INFO 2022-05-27 11:20:31,133 autoreload 13824 6264 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 11:20:31,436 autoreload 21052 22932 Watching for file changes with StatReloader
+WARNING 2022-05-27 11:21:31,887 log 21052 3472 Not Found: /favicon.ico
+ERROR 2022-05-27 11:22:19,505 log 21052 15884 Internal Server Error: /flight_app/test/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 29, in test
+    return render(request, 'test_template.html' , context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\backends\django.py", line 62, in render
+    return self.template.render(context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader_tags.py", line 208, in render
+    return template.render(context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 177, in render
+    return self._render(context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader_tags.py", line 132, in render
+    compiled_parent = self.get_parent(context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader_tags.py", line 129, in get_parent
+    return self.find_template(parent, context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader_tags.py", line 107, in find_template
+    template, origin = context.template.engine.find_template(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\engine.py", line 158, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 513, in parse
+    raise self.error(token, e)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader_tags.py", line 226, in do_block
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: 'block' tag with name 'content' appears more than once
+ERROR 2022-05-27 11:23:35,223 log 21052 15884 Internal Server Error: /flight_app/test/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 29, in test
+    return render(request, 'test_template.html' , context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: test_template.html
+WARNING 2022-05-27 11:23:35,267 log 21052 15884 Not Found: /favicon.ico
+WARNING 2022-05-27 11:28:50,359 log 21052 9896 Not Found: /favicon.ico
+WARNING 2022-05-27 11:29:18,641 log 21052 19168 Not Found: /favicon.ico
+WARNING 2022-05-27 11:30:29,607 log 21052 24552 Not Found: /favicon.ico
+ERROR 2022-05-27 11:30:44,789 log 21052 23724 Internal Server Error: /flight_app/members/update_account/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 331, in update_account
+    return render(requset, 'form_tamplate.html', context)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: form_tamplate.html
+WARNING 2022-05-27 11:30:44,841 log 21052 23724 Not Found: /favicon.ico
+WARNING 2022-05-27 11:32:04,783 log 21052 9368 Not Found: /favicon.ico
+INFO 2022-05-27 11:34:10,763 autoreload 21052 22932 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 11:34:11,081 autoreload 17500 9368 Watching for file changes with StatReloader
+WARNING 2022-05-27 11:34:13,512 log 17500 9760 Not Found: /favicon.ico
+INFO 2022-05-27 11:37:06,661 autoreload 17500 9368 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-27 11:37:06,963 autoreload 23492 6208 Watching for file changes with StatReloader
+WARNING 2022-05-27 11:37:09,150 log 23492 2760 Not Found: /favicon.ico

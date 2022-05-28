@@ -18,6 +18,16 @@ from django.contrib import auth
 
 
 
+def test(request):
+
+
+    context = {
+
+        'account': test,
+        'account_type': test
+    }
+    return render(request, 'extention.html' , context)
+
 
 def homeview(request):
 
@@ -274,63 +284,7 @@ def airline_update_flight(request, flight_id):
     return render(request, 'add_flight.html', context)
 
 
-#these three will not work yet due to there not being a way to delete a customer but not a user. Leaving this as a template for later
-def add_customer_admin(request):
-    admin = models.Administrator.objects.filter(account=request.user.id)
-    try:
-        admin = admin[0]
-    except:
-        return HttpResponse('You are not logged in as an Admin. Please login')
 
-    #customerform = forms.CustomerAdminform(request.POST or None)
-    message = None
-    #if request.method =='POST':
-    #    if customerform.is_valid():
-    #        AdministratorFuncade.add_cus_as_admin(customerform.cleaned_data)
-    #        message = 'Cus added successfully'
-    #context = {
-    #    'form': customerform,
-    #    'message': message
-    #}
-    #return render(request, 'Add_customer.html', context)
-
-def add_airline(request):
-    admin = models.Administrator.objects.filter(account=request.user.id)
-    try:
-        admin = admin[0]
-    except:
-        return HttpResponse('You are not logged in as an Admin. Please login')
-
-    #airlineform = forms.AirlineForm(request.POST or None)
-    message = None
-    #if request.method =='POST':
-    #    if airlineform.is_valid():
-    #        AdministratorFuncade.add_airline(airlineform.cleaned_data)
-    #        message = 'Airline added successfully'
-    #context = {
-    #    'form': airlineform,
-    #    'message': message
-    #}
-    #return render(request, 'Add_Airline.html', context)
-
-def add_admin(request):
-    admin = models.Administrator.objects.filter(account=request.user.id)
-    try:
-        admin = admin[0]
-    except:
-        return HttpResponse('You are not logged in as an Admin. Please login')
-
-    #adminform = forms.AdminForm(request.POST or None)
-    message = None
-    #if request.method =='POST':
-    #    if adminform.is_valid():
-    #        AdministratorFuncade.add_admin(adminform.cleaned_data)
-    #        message = 'Admin added successfully'
-    #context = {
-    #    'form': adminform,
-    #    'message': message
-    #}
-    #return render(request, 'Add_Admin.html', context)
 
 
 
