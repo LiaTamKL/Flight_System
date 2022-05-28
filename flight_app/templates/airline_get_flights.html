@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <title>{{Airline}}</title>
-</head>
+{% extends 'members_home.html' %}
+{% block content %}
 <body>
     <div>
         <div class="card text-center">
-        <h1 class="display-1">  {{Airline}}</h1></div>
+        <h1 class="display-1">  {{Airline}}</h1> <a href="{% url 'add flight'%}" class="btn btn-primary btn-sm">Add Flight</a></div>
     {% for flight in Flights %}
         <div  class="list-group-item list-group-item-action flex-column align-items-start">
         <div class="d-flex w-100 justify-content-between">
@@ -19,11 +12,12 @@
         </div>
             <p class="mb-1">From {{flight.origin_country}} to {{flight.destination_country}}</p>
             <p class="mb-1">Departing at {{flight.departure_time}} and landing at {{flight.landing_time}}</p>
+            <a href="{% url 'update flight' flight.pk %}" class="btn btn-primary btn-sm">Update</a>
+            <a href="{% url 'delete flight' flight.pk %}" class="btn btn-danger btn-sm">Delete</a>
         </div>
     {%endfor%}
         
 
 
     </div>
-</body>
-</html>
+{% endblock %}

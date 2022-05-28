@@ -157,7 +157,7 @@ def delete_flight_for_airline(request, flight_id):
     
     result = Airline_Facade.remove_flight(flight_id, airline)
     if result == 1:
-        return HttpResponse(f'Flight #{flight_id} removed successfully')
+        return redirect("airline view flights")
 
 #shows all customers (or accounts if we mark in that line). if not admin, doesn't let access
 @login_required()
@@ -230,17 +230,15 @@ def airline_add_flight(request):
         return HttpResponse('You are not logged in as an airline. Please login')
 
     flightform = forms.NewFlightForm(request.POST or None)
-    message = None
     if request.method =='POST':
         if flightform.is_valid():
             flight = models.Flight()
             Airline_Facade.add_flight(airline.id, flightform.cleaned_data, flight)
-            message = 'Flight added successfully'
+            return redirect("airline view flights")
     context = {
         'form': flightform,
-        'message': message
     }
-    return render(request, 'add_flight.html', context)
+    return render(request, 'form_tamplate.html', context)
 
 
 #takes flight id as peremeter, let's user update said flight. denies them if flight does not exist or user is not the airline for this flight
@@ -264,20 +262,18 @@ def airline_update_flight(request, flight_id):
     if airline != instance.airline:
         raise PermissionDenied("This is not your flight! You may not update it")
 
-    message = None
     if request.method =='POST':
         flightform = forms.NewFlightForm(request.POST, instance=instance)
         if flightform.is_valid():
             
             flightform.save()
             #Airline_Facade.update_flight(airline.id, flightform.cleaned_data, instance)
-            message = 'Flight updated successfully'
+            return redirect("airline view flights")
     else: flightform = forms.NewFlightForm(instance=instance)
     context = {
         'form': flightform,
-        'message': message
     }
-    return render(request, 'add_flight.html', context)
+    return render(request, 'form_tamplate.html', context)
 
 
 #these three will not work yet due to there not being a way to delete a customer but not a user. Leaving this as a template for later

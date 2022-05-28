@@ -42,10 +42,10 @@ urlpatterns = [
 
     # path('ticket/view/<cust_id>', views.get_my_tickets),
     
-    path('airline/view/', views.view_flights_by_airline),
-    path('airline/delete/<flight_id>', views.delete_flight_for_airline),
-    path('airline/add', views.airline_add_flight),
-    path('airline/update/<flight_id>', views.airline_update_flight),
+    path('airline/view/', views.view_flights_by_airline, name="airline view flights"),
+    path('airline/delete/<flight_id>', views.delete_flight_for_airline, name="delete flight"),
+    path('airline/add', views.airline_add_flight, name='add flight'),
+    path('airline/update/<flight_id>', views.airline_update_flight, name='update flight'),
 
    path('ouradmin/', views.view_all_customers, name="admin home"),
    path('ouradmin/delete/<customer_id>',views.delete_customer, name="delete customer"),
