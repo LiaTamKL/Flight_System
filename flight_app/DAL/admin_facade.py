@@ -124,3 +124,25 @@ class AdministratorFuncade(BaseFuncade):
         AdministratorFuncade.remove_customer(customer.id)
         account.save()
         admin.save()
+
+############################################################
+
+    #receives username, brings back the linked admin,airline or customer account in a touple where the second object is a string with the role name
+    def get_by_username(username):
+        try:
+            account = Account.objects.get(username=username)
+        except:
+            raise Http404("Account does not exist")
+        if account.role == Account_Role.objects.get(role_name='Admin'):
+            user = Administrator.objects.get(account=account)
+            role = "Admin"
+        elif account.role == Account_Role.objects.get(role_name='Airline'):
+            user = Airline.objects.get(account=account)
+            role = "Airline"
+        elif account.role == Account_Role.objects.get(role_name='Customer'):
+            user = Customer.objects.get(account=account)
+            role = "Customer"
+        else:
+            raise Http404("Account seems to not be linked to any profile. Please contact an administrator")
+        
+        return (user, role)

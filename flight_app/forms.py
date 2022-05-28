@@ -237,6 +237,8 @@ class NewFlightForm(forms.ModelForm):
     origin_country = forms.ModelChoiceField(queryset=models.Country.objects.all(), required=True, label = 'From')
     destination_country = forms.ModelChoiceField(queryset=models.Country.objects.all(), required=True, label = 'To')
     departure_time = forms.DateTimeField(required=True, label = 'Departure at', input_formats=[r'%d/%m/%Y %H:%M'])
+                    #,widget=forms.DateTimeInput(format=[r'%d/%m/%Y %H:%M']))
+
     landing_time = forms.DateTimeField(required=True, label = 'Landing at', input_formats=[r'%d/%m/%Y %H:%M'])
     remaining_tickets = forms.IntegerField(required=True, min_value=0)
     class Meta:
