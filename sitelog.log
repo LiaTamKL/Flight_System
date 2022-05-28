@@ -7437,3 +7437,333 @@ INFO 2022-05-28 18:29:57,740 autoreload 14936 21144 C:\Users\laorl\OneDrive\Docu
 INFO 2022-05-28 18:29:58,249 autoreload 7792 15608 Watching for file changes with StatReloader
 INFO 2022-05-28 18:31:18,763 autoreload 7792 15608 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\forms.py changed, reloading.
 INFO 2022-05-28 18:31:19,347 autoreload 18856 5376 Watching for file changes with StatReloader
+INFO 2022-05-28 19:45:06,345 autoreload 19648 18576 Watching for file changes with StatReloader
+INFO 2022-05-28 19:46:50,751 autoreload 13028 10820 Watching for file changes with StatReloader
+INFO 2022-05-28 19:47:04,875 autoreload 19824 1296 Watching for file changes with StatReloader
+ERROR 2022-05-28 19:47:08,109 log 19824 11512 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 45, in members_homepage
+    account = models.Customer.objects.get(account_id = account_id).first_name
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+flight_app.models.Customer.DoesNotExist: Customer matching query does not exist.
+ERROR 2022-05-28 19:47:13,834 log 19824 11512 Internal Server Error: /flight_app/airline/update/3
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 350, in airline_update_flight
+    return render(request, 'form_template.html', context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\backends\django.py", line 62, in render
+    return self.template.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1065, in render
+    return render_value_in_context(output, context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1042, in render_value_in_context
+    value = str(value)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\utils\html.py", line 382, in <lambda>
+    klass.__str__ = lambda self: mark_safe(klass_str(self))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\boundfield.py", line 34, in __str__
+    return self.as_widget()
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\boundfield.py", line 99, in as_widget
+    return widget.render(
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\widgets.py", line 275, in render
+    context = self.get_context(name, value, attrs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\widgets.py", line 328, in get_context
+    context = super().get_context(name, value, attrs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\widgets.py", line 267, in get_context
+    "value": self.format_value(value),
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\widgets.py", line 523, in format_value
+    return formats.localize_input(
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\utils\formats.py", line 242, in localize_input
+    format = sanitize_strftime_format(format)
+TypeError: unhashable type: 'list'
+INFO 2022-05-28 19:49:03,532 autoreload 19824 1296 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-28 19:49:04,120 autoreload 20396 836 Watching for file changes with StatReloader
+ERROR 2022-05-28 19:49:07,015 log 20396 16536 Internal Server Error: /flight_app/airline/update/3
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 350, in airline_update_flight
+    return render(request, 'add_flight.html', context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\backends\django.py", line 62, in render
+    return self.template.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1065, in render
+    return render_value_in_context(output, context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1042, in render_value_in_context
+    value = str(value)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\utils.py", line 53, in render
+    (renderer or self.renderer).render(
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\renderers.py", line 23, in render
+    return template.render(context, request=request).strip()
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\backends\django.py", line 62, in render
+    return self.template.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\loader_tags.py", line 208, in render
+    return template.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 177, in render
+    return self._render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1065, in render
+    return render_value_in_context(output, context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1042, in render_value_in_context
+    value = str(value)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\utils\html.py", line 382, in <lambda>
+    klass.__str__ = lambda self: mark_safe(klass_str(self))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\boundfield.py", line 34, in __str__
+    return self.as_widget()
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\boundfield.py", line 99, in as_widget
+    return widget.render(
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\widgets.py", line 275, in render
+    context = self.get_context(name, value, attrs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\widgets.py", line 328, in get_context
+    context = super().get_context(name, value, attrs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\widgets.py", line 267, in get_context
+    "value": self.format_value(value),
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\widgets.py", line 523, in format_value
+    return formats.localize_input(
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\utils\formats.py", line 242, in localize_input
+    format = sanitize_strftime_format(format)
+TypeError: unhashable type: 'list'
+ERROR 2022-05-28 19:49:32,837 log 20396 16536 Internal Server Error: /flight_app/airline/update/3
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 350, in airline_update_flight
+    return render(request, 'add_flight.html', context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\backends\django.py", line 62, in render
+    return self.template.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1065, in render
+    return render_value_in_context(output, context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1042, in render_value_in_context
+    value = str(value)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\utils.py", line 53, in render
+    (renderer or self.renderer).render(
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\renderers.py", line 23, in render
+    return template.render(context, request=request).strip()
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\backends\django.py", line 62, in render
+    return self.template.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\loader_tags.py", line 208, in render
+    return template.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 177, in render
+    return self._render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1065, in render
+    return render_value_in_context(output, context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1042, in render_value_in_context
+    value = str(value)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\utils\html.py", line 382, in <lambda>
+    klass.__str__ = lambda self: mark_safe(klass_str(self))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\boundfield.py", line 34, in __str__
+    return self.as_widget()
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\boundfield.py", line 99, in as_widget
+    return widget.render(
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\widgets.py", line 275, in render
+    context = self.get_context(name, value, attrs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\widgets.py", line 328, in get_context
+    context = super().get_context(name, value, attrs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\widgets.py", line 267, in get_context
+    "value": self.format_value(value),
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\widgets.py", line 523, in format_value
+    return formats.localize_input(
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\utils\formats.py", line 242, in localize_input
+    format = sanitize_strftime_format(format)
+TypeError: unhashable type: 'list'
+INFO 2022-05-28 19:49:58,365 autoreload 20396 836 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-28 19:49:58,852 autoreload 5180 20032 Watching for file changes with StatReloader
+INFO 2022-05-28 19:50:41,046 autoreload 5180 20032 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\forms.py changed, reloading.
+INFO 2022-05-28 19:50:41,509 autoreload 4056 17344 Watching for file changes with StatReloader
+INFO 2022-05-28 19:51:03,879 autoreload 4056 17344 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\forms.py changed, reloading.
+INFO 2022-05-28 19:51:04,413 autoreload 13412 11008 Watching for file changes with StatReloader
+ERROR 2022-05-28 19:51:05,962 log 13412 16792 Internal Server Error: /flight_app/airline/update/3
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 350, in airline_update_flight
+    return render(request, 'form_template.html', context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\backends\django.py", line 62, in render
+    return self.template.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1065, in render
+    return render_value_in_context(output, context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1042, in render_value_in_context
+    value = str(value)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\utils\html.py", line 382, in <lambda>
+    klass.__str__ = lambda self: mark_safe(klass_str(self))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\boundfield.py", line 34, in __str__
+    return self.as_widget()
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\boundfield.py", line 99, in as_widget
+    return widget.render(
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\widgets.py", line 275, in render
+    context = self.get_context(name, value, attrs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\widgets.py", line 328, in get_context
+    context = super().get_context(name, value, attrs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\widgets.py", line 267, in get_context
+    "value": self.format_value(value),
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\widgets.py", line 523, in format_value
+    return formats.localize_input(
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\utils\formats.py", line 242, in localize_input
+    format = sanitize_strftime_format(format)
+TypeError: unhashable type: 'list'
+INFO 2022-05-28 19:52:01,581 autoreload 13412 11008 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\forms.py changed, reloading.
+INFO 2022-05-28 19:52:02,023 autoreload 12124 11932 Watching for file changes with StatReloader
