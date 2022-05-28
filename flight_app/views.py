@@ -200,6 +200,7 @@ def delete_admin(request, admin_id):
     AdministratorFuncade.remove_account(account)
     return HttpResponse(f'Admin #{admin_id} removed successfully')
 
+#takes customer id, turns the account into an admin account
 @login_required()
 def add_admin_from_customer(request, customer_id):
     admin_role = models.Account_Role.objects.get(role_name='Admin')

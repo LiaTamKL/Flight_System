@@ -69,10 +69,19 @@ class AdministratorFuncade(BaseFuncade):
         a = admin.account
         admin.delete()
         return a
-        
+
     #receives clean_data form, adds an airline based on that to the database.
     #marked out parts will work once i change models
     def add_airline(form):
+            account = Account.objects.get(pk=form['user_id'])
+            if account.account_role == Account_Role.objects.get(role_name='Admin'):
+                account.is_admin = False
+                account.is_staff = False
+                admin = Administrator.objects.get(account=account)
+                AdministratorFuncade.remove_admin(admin.id)
+            else:
+                customer = Administrator.objects.get(account=account)
+                AdministratorFuncade.remove_customer(customer.id)
             airline = Airline()
             airline.name = form['name']
             airline.country = form['airline']
