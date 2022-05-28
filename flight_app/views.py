@@ -17,6 +17,9 @@ from django.forms import formset_factory
 from django.contrib import auth
 
 
+
+
+
 def homeview(request):
 
     if request.user.is_authenticated:
@@ -43,9 +46,6 @@ def members_homepage(request):
 
         elif account_type == models.Account_Role.objects.get(id = 1):
             account = models.Airline.objects.get(account_id = account_id).name
-
-
-        
         
         context = {
 
@@ -58,67 +58,128 @@ def members_homepage(request):
 
 
 
+# def show_flight_info (request):
+#     # all_flights = BaseFuncade.get_all_flights()
+#     # flight_by_id = BaseFuncade.get_flight_by_id(2)
+#     flights_by_param = BaseFuncade.get_flights_by_parameters(1,2 , 50)
+#     context = {
+#         'all_flights' : all_flights,
+#         # 'flight_by_id' :flight_by_id,
+#         # 'flights_by_param' : flights_by_param,
+#     }
+#     return render(request, "flight_info.html", context)
 
-def members_tickets(request):
-    if request.user.is_authenticated:
-
-        return render(request , 'add_ticket.html')
-
-        
 
 
-    
-    
-    return redirect('home.html')
 
-def show_flight_info (request):
+
+# def show_airline_info(request):
+#     # all_airlines = BaseFuncade.get_all_airlines()
+#     # airline_by_id = BaseFuncade.get_airline_by_id(1)
+#     airline_by_params = BaseFuncade.get_airline_by_parameters('CrashAir', 1 , 2)
+
+#     context = {
+#         # 'all_airlines' : all_airlines,
+#         'airline_by_id' :airline_by_id,
+#         'airline_by_params' : airline_by_params,
+#     }
+#     return render(request, "airline_info.html", context)
+
+
+
+
+
+# def show_country_by_id(request, country_id):
+#     country_by_id = BaseFuncade.get_country_by_id(country_id)
+#     context = {
+#         'country_by_id' :country_by_id,
+#     }
+#     return render(request, "country_by_id.html", context)
+
+
+
+
+@login_required()
+def all_flights (request):
     all_flights = BaseFuncade.get_all_flights()
-    flight_by_id = BaseFuncade.get_flight_by_id(2)
-    flights_by_param = BaseFuncade.get_flights_by_parameters(1,2 , 50)
-    context = {
-        'all_flights' : all_flights,
-        'flight_by_id' :flight_by_id,
-        'flights_by_param' : flights_by_param,
-    }
-    return render(request, "flight_info.html", context)
-
-
-
-
-
-
-def show_airline_info(request):
-    all_airlines = BaseFuncade.get_all_airlines()
-    airline_by_id = BaseFuncade.get_airline_by_id(1)
-    airline_by_params = BaseFuncade.get_airline_by_parameters('CrashAir', 1 , 2)
-
-    context = {
-        'all_airlines' : all_airlines,
-        'airline_by_id' :airline_by_id,
-        'airline_by_params' : airline_by_params,
-    }
-    return render(request, "airline_info.html", context)
-
-
-
-
-def show_country_by_id(request, country_id):
-    country_by_id = BaseFuncade.get_country_by_id(country_id)
-    context = {
-        'country_by_id' :country_by_id,
-    }
-    return render(request, "country_by_id.html", context)
-
-
+    return render(request, "flight_disp.html", {'flight_list' : all_flights, 'title': 'All Flights' })
 
 #shows contries info , if no argument was sent it shows all
+@login_required()
 def all_countries(request):
-
     all_countries = BaseFuncade.get_all_countries()
+    return render(request, "countries_disp.html", {'country_list': all_countries,'title': 'All Countries' })
+
+@login_required()
+def all_airlines(request):
+    all_airlines = BaseFuncade.get_all_airlines()
+
+    return render(request, "airline_disp.html", {'airline_list' : all_airlines, 'title': 'All Countries' })
+
+
+
+def byid_countries(request):
+    country_id_form = forms.country_by_id(request.POST)   
+    if request.POST:
+        if country_id_form.is_valid():   
+            country_list = BaseFuncade.get_country_by_id(country_id_form.cleaned_data['country_id'])
+
+            return render(request, "countries_disp.html", {'country_list': country_list,'title': 'Country By ID' })
+     
+        else:
+            return HttpResponse ("countries not found")
+
     context = {
-        'all_countries' : all_countries,
-    }
-    return render(request, "all_countries.html", context)
+        'form':country_id_form,
+        'title': "Search country by id", 
+        "button": "Search"
+     }
+
+    return render(request, 'form_template.html', context)
+
+
+
+
+def byid_flights(request):
+    flight_id_form = forms.flight_by_id(request.POST)   
+    if request.POST:
+        if flight_id_form.is_valid():   
+            flight_list = BaseFuncade.get_flight_by_id(flight_id_form.cleaned_data['flight_id'])
+              
+            
+            return render(request, "flight_disp.html", {'flight_list': flight_list,'title': 'Flight By ID' })
+     
+    
+    context = {
+        'form':flight_id_form,
+        'title': "Search Flight by id", 
+        "button": "Search"
+     }
+
+    return render(request, 'form_template.html', context)
+
+
+
+def byid_airlines(request):
+    airline_id_form = forms.flight_by_id(request.POST)   
+    if request.POST:
+        if airline_id_form.is_valid():   
+            airline_list = BaseFuncade.get_airline_by_id(airline_id_form.cleaned_data['airline_id'])
+              
+            
+            return render(request, "airline_disp.html", {'airline_list': airline_list,'title': 'Airline By ID' })
+      
+    context = {
+        'form':airline_id_form,
+        'title': "Search Flight by id", 
+        "button": "Search"
+     }
+
+    return render(request, 'form_template.html', context)
+
+
+
+
 
 
 
@@ -126,8 +187,11 @@ def all_countries(request):
 #shows all flights for the airline that's logged in. shows nothing if not logged in as an airline
 @login_required()
 def view_flights_by_airline(request):
+
     #if not request.user.is_authenticated:
     #    redirect('login')
+
+
     airline = models.Airline.objects.filter(account=request.user.id)
     try:
         airline = airline[0]
@@ -169,6 +233,7 @@ def view_all_customers(request):
     #accounts = AdministratorFuncade.get_all_accounts()
     context = {'customers':customers}
     return render(request, 'view_all_customers.html', context)
+
 
 @login_required()
 def delete_customer(request, customer_id):
@@ -344,6 +409,8 @@ def add_admin(request, customer_id):
 #show remaning tickets , reduce tickets on addition
 #flight_tickets.objects.filter(pk=flight_id).count()')
 
+# 
+
 def add_ticket(request):
     if request.user.is_authenticated:
 
@@ -359,9 +426,13 @@ def add_ticket(request):
                 message = 'Ticket added successfully'
         context = {
             'form': new_ticket_form,
-            'message': message
+            'message': message,
+            'title': "Add ticket",
+            'button': 'add'
+
             }
-        return render(request, 'add_ticket.html', context)
+        # return render(request, 'add_ticket.html', context)
+        return render(request, 'form_template.html', context)
     
     else:
         return redirect('home')
@@ -375,7 +446,7 @@ def update_account(requset):
             
     context = {
         'form':form,
-        'designation': "Update User", 
+        'title': "Update User", 
         "button": "Update"
     }
 
@@ -407,20 +478,19 @@ def remove_ticket(request):
         form = forms.RemoveTicket(customer.id, request.POST )
         if request.method =='POST':
             if form.is_valid():
-               
-                lis = CustomerFancade.remove_ticket(form.cleaned_data)   
-                # return HttpResponse(lis)
-       
+                CustomerFancade.remove_ticket(form.cleaned_data)   
        
         context = {
             'form':form,
-            'designation': "Remove Ticket", 
+            'title': "Remove Ticket", 
             "button": "remove"
         }
 
-        return render(request, 'form_tamplate.html', context)
+        return render(request, 'form_template.html', context)
     else:
         return redirect('home')
+
+
 
 
 
@@ -459,7 +529,6 @@ def logout(request):
 
 
 def register_customer(request):
-    
     return register(request , account_role=2)
 
 
@@ -473,6 +542,7 @@ def register(request, account_role):
     context = {}
     account_role = models.Account_Role.objects.get(pk = account_role)
     # account_role = 2
+
     if request.POST:    
         user_form = forms.RegistrationForm(request.POST)
         customer_form = forms.NewCustomerForm(request.POST)
@@ -646,3 +716,10 @@ def register(request, account_role):
 # def airline_login(request, user_id):
 #     context = {'id': user_id}
 #     return render( request, 'airline_login.ok', context)
+
+
+
+# def members_tickets(request):
+# #     if request.user.is_authenticated:
+# #         return render(request , 'add_ticket.html')
+# #     return redirect('home.html')

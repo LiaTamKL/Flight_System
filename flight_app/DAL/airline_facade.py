@@ -43,5 +43,4 @@ class Airline_Facade(BaseFuncade):
 
     #gets all flight for an airline
     def get_my_flights(id):
-        f = Flight.objects.filter(airline=id)
-        return f
+        return Flight.objects.filter(airline=id)

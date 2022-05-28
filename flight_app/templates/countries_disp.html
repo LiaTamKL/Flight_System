@@ -1,0 +1,14 @@
+{% extends 'members_home.html' %}
+
+
+{% block content %}
+    <title>{{title}}</title>
+</head>
+<body>
+    <h1>{{title}} </h1>
+    <ul>
+    {% for info in country_list %}
+    <li> country name: {{info.country_name}}, country flag: {{info.flag}}</li>
+    {% endfor %} 
+    </ul>
+    {% endblock %}

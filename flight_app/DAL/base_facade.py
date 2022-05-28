@@ -7,8 +7,7 @@ class BaseFuncade():
  
     def get_all_flights():
         flight_list = list(models.Flight.objects.all())
-        return flight_list
-
+        return list(models.Flight.objects.all())
 
     def get_flight_by_id(id):
         flight_by_id = list(models.Flight.objects.filter(pk=id))
@@ -23,10 +22,9 @@ class BaseFuncade():
         return flight_by_params
 
     def get_all_airlines():
-            airline_list = list(models.Airline.objects.all())
-            return airline_list
+            return list(models.Airline.objects.all())
 
-    def get_airline_by_id(id):
+    def get_airline_by_id(id):   
             airline_by_id = list(models.Airline.objects.filter(pk=id))
             return airline_by_id 
 
@@ -44,6 +42,8 @@ class BaseFuncade():
     def get_country_by_id(id):
             country_by_id = list(models.Country.objects.filter(pk=id))
             return country_by_id
+
+
 
     # new user creation , user will be in list format to extract usernmae and password
     # create login screen form with Create new user button which moves to user details page

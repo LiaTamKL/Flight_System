@@ -8,11 +8,6 @@ urlpatterns = [
     path('members/', lambda request: redirect('home', permanent=True)),
 
 
-    path('flightinfo/', views.show_flight_info),
-    path('airlineinfo/', views.show_airline_info),
-    
-    path('countryinfo/<country_id>' ,views.show_country_by_id),
-    path('seachcountrybyid/', views.show_country_search_from),
 
 
 
@@ -23,15 +18,16 @@ urlpatterns = [
     path('members/tickets/remove/', views.remove_ticket),
     path('members/tickets/all/', views.get_my_tickets),
     path('members/update_account/', views.update_account),
+    
     path('members/country/all/', views.all_countries),
-    # path('members/flights/all/', views.all_flights),
+    path('members/flight/all/', views.all_flights),
+    path('members/airline/all/', views.all_airlines),
 
-    # path('denied',views.members_tickets),
+    path('members/country/byid/', views.byid_countries),
+    path('members/flight/byid/', views.byid_flights),
+    path('members/airline/byid/', views.byid_airlines),
 
-
-
-    path('test/', views.test),
-
+    
 
     path('register/', views.register_customer),
     path('logout/', views.logout),
@@ -66,4 +62,14 @@ urlpatterns = [
     # # 
     # path('airlineloggedin/<user_id>' , views.airline_login),
     # path('loggedin' , views.logged_in),
- # path('members/tickets/remove/<ticket_id>', views.remove_ticket),
+    # path('members/tickets/remove/<ticket_id>', views.remove_ticket),    
+    # # path('denied',views.members_tickets),
+
+    # path('test/', views.test),
+    
+    # path('flightinfo/', views.show_flight_info),
+    # path('airlineinfo/', views.show_airline_info),
+    
+    # path('countryinfo/<country_id>' ,views.show_country_by_id),
+    # path('seachcountrybyid/', views.show_country_search_from),
+

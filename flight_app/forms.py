@@ -10,6 +10,7 @@ from django.contrib.auth import password_validation
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from .models import Account
+from .DAL.base_facade import BaseFuncade
 
 
 
@@ -21,20 +22,72 @@ utc=pytz.UTC
 
 
 
-class country_id_search_form(forms.ModelForm):
-    country_id = forms.IntegerField(min_value=1)
-    def clean_message(self):
-        country_id_m = self.cleaned_data['country_id']
-        # if not str.isdigit(country_id_m):
-            # raise forms.ValidationError('Please Enter valid country id')
-        
-        return country_id_m
+class country_by_id(forms.ModelForm):
+    country_id = forms.IntegerField(min_value=1, label="Search Country By ID" )
+    # def clean_message(self):
+    #     country_id = self.cleaned_data['country_id']
+    #     # if not str.isdigit(country_id_m):
+    #         # raise forms.ValidationError('Please Enter valid country id')
+    class Meta:
+        model = models.Country 
+        fields = ['country_id']
 
+    def valid_id_checker(self):
+        country_id = self.cleaned_data['country_id']
+        if BaseFuncade.get_country_by_id(country_by_id) == "":
+            raise forms.ValidationError('invalid country id')
+        return country_id
+        
+        
+
+class flight_by_id(forms.ModelForm):
+    flight_id = forms.IntegerField(min_value=1, label="Search Flight By ID" )
+    # def clean_message(self):
+    #     country_id = self.cleaned_data['country_id']
+    #     # if not str.isdigit(country_id_m):
+    #         # raise forms.ValidationError('Please Enter valid country id')
+    class Meta:
+        model = models.Flight 
+        fields = ['flight_id']
+
+    # def valid_id_checker(self):
+    #     country_id = self.cleaned_data['country_id']
+    #     if BaseFuncade.get_country_by_id(country_by_id) == "":
+    #         raise forms.ValidationError('invalid country id')
+    #     return country_id
+        
+
+    
+class airline_by_id(forms.ModelForm):
+    airline_id = forms.IntegerField(min_value=1, label="Search airline By ID" )
+    # def clean_message(self):
+    #     country_id = self.cleaned_data['country_id']
+    #     # if not str.isdigit(country_id_m):
+    #         # raise forms.ValidationError('Please Enter valid country id')
+    class Meta:
+        model = models.Airline 
+        fields = ['airline_id']
+
+
+
+
+    # def valid_id_checker(self):
+    #     country_id = self.cleaned_data['country_id']
+    #     if BaseFuncade.get_country_by_id(country_by_id) == "":
+    #         raise forms.ValidationError('invalid country id')
+    #     return country_id
+        
+
+            
+
+
+# show not as chooseble list but expend with tickets to each flight 
 class NewTicketForm(forms.ModelForm):
     # customer_id = forms.CharField(max_length=128, widget=forms.TextInput(attrs={'placeholder': 'Please enter the title'}))
     # customer_id = forms.ModelChoiceField(queryset=models.Customer.objects.all(),required=True, label='Customer ID')
 
     flight_id = forms.ModelChoiceField(queryset=models.Flight.objects.all(), required=True , label='Flight ID')
+    # flight_id = forms.ChoiceField(widget=forms.Select, choices=models.Flight.objects.all().values_list('airline_id', 'origin_country_id'), required=False, help_text="Flight ID")
    
     class Meta:
         model = models.Flight_Ticket
@@ -133,7 +186,6 @@ class NewFlightForm(forms.ModelForm):
         if landing <= departure:
             raise forms.ValidationError('A landing must be after a departure')
         return landing
-
 
 
 

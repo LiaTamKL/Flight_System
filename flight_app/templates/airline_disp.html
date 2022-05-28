@@ -1,0 +1,14 @@
+{% extends 'members_home.html' %}
+
+
+{% block content %}
+    <title>{{title}}</title>
+</head>
+<body>
+    <h1>{{title}} </h1>
+    <ul>
+    {% for info in airline_list %}
+    <li>name: {{info.name}}</li>
+    {% endfor %} 
+    </ul>
+    {% endblock %}
