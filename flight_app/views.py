@@ -312,7 +312,7 @@ def airline_add_flight(request):
     context = {
         'form': flightform,
     }
-    return render(request, 'form_tamplate.html', context)
+    return render(request, 'form_template.html', context)
 
 
 #takes flight id as peremeter, let's user update said flight. denies them if flight does not exist or user is not the airline for this flight
@@ -347,7 +347,7 @@ def airline_update_flight(request, flight_id):
     context = {
         'form': flightform,
     }
-    return render(request, 'form_tamplate.html', context)
+    return render(request, 'form_template.html', context)
 
 
 #these three will not work yet due to there not being a way to delete a customer but not a user. Leaving this as a template for later
