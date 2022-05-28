@@ -148,7 +148,9 @@ def byid_flights(request):
               
             
             return render(request, "flight_disp.html", {'flight_list': flight_list,'title': 'Flight By ID' })
-     
+
+        else:
+            forms.flight_by_id()
     
     context = {
         'form':flight_id_form,
@@ -170,6 +172,9 @@ def byid_airlines(request):
               
             
             return render(request, "airline_disp.html", {'airline_list': airline_list,'title': 'Airline By ID' })
+        else:
+             forms.airline_by_id()
+    
       
     context = {
         'form':airline_id_form,
@@ -178,6 +183,8 @@ def byid_airlines(request):
      }
 
     return render(request, 'form_template.html', context)
+
+
 
 
 
