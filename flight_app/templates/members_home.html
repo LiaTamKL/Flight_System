@@ -34,9 +34,9 @@
               <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Flights Info</a>
                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="/flight_app/members/flight/all">All flights</a></li>
-                      <li><a class="dropdown-item" href='/flight_app/members/flight/byid'>Search flight by ID</a></li>
-                      <li><a class="dropdown-item" href="/flight_app/members/flight/byparams">Search Flights</a></li>                        
+                      <li><a class="dropdown-item" href="/flight_app/members/flights/all">All flights</a></li>
+                      <li><a class="dropdown-item" href='/flight_app/members/flights/byid'>Search flight by ID</a></li>
+                      <li><a class="dropdown-item" href="/flight_app/members/flights/byparams">Search Flights</a></li>                        
                   </ul>
               </li>
           </ul>
@@ -60,6 +60,14 @@
               </ul>
           </li>
       </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Search</a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/flight_app/members/search/flights">Flights</a></li>                 
+            </ul>
+        </li>
+    </ul>
               <li class="nav-item">
                 <a class="nav-link" href="https://17rg073sukbm1lmjk9jrehb643-wpengine.netdna-ssl.com/wp-content/uploads/2014/10/ancient-aliens-invisible-something-meme-generator-im-not-saying-it-was-aliens-but-it-was-aliens-a0f6bd.jpg">Aliens</a>
               </li>
@@ -84,10 +92,9 @@
         </div>
     </div>
 </nav>
-<div>
 {% block content %}
 {% endblock content %}
-</div>
+
 <!-- 
     <div class="btn-group" role="group" aria-label="Basic outlined example">
         <button type="button" class="btn btn-outline-primary">Airline Search </button>

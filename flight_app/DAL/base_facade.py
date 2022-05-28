@@ -14,12 +14,19 @@ class BaseFuncade():
         return flight_by_id 
         
 
-    def get_flights_by_parameters(origin_country_id, destination_country_id, date): # fix it later
+    def get_flights_by_parameters(airline, origin_country_id, destination_country_id, departure_time, landing_time, remaining_tickets ): # fix it later
         flight_by_params = list(models.Flight.objects
+        .filter(airline = airline)
         .filter(origin_country_id = origin_country_id)
-        .filter(destination_country_id = destination_country_id)
-        .filter(depirture_time = date))    
+        .filter(origin_country_id = destination_country_id)
+        .filter(departure_time = departure_time)
+        .filter(landing_time = landing_time)
+        .filter(depirture_time = remaining_tickets))    
+        
         return flight_by_params
+
+
+
 
     def get_all_airlines():
             return list(models.Airline.objects.all())
@@ -28,12 +35,16 @@ class BaseFuncade():
             airline_by_id = list(models.Airline.objects.filter(pk=id))
             return airline_by_id 
 
-    def get_airline_by_parameters(airline_name, country_id , user_id): 
+    # customer shouldn't have access to account_id 
+    def get_airline_by_parameters(airline_name, country_id):
+        # raise Exception (airline_name, country_by_id)
+
         airline_by_params = list(models.Airline.objects
         .filter(name = airline_name)
-        .filter(country_id = int(country_id))
-        .filter(user_id = int(user_id)))    
+        .filter(country_id = models.Country.objects.get(country_name = country_id).id))   
         return airline_by_params
+
+
 
     def get_all_countries():
             country_list = list(models.Country.objects.all())

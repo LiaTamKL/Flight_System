@@ -19,21 +19,28 @@ urlpatterns = [
     path('members/tickets/all/', views.get_my_tickets),
     path('members/update_account/', views.update_account),
     
-    path('members/country/all/', views.all_countries),
-    path('members/flight/all/', views.all_flights),
-    path('members/airline/all/', views.all_airlines),
 
-    path('members/country/byid/', views.byid_countries),
-    path('members/flight/byid/', views.byid_flights),
-    path('members/airline/byid/', views.byid_airlines),
 
-    
+    path('members/country/all/', views.view_all_countries),
+    path('members/flights/all/', views.view_all_flights),
+    path('members/airline/all/', views.view_all_airlines),
+
+
+    path('members/country/byid/', views.view_countries_by_id),
+    path('members/flights/byid/', views.view_flights_by_id),
+    path('members/airline/byid/', views.view_airline_by_id),
+
+    path("members/search/flights", views.view_flights_by_params),
+
+
+    # path('members/airline/byparams/', views.view_airline_by_params),
+
 
     path('register/', views.register_customer),
     path('logout/', views.logout),
 
     
-
+    path('test/', views.test),
 
 
     # path('ticket/view/<cust_id>', views.get_my_tickets),

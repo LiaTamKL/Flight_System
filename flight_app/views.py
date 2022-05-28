@@ -20,6 +20,14 @@ from django.contrib import auth
 
 
 
+def test(request):
+    return render(request,'testblock.html')
+#     #  return render(request,'flight_search.html')
+#     # return render(request,'members_home.html')
+
+
+
+
 def homeview(request):
 
     if request.user.is_authenticated:
@@ -58,67 +66,27 @@ def members_homepage(request):
 
 
 
-# def show_flight_info (request):
-#     # all_flights = BaseFuncade.get_all_flights()
-#     # flight_by_id = BaseFuncade.get_flight_by_id(2)
-#     flights_by_param = BaseFuncade.get_flights_by_parameters(1,2 , 50)
-#     context = {
-#         'all_flights' : all_flights,
-#         # 'flight_by_id' :flight_by_id,
-#         # 'flights_by_param' : flights_by_param,
-#     }
-#     return render(request, "flight_info.html", context)
 
 
 
 
-
-# def show_airline_info(request):
-#     # all_airlines = BaseFuncade.get_all_airlines()
-#     # airline_by_id = BaseFuncade.get_airline_by_id(1)
-#     airline_by_params = BaseFuncade.get_airline_by_parameters('CrashAir', 1 , 2)
-
-#     context = {
-#         # 'all_airlines' : all_airlines,
-#         'airline_by_id' :airline_by_id,
-#         'airline_by_params' : airline_by_params,
-#     }
-#     return render(request, "airline_info.html", context)
-
-
-
-
-
-# def show_country_by_id(request, country_id):
-#     country_by_id = BaseFuncade.get_country_by_id(country_id)
-#     context = {
-#         'country_by_id' :country_by_id,
-#     }
-#     return render(request, "country_by_id.html", context)
-
-
-
-
-@login_required()
-def all_flights (request):
+def view_all_flights (request):
     all_flights = BaseFuncade.get_all_flights()
     return render(request, "flight_disp.html", {'flight_list' : all_flights, 'title': 'All Flights' })
 
 #shows contries info , if no argument was sent it shows all
-@login_required()
-def all_countries(request):
+
+def view_all_countries(request):
     all_countries = BaseFuncade.get_all_countries()
     return render(request, "countries_disp.html", {'country_list': all_countries,'title': 'All Countries' })
 
-@login_required()
-def all_airlines(request):
+def view_all_airlines(request):
     all_airlines = BaseFuncade.get_all_airlines()
 
     return render(request, "airline_disp.html", {'airline_list' : all_airlines, 'title': 'All Countries' })
 
 
-
-def byid_countries(request):
+def view_countries_by_id(request):
     country_id_form = forms.country_by_id(request.POST)   
     if request.POST:
         if country_id_form.is_valid():   
@@ -140,7 +108,7 @@ def byid_countries(request):
 
 
 
-def byid_flights(request):
+def view_flights_by_id(request):
     flight_id_form = forms.flight_by_id(request.POST)   
     if request.POST:
         if flight_id_form.is_valid():   
@@ -164,13 +132,13 @@ def byid_flights(request):
 
 
 
-def byid_airlines(request):
+
+def view_airline_by_id(request):
     airline_id_form = forms.airline_by_id(request.POST)   
     if request.POST:
         if airline_id_form.is_valid():
             airline_list = BaseFuncade.get_airline_by_id(airline_id_form.cleaned_data['airline_id'])
-              
-            
+                       
             return render(request, "airline_disp.html", {'airline_list': airline_list,'title': 'Airline By ID' })
         else:
              forms.airline_by_id()
@@ -178,12 +146,85 @@ def byid_airlines(request):
       
     context = {
         'form':airline_id_form,
-        'title': "Search Flight by id", 
+        'title': "Search Airline by id", 
         "button": "Search"
      }
 
     return render(request, 'form_template.html', context)
 
+
+
+
+
+def view_flights_by_params(request):
+    airline_id_form = forms.flights_by_params(request.POST)   
+    if request.POST:
+        if airline_id_form.is_valid():
+            pass
+
+        else:
+            
+            forms.flights_by_params()
+      
+    context = {
+        'form':airline_id_form,
+        'title': "Search Airline by id", 
+        "button": "Search"
+     }
+
+    return render(request, 'form_template.html', context)
+
+
+
+
+
+
+# tranlate country id to name
+# def view_airline_by_params(request):
+#     context = {}
+#     airline_params_form = forms.airline_by_params(request.POST)   
+#     if request.POST:
+#         if airline_params_form.is_valid():
+#             params = airline_params_form.cleaned_data 
+#             pass
+
+#             # airline_list = BaseFuncade.get_airline_by_parameters(params[].cleaned_data, params['country_id'])
+
+#             # BaseFuncade.get_airline_by_parameters(airline_name, country_id)
+
+
+#             # return render(request, "airline_disp.html", {'flight_list': airline_list,'title': 'Airline By Params' })
+        
+
+
+#     context = {
+#         'form':airline_params_form,
+#         'title': "Search Airline", 
+#         "button": "Search"
+#      }
+
+#     return render(request, 'form_template.html', context)
+
+
+
+
+# def view_flights_by_params(request):
+#     flight_params_form = forms.country_by_id(request.POST)   
+#     if request.POST:
+#         airline_id_form = forms.airline_by_id(request.POST)   
+#         if flight_params_form.is_valid():
+#             flight_list = []
+#             return render(request, "flight_disp.html", {'flight_list': flight_list,'title': 'Flight By ID' })
+        
+
+
+#         context = {
+#         'form':flight_params_form,
+#         'title': "Search flight by params", 
+#         "button": "Search"
+#      }
+
+#     return render(request, 'form_template.html', context)
 
 
 
@@ -215,6 +256,8 @@ def view_flights_by_airline(request):
                     }
 
     return render(request, 'airline_get_flights.html', context)
+
+
 
 
 
@@ -732,3 +775,42 @@ def register(request, account_role):
 # #     if request.user.is_authenticated:
 # #         return render(request , 'add_ticket.html')
 # #     return redirect('home.html')
+
+
+# def show_flight_info (request):
+#     # all_flights = BaseFuncade.get_all_flights()
+#     # flight_by_id = BaseFuncade.get_flight_by_id(2)
+#     flights_by_param = BaseFuncade.get_flights_by_parameters(1,2 , 50)
+#     context = {
+#         'all_flights' : all_flights,
+#         # 'flight_by_id' :flight_by_id,
+#         # 'flights_by_param' : flights_by_param,
+#     }
+#     return render(request, "flight_info.html", context)
+
+
+
+
+
+# def show_airline_info(request):
+#     # all_airlines = BaseFuncade.get_all_airlines()
+#     # airline_by_id = BaseFuncade.get_airline_by_id(1)
+#     airline_by_params = BaseFuncade.get_airline_by_parameters('CrashAir', 1 , 2)
+
+#     context = {
+#         # 'all_airlines' : all_airlines,
+#         'airline_by_id' :airline_by_id,
+#         'airline_by_params' : airline_by_params,
+#     }
+#     return render(request, "airline_info.html", context)
+
+
+
+
+
+# def show_country_by_id(request, country_id):
+#     country_by_id = BaseFuncade.get_country_by_id(country_id)
+#     context = {
+#         'country_by_id' :country_by_id,
+#     }
+#     return render(request, "country_by_id.html", context)

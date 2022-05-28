@@ -20,14 +20,92 @@ utc=pytz.UTC
 
 
 
+class flights_by_params(forms.ModelForm):
+    origin_country_id =  forms.ModelChoiceField(queryset=models.Country.objects.all(), required=False , label='Origin Country',)
+    detination_country_id = forms.ModelChoiceField(queryset=models.Country.objects.all(), required=False , label=' Detination Country',)
+    airline_id = forms.ModelChoiceField(queryset=models.Airline.objects.all(), required=False , label='Airline',)
+    departuredate = forms.ModelChoiceField(queryset=models.Flight.objects.values_list("departure_time" ,  flat=True), required=False , label='Departure Date',)
+    landingdate = forms.ModelChoiceField(queryset=models.Flight.objects.values_list("landing_time", flat=True), required=False , label='Landing Date',)
+    class Meta:
+        model = models.Flight 
+        fields = ['origin_country_id','detination_country_id',"airline_id",'departuredate',"landingdate" ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+
+        # raise Exception 
+        
+        # self.fields['detination_country_id'].queryset = models.Country.objects.get(pk = 1)
+
+        # self.fields['detination_country_id'].queryset = models.Country.objects.none()
+        # self.fields['airline_id'].queryset = models.Airline.objects.none()
+        # self.fields['departuredate'].queryset = models.Flight.objects.none()
+        #x self.fields['landingdate'].queryset = models.Flight.objects.none()
+
+
+        # if 'origin_country_id' in self.data:
+
+        #     self.fields['detination_country_id'].queryset=models.Country.objects.filter(pk = 1)
+        #     return 
+        
+    # def clean_form(self):
+    #     country_id = int(self.cleaned_data['origin_country_id'])
+    #     return country_id
+
+            #     self.fields['city'].queryset = City.objects.filter(country_id=country_id).order_by('name')
+            #     # self.fields['detination_country_id'].queryset = City.objects.filter(country_id=country_id).order_by('name')
+
+
+        # self.fields['origin_country_id'].queryset = models.Country.objects.none()
+
+
+
+
+
+
+
+# mexico - norway - Crap Airlines
+
+# class PersonForm(forms.ModelForm):
+#     class Meta:
+#         model = Person
+#         fields = ('name', 'birthdate', 'country', 'city')
+
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.fields['city'].queryset = City.objects.none()
+
+#         if 'country' in self.data:
+#             try:
+#                 country_id = int(self.data.get('country'))
+#                 self.fields['city'].queryset = City.objects.filter(country_id=country_id).order_by('name')
+#             except (ValueError, TypeError):
+#                 pass  # invalid input from the client; ignore and fallback to empty City queryset
+#         elif self.instance.pk:
+#             self.fields['city'].queryset = self.instance.country.city_set.order_by('name')
+
+class airlines_by_country(forms.ModelForm):
+    country_id = 1
+
+    class Meta:
+        model = models.Airline 
+        fields = '__all__'
+
+class departure_arrival_flights(forms.ModelForm):
+    country_id = 1
+    
+    class Meta:
+        model = models.Flight 
+        fields = '__all__'
+
+
+
 
 
 class country_by_id(forms.ModelForm):
     country_id = forms.IntegerField(min_value=1,widget=forms.TextInput(), label="Search Country By ID" )
-    # def clean_message(self):
-    #     country_id = self.cleaned_data['country_id']
-    #     # if not str.isdigit(country_id_m):
-    #         # raise forms.ValidationError('Please Enter valid country id')
+    
     class Meta:
         model = models.Country 
         fields = ['country_id']
@@ -42,10 +120,7 @@ class country_by_id(forms.ModelForm):
 
 class flight_by_id(forms.ModelForm):
     flight_id = forms.IntegerField(min_value=1, widget=forms.TextInput(), label="Search Flight By ID" )
-    # def clean_message(self):
-    #     country_id = self.cleaned_data['country_id']
-    #     # if not str.isdigit(country_id_m):
-    #         # raise forms.ValidationError('Please Enter valid country id')
+
     class Meta:
         model = models.Flight 
         fields = ['flight_id']
@@ -57,42 +132,27 @@ class flight_by_id(forms.ModelForm):
         return flight_id
 
 
-    # def valid_id_checker(self):
-    #     country_id = self.cleaned_data['country_id']
-    #     if BaseFuncade.get_country_by_id(country_by_id) == "":
-    #         raise forms.ValidationError('invalid country id')
-    #     return country_id
-        
 
-    
 class airline_by_id(forms.ModelForm):
-    airline_id = forms.IntegerField(min_value=1,widget=forms.TextInput(), label="Search Airline By ID")
-    # def clean_message(self):
-    #     country_id = self.cleaned_data['country_id']
-    #     # if not str.isdigit(country_id_m):
-    #         # raise forms.ValidationError('Please Enter valid country id')
+    airline_id = forms.IntegerField(min_value=1,widget=forms.TextInput(), label="Search Airline By ID" )
+    
+
 
     class Meta:
-        model = models.Airline 
+        model = models.Country 
         fields = ['airline_id']
 
     def clean_airline_id(self):
-        airline_id = int(self.cleaned_data['country_id'])
+        airline_id = int(self.cleaned_data['airline_id'])
         if len(BaseFuncade.get_airline_by_id(airline_id))== 0:
-            raise forms.ValidationError('Invalid airline id')
+            raise forms.ValidationError('Invalid Ailine id')
         return airline_id
-
-
-
-
-    # def valid_id_checker(self):
-    #     country_id = self.cleaned_data['country_id']
-    #     if BaseFuncade.get_country_by_id(country_by_id) == "":
-    #         raise forms.ValidationError('invalid country id')
-    #     return country_id
         
+    
 
-            
+
+
+
 
 
 # show not as chooseble list but expend with tickets to each flight 
@@ -222,25 +282,6 @@ class RemoveTicket(forms.ModelForm):
 
 
 
-# class NewTicketForm(forms.ModelForm):
-#     # customer_id = forms.CharField(max_length=128, widget=forms.TextInput(attrs={'placeholder': 'Please enter the title'}))
-#     # customer_id = forms.ModelChoiceField(queryset=models.Customer.objects.all(),required=True, label='Customer ID')
-
-#     flight_id = forms.ModelChoiceField(queryset=models.Flight.objects.all(), required=True , label='Flight ID')
-   
-#     class Meta:
-#         model = models.Flight_Ticket
-#         # fields = ['customer_id', 'flight_id']
-#         fields = ['flight_id']
-
-#     # def clean_message(self):
-#     #     customer_id = self.cleaned_data['customer_id']
-#     #     return customer_id
-
-#     # def __str__(self) -> str:
-#     #     customer_id = customer_id.id
-#     #     return customer_id
-
 
 #################################################################
 #class SignUpForm(UserCreationForm):
@@ -290,3 +331,22 @@ class RemoveTicket(forms.ModelForm):
 #         # fields = '__all__'
 #         fields = ['email', 'password1']
         
+# class NewTicketForm(forms.ModelForm):
+#     # customer_id = forms.CharField(max_length=128, widget=forms.TextInput(attrs={'placeholder': 'Please enter the title'}))
+#     # customer_id = forms.ModelChoiceField(queryset=models.Customer.objects.all(),required=True, label='Customer ID')
+
+#     flight_id = forms.ModelChoiceField(queryset=models.Flight.objects.all(), required=True , label='Flight ID')
+   
+#     class Meta:
+#         model = models.Flight_Ticket
+#         # fields = ['customer_id', 'flight_id']
+#         fields = ['flight_id']
+
+#     # def clean_message(self):
+#     #     customer_id = self.cleaned_data['customer_id']
+#     #     return customer_id
+
+#     # def __str__(self) -> str:
+#     #     customer_id = customer_id.id
+#     #     return customer_id
+
