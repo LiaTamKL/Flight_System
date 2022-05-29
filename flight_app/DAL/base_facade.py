@@ -21,7 +21,7 @@ class BaseFuncade():
         .filter(origin_country_id = destination_country_id)
         .filter(departure_time = departure_time)
         .filter(landing_time = landing_time)
-        .filter(depirture_time = remaining_tickets))    
+        .filter(remaining_tickets = remaining_tickets))    
         
         return flight_by_params
 

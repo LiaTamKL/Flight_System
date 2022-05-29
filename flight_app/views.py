@@ -380,7 +380,6 @@ def airline_update_flight(request, flight_id):
         if flightform.is_valid():
             
             flightform.save()
-            #Airline_Facade.update_flight(airline.id, flightform.cleaned_data, instance)
             return redirect("airline view flights")
     else: flightform = forms.NewFlightForm(instance=instance)
     context = {
@@ -487,18 +486,31 @@ def add_ticket(request):
 
 
 
+#lets user update existing account and customer details
+@login_required()
+def update_account(request):
+    if request.user.account_role != models.Account_Role.objects.get(role_name='Customer'):
+        return HttpResponse('You are not logged in as a Customer. Please login')
+    try: instance = models.Customer.objects.get(account=request.user)
+    except: raise Http404('Customer account does not exist. Please contact an administrator.')
 
-
-def update_account(requset):
-    form = {}     
-            
+    if request.method =='POST':
+        cusform = forms.UpdateCustomer(request.POST, instance=instance)
+        emailform = forms.UpdateAccount(request.POST, instance=request.user)
+        if cusform.is_valid() and emailform.is_valid():
+            CustomerFancade.update_customer(account=request.user, form=cusform.cleaned_data, emailform=emailform)
+            return redirect("home")
+    else: 
+        cusform = forms.updatecustomer(instance = instance)
+        emailform = forms.UpdateAccount(instance=request.user)
     context = {
-        'form':form,
-        'title': "Update User", 
-        "button": "Update"
+        'form':cusform,
+        'email field':emailform,
+        'title': f"Update {request.user}", 
+        "button": f"Update the account: {request.user}"
     }
 
-    return render(requset, 'form_tamplate.html', context)
+    return render(request, '_____.html', context)
 
 
 

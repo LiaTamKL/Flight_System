@@ -84,7 +84,7 @@ class AdministratorFuncade(BaseFuncade):
             account.account_role = Account_Role.objects.get(role_name='Airline')
             airline = Airline()
             airline.name = form['name']
-            airline.country = form['airline']
+            airline.country = form['country']
             airline.account = form['user_id']
             airline.save()
 
