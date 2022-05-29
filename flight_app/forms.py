@@ -216,6 +216,22 @@ class NewCustomerForm(forms.ModelForm):
     #     customer_id = self.cleaned_data['customer_id']
     #     return customer_id
 
+
+class AccountUpdateForm(forms.ModelForm):
+    class Meta:
+        model = models.Account
+        fields = ['email']
+    
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        try:
+            account = Account.objects.exclude(pk=self.instance.pk).get(email=email)
+        except Account.DoesNotExist:
+            return email
+        raise forms.ValidationError(f'email: {email} is already in use')
+    
+
+
 class NewFlightForm(forms.ModelForm):
 
     #def __init__(self, *args, **qwargs):

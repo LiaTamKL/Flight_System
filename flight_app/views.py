@@ -465,21 +465,22 @@ def update_account(request):
     except: raise Http404('Customer account does not exist. Please contact an administrator.')
 
     if request.method =='POST':
-        cusform = forms.UpdateCustomer(request.POST, instance=instance)
-        emailform = forms.UpdateAccount(request.POST, instance=request.user)
+        cusform = forms.NewCustomerForm(request.POST, instance=instance)
+        emailform = forms.AccountUpdateForm(request.POST, instance=request.user)
         if cusform.is_valid() and emailform.is_valid():
-            CustomerFancade.update_customer(account=request.user, form=cusform.cleaned_data, emailform=emailform)
+            print(request.user, cusform.cleaned_data, emailform.cleaned_data)
+            CustomerFancade.update_customer(account=request.user, form=cusform.cleaned_data, emailform=emailform.cleaned_data)
             return redirect("home")
     else: 
-        cusform = forms.updatecustomer(instance = instance)
-        emailform = forms.UpdateAccount(instance=request.user)
+        cusform = forms.NewCustomerForm(instance = instance)
+        emailform = forms.AccountUpdateForm(instance=request.user)
     context = {
-        'form':cusform,
-        'email field':emailform,
+        'customer_registration_form':cusform,
+        'user_registration_form':emailform,
         'title': f"Update {request.user}", 
         "button": f"Update the account: {request.user}"
     }
-    return render(request, '_____.html', context)
+    return render(request, 'register.html', context)
 
 
 
@@ -592,6 +593,7 @@ def register(request, account_role):
         customer_form = forms.NewCustomerForm()
         context['user_registration_form'] = user_form 
         context['customer_registration_form'] = customer_form 
+        context['button'] = 'register'
         # context2['customer_registration_form'] = customer_form 
         
     return render(request, 'register.html', context )
