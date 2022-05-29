@@ -206,10 +206,6 @@ def view_airline_by_country(request):
 @login_required()
 def view_flights_by_airline(request):
 
-    #if not request.user.is_authenticated:
-    #    redirect('login')
-
-
     airline = models.Airline.objects.filter(account=request.user.id)
     try:
         airline = airline[0]
@@ -573,8 +569,7 @@ def register_airline(request):
 
 def register(request, account_role):
     context = {}
-    account_role = models.Account_Role.objects.get(pk = account_role)
-    # account_role = 2
+    account_role = models.Account_Role.objects.get(role_name='Customer')
 
     if request.POST:    
         user_form = forms.RegistrationForm(request.POST)
