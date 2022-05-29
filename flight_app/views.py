@@ -238,10 +238,6 @@ def view_flights_by_params(request):
 @login_required()
 def view_flights_by_airline(request):
 
-    #if not request.user.is_authenticated:
-    #    redirect('login')
-
-
     airline = models.Airline.objects.filter(account=request.user.id)
     try:
         airline = airline[0]
@@ -593,7 +589,6 @@ def register_airline(request):
 def register(request, account_role):
     context = {}
     account_role = models.Account_Role.objects.get(role_name='Customer')
-    # account_role = 2
 
     if request.POST:    
         user_form = forms.RegistrationForm(request.POST)
@@ -607,9 +602,7 @@ def register(request, account_role):
             else:
                 context['user_registration_form'] = user_form 
                 context['customer_registration_form'] = customer_form 
-            #else:
-                #return Http404
-            #
+
         else:
             
             context['user_registration_form'] = user_form 
