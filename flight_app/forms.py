@@ -112,9 +112,6 @@ class flight_by_id(forms.ModelForm):
 
 
 
-
-
-
 class airline_by_id(forms.ModelForm):
     airline_id = forms.ModelChoiceField(queryset=models.Airline.objects.all(), required=False , label='Airline',)
 
@@ -136,15 +133,10 @@ class airline_by_id(forms.ModelForm):
 
 # show not as chooseble list but expend with tickets to each flight 
 class NewTicketForm(forms.ModelForm):
-    # customer_id = forms.CharField(max_length=128, widget=forms.TextInput(attrs={'placeholder': 'Please enter the title'}))
-    # customer_id = forms.ModelChoiceField(queryset=models.Customer.objects.all(),required=True, label='Customer ID')
-
     flight_id = forms.ModelChoiceField(queryset=models.Flight.objects.all(), required=True , label='Flight ID')
-    # flight_id = forms.ChoiceField(widget=forms.Select, choices=models.Flight.objects.all().values_list('airline_id', 'origin_country_id'), required=False, help_text="Flight ID")
    
     class Meta:
         model = models.Flight_Ticket
-        # fields = ['customer_id', 'flight_id']
         fields = ['flight_id']
 
     # def clean_message(self):

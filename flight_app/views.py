@@ -175,7 +175,25 @@ def view_flights_by_params(request):
     return render(request, 'form_template.html', context)
 
 
+def view_airline_by_country(request):
 
+    country_id_form = forms.country_by_id(request.POST)   
+    if request.POST:
+        if country_id_form.is_valid():
+            airline_list = models.Airline.objects.filter(country_id = country_id_form.cleaned_data['country_id'])
+            
+            return render(request, "airline_disp.html", {'airline_list': airline_list,'title': 'Airline by Country ' })
+        else:
+             forms.country_by_id()
+    
+      
+    context = {
+        'form':country_id_form,
+        'title': "Airline by Country", 
+        "button": "Search"
+     }
+
+    return render(request, 'form_template.html', context) 
 
 
 
