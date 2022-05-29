@@ -63,28 +63,6 @@ class flights_by_params(forms.ModelForm):
 
 
 
-
-
-# mexico - norway - Crap Airlines
-
-# class PersonForm(forms.ModelForm):
-#     class Meta:
-#         model = Person
-#         fields = ('name', 'birthdate', 'country', 'city')
-
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self.fields['city'].queryset = City.objects.none()
-
-#         if 'country' in self.data:
-#             try:
-#                 country_id = int(self.data.get('country'))
-#                 self.fields['city'].queryset = City.objects.filter(country_id=country_id).order_by('name')
-#             except (ValueError, TypeError):
-#                 pass  # invalid input from the client; ignore and fallback to empty City queryset
-#         elif self.instance.pk:
-#             self.fields['city'].queryset = self.instance.country.city_set.order_by('name')
-
 class airlines_by_country(forms.ModelForm):
     country_id = 1
 
@@ -93,18 +71,19 @@ class airlines_by_country(forms.ModelForm):
         fields = '__all__'
 
 class departure_arrival_flights(forms.ModelForm):
-    country_id = 1
+    country_id =  forms.ModelChoiceField(queryset=models.Country.objects.all(), required=False , label='')
     
     class Meta:
         model = models.Flight 
-        fields = '__all__'
+        fields = ['country_id']
+
 
 
 
 
 
 class country_by_id(forms.ModelForm):
-    country_id = forms.IntegerField(min_value=1,widget=forms.TextInput(), label="Search Country By ID" )
+    country_id = forms.IntegerField(min_value=1,widget=forms.TextInput(), label="Country by ID" )
     
     class Meta:
         model = models.Country 
@@ -117,6 +96,22 @@ class country_by_id(forms.ModelForm):
         return country_id
         
         
+
+class country_by_id(forms.ModelForm):
+    country_id = forms.IntegerField(min_value=1,widget=forms.TextInput(), label="Country by ID" )
+    
+    class Meta:
+        model = models.Country 
+        fields = ['country_id']
+
+    def clean_country_id(self):
+        country_id = int(self.cleaned_data['country_id'])
+        if len(BaseFuncade.get_country_by_id(country_id))== 0:
+            raise forms.ValidationError('Invalid country id')
+        return country_id
+        
+        
+
 
 class flight_by_id(forms.ModelForm):
     flight_id = forms.IntegerField(min_value=1, widget=forms.TextInput(), label="Search Flight By ID" )
@@ -134,24 +129,21 @@ class flight_by_id(forms.ModelForm):
 
 
 class airline_by_id(forms.ModelForm):
-    airline_id = forms.IntegerField(min_value=1,widget=forms.TextInput(), label="Search Airline By ID" )
-    
-
+    airline_id = forms.ModelChoiceField(queryset=models.Airline.objects.all(), required=False , label='Airline',)
 
     class Meta:
         model = models.Country 
         fields = ['airline_id']
-
-    def clean_airline_id(self):
-        airline_id = int(self.cleaned_data['airline_id'])
-        if len(BaseFuncade.get_airline_by_id(airline_id))== 0:
-            raise forms.ValidationError('Invalid Ailine id')
-        return airline_id
-        
     
 
 
 
+
+
+
+
+
+###############################################################################################################
 
 
 

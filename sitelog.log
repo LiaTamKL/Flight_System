@@ -7767,3 +7767,836 @@ Traceback (most recent call last):
 TypeError: unhashable type: 'list'
 INFO 2022-05-28 19:52:01,581 autoreload 13412 11008 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\forms.py changed, reloading.
 INFO 2022-05-28 19:52:02,023 autoreload 12124 11932 Watching for file changes with StatReloader
+INFO 2022-05-29 06:43:08,220 autoreload 9972 20136 Watching for file changes with StatReloader
+INFO 2022-05-29 06:43:14,529 autoreload 9972 20136 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 06:43:14,840 autoreload 2528 7196 Watching for file changes with StatReloader
+INFO 2022-05-29 06:51:32,998 autoreload 2528 7196 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-29 06:51:33,312 autoreload 7496 13828 Watching for file changes with StatReloader
+INFO 2022-05-29 06:52:12,373 autoreload 7496 13828 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-29 06:52:12,657 autoreload 16860 16844 Watching for file changes with StatReloader
+INFO 2022-05-29 06:54:56,407 autoreload 16860 16844 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-29 06:54:56,701 autoreload 5792 3440 Watching for file changes with StatReloader
+INFO 2022-05-29 07:09:53,420 autoreload 5792 3440 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 07:09:53,733 autoreload 19936 19876 Watching for file changes with StatReloader
+INFO 2022-05-29 07:10:03,100 autoreload 19936 19876 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 07:10:03,404 autoreload 19148 1712 Watching for file changes with StatReloader
+WARNING 2022-05-29 07:10:47,029 log 19148 20732 Not Found: /flight_app/members/search/flights/departure
+WARNING 2022-05-29 07:11:08,590 log 19148 20732 Not Found: /flight_app/members/search/flights/departure
+WARNING 2022-05-29 07:11:48,454 log 19148 20732 Not Found: /flight_app/members/search/flights/departure
+INFO 2022-05-29 07:12:27,833 autoreload 19148 1712 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-29 07:12:28,142 autoreload 10404 5888 Watching for file changes with StatReloader
+ERROR 2022-05-29 07:12:34,132 log 10404 20516 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 185, in view_departure_by_country
+    departure = models.Flight.objects.filter(country_id = country_id )
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1071, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1089, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1096, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1502, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1532, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1377, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1187, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1677, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'country_id' into field. Choices are: airline, airline_id, departure_time, destination_country, destination_country_id, flight_ticket, id, landing_time, origin_country, origin_country_id, remaining_tickets
+INFO 2022-05-29 07:13:03,206 autoreload 10404 5888 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 07:13:03,500 autoreload 9940 17256 Watching for file changes with StatReloader
+ERROR 2022-05-29 07:13:06,374 log 9940 20856 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 184, in view_departure_by_country
+    country_id = departure_form.cleaned_data['origin_country_id']
+KeyError: 'origin_country_id'
+INFO 2022-05-29 07:13:28,300 autoreload 9940 17256 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 07:13:28,630 autoreload 3772 16396 Watching for file changes with StatReloader
+ERROR 2022-05-29 07:13:37,649 log 3772 5876 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 185, in view_departure_by_country
+    departure = models.Flight.objects.filter(country_id = country_id )
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1071, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1089, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1096, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1502, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1532, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1377, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1187, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1677, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'country_id' into field. Choices are: airline, airline_id, departure_time, destination_country, destination_country_id, flight_ticket, id, landing_time, origin_country, origin_country_id, remaining_tickets
+INFO 2022-05-29 07:14:40,362 autoreload 3772 16396 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 07:14:40,661 autoreload 7900 10956 Watching for file changes with StatReloader
+INFO 2022-05-29 07:17:13,194 autoreload 7900 10956 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 07:17:13,503 autoreload 9448 6616 Watching for file changes with StatReloader
+INFO 2022-05-29 07:21:55,844 autoreload 9448 6616 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 07:21:56,160 autoreload 12392 17444 Watching for file changes with StatReloader
+ERROR 2022-05-29 07:21:59,338 log 12392 21108 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 186, in view_departure_by_country
+    departure = models.Flight.objects.filter(origin_country_id = country_id)['departure_time']
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 330, in __getitem__
+    raise TypeError(
+TypeError: QuerySet indices must be integers or slices, not str.
+INFO 2022-05-29 07:22:27,045 autoreload 12392 17444 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 07:22:27,344 autoreload 16244 18540 Watching for file changes with StatReloader
+ERROR 2022-05-29 07:22:30,831 log 16244 19244 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 186, in view_departure_by_country
+    departure = models.Flight.objects.filter(origin_country_id = country_id).departure_time
+AttributeError: 'QuerySet' object has no attribute 'departure_time'
+INFO 2022-05-29 07:23:02,353 autoreload 16244 18540 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 07:23:02,657 autoreload 18628 21452 Watching for file changes with StatReloader
+ERROR 2022-05-29 07:23:07,307 log 18628 11480 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 187, in view_departure_by_country
+    departure_time = departure['departure_time']
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 330, in __getitem__
+    raise TypeError(
+TypeError: QuerySet indices must be integers or slices, not str.
+INFO 2022-05-29 07:23:46,817 autoreload 18628 21452 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 07:23:47,128 autoreload 10220 21516 Watching for file changes with StatReloader
+ERROR 2022-05-29 07:23:50,273 log 10220 4092 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 187, in view_departure_by_country
+    departure_time = departure.departure_time
+AttributeError: 'QuerySet' object has no attribute 'departure_time'
+INFO 2022-05-29 07:24:53,813 autoreload 10220 21516 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 07:24:54,104 autoreload 19136 16320 Watching for file changes with StatReloader
+ERROR 2022-05-29 07:24:57,236 log 19136 17436 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 188, in view_departure_by_country
+    raise Exception(departure)
+Exception: <QuerySet [(datetime.datetime(2020, 8, 23, 10, 31, tzinfo=datetime.timezone.utc),), (datetime.datetime(2022, 5, 29, 10, 31, tzinfo=datetime.timezone.utc),)]>
+INFO 2022-05-29 07:48:23,287 autoreload 19136 16320 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 07:48:23,613 autoreload 17616 21832 Watching for file changes with StatReloader
+INFO 2022-05-29 07:48:26,210 autoreload 2864 10528 Watching for file changes with StatReloader
+INFO 2022-05-29 08:07:21,694 autoreload 17616 21832 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:07:22,007 autoreload 21440 15288 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:07:25,363 log 21440 2296 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in view_departure_by_country
+    raise Exception (dep)
+Exception: (datetime.datetime(2020, 7, 23, 10, 31, tzinfo=datetime.timezone.utc),)
+INFO 2022-05-29 08:07:39,653 autoreload 21440 15288 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:07:39,953 autoreload 1400 21716 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:07:44,211 log 1400 21584 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in view_departure_by_country
+    raise Exception (dep.hour)
+AttributeError: 'tuple' object has no attribute 'hour'
+INFO 2022-05-29 08:08:08,858 autoreload 1400 21716 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:08:09,165 autoreload 19604 14012 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:08:13,043 log 19604 22444 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in view_departure_by_country
+    raise Exception (dep['hour'])
+TypeError: tuple indices must be integers or slices, not str
+INFO 2022-05-29 08:08:28,880 autoreload 19604 14012 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:08:29,208 autoreload 11060 4448 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:08:30,775 log 11060 17556 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in view_departure_by_country
+    raise Exception (dep[2])
+IndexError: tuple index out of range
+INFO 2022-05-29 08:08:38,692 autoreload 11060 4448 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:08:39,017 autoreload 10540 13140 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:08:40,782 log 10540 21308 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in view_departure_by_country
+    raise Exception (dep[1])
+IndexError: tuple index out of range
+ERROR 2022-05-29 08:08:44,947 log 10540 21308 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in view_departure_by_country
+    raise Exception (dep[1])
+IndexError: tuple index out of range
+INFO 2022-05-29 08:08:50,519 autoreload 10540 13140 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:08:50,862 autoreload 9124 21392 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:08:52,818 log 9124 16944 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in view_departure_by_country
+    raise Exception (dep[0])
+Exception: 2020-07-23 10:31:00+00:00
+INFO 2022-05-29 08:09:43,264 autoreload 9124 21392 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:09:43,572 autoreload 22708 22712 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:09:47,263 log 22708 14624 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in view_departure_by_country
+    raise Exception (dep)
+Exception: 2020-07-23 10:31:00+00:00
+INFO 2022-05-29 08:11:35,264 autoreload 22708 22712 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:11:35,579 autoreload 12504 23400 Watching for file changes with StatReloader
+INFO 2022-05-29 08:11:36,783 autoreload 12504 23400 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-29 08:11:37,117 autoreload 16920 22728 Watching for file changes with StatReloader
+INFO 2022-05-29 08:11:58,941 autoreload 22612 12732 Watching for file changes with StatReloader
+INFO 2022-05-29 08:13:49,711 autoreload 17412 19224 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:13:54,852 log 17412 13720 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in view_departure_by_country
+    raise Exception (dep)
+Exception: 2020-07-23 10:31:00+00:00
+INFO 2022-05-29 08:14:35,020 autoreload 17412 19224 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:14:35,344 autoreload 18988 20584 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:14:37,212 log 18988 22352 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 188, in view_departure_by_country
+    raise Exception (departure > now)
+TypeError: '>' not supported between instances of 'tuple' and 'int'
+INFO 2022-05-29 08:14:46,847 autoreload 18988 20584 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:14:47,162 autoreload 14472 22892 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:14:49,644 log 14472 5712 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 188, in view_departure_by_country
+    raise Exception (departure > now)
+TypeError: '>' not supported between instances of 'tuple' and 'datetime.datetime'
+INFO 2022-05-29 08:15:46,703 autoreload 14472 22892 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:15:47,011 autoreload 23328 23272 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:15:51,009 log 23328 17196 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 186, in view_departure_by_country
+    departure = datetime(models.Flight.objects.filter(origin_country_id = country_id).values_list("departure_time")[0])
+TypeError: an integer is required (got type tuple)
+INFO 2022-05-29 08:18:31,739 autoreload 23328 23272 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:18:32,049 autoreload 18548 19220 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:18:35,322 log 18548 19712 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 186, in view_departure_by_country
+    departure = datetime((models.Flight.objects.filter(origin_country_id = country_id).values_list("departure_time"))[0])
+TypeError: an integer is required (got type tuple)
+INFO 2022-05-29 08:19:00,980 autoreload 18548 19220 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:19:01,300 autoreload 22008 23120 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:19:03,760 log 22008 19856 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 187, in view_departure_by_country
+    raise Exception (departure)
+Exception: (datetime.datetime(2020, 7, 23, 10, 31, tzinfo=datetime.timezone.utc),)
+INFO 2022-05-29 08:20:00,806 autoreload 22008 23120 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:20:01,117 autoreload 4508 2808 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:20:04,063 log 4508 18888 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in view_departure_by_country
+    raise Exception (departure)
+Exception: <QuerySet [(datetime.datetime(2020, 7, 23, 10, 31, tzinfo=datetime.timezone.utc),)]>
+ERROR 2022-05-29 08:20:12,420 log 4508 18888 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in view_departure_by_country
+    raise Exception (departure)
+Exception: <QuerySet [(datetime.datetime(2020, 8, 23, 10, 31, tzinfo=datetime.timezone.utc),), (datetime.datetime(2022, 5, 29, 10, 31, tzinfo=datetime.timezone.utc),)]>
+INFO 2022-05-29 08:20:24,962 autoreload 4508 2808 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:20:25,268 autoreload 6772 22868 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:20:27,712 log 6772 6844 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in view_departure_by_country
+    raise Exception (departure , now)
+Exception: (<QuerySet [(datetime.datetime(2020, 8, 23, 10, 31, tzinfo=datetime.timezone.utc),), (datetime.datetime(2022, 5, 29, 10, 31, tzinfo=datetime.timezone.utc),)]>, datetime.datetime(2022, 5, 29, 8, 20, 27, 688101))
+INFO 2022-05-29 08:20:59,212 autoreload 6772 22868 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:20:59,528 autoreload 14816 21636 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:21:02,121 log 14816 1764 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in view_departure_by_country
+    raise Exception (departure , now)
+Exception: ((datetime.datetime(2020, 8, 23, 10, 31, tzinfo=datetime.timezone.utc),), datetime.datetime(2022, 5, 29, 8, 21, 2, 97864))
+INFO 2022-05-29 08:21:16,122 autoreload 14816 21636 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:21:16,443 autoreload 10328 23184 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:21:19,143 log 10328 21576 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in view_departure_by_country
+    raise Exception (departure , now)
+Exception: (datetime.datetime(2020, 8, 23, 10, 31, tzinfo=datetime.timezone.utc), datetime.datetime(2022, 5, 29, 8, 21, 19, 119088))
+INFO 2022-05-29 08:21:27,947 autoreload 10328 23184 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:21:28,269 autoreload 19652 7028 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:21:30,745 log 19652 22640 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 186, in view_departure_by_country
+    departure = models.Flight.objects.filter(origin_country_id = country_id).values_list("departure_time")[0][0][0]
+TypeError: 'datetime.datetime' object is not subscriptable
+INFO 2022-05-29 08:21:40,787 autoreload 19652 7028 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:21:41,087 autoreload 17772 19576 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:21:44,028 log 17772 12344 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in view_departure_by_country
+    raise Exception (departure , now)
+Exception: (datetime.datetime(2020, 8, 23, 10, 31, tzinfo=datetime.timezone.utc), datetime.datetime(2022, 5, 29, 8, 21, 44, 5318))
+ERROR 2022-05-29 08:25:27,837 log 17772 12324 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in view_departure_by_country
+    raise Exception (departure , now)
+Exception: (datetime.datetime(2020, 8, 23, 10, 31, tzinfo=datetime.timezone.utc), datetime.datetime(2022, 5, 29, 8, 25, 27, 823546))
+ERROR 2022-05-29 08:25:32,363 log 17772 12324 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in view_departure_by_country
+    raise Exception (departure , now)
+Exception: (datetime.datetime(2020, 7, 23, 10, 31, tzinfo=datetime.timezone.utc), datetime.datetime(2022, 5, 29, 8, 25, 32, 350870))
+INFO 2022-05-29 08:25:49,362 autoreload 17772 19576 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:25:49,669 autoreload 19904 18280 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:25:52,855 log 19904 20972 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in view_departure_by_country
+    raise Exception (departure , now)
+Exception: (<QuerySet [(datetime.datetime(2020, 7, 23, 10, 31, tzinfo=datetime.timezone.utc),)]>, datetime.datetime(2022, 5, 29, 8, 25, 52, 833265))
+INFO 2022-05-29 08:27:04,563 autoreload 19904 18280 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:27:04,849 autoreload 508 22756 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:27:07,810 log 508 2516 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in view_departure_by_country
+    raise Exception (departure , now)
+Exception: (<bound method QuerySet.datetimes of <QuerySet [(datetime.datetime(2020, 7, 23, 10, 31, tzinfo=datetime.timezone.utc),)]>>, datetime.datetime(2022, 5, 29, 8, 27, 7, 786498))
+INFO 2022-05-29 08:27:35,719 autoreload 508 22756 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:27:36,029 autoreload 19832 22152 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:27:40,363 log 19832 12280 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in view_departure_by_country
+    raise Exception (departure , now)
+Exception: (<bound method QuerySet.dates of <QuerySet [(datetime.datetime(2020, 7, 23, 10, 31, tzinfo=datetime.timezone.utc),)]>>, datetime.datetime(2022, 5, 29, 8, 27, 40, 339748))
+INFO 2022-05-29 08:27:48,551 autoreload 19832 22152 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:27:48,868 autoreload 20424 8828 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:27:51,690 log 20424 3252 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 186, in view_departure_by_country
+    departure = models.Flight.objects.filter(origin_country_id = country_id).values_list("departure_time").dates()#[0][0]
+TypeError: dates() missing 2 required positional arguments: 'field_name' and 'kind'
+INFO 2022-05-29 08:45:16,077 autoreload 20424 8828 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:45:16,408 autoreload 1580 19460 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:45:22,988 log 1580 23780 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 187, in view_departure_by_country
+    later = datetime.timedelta(hours = 12)
+AttributeError: type object 'datetime.datetime' has no attribute 'timedelta'
+INFO 2022-05-29 08:46:01,720 autoreload 1580 19460 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:46:02,052 autoreload 24552 24556 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:47:56,779 log 24552 21236 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 186, in view_departure_by_country
+    now = datetime.now()
+AttributeError: module 'datetime' has no attribute 'now'
+INFO 2022-05-29 08:48:38,476 autoreload 24552 24556 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:48:38,800 autoreload 20260 20452 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:48:44,452 log 20260 2708 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 186, in view_departure_by_country
+    now = now()
+UnboundLocalError: local variable 'now' referenced before assignment
+INFO 2022-05-29 08:50:55,383 autoreload 13424 5008 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:51:04,710 log 13424 7868 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 186, in view_departure_by_country
+    now = now()
+UnboundLocalError: local variable 'now' referenced before assignment
+INFO 2022-05-29 08:54:42,410 autoreload 13424 5008 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:54:42,736 autoreload 4048 2152 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:54:45,552 log 4048 10952 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 200, in view_departure_by_country
+    raise Exception (future_date_and_time)
+Exception: 2022-05-29 13:54:45.525829
+INFO 2022-05-29 08:56:13,020 autoreload 4048 2152 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:56:13,310 autoreload 7480 10104 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:56:16,572 log 7480 21612 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 189, in view_departure_by_country
+    raise Exception (in_hours)
+Exception: 2022-05-29 20:56:16.548989
+INFO 2022-05-29 08:57:05,761 autoreload 7480 10104 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 08:57:06,094 autoreload 24556 23392 Watching for file changes with StatReloader
+ERROR 2022-05-29 08:57:08,841 log 24556 20352 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 188, in view_departure_by_country
+    raise Exception (furure)
+Exception: 2022-05-29 20:57:08.818531
+INFO 2022-05-29 09:15:38,088 autoreload 24556 23392 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 09:15:38,423 autoreload 23760 22420 Watching for file changes with StatReloader
+ERROR 2022-05-29 09:15:45,306 log 23760 23052 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 192, in view_departure_by_country
+    raise Exception (departure , now)
+NameError: name 'now' is not defined
+INFO 2022-05-29 09:15:57,085 autoreload 23760 22420 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 09:15:57,400 autoreload 23288 23128 Watching for file changes with StatReloader
+ERROR 2022-05-29 09:16:00,328 log 23288 21672 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 192, in view_departure_by_country
+    raise Exception (departure)
+Exception: <QuerySet [(datetime.datetime(2020, 7, 23, 10, 31, tzinfo=datetime.timezone.utc),)]>
+INFO 2022-05-29 09:35:10,746 autoreload 23288 23128 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 09:35:11,052 autoreload 6452 23820 Watching for file changes with StatReloader
+ERROR 2022-05-29 09:35:14,822 log 6452 18712 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 194, in view_departure_by_country
+    raise Exception (departure)
+Exception: <QuerySet [(datetime.datetime(2020, 7, 23, 10, 31, tzinfo=datetime.timezone.utc),)]>
+ERROR 2022-05-29 09:35:23,643 log 6452 18712 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 194, in view_departure_by_country
+    raise Exception (departure)
+Exception: <QuerySet [(datetime.datetime(2020, 8, 23, 10, 31, tzinfo=datetime.timezone.utc),), (datetime.datetime(2022, 5, 29, 10, 31, tzinfo=datetime.timezone.utc),)]>
+ERROR 2022-05-29 09:39:22,392 log 6452 19232 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 194, in view_departure_by_country
+    raise Exception (departure)
+Exception: <QuerySet [(datetime.datetime(2020, 8, 23, 10, 31, tzinfo=datetime.timezone.utc),), (datetime.datetime(2022, 5, 29, 10, 31, tzinfo=datetime.timezone.utc),)]>
+INFO 2022-05-29 09:39:25,139 autoreload 6452 23820 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 09:39:25,452 autoreload 6580 12820 Watching for file changes with StatReloader
+ERROR 2022-05-29 09:39:28,422 log 6580 23088 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 194, in view_departure_by_country
+    raise Exception (departure)
+Exception: <QuerySet [(datetime.datetime(2020, 8, 23, 10, 31, tzinfo=datetime.timezone.utc),), (datetime.datetime(2022, 5, 29, 10, 31, tzinfo=datetime.timezone.utc),)]>
+ERROR 2022-05-29 09:58:14,037 log 6580 19512 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 194, in view_departure_by_country
+    raise Exception (departure)
+Exception: <QuerySet [(datetime.datetime(2020, 5, 29, 10, 31, tzinfo=datetime.timezone.utc),), (datetime.datetime(2020, 5, 29, 21, 0, tzinfo=datetime.timezone.utc),), (datetime.datetime(2022, 5, 29, 21, 30, tzinfo=datetime.timezone.utc),)]>
+ERROR 2022-05-29 10:01:56,780 log 6580 19700 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 194, in view_departure_by_country
+    raise Exception (departure)
+Exception: <QuerySet [(datetime.datetime(2020, 5, 29, 10, 31, tzinfo=datetime.timezone.utc),), (datetime.datetime(2022, 5, 29, 21, 0, tzinfo=datetime.timezone.utc),)]>
+ERROR 2022-05-29 10:03:59,310 log 6580 22772 Internal Server Error: /flight_app/members/search/flights/departure/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 194, in view_departure_by_country
+    raise Exception (departure)
+Exception: <QuerySet [(datetime.datetime(2020, 5, 29, 10, 31, tzinfo=datetime.timezone.utc),)]>
+INFO 2022-05-29 10:05:24,826 autoreload 6580 12820 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 10:05:25,179 autoreload 21080 24124 Watching for file changes with StatReloader
+INFO 2022-05-29 10:06:29,958 autoreload 21080 24124 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 10:06:30,266 autoreload 11300 3408 Watching for file changes with StatReloader
+INFO 2022-05-29 10:06:51,923 autoreload 11300 3408 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 10:06:52,222 autoreload 18596 8140 Watching for file changes with StatReloader
+INFO 2022-05-29 10:15:46,391 autoreload 18596 8140 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 10:15:46,705 autoreload 23688 20664 Watching for file changes with StatReloader
+INFO 2022-05-29 10:16:56,476 autoreload 23688 20664 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 10:16:56,776 autoreload 23008 24020 Watching for file changes with StatReloader
+INFO 2022-05-29 10:17:43,951 autoreload 23008 24020 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-29 10:17:44,279 autoreload 7188 9336 Watching for file changes with StatReloader
+INFO 2022-05-29 10:18:37,665 autoreload 7188 9336 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 10:18:37,965 autoreload 3000 4608 Watching for file changes with StatReloader
+ERROR 2022-05-29 10:18:44,709 log 3000 6324 Internal Server Error: /flight_app/members/search/flights/arrival/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view flight_app.views.view_arrival_by_country didn't return an HttpResponse object. It returned None instead.
+ERROR 2022-05-29 10:19:51,883 log 3000 6324 Internal Server Error: /flight_app/members/search/flights/arrival/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    self.check_response(response, callback)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view flight_app.views.view_arrival_by_country didn't return an HttpResponse object. It returned None instead.
+INFO 2022-05-29 10:20:03,017 autoreload 3000 4608 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 10:20:03,319 autoreload 22496 12944 Watching for file changes with StatReloader
+INFO 2022-05-29 10:21:31,494 autoreload 22496 12944 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 10:21:31,794 autoreload 22032 12856 Watching for file changes with StatReloader
+INFO 2022-05-29 11:42:27,395 autoreload 22032 12856 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 11:42:27,737 autoreload 14468 5236 Watching for file changes with StatReloader
+INFO 2022-05-29 11:44:48,100 autoreload 14468 5236 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-29 11:44:48,400 autoreload 15532 22080 Watching for file changes with StatReloader
+INFO 2022-05-29 11:46:41,969 autoreload 15532 22080 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-29 11:46:42,291 autoreload 20972 25044 Watching for file changes with StatReloader
+INFO 2022-05-29 11:48:43,160 autoreload 20972 25044 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\forms.py changed, reloading.
+INFO 2022-05-29 11:48:43,477 autoreload 23804 25232 Watching for file changes with StatReloader
+INFO 2022-05-29 11:48:48,791 autoreload 23804 25232 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 11:48:49,110 autoreload 15668 16320 Watching for file changes with StatReloader
+INFO 2022-05-29 11:51:03,408 autoreload 15668 16320 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 11:51:03,714 autoreload 24924 18228 Watching for file changes with StatReloader
+INFO 2022-05-29 11:51:26,418 autoreload 24924 18228 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 11:51:26,714 autoreload 19824 12040 Watching for file changes with StatReloader
+INFO 2022-05-29 11:51:28,921 autoreload 19824 12040 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-29 11:51:29,231 autoreload 18760 4452 Watching for file changes with StatReloader
+INFO 2022-05-29 11:51:34,502 autoreload 18760 4452 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-29 11:51:34,800 autoreload 23680 18732 Watching for file changes with StatReloader
+ERROR 2022-05-29 11:53:16,142 log 23680 24760 Internal Server Error: /flight_app/members/search/flights/byairline/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 209, in view_flights_by_airline_anony
+    flight_list = models.Flight.objects.filter(airline_id = airline_id_form.changed_data["airline_id"] )
+TypeError: list indices must be integers or slices, not str
+INFO 2022-05-29 11:55:47,755 autoreload 23680 18732 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 11:55:48,067 autoreload 24952 12640 Watching for file changes with StatReloader
+ERROR 2022-05-29 11:55:50,706 log 24952 17196 Internal Server Error: /flight_app/members/search/flights/byairline/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 209, in view_flights_by_airline_anony
+    flight_list = models.Flight.objects.filter(airline_id = airline_id_form.changed_data.airline_id )
+AttributeError: 'list' object has no attribute 'airline_id'
+INFO 2022-05-29 11:56:03,659 autoreload 24952 12640 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 11:56:03,963 autoreload 17884 24560 Watching for file changes with StatReloader
+ERROR 2022-05-29 11:56:07,484 log 17884 3900 Internal Server Error: /flight_app/members/search/flights/byairline/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1988, in get_prep_value
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'list'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 209, in view_flights_by_airline_anony
+    flight_list = models.Flight.objects.filter(airline_id = airline_id_form.changed_data )
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1071, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1089, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1096, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1502, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1532, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1448, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1273, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\related_lookups.py", line 154, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1990, in get_prep_value
+    raise e.__class__(
+TypeError: Field 'id' expected a number but got ['airline_id'].
+INFO 2022-05-29 11:56:50,202 autoreload 17884 24560 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 11:56:50,520 autoreload 12164 8604 Watching for file changes with StatReloader
+ERROR 2022-05-29 11:56:52,746 log 12164 23556 Internal Server Error: /flight_app/members/search/flights/byairline/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 210, in view_flights_by_airline_anony
+    flight_list = models.Flight.objects.filter(airline_id = airline_id_form.changed_data['id'] )
+TypeError: list indices must be integers or slices, not str
+INFO 2022-05-29 11:57:02,038 autoreload 12164 8604 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 11:57:02,338 autoreload 25204 21456 Watching for file changes with StatReloader
+ERROR 2022-05-29 11:57:04,937 log 25204 11300 Internal Server Error: /flight_app/members/search/flights/byairline/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1988, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'airline_id'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 210, in view_flights_by_airline_anony
+    flight_list = models.Flight.objects.filter(airline_id = airline_id_form.changed_data[0] )
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1071, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1089, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\query.py", line 1096, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1502, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1532, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1448, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\sql\query.py", line 1273, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\related_lookups.py", line 154, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\db\models\fields\__init__.py", line 1990, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' expected a number but got 'airline_id'.
+INFO 2022-05-29 11:58:26,400 autoreload 25204 21456 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 11:58:26,724 autoreload 2512 5144 Watching for file changes with StatReloader
+ERROR 2022-05-29 11:58:29,646 log 2512 19620 Internal Server Error: /flight_app/members/search/flights/byairline/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 210, in view_flights_by_airline_anony
+    flight_list = models.Flight.objects.filter(airline_id = airline_id_form.changed_data['airline_id'])
+TypeError: list indices must be integers or slices, not str
+INFO 2022-05-29 11:58:56,627 autoreload 2512 5144 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 11:58:56,950 autoreload 25104 24908 Watching for file changes with StatReloader
+ERROR 2022-05-29 11:58:59,395 log 25104 23556 Internal Server Error: /flight_app/members/search/flights/byairline/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 210, in view_flights_by_airline_anony
+    flight_list = models.Flight.objects.filter(airline_id = airline_id_form.changed_data['airline_id'])
+TypeError: list indices must be integers or slices, not str
+INFO 2022-05-29 12:02:04,285 autoreload 25104 24908 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 12:02:04,593 autoreload 4368 23836 Watching for file changes with StatReloader
+ERROR 2022-05-29 12:02:08,431 log 4368 9596 Internal Server Error: /flight_app/members/search/flights/byairline/
+Traceback (most recent call last):
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py", line 212, in view_flights_by_airline_anony
+    return render(request, "flights_disp.html", {'airline_list': flight_list,'title': 'Flights By aArline' })
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Full_Stack\Projects\Second_Project\Flight_System\venv\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: flights_disp.html
+INFO 2022-05-29 12:02:28,394 autoreload 4368 23836 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 12:02:28,693 autoreload 22180 3880 Watching for file changes with StatReloader
+INFO 2022-05-29 12:05:21,664 autoreload 22180 3880 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 12:05:21,991 autoreload 6340 19760 Watching for file changes with StatReloader
+INFO 2022-05-29 12:05:35,515 autoreload 6340 19760 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 12:05:35,826 autoreload 22784 13328 Watching for file changes with StatReloader
+INFO 2022-05-29 12:07:38,780 autoreload 22784 13328 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 12:07:39,080 autoreload 22008 11580 Watching for file changes with StatReloader
+INFO 2022-05-29 12:08:33,463 autoreload 22008 11580 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 12:08:33,797 autoreload 24816 22112 Watching for file changes with StatReloader
+WARNING 2022-05-29 12:10:27,291 log 24816 21948 Not Found: /flight_app/members/flights/byparams/
+WARNING 2022-05-29 12:11:56,982 log 24816 21948 Not Found: /flight_app/members/airline/byparams/
+INFO 2022-05-29 12:12:16,153 autoreload 24816 22112 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 12:12:16,472 autoreload 6288 19600 Watching for file changes with StatReloader
+INFO 2022-05-29 12:15:49,502 autoreload 6288 19600 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-29 12:15:49,815 autoreload 22460 9720 Watching for file changes with StatReloader
+INFO 2022-05-29 12:15:52,031 autoreload 22460 9720 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 12:15:52,343 autoreload 11664 23992 Watching for file changes with StatReloader
+INFO 2022-05-29 12:16:48,721 autoreload 11664 23992 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
+INFO 2022-05-29 12:16:49,029 autoreload 21456 23168 Watching for file changes with StatReloader

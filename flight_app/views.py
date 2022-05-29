@@ -15,6 +15,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
 from django.contrib import auth
+import datetime
 
 
 
@@ -67,9 +68,6 @@ def members_homepage(request):
 
 
 
-
-
-
 def view_all_flights (request):
     all_flights = BaseFuncade.get_all_flights()
     return render(request, "flight_disp.html", {'flight_list' : all_flights, 'title': 'All Flights' })
@@ -83,74 +81,11 @@ def view_all_countries(request):
 def view_all_airlines(request):
     all_airlines = BaseFuncade.get_all_airlines()
 
-    return render(request, "airline_disp.html", {'airline_list' : all_airlines, 'title': 'All Countries' })
-
-
-def view_countries_by_id(request):
-    country_id_form = forms.country_by_id(request.POST)   
-    if request.POST:
-        if country_id_form.is_valid():   
-            country_list = BaseFuncade.get_country_by_id(country_id_form.cleaned_data['country_id'])
-
-            return render(request, "countries_disp.html", {'country_list': country_list,'title': 'Country By ID' })
-     
-        else:
-            forms.country_by_id()
-
-    context = {
-        'form':country_id_form,
-        'title': "Search country by id", 
-        "button": "Search"
-     }
-
-    return render(request, 'form_template.html', context)
+    return render(request, "airline_disp.html", {'airline_list' : all_airlines, 'title': 'All Arilines' })
 
 
 
 
-def view_flights_by_id(request):
-    flight_id_form = forms.flight_by_id(request.POST)   
-    if request.POST:
-        if flight_id_form.is_valid():   
-            flight_list = BaseFuncade.get_flight_by_id(flight_id_form.cleaned_data['flight_id'])
-              
-            
-            return render(request, "flight_disp.html", {'flight_list': flight_list,'title': 'Flight By ID' })
-
-        else:
-            forms.flight_by_id()
-    
-    context = {
-        'form':flight_id_form,
-        'title': "Search Flight by id", 
-        "button": "Search"
-     }
-
-    return render(request, 'form_template.html', context)
-
-
-
-
-
-
-def view_airline_by_id(request):
-    airline_id_form = forms.airline_by_id(request.POST)   
-    if request.POST:
-        if airline_id_form.is_valid():
-            airline_list = BaseFuncade.get_airline_by_id(airline_id_form.cleaned_data['airline_id'])
-                       
-            return render(request, "airline_disp.html", {'airline_list': airline_list,'title': 'Airline By ID' })
-        else:
-             forms.airline_by_id()
-    
-      
-    context = {
-        'form':airline_id_form,
-        'title': "Search Airline by id", 
-        "button": "Search"
-     }
-
-    return render(request, 'form_template.html', context)
 
 
 
@@ -179,52 +114,82 @@ def view_flights_by_params(request):
 
 
 
-# tranlate country id to name
-# def view_airline_by_params(request):
-#     context = {}
-#     airline_params_form = forms.airline_by_params(request.POST)   
-#     if request.POST:
-#         if airline_params_form.is_valid():
-#             params = airline_params_form.cleaned_data 
-#             pass
+def view_departure_by_country(request, flag = False):
+    departure_form = forms.departure_arrival_flights(request.POST)   
+    if request.POST:
+        if departure_form.is_valid():
+            country_id = departure_form.cleaned_data['country_id']
+            furure = datetime.datetime.now() + datetime.timedelta(hours = 12)
 
-#             # airline_list = BaseFuncade.get_airline_by_parameters(params[].cleaned_data, params['country_id'])
-
-#             # BaseFuncade.get_airline_by_parameters(airline_name, country_id)
-
-
-#             # return render(request, "airline_disp.html", {'flight_list': airline_list,'title': 'Airline By Params' })
-        
+            if not flag:
+                departure = models.Flight.objects\
+                .filter(origin_country_id = country_id)\
+                .filter(departure_time__lt = furure)
+                context = {'flight_list': departure, 'title': 'Departure By ID' }
 
 
-#     context = {
-#         'form':airline_params_form,
-#         'title': "Search Airline", 
-#         "button": "Search"
-#      }
+            else:                
+                arrival = models.Flight.objects\
+                .filter(destination_country_id = country_id)\
+                .filter(landing_time__lt = furure)
+                context = {'flight_list': arrival, 'title': 'Arrival By ID' }
 
-#     return render(request, 'form_template.html', context)
+            return render(request, "flight_disp.html", context)
+        else:
+            
+            forms.departure_arrival_flights()
+      
+    if not flag:
+        context = {
+            'form':departure_form,
+            'title': "Departure flights By Country", 
+            "button": "Search"
+        }
+    else:
+        context = {
+            'form':departure_form,
+            'title': "Arrival flights by country", 
+            "button": "Search"
+        }
+
+    return render(request, 'form_template.html', context)
 
 
 
 
-# def view_flights_by_params(request):
-#     flight_params_form = forms.country_by_id(request.POST)   
-#     if request.POST:
-#         airline_id_form = forms.airline_by_id(request.POST)   
-#         if flight_params_form.is_valid():
-#             flight_list = []
-#             return render(request, "flight_disp.html", {'flight_list': flight_list,'title': 'Flight By ID' })
-        
+def view_arrival_by_country(request):
+   return  view_departure_by_country(request, True)
 
 
-#         context = {
-#         'form':flight_params_form,
-#         'title': "Search flight by params", 
-#         "button": "Search"
-#      }
 
-#     return render(request, 'form_template.html', context)
+def view_flights_by_airline_anony(request):
+    airline_id_form = forms.airline_by_id(request.POST)   
+    if request.POST:
+        if airline_id_form.is_valid():
+
+            flight_list = models.Flight.objects.filter(airline_id = airline_id_form.cleaned_data['airline_id'])
+                       
+            return render(request, "flight_disp.html", {'flight_list': flight_list,'title': 'Flights By Airline' })
+        else:
+             forms.airline_by_id()
+    
+      
+    context = {
+        'form':airline_id_form,
+        'title': "Search Flights by Airline", 
+        "button": "Search"
+     }
+
+    return render(request, 'form_template.html', context)
+
+
+
+
+# 
+
+
+
+
 
 
 
@@ -814,3 +779,137 @@ def register(request, account_role):
 #         'country_by_id' :country_by_id,
 #     }
 #     return render(request, "country_by_id.html", context)
+
+
+
+#def view_flights_by_id(request):
+#     flight_id_form = forms.flight_by_id(request.POST)   
+#     if request.POST:
+#         if flight_id_form.is_valid():   
+#             flight_list = BaseFuncade.get_flight_by_id(flight_id_form.cleaned_data[0].id)
+              
+            
+#             return render(request, "flight_disp.html", {'flight_list': flight_list,'title': 'Flight By ID' })
+
+#         else:
+#             forms.flight_by_id()
+    
+#     context = {
+#         'form':flight_id_form,
+#         'title': "Search Flight by id", 
+#         "button": "Search"
+#      }
+
+#     return render(request, 'form_template.html', context)
+
+
+#def view_flights_by_id(request):
+#     flight_id_form = forms.flight_by_id(request.POST)   
+#     if request.POST:
+#         if flight_id_form.is_valid():   
+#             flight_list = BaseFuncade.get_flight_by_id(flight_id_form.cleaned_data[0].id)
+              
+            
+#             return render(request, "flight_disp.html", {'flight_list': flight_list,'title': 'Flight By ID' })
+
+#         else:
+#             forms.flight_by_id()
+    
+#     context = {
+#         'form':flight_id_form,
+#         'title': "Search Flight by id", 
+#         "button": "Search"
+#      }
+
+#     return render(request, 'form_template.html', context)
+
+
+#def view_countries_by_id(request):
+#     country_id_form = forms.country_by_id(request.POST)   
+#     if request.POST:
+#         if country_id_form.is_valid():   
+#             country_list = BaseFuncade.get_country_by_id(country_id_form.cleaned_data['country_id'])
+
+#             return render(request, "countries_disp.html", {'country_list': country_list,'title': 'Country By ID' })
+     
+#         else:
+#             forms.country_by_id()
+
+#     context = {
+#         'form':country_id_form,
+#         'title': "Search country by id", 
+#         "button": "Search"
+#      }
+
+#     return render(request, 'form_template.html', context)
+
+
+#def view_airline_by_id(request):
+#     airline_id_form = forms.airline_by_id(request.POST)   
+#     if request.POST:
+#         if airline_id_form.is_valid():
+#             country_id = departure_form.cleaned_data['country_id']
+#             airline_list = BaseFuncade.get_airline_by_id(airline_id_form.cleaned_data['airline_id'])
+                       
+#             return render(request, "airline_disp.html", {'airline_list': airline_list,'title': 'Airline By ID' })
+#         else:
+#              forms.airline_by_id()
+    
+      
+#     context = {
+#         'form':airline_id_form,
+#         'title': "Search Airline by id", 
+#         "button": "Search"
+#      }
+
+#     return render(request, 'form_template.html', context)
+
+
+
+# tranlate country id to name
+# def view_airline_by_params(request):
+#     context = {}
+#     airline_params_form = forms.airline_by_params(request.POST)   
+#     if request.POST:
+#         if airline_params_form.is_valid():
+#             params = airline_params_form.cleaned_data 
+#             pass
+
+#             # airline_list = BaseFuncade.get_airline_by_parameters(params[].cleaned_data, params['country_id'])
+
+#             # BaseFuncade.get_airline_by_parameters(airline_name, country_id)
+
+
+#             # return render(request, "airline_disp.html", {'flight_list': airline_list,'title': 'Airline By Params' })
+        
+
+
+#     context = {
+#         'form':airline_params_form,
+#         'title': "Search Airline", 
+#         "button": "Search"
+#      }
+
+#     return render(request, 'form_template.html', context)
+
+
+
+
+# def view_flights_by_params(request):
+#     flight_params_form = forms.country_by_id(request.POST)   
+#     if request.POST:
+#         airline_id_form = forms.airline_by_id(request.POST)   
+#         if flight_params_form.is_valid():
+#             flight_list = []
+#             return render(request, "flight_disp.html", {'flight_list': flight_list,'title': 'Flight By ID' })
+        
+
+
+#         context = {
+#         'form':flight_params_form,
+#         'title': "Search flight by params", 
+#         "button": "Search"
+#      }
+
+#     return render(request, 'form_template.html', context)
+

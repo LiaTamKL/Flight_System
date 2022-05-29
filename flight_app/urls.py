@@ -11,7 +11,7 @@ urlpatterns = [
 
 
 
-    # path('ticket/remove/<ticket_id>', views.remove_ticket),
+   
     path('login/',views.user_login, name='login'),
     path('members/homepage/',views.members_homepage),   
     path('members/tickets/add/',views.add_ticket),
@@ -26,11 +26,10 @@ urlpatterns = [
     path('members/airline/all/', views.view_all_airlines),
 
 
-    path('members/country/byid/', views.view_countries_by_id),
-    path('members/flights/byid/', views.view_flights_by_id),
-    path('members/airline/byid/', views.view_airline_by_id),
-
-    path("members/search/flights", views.view_flights_by_params),
+    path("members/search/flights/", views.view_flights_by_params),
+    path("members/search/flights/departure/", views.view_departure_by_country),
+    path("members/search/flights/arrival/", views.view_arrival_by_country),
+    path("members/search/flights/byairline/", views.view_flights_by_airline_anony),
 
 
     # path('members/airline/byparams/', views.view_airline_by_params),
@@ -80,3 +79,8 @@ urlpatterns = [
     # path('countryinfo/<country_id>' ,views.show_country_by_id),
     # path('seachcountrybyid/', views.show_country_search_from),
 
+
+    # path('members/country/byid/', views.view_countries_by_id),
+    # path('members/flights/byid/', views.view_flights_by_id),
+    # path('members/airline/byid/', views.view_airline_by_id),
+    # path('ticket/remove/<ticket_id>', views.remove_ticket),
