@@ -124,6 +124,33 @@ class AdministratorFuncade(BaseFuncade):
         AdministratorFuncade.remove_customer(customer.id)
         account.save()
         admin.save()
+
+    def add_admin(account, form=None):
+        if account.role == Account_Role.objects.get(role_name='Customer'):
+            customer = Customer.objects.get(account=account)
+            first_name = customer.first_name
+            last_name = customer.last_name
+            AdministratorFuncade.remove_customer(customer.id)
+        elif account.role == Account_Role.objects.get(role_name='Airline'):
+                airline = Airline.objects.get(account = account)
+                first_name = form['first_name']
+                last_name = form['last_name']
+                AdministratorFuncade.remove_airline(airline)
+        else:
+            raise Http404("This user either does not exist or is already an admin")
+
+        admin = Administrator()
+        admin.first_name = first_name
+        admin.last_name = last_name
+        admin.account = account
+        account.account_role = Account_Role.objects.get(role_name='Admin')
+        account.is_admin = True
+        account.is_staff = True
+        account.save()
+        admin.save()
+
+
+
 ############################################################
 
     #receives username, brings back the linked admin,airline or customer account in a touple where the second object is a string with the role name
