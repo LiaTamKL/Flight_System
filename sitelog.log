@@ -7767,3 +7767,150 @@ Traceback (most recent call last):
 TypeError: unhashable type: 'list'
 INFO 2022-05-28 19:52:01,581 autoreload 13412 11008 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\forms.py changed, reloading.
 INFO 2022-05-28 19:52:02,023 autoreload 12124 11932 Watching for file changes with StatReloader
+INFO 2022-05-29 09:03:04,887 autoreload 12212 18760 Watching for file changes with StatReloader
+ERROR 2022-05-29 09:03:06,710 log 12212 13548 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 53, in members_homepage
+    account = models.Customer.objects.get(account_id = account_id).first_name
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+flight_app.models.Customer.DoesNotExist: Customer matching query does not exist.
+ERROR 2022-05-29 09:03:10,830 log 12212 13548 Internal Server Error: /flight_app/members/homepage/
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 53, in members_homepage
+    account = models.Customer.objects.get(account_id = account_id).first_name
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\db\models\query.py", line 496, in get
+    raise self.model.DoesNotExist(
+flight_app.models.Customer.DoesNotExist: Customer matching query does not exist.
+WARNING 2022-05-29 09:03:13,688 log 12212 13548 Not Found: /flight_app/air/
+ERROR 2022-05-29 09:04:03,525 log 12212 13548 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 875, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\boundfield.py", line 69, in __getitem__
+    raise TypeError(
+TypeError: BoundField indices must be integers or slices, not str.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 584, in register_customer
+    return register(request , account_role=2)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 621, in register
+    return render(request, 'register.html', context )
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\backends\django.py", line 62, in render
+    return self.template.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 958, in render_annotated
+    return self.render(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\defaulttags.py", line 189, in render
+    values = self.sequence.resolve(context, ignore_failures=True)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 712, in resolve
+    obj = self.var.resolve(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 842, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\base.py", line 885, in _resolve_lookup
+    current = getattr(current, bit)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\boundfield.py", line 80, in errors
+    return self.form.errors.get(
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\forms.py", line 200, in errors
+    self.full_clean()
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\forms.py", line 435, in full_clean
+    self._post_clean()
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\models.py", line 471, in _post_clean
+    exclude = self._get_validation_exclusions()
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\forms\models.py", line 422, in _get_validation_exclusions
+    field_value = self.cleaned_data.get(field)
+AttributeError: 'int' object has no attribute 'get'
+INFO 2022-05-29 09:07:53,443 autoreload 12212 18760 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\forms.py changed, reloading.
+INFO 2022-05-29 09:07:53,918 autoreload 2116 17044 Watching for file changes with StatReloader
+ERROR 2022-05-29 09:08:45,594 log 2116 18872 Internal Server Error: /flight_app/members/update_account/
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py", line 505, in update_account
+    return render(requset, 'form_tamplate.html', context)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: form_tamplate.html
+INFO 2022-05-29 09:10:21,807 autoreload 2116 17044 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\forms.py changed, reloading.
+INFO 2022-05-29 09:10:22,267 autoreload 20848 8136 Watching for file changes with StatReloader
+INFO 2022-05-29 09:11:06,449 autoreload 20848 8136 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\forms.py changed, reloading.
+INFO 2022-05-29 09:11:06,975 autoreload 4064 21940 Watching for file changes with StatReloader
+ERROR 2022-05-29 09:13:58,619 log 4064 16288 Internal Server Error: /flight_app/register/
+Traceback (most recent call last):
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\utils\deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+  File "C:\Users\laorl\OneDrive\Documents\Flight_System-master\env\lib\site-packages\django\middleware\clickjacking.py", line 27, in process_response
+    if response.get("X-Frame-Options") is not None:
+AttributeError: type object 'Http404' has no attribute 'get'
+INFO 2022-05-29 09:17:36,991 autoreload 4064 21940 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-29 09:17:37,449 autoreload 16692 24280 Watching for file changes with StatReloader
+INFO 2022-05-29 09:21:54,370 autoreload 16692 24280 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-29 09:21:54,848 autoreload 20232 5436 Watching for file changes with StatReloader
+INFO 2022-05-29 09:22:57,770 autoreload 20232 5436 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-29 09:22:58,263 autoreload 13264 21336 Watching for file changes with StatReloader
+INFO 2022-05-29 09:23:59,394 autoreload 13264 21336 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-29 09:23:59,954 autoreload 944 9716 Watching for file changes with StatReloader
+INFO 2022-05-29 09:27:43,481 autoreload 944 9716 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-29 09:27:43,991 autoreload 13480 14968 Watching for file changes with StatReloader
+INFO 2022-05-29 09:28:08,295 autoreload 13480 14968 C:\Users\laorl\OneDrive\Documents\Flight_System-master\flight_app\views.py changed, reloading.
+INFO 2022-05-29 09:28:08,800 autoreload 14316 20364 Watching for file changes with StatReloader
+INFO 2022-05-29 09:29:19,519 autoreload 13604 3720 Watching for file changes with StatReloader

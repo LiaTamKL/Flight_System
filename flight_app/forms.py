@@ -223,7 +223,23 @@ class NewCustomerForm(forms.ModelForm):
     class Meta:
         model = models.Customer
         fields = ['first_name', 'last_name', 'address', 'phone_number', 'credit_card_no']
-        
+    
+    def clean_credit_card_no(self):
+        credit_card = self.cleaned_data['credit_card_no']
+        phone = self.cleaned_data['phone_number']
+        print(credit_card)
+        print(phone)
+        try:
+              cus = models.Customer.objects.get(credit_card_no=credit_card)
+              print('hello')
+              raise forms.ValidationError('User with this credit card number already exists')
+        except:
+              try:
+                  cus = models.Customer.objects.get(phone_number=phone)
+                  print('hi')
+                  raise forms.ValidationError('User with this phonenumber already exists')
+              except:
+                  return credit_card
 
     # def clean_message(self):
     #     customer_id = self.cleaned_data['customer_id']
