@@ -51,7 +51,7 @@ urlpatterns = [
 
    path('ouradmin/', views.view_all_customers, name="admin home"),
    path('ouradmin/delete/<customer_id>',views.delete_customer, name="delete customer"),
-   path('ouradmin/add_from_customer/<customer_id>', views.add_admin_from_customer, name="admin from customer")
+   path('ouradmin/add_from_customer/<account>', views.add_admin_from_customer, name="admin from customer")
 ]
 
 

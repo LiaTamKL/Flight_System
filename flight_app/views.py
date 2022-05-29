@@ -276,11 +276,12 @@ def delete_admin(request, admin_id):
     return HttpResponse(f'Admin #{admin_id} removed successfully')
 
 @login_required()
-def add_admin_from_customer(request, customer_id):
+def add_admin_from_customer(request, account):
     admin_role = models.Account_Role.objects.get(role_name='Admin')
+    account = models.Account.objects.get(username=account)
     if request.user.account_role != admin_role:
         return HttpResponse('You are not logged in as an Admin. Please login')
-    AdministratorFuncade.add_admin_from_customer(customer_id)
+    AdministratorFuncade.add_admin(account)
     return redirect('admin home')
 
 def show_country_search_from(request):
@@ -399,24 +400,14 @@ def add_airline(request, customer_id):
     #return render(request, 'Add_Airline.html', context)
 
 @login_required()
-def add_admin(request, customer_id):
+def add_admin_from_airline(request, airline_id):
     admin = models.Administrator.objects.filter(account=request.user.id)
     try:
         admin = admin[0]
     except:
         return HttpResponse('You are not logged in as an Admin. Please login')
 
-    #adminform = forms.AdminForm(request.POST or None)
     message = None
-    #if request.method =='POST':
-    #    if adminform.is_valid():
-    #        AdministratorFuncade.add_admin(adminform.cleaned_data)
-    #        message = 'Admin added successfully'
-    #context = {
-    #    'form': adminform,
-    #    'message': message
-    #}
-    #return render(request, 'Add_Admin.html', context)
 
 
 
