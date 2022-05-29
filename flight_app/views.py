@@ -461,16 +461,29 @@ def add_ticket(request):
 
 
 
-def update_account(requset):
-    form = {}     
-            
-    context = {
-        'form':form,
-        'title': "Update User", 
-        "button": "Update"
-    }
+@login_required()
+def update_account(request):
+    if request.user.account_role != models.Account_Role.objects.get(role_name='Customer'):
+        return HttpResponse('You are not logged in as a Customer. Please login')
+    try: instance = models.Customer.objects.get(account=request.user)
+    except: raise Http404('Customer account does not exist. Please contact an administrator.')
 
-    return render(requset, 'form_tamplate.html', context)
+    if request.method =='POST':
+        cusform = forms.UpdateCustomer(request.POST, instance=instance)
+        emailform = forms.UpdateAccount(request.POST, instance=request.user)
+        if cusform.is_valid() and emailform.is_valid():
+            CustomerFancade.update_customer(account=request.user, form=cusform.cleaned_data, emailform=emailform)
+            return redirect("home")
+    else: 
+        cusform = forms.updatecustomer(instance = instance)
+        emailform = forms.UpdateAccount(instance=request.user)
+    context = {
+        'form':cusform,
+        'email field':emailform,
+        'title': f"Update {request.user}", 
+        "button": f"Update the account: {request.user}"
+    }
+    return render(request, '_____.html', context)
 
 
 
