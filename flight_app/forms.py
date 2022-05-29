@@ -63,52 +63,35 @@ class flights_by_params(forms.ModelForm):
 
 
 
-class airlines_by_country(forms.ModelForm):
-    country_id = 1
+# class airlines_by_country(forms.ModelForm):
+#     country_id = 1
 
-    class Meta:
-        model = models.Airline 
-        fields = '__all__'
+#     class Meta:
+#         model = models.Airline 
+#         fields = '__all__'
 
 class departure_arrival_flights(forms.ModelForm):
     country_id =  forms.ModelChoiceField(queryset=models.Country.objects.all(), required=False , label='')
     
     class Meta:
-        model = models.Flight 
+        model = models.Country 
         fields = ['country_id']
-
-
-
 
 
 
 class country_by_id(forms.ModelForm):
-    country_id = forms.IntegerField(min_value=1,widget=forms.TextInput(), label="Country by ID" )
-    
+    # country_id = forms.IntegerField(min_value=1,widget=forms.TextInput(), label="Country by ID" )
+    country_id =  forms.ModelChoiceField(queryset=models.Country.objects.all(), required=False , label='',)
+
     class Meta:
         model = models.Country 
         fields = ['country_id']
 
-    def clean_country_id(self):
-        country_id = int(self.cleaned_data['country_id'])
-        if len(BaseFuncade.get_country_by_id(country_id))== 0:
-            raise forms.ValidationError('Invalid country id')
-        return country_id
-        
-        
-
-class country_by_id(forms.ModelForm):
-    country_id = forms.IntegerField(min_value=1,widget=forms.TextInput(), label="Country by ID" )
-    
-    class Meta:
-        model = models.Country 
-        fields = ['country_id']
-
-    def clean_country_id(self):
-        country_id = int(self.cleaned_data['country_id'])
-        if len(BaseFuncade.get_country_by_id(country_id))== 0:
-            raise forms.ValidationError('Invalid country id')
-        return country_id
+    # def clean_country_id(self):
+    #     country_id = int(self.cleaned_data['country_id'])
+    #     if len(BaseFuncade.get_country_by_id(country_id))== 0:
+    #         raise forms.ValidationError('Invalid country id')
+    #     return country_id
         
         
 
@@ -125,6 +108,10 @@ class flight_by_id(forms.ModelForm):
         if len(BaseFuncade.get_flight_by_id(flight_id))== 0:
             raise forms.ValidationError('Invalid flight id')
         return flight_id
+
+
+
+
 
 
 

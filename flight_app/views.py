@@ -86,11 +86,6 @@ def view_all_airlines(request):
 
 
 
-
-
-
-
-
 def view_flights_by_params(request):
     airline_id_form = forms.flights_by_params(request.POST)   
     if request.POST:
@@ -183,19 +178,27 @@ def view_flights_by_airline_anony(request):
     return render(request, 'form_template.html', context)
 
 
+def view_airline_by_country(request):
 
+    country_id_form = forms.country_by_id(request.POST)   
+    if request.POST:
+        if country_id_form.is_valid():
+            airline_list = models.Airline.objects.filter(country_id = country_id_form.cleaned_data['country_id'])
+            
+            return render(request, "airline_disp.html", {'airline_list': airline_list,'title': 'Airline by Country ' })
+        else:
+             forms.country_by_id()
+    
+      
+    context = {
+        'form':country_id_form,
+        'title': "Airline by Country", 
+        "button": "Search"
+     }
 
-# 
+    return render(request, 'form_template.html', context)        
 
-
-
-
-
-
-
-
-
-
+    
 
 
 
@@ -557,7 +560,7 @@ def register_airline(request):
 
 def register(request, account_role):
     context = {}
-    account_role = models.Account_Role.objects.get(role_name='Customer')
+    account_role = models.Account_Role.objects.get(pk = account_role)
     # account_role = 2
 
     if request.POST:    
@@ -565,16 +568,13 @@ def register(request, account_role):
         customer_form = forms.NewCustomerForm(request.POST)
 
         if user_form.is_valid():
+            created_account = BaseFuncade.create_new_user(user_form , account_role)
             if customer_form.is_valid():
-                created_account = BaseFuncade.create_new_user(user_form , account_role)
                 AnonymusFancade.add_customer(customer_form , created_account)
-                return redirect('../login/')
+            
             else:
-                context['user_registration_form'] = user_form 
-                context['customer_registration_form'] = customer_form 
-            #else:
-                #return Http404
-            #
+                return Http404
+            return redirect('../login/')
         else:
             
             context['user_registration_form'] = user_form 

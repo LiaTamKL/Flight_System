@@ -7,10 +7,6 @@ urlpatterns = [
     path('admin/', lambda request: redirect('/admin/login/', permanent=True)),
     path('members/', lambda request: redirect('home', permanent=True)),
 
-
-
-
-
    
     path('login/',views.user_login, name='login'),
     path('members/homepage/',views.members_homepage),   
@@ -24,12 +20,16 @@ urlpatterns = [
     path('members/country/all/', views.view_all_countries),
     path('members/flights/all/', views.view_all_flights),
     path('members/airline/all/', views.view_all_airlines),
+    path('members/airline/bycountry/', views.view_airline_by_country),
 
 
     path("members/search/flights/", views.view_flights_by_params),
     path("members/search/flights/departure/", views.view_departure_by_country),
     path("members/search/flights/arrival/", views.view_arrival_by_country),
     path("members/search/flights/byairline/", views.view_flights_by_airline_anony),
+
+
+    
 
 
     # path('members/airline/byparams/', views.view_airline_by_params),
