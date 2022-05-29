@@ -71,7 +71,6 @@ class AdministratorFuncade(BaseFuncade):
         return a
 
     #receives clean_data form, adds an airline based on that to the database.
-    #marked out parts will work once i change models
     def add_airline(form):
             account = Account.objects.get(pk=form['user_id'])
             if account.account_role == Account_Role.objects.get(role_name='Admin'):
@@ -85,7 +84,7 @@ class AdministratorFuncade(BaseFuncade):
             account.account_role = Account_Role.objects.get(role_name='Airline')
             airline = Airline()
             airline.name = form['name']
-            airline.country = form['airline']
+            airline.country = form['country']
             airline.account = form['user_id']
             airline.save()
 

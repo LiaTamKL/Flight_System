@@ -5,14 +5,16 @@ from .base_facade import BaseFuncade
 
 class CustomerFancade(BaseFuncade):
 
-    def update_customer(customer_id, form):
-        customer = Customer.objects.get(pk = customer_id)
+    def update_customer(account, form, emailform):
+        customer = Customer.objects.get(account = account)
         customer.first_name = form['first_name']
         customer.last_name = form['last_name']
         customer.address = form['address']
         customer.phone_number = form['phone_number']
         customer.credit_card_no = form['credit_card_no']
+        account.email = emailform['email']
         customer.save()
+        account.save()
 
 
     def add_ticket(form , customer_id):

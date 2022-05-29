@@ -7,7 +7,7 @@ from django.db import transaction
 
 class Airline_Facade(BaseFuncade):
 
-    #add a flight. 
+    #takes form, a flight object and an airline id, makes a new flight. 
     def add_flight(airline, form, flight):
             airli = Airline.objects.get(pk = airline)
             flight.airline = airli
@@ -44,3 +44,10 @@ class Airline_Facade(BaseFuncade):
     #gets all flight for an airline
     def get_my_flights(id):
         return Flight.objects.filter(airline=id)
+
+    #takes form and an existing account, updates the airline attached to it with form data
+    def update_airline(form, account):
+        airline = Airline.objects.get(account=account)
+        airline.name = form['name']
+        airline.country = form['country']
+        airline.save()
