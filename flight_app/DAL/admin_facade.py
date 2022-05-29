@@ -117,7 +117,7 @@ class AdministratorFuncade(BaseFuncade):
 
 ############################################################
 
-    #receives username, brings back the linked admin,airline or customer account in a touple where the second object is a string with the role name
+    #receives username, brings back the linked admin,airline or customer account in a touple where the third object is a string with the role name, along with the account as the second
     def get_by_username(username):
         try:
             account = Account.objects.get(username=username)
@@ -135,7 +135,7 @@ class AdministratorFuncade(BaseFuncade):
         else:
             raise Http404("Account seems to not be linked to any profile. Please contact an administrator")
         
-        return (user, role)
+        return (user, account, role)
 
     # #takes airline_id and form data, makes airline an admin while deleting the customer object
     # def add_admin_from_airline(form, airline_id):

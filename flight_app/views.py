@@ -278,7 +278,7 @@ def delete_admin(request, admin_id):
 @login_required()
 def add_admin_from_customer(request, account):
     admin_role = models.Account_Role.objects.get(role_name='Admin')
-    account = models.Account.objects.get(username=account)
+    account = (AdministratorFuncade.get_by_username(account))[1]
     if request.user.account_role != admin_role:
         return HttpResponse('You are not logged in as an Admin. Please login')
     AdministratorFuncade.add_admin(account)
