@@ -82,6 +82,7 @@ class AdministratorFuncade(BaseFuncade):
             else:
                 customer = Administrator.objects.get(account=account)
                 AdministratorFuncade.remove_customer(customer.id)
+            account.account_role = Account_Role.objects.get(role_name='Airline')
             airline = Airline()
             airline.name = form['name']
             airline.country = form['airline']
@@ -124,7 +125,6 @@ class AdministratorFuncade(BaseFuncade):
         AdministratorFuncade.remove_customer(customer.id)
         account.save()
         admin.save()
-
 ############################################################
 
     #receives username, brings back the linked admin,airline or customer account in a touple where the second object is a string with the role name

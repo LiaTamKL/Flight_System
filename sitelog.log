@@ -8600,3 +8600,5 @@ INFO 2022-05-29 12:15:52,031 autoreload 22460 9720 D:\Full_Stack\Projects\Second
 INFO 2022-05-29 12:15:52,343 autoreload 11664 23992 Watching for file changes with StatReloader
 INFO 2022-05-29 12:16:48,721 autoreload 11664 23992 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\urls.py changed, reloading.
 INFO 2022-05-29 12:16:49,029 autoreload 21456 23168 Watching for file changes with StatReloader
+INFO 2022-05-29 12:33:07,347 autoreload 21456 23168 D:\Full_Stack\Projects\Second_Project\Flight_System\flight_app\views.py changed, reloading.
+INFO 2022-05-29 12:33:07,811 autoreload 21328 17624 Watching for file changes with StatReloader

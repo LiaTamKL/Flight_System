@@ -557,7 +557,7 @@ def register_airline(request):
 
 def register(request, account_role):
     context = {}
-    account_role = models.Account_Role.objects.get(pk = account_role)
+    account_role = models.Account_Role.objects.get(role_name='Customer')
     # account_role = 2
 
     if request.POST:    
@@ -565,13 +565,16 @@ def register(request, account_role):
         customer_form = forms.NewCustomerForm(request.POST)
 
         if user_form.is_valid():
-            created_account = BaseFuncade.create_new_user(user_form , account_role)
             if customer_form.is_valid():
+                created_account = BaseFuncade.create_new_user(user_form , account_role)
                 AnonymusFancade.add_customer(customer_form , created_account)
-            
+                return redirect('../login/')
             else:
-                return Http404
-            return redirect('../login/')
+                context['user_registration_form'] = user_form 
+                context['customer_registration_form'] = customer_form 
+            #else:
+                #return Http404
+            #
         else:
             
             context['user_registration_form'] = user_form 
