@@ -50,10 +50,10 @@ def members_homepage(request):
             return render(request, 'members_home.html', context)
         
 
-        elif account_type == models.Account_Role.objects.get(id = 2):
+        elif account_type == models.Account_Role.objects.get(role_name='Customer'):
           account = models.Customer.objects.get(account_id = account_id).first_name
 
-        elif account_type == models.Account_Role.objects.get(id = 1):
+        elif account_type == models.Account_Role.objects.get(role_name = 'Airline'):
             account = models.Airline.objects.get(account_id = account_id).name
         
         context = {
