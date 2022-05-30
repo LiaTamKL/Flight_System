@@ -21,6 +21,6 @@ from django.shortcuts import redirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', lambda request: redirect('flight_app/', permanent=True)),
+    path('', lambda request: redirect('flight_app/', permanent=True)),  
     path('flight_app/', include('flight_app.urls')),
 ]

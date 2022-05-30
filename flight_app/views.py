@@ -28,27 +28,56 @@ def test(request):
 
 
 
-
 def homeview(request):
 
     if request.user.is_authenticated:
-        return redirect("members/homepage/")
+        return redirect("../members/home")
 
-    return render(request, 'home.html')
+    return render(request, 'anony_home.html')
 
+
+
+# def members_homepage(request):
+#     if request.user.is_authenticated:
+#         account_id = request.user.id
+#         account_type = request.user.account_role
+#         # print(account_type)
+#         if request.user.is_superuser:
+#             context = {
+#             'account_type': 'superuser'
+#             }
+#             return render(request, 'members_home.html', context)
+        
+
+#         elif account_type == models.Account_Role.objects.get(role_name='Customer'):
+#           account = models.Customer.objects.get(account_id = account_id).first_name
+
+#         elif account_type == models.Account_Role.objects.get(role_name = 'Airline'):
+#             account = models.Airline.objects.get(account_id = account_id).name
+        
+#         context = {
+
+#             'account': account,
+#             'account_type': account_type
+#         }
+#         return render(request, 'cust_home.html', context)
+
+#     return redirect('login')
 
 
 def members_homepage(request):
     if request.user.is_authenticated:
+        # account_type_lst = ['Customer', 'Airline']
         account_id = request.user.id
         account_type = request.user.account_role
-        # print(account_type)
+
+        context_ext
         if request.user.is_superuser:
             context = {
             'account_type': 'superuser'
             }
-            return render(request, 'members_home.html', context)
-        
+            return render(request, 'super_home.html', context)
+
 
         elif account_type == models.Account_Role.objects.get(role_name='Customer'):
           account = models.Customer.objects.get(account_id = account_id).first_name
@@ -61,27 +90,68 @@ def members_homepage(request):
             'account': account,
             'account_type': account_type
         }
-        return render(request, 'members_home.html', context)
+        return render(request, context_ext(request), context)
 
     return redirect('login')
+
+
+
+def context_ext(request):
+    if request.user.is_superuser:
+        return 'super_home.html'
+    try:
+        account_type = request.user.account_role
+    except AttributeError:
+        return 'anony_home.html'
+    if account_type == models.Account_Role.objects.get(role_name='Customer'):
+        return "cust_home.html"
+    elif account_type == models.Account_Role.objects.get(role_name = 'Airline'):
+        return 'airline_home.html'
 
 
 
 
 def view_all_flights (request):
     all_flights = BaseFuncade.get_all_flights()
-    return render(request, "flight_disp.html", {'flight_list' : all_flights, 'title': 'All Flights' })
+    context = {
+        'flight_list' : all_flights, 
+        'title':  'All Flights',
+        'extension': context_ext(request)
+    }
+    return render(request, "flight_disp.html", context)
+
+
 
 #shows contries info , if no argument was sent it shows all
 
 def view_all_countries(request):
     all_countries = BaseFuncade.get_all_countries()
-    return render(request, "countries_disp.html", {'country_list': all_countries,'title': 'All Countries' })
+    context = {
+        'country_list' : all_countries, 
+        'title':  'All Countries',
+        'extension': context_ext(request)
+    }
+
+    return render(request, "countries_disp.html", context)
+
+
 
 def view_all_airlines(request):
     all_airlines = BaseFuncade.get_all_airlines()
+    context = {
+        'airline_list' : all_airlines, 
+        'title': 'All Arilines',
+        'extension': context_ext(request)
+    }
 
-    return render(request, "airline_disp.html", {'airline_list' : all_airlines, 'title': 'All Arilines' })
+    # return render(request, "airline_disp.html", {'airline_list' : all_airlines, 'title': 'All Arilines' })
+    return render(request, "airline_disp.html",context)
+
+
+
+
+
+
 
 
 
@@ -99,7 +169,8 @@ def view_flights_by_params(request):
     context = {
         'form':airline_id_form,
         'title': "Search Airline by id", 
-        "button": "Search"
+        "button": "Search",
+        'extension': context_ext(request)
      }
 
     return render(request, 'form_template.html', context)
@@ -110,42 +181,42 @@ def view_flights_by_params(request):
 
 
 def view_departure_by_country(request, flag = False):
-    departure_form = forms.departure_arrival_flights(request.POST)   
+    form = forms.departure_arrival_flights(request.POST)   
     if request.POST:
-        if departure_form.is_valid():
-            country_id = departure_form.cleaned_data['country_id']
+        if form.is_valid():
+            country_id = form.cleaned_data['country_id']
             furure = datetime.datetime.now() + datetime.timedelta(hours = 12)
 
             if not flag:
                 departure = models.Flight.objects\
                 .filter(origin_country_id = country_id)\
                 .filter(departure_time__lt = furure)
-                context = {'flight_list': departure, 'title': 'Departure By ID' }
+                context = {'flight_list': departure, 
+                'title': 'Departure By ID',
+                'extension': context_ext(request)
+                 }
 
 
             else:                
                 arrival = models.Flight.objects\
                 .filter(destination_country_id = country_id)\
                 .filter(landing_time__lt = furure)
-                context = {'flight_list': arrival, 'title': 'Arrival By ID' }
+                context = {'flight_list': arrival, 
+                'title': 'Arrival By ID',
+                'extension': context_ext(request)
+                 }
 
             return render(request, "flight_disp.html", context)
         else:
             
             forms.departure_arrival_flights()
-      
+
+
+    context = {'form':form,'extension': context_ext(request),"button": "Search" }
     if not flag:
-        context = {
-            'form':departure_form,
-            'title': "Departure flights By Country", 
-            "button": "Search"
-        }
+        context.update({'title': "Departure Flights By Country" })
     else:
-        context = {
-            'form':departure_form,
-            'title': "Arrival flights by country", 
-            "button": "Search"
-        }
+        context.update({'title': "Arrival Flights By Country" })
 
     return render(request, 'form_template.html', context)
 
@@ -157,14 +228,32 @@ def view_arrival_by_country(request):
 
 
 
-def view_flights_by_airline_anony(request):
+def context_builder(request,form, title, button):
+    context = {
+        'form':form,
+        'title': title, 
+        "button": button,
+        'extension': context_ext(request)
+              
+        }
+
+
+
+def view_flights_by_airline_cust(request):
     airline_id_form = forms.airline_by_id(request.POST)   
     if request.POST:
         if airline_id_form.is_valid():
 
             flight_list = models.Flight.objects.filter(airline_id = airline_id_form.cleaned_data['airline_id'])
-                       
-            return render(request, "flight_disp.html", {'flight_list': flight_list,'title': 'Flights By Airline' })
+
+            context = {
+                'flight_list': flight_list,
+                'title': 'Flights By Airline',
+                'extension': context_ext(request)
+                 }
+
+
+            return render(request, "flight_disp.html",  context)
         else:
              forms.airline_by_id()
     
@@ -172,10 +261,13 @@ def view_flights_by_airline_anony(request):
     context = {
         'form':airline_id_form,
         'title': "Search Flights by Airline", 
-        "button": "Search"
+        "button": "Search",
+        'extension': context_ext(request)
      }
 
     return render(request, 'form_template.html', context)
+
+
 
 
 def view_airline_by_country(request):
@@ -184,8 +276,14 @@ def view_airline_by_country(request):
     if request.POST:
         if country_id_form.is_valid():
             airline_list = models.Airline.objects.filter(country_id = country_id_form.cleaned_data['country_id'])
-            
-            return render(request, "airline_disp.html", {'airline_list': airline_list,'title': 'Airline by Country ' })
+            context = {
+                'airline_list': airline_list,
+                'title': 'Airline by Country',
+                'extension': context_ext(request)
+                 }
+
+
+            return render(request, "airline_disp.html", context)
         else:
              forms.country_by_id()
     
@@ -193,7 +291,8 @@ def view_airline_by_country(request):
     context = {
         'form':country_id_form,
         'title': "Airline by Country", 
-        "button": "Search"
+        "button": "Search",
+        'extension': context_ext(request)
      }
 
     return render(request, 'form_template.html', context)        
@@ -213,10 +312,12 @@ def view_flights_by_airline(request):
         context = {
             'Flights': flights,
             'Airline': airline,
+            'extension': context_ext(request)
             }
     except: 
         context = {'Flights': None, 
                     'Airline': 'You are not logged in as an airline. You may not view this',
+                    'extension': context_ext(request)
                     }
 
     return render(request, 'airline_get_flights.html', context)
@@ -245,7 +346,7 @@ def view_all_customers(request):
         return HttpResponse('You are not logged in as an Admin. Please login')
     customers = AdministratorFuncade.get_all_customers()
     #accounts = AdministratorFuncade.get_all_accounts()
-    context = {'customers':customers}
+    context = {'customers':customers, 'extension': context_ext(request)}
     return render(request, 'view_all_customers.html', context)
 
 
@@ -282,23 +383,8 @@ def add_admin_from_customer(request, account):
     AdministratorFuncade.add_admin(account)
     return redirect('admin home')
 
-def show_country_search_from(request):
 
-    f = contact_from = forms.country_id_search_form(request.POST or None) # reteins data even if the submit was invalid.
-    # print(request.GET)
-    if f.is_valid():
-        #print(f.cleaned_data.get('coutry_id'))
-        # cleans everything but the raw data submitted, prints only selected by get 'subject in this case
-        country_id = f.cleaned_data.get('country_id')
 
-        redirect_address = f'/flight_app/countryinfo/{country_id}'
-
-        return redirect(redirect_address)
-
-    context = {
-        'form' : contact_from,
-    }
-    return render(request,'search_country_page.html' , context)
 
 #lets airline fill in form for new flight
 @login_required()
@@ -315,6 +401,7 @@ def airline_add_flight(request):
             return redirect("airline view flights")
     context = {
         'form': flightform,
+        'extension': context_ext(request)
     }
     return render(request, 'form_template.html', context)
 
@@ -346,6 +433,7 @@ def airline_update_flight(request, flight_id):
     else: flightform = forms.NewFlightForm(instance=instance)
     context = {
         'form': flightform,
+        'extension': context_ext(request)
     }
     return render(request, 'form_template.html', context)
 
@@ -388,43 +476,6 @@ def add_admin_from_airline(request, airline_id):
 
 
 
-
-########################################################
-#show remaning tickets , reduce tickets on addition
-#flight_tickets.objects.filter(pk=flight_id).count()')
-
-# 
-
-def add_ticket(request):
-    if request.user.is_authenticated:
-
-        customer = models.Customer.objects.get(account_id = request.user.id )
-        message = None
-
-        new_ticket_form = forms.NewTicketForm(request.POST)
-        if request.method =='POST':
-            if new_ticket_form.is_valid():
-            # if models.Flight_Ticket.filter(account_id = customer.id):
-
-                CustomerFancade.add_ticket(new_ticket_form.cleaned_data , customer.id)
-                message = 'Ticket added successfully'
-        context = {
-            'form': new_ticket_form,
-            'message': message,
-            'title': "Add ticket",
-            'button': 'add'
-
-            }
-        # return render(request, 'add_ticket.html', context)
-        return render(request, 'form_template.html', context)
-    
-    else:
-        return redirect('home')
-
-
-
-
-
 @login_required()
 def update_account(request):
     if request.user.account_role != models.Account_Role.objects.get(role_name='Customer'):
@@ -453,26 +504,50 @@ def update_account(request):
 
 
 
-
-
-def get_my_tickets(request):
+def add_ticket(request):
     if request.user.is_authenticated:
-        customer = models.Customer.objects.get(account_id = request.user.id)
-        all_my_tickets = CustomerFancade.get_my_tickets(customer.id)
 
-        
-        return render(request, "all_my_tickets.html", {'all_tickets': all_my_tickets})
+        customer = models.Customer.objects.get(account_id = request.user.id )
+        message = None
 
+        new_ticket_form = forms.NewTicketForm(request.POST)
+        if request.method =='POST':
+            if new_ticket_form.is_valid():
+            # if models.Flight_Ticket.filter(account_id = customer.id):
+
+                CustomerFancade.add_ticket(new_ticket_form.cleaned_data , customer.id)
+                message = 'Ticket added successfully'
+        context = {
+            'form': new_ticket_form,
+            'message': message,
+            'title': "Add ticket",
+            'button': 'add',
+            'extension': context_ext(request)
+
+            }
+        # return render(request, 'add_ticket.html', context)
+        return render(request, 'form_template.html', context)
+    
     else:
         return redirect('home')
 
 
 
+@login_required
+def get_my_tickets(request):
+    customer = models.Customer.objects.get(account_id = request.user.id)
+    all_my_tickets = CustomerFancade.get_my_tickets(customer.id)
+
+  
+    return render(request, "all_my_tickets.html", {'all_tickets': all_my_tickets})
+
+
+
+@login_required
 def remove_ticket(request):
     context= {}
     if request.user.is_authenticated:
         customer = models.Customer.objects.get(account_id = request.user.id)
-        # raise Except|ion{{}}  
         form = forms.RemoveTicket(customer.id, request.POST )
         if request.method =='POST':
             if form.is_valid():
@@ -481,7 +556,9 @@ def remove_ticket(request):
         context = {
             'form':form,
             'title': "Remove Ticket", 
-            "button": "remove"
+            "button": "remove",
+            'extension': context_ext(request)
+            
         }
 
         return render(request, 'form_template.html', context)
@@ -894,3 +971,38 @@ def register(request, account_role):
 
 #     return render(request, 'form_template.html', context)
 
+
+
+
+# def view_all_flights (request):
+#     all_flights = BaseFuncade.get_all_flights()
+#     return render(request, "flight_disp.html", {'flight_list' : all_flights, 'title': 'All Flights' })
+
+# #shows contries info , if no argument was sent it shows all
+
+# def view_all_countries(request):
+#     all_countries = BaseFuncade.get_all_countries()
+#     return render(request, "countries_disp.html", {'country_list': all_countries,'title': 'All Countries' })
+
+# # def view_all_airlines(request):
+# #     all_airlines = BaseFuncade.get_all_airlines()
+
+# #     return render(request, "airline_disp.html", {'airline_list' : all_airlines, 'title': 'All Arilines' })
+
+#ef show_country_search_from(request):
+
+#     f = contact_from = forms.country_id_search_form(request.POST or None) # reteins data even if the submit was invalid.
+#     # print(request.GET)
+#     if f.is_valid():
+#         #print(f.cleaned_data.get('coutry_id'))
+#         # cleans everything but the raw data submitted, prints only selected by get 'subject in this case
+#         country_id = f.cleaned_data.get('country_id')
+
+#         redirect_address = f'/flight_app/countryinfo/{country_id}'
+
+#         return redirect(redirect_address)
+
+#     context = {
+#         'form' : contact_from,
+#     }
+#     return render(request,'search_country_page.html' , context)

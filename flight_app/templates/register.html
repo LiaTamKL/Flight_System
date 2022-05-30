@@ -1,4 +1,5 @@
-{% extends 'home.html' %}
+{% extends 'anony_home.html' %} 
+
 
 <!-- <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +11,7 @@
 </head> -->
 <!-- <body> -->
     {% block content %}
-    <h2>register</h2>
+    <h2>Sign up</h2>
     <form method="post", >
         {%csrf_token%}
         {%for field in user_registration_form%}
