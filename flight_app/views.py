@@ -229,11 +229,9 @@ def view_flights_by_airline(request):
 #takes a flight_id, deletes it if you're logged in as the airline that flight belongs to.
 @login_required()
 def delete_flight_for_airline(request, flight_id):
-    airline = models.Airline.objects.filter(account=request.user.id)
-    try:
-        airline = airline[0]
-    except:
-        return HttpResponse('You are not logged in as an airline. Please login')
+    if request.user.account_role != models.Account_Role.objects.get(role_name='Airline'):
+        return HttpResponse('You are not logged in as an Airline. Please login')
+    airline = models.Airline.objects.get(account=request.user)
     
     result = Airline_Facade.remove_flight(flight_id, airline)
     if result == 1:
@@ -305,11 +303,9 @@ def show_country_search_from(request):
 #lets airline fill in form for new flight
 @login_required()
 def airline_add_flight(request):
-    airline = models.Airline.objects.filter(account=request.user.id)
-    try:
-        airline = airline[0]
-    except:
-        return HttpResponse('You are not logged in as an airline. Please login')
+    if request.user.account_role != models.Account_Role.objects.get(role_name='Airline'):
+        return HttpResponse('You are not logged in as an Airline. Please login')
+    airline = models.Airline.objects.get(account=request.user)
 
     flightform = forms.NewFlightForm(request.POST or None)
     if request.method =='POST':
@@ -326,13 +322,9 @@ def airline_add_flight(request):
 #takes flight id as peremeter, let's user update said flight. denies them if flight does not exist or user is not the airline for this flight
 @login_required()
 def airline_update_flight(request, flight_id):
-    airline = models.Airline.objects.filter(account=request.user.id)
-
-    #if you're not logged in as an airline, tell you to go log in
-    try:
-        airline = airline[0]
-    except:
-        return HttpResponse('You are not logged in as an airline. Please login')
+    if request.user.account_role != models.Account_Role.objects.get(role_name='Airline'):
+        return HttpResponse('You are not logged in as an Airline. Please login')
+    airline = models.Airline.objects.get(account=request.user)
 
     #if flight does not exist, raises http404
     try:
@@ -361,30 +353,17 @@ def airline_update_flight(request, flight_id):
 #these three will not work yet due to there not being a way to delete a customer but not a user. Leaving this as a template for later
 @login_required()
 def add_customer_admin(request):
-    admin = models.Administrator.objects.filter(account=request.user.id)
-    try:
-        admin = admin[0]
-    except:
+    admin_role = models.Account_Role.objects.get(role_name='Admin')
+    if request.user.account_role != admin_role:
         return HttpResponse('You are not logged in as an Admin. Please login')
 
-    #customerform = forms.CustomerAdminform(request.POST or None)
     message = None
-    #if request.method =='POST':
-    #    if customerform.is_valid():
-    #        AdministratorFuncade.add_cus_as_admin(customerform.cleaned_data)
-    #        message = 'Cus added successfully'
-    #context = {
-    #    'form': customerform,
-    #    'message': message
-    #}
-    #return render(request, 'Add_customer.html', context)
+
 
 @login_required()
 def add_airline(request, customer_id):
-    admin = models.Administrator.objects.filter(account=request.user.id)
-    try:
-        admin = admin[0]
-    except:
+    admin_role = models.Account_Role.objects.get(role_name='Admin')
+    if request.user.account_role != admin_role:
         return HttpResponse('You are not logged in as an Admin. Please login')
 
     #airlineform = forms.AirlineForm(request.POST or None)
@@ -401,10 +380,8 @@ def add_airline(request, customer_id):
 
 @login_required()
 def add_admin_from_airline(request, airline_id):
-    admin = models.Administrator.objects.filter(account=request.user.id)
-    try:
-        admin = admin[0]
-    except:
+    admin_role = models.Account_Role.objects.get(role_name='Admin')
+    if request.user.account_role != admin_role:
         return HttpResponse('You are not logged in as an Admin. Please login')
 
     message = None
