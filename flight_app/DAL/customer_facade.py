@@ -31,8 +31,7 @@ class CustomerFancade(BaseFuncade):
 
     #need to be logged in
     def get_my_tickets(id):
-            ticket_list = list(models.Flight_Ticket.objects.filter(customer_id = id))
-            return ticket_list
+           return Flight_Ticket.objects.filter(customer_id = id)
 
 
 

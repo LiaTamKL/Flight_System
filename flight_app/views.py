@@ -31,38 +31,9 @@ def test(request):
 def homeview(request):
 
     if request.user.is_authenticated:
-        return redirect("../members/home")
+        return redirect('members home')
 
     return render(request, 'anony_home.html')
-
-
-
-# def members_homepage(request):
-#     if request.user.is_authenticated:
-#         account_id = request.user.id
-#         account_type = request.user.account_role
-#         # print(account_type)
-#         if request.user.is_superuser:
-#             context = {
-#             'account_type': 'superuser'
-#             }
-#             return render(request, 'members_home.html', context)
-        
-
-#         elif account_type == models.Account_Role.objects.get(role_name='Customer'):
-#           account = models.Customer.objects.get(account_id = account_id).first_name
-
-#         elif account_type == models.Account_Role.objects.get(role_name = 'Airline'):
-#             account = models.Airline.objects.get(account_id = account_id).name
-        
-#         context = {
-
-#             'account': account,
-#             'account_type': account_type
-#         }
-#         return render(request, 'cust_home.html', context)
-
-#     return redirect('login')
 
 
 def members_homepage(request):
@@ -503,7 +474,7 @@ def update_account(request):
 
 
 
-
+@login_required
 def add_ticket(request):
     if request.user.is_authenticated:
 
@@ -533,13 +504,49 @@ def add_ticket(request):
 
 
 
+# @login_required
+# def get_my_tickets(request):
+#     customer = models.Customer.objects.get(account_id = request.user.id)
+#     all_my_tickets = CustomerFancade.get_my_tickets(customer.id).values_list()
+#     tick = all_my_tickets[0]
+#     raise Exception (tick)
+#     flights = (models.Flight.objects.filter(flight_ticket = tick.id))
+#     raise Exception (flights)
+#     context = {
+#         {'all_my_tickets': all_my_tickets,
+#         'customer':customer,
+#         'flights':flights
+        
+#         }
+
+#     }
+#     return render(request, "get_my_tickets.html", context)
+#     # return render(request, "get_my_tickets.html", {'all_tickets': all_my_tickets})
+
 @login_required
 def get_my_tickets(request):
     customer = models.Customer.objects.get(account_id = request.user.id)
     all_my_tickets = CustomerFancade.get_my_tickets(customer.id)
 
-  
-    return render(request, "all_my_tickets.html", {'all_tickets': all_my_tickets})
+    
+    return render(request, "get_my_tickets.html", {'all_tickets': all_my_tickets})
+
+    # airline = models.Airline.objects.filter(account=request.user.id)
+    # try:
+    #     airline = airline[0]
+    #     flights = Airline_Facade.get_my_flights(airline.id)
+    #     context = {
+    #         'Flights': flights,
+    #         'Airline': airline,
+    #         'extension': context_ext(request)
+    #         }
+    # except: 
+    #     context = {'Flights': None, 
+    #                 'Airline': 'You are not logged in as an airline. You may not view this',
+    #                 'extension': context_ext(request)
+    #                 }
+
+    # return render(request, 'airline_get_flights.html', context)
 
 
 

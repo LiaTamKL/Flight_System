@@ -12,23 +12,23 @@ urlpatterns = [
     # path('flight_app/members/', lambda request: redirect('home/', permanent=True)),
 
 
-    path('home/',views.members_homepage),   
-    path('tickets/add/',views.add_ticket),
-    path('tickets/remove/', views.remove_ticket),
-    path('tickets/all/', views.get_my_tickets),
-    path('update_account/', views.update_account),
+    path('home/',views.members_homepage, name='members home'),   
+    path('tickets/add/',views.add_ticket, name='add tickets'),
+    path('tickets/remove/', views.remove_ticket, name='remove tickets'),
+    path('tickets/all/', views.get_my_tickets, name='view all tickets'),
+    path('update_account/', views.update_account, name='update account'),
     
 
-    path('country/all/', views.view_all_countries),
-    path('flights/all/', views.view_all_flights),
-    path('airline/all/', views.view_all_airlines),
-    path('airline/bycountry/', views.view_airline_by_country),
+    path('country/all/', views.view_all_countries, name="view all countries"),
+    path('flights/all/', views.view_all_flights, name="view all flights"),
+    path('airline/all/', views.view_all_airlines, name="view all airlines"),
+    path('airline/bycountry/', views.view_airline_by_country, name="view airline by country"),
 
 
-    path("search/flights/", views.view_flights_by_params),
-    path("search/flights/departure/", views.view_departure_by_country),
-    path("search/flights/arrival/", views.view_arrival_by_country),
-    path("search/flights/byairline/", views.view_flights_by_airline_cust),
+    path("search/flights/", views.view_flights_by_params, name="view flight by params"),
+    path("search/flights/departure/", views.view_departure_by_country, name= "departure by country"),
+    path("search/flights/arrival/", views.view_arrival_by_country, name='arrival by country'),
+    path("search/flights/byairline/", views.view_flights_by_airline_cust, name='flights by airline'),
 
    
     path('test/', views.test),
@@ -37,9 +37,9 @@ urlpatterns = [
     # path('ticket/view/<cust_id>', views.get_my_tickets),
     
     path('flights/myview/', views.view_flights_by_airline, name="airline view flights"),
-    path('fligts/delete/<flight_id>', views.delete_flight_for_airline, name="delete flight"),
+    path('flights/delete/<flight_id>', views.delete_flight_for_airline, name="delete flight"),
     path('flights/add', views.airline_add_flight, name='add flight'),
-    path('fligts/update/<flight_id>', views.airline_update_flight, name='update flight'),
+    path('flights/update/<flight_id>', views.airline_update_flight, name='update flight'),
 
 
 

@@ -4,28 +4,27 @@ from django.shortcuts import redirect
 
 urlpatterns = [
     path('home/', views.homeview, name='home') ,
-   
+    path('', lambda request: redirect('home/', permanent=True)),
     path('admin/', lambda request: redirect('/admin/login/', permanent=True)),
     path('members/', include('flight_app.members_urls')),
 
-    
 
     path('login/',views.user_login, name='login'),
     
-    path('country/all/', views.view_all_countries),
-    path('flights/all/', views.view_all_flights),
-    path('airline/all/', views.view_all_airlines),
-    path('airline/bycountry/', views.view_airline_by_country),
+    path('country/all/', views.view_all_countries, name="view all countries anony"),
+    path('flights/all/', views.view_all_flights, name="view all flights anony"),
+    path('airline/all/', views.view_all_airlines, name="view all airlines anony"),
+    path('airline/bycountry/', views.view_airline_by_country, name="view airline by country anony"),
 
 
-    path("search/flights/", views.view_flights_by_params),
-    path("search/flights/departure/", views.view_departure_by_country),
-    path("search/flights/arrival/", views.view_arrival_by_country),
-    path("search/flights/byairline/", views.view_flights_by_airline_cust),
+    path("search/flights/", views.view_flights_by_params, name="view flight by params anony"),
+    path("search/flights/departure/", views.view_departure_by_country, name= "departure by country anony"),
+    path("search/flights/arrival/", views.view_arrival_by_country, name='arrival by country anony'),
+    path("search/flights/byairline/", views.view_flights_by_airline_cust, name='flights by airline anony'),
 
 
-    path('register/', views.register_customer),
-    path('logout/', views.logout),
+    path('register/', views.register_customer, name='login'),
+    path('logout/', views.logout,name='logout'),
 
     
     path('test/', views.test),

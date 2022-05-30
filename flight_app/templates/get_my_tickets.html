@@ -1,0 +1,16 @@
+{% extends 'cust_home.html' %}
+
+{% block content %}
+<style>
+    h2 {text-align: center;}
+    form {text-align: center;}
+</style>
+    <h1>All My Tickets </h1>
+    <ul>
+    {% for info in all_tickets %}
+    <li>ticket id {{info.id}},
+        flight id {{info.flight.id}}</li>
+    {% endfor %} 
+    </ul>
+</body>
+{%  endblock %}♥

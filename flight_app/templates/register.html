@@ -11,6 +11,10 @@
 </head> -->
 <!-- <body> -->
     {% block content %}
+    <style>
+        h2 {text-align: center;}
+        form {text-align: center;}
+        </style>
     <h2>Sign up</h2>
     <form method="post", >
         {%csrf_token%}
