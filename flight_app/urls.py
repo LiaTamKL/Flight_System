@@ -17,16 +17,16 @@ urlpatterns = [
     
 
 
-    path('members/country/all/', views.view_all_countries),
-    path('members/flights/all/', views.view_all_flights),
-    path('members/airline/all/', views.view_all_airlines),
-    path('members/airline/bycountry/', views.view_airline_by_country),
+    path('country/all/', views.view_all_countries),
+    path('flights/all/', views.view_all_flights),
+    path('airline/all/', views.view_all_airlines),
+    path('airline/bycountry/', views.view_airline_by_country),
 
 
-    path("members/search/flights/", views.view_flights_by_params),
-    path("members/search/flights/departure/", views.view_departure_by_country),
-    path("members/search/flights/arrival/", views.view_arrival_by_country),
-    path("members/search/flights/byairline/", views.view_flights_by_airline_anony),
+    path("search/flights/", views.view_flights_by_params),
+    path("flights/departure/", views.view_departure_by_country),
+    path("search/flights/arrival/", views.view_arrival_by_country),
+    path("search/flights/byairline/", views.view_flights_by_airline_anony),
 
 
     
