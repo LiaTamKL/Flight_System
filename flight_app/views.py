@@ -542,6 +542,16 @@ def remove_ticket(request):
         return redirect('home')
 
 
+@login_required
+def remove_specific_ticket(request, ticket_id):
+    customer = models.Customer.objects.get(account_id = request.user)
+    ticket = models.Flight_Ticket.objects.get(pk = ticket_id)
+    if customer != ticket.customer:
+        return Http404('you are not the customer who purchased this ticket!')
+    fakeform = {"ticket_id":ticket}
+    CustomerFancade.remove_ticket(fakeform)
+    return redirect('home')
+
 
 
 

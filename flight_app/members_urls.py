@@ -17,6 +17,7 @@ urlpatterns = [
     path('tickets/remove/', views.remove_ticket, name='remove tickets'),
     path('tickets/all/', views.get_my_tickets, name='view all tickets'),
     path('update_account/', views.update_account, name='update account'),
+    path('tickets/remove_spc/<ticket_id>', views.remove_specific_ticket, name='remove specific ticket'),
     
 
     path('country/all/', views.view_all_countries, name="view all countries"),

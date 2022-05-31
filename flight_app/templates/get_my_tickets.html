@@ -13,8 +13,7 @@
         </div>
           <p class="mb-1">From {{info.flight.origin_country}} to {{info.flight.destination_country}}</p>
           <p class="mb-1">Departing at {{info.flight.departure_time}} and landing at {{info.flight.landing_time}}</p>
-          <a href="#" class="btn btn-primary btn-sm">Update</a>
-          <a href="#" class="btn btn-danger btn-sm">Delete</a>
+          <a href="{% url 'remove specific ticket' info.pk %}" class="btn btn-danger btn-sm">Delete</a>
         </div>
         {% endfor %} 
     
