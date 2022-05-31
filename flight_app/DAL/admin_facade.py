@@ -17,6 +17,11 @@ class AdministratorFuncade(BaseFuncade):
         account = Account.objects.all()
         return account
 
+    #returns all admin objects but the one in use
+    def get_all_admins(account):
+        admins = Administrator.objects.exclude(account=account)
+        return admins
+
     #receives clean_data form, adds a customer based on that to the database.
     def add_customer(form):
         return redirect('home')
