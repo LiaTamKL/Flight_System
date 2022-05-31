@@ -52,6 +52,7 @@ def members_homepage(request):
 
         elif account_type == models.Account_Role.objects.get(role_name='Customer'):
           account = models.Customer.objects.get(account_id = account_id).first_name
+          return get_my_tickets(request)
 
         elif account_type == models.Account_Role.objects.get(role_name = 'Airline'):
             account = models.Airline.objects.get(account_id = account_id).name
