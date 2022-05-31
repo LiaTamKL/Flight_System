@@ -216,6 +216,20 @@ class NewCustomerForm(forms.ModelForm):
     #     customer_id = self.cleaned_data['customer_id']
     #     return customer_id
 
+class AirlineUpdateForm(forms.ModelForm):
+    name = forms.CharField(max_length=50 , required=True, label="Airline name")
+    country = forms.ModelChoiceField(queryset=models.Country.objects.all(), required=True , label='country')
+    class Meta:
+        model = models.Airline
+        fields = ['name', 'country']
+
+
+class AdminUpdateForm(forms.ModelForm):
+    first_name = forms.CharField(max_length=50 , required=True, label="Yo name ")
+    last_name = forms.CharField(max_length=50 , required=True , label= "Yo fam name") 
+    class Meta:
+        model = models.Administrator
+        fields = ['first_name', 'last_name']
 
 class AccountUpdateForm(forms.ModelForm):
     class Meta:

@@ -499,6 +499,7 @@ def update_account(request):
     }
     return render(request, 'register.html', context)
 
+#all in one update function. will update an account no matter its type including superusers
 @login_required()
 def update_user(request):
     if request.user.account_role == models.Account_Role.objects.get(role_name='Customer'):
@@ -525,13 +526,13 @@ def update_user(request):
         emailform = forms.AccountUpdateForm(request.POST, instance=request.user)
         if emailform.is_valid():
             if update_check == "superuser":
-                AdministratorFuncade.update_account(account=request.user, form=emailform)
+                AdministratorFuncade.update_account(account=request.user, form=emailform.cleaned_data)
                 return redirect("home")
             elif form.is_valid():
                 print(request.user, form.cleaned_data, emailform.cleaned_data)
                 if update_check == "customer": CustomerFancade.update_customer(account=request.user, form=form.cleaned_data, emailform=emailform.cleaned_data)
                 elif update_check == 'airline': Airline_Facade.update_airline(account=request.user, form=form.cleaned_data, emailform=emailform.cleaned_data)
-                elif update_check == 'admin': AdministratorFuncade.update_airline(account=request.user, form=form.cleaned_data, emailform=emailform.cleaned_data)
+                elif update_check == 'admin': AdministratorFuncade.update_admin(account=request.user, form=form.cleaned_data, emailform=emailform.cleaned_data)
                 return redirect("home")
 
     else: 
