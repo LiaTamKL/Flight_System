@@ -54,6 +54,7 @@ def members_homepage(request):
 
         elif account_type == models.Account_Role.objects.get(role_name='Customer'):
           account = models.Customer.objects.get(account_id = account_id).first_name
+          return get_my_tickets(request)
 
         elif account_type == models.Account_Role.objects.get(role_name = 'Airline'):
             account = models.Airline.objects.get(account_id = account_id).name
@@ -544,6 +545,16 @@ def remove_ticket(request):
     else:
         return redirect('home')
 
+
+@login_required
+def remove_specific_ticket(request, ticket_id):
+    customer = models.Customer.objects.get(account_id = request.user)
+    ticket = models.Flight_Ticket.objects.get(pk = ticket_id)
+    if customer != ticket.customer:
+        return Http404('you are not the customer who purchased this ticket!')
+    fakeform = {"ticket_id":ticket}
+    CustomerFancade.remove_ticket(fakeform)
+    return redirect('home')
 
 
 
