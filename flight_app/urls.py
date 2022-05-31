@@ -8,6 +8,7 @@ urlpatterns = [
     path('', lambda request: redirect('home/', permanent=True)),
     path('admin/', lambda request: redirect('/admin/login/', permanent=True)),
     path('members/', include('flight_app.members_urls')),
+    path('ouradmin/', include('flight_app.admin_urls')),
 
 
     path('login/',views.user_login, name='login'),

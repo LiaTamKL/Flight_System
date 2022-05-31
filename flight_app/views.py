@@ -31,6 +31,8 @@ def test(request):
 def homeview(request):
 
     if request.user.is_authenticated:
+        if request.user.is_superuser:
+                return redirect('admin home')
         return redirect('members home')
 
     return render(request, 'anony_home.html')
@@ -47,7 +49,7 @@ def members_homepage(request):
             context = {
             'account_type': 'superuser'
             }
-            return render(request, 'super_home.html', context)
+            return render(request, 'admin_home.html', context)
 
 
         elif account_type == models.Account_Role.objects.get(role_name='Customer'):
@@ -71,7 +73,7 @@ def members_homepage(request):
 
 def context_ext(request):
     if request.user.is_superuser:
-        return 'super_home.html'
+        return 'admin_home.html'
     try:
         account_type = request.user.account_role
     except AttributeError:
@@ -315,8 +317,10 @@ def delete_flight_for_airline(request, flight_id):
 #shows all customers (or accounts if we mark in that line). if not admin, doesn't let access
 @login_required()
 def view_all_customers(request):
-    admin_role = models.Account_Role.objects.get(role_name='Admin')
-    if request.user.account_role != admin_role:
+    # admin_role = models.Account_Role.objects.get(role_name='Admin')
+    # if request.user.account_role != admin_role:
+    if not request.user.is_superuser:
+        
         return HttpResponse('You are not logged in as an Admin. Please login')
     customers = AdministratorFuncade.get_all_customers()
     #accounts = AdministratorFuncade.get_all_accounts()
