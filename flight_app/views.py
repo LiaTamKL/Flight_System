@@ -512,7 +512,7 @@ def add_ticket(request):
 def get_my_tickets(request):
     customer = models.Customer.objects.get(account_id = request.user.id)
     all_my_tickets = CustomerFancade.get_my_tickets(customer.id)
-    fli = models.Flight.objects.get(id = all_my_tickets.flight)
+    # fli = models.Flight.objects.get(id = all_my_tickets.flight)
     
   
     return render(request, "get_my_tickets.html", {'all_tickets': all_my_tickets})
