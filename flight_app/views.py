@@ -44,7 +44,6 @@ def members_homepage(request):
         account_id = request.user.id
         account_type = request.user.account_role
 
-        context_ext
         if request.user.is_superuser:
             context = {
             'account_type': 'superuser'
