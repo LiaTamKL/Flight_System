@@ -17,6 +17,11 @@ class AdministratorFuncade(BaseFuncade):
         account = Account.objects.all()
         return account
 
+    #returns all admin objects but the one in use
+    def get_all_admins(account):
+        admins = Administrator.objects.exclude(account=account)
+        return admins
+
     #receives clean_data form, adds a customer based on that to the database.
     def add_customer(form):
         return redirect('home')
@@ -161,6 +166,15 @@ class AdministratorFuncade(BaseFuncade):
             raise Http404("Account seems to not be linked to any profile. Please contact an administrator")
         
         return {'user':user, 'account':account, 'account_role':role}
+
+    #takes form and an existing account, updates the admin attached to it with form data
+    def update_airline(form, account, emailform):
+        admin = Administrator.objects.get(account=account)
+        admin.first_name = form['first_name']
+        admin.last_name = form['last_name']
+        account.email = emailform['email']
+        admin.save()
+        account.save()
 
 ############################################################
 
