@@ -319,7 +319,6 @@ def view_flights_by_airline(request):
                     'Airline': 'You are not logged in as an airline. You may not view this',
                     'extension': context_ext(request)
                     }
-
     return render(request, 'airline_get_flights.html', context)
 
 

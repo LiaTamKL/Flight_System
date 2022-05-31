@@ -6,7 +6,7 @@
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="\flight_app">Welcome {{account}}</a>
+          <a class="navbar-brand" href="\flight_app">Welcome {{request.user.username}}</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -18,10 +18,8 @@
                     <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{account}} Actions</a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/flight_app/members/flights/add"> Add Flight </a></li> 
-                        <li><a class="dropdown-item" href="/flight_app/members/flights/update"> Update Flight </a></li> 
-                        <li><a class="dropdown-item" href="/flight_app/members/flights/delete"> Remove Flight </a></li>
                         <li><a class="dropdown-item" href="/flight_app/members/flights/myview"> My Airline Flights </a></li>
-  
+                        <li><a class="dropdown-item" href="#">Search for flight to update or remove</a></li>
                     </ul>
                 </li>
             </ul>
