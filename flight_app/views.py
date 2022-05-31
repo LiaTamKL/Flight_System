@@ -55,17 +55,10 @@ def members_homepage(request):
 
         elif account_type == models.Account_Role.objects.get(role_name = 'Airline'):
             account = models.Airline.objects.get(account_id = account_id).name
-        
-        # if request.user.account_role ==  models.Account_Role.objects.get(role_name='Airline'):
-        #     airline = models.Airline.objects.get(account=request.user)
-        #     flights = Airline_Facade.get_my_flights(airline.id)
-        #     context = {
+            return view_flights_by_airline(request)
 
-        #     'account': account,
-        #     'account_type': account_type,
-        #     'flights': flights
-        #         }
-        # else:
+
+
         context = {
 
             'account': account,
@@ -300,7 +293,9 @@ def view_flights_by_airline(request):
                     'Airline': 'You are not logged in as an airline. You may not view this',
                     'extension': context_ext(request)
                     }
-    return render(request, 'airline_get_flights.html', context)
+
+    return render(request, 'airline_home.html', context)              
+    # return render(request, 'airline_get_flights.html', context)
 
 
 
