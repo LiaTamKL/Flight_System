@@ -167,6 +167,15 @@ class AdministratorFuncade(BaseFuncade):
         
         return {'user':user, 'account':account, 'account_role':role}
 
+    #takes form and an existing account, updates the admin attached to it with form data
+    def update_airline(form, account, emailform):
+        admin = Administrator.objects.get(account=account)
+        admin.first_name = form['first_name']
+        admin.last_name = form['last_name']
+        account.email = emailform['email']
+        admin.save()
+        account.save()
+
 ############################################################
 
     # #takes airline_id and form data, makes airline an admin while deleting the customer object

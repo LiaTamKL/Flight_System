@@ -46,8 +46,10 @@ class Airline_Facade(BaseFuncade):
         return Flight.objects.filter(airline=id)
 
     #takes form and an existing account, updates the airline attached to it with form data
-    def update_airline(form, account):
+    def update_airline(form, account, emailform):
         airline = Airline.objects.get(account=account)
         airline.name = form['name']
         airline.country = form['country']
+        account.email = emailform['email']
         airline.save()
+        account.save()
