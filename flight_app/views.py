@@ -499,6 +499,63 @@ def update_account(request):
     }
     return render(request, 'register.html', context)
 
+@login_required()
+def update_user(request):
+    if request.user.account_role == models.Account_Role.objects.get(role_name='Customer'):
+        instance = models.Customer.objects.get(account=request.user)
+        update_check = "customer"
+    elif request.user.account_role == models.Account_Role.objects.get(role_name='Airline'):
+        instance = models.Airline.objects.get(account=request.user)
+        update_check = "airline"
+    elif request.user.is_superuser == True:
+        instance = None
+        update_check = "superuser"
+    elif request.user.is_admin == True:
+        instance = models.Administrator.objects.get(account=request.user)
+        update_check = "admin"
+    else: 
+        raise Http404('Account is missing. Please contact staff.')
+
+    if request.method =='POST':
+        if update_check == "customer": form = forms.NewCustomerForm(request.POST, instance=instance)
+        elif update_check == 'airline': form = forms.AirlineUpdateForm(request.POST, instance=instance)
+        elif update_check == 'admin': form = forms.AdminUpdateForm(request.POST, instance=instance)
+        else: form = None
+
+        emailform = forms.AccountUpdateForm(request.POST, instance=request.user)
+        if emailform.is_valid():
+            if update_check == "superuser":
+                AdministratorFuncade.update_account(account=request.user, form=emailform)
+                return redirect("home")
+            elif form.is_valid():
+                print(request.user, form.cleaned_data, emailform.cleaned_data)
+                if update_check == "customer": CustomerFancade.update_customer(account=request.user, form=form.cleaned_data, emailform=emailform.cleaned_data)
+                elif update_check == 'airline': Airline_Facade.update_airline(account=request.user, form=form.cleaned_data, emailform=emailform.cleaned_data)
+                elif update_check == 'admin': AdministratorFuncade.update_airline(account=request.user, form=form.cleaned_data, emailform=emailform.cleaned_data)
+                return redirect("home")
+
+    else: 
+        if update_check == "customer": form = forms.NewCustomerForm(instance=instance)
+        elif update_check == 'airline': form = forms.AirlineUpdateForm(instance=instance)
+        elif update_check == 'admin': form = forms.AdminUpdateForm(instance=instance)
+        else: form = None
+        emailform = forms.AccountUpdateForm(instance=request.user)
+    context = {
+        'customer_registration_form':form,
+        'user_registration_form':emailform,
+        'title': f"Update {request.user}", 
+        "button": f"Update the account: {request.user}"
+    }
+    return render(request, 'register.html', context)
+
+
+
+
+
+
+
+
+
 
 
 @login_required
