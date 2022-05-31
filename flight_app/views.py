@@ -58,7 +58,6 @@ def members_homepage(request):
             return view_flights_by_airline(request)
 
 
-
         context = {
 
             'account': account,
