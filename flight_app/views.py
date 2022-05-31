@@ -524,25 +524,6 @@ def get_my_tickets(request):
 
 
 
-    # airline = models.Airline.objects.filter(account=request.user.id)
-    # try:
-    #     airline = airline[0]
-    #     flights = Airline_Facade.get_my_flights(airline.id)
-    #     context = {
-    #         'Flights': flights,
-    #         'Airline': airline,
-    #         'extension': context_ext(request)
-    #         }
-    # except: 
-    #     context = {'Flights': None, 
-    #                 'Airline': 'You are not logged in as an airline. You may not view this',
-    #                 'extension': context_ext(request)
-    #                 }
-
-    # return render(request, 'airline_get_flights.html', context)
-
-
-
 @login_required
 def remove_ticket(request):
     context= {}
