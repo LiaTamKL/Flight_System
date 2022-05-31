@@ -504,32 +504,16 @@ def add_ticket(request):
 
 
 
-# @login_required
-# def get_my_tickets(request):
-#     customer = models.Customer.objects.get(account_id = request.user.id)
-#     all_my_tickets = CustomerFancade.get_my_tickets(customer.id).values_list()
-#     tick = all_my_tickets[0]
-#     raise Exception (tick)
-#     flights = (models.Flight.objects.filter(flight_ticket = tick.id))
-#     raise Exception (flights)
-#     context = {
-#         {'all_my_tickets': all_my_tickets,
-#         'customer':customer,
-#         'flights':flights
-        
-#         }
-
-#     }
-#     return render(request, "get_my_tickets.html", context)
-#     # return render(request, "get_my_tickets.html", {'all_tickets': all_my_tickets})
-
 @login_required
 def get_my_tickets(request):
     customer = models.Customer.objects.get(account_id = request.user.id)
     all_my_tickets = CustomerFancade.get_my_tickets(customer.id)
-
+    fli = models.Flight.objects.get(id = all_my_tickets.flight)
     
+  
     return render(request, "get_my_tickets.html", {'all_tickets': all_my_tickets})
+
+
 
     # airline = models.Airline.objects.filter(account=request.user.id)
     # try:
