@@ -20,7 +20,6 @@ import datetime
 
 
 
-
 def test(request):
     return render(request,'testblock.html')
 #     #  return render(request,'flight_search.html')
@@ -31,7 +30,7 @@ def test(request):
 def homeview(request):
 
     if request.user.is_authenticated:
-        if request.user.is_superuser:
+        if request.user.is_superuser or request.user.is_admin:
                 return redirect('admin home')
         return redirect('members home')
 
@@ -45,9 +44,19 @@ def members_homepage(request):
         account_type = request.user.account_role
 
         if request.user.is_superuser:
+            
             context = {
-            'account_type': 'superuser'
+            'name': 'superuser',
+            'update_func': 'False'
             }
+
+            return render(request, 'admin_home.html', context)
+        elif request.user.is_admin:
+            context = {
+                'name': models.Administrator.objects.get(account_id = request.user.id).first_name,
+                'update_func': 'True'
+            }            
+            
             return render(request, 'admin_home.html', context)
 
 
@@ -59,26 +68,28 @@ def members_homepage(request):
             account = models.Airline.objects.get(account_id = account_id).name
             return view_flights_by_airline(request)
 
-        #elif account_type == models.Account_Role.objects.get(role_name = 'Admin'):
-        #    account = models.Administrator.objects.get(account_id = account_id).first_name
-        context = {
+        
+        
+        # return render(request, 'admin_home.html', context)
+        # context = {
 
-            'account': account,
-            'account_type': account_type
-        }
-        return render(request, context_ext(request), context)
+        #     'account': account,
+        #     'account_type': account_type
+        # }
+        # return render(request, context_ext(request), context)
 
     return redirect('login')
 
 
 
 def context_ext(request):
-    if request.user.is_superuser:
-        return 'admin_home.html'
+
     try:
         account_type = request.user.account_role
     except AttributeError:
         return 'anony_home.html'
+    if request.user.is_superuser or request.user.is_admin:
+        return 'admin_home.html'
     if account_type == models.Account_Role.objects.get(role_name='Customer'):
         return "cust_home.html"
     elif account_type == models.Account_Role.objects.get(role_name = 'Airline'):
@@ -320,8 +331,8 @@ def delete_flight_for_airline(request, flight_id):
 def view_all_customers(request):
     # admin_role = models.Account_Role.objects.get(role_name='Admin')
     # if request.user.account_role != admin_role:
-    if not request.user.is_superuser:
-        
+
+    if not (request.user.is_admin or request.user.is_superuser):
         return HttpResponse('You are not logged in as an Admin. Please login')
     customers = AdministratorFuncade.get_all_customers()
     #accounts = AdministratorFuncade.get_all_accounts()
@@ -331,33 +342,38 @@ def view_all_customers(request):
 
 @login_required()
 def delete_customer(request, customer_id):
-    admin_role = models.Account_Role.objects.get(role_name='Admin')
-    if request.user.account_role != admin_role:
+    # admin_role = models.Account_Role.objects.get(role_name='Admin')
+    # if request.user.account_role != admin_role:
+
+    if not (request.user.is_admin or request.user.is_superuser):
         return HttpResponse('You are not logged in as an Admin. Please login')
     AdministratorFuncade.remove_customer(customer_id)
     return redirect('admin home')
 
 @login_required()
 def delete_airline(request, airline_id):
-    admin_role = models.Account_Role.objects.get(role_name='Admin')
-    if request.user.account_role != admin_role:
+    # admin_role = models.Account_Role.objects.get(role_name='Admin')
+    # if request.user.account_role != admin_role:
+    if not (request.user.is_admin or request.user.is_superuser):
         return HttpResponse('You are not logged in as an Admin. Please login')
     AdministratorFuncade.remove_airline(airline_id)
     return HttpResponse(f'Airline #{airline_id} removed successfully')
 
 @login_required()
 def delete_admin(request, admin_id):
-    admin_role = models.Account_Role.objects.get(role_name='Admin')
-    if request.user.account_role != admin_role:
+    # admin_role = models.Account_Role.objects.get(role_name='Admin')
+    # if request.user.account_role != admin_role:
+    if not (request.user.is_admin or request.user.is_superuser):
         return HttpResponse('You are not logged in as an Admin. Please login')
     AdministratorFuncade.remove_admin(admin_id)
     return HttpResponse(f'Admin #{admin_id} removed successfully')
 
 @login_required()
 def add_admin_from_customer(request, account):
-    admin_role = models.Account_Role.objects.get(role_name='Admin')
+    # admin_role = models.Account_Role.objects.get(role_name='Admin')
+    # if request.user.account_role != admin_role and not request.user.is_superuser:
     account = (AdministratorFuncade.get_by_username(account))['account']
-    if request.user.account_role != admin_role:
+    if not (request.user.is_admin or request.user.is_superuser):
         return HttpResponse('You are not logged in as an Admin. Please login')
     AdministratorFuncade.add_admin(account)
     return redirect('admin home')
@@ -420,8 +436,9 @@ def airline_update_flight(request, flight_id):
 #these three will not work yet due to there not being a way to delete a customer but not a user. Leaving this as a template for later
 @login_required()
 def add_customer_admin(request):
-    admin_role = models.Account_Role.objects.get(role_name='Admin')
-    if request.user.account_role != admin_role:
+    # admin_role = models.Account_Role.objects.get(role_name='Admin')
+    # if request.user.account_role != admin_role:
+    if request.user.account_role != models.Account_Role.objects.get(role_name='Airline'):
         return HttpResponse('You are not logged in as an Admin. Please login')
 
     message = None
@@ -429,8 +446,9 @@ def add_customer_admin(request):
 
 @login_required()
 def add_airline(request, customer_id):
-    admin_role = models.Account_Role.objects.get(role_name='Admin')
-    if request.user.account_role != admin_role:
+    # admin_role = models.Account_Role.objects.get(role_name='Admin')
+    # if request.user.account_role != admin_role:
+    if request.user.account_role != models.Account_Role.objects.get(role_name='Airline'):
         return HttpResponse('You are not logged in as an Admin. Please login')
 
     #airlineform = forms.AirlineForm(request.POST or None)
@@ -447,8 +465,9 @@ def add_airline(request, customer_id):
 
 @login_required()
 def add_admin_from_airline(request, airline_id):
-    admin_role = models.Account_Role.objects.get(role_name='Admin')
-    if request.user.account_role != admin_role:
+    # admin_role = models.Account_Role.objects.get(role_name='Admin')
+    # if request.user.account_role != admin_role:
+    if request.user.account_role != models.Account_Role.objects.get(role_name='Airline'):
         return HttpResponse('You are not logged in as an Admin. Please login')
 
     message = None
@@ -484,31 +503,30 @@ def update_account(request):
 
 @login_required
 def add_ticket(request):
-    if request.user.is_authenticated:
 
-        customer = models.Customer.objects.get(account_id = request.user.id )
-        message = None
 
-        new_ticket_form = forms.NewTicketForm(request.POST)
-        if request.method =='POST':
-            if new_ticket_form.is_valid():
-            # if models.Flight_Ticket.filter(account_id = customer.id):
+    customer = models.Customer.objects.get(account_id = request.user.id )
+    message = None
 
-                CustomerFancade.add_ticket(new_ticket_form.cleaned_data , customer.id)
-                message = 'Ticket added successfully'
-        context = {
-            'form': new_ticket_form,
-            'message': message,
-            'title': "Add ticket",
-            'button': 'add',
-            'extension': context_ext(request)
+    new_ticket_form = forms.NewTicketForm(request.POST)
+    if request.method =='POST':
+        if new_ticket_form.is_valid():
+        # if models.Flight_Ticket.filter(account_id = customer.id):
 
-            }
-        # return render(request, 'add_ticket.html', context)
-        return render(request, 'form_template.html', context)
-    
-    else:
-        return redirect('home')
+            CustomerFancade.add_ticket(new_ticket_form.cleaned_data , customer.id)
+            message = 'Ticket added successfully'
+    context = {
+        'form': new_ticket_form,
+        'message': message,
+        'title': "Add ticket",
+        'button': 'add',
+        'extension': context_ext(request)
+
+        }
+    # return render(request, 'add_ticket.html', context)
+    return render(request, 'form_template.html', context)
+
+
 
 
 
@@ -587,9 +605,10 @@ def user_login(request):
 def logout(request):
     if request.user.is_authenticated:
         auth.logout(request)
-        return render(request,'logged_out.html')
-    else:
-        return redirect('home')
+        # return redirect('home')
+        # return render(request,'logged_out.html')
+    # else:
+    return redirect('home')
 
 
 
