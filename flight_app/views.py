@@ -69,25 +69,9 @@ def on_login(request):
         account_id = request.user.id
         account_type = request.user.account_role
 
-        if request.user.is_superuser:
-            
-            context = {
-            'name': 'superuser',
-            'update_func': 'False'
-            }
-
-            # return render(request, 'admin_home.html', context)
+        if request.user.is_superuser or request.user.is_admin: 
             return view_all_customers(request)
-        elif request.user.is_admin:
-            return view_all_customers(request)
-            # context = {
-            #     'name': models.Administrator.objects.get(account_id = request.user.id).first_name,
-            #     'update_func': 'True'
-            # }            
             
-            # return render(request, 'admin_home.html', context)
-
-
         elif account_type == models.Account_Role.objects.get(role_name='Customer'):
           account = models.Customer.objects.get(account_id = account_id).first_name
           return get_my_tickets(request)
@@ -95,18 +79,6 @@ def on_login(request):
         elif account_type == models.Account_Role.objects.get(role_name = 'Airline'):
             account = models.Airline.objects.get(account_id = account_id).name
             return view_flights_by_airline(request)
-
-
-
-
-        
-        # return render(request, 'admin_home.html', context)
-        # context = {
-
-        #     'account': account,
-        #     'account_type': account_type
-        # }
-        # return render(request, context_ext(request), context)
 
     return redirect('login')
 
@@ -651,14 +623,11 @@ def add_ticket(request):
 
 
 
-
 @login_required
 def get_my_tickets(request):
     customer = models.Customer.objects.get(account_id = request.user.id)
     all_my_tickets = CustomerFancade.get_my_tickets(customer.id)
-    # fli = models.Flight.objects.get(id = all_my_tickets.flight)
     
-  
     return render(request, "get_my_tickets.html", {'all_tickets': all_my_tickets})
 
 
@@ -672,7 +641,8 @@ def remove_ticket(request):
         if request.method =='POST':
             if form.is_valid():
                 CustomerFancade.remove_ticket(form.cleaned_data)   
-       
+
+
         context = {
             'form':form,
             'title': "Remove Ticket", 
@@ -684,6 +654,8 @@ def remove_ticket(request):
         return render(request, 'form_template.html', context)
     else:
         return redirect('home')
+
+
 
 
 @login_required
