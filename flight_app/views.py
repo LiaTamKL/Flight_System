@@ -423,7 +423,7 @@ def airline_update_flight(request, flight_id):
     return render(request, 'form_template.html', context)
 
 
-#these three will not work yet due to there not being a way to delete a customer but not a user. Leaving this as a template for later
+#takes user account, makes it a customer and deletes airline/admin account
 @login_required()
 def add_customer_admin(request, account):
     if not (request.user.is_admin or request.user.is_superuser):
@@ -447,6 +447,7 @@ def add_customer_admin(request, account):
     }
     return render(request, 'form_template.html', context)
 
+#takes user account, makes it an airline and deletes customer/admin account
 @login_required()
 def add_airline(request, account):
     if not (request.user.is_admin or request.user.is_superuser):
@@ -471,6 +472,8 @@ def add_airline(request, account):
 #takes user account, makes it an admin and deletes customer/airline account
 @login_required()
 def add_admin(request, account):
+    if not (request.user.is_admin or request.user.is_superuser):
+        return HttpResponse('You are not logged in as an Admin. Please login')
     user = AdministratorFuncade.get_by_username(account)
     if user['account_role'] == 'Airline':
         form = forms.AdminUpdateForm(request.POST or None)
@@ -488,8 +491,15 @@ def add_admin(request, account):
         return redirect('admin home')
     else: return HttpResponse('This is already an Admin!')
 
+@login_required()
+def search_user(request):
+    if not (request.user.is_admin or request.user.is_superuser):
+        return HttpResponse('You are not logged in as an Admin. Please login')
 
-
+@login_required()
+def add_country(request):
+    if not (request.user.is_admin or request.user.is_superuser):
+        return HttpResponse('You are not logged in as an Admin. Please login')
 
 
 @login_required()
