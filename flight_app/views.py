@@ -530,12 +530,13 @@ def add_admin(request, account):
 def search_user(request):
     if not (request.user.is_admin or request.user.is_superuser):
         return HttpResponse('You are not logged in as an Admin. Please login')
+    pass
 
 @login_required()
 def add_country(request):
     if not (request.user.is_admin or request.user.is_superuser):
         return HttpResponse('You are not logged in as an Admin. Please login')
-
+    pass
 
 @login_required()
 def update_account(request):
