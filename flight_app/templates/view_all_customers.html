@@ -1,8 +1,9 @@
 {% extends 'admin_home.html' %}
-{% block content %}
-<style>
-    </style>   
-               
+
+{% block navbar %}
+    {% with name='poopie' %}
+        {{ block.super }}
+    {% endwith %}
 
 <div>
         <div class="card text-center">

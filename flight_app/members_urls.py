@@ -6,13 +6,13 @@ from django.shortcuts import redirect
 
 
 
-
 urlpatterns = [
     path('', lambda request: redirect('home/', permanent=True)),
     # path('flight_app/members/', lambda request: redirect('home/', permanent=True)),
 
 
-    path('home/',views.members_homepage, name='members home'),   
+    path('home/',views.on_login, name='members home'),   
+
     path('tickets/add/',views.add_ticket, name='add tickets'),
     path('tickets/remove/', views.remove_ticket, name='remove tickets'),
     path('tickets/all/', views.get_my_tickets, name='view all tickets'),
