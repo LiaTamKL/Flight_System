@@ -13,15 +13,15 @@ urlpatterns = [
     #customers
     path('home/', views.view_all_customers, name="admin home"),
     path('delete/<account>',views.delete_user_admin, name="delete user"),
-    path('add_from_customer/<account>', views.add_admin_from_customer, name="admin from customer"),
-    
+    #path('add_from_customer/<account>', views.add_admin, name="admin from customer"),
+    path('add_customer/<account>', views.add_customer_admin, name='add as customer'),
 
     #airlines
     path('airline/all/', views.view_all_airlines, name="view all airlines"),
-    path('airline/add/', views.add_airline, name="add airlines"),
+    path('airline/add/<account>', views.add_airline, name="add airline"),
 
     #administrators
-     path('admins/add/<account>', views.add_admin_from_customer, name="add admin"),
+     path('admins/add/<account>', views.add_admin, name="add admin"),
      path('admins/all', views.view_all_admins, name='view all admins'),
 
     path('country/all/', views.view_all_countries, name="view all countries"),
