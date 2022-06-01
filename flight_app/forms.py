@@ -280,7 +280,8 @@ class NewFlightForm(forms.ModelForm):
             raise forms.ValidationError('A landing must be after a departure')
         return landing
 
-
+class SearchByUsername(forms.ModelForm):
+    username = forms.ModelChoiceField(queryset=models.Account.objects.all(), required=False , label='',)
 
 
 # do not use tags simular to bulit in functions

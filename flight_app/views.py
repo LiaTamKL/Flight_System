@@ -339,34 +339,37 @@ def view_all_customers(request):
     context = {'customers':customers, 'extension': context_ext(request)}
     return render(request, 'view_all_customers.html', context)
 
-
-@login_required()
-def delete_customer(request, customer_id):
-    # admin_role = models.Account_Role.objects.get(role_name='Admin')
-    # if request.user.account_role != admin_role:
-
+@login_required
+def view_all_admins(request):
     if not (request.user.is_admin or request.user.is_superuser):
         return HttpResponse('You are not logged in as an Admin. Please login')
-    AdministratorFuncade.remove_customer(customer_id)
+    admins = AdministratorFuncade.get_all_admins(request.user)
+    context = {'users':admins, 'type':'Admins', 'extension': context_ext(request)}
+    return render(request, 'view_all.html', context)
+
+@login_required
+def view_all_airlines(request):
+    if not (request.user.is_admin or request.user.is_superuser):
+        return HttpResponse('You are not logged in as an Admin. Please login')
+    airlines = AdministratorFuncade.get_all_airlines()
+    context = {'users':airlines, 'type':'Airlines', 'extension': context_ext(request)}
+    return render(request, 'view_all.html', context)
+
+#takes user account, gets it by username, deletes account and associated details
+@login_required()
+def delete_user_admin(request, account):
+    if not (request.user.is_admin or request.user.is_superuser):
+        return HttpResponse('You are not logged in as an Admin. Please login')
+    acc = AdministratorFuncade.get_by_username(account)
+    print(acc)
+    if acc['account_role'] == 'Customer':
+        AdministratorFuncade.remove_customer(acc['user'])
+    elif acc['account_role'] == 'Airline':
+        AdministratorFuncade.remove_airline(acc['user'])
+    elif acc['account_role'] == 'Admin':
+        AdministratorFuncade.remove_admin(acc['user'])
+    AdministratorFuncade.remove_account(acc['account'])
     return redirect('admin home')
-
-@login_required()
-def delete_airline(request, airline_id):
-    # admin_role = models.Account_Role.objects.get(role_name='Admin')
-    # if request.user.account_role != admin_role:
-    if not (request.user.is_admin or request.user.is_superuser):
-        return HttpResponse('You are not logged in as an Admin. Please login')
-    AdministratorFuncade.remove_airline(airline_id)
-    return HttpResponse(f'Airline #{airline_id} removed successfully')
-
-@login_required()
-def delete_admin(request, admin_id):
-    # admin_role = models.Account_Role.objects.get(role_name='Admin')
-    # if request.user.account_role != admin_role:
-    if not (request.user.is_admin or request.user.is_superuser):
-        return HttpResponse('You are not logged in as an Admin. Please login')
-    AdministratorFuncade.remove_admin(admin_id)
-    return HttpResponse(f'Admin #{admin_id} removed successfully')
 
 @login_required()
 def add_admin_from_customer(request, account):
@@ -471,6 +474,8 @@ def add_admin_from_airline(request, airline_id):
         return HttpResponse('You are not logged in as an Admin. Please login')
 
     message = None
+
+
 
 
 
