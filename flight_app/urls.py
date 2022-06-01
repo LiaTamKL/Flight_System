@@ -5,7 +5,7 @@ from django.shortcuts import redirect
 urlpatterns = [
     path('', lambda request: redirect('home/', permanent=True)),
     path('home/', views.homeview, name='home') ,
-    path('', lambda request: redirect('home/', permanent=True)),
+
     path('admin/', lambda request: redirect('/admin/login/', permanent=True)),
     
     path('members/', include('flight_app.members_urls')),

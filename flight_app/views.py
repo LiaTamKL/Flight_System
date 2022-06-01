@@ -26,6 +26,29 @@ def test(request):
 #     # return render(request,'members_home.html')
 
 
+def user_login(request):
+    context = {}
+    logged = False
+    #data = data=request.POST is the only way to get AuthenticationForm to pass
+    new_login = forms.Login(data=request.POST)
+
+    if request.method == 'POST':
+        if new_login.is_valid():
+            logged = AnonymusFancade.login(request, new_login.cleaned_data)
+            if logged:
+                return redirect('home')
+            else:
+           
+                raise PermissionDenied()
+        else:
+            context['login_form'] = new_login 
+            # return render(request, 'form_test.html', {'form':new_login})
+    else:
+        new_login = forms.Login()
+        context['login_form'] = new_login 
+
+    return render(request, 'login_page.html', context)
+
 
 def homeview(request):
 
@@ -37,7 +60,10 @@ def homeview(request):
     return render(request, 'anony_home.html')
 
 
-def members_homepage(request):
+
+
+
+def on_login(request):
     if request.user.is_authenticated:
         # account_type_lst = ['Customer', 'Airline']
         account_id = request.user.id
@@ -50,14 +76,16 @@ def members_homepage(request):
             'update_func': 'False'
             }
 
-            return render(request, 'admin_home.html', context)
+            # return render(request, 'admin_home.html', context)
+            return view_all_customers(request)
         elif request.user.is_admin:
-            context = {
-                'name': models.Administrator.objects.get(account_id = request.user.id).first_name,
-                'update_func': 'True'
-            }            
+            return view_all_customers(request)
+            # context = {
+            #     'name': models.Administrator.objects.get(account_id = request.user.id).first_name,
+            #     'update_func': 'True'
+            # }            
             
-            return render(request, 'admin_home.html', context)
+            # return render(request, 'admin_home.html', context)
 
 
         elif account_type == models.Account_Role.objects.get(role_name='Customer'):
@@ -68,7 +96,9 @@ def members_homepage(request):
             account = models.Airline.objects.get(account_id = account_id).name
             return view_flights_by_airline(request)
 
-        
+
+
+
         
         # return render(request, 'admin_home.html', context)
         # context = {
@@ -79,6 +109,9 @@ def members_homepage(request):
         # return render(request, context_ext(request), context)
 
     return redirect('login')
+
+
+
 
 
 
@@ -96,6 +129,8 @@ def context_ext(request):
         return 'airline_home.html'
 
 
+def user_ui(request):
+    request.account
 
 
 def view_all_flights (request):
@@ -664,28 +699,7 @@ def remove_specific_ticket(request, ticket_id):
 
 
 #cannot be named 'login'
-def user_login(request):
-    context = {}
-    logged = False
-    #data = data=request.POST is the only way to get AuthenticationForm to pass
-    new_login = forms.Login(data=request.POST)
 
-    if request.method == 'POST':
-        if new_login.is_valid():
-            logged = AnonymusFancade.login(request, new_login.cleaned_data)
-            if logged:
-                return redirect('home')
-            else:
-           
-                raise PermissionDenied()
-        else:
-            context['login_form'] = new_login 
-            # return render(request, 'form_test.html', {'form':new_login})
-    else:
-        new_login = forms.Login()
-        context['login_form'] = new_login 
-
-    return render(request, 'login_page.html', context)
 
 
 def logout(request):
