@@ -17,9 +17,9 @@
         </br>
         <p class="mb-1">Lives in {{customer.address}}. Phone Number: {{customer.phone_number}}</p>
         <p class="mb-1">Email: {{customer.account.email}}</p>
-        <a href="{% url 'admin from customer' customer.account %}" class="btn btn-primary btn-sm">Add as Admin</a>
-        <a href="#" class="btn btn-primary btn-sm">Add as Airline</a>
-        <a href="{% url 'delete customer' customer.pk %}" class="btn btn-danger btn-sm">Delete</a>
+        <a href="{% url 'add admin' customer.account %}" class="btn btn-primary btn-sm">Add as Admin</a>
+        <a href="{% url 'add airline' customer.account %}" class="btn btn-primary btn-sm">Add as Airline</a>
+        <a href="{% url 'delete user' customer.account %}" class="btn btn-danger btn-sm">Delete</a>
         </div>
     {%endfor%}
 {% endblock %}

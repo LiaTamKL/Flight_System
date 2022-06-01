@@ -36,11 +36,7 @@ class AdministratorFuncade(BaseFuncade):
 
 
     #receives an airline id, deletes said airline and their flights and tickets, returns the account
-    def remove_airline(airline_id):
-        try:
-            airline = Airline.objects.get(pk = airline_id)
-        except Airline.DoesNotExist:
-            raise Http404("Airline does not exist")
+    def remove_airline(airline):
         flights =Flight.objects.filter(airline=airline)
         for flight in flights:
             Airline_Facade.remove_flight(flight.id)
@@ -49,11 +45,7 @@ class AdministratorFuncade(BaseFuncade):
         return a
 
     #receives a customer id, deletes said customer and their tickets, returns the account
-    def remove_customer(customer_id):
-        try:
-            customer = Customer.objects.get(pk = customer_id)
-        except Customer.DoesNotExist:
-            raise Http404("Customer does not exist")
+    def remove_customer(customer):
         tickets =Flight_Ticket.objects.filter(customer=customer)
         for ticket in tickets:
             ticket.delete()
@@ -66,31 +58,27 @@ class AdministratorFuncade(BaseFuncade):
         account.delete()
 
     #receives a admin id, deletes said admin, returns the account
-    def remove_admin(admin_id):
-        try:
-            admin = Administrator.objects.get(pk = admin_id)
-        except Administrator.DoesNotExist:
-            raise Http404("Admin does not exist")
+    def remove_admin(admin):
         a = admin.account
         admin.delete()
         return a
 
     #receives clean_data form, adds an airline based on that to the database and deletes old customer/admin details.
-    def add_airline(form):
-            account = Account.objects.get(pk=form['user_id'])
+    def add_airline(form, account):
             if account.account_role == Account_Role.objects.get(role_name='Admin'):
                 account.is_admin = False
                 account.is_staff = False
                 admin = Administrator.objects.get(account=account)
-                AdministratorFuncade.remove_admin(admin.id)
+                AdministratorFuncade.remove_admin(admin)
             else:
-                customer = Administrator.objects.get(account=account)
-                AdministratorFuncade.remove_customer(customer.id)
+                customer = Customer.objects.get(account=account)
+                AdministratorFuncade.remove_customer(customer)
             account.account_role = Account_Role.objects.get(role_name='Airline')
             airline = Airline()
             airline.name = form['name']
             airline.country = form['country']
-            airline.account = form['user_id']
+            airline.account = account
+            account.save()
             airline.save()
 
     #takes account and form (form can be left empty if its a customer account), makes an admin account and deletes old airline/customer details
@@ -99,7 +87,7 @@ class AdministratorFuncade(BaseFuncade):
             customer = Customer.objects.get(account=account)
             first_name = customer.first_name
             last_name = customer.last_name
-            AdministratorFuncade.remove_customer(customer.id)
+            AdministratorFuncade.remove_customer(customer)
         elif account.account_role == Account_Role.objects.get(role_name='Airline'):
                 airline = Airline.objects.get(account = account)
                 first_name = form['first_name']
@@ -126,7 +114,7 @@ class AdministratorFuncade(BaseFuncade):
             last_name = admin.last_name
             account.is_admin = False
             account.is_staff = False
-            AdministratorFuncade.remove_admin(admin.id)
+            AdministratorFuncade.remove_admin(admin)
         elif account.account_role == Account_Role.objects.get(role_name='Airline'):
                 airline = Airline.objects.get(account = account)
                 first_name = form['first_name']
@@ -151,6 +139,7 @@ class AdministratorFuncade(BaseFuncade):
     def get_by_username(username):
         try:
             account = Account.objects.get(username=username)
+
         except:
             raise Http404("Account does not exist")
         if account.account_role == Account_Role.objects.get(role_name='Admin'):
@@ -162,18 +151,25 @@ class AdministratorFuncade(BaseFuncade):
         elif account.account_role == Account_Role.objects.get(role_name='Customer'):
             user = Customer.objects.get(account=account)
             role = "Customer"
+        elif account.is_superuser == True:
+            user = None
+            role = 'Superuser'
         else:
             raise Http404("Account seems to not be linked to any profile. Please contact an administrator")
         
         return {'user':user, 'account':account, 'account_role':role}
 
     #takes form and an existing account, updates the admin attached to it with form data
-    def update_airline(form, account, emailform):
+    def update_admin(form, account, emailform):
         admin = Administrator.objects.get(account=account)
         admin.first_name = form['first_name']
         admin.last_name = form['last_name']
         account.email = emailform['email']
         admin.save()
+        account.save()
+
+    def update_account(account, form):
+        account.email = form['email']
         account.save()
 
 ############################################################

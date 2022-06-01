@@ -198,16 +198,12 @@ class NewCustomerForm(forms.ModelForm):
     def clean_credit_card_no(self):
         credit_card = self.cleaned_data['credit_card_no']
         phone = self.cleaned_data['phone_number']
-        print(credit_card)
-        print(phone)
         try:
               cus = models.Customer.objects.get(credit_card_no=credit_card)
-              print('hello')
               raise forms.ValidationError('User with this credit card number already exists')
         except:
               try:
                   cus = models.Customer.objects.get(phone_number=phone)
-                  print('hi')
                   raise forms.ValidationError('User with this phonenumber already exists')
               except:
                   return credit_card
@@ -216,6 +212,20 @@ class NewCustomerForm(forms.ModelForm):
     #     customer_id = self.cleaned_data['customer_id']
     #     return customer_id
 
+class AirlineUpdateForm(forms.ModelForm):
+    name = forms.CharField(max_length=50 , required=True, label="Airline name")
+    country = forms.ModelChoiceField(queryset=models.Country.objects.all(), required=True , label='country')
+    class Meta:
+        model = models.Airline
+        fields = ['name', 'country']
+
+
+class AdminUpdateForm(forms.ModelForm):
+    first_name = forms.CharField(max_length=50 , required=True, label="Yo name ")
+    last_name = forms.CharField(max_length=50 , required=True , label= "Yo fam name") 
+    class Meta:
+        model = models.Administrator
+        fields = ['first_name', 'last_name']
 
 class AccountUpdateForm(forms.ModelForm):
     class Meta:
@@ -230,6 +240,27 @@ class AccountUpdateForm(forms.ModelForm):
             return email
         raise forms.ValidationError(f'email: {email} is already in use')
     
+class NewCustomerfromAdminForm(forms.ModelForm):
+    address = forms.CharField(max_length=255 ,  required=True, label="Where Yo live fool?")
+    phone_number = forms.IntegerField(max_value = 9999999999, label="Yo phone , real one this time ")
+    credit_card_no = forms.IntegerField(max_value = 9999999999999999, label="Credit card , you can trust me..., to buy some expensive shit!") 
+
+    class Meta:
+        model = models.Customer
+        fields = ['address', 'phone_number', 'credit_card_no']
+    
+    def clean_credit_card_no(self):
+        credit_card = self.cleaned_data['credit_card_no']
+        phone = self.cleaned_data['phone_number']
+        try:
+              cus = models.Customer.objects.get(credit_card_no=credit_card)
+              raise forms.ValidationError('User with this credit card number already exists')
+        except:
+              try:
+                  cus = models.Customer.objects.get(phone_number=phone)
+                  raise forms.ValidationError('User with this phonenumber already exists')
+              except:
+                  return credit_card
 
 
 class NewFlightForm(forms.ModelForm):
@@ -266,7 +297,8 @@ class NewFlightForm(forms.ModelForm):
             raise forms.ValidationError('A landing must be after a departure')
         return landing
 
-
+class SearchByUsername(forms.ModelForm):
+    username = forms.ModelChoiceField(queryset=models.Account.objects.all(), required=False , label='',)
 
 
 # do not use tags simular to bulit in functions

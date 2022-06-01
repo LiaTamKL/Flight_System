@@ -16,7 +16,7 @@ urlpatterns = [
     path('tickets/add/',views.add_ticket, name='add tickets'),
     path('tickets/remove/', views.remove_ticket, name='remove tickets'),
     path('tickets/all/', views.get_my_tickets, name='view all tickets'),
-    path('update_account/', views.update_account, name='update account'),
+    path('update_account/', views.update_user, name='update account'),
     path('tickets/remove_spc/<ticket_id>', views.remove_specific_ticket, name='remove specific ticket'),
     
 

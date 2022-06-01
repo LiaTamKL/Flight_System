@@ -374,47 +374,37 @@ def view_all_customers(request):
     context = {'customers':customers, 'extension': context_ext(request)}
     return render(request, 'view_all_customers.html', context)
 
-
-@login_required()
-def delete_customer(request, customer_id):
-    # admin_role = models.Account_Role.objects.get(role_name='Admin')
-    # if request.user.account_role != admin_role:
-
+@login_required
+def view_all_admins(request):
     if not (request.user.is_admin or request.user.is_superuser):
         return HttpResponse('You are not logged in as an Admin. Please login')
-    AdministratorFuncade.remove_customer(customer_id)
+    admins = AdministratorFuncade.get_all_admins(request.user)
+    context = {'users':admins, 'type':'Admins', 'extension': context_ext(request)}
+    return render(request, 'view_all.html', context)
+
+@login_required
+def view_all_airlines(request):
+    if not (request.user.is_admin or request.user.is_superuser):
+        return HttpResponse('You are not logged in as an Admin. Please login')
+    airlines = AdministratorFuncade.get_all_airlines()
+    context = {'users':airlines, 'type':'Airlines', 'extension': context_ext(request)}
+    return render(request, 'view_all.html', context)
+
+#takes user account, gets it by username, deletes account and associated details
+@login_required()
+def delete_user_admin(request, account):
+    if not (request.user.is_admin or request.user.is_superuser):
+        return HttpResponse('You are not logged in as an Admin. Please login')
+    acc = AdministratorFuncade.get_by_username(account)
+    print(acc)
+    if acc['account_role'] == 'Customer':
+        AdministratorFuncade.remove_customer(acc['user'])
+    elif acc['account_role'] == 'Airline':
+        AdministratorFuncade.remove_airline(acc['user'])
+    elif acc['account_role'] == 'Admin':
+        AdministratorFuncade.remove_admin(acc['user'])
+    AdministratorFuncade.remove_account(acc['account'])
     return redirect('admin home')
-
-@login_required()
-def delete_airline(request, airline_id):
-    # admin_role = models.Account_Role.objects.get(role_name='Admin')
-    # if request.user.account_role != admin_role:
-    if not (request.user.is_admin or request.user.is_superuser):
-        return HttpResponse('You are not logged in as an Admin. Please login')
-    AdministratorFuncade.remove_airline(airline_id)
-    return HttpResponse(f'Airline #{airline_id} removed successfully')
-
-@login_required()
-def delete_admin(request, admin_id):
-    # admin_role = models.Account_Role.objects.get(role_name='Admin')
-    # if request.user.account_role != admin_role:
-    if not (request.user.is_admin or request.user.is_superuser):
-        return HttpResponse('You are not logged in as an Admin. Please login')
-    AdministratorFuncade.remove_admin(admin_id)
-    return HttpResponse(f'Admin #{admin_id} removed successfully')
-
-@login_required()
-def add_admin_from_customer(request, account):
-    # admin_role = models.Account_Role.objects.get(role_name='Admin')
-    # if request.user.account_role != admin_role and not request.user.is_superuser:
-    account = (AdministratorFuncade.get_by_username(account))['account']
-    if not (request.user.is_admin or request.user.is_superuser):
-        return HttpResponse('You are not logged in as an Admin. Please login')
-    AdministratorFuncade.add_admin(account)
-    return redirect('admin home')
-
-
-
 
 #lets airline fill in form for new flight
 @login_required()
@@ -470,42 +460,70 @@ def airline_update_flight(request, flight_id):
 
 #these three will not work yet due to there not being a way to delete a customer but not a user. Leaving this as a template for later
 @login_required()
-def add_customer_admin(request):
-    # admin_role = models.Account_Role.objects.get(role_name='Admin')
-    # if request.user.account_role != admin_role:
-    if request.user.account_role != models.Account_Role.objects.get(role_name='Airline'):
+def add_customer_admin(request, account):
+    if not (request.user.is_admin or request.user.is_superuser):
         return HttpResponse('You are not logged in as an Admin. Please login')
+    user = AdministratorFuncade.get_by_username(account)
+    if user['account_role'] == 'Airline':
+        form = forms.NewCustomerForm(request.POST or None)
+    elif user['account_role'] == 'Admin':
+        form = forms.NewCustomerfromAdminForm(request.POST or None)
+    elif user['account_role'] == 'SuperUser':
+        return HttpResponse('The Superuser may not be changed')
+    else: return HttpResponse('This is already a customer!')
 
-    message = None
-
+    if request.method =='POST':
+        if form.is_valid():
+            AdministratorFuncade.add_customer_admin_command(account=user['account'], form=form.cleaned_data)
+            return redirect('home')
+    context = {
+        'form': form,
+        'extension': context_ext(request)
+    }
+    return render(request, 'form_template.html', context)
 
 @login_required()
-def add_airline(request, customer_id):
-    # admin_role = models.Account_Role.objects.get(role_name='Admin')
-    # if request.user.account_role != admin_role:
-    if request.user.account_role != models.Account_Role.objects.get(role_name='Airline'):
+def add_airline(request, account):
+    if not (request.user.is_admin or request.user.is_superuser):
         return HttpResponse('You are not logged in as an Admin. Please login')
+    user = AdministratorFuncade.get_by_username(account)
+    if user['account_role'] == 'Airline':
+        return HttpResponse('User is already an airline!')
+    elif user['account_role'] == 'SuperUser':
+        return HttpResponse('The Superuser may not be changed')
+    
+    form = forms.AirlineUpdateForm(request.POST or None)
+    if request.method =='POST':
+        if form.is_valid():
+            AdministratorFuncade.add_airline(form=form.cleaned_data, account=user['account'])
+            return redirect("view all airlines")
+    context = {
+        'form': form,
+        'extension': context_ext(request)
+    }
+    return render(request, 'form_template.html', context)
 
-    #airlineform = forms.AirlineForm(request.POST or None)
-    message = None
-    #if request.method =='POST':
-    #    if airlineform.is_valid():
-    #        AdministratorFuncade.add_airline(airlineform.cleaned_data)
-    #        message = 'Airline added successfully'
-    #context = {
-    #    'form': airlineform,
-    #    'message': message
-    #}
-    #return render(request, 'Add_Airline.html', context)
-
+#takes user account, makes it an admin and deletes customer/airline account
 @login_required()
-def add_admin_from_airline(request, airline_id):
-    # admin_role = models.Account_Role.objects.get(role_name='Admin')
-    # if request.user.account_role != admin_role:
-    if request.user.account_role != models.Account_Role.objects.get(role_name='Airline'):
-        return HttpResponse('You are not logged in as an Admin. Please login')
+def add_admin(request, account):
+    user = AdministratorFuncade.get_by_username(account)
+    if user['account_role'] == 'Airline':
+        form = forms.AdminUpdateForm(request.POST or None)
+        if request.method =='POST':
+            if form.is_valid():
+                AdministratorFuncade.add_admin(form=form.cleaned_data, account=user['account'])
+                return redirect("view all admins")
+        context = {
+        'form': form,
+        'extension': context_ext(request)
+            }
+        return render(request, 'form_template.html', context)
+    elif user['account_role'] == 'Customer':
+        AdministratorFuncade.add_admin(account=user['account'])
+        return redirect('admin home')
+    else: return HttpResponse('This is already an Admin!')
 
-    message = None
+
 
 
 
@@ -533,6 +551,64 @@ def update_account(request):
         "button": f"Update the account: {request.user}"
     }
     return render(request, 'register.html', context)
+
+#all in one update function. will update an account no matter its type including superusers
+@login_required()
+def update_user(request):
+    if request.user.account_role == models.Account_Role.objects.get(role_name='Customer'):
+        instance = models.Customer.objects.get(account=request.user)
+        update_check = "customer"
+    elif request.user.account_role == models.Account_Role.objects.get(role_name='Airline'):
+        instance = models.Airline.objects.get(account=request.user)
+        update_check = "airline"
+    elif request.user.is_superuser == True:
+        instance = None
+        update_check = "superuser"
+    elif request.user.is_admin == True:
+        instance = models.Administrator.objects.get(account=request.user)
+        update_check = "admin"
+    else: 
+        raise Http404('Account is missing. Please contact staff.')
+
+    if request.method =='POST':
+        if update_check == "customer": form = forms.NewCustomerForm(request.POST, instance=instance)
+        elif update_check == 'airline': form = forms.AirlineUpdateForm(request.POST, instance=instance)
+        elif update_check == 'admin': form = forms.AdminUpdateForm(request.POST, instance=instance)
+        else: form = None
+
+        emailform = forms.AccountUpdateForm(request.POST, instance=request.user)
+        if emailform.is_valid():
+            if update_check == "superuser":
+                AdministratorFuncade.update_account(account=request.user, form=emailform.cleaned_data)
+                return redirect("home")
+            elif form.is_valid():
+                print(request.user, form.cleaned_data, emailform.cleaned_data)
+                if update_check == "customer": CustomerFancade.update_customer(account=request.user, form=form.cleaned_data, emailform=emailform.cleaned_data)
+                elif update_check == 'airline': Airline_Facade.update_airline(account=request.user, form=form.cleaned_data, emailform=emailform.cleaned_data)
+                elif update_check == 'admin': AdministratorFuncade.update_admin(account=request.user, form=form.cleaned_data, emailform=emailform.cleaned_data)
+                return redirect("home")
+
+    else: 
+        if update_check == "customer": form = forms.NewCustomerForm(instance=instance)
+        elif update_check == 'airline': form = forms.AirlineUpdateForm(instance=instance)
+        elif update_check == 'admin': form = forms.AdminUpdateForm(instance=instance)
+        else: form = None
+        emailform = forms.AccountUpdateForm(instance=request.user)
+    context = {
+        'customer_registration_form':form,
+        'user_registration_form':emailform,
+        'title': f"Update {request.user}", 
+        "button": f"Update the account: {request.user}"
+    }
+    return render(request, 'register.html', context)
+
+
+
+
+
+
+
+
 
 
 
