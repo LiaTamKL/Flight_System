@@ -17,7 +17,7 @@ urlpatterns = [
     path('add_customer/<account>', views.add_customer_admin, name='add as customer'),
 
     #airlines
-    path('airline/all/', views.view_all_airlines, name="view all airlines"),
+    path('airline/all/', views.view_all_airlines_admin, name="view all airlines admin"),
     path('airline/add/<account>', views.add_airline, name="add airline"),
 
     #administrators

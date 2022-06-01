@@ -383,7 +383,7 @@ def view_all_admins(request):
     return render(request, 'view_all.html', context)
 
 @login_required
-def view_all_airlines(request):
+def view_all_airlines_admin(request):
     if not (request.user.is_admin or request.user.is_superuser):
         return HttpResponse('You are not logged in as an Admin. Please login')
     airlines = AdministratorFuncade.get_all_airlines()
@@ -497,7 +497,7 @@ def add_airline(request, account):
     if request.method =='POST':
         if form.is_valid():
             AdministratorFuncade.add_airline(form=form.cleaned_data, account=user['account'])
-            return redirect("view all airlines")
+            return redirect("view all airlines admin")
     context = {
         'form': form,
         'extension': context_ext(request)
