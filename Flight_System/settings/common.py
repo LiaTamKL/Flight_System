@@ -40,10 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'backend.apps.BackendConfig',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -132,6 +134,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'backend.Account'
 
+
+
+
+
 LOGIN_URL= '/backend/login/'
 LOGIN_REDIRECT_URL = '/backend/login/'
 
@@ -169,3 +175,17 @@ LOGGING = {
         },
     },
 }
+
+# Prevent CORS Errors , allowing django accept requests outside the app.  
+# https://www.stackhawk.com/blog/django-cors-guide/
+CORS_ALLOW_ALL_ORIGINS = True
+
+# CORS_ALLOWED_ORIGINS = [
+# "http://localhost:8000",
+# "http://127.0.0.1:8000",
+# ]
+
+# Sets datetime format for all rest_faramework
+REST_FRAMEWORK = {
+    'DATETIME_FORMAT': "%d-%m-%Y,  %H:%M",
+    }

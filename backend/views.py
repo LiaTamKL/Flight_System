@@ -1,6 +1,6 @@
 from django.shortcuts import render ,redirect
-from . import models
-from . import forms
+from .models import *
+from .forms import *
 from .DAL.base_facade import BaseFuncade
 from .DAL.airline_facade import Airline_Facade
 from .DAL.customer_facade import CustomerFancade
@@ -10,7 +10,6 @@ from django.http import HttpResponse, Http404
 from django.core.exceptions import PermissionDenied
 # from django.contrib.auth.hashers import make_password
 from django.db import transaction
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
@@ -18,6 +17,32 @@ from django.contrib import auth
 import datetime
 
 
+
+
+
+##################################################
+############### Testing ##########################
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+
+from .serializers import *
+
+
+@api_view(['GET'])
+def fli(requset):
+    flights =  Flight.objects.all()
+    seralizer = AllFlightsSerializer(flights, many = True)
+    return Response(seralizer.data)
+
+@api_view(['GET'])
+def getfli(requset, id):
+    flight = BaseFuncade.get_flight_by_id(id)
+    seralizer = AllFlightsSerializer(flight, many = False)
+    return Response(seralizer.data)
+
+
+##################################################
+##################################################
 
 
 def test(request):
@@ -30,7 +55,7 @@ def user_login(request):
     context = {}
     logged = False
     #data = data=request.POST is the only way to get AuthenticationForm to pass
-    new_login = forms.Login(data=request.POST)
+    new_login = Login(data=request.POST)
 
     if request.method == 'POST':
         if new_login.is_valid():
@@ -44,7 +69,7 @@ def user_login(request):
             context['login_form'] = new_login 
             # return render(request, 'form_test.html', {'form':new_login})
     else:
-        new_login = forms.Login()
+        new_login = Login()
         context['login_form'] = new_login 
 
     return render(request, 'login_page.html', context)
@@ -72,12 +97,12 @@ def on_login(request):
         if request.user.is_superuser or request.user.is_admin: 
             return view_all_customers(request)
             
-        elif account_type == models.Account_Role.objects.get(role_name='Customer'):
-          account = models.Customer.objects.get(account_id = account_id).first_name
+        elif account_type == Account_Role.objects.get(role_name='Customer'):
+          account = Customer.objects.get(account_id = account_id).first_name
           return get_my_tickets(request)
 
-        elif account_type == models.Account_Role.objects.get(role_name = 'Airline'):
-            account = models.Airline.objects.get(account_id = account_id).name
+        elif account_type == Account_Role.objects.get(role_name = 'Airline'):
+            account = Airline.objects.get(account_id = account_id).name
             return view_flights_by_airline(request)
 
     return redirect('login')
@@ -95,9 +120,9 @@ def context_ext(request):
         return 'anony_home.html'
     if request.user.is_superuser or request.user.is_admin:
         return 'admin_home.html'
-    if account_type == models.Account_Role.objects.get(role_name='Customer'):
+    if account_type == Account_Role.objects.get(role_name='Customer'):
         return "cust_home.html"
-    elif account_type == models.Account_Role.objects.get(role_name = 'Airline'):
+    elif account_type == Account_Role.objects.get(role_name = 'Airline'):
         return 'airline_home.html'
 
 
@@ -151,14 +176,14 @@ def view_all_airlines(request):
 
 
 def view_flights_by_params(request):
-    airline_id_form = forms.flights_by_params(request.POST)   
+    airline_id_form = flights_by_params(request.POST)   
     if request.POST:
         if airline_id_form.is_valid():
             pass
 
         else:
             
-            forms.flights_by_params()
+            flights_by_params()
       
     context = {
         'form':airline_id_form,
@@ -175,14 +200,14 @@ def view_flights_by_params(request):
 
 
 def view_departure_by_country(request, flag = False):
-    form = forms.departure_arrival_flights(request.POST)   
+    form = departure_arrival_flights(request.POST)   
     if request.POST:
         if form.is_valid():
             country_id = form.cleaned_data['country_id']
             furure = datetime.datetime.now() + datetime.timedelta(hours = 12)
 
             if not flag:
-                departure = models.Flight.objects\
+                departure = Flight.objects\
                 .filter(origin_country_id = country_id)\
                 .filter(departure_time__lt = furure)
                 context = {'flight_list': departure, 
@@ -192,7 +217,7 @@ def view_departure_by_country(request, flag = False):
 
 
             else:                
-                arrival = models.Flight.objects\
+                arrival = Flight.objects\
                 .filter(destination_country_id = country_id)\
                 .filter(landing_time__lt = furure)
                 context = {'flight_list': arrival, 
@@ -203,7 +228,7 @@ def view_departure_by_country(request, flag = False):
             return render(request, "flight_disp.html", context)
         else:
             
-            forms.departure_arrival_flights()
+            departure_arrival_flights()
 
 
     context = {'form':form,'extension': context_ext(request),"button": "Search" }
@@ -234,11 +259,11 @@ def context_builder(request,form, title, button):
 
 
 def view_flights_by_airline_cust(request):
-    airline_id_form = forms.airline_by_id(request.POST)   
+    airline_id_form = airline_by_id(request.POST)   
     if request.POST:
         if airline_id_form.is_valid():
 
-            flight_list = models.Flight.objects.filter(airline_id = airline_id_form.cleaned_data['airline_id'])
+            flight_list = Flight.objects.filter(airline_id = airline_id_form.cleaned_data['airline_id'])
 
             context = {
                 'flight_list': flight_list,
@@ -249,7 +274,7 @@ def view_flights_by_airline_cust(request):
 
             return render(request, "flight_disp.html",  context)
         else:
-             forms.airline_by_id()
+             airline_by_id()
     
       
     context = {
@@ -266,10 +291,10 @@ def view_flights_by_airline_cust(request):
 
 def view_airline_by_country(request):
 
-    country_id_form = forms.country_by_id(request.POST)   
+    country_id_form = country_by_id(request.POST)   
     if request.POST:
         if country_id_form.is_valid():
-            airline_list = models.Airline.objects.filter(country_id = country_id_form.cleaned_data['country_id'])
+            airline_list = Airline.objects.filter(country_id = country_id_form.cleaned_data['country_id'])
             context = {
                 'airline_list': airline_list,
                 'title': 'Airline by Country',
@@ -279,7 +304,7 @@ def view_airline_by_country(request):
 
             return render(request, "airline_disp.html", context)
         else:
-             forms.country_by_id()
+             country_by_id()
     
       
     context = {
@@ -299,7 +324,7 @@ def view_airline_by_country(request):
 @login_required()
 def view_flights_by_airline(request):
 
-    airline = models.Airline.objects.filter(account=request.user.id)
+    airline = Airline.objects.filter(account=request.user.id)
     try:
         airline = airline[0]
         flights = Airline_Facade.get_my_flights(airline.id)
@@ -325,9 +350,9 @@ def view_flights_by_airline(request):
 #takes a flight_id, deletes it if you're logged in as the airline that flight belongs to.
 @login_required()
 def delete_flight_for_airline(request, flight_id):
-    if request.user.account_role != models.Account_Role.objects.get(role_name='Airline'):
+    if request.user.account_role != Account_Role.objects.get(role_name='Airline'):
         return HttpResponse('You are not logged in as an Airline. Please login')
-    airline = models.Airline.objects.get(account=request.user)
+    airline = Airline.objects.get(account=request.user)
     
     result = Airline_Facade.remove_flight(flight_id, airline)
     if result == 1:
@@ -336,7 +361,7 @@ def delete_flight_for_airline(request, flight_id):
 #shows all customers (or accounts if we mark in that line). if not admin, doesn't let access
 @login_required()
 def view_all_customers(request):
-    # admin_role = models.Account_Role.objects.get(role_name='Admin')
+    # admin_role = Account_Role.objects.get(role_name='Admin')
     # if request.user.account_role != admin_role:
 
     if not (request.user.is_admin or request.user.is_superuser):
@@ -381,14 +406,14 @@ def delete_user_admin(request, account):
 #lets airline fill in form for new flight
 @login_required()
 def airline_add_flight(request):
-    if request.user.account_role != models.Account_Role.objects.get(role_name='Airline'):
+    if request.user.account_role != Account_Role.objects.get(role_name='Airline'):
         return HttpResponse('You are not logged in as an Airline. Please login')
-    airline = models.Airline.objects.get(account=request.user)
+    airline = Airline.objects.get(account=request.user)
 
-    flightform = forms.NewFlightForm(request.POST or None)
+    flightform = NewFlightForm(request.POST or None)
     if request.method =='POST':
         if flightform.is_valid():
-            flight = models.Flight()
+            flight = Flight()
             Airline_Facade.add_flight(airline.id, flightform.cleaned_data, flight)
             return redirect("airline view flights")
     context = {
@@ -401,9 +426,9 @@ def airline_add_flight(request):
 #takes flight id as peremeter, let's user update said flight. denies them if flight does not exist or user is not the airline for this flight
 @login_required()
 def airline_update_flight(request, flight_id):
-    if request.user.account_role != models.Account_Role.objects.get(role_name='Airline'):
+    if request.user.account_role != Account_Role.objects.get(role_name='Airline'):
         return HttpResponse('You are not logged in as an Airline. Please login')
-    airline = models.Airline.objects.get(account=request.user)
+    airline = Airline.objects.get(account=request.user)
 
     #if flight does not exist, raises http404
     try:
@@ -416,13 +441,13 @@ def airline_update_flight(request, flight_id):
         raise PermissionDenied("This is not your flight! You may not update it")
 
     if request.method =='POST':
-        flightform = forms.NewFlightForm(request.POST, instance=instance)
+        flightform = NewFlightForm(request.POST, instance=instance)
         if flightform.is_valid():
             
             flightform.save()
             #Airline_Facade.update_flight(airline.id, flightform.cleaned_data, instance)
             return redirect("airline view flights")
-    else: flightform = forms.NewFlightForm(instance=instance)
+    else: flightform = NewFlightForm(instance=instance)
     context = {
         'form': flightform,
         'extension': context_ext(request)
@@ -437,9 +462,9 @@ def add_customer_admin(request, account):
         return HttpResponse('You are not logged in as an Admin. Please login')
     user = AdministratorFuncade.get_by_username(account)
     if user['account_role'] == 'Airline':
-        form = forms.NewCustomerForm(request.POST or None)
+        form = NewCustomerForm(request.POST or None)
     elif user['account_role'] == 'Admin':
-        form = forms.NewCustomerfromAdminForm(request.POST or None)
+        form = NewCustomerfromAdminForm(request.POST or None)
     elif user['account_role'] == 'SuperUser':
         return HttpResponse('The Superuser may not be changed')
     else: return HttpResponse('This is already a customer!')
@@ -465,7 +490,7 @@ def add_airline(request, account):
     elif user['account_role'] == 'SuperUser':
         return HttpResponse('The Superuser may not be changed')
     
-    form = forms.AirlineUpdateForm(request.POST or None)
+    form = AirlineUpdateForm(request.POST or None)
     if request.method =='POST':
         if form.is_valid():
             AdministratorFuncade.add_airline(form=form.cleaned_data, account=user['account'])
@@ -483,7 +508,7 @@ def add_admin(request, account):
         return HttpResponse('You are not logged in as an Admin. Please login')
     user = AdministratorFuncade.get_by_username(account)
     if user['account_role'] == 'Airline':
-        form = forms.AdminUpdateForm(request.POST or None)
+        form = AdminUpdateForm(request.POST or None)
         if request.method =='POST':
             if form.is_valid():
                 AdministratorFuncade.add_admin(form=form.cleaned_data, account=user['account'])
@@ -512,21 +537,21 @@ def add_country(request):
 
 @login_required()
 def update_account(request):
-    if request.user.account_role != models.Account_Role.objects.get(role_name='Customer'):
+    if request.user.account_role != Account_Role.objects.get(role_name='Customer'):
         return HttpResponse('You are not logged in as a Customer. Please login')
-    try: instance = models.Customer.objects.get(account=request.user)
+    try: instance = Customer.objects.get(account=request.user)
     except: raise Http404('Customer account does not exist. Please contact an administrator.')
 
     if request.method =='POST':
-        cusform = forms.NewCustomerForm(request.POST, instance=instance)
-        emailform = forms.AccountUpdateForm(request.POST, instance=request.user)
+        cusform = NewCustomerForm(request.POST, instance=instance)
+        emailform = AccountUpdateForm(request.POST, instance=request.user)
         if cusform.is_valid() and emailform.is_valid():
             print(request.user, cusform.cleaned_data, emailform.cleaned_data)
             CustomerFancade.update_customer(account=request.user, form=cusform.cleaned_data, emailform=emailform.cleaned_data)
             return redirect("home")
     else: 
-        cusform = forms.NewCustomerForm(instance = instance)
-        emailform = forms.AccountUpdateForm(instance=request.user)
+        cusform = NewCustomerForm(instance = instance)
+        emailform = AccountUpdateForm(instance=request.user)
     context = {
         'customer_registration_form':cusform,
         'user_registration_form':emailform,
@@ -538,28 +563,28 @@ def update_account(request):
 #all in one update function. will update an account no matter its type including superusers
 @login_required()
 def update_user(request):
-    if request.user.account_role == models.Account_Role.objects.get(role_name='Customer'):
-        instance = models.Customer.objects.get(account=request.user)
+    if request.user.account_role == Account_Role.objects.get(role_name='Customer'):
+        instance = Customer.objects.get(account=request.user)
         update_check = "customer"
-    elif request.user.account_role == models.Account_Role.objects.get(role_name='Airline'):
-        instance = models.Airline.objects.get(account=request.user)
+    elif request.user.account_role == Account_Role.objects.get(role_name='Airline'):
+        instance = Airline.objects.get(account=request.user)
         update_check = "airline"
     elif request.user.is_superuser == True:
         instance = None
         update_check = "superuser"
     elif request.user.is_admin == True:
-        instance = models.Administrator.objects.get(account=request.user)
+        instance = Administrator.objects.get(account=request.user)
         update_check = "admin"
     else: 
         raise Http404('Account is missing. Please contact staff.')
 
     if request.method =='POST':
-        if update_check == "customer": form = forms.NewCustomerForm(request.POST, instance=instance)
-        elif update_check == 'airline': form = forms.AirlineUpdateForm(request.POST, instance=instance)
-        elif update_check == 'admin': form = forms.AdminUpdateForm(request.POST, instance=instance)
+        if update_check == "customer": form = NewCustomerForm(request.POST, instance=instance)
+        elif update_check == 'airline': form = AirlineUpdateForm(request.POST, instance=instance)
+        elif update_check == 'admin': form = AdminUpdateForm(request.POST, instance=instance)
         else: form = None
 
-        emailform = forms.AccountUpdateForm(request.POST, instance=request.user)
+        emailform = AccountUpdateForm(request.POST, instance=request.user)
         if emailform.is_valid():
             if update_check == "superuser":
                 AdministratorFuncade.update_account(account=request.user, form=emailform.cleaned_data)
@@ -572,11 +597,11 @@ def update_user(request):
                 return redirect("home")
 
     else: 
-        if update_check == "customer": form = forms.NewCustomerForm(instance=instance)
-        elif update_check == 'airline': form = forms.AirlineUpdateForm(instance=instance)
-        elif update_check == 'admin': form = forms.AdminUpdateForm(instance=instance)
+        if update_check == "customer": form = NewCustomerForm(instance=instance)
+        elif update_check == 'airline': form = AirlineUpdateForm(instance=instance)
+        elif update_check == 'admin': form = AdminUpdateForm(instance=instance)
         else: form = None
-        emailform = forms.AccountUpdateForm(instance=request.user)
+        emailform = AccountUpdateForm(instance=request.user)
     context = {
         'customer_registration_form':form,
         'user_registration_form':emailform,
@@ -599,13 +624,13 @@ def update_user(request):
 def add_ticket(request):
 
 
-    customer = models.Customer.objects.get(account_id = request.user.id )
+    customer = Customer.objects.get(account_id = request.user.id )
     message = None
 
-    new_ticket_form = forms.NewTicketForm(request.POST)
+    new_ticket_form = NewTicketForm(request.POST)
     if request.method =='POST':
         if new_ticket_form.is_valid():
-        # if models.Flight_Ticket.filter(account_id = customer.id):
+        # if Flight_Ticket.filter(account_id = customer.id):
 
             CustomerFancade.add_ticket(new_ticket_form.cleaned_data , customer.id)
             message = 'Ticket added successfully'
@@ -625,7 +650,7 @@ def add_ticket(request):
 
 @login_required
 def get_my_tickets(request):
-    customer = models.Customer.objects.get(account_id = request.user.id)
+    customer = Customer.objects.get(account_id = request.user.id)
     all_my_tickets = CustomerFancade.get_my_tickets(customer.id)
     
     return render(request, "get_my_tickets.html", {'all_tickets': all_my_tickets})
@@ -636,8 +661,8 @@ def get_my_tickets(request):
 def remove_ticket(request):
     context= {}
     if request.user.is_authenticated:
-        customer = models.Customer.objects.get(account_id = request.user.id)
-        form = forms.RemoveTicket(customer.id, request.POST )
+        customer = Customer.objects.get(account_id = request.user.id)
+        form = RemoveTicket(customer.id, request.POST )
         if request.method =='POST':
             if form.is_valid():
                 CustomerFancade.remove_ticket(form.cleaned_data)   
@@ -660,8 +685,8 @@ def remove_ticket(request):
 
 @login_required
 def remove_specific_ticket(request, ticket_id):
-    customer = models.Customer.objects.get(account_id = request.user)
-    ticket = models.Flight_Ticket.objects.get(pk = ticket_id)
+    customer = Customer.objects.get(account_id = request.user)
+    ticket = Flight_Ticket.objects.get(pk = ticket_id)
     if customer != ticket.customer:
         return Http404('you are not the customer who purchased this ticket!')
     fakeform = {"ticket_id":ticket}
@@ -697,11 +722,11 @@ def register_airline(request):
 
 def register(request, account_role):
     context = {}
-    account_role = models.Account_Role.objects.get(role_name='Customer')
+    account_role = Account_Role.objects.get(role_name='Customer')
 
     if request.POST:    
-        user_form = forms.RegistrationForm(request.POST)
-        customer_form = forms.NewCustomerForm(request.POST)
+        user_form = RegistrationForm(request.POST)
+        customer_form = NewCustomerForm(request.POST)
 
         if user_form.is_valid():
             created_account = BaseFuncade.create_new_user(user_form , account_role)
@@ -716,8 +741,8 @@ def register(request, account_role):
             context['user_registration_form'] = user_form 
             context['customer_registration_form'] = customer_form 
     else:
-        user_form = forms.RegistrationForm()
-        customer_form = forms.NewCustomerForm()
+        user_form = RegistrationForm()
+        customer_form = NewCustomerForm()
         context['user_registration_form'] = user_form 
         context['customer_registration_form'] = customer_form 
         context['button'] = 'register'
@@ -740,7 +765,7 @@ def register(request, account_role):
 
 #old login method
 # def login_page(request):
-#     new_login = forms.LoginForm(request.POST or None)
+#     new_login = LoginForm(request.POST or None)
 #     if request.method == 'POST':
 #         if new_login.is_valid():
 #             user_role , user_id = AnonymusFancade.login(new_login.cleaned_data)
@@ -763,7 +788,7 @@ def register(request, account_role):
 #     message = None
 #     new_user_id = BaseFuncade.create_new_user()
 
-    # # new_user = forms.NewUserForm(request.POST  or None)
+    # # new_user = NewUserForm(request.POST  or None)
     # if request.method =='POST':
     #     if new_user.is_valid():
     #         # BaseFuncade.create_new_user(user_id , new_user.cleaned_data)
@@ -779,8 +804,8 @@ def register(request, account_role):
 
 #old user creation method
 # def add_new_customer_anonymous(request):
-#     new_user = forms.NewUserForm(request.POST  or None)
-#     new_customer = forms.NewCustomerForm(request.POST or None)
+#     new_user = NewUserForm(request.POST  or None)
+#     new_customer = NewCustomerForm(request.POST or None)
 #     if request.method =='POST':
 #         if new_user.is_valid():
 #             # 2 for customer role
@@ -799,8 +824,8 @@ def register(request, account_role):
 
 
 # def new_user(request):
-#     # new_user_form =  forms.SignUpForm(request.POST or None)
-#     new_user_form = forms.SignUpForm(request.POST)
+#     # new_user_form =  SignUpForm(request.POST or None)
+#     new_user_form = SignUpForm(request.POST)
 
 #     if request.method == 'POST':
 
@@ -819,7 +844,7 @@ def register(request, account_role):
 # def register(request):
 #     context = {}
 #     if request.POST:    
-#         form = forms.RegistrationForm(request.POST)
+#         form = RegistrationForm(request.POST)
         
 #         if form.is_valid():
 #             BaseFuncade.create_new_user(form)
@@ -831,7 +856,7 @@ def register(request, account_role):
 
 #             # account = authenticate(email = email, password = raw_password)
 #             # login(request,account)
-#             # id = models.Account.objects.get(email = email) 
+#             # id = Account.objects.get(email = email) 
 #             # print(id.id)
 #             # print(id)
 
@@ -845,14 +870,14 @@ def register(request, account_role):
 #             # AdministratorFuncade.add_customer2(form2)
 
 
-#             account_role = models.Account_Role.objects.get(pk = 1)
+#             account_role = Account_Role.objects.get(pk = 1)
 #             id.account_role = account_role
 #             id.save()
 #             return redirect('home')
 #         else:
 #             context['registration_form'] = form
 #     else:
-#         form = forms.RegistrationForm()
+#         form = RegistrationForm()
 #         context['registration_form'] = form
 #     return render(request, 'register.html', context)
 
@@ -923,7 +948,7 @@ def register(request, account_role):
 
 
 #def view_flights_by_id(request):
-#     flight_id_form = forms.flight_by_id(request.POST)   
+#     flight_id_form = flight_by_id(request.POST)   
 #     if request.POST:
 #         if flight_id_form.is_valid():   
 #             flight_list = BaseFuncade.get_flight_by_id(flight_id_form.cleaned_data[0].id)
@@ -932,7 +957,7 @@ def register(request, account_role):
 #             return render(request, "flight_disp.html", {'flight_list': flight_list,'title': 'Flight By ID' })
 
 #         else:
-#             forms.flight_by_id()
+#             flight_by_id()
     
 #     context = {
 #         'form':flight_id_form,
@@ -944,7 +969,7 @@ def register(request, account_role):
 
 
 #def view_flights_by_id(request):
-#     flight_id_form = forms.flight_by_id(request.POST)   
+#     flight_id_form = flight_by_id(request.POST)   
 #     if request.POST:
 #         if flight_id_form.is_valid():   
 #             flight_list = BaseFuncade.get_flight_by_id(flight_id_form.cleaned_data[0].id)
@@ -953,7 +978,7 @@ def register(request, account_role):
 #             return render(request, "flight_disp.html", {'flight_list': flight_list,'title': 'Flight By ID' })
 
 #         else:
-#             forms.flight_by_id()
+#             flight_by_id()
     
 #     context = {
 #         'form':flight_id_form,
@@ -965,7 +990,7 @@ def register(request, account_role):
 
 
 #def view_countries_by_id(request):
-#     country_id_form = forms.country_by_id(request.POST)   
+#     country_id_form = country_by_id(request.POST)   
 #     if request.POST:
 #         if country_id_form.is_valid():   
 #             country_list = BaseFuncade.get_country_by_id(country_id_form.cleaned_data['country_id'])
@@ -973,7 +998,7 @@ def register(request, account_role):
 #             return render(request, "countries_disp.html", {'country_list': country_list,'title': 'Country By ID' })
      
 #         else:
-#             forms.country_by_id()
+#             country_by_id()
 
 #     context = {
 #         'form':country_id_form,
@@ -985,7 +1010,7 @@ def register(request, account_role):
 
 
 #def view_airline_by_id(request):
-#     airline_id_form = forms.airline_by_id(request.POST)   
+#     airline_id_form = airline_by_id(request.POST)   
 #     if request.POST:
 #         if airline_id_form.is_valid():
 #             country_id = departure_form.cleaned_data['country_id']
@@ -993,7 +1018,7 @@ def register(request, account_role):
                        
 #             return render(request, "airline_disp.html", {'airline_list': airline_list,'title': 'Airline By ID' })
 #         else:
-#              forms.airline_by_id()
+#              airline_by_id()
     
       
 #     context = {
@@ -1009,7 +1034,7 @@ def register(request, account_role):
 # tranlate country id to name
 # def view_airline_by_params(request):
 #     context = {}
-#     airline_params_form = forms.airline_by_params(request.POST)   
+#     airline_params_form = airline_by_params(request.POST)   
 #     if request.POST:
 #         if airline_params_form.is_valid():
 #             params = airline_params_form.cleaned_data 
@@ -1036,9 +1061,9 @@ def register(request, account_role):
 
 
 # def view_flights_by_params(request):
-#     flight_params_form = forms.country_by_id(request.POST)   
+#     flight_params_form = country_by_id(request.POST)   
 #     if request.POST:
-#         airline_id_form = forms.airline_by_id(request.POST)   
+#         airline_id_form = airline_by_id(request.POST)   
 #         if flight_params_form.is_valid():
 #             flight_list = []
 #             return render(request, "flight_disp.html", {'flight_list': flight_list,'title': 'Flight By ID' })
@@ -1073,7 +1098,7 @@ def register(request, account_role):
 
 #ef show_country_search_from(request):
 
-#     f = contact_from = forms.country_id_search_form(request.POST or None) # reteins data even if the submit was invalid.
+#     f = contact_from = country_id_search_form(request.POST or None) # reteins data even if the submit was invalid.
 #     # print(request.GET)
 #     if f.is_valid():
 #         #print(f.cleaned_data.get('coutry_id'))

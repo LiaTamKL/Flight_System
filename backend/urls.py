@@ -10,8 +10,7 @@ urlpatterns = [
     
     path('members/', include('backend.members_urls')),
     path('ouradmin/', include('backend.admin_urls')),
-
-
+ 
     path('login/',views.user_login, name='login'),
     
     path('country/all/', views.view_all_countries, name="view all countries anony"),
@@ -30,7 +29,12 @@ urlpatterns = [
     path('logout/', views.logout,name='logout'),
 
     
+    ############## Tests #########################
     path('test/', views.test),
+    path ('getflights/', views.fli),
+    path ('getflights/<str:id>/', views.getfli)
+    #############################################
+
 
 
     # path('ticket/view/<cust_id>', views.get_my_tickets),
