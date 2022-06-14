@@ -1,0 +1,94 @@
+{% extends 'base_home.html' %}
+
+
+{% block navbar %}
+<style>
+  </style>   
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="\backend">Welcome {{name}}</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Admin Actions</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#">Search User</a></li>
+                      <li><a class="dropdown-item" href="{% url 'view all admins'%}">All Admin</a></li>
+
+                    </ul>
+                </li>
+            </ul>
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Customer Actions</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#">Search User</a></li>
+                      <li><a class="dropdown-item" href="/backend/ouradmin/home">All Customers</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Airline Actions</a>
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#">Search User</a></li>
+                      <li><a class="dropdown-item" href="{% url 'view all airlines admin'%}">All Airlines</a></li>
+                      <li><a class="dropdown-item" href="/backend/ouradmin/airline/bycountry">Airline by Country</a></li>                       
+                  </ul>
+              </li>
+          </ul>
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Flights info</a>
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="/backend/ouradmin/flights/all">All flights</a></li>
+                      <li><a class="dropdown-item" href="/backend/ouradmin/search/flights/departure">Departure Flights By Country </a></li>
+                      <li><a class="dropdown-item" href="/backend/ouradmin/search/flights/arrival">Arrival Flights By Country </a></li>
+                      <li><a class="dropdown-item" href="/backend/ouradmin/search/flights/byairline"> Flights By Airline </a></li>     
+                  </ul>
+              </li>
+          </ul>
+
+         
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Country Info</a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="/backend/ouradmin/country/all">All contries</a></li>
+                  <!-- <li><a class="dropdown-item" href='/backend/ouradmin/country/byid'>Search country by ID</a></li> -->
+                     
+              </ul>
+          </li>
+      </ul>
+              <li class="nav-item">
+                <a class="nav-link" href="https://17rg073sukbm1lmjk9jrehb643-wpengine.netdna-ssl.com/wp-content/uploads/2014/10/ancient-aliens-invisible-something-meme-generator-im-not-saying-it-was-aliens-but-it-was-aliens-a0f6bd.jpg">Aliens</a>
+              </li>
+              <li class="nav-item dropdown">
+
+                  <li><hr class="dropdown-divider"></li>
+                </ul>
+              </li>
+            </ul>
+
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+                    
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                      <script>console.log(update_func)</script>
+                      <li> <a class="dropdown-item" href="/backend/members/update_account">Update Account</a></li>
+                      <li><a class="dropdown-item" href="/backend/logout">Log Out</a></li>
+                        
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{% endblock %}

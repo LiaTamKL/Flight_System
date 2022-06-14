@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'flight_app'
+    'backend',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +57,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
-        #'DIRS': os.path.join(BASE_DIR / 'flight_app/templates'),
+        #'DIRS': os.path.join(BASE_DIR / 'backend/templates'),
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,7 +120,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR/'flight_app', 'static/'), BASE_DIR/'static/'
+    os.path.join(BASE_DIR/'backend', 'static/'), BASE_DIR/'static/'
 )
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -129,10 +129,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'flight_app.Account'
+AUTH_USER_MODEL = 'backend.Account'
 
-LOGIN_URL= '/flight_app/login/'
-LOGIN_REDIRECT_URL = '/flight_app/login/'
+LOGIN_URL= '/backend/login/'
+LOGIN_REDIRECT_URL = '/backend/login/'
 
 LOGGING = {
     'version': 1,

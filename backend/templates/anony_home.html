@@ -1,0 +1,82 @@
+{% extends 'base_home.html' %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/backend">Welcome </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Flights Info</a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+                <li><a class="dropdown-item" href="/backend/flights/all">All flights</a></li>
+                <li><a class="dropdown-item" href="/backend/search/flights/departure">Departure Flights By Country </a></li>
+                <li><a class="dropdown-item" href="/backend/search/flights/arrival">Arrival Flights By Country </a></li>
+                <li><a class="dropdown-item" href="/backend/search/flights/byairline"> Flights By Airline </a></li>     
+            </ul>
+        </li>
+    </ul>
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Airline Info</a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="/backend/airline/all">All airlies</a></li>
+              <li><a class="dropdown-item" href="/backend/airline/bycountry">Airline by Country</a></li>                       
+          </ul>
+      </li>
+  </ul>  
+  <ul class="navbar-nav ms-auto">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Country Info</a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/backend/country/all">All contries</a></li>
+               
+        </ul>
+    </li>
+</ul>
+        <li class="nav-item">
+          <a class="nav-link" href="https://17rg073sukbm1lmjk9jrehb643-wpengine.netdna-ssl.com/wp-content/uploads/2014/10/ancient-aliens-invisible-something-meme-generator-im-not-saying-it-was-aliens-but-it-was-aliens-a0f6bd.jpg">Aliens</a>
+        </li>
+        <li class="nav-item dropdown">
+
+            <li><hr class="dropdown-divider"></li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <!-- <li> <a class="dropdown-itemk" href="/backend/members/update_account">Account Details</a></li> -->
+                <li><a class="dropdown-item" href="/backend/login">Login</a></li>
+                <li><a class="dropdown-item" href="/backend/register">Register</a></li>
+                  
+              </ul>
+          </li>
+      </ul>
+  </div>
+</div>
+</nav>
+
+    {% endblock %}
+
+
+
+    {% block content %}
+<h3>Hello Newcomer </h3><br>
+<h4>Welcome to our flight app
+  You look like a Doug ,<br> 
+  We'll call you Doug </h2>
+  
+  
+  {% endblock %}
+
+
+ 
