@@ -190,8 +190,6 @@ CORS_ALLOW_ALL_ORIGINS = True
 # Sets datetime format for all rest_faramework
 REST_FRAMEWORK = {
     'DATETIME_FORMAT': "%d-%m-%Y,  %H:%M",
-    #if you want to disable simple jwt and go back to the normal django auth
-    #comment out the below
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
