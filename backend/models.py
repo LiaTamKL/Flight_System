@@ -1,10 +1,10 @@
 from pickle import TRUE
-from django.db import models
+from django.db.models import *
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
-class Account_Role(models.Model):
-    role_name = models.CharField(max_length=30, unique=True, null=False)
+class Account_Role(Model):
+    role_name = CharField(max_length=30, unique=True, null=False)
     def __str__(self):
         return self.role_name
     class Meta:
@@ -39,17 +39,17 @@ class MyAccountManager(BaseUserManager):
         return account
 
 class Account(AbstractBaseUser):
-    email = models.EmailField(verbose_name='email', max_length=60, unique=True)
-    username = models.CharField(max_length=30, unique=True)
-    date_joined = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
-    last_login = models.DateTimeField(verbose_name='last login', auto_now=True)
-    is_admin = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
-    account_role = models.ForeignKey(Account_Role, null=True, on_delete=models.PROTECT)
-    is_airline = models.BooleanField(default=False)
-    is_customer = models.BooleanField(default=False) 
+    email = EmailField(verbose_name='email', max_length=60, unique=True)
+    username = CharField(max_length=30, unique=True)
+    date_joined = DateTimeField(verbose_name='date joined', auto_now_add=True)
+    last_login = DateTimeField(verbose_name='last login', auto_now=True)
+    is_admin = BooleanField(default=False)
+    is_active = BooleanField(default=True)
+    is_staff = BooleanField(default=False)
+    is_superuser = BooleanField(default=False)
+    account_role = ForeignKey(Account_Role, null=True, on_delete=PROTECT)
+    is_airline = BooleanField(default=False)
+    is_customer = BooleanField(default=False) 
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', ]
@@ -64,10 +64,10 @@ class Account(AbstractBaseUser):
     def has_module_perms(self, app_label):
         return True
 
-class Country(models.Model):
+class Country(Model):
     link = "Edit"
-    country_name = models.TextField(max_length=100, null=False, unique=True)
-    flag = models.ImageField(upload_to="static\\flags")
+    country_name = TextField(max_length=100, null=False, unique=True)
+    flag = ImageField(upload_to="static\\flags")
     class Meta:
         ordering = ['country_name']
         verbose_name_plural = 'countries'
@@ -75,52 +75,52 @@ class Country(models.Model):
         return self.country_name
 
 
-class Airline(models.Model):
-    name = models.TextField(max_length=255, null=False, unique=True)
-    country = models.ForeignKey(Country, null=False, on_delete=models.PROTECT)
-    account = models.OneToOneField(Account, null=False, on_delete=models.PROTECT)
+class Airline(Model):
+    name = TextField(max_length=255, null=False, unique=True)
+    country = ForeignKey(Country, null=False, on_delete=PROTECT)
+    account = OneToOneField(Account, null=False, on_delete=PROTECT)
     class Meta:
         ordering = ['name']
     def __str__(self) -> str:
         return self.name
 
-class Customer(models.Model):
-    first_name = models.TextField(max_length=100, null=False)
-    last_name = models.TextField(max_length=100, null=False)
-    address = models.TextField(max_length=100, null=False)
-    phone_number = models.TextField(max_length=16, null=False, unique=True)
-    credit_card_no = models.TextField(max_length=16, null=False, unique=True)
-    account = models.OneToOneField(Account, null=True, on_delete=models.PROTECT)
+class Customer(Model):
+    first_name = TextField(max_length=100, null=False)
+    last_name = TextField(max_length=100, null=False)
+    address = TextField(max_length=100, null=False)
+    phone_number = TextField(max_length=16, null=False, unique=True)
+    credit_card_no = TextField(max_length=16, null=False, unique=True)
+    account = OneToOneField(Account, null=True, on_delete=PROTECT)
     class Meta:
         ordering = ['last_name']
     def __str__(self) -> str:
         return (self.first_name + ' ' + self.last_name)
 
-class Flight(models.Model):
-    airline = models.ForeignKey(Airline, null=False, on_delete=models.PROTECT)
-    origin_country = models.ForeignKey(Country, null=False,related_name="origin", on_delete=models.PROTECT)
-    destination_country = models.ForeignKey(Country, null=False,related_name="destination", on_delete=models.PROTECT)
-    departure_time = models.DateTimeField(null=False)
-    landing_time = models.DateTimeField(null=False)
-    remaining_tickets = models.IntegerField(null=False)
+class Flight(Model):
+    airline = ForeignKey(Airline, null=False, on_delete=PROTECT)
+    origin_country = ForeignKey(Country, null=False,related_name="origin", on_delete=PROTECT)
+    destination_country = ForeignKey(Country, null=False,related_name="destination", on_delete=PROTECT)
+    departure_time = DateTimeField(null=False)
+    landing_time = DateTimeField(null=False)
+    remaining_tickets = IntegerField(null=False)
     class Meta:
         ordering = ['departure_time']
     def __str__(self) -> str:
         return (f"flight from {self.origin_country} to {self.destination_country}, by {self.airline}, at {self.departure_time}")
 
-class Flight_Ticket(models.Model):
-    customer = models.ForeignKey(Customer, null=False, on_delete=models.PROTECT)
-    flight = models.ForeignKey(Flight, null=False, on_delete=models.PROTECT)
+class Flight_Ticket(Model):
+    customer = ForeignKey(Customer, null=False, on_delete=PROTECT)
+    flight = ForeignKey(Flight, null=False, on_delete=PROTECT)
     class Meta:
         ordering = ['flight']
     def __str__(self) -> str:
         return (f'Ticket for {self.customer} on the {self.flight}')
 
 
-class Administrator(models.Model):
-    first_name = models.TextField(max_length=50, null=False)
-    last_name = models.TextField(max_length=50, null=False)
-    account = models.OneToOneField(Account, null=False, on_delete=models.PROTECT)
+class Administrator(Model):
+    first_name = TextField(max_length=50, null=False)
+    last_name = TextField(max_length=50, null=False)
+    account = OneToOneField(Account, null=False, on_delete=PROTECT)
     class Meta:
         ordering = ['last_name']
     def __str__(self) -> str:
@@ -149,26 +149,26 @@ class Administrator(models.Model):
 
 # from django.db import models
 
-# class User_Role(models.Model):
-#     role_name = models.CharField(max_length=30, unique=True, null=False)
+# class User_Role(Model):
+#     role_name = CharField(max_length=30, unique=True, null=False)
 #     def __str__(self):
 #         return self.role_name
 #     class Meta:
 #         ordering = ['role_name']
 
-# class User(models.Model):
-#     username = models.TextField(max_length=50, null=False, unique=True)
-#     password = models.CharField(null=False,max_length=12)
-#     email = models.EmailField(max_length=50, null=False, unique=True)
+# class User(Model):
+#     username = TextField(max_length=50, null=False, unique=True)
+#     password = CharField(null=False,max_length=12)
+#     email = EmailField(max_length=50, null=False, unique=True)
 #     class Meta:
 #         ordering = ['username']
 #     def __str__(self) -> str:
 #         return self.username
 
-# class Country(models.Model):
+# class Country(Model):
 #     link = "Edit"
-#     country_name = models.TextField(max_length=100, null=False, unique=True)
-#     flag = models.ImageField(upload_to="static\\flags")
+#     country_name = TextField(max_length=100, null=False, unique=True)
+#     flag = ImageField(upload_to="static\\flags")
 #     class Meta:
 #         ordering = ['country_name']
 #         verbose_name_plural = 'countries'
@@ -176,51 +176,51 @@ class Administrator(models.Model):
 #         return self.country_name
 
 
-# class Airline(models.Model):
-#     name = models.TextField(max_length=255, null=False, unique=True)
-#     country = models.ForeignKey(Country, null=False, on_delete=models.PROTECT)
-#     user = models.OneToOneField(User, null=False, on_delete=models.CASCADE)
+# class Airline(Model):
+#     name = TextField(max_length=255, null=False, unique=True)
+#     country = ForeignKey(Country, null=False, on_delete=PROTECT)
+#     user = OneToOneField(User, null=False, on_delete=CASCADE)
 #     class Meta:
 #         ordering = ['name']
 #     def __str__(self) -> str:
 #         return self.name
 
-# class Customer(models.Model):
-#     first_name = models.TextField(max_length=100, null=False)
-#     last_name = models.TextField(max_length=100, null=False)
-#     address = models.TextField(max_length=100, null=False)
-#     phone_number = models.TextField(max_length=16, null=False, unique=True)
-#     credit_card_no = models.TextField(max_length=16, null=False, unique=True)
-#     user = models.OneToOneField(User, null=False, on_delete=models.CASCADE)
+# class Customer(Model):
+#     first_name = TextField(max_length=100, null=False)
+#     last_name = TextField(max_length=100, null=False)
+#     address = TextField(max_length=100, null=False)
+#     phone_number = TextField(max_length=16, null=False, unique=True)
+#     credit_card_no = TextField(max_length=16, null=False, unique=True)
+#     user = OneToOneField(User, null=False, on_delete=CASCADE)
 #     class Meta:
 #         ordering = ['last_name']
 #     def __str__(self) -> str:
 #         return (self.first_name + self.last_name)
 
-# class Flight(models.Model):
-#     airline = models.ForeignKey(Airline, null=False, on_delete=models.PROTECT)
-#     origin_country = models.ForeignKey(Country, null=False,related_name="origin", on_delete=models.PROTECT)
-#     destination_country = models.ForeignKey(Country, null=False,related_name="destination", on_delete=models.PROTECT)
-#     departure_time = models.DateTimeField(null=False)
-#     landing_time = models.DateTimeField(null=False)
-#     remaining_tickets = models.IntegerField(null=False)
+# class Flight(Model):
+#     airline = ForeignKey(Airline, null=False, on_delete=PROTECT)
+#     origin_country = ForeignKey(Country, null=False,related_name="origin", on_delete=PROTECT)
+#     destination_country = ForeignKey(Country, null=False,related_name="destination", on_delete=PROTECT)
+#     departure_time = DateTimeField(null=False)
+#     landing_time = DateTimeField(null=False)
+#     remaining_tickets = IntegerField(null=False)
 #     class Meta:
 #         ordering = ['departure_time']
 #     def __str__(self) -> str:
 #         return (f"flight from {self.origin_country} to {self.destination_country}, by {self.airline}, at {self.departure_time}")
 
-# class Flight_Ticket(models.Model):
-#     customer = models.ForeignKey(Customer, null=False, on_delete=models.PROTECT)
-#     flight = models.ForeignKey(Flight, null=False, on_delete=models.PROTECT)
+# class Flight_Ticket(Model):
+#     customer = ForeignKey(Customer, null=False, on_delete=PROTECT)
+#     flight = ForeignKey(Flight, null=False, on_delete=PROTECT)
 #     class Meta:
 #         ordering = ['flight']
 #     def __str__(self) -> str:
 #         return (f'Ticket for {self.customer} on the {self.flight}')
 
-# class Administrator(models.Model):
-#     first_name = models.TextField(max_length=50, null=False)
-#     last_name = models.TextField(max_length=50, null=False)
-#     user = models.OneToOneField(User, null=False, on_delete=models.CASCADE)
+# class Administrator(Model):
+#     first_name = TextField(max_length=50, null=False)
+#     last_name = TextField(max_length=50, null=False)
+#     user = OneToOneField(User, null=False, on_delete=CASCADE)
 #     class Meta:
 #         ordering = ['last_name']
 #     def __str__(self) -> str:

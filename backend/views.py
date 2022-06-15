@@ -17,7 +17,10 @@ from django.contrib import auth
 import datetime
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
+from .serializers import *
 
 #######JWT CUSTOM CLAIM
 ########THIS IS WHERE WE SET WHAT INFO THE TOKENS WILL GRAB ON THE FRONT END
@@ -41,30 +44,30 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
 
-from .serializers import *
 ##################################################
 ############### Testing ##########################
-
 
 
 @api_view(['GET'])
 def fli(requset):
     flights =  Flight.objects.all()
-    seralizer = AllFlightsSerializer(flights, many = True)
+    seralizer = AllFlightSerializer(flights, many = True)
     return Response(seralizer.data)
 
 @api_view(['GET'])
 def getfli(requset, id):
-    flight = BaseFuncade.get_flight_by_id(id)
-    seralizer = AllFlightsSerializer(flight, many = False)
+    flights = BaseFuncade.get_flight_by_id(id)
+    seralizer = AllFlightSerializer(flights, many = False)
     return Response(seralizer.data)
 
 
+
 ##################################################
 ##################################################
+
+
+
 
 
 def test(request):

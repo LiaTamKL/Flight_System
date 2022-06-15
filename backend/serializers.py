@@ -1,12 +1,10 @@
-from rest_framework.serializers import ModelSerializer , SlugRelatedField , SerializerMethodField
+from rest_framework.serializers import ModelSerializer , SlugRelatedField 
 from .models import *
-from datetime import datetime
 
 
 
-class AllFlightsSerializer(ModelSerializer):
+class AllFlightSerializer(ModelSerializer):
 
-    # links PKS with DB enteries 
     def db_link(field):
         return SlugRelatedField(many=False,read_only=True,slug_field=field)
  
@@ -18,6 +16,7 @@ class AllFlightsSerializer(ModelSerializer):
     class Meta:
         model = Flight
         fields = '__all__'
+
 
 class AllAccount_rolesSerializer(ModelSerializer):
 
