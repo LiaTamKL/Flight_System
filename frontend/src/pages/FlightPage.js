@@ -32,7 +32,7 @@ const FlightPage = () => {
           </h3>
         </div>
         
-        <p>Flight number {flight?.id} from {flight?.origin}  to {flight?.destination_country} by {flight?.airline} leaves at {flight?.departure_time} and arrives at {flight?.landing_time} </p>
+        <p>Flight number {flight?.id} from {flight?.origin_country}  to {flight?.destination_country} by {flight?.airline} leaves at {flight?.departure_time} and arrives at {flight?.landing_time} </p>
         <p>Hurry up because only {flight?.remaining_tickets} tickets left </p>
   </div>
   )
