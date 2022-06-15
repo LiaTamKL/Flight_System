@@ -19,3 +19,9 @@ class AllFlightsSerializer(ModelSerializer):
         model = Flight
         fields = '__all__'
 
+class AllAccount_rolesSerializer(ModelSerializer):
+
+
+    class Meta:
+        model = Account_Role
+        fields = '__all__'

@@ -48,8 +48,8 @@ class Account(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     account_role = models.ForeignKey(Account_Role, null=True, on_delete=models.PROTECT)
-    # is_airline = models.BooleanField(default=False) #switch this with userrole
-    # is_customer = models.BooleanField(default=False) #switch this with userrole
+    is_airline = models.BooleanField(default=False)
+    is_customer = models.BooleanField(default=False) 
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', ]

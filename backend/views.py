@@ -18,19 +18,20 @@ import datetime
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
+
 #######JWT CUSTOM CLAIM
 ########THIS IS WHERE WE SET WHAT INFO THE TOKENS WILL GRAB ON THE FRONT END
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
-
+        account_role = user.account_role
+        role_name = account_role.role_name
         # Add custom claims
         token['username'] = user.username
+        token['account_role'] = role_name
         token['email'] = user.email
-        token['account_role'] = user.account_role
         token['is_admin'] = user.is_admin
-
         # ...
 
         return token
@@ -38,13 +39,13 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
-
-##################################################
-############### Testing ##########################
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 from .serializers import *
+##################################################
+############### Testing ##########################
+
 
 
 @api_view(['GET'])

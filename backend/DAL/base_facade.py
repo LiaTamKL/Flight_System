@@ -68,6 +68,7 @@ class BaseFuncade():
         created_account = models.Account.objects.get(email = email)
         # raise Exception({account_role})
         created_account.account_role_id = account_role
+        created_account.is_customer = True
         created_account.save()
         return  created_account
 
