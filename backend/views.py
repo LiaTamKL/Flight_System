@@ -25,13 +25,15 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
-        account_role = user.account_role
-        role_name = account_role.role_name
+        if user.is_superuser == True:
+            role_name = 'Admin'
+        else:
+            account_role = user.account_role
+            role_name = account_role.role_name
         # Add custom claims
         token['username'] = user.username
         token['account_role'] = role_name
         token['email'] = user.email
-        token['is_admin'] = user.is_admin
         # ...
 
         return token
