@@ -1,6 +1,11 @@
 from django.urls import path , include
 from . import views
 from django.shortcuts import redirect
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+from .views import MyTokenObtainPairView
 
 urlpatterns = [
     path('', lambda request: redirect('home/', permanent=True)),
@@ -32,9 +37,11 @@ urlpatterns = [
     ############## Tests #########################
     path('test/', views.test),
     path ('getflights/', views.fli),
-    path ('getflights/<str:id>/', views.getfli)
-    #############################################
+    path ('getflights/<str:id>/', views.getfli),
+    path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
+    #############################################
 
 
     # path('ticket/view/<cust_id>', views.get_my_tickets),

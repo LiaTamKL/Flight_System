@@ -15,9 +15,28 @@ from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
 from django.contrib import auth
 import datetime
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
 
+#######JWT CUSTOM CLAIM
+########THIS IS WHERE WE SET WHAT INFO THE TOKENS WILL GRAB ON THE FRONT END
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
 
+        # Add custom claims
+        token['username'] = user.username
+        token['email'] = user.email
+        token['account_role'] = user.account_role
+        token['is_admin'] = user.is_admin
 
+        # ...
+
+        return token
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
 
 
 ##################################################

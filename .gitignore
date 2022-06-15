@@ -4,5 +4,6 @@ __pycache__/
 todo
 db.sqlite3
 *.pyc
+env
 sitelog.log
 db.sqlite3-journal
