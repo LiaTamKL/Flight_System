@@ -5,7 +5,7 @@ const ListItem = ({ flight }) => {
     return (
 
        
-        <Link to={`flight/${flight.id}`}>
+        <Link to={`flights/${flight.id}`}>
             <div className="flights-list-item" >
                 <p> {flight.airline}</p>
             </div>

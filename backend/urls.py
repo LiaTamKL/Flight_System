@@ -36,24 +36,21 @@ urlpatterns = [
     
     ############## Tests #########################
     path('test/', views.test),
-    path ('getflights/', views.fli),
-    path ('getflights/<str:id>/', views.getfli),
+    path ('flights/', views.allfli),
+    path ('flights/create/', views.createfli),
+
+    path ('flights/<str:id>/update', views.updatefli),
+    path ('flights/<str:id>/delete', views.deletefli),
+    path ('flights/<str:id>/', views.getfli),
+
+
     path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     #############################################
 
 
-    # path('ticket/view/<cust_id>', views.get_my_tickets),
-    
-#     path('airline/view/', views.view_flights_by_airline, name="airline view flights"),
-#     path('airline/delete/<flight_id>', views.delete_flight_for_airline, name="delete flight"),
-#     path('airline/add', views.airline_add_flight, name='add flight'),
-#     path('airline/update/<flight_id>', views.airline_update_flight, name='update flight'),
 
-#    path('ouradmin/', views.view_all_customers, name="admin home"),
-#    path('ouradmin/delete/<customer_id>',views.delete_customer, name="delete customer"),
-#    path('ouradmin/add_from_customer/<account>', views.add_admin_from_customer, name="admin from customer"),
 
 
     
@@ -99,3 +96,15 @@ urlpatterns = [
         # path('members/', lambda request: redirect('home', permanent=True)),
         
     # path('members/airline/byparams/', views.view_airline_by_params),
+
+
+        # path('ticket/view/<cust_id>', views.get_my_tickets),
+    
+#     path('airline/view/', views.view_flights_by_airline, name="airline view flights"),
+#     path('airline/delete/<flight_id>', views.delete_flight_for_airline, name="delete flight"),
+#     path('airline/add', views.airline_add_flight, name='add flight'),
+#     path('airline/update/<flight_id>', views.airline_update_flight, name='update flight'),
+
+#    path('ouradmin/', views.view_all_customers, name="admin home"),
+#    path('ouradmin/delete/<customer_id>',views.delete_customer, name="delete customer"),
+#    path('ouradmin/add_from_customer/<account>', views.add_admin_from_customer, name="admin from customer"),

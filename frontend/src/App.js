@@ -16,7 +16,7 @@ function App() {
         <Header />
         <Routes>
           <Route path = "/" exact element={<FlightsListPage />} />
-          <Route path = '/flight/:id' element={<FlightPage />} />
+          <Route path = '/flights/:id' element={<FlightPage />} />
         </Routes>
       </div>
     </div>

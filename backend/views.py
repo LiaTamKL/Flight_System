@@ -50,17 +50,44 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
 
 @api_view(['GET'])
-def fli(requset):
-    flights =  Flight.objects.all()
+def allfli(requset):
+    flights =  Flight.objects.all().order_by('departure_time')
     seralizer = AllFlightSerializer(flights, many = True)
     return Response(seralizer.data)
 
 @api_view(['GET'])
 def getfli(requset, id):
-    flights = BaseFuncade.get_flight_by_id(id)
-    seralizer = AllFlightSerializer(flights, many = False)
+    flight = BaseFuncade.get_flight_by_id(id)
+    seralizer = AllFlightSerializer(flight, many = False)
     return Response(seralizer.data)
 
+@api_view(['PUT'])
+def updatefli(request, id):
+    data = request.data
+    flight = BaseFuncade.get_flight_by_id(id)
+    seralizer = AllFlightSerializer(instance=flight, data=data)
+    
+    if seralizer.is_valid():
+        seralizer.save()
+    return Response(seralizer.data)
+
+
+@api_view(['DELETE'])
+def deletefli(request, id):
+    flight = BaseFuncade.get_flight_by_id(id)
+    flight.delete()
+    return Response("Deleted")
+
+
+
+@api_view(['POST'])
+def createfli(request):
+    data = request.data
+    flight = Flight.objects.create(
+        data = data['remaining_tickets']
+    )
+    seralizer = AllFlightSerializer(flight, many = False)
+    return Response(seralizer.data)
 
 
 ##################################################
