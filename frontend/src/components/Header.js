@@ -9,7 +9,7 @@ const Header = () => {
         <h1>Flight list</h1>
         <br/>
         {user ? (<>{user.account_role === 'Admin' ? (
-                 <p>AN ADMIN!</p>
+                  <Link to="/admin" >Admin page</Link>
                 ):<span></span>}
                  <p>Logout</p>
                  <p>Update</p></>
