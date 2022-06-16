@@ -12,7 +12,7 @@ const Header = () => {
                   <Link to="/admin" >Admin page</Link>
                 ):<span></span>}
                  <p>Logout</p>
-                 <p>Update</p></>
+                 <Link to="/update" >Update</Link></>
             ):(
                 <Link to="/login" >Login</Link>
             )}

@@ -1,7 +1,6 @@
 import { Navigate, Outlet } from 'react-router-dom'
 import { useContext } from 'react'
 import AuthContext from '../context/authentication'
-import Admin_Dashboard from '../pages/admin_Test'
 
 // export const Logged_in = ({children, ...rest}) => {
 //     let {user} = useContext(AuthContext)
