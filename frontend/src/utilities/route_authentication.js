@@ -16,7 +16,7 @@ const logged = (user) => {
     else{return true}
 }
 
-export const Logged_in_generic= () => {
+export const LoggedinGeneric= () => {
     let {user} = useContext(AuthContext)
     let result = logged(user)
     if (result === false){
@@ -32,7 +32,7 @@ export const Logged_in_generic= () => {
 
 //Type refers to account role, give this as a string.
 //children and rest are just the normal parameters you give to a route
- const Logged_in_Route = ({account_role}) => {
+ const LoggedinRoute = ({account_role}) => {
     let {user} = useContext(AuthContext)
     let result = logged(user)
     if (result === false){
@@ -53,4 +53,4 @@ export const Logged_in_generic= () => {
 
 }
 
-export default Logged_in_Route;
+export default LoggedinRoute;

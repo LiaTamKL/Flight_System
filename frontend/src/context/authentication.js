@@ -7,7 +7,7 @@ const AuthContext = createContext()
 export default AuthContext
 
 
-export const Authentication_Provider = ({children}) => {
+export const AuthenticationProvider = ({children}) => {
     let [authTokens, setAuthToken] = useState(()=> localStorage.getItem('authToken') ? JSON.parse(localStorage.getItem('authToken')) : null)
     let [account, setAccount] = useState(()=> localStorage.getItem('authToken') ? jwt_decode(localStorage.getItem('authToken')) : null)
     let [loading, setLoading] = useState(true)
