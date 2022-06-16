@@ -28,16 +28,23 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
+        #sets up account_role type and main name for superusers
+        #as superusers might lack both a role and an admin account
         if user.is_superuser == True:
             role_name = 'Admin'
+            main_name = f'superuser {user.username}'
+        #sets up account role and main name by the type of account a user is
         else:
             account_role = user.account_role
             role_name = account_role.role_name
+            if role_name == 'Admin' or role_name == 'Customer':
+                main_name = f'{user.first_name} {user.last_name}'
+            else: main_name = user.name
         # Add custom claims
         token['username'] = user.username
         token['account_role'] = role_name
         token['email'] = user.email
-        # ...
+        token['main_name'] = main_name
 
         return token
 
