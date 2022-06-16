@@ -14,6 +14,13 @@ export const AuthenticationProvider = ({children}) => {
 
     let nav = useNavigate()
 
+    let logout = () => {
+        setAuthToken(null)
+        setAccount(null)
+        localStorage.removeItem('authToken')
+        nav('/')
+    }
+
     let loginUser = async (e)=>{
         e.preventDefault()
         //change the url when final package
@@ -40,7 +47,8 @@ export const AuthenticationProvider = ({children}) => {
     }
     let contextData = {
         loginUser:loginUser,
-        user: account
+        user: account,
+        logout: logout,
     }
 
     return(
