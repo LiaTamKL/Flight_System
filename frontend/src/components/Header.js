@@ -8,9 +8,11 @@ const Header = () => {
     <div className='app-header'>
         <h1>Flight list</h1>
         <br/>
-        {user ? (
-                 <p>Logout</p>
-            ): (
+        {user ? (<>{user.account_role === 'Admin' ? (
+                 <p>AN ADMIN!</p>
+                ):<span></span>}
+                 <p>Logout</p></>
+            ):(
                 <Link to="/login" >Login</Link>
             )}
 
