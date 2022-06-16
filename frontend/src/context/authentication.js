@@ -8,8 +8,8 @@ export default AuthContext
 
 
 export const Authentication_Provider = ({children}) => {
-    let [authTokens, setAuthToken] = useState(null)
-    let [account, setAccount] = useState(null)
+    let [authTokens, setAuthToken] = useState(()=> localStorage.getItem('authToken') ? JSON.parse(localStorage.getItem('authToken')) : null)
+    let [account, setAccount] = useState(()=> localStorage.getItem('authToken') ? jwt_decode(localStorage.getItem('authToken')) : null)
     let [loading, setLoading] = useState(true)
 
     let nav = useNavigate()
