@@ -1,7 +1,8 @@
 import React, {useState, useEffect}  from 'react'
 import { useParams , useNavigate} from "react-router-dom";
 import { ReactComponent as Arrow } from '../assets/arrow-left.svg'
-
+import CreateFlight from '../forms/CreateFlight'
+import { format } from "date-fns";
 
 
 const FlightPage = () => {
@@ -23,14 +24,16 @@ const FlightPage = () => {
 
      
      let createflight = async () => {
-      if (flightid === 'new') return
-      fetch(`/backend/flights/create`, {
-          method: "POST",
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(flight)
-      })
+      <CreateFlight />
+      
+      // // if (flightid === 'new') return
+      // fetch(`/backend/flights/create`, {
+      //     method: "POST",
+      //     headers: {
+      //         'Content-Type': 'application/json'
+      //     },
+      //     body: JSON.stringify(flight)
+      // })
   }
 
       let updateFlight = async() => {
@@ -89,11 +92,11 @@ const FlightPage = () => {
             )}
          
         </div>
+
         {/* <textarea onChange={(e) => { handleChange(e.target.value) }} value={flight?.body}></textarea> */}
 
         <p><span>Flight number {flight?.id} from {flight?.origin_country}  to {flight?.destination_country} by {flight?.airline} leaves at {formatTime(flight?.departure_time)} and arrives at {formatTime(flight?.landing_time)}</span></p>
         <p>Hurry up because only {flight?.remaining_tickets} tickets left </p>
-        {/* <p>{getTime(flight)} </p> */}
   </div>
   )
 }

@@ -37,11 +37,18 @@ urlpatterns = [
     ############## Tests #########################
     path('test/', views.test),
     path ('flights/', views.allfli),
-    path ('flights/create/', views.createfli),
-
+    
+    path ('flights/create', views.createfli),
     path ('flights/<str:id>/update', views.updatefli),
     path ('flights/<str:id>/delete', views.deletefli),
     path ('flights/<str:id>/', views.getfli),
+
+    path('airlines/', views.allair,),
+    path('airlines/<str:id>/', views.getair),
+
+    path('countries/', views.allcont,),
+    path('countries/<str:id>/', views.getcont),
+
 
 
     path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
