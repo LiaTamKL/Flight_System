@@ -17,9 +17,23 @@ const logged = (user) => {
     else{return true}
 }
 
+export const Logged_in_generic= () => {
+    let {user} = useContext(AuthContext)
+    let result = logged(user)
+    if (result === false){
+        alert('You are not logged in, Please log in.')
+        return(
+           <Navigate to="/login" />
+        ) }
+    else{return (<Outlet/>)
+
+    }
+}
+
+
 //Type refers to account role, give this as a string.
 //children and rest are just the normal parameters you give to a route
-export const Logged_in_Route = ({account_role, redirect_url}) => {
+ const Logged_in_Route = ({account_role}) => {
     let {user} = useContext(AuthContext)
     let result = logged(user)
     if (result === false){
@@ -28,8 +42,8 @@ export const Logged_in_Route = ({account_role, redirect_url}) => {
            <Navigate to="/login" />
         ) 
     }else{
-        if (!user.account_role === account_role){
-            alert(```Only ${account_role}s are allowed access to this page```)
+        if (user.account_role !== account_role){
+            alert(`${user.account_role}s are not allowed to view this page`)
             return(<Navigate to="/" />)
         }else{return(
         <Outlet/>

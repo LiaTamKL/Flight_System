@@ -22,11 +22,23 @@ function App() {
           <Routes>
             <Route path = "/" exact element={<FlightsListPage />} />
             <Route path="/login" element={<Login_Page/>} />
-            <Route path='/admin'  exact element={<Logged_in_Route type="Admin"/>}>
+
+            <Route path='/admin'  exact element={<Logged_in_Route account_role="Admin"/>}>
               <Route path='' element={<Admin_Dashboard/>}/>
               <Route path='view_airlines' element={<Admin_Dashboard/>}/>
               <Route path='view_admins' element={<Admin_Dashboard/>}/>
               <Route path='view_specific' element={<Admin_Dashboard/>}/>
+            </Route>
+
+            <Route path='/cust'  exact element={<Logged_in_Route account_role="Customer"/>}>
+              <Route path='' element={<Admin_Dashboard/>}/>
+              <Route path='view_my_tickets' element={<Admin_Dashboard/>}/>
+            </Route>
+
+            <Route path='/airline'  exact element={<Logged_in_Route account_role="Airline"/>}>
+              <Route path='' element={<Admin_Dashboard/>}/>
+              <Route path='add' element={<Admin_Dashboard/>}/>
+              <Route path='update' element={<Admin_Dashboard/>}/>
             </Route>
 
             <Route path = '/flights/:id' element={<FlightPage />} />
