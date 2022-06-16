@@ -3,7 +3,7 @@ import Header from './components/Header'
 import FlightsListPage from './pages/FlightsListPage'; 
 import FlightPage from './pages/FlightPage';
 import Login_Page from './pages/login_page';
-import {Authentication_Provider} from './context/authentication'
+import {AuthenticationProvider} from './context/authentication'
 import Admin_Test from './pages/admin_Test';
 import Logged_in_Route from './utilities/route_authentication';
 import CreateFlight from './forms/CreateFlight'
@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="container dark" >
         <div className='app'>
-        <Authentication_Provider>
+        <AuthenticationProvider>
           <Header />
           <Routes>        
             <Route path="/login" element={<Login_Page/>} />
@@ -31,7 +31,7 @@ function App() {
             <Route path = "/" exact element={<FlightsListPage />} />
             
           </Routes>
-        </Authentication_Provider>
+        </AuthenticationProvider>
       </div>
     </div>
     )

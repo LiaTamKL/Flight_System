@@ -24,7 +24,6 @@ const CreateFlight = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setDepartureTime = new Date(departureTime).getUTCDate().
     console.log(departureTime)
     const submitted = {airline, originCountry , destinationCountry , departureTime , arrivalTime, tickets} 
     // console.log(submitted)
