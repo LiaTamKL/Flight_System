@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from 'react'
 import jwt_decode from "jwt-decode";
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const AuthContext = createContext()
 
@@ -11,6 +11,8 @@ export const Authentication_Provider = ({children}) => {
     let [authTokens, setAuthToken] = useState(null)
     let [account, setAccount] = useState(null)
     let [loading, setLoading] = useState(true)
+
+    let nav = useNavigate()
 
     let loginUser = async (e)=>{
         e.preventDefault()
@@ -26,6 +28,8 @@ export const Authentication_Provider = ({children}) => {
         if (response.status ===200){
             setAuthToken(data)
             setAccount(jwt_decode(data.access))
+            localStorage.setItem('authToken', JSON.stringify(data))
+            nav('/')
 
 
         }
