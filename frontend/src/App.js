@@ -24,6 +24,9 @@ function App() {
             <Route path="/login" element={<Login_Page/>} />
             <Route path='/admin'  exact element={<Logged_in_Route type="Admin"/>}>
               <Route path='' element={<Admin_Dashboard/>}/>
+              <Route path='view_airlines' element={<Admin_Dashboard/>}/>
+              <Route path='view_admins' element={<Admin_Dashboard/>}/>
+              <Route path='view_specific' element={<Admin_Dashboard/>}/>
             </Route>
 
             <Route path = '/flights/:id' element={<FlightPage />} />
