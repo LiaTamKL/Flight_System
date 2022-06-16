@@ -11,7 +11,8 @@ const Header = () => {
         {user ? (<>{user.account_role === 'Admin' ? (
                  <p>AN ADMIN!</p>
                 ):<span></span>}
-                 <p>Logout</p></>
+                 <p>Logout</p>
+                 <p>Update</p></>
             ):(
                 <Link to="/login" >Login</Link>
             )}
