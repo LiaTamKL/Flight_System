@@ -1,7 +1,8 @@
 
 
-const Admin_Test= () => {
-    return <h1>YOU'VE ARRIVED AT THE ADMIN PAGE</h1>
+const AdminDashboard= () => {
+    console.log('WELCOME ADMIN')
+    return (<div><h1>YOU'VE ARRIVED AT THE ADMIN PAGE</h1></div>)
 }
 
-export default Admin_Test
+export default AdminDashboard

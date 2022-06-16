@@ -1,4 +1,4 @@
-import { Route, Navigate, Outlet } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 import { useContext } from 'react'
 import AuthContext from '../context/authentication'
 
@@ -16,30 +16,55 @@ const logged = (user) => {
     else{return true}
 }
 
-//Type refers to account role, give this as a string.
-//children and rest are just the normal parameters you give to a route
-export const Logged_in_Route = ({account_role}) => {
+/////check if logged in//////////////////
+export const LoggedinGeneric= () => {
     let {user} = useContext(AuthContext)
     let result = logged(user)
-    console.log('user:', user)
-    console.log('result:', result)
+    if (result === false){
+        alert('You are not logged in, Please log in.')
+        return(
+           <Navigate to="/login" />
+        ) }
+    else{return (<Outlet/>)
+
+    }
+}
+
+//////////check if not logged in//////////
+export const LoggedOut= () => {
+    let {user} = useContext(AuthContext)
+    let result = logged(user)
+    if (result === true){
+        alert('Log out to use this function.')
+        return(
+            <Navigate to="/" /> 
+        ) }
+    else{return (<Outlet/>)
+
+    }
+}
+
+//Type refers to account role, give this as a string.
+//children and rest are just the normal parameters you give to a route
+ const LoggedinRoute = ({account_role}) => {
+    let {user} = useContext(AuthContext)
+    let result = logged(user)
     if (result === false){
         alert('You are not logged in, Please log in.')
         return(
            <Navigate to="/login" />
         ) 
     }else{
-        if (!user.account_role === account_role){
-            alert(```Only ${account_role}s are allowed access to this page```)
+        if (user.account_role !== account_role){
+            alert(`${user.account_role}s are not allowed to view this page`)
             return(<Navigate to="/" />)
-        }else{
-            <Outlet/>
+        }else{return(
+        <Outlet/>
+        )
         }
-        //return !user.account_role === account_role ? <Navigate to="/" /> : <Outlet/>
         
     }
 
 }
 
-export default Logged_in_Route;
-
+export default LoggedinRoute;
