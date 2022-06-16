@@ -10,7 +10,13 @@ const Header = () => {
         <br/>
         {user ? (<>{user.account_role === 'Admin' ? (
                   <Link to="/admin" >Admin page</Link>
-                ):<span></span>}
+                ):<></>}
+                {user.account_role === 'Customer' ? (
+                  <Link to="/cust" >Customer page</Link>
+                ):<></>}
+                {user.account_role === 'Airline' ? (
+                  <Link to="/airline" >Airline page</Link>
+                ):<></>}
                  <button onClick={logout}>Logout</button>
                  <Link to="/update" >Update</Link></>
             ):(

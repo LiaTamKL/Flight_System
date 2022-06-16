@@ -6,11 +6,26 @@ const AuthContext = createContext()
 
 export default AuthContext
 
-
 export const AuthenticationProvider = ({children}) => {
-    let [authTokens, setAuthToken] = useState(()=> localStorage.getItem('authToken') ? JSON.parse(localStorage.getItem('authToken')) : null)
+    let [authToken, setAuthToken] = useState(()=> localStorage.getItem('authToken') ? JSON.parse(localStorage.getItem('authToken')) : null)
     let [account, setAccount] = useState(()=> localStorage.getItem('authToken') ? jwt_decode(localStorage.getItem('authToken')) : null)
     let [loading, setLoading] = useState(true)
+
+    useEffect(()=>{
+        if(loading){
+            RefreshToken()
+        }
+
+        let four_minutes = 1000 * 6000 * 4
+        let interval = setInterval(()=>{
+            if(authToken){
+                RefreshToken()
+            }
+        }, four_minutes)
+        return ()=> clearInterval(interval)
+    }, [authToken,loading]
+    
+    )
 
     let nav = useNavigate()
 
@@ -20,6 +35,27 @@ export const AuthenticationProvider = ({children}) => {
         localStorage.removeItem('authToken')
         nav('/')
     }
+
+    let RefreshToken = async ()=>{
+        console.log('HELLO IM REFRESHING NOW')
+        let response = await fetch('http://127.0.0.1:8000/backend/token/refresh/',{
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({'refresh':authToken?.refresh})
+        })
+       let data = await response.json()
+       if (response.status ===200){
+            setAuthToken(data)
+            setAccount(jwt_decode(data.access))
+            localStorage.setItem('authToken', JSON.stringify(data))
+       }else{
+           logout()
+       }
+      if(loading){
+        setLoading(false)
+    }}
 
     let loginUser = async (e)=>{
         e.preventDefault()
@@ -53,7 +89,7 @@ export const AuthenticationProvider = ({children}) => {
 
     return(
         <AuthContext.Provider value={contextData}>
-            {children}
+            {loading ? null : children}
         </AuthContext.Provider>
     )
 
