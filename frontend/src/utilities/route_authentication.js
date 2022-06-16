@@ -2,12 +2,12 @@ import { Route, Navigate, Outlet } from 'react-router-dom'
 import { useContext } from 'react'
 import AuthContext from '../context/authentication'
 
-export const Logged_in = ({children, ...rest}) => {
-    let {user} = useContext(AuthContext)
-    return(
-        <Route {...rest}>{!user ? <Navigate  to="/login" /> :   children}</Route>
-    )
-}
+// export const Logged_in = ({children, ...rest}) => {
+//     let {user} = useContext(AuthContext)
+//     return(
+//         <Route {...rest}>{!user ? <Navigate  to="/login" /> :   children}</Route>
+//     )
+// }
 
 const logged = (user) => {
     if (user === null){
