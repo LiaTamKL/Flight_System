@@ -16,6 +16,7 @@ const logged = (user) => {
     else{return true}
 }
 
+/////check if logged in//////////////////
 export const LoggedinGeneric= () => {
     let {user} = useContext(AuthContext)
     let result = logged(user)
@@ -29,6 +30,19 @@ export const LoggedinGeneric= () => {
     }
 }
 
+//////////check if not logged in//////////
+export const LoggedOut= () => {
+    let {user} = useContext(AuthContext)
+    let result = logged(user)
+    if (result === true){
+        alert('Log out to use this function.')
+        return(
+            <Navigate to="/" /> 
+        ) }
+    else{return (<Outlet/>)
+
+    }
+}
 
 //Type refers to account role, give this as a string.
 //children and rest are just the normal parameters you give to a route

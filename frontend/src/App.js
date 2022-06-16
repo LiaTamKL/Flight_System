@@ -6,7 +6,7 @@ import LoginPage from './pages/login_page';
 import {AuthenticationProvider} from './context/authentication'
 import AdminDashboard from './pages/admin_Test';
 import LoggedinRoute from './utilities/route_authentication';
-import {LoggedinGeneric} from './utilities/route_authentication';
+import {LoggedinGeneric, LoggedOut} from './utilities/route_authentication';
 
 import {
   Routes,
@@ -24,7 +24,12 @@ function App() {
           <Routes>
             <Route path = "/" exact element={<FlightsListPage />} />
 
-            <Route path="/login" element={<LoginPage/>} />
+            <Route path="/login" element={<LoggedOut/>}>
+              <Route path="" element={<LoginPage/>} />
+            </Route>
+            <Route path="/register" element={<LoggedOut/>}>
+              <Route path='' element={<FlightsListPage/>}/>
+            </Route>
             <Route path='/update' exact element={<LoggedinGeneric/>}> 
               <Route path='' element={<FlightsListPage/>}/>
             </Route>

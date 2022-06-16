@@ -19,8 +19,9 @@ const Header = () => {
                 ):<></>}
                  <button onClick={logout}>Logout</button>
                  <Link to="/update" >Update</Link></>
-            ):(
+            ):(<>
                 <Link to="/login" >Login</Link>
+                <Link to="/Register" >Register</Link></>
             )}
 
 
