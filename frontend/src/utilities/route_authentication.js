@@ -24,11 +24,18 @@ export const Logged_in_Route = ({account_role}) => {
     console.log('user:', user)
     console.log('result:', result)
     if (result === false){
+        alert('You are not logged in, Please log in.')
         return(
            <Navigate to="/login" />
         ) 
     }else{
-        return !user.account_role === account_role ? <Navigate to="/" /> : <Outlet/>
+        if (!user.account_role === account_role){
+            alert(```Only ${account_role}s are allowed access to this page```)
+            return(<Navigate to="/" />)
+        }else{
+            <Outlet/>
+        }
+        //return !user.account_role === account_role ? <Navigate to="/" /> : <Outlet/>
         
     }
 
