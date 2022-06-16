@@ -1,16 +1,16 @@
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Navigate, Outlet } from 'react-router-dom'
 import { useContext } from 'react'
-import AuthContext from '../context/AuthContext'
+import AuthContext from '../context/authentication'
 
 export const Logged_in = ({children, ...rest}) => {
     let {user} = useContext(AuthContext)
     return(
-        <Route {...rest}>{!user ? <Redirect to="/login" /> :   children}</Route>
+        <Route {...rest}>{!user ? <Navigate  to="/login" /> :   children}</Route>
     )
 }
 
 const logged = (user) => {
-    if (typeof user==="undefined"){
+    if (user === null){
         return false
     }
     else{return true}
@@ -18,20 +18,21 @@ const logged = (user) => {
 
 //Type refers to account role, give this as a string.
 //children and rest are just the normal parameters you give to a route
-export const logged_in_route = ({children,account_role, ...rest}) => {
+export const Logged_in_Route = ({account_role}) => {
     let {user} = useContext(AuthContext)
     let result = logged(user)
+    console.log('user:', user)
+    console.log('result:', result)
     if (result === false){
         return(
-            <Route {...rest}><Redirect to="/login" /></Route>
+           <Navigate to="/login" />
         ) 
     }else{
-        return(
-        <Route {...rest}>{!user.account_role === account_role ? <Redirect to="/" /> :   children}</Route>
-        )
+        return !user.account_role === account_role ? <Navigate to="/" /> : <Outlet/>
+        
     }
 
 }
 
-export default logged_in_route;
+export default Logged_in_Route;
 
