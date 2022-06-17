@@ -14,11 +14,14 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory
 from django.contrib import auth
-import datetime
+from datetime import datetime
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+import pytz
+
+utc=pytz.UTC
 
 from .serializers import *
 
@@ -59,20 +62,20 @@ class MyTokenObtainPairView(TokenObtainPairView):
 @api_view(['GET'])
 def allfli(requset):
     flights =  Flight.objects.all().order_by('departure_time')
-    seralizer = AllFlightSerializer(flights, many = True)
+    seralizer = FlightSerializer(flights, many = True)
     return Response(seralizer.data)
 
 @api_view(['GET'])
 def getfli(requset, id):
     flight = BaseFuncade.get_flight_by_id(id)
-    seralizer = AllFlightSerializer(flight, many = False)
+    seralizer = FlightSerializer(flight, many = False)
     return Response(seralizer.data)
 
 @api_view(['PUT'])
 def updatefli(request, id):
     data = request.data
     flight = BaseFuncade.get_flight_by_id(id)
-    seralizer = AllFlightSerializer(instance=flight, data=data)
+    seralizer = FlightSerializer(instance=flight, data=data)
     
     if seralizer.is_valid():
         seralizer.save()
@@ -90,11 +93,57 @@ def deletefli(request, id):
 @api_view(['POST'])
 def createfli(request):
     data = request.data
+    # raise Exception(datetime(data['departureTime']))
+    
     flight = Flight.objects.create(
-        data = data['remaining_tickets']
+        airline_id = data['airline'],
+        origin_country_id = data['originCountry'],
+        destination_country_id = data['destinationCountry'],
+        # departure_time = utc.localize(data['departureTime']),
+        departure_time = utc.localize(datetime(data['departureTime'])),
+        landing_time = utc.localize(datetime(data['arrivalTime'])),
+        remaining_tickets = data['tickets'],
+
+
     )
-    seralizer = AllFlightSerializer(flight, many = False)
+    seralizer = FlightSerializer(flight, many = False)
     return Response(seralizer.data)
+
+#{airline, originCountry , destinationCountry , departureTime , arrivalTime, tickets} 
+####################################################
+#airline
+
+
+@api_view(['GET'])
+def allair(requset):
+    ailines =  Airline.objects.all()
+    seralizer = AirlineSerializer(ailines, many = True)
+    return Response(seralizer.data)
+
+@api_view(['GET'])
+def getair(requset, id):
+    airline = BaseFuncade.get_airline_by_id(id)
+    seralizer = AirlineSerializer(airline, many = False)
+    return Response(seralizer.data)
+
+
+
+
+####################################################
+#Country
+
+@api_view(['GET'])
+def allcont(requset):
+    ailines =  Country.objects.all()
+    seralizer = CountrySerializer(ailines, many = True)
+    return Response(seralizer.data)
+
+@api_view(['GET'])
+def getcont(requset, id):
+    airline = BaseFuncade.get_country_by_id(id)
+    seralizer = CountrySerializer(airline, many = False)
+    return Response(seralizer.data)
+
 
 
 ##################################################

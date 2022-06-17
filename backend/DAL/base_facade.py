@@ -30,8 +30,7 @@ class BaseFuncade():
             return list(Airline.objects.all())
 
     def get_airline_by_id(id):   
-            airline_by_id = list(Airline.objects.filter(pk=id))
-            return airline_by_id 
+            return Airline.objects.get(pk=id)
 
     # customer shouldn't have access to account_id 
     def get_airline_by_parameters(airline_name, country_id):
@@ -49,8 +48,7 @@ class BaseFuncade():
             return country_list
 
     def get_country_by_id(id):
-            country_by_id = list(Country.objects.filter(pk=id))
-            return country_by_id
+            return Country.objects.get(pk=id)
 
 
 

@@ -2,12 +2,13 @@ from rest_framework.serializers import ModelSerializer , SlugRelatedField
 from .models import *
 
 
-
-class AllFlightSerializer(ModelSerializer):
-
-    def db_link(field):
+#helper function to connect pk with name
+def db_link(field):
         return SlugRelatedField(many=False,read_only=True,slug_field=field)
  
+
+class FlightSerializer(ModelSerializer):
+
 
     destination_country = db_link("country_name")
     origin_country = db_link("country_name")
@@ -15,6 +16,24 @@ class AllFlightSerializer(ModelSerializer):
 
     class Meta:
         model = Flight
+        fields = '__all__'
+
+
+
+class AirlineSerializer(ModelSerializer):
+
+    country = db_link("country_name")
+    account = db_link("username")
+    
+    class Meta:
+        model = Airline
+        fields = '__all__'
+
+
+
+class CountrySerializer(ModelSerializer):
+    class Meta:
+        model = Country
         fields = '__all__'
 
 
