@@ -24,7 +24,6 @@ const Header = () => {
                 <Link to="/Register" >Register</Link></>
             )}
 
-
     </div>
   )
 }
