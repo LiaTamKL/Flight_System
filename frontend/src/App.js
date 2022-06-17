@@ -15,7 +15,6 @@ import {
 } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.css'
-import Main from './pages/main';
 
 function App() {
   return (
