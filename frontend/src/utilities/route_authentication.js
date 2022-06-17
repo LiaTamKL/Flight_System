@@ -18,6 +18,7 @@ const logged = (user) => {
 
 /////check if logged in//////////////////
 export const LoggedinGeneric= () => {
+    console.log('in LoggedinGeneric')
     let {user} = useContext(AuthContext)
     let result = logged(user)
     if (result === false){
@@ -32,6 +33,7 @@ export const LoggedinGeneric= () => {
 
 //////////check if not logged in//////////
 export const LoggedOut= () => {
+    console.log('in LoggedOut')
     let {user} = useContext(AuthContext)
     let result = logged(user)
     if (result === true){
