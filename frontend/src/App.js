@@ -2,17 +2,20 @@ import './App.css';
 import Header from './components/Header'
 import FlightsListPage from './pages/FlightsListPage'; 
 import FlightPage from './pages/FlightPage';
-import Login_Page from './pages/login_page';
+import LoginPage from './pages/login_page';
 import {AuthenticationProvider} from './context/authentication'
-import Admin_Test from './pages/admin_Test';
-import Logged_in_Route from './utilities/route_authentication';
+import AdminDashboard from './pages/admin_Test';
+import LoggedinRoute from './utilities/route_authentication';
+import {LoggedinGeneric, LoggedOut} from './utilities/route_authentication';
 import CreateFlight from './forms/CreateFlight'
+import MainPage from './pages/main';
 import {
   Routes,
   Route,
 } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.css'
+import Main from './pages/main';
 
 function App() {
   return (
@@ -20,15 +23,40 @@ function App() {
         <div className='app'>
         <AuthenticationProvider>
           <Header />
-          <Routes>        
-            <Route path="/login" element={<Login_Page/>} />
-              <Route path='/admin' element={<Logged_in_Route type="Admin"/>}>
-               <Route path='/admin' element={<Admin_Test/>}/>
-              </Route>
+          <Routes>
+            <Route path = "/" exact element={<MainPage />} />
+            <Route path = "/flights" exact element={<FlightsListPage />} />
+
+            <Route path="/login" element={<LoggedOut/>}>
+              <Route path="" element={<LoginPage/>} />
+            </Route>  
+            <Route path="/register" element={<LoggedOut/>}>
+              <Route path='' element={<FlightsListPage/>}/>
+            </Route>
+            <Route path='/update' exact element={<LoggedinGeneric/>}> 
+              <Route path='' element={<FlightsListPage/>}/>
+            </Route>
+
+            <Route path='/admin'  exact element={<LoggedinRoute account_role="Admin"/>}>
+              <Route path='' element={<AdminDashboard/>}/>
+              <Route path='view_airlines' element={<AdminDashboard/>}/>
+              <Route path='view_admins' element={<AdminDashboard/>}/>
+              <Route path='view_specific' element={<AdminDashboard/>}/>
+            </Route>
+
+            <Route path='/cust'  exact element={<LoggedinRoute account_role="Customer"/>}>
+              <Route path='' element={<AdminDashboard/>}/>
+              <Route path='view_my_tickets' element={<AdminDashboard/>}/>
+            </Route>
+
+            <Route path='/airline'  exact element={<LoggedinRoute account_role="Airline"/>}>
+              <Route path='' element={<AdminDashboard/>}/>
+              <Route path='add_fli' element={<AdminDashboard/>}/>
+              <Route path='update_flight' element={<AdminDashboard/>}/>
+            </Route>
 
             <Route path = '/flights/create' element={<CreateFlight />} />
             <Route path = '/flights/:id' element={<FlightPage />} />
-            <Route path = "/" exact element={<FlightsListPage />} />
             
           </Routes>
         </AuthenticationProvider>
@@ -39,4 +67,3 @@ function App() {
 }
 
 export default App;
- 
