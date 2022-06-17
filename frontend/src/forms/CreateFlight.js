@@ -12,7 +12,6 @@ const CreateFlight = () => {
 
   let [tickets, setTickets] = useState(1)
 
-
   let [airlineOptions, setAirlineOptions] = useState()
   let [countryOptions, setCountryOptions] = useState()
 
@@ -24,7 +23,8 @@ const CreateFlight = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(departureTime)
+    let dep = new Date(arrivalTime).getTime()
+    console.log(dep)
     const submitted = {airline, originCountry , destinationCountry , departureTime , arrivalTime, tickets} 
     // console.log(submitted)
     setisPending(true);
@@ -55,14 +55,12 @@ let getAirlines = async () => {
   
   }
 
-
 let getContries = async () => {
   let response = await fetch(`/backend/countries`)
   let data = await response.json()
   setCountryOptions(data.map((country) => ({value:country.id, label:country.country_name})))
     
   }
-  
   
 
   let time_validation = () =>{
