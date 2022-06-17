@@ -33,6 +33,7 @@ export const AuthenticationProvider = ({children}) => {
 
     /////////////////LOG THE USER OUT, REDIRECT THEM TO MAIN PAGE/////////////////////
     let logout = () => {
+        console.log('wow logout')
         setAuthToken(null)
         setAccount(null)
         localStorage.removeItem('authToken')
@@ -57,7 +58,9 @@ export const AuthenticationProvider = ({children}) => {
             setAccount(jwt_decode(data.access))
             localStorage.setItem('authToken', JSON.stringify(data))
        }else{
-           logout()
+            setAuthToken(null)
+            setAccount(null)
+            localStorage.removeItem('authToken')
        }
       if(loading){
         setLoading(false)
