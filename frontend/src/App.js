@@ -9,6 +9,7 @@ import LoggedinRoute from './utilities/route_authentication';
 import {LoggedinGeneric, LoggedOut} from './utilities/route_authentication';
 import CreateFlight from './forms/CreateFlight'
 import MainPage from './pages/main';
+import Register from './pages/registration';
 import {
   Routes,
   Route,
@@ -30,7 +31,7 @@ function App() {
               <Route path="" element={<LoginPage/>} />
             </Route>  
             <Route path="/register" element={<LoggedOut/>}>
-              <Route path='' element={<FlightsListPage/>}/>
+              <Route path='' element={<Register/>}/>
             </Route>
             <Route path='/update' exact element={<LoggedinGeneric/>}> 
               <Route path='' element={<FlightsListPage/>}/>
