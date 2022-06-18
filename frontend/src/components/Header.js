@@ -29,7 +29,6 @@ const Header = () => {
   let nav = useNavigate()
 
   const handleNavigateSelect = (url) => {
-    console.log(url)
     nav(`/${url}`)
   }
   let {user, logout} = useContext(AuthContext)
