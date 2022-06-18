@@ -12,28 +12,10 @@ export const AuthenticationProvider = ({children}) => {
     let [loading, setLoading] = useState(true)
     let nav = useNavigate()
 
-    useEffect(()=>{
-        /////RUN IT IF START OF SESSION////////
-        if(loading){
-            RefreshToken()
-        }
-        /////////REFRESH EVERY 4 MINUTES//////////
-        let four_minutes = 1000 * 6000 * 4
-        let interval = setInterval(()=>{
-            if(authToken){
-                RefreshToken()
-            }
-        }, four_minutes)
-        return ()=> clearInterval(interval)
-    }, [authToken,loading]
-    
-    )
-
     /////////////////////////FUNCTIONS START HERE//////////////////////////////
 
     /////////////////LOG THE USER OUT, REDIRECT THEM TO MAIN PAGE/////////////////////
     let logout = () => {
-        console.log('wow logout')
         setAuthToken(null)
         setAccount(null)
         localStorage.removeItem('authToken')
@@ -92,6 +74,23 @@ export const AuthenticationProvider = ({children}) => {
         }
         //console.log(data.detail) <-- how to get the error
     }
+
+    useEffect(()=>{
+        /////RUN IT IF START OF SESSION////////
+        if(loading){
+            RefreshToken()
+        }
+        /////////REFRESH EVERY 4 MINUTES//////////
+        let four_minutes = 1000 * 6000 * 4
+        let interval = setInterval(()=>{
+            if(authToken){
+                RefreshToken()
+            }
+        }, four_minutes)
+        return ()=> clearInterval(interval)
+    }, [authToken,loading]
+    
+    )
 
 
     ///////THIS SENDS DATA TO ANY COMPONANT AND PAGE THAT USES AUTHCONTEXT//////////////
