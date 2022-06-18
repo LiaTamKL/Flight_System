@@ -187,6 +187,28 @@ a {
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
 }
 
+.floating-flight-button{
+  font-size: 48px;
+  /* position: absolute; */
+  bottom: 550px;
+  left: 15px;
+  /* right: 5px; */
+  background: var(--color-main);
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.loating-flight-button > svg {
+  fill: var(--color-bg);
+}
+
 
 .floating-button > svg {
   fill: var(--color-bg);

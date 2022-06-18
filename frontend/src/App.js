@@ -7,7 +7,7 @@ import {AuthenticationProvider} from './context/authentication'
 import AdminDashboard from './pages/admin_Test';
 import LoggedinRoute from './utilities/route_authentication';
 import {LoggedinGeneric, LoggedOut} from './utilities/route_authentication';
-import CreateFlight from './forms/CreateFlight'
+import CreateFlightForm from './forms/CreateFlightForm'
 import MainPage from './pages/main';
 import {
   Routes,
@@ -55,7 +55,7 @@ function App() {
             </Route>
 
 
-            <Route path = '/flights/create' element={<CreateFlight />} />
+            <Route path = '/flights/create' element={<CreateFlightForm />} />
             <Route path = '/flights/:id' element={<FlightPage />} />
 
             

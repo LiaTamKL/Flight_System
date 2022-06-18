@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import ListItem from '../components/ListItem'
-import AddButton from '../components/AddButton'
+import AddCreateButton from '../components/AddCreateButton'
 
 
 
@@ -8,11 +8,14 @@ import AddButton from '../components/AddButton'
 
 const FlightsListPage = () => {
      let [flights , setFlights] = useState([])
+    
+
      
      useEffect(() => {
         getFlights()
      }, [])
   
+     
      let getFlights = async () => {
         let response = await fetch('/backend/flights')
         let data = await response.json()
@@ -35,7 +38,7 @@ const FlightsListPage = () => {
                 ))}
 
             </div>  
-            <AddButton />
+            <AddCreateButton />
         </div>
   )
 }

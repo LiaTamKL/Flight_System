@@ -1,63 +1,41 @@
 import React, {useState, useEffect}  from 'react'
-import { useParams , useNavigate} from "react-router-dom";
+import { useParams , useNavigate, Navigate} from "react-router-dom";
 import { ReactComponent as Arrow } from '../assets/arrow-left.svg'
-import CreateFlight from '../forms/CreateFlight'
-import { format } from "date-fns";
+import CreateFlightForm from '../forms/CreateFlightForm'
 
 
 const FlightPage = () => {
-    let history = useNavigate();
+    let navigate = useNavigate();
     let flightid  = useParams().id;
     let [flight , setFlight] = useState(null);
+
+
 
     useEffect(() => {
         getFlight()
      // eslint-disable-next-line
      }, [flightid])
   
-  
-     let getFlight = async () => {
-        let response = await fetch(`/backend/flights/${flightid}/`)
-        let data = await response.json()
-        setFlight(data)
-     }
-
      
-     let createflight = async () => {
-      <CreateFlight />
-      
-      // // if (flightid === 'new') return
-      // fetch(`/backend/flights/create`, {
-      //     method: "POST",
-      //     headers: {
-      //         'Content-Type': 'application/json'
-      //     },
-      //     body: JSON.stringify(flight)
-      // })
+     let getFlight = async () => {
+      if (flightid === 'new') return
+
+      let response = await fetch(`/backend/flights/${flightid}/`)
+      let data = await response.json()
+      setFlight(data)
   }
 
-      let updateFlight = async() => {
-        fetch(`/backend/flights/${flightid}/update` , {
-          method: "PUT",
-          headers: {
-                    'content-Type': 'application/json'
-          },
-          remaining_tickets: JSON.stringify(flight)
-        })
 
+    let createflight = async () => {
+       <CreateFlightForm />
+  }
+
+
+    let updateflight = async () => {
+      console.log(flight)
+        // <CreateFlightForm forupdate ={flight} />
      }
 
-    let handleSubmit = () => {
-      if (flightid !== 'new' && !flight.remaining_tickets){
-          deleteFlight()
-      }else if (flightid !== 'new'){
-        // updateFlight()
-      }else if (flightid ==='new' && flight !== null){
-        createflight()
-      }
-        history('/')
-
-    }
 
     let deleteFlight = async() => {
       fetch(`/backend/flights/${flightid}/delete` , {
@@ -66,9 +44,10 @@ const FlightPage = () => {
                   'content-Type': 'application/json'
         }
       })
-      history('/')
+      navigate('/flights')
 
    }
+
 
    
    let formatTime = (flight) => {
@@ -80,17 +59,18 @@ const FlightPage = () => {
     return (
     <div className='flight' >
         <div className='flight-header'>
-          <h3>
-              
-              <Arrow onClick={handleSubmit}/>   
+          <h3> 
+              <Arrow onClick={() =>{navigate('/flights')} }/>
+
           </h3> 
           {flightid !=='new' ? (
             <button onClick={deleteFlight}>Delete</button> ) 
             : (
-              <button onClick={createflight}>Done</button>
-
+              <button onClick={createflight}>create</button>
+              
             )}
-         
+         <button onClick={updateflight}>Update</button>
+        
         </div>
 
         {/* <textarea onChange={(e) => { handleChange(e.target.value) }} value={flight?.body}></textarea> */}
@@ -100,5 +80,6 @@ const FlightPage = () => {
   </div>
   )
 }
+
 
 export default FlightPage 

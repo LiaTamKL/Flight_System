@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom'
 
 const ListItem = ({ flight }) => {
     return (
-
-       
-        <Link to={`flights/${flight.id}`}>
+  
+        <Link to={`/flights/${flight.id}`}>
             <div className="flights-list-item" >
                 <p> {flight.airline}</p>
             </div>

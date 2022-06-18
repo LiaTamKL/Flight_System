@@ -1,50 +1,50 @@
 import React, { useState , useEffect } from 'react'
-import { format, setSeconds } from "date-fns";
+import { format} from "date-fns";
+import {useNavigate} from "react-router-dom";
 import './Form.css'
 import Select from 'react-select'
+import { CreateFlight } from '../methods/FlightMethods'
 
 
-const CreateFlight = () => {
+const CreateFlightForm = () => {
+  let navigate = useNavigate();
+  let  [counter, setCounter] = useState(0)
 
   let [airline, setAirline] = useState('')
   let [originCountry, setOriginCountry] = useState('')
   let [destinationCountry, setDestinationCountry] = useState('')
-
   let [tickets, setTickets] = useState(1)
-
   let [airlineOptions, setAirlineOptions] = useState()
   let [countryOptions, setCountryOptions] = useState()
 
   let [departureTime, setDepartureTime] = useState(format(new Date(), "yyyy-MM-dd'T'HH:mm")) ;
   let [arrivalTime, setArrivalTime] = useState(departureTime) 
-  let [isPending, setisPending] = useState(false) 
-  let [errorMessage, setErrorMessage] = useState('')
+  let [departureMinTime, setDepartureMinTime] = useState() ;
+
+
+  // let [isPending, setisPending] = useState(false)
+  // let [errorMessage, setErrorMessage] = useState('')
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let dep = new Date(arrivalTime).getTime()
-    console.log(dep)
-    const submitted = {airline, originCountry , destinationCountry , departureTime , arrivalTime, tickets} 
-    // console.log(submitted)
-    setisPending(true);
+    let data = {airline, originCountry , destinationCountry , departureTime , arrivalTime, tickets}
+    console.log(data);
+    CreateFlight(data)
+    navigate("/flights")
 
-    fetch(`/backend/flights/create`, {
-      method: "POST",
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(submitted)
-    }).then(() => {
-    console.log('flight added')
-    setisPending(false);
-    })
 }
 
-
 useEffect(() => {
+  // pul data from the backend only once
+  if (counter < 1){
     getAirlines()
     getContries()
+    setDepartureMinTime(departureTime)
+  }
+  setCounter(counter + 1)
   // eslint-disable-next-line
-  }, [])
+  }, [airline])
 
 
 let getAirlines = async () => {
@@ -63,89 +63,88 @@ let getContries = async () => {
   }
   
 
-  let time_validation = () =>{
+  // let time_validation = () =>{
 
-    let dep = new Date(arrivalTime).getTime()
-    let arr = new Date(departureTime).getTime()
-    if (arr < dep) {
-      setArrivalTime(departureTime)
-    }
+  //   let dep = new Date(arrivalTime).getTime()
+  //   let arr = new Date(departureTime).getTime()
+  //   if (arr < dep) {
+  //     setErrorMessage()
+  //   }
     
-  }
-
-
-  // let getOptions = [
-  //   { value: 'chocolate', label: 'Chocolate' },
-  //   { value: 'strawberry', label: 'Strawberry' },
-  //   { value: 'vanilla', label: 'Vanilla' }
-  // ]
-
-  // let getOptions = options.map((airline) => {value:{airline.id} label:{airline.id}})
-
+  // }
 
 
   return (
     <div className='create'>
     <h2>Create New Flight</h2>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} >
             <label>Airline</label>
             {/* <div className='fancy-select'> */}
               
               <Select 
                 required
+                // onKeyDown={(e) => e.preventDefault()}
+                isClearable = {true}
+                defaultValue = {airline}
+                className='fancy-select'
                 options ={airlineOptions}
                 isSearchable = {true}
-                defaultValue = {null}
+                // defaultValue = {null}
                 // isMulti  = {true}
                 onChange ={(e) => {setAirline(e.value)}}
+                // onSubmit={(e) => {setAirline(e.value)}}
+                
                 
                 // More props
-                //https://react-select.com/props#select-props
+                //https://react-selecet.com/props#select-props
               />
         
 
             <label>Origin Country</label>
             <Select 
                 required
+                className='fancy-select'
+                // value={originCountry}
                 options ={countryOptions}
                 isSearchable = {true}
-                defaultValue = {null}
+                defaultValue = {originCountry}
+                isClearable = {true} 
+
                 // isMulti  = {true}
                 onChange ={(e) => {setOriginCountry(e.value)}}
+
 
               />
 
             <label>Destination Country</label>
             <Select 
                 required
+                className='fancy-select'
                 options ={countryOptions}
+                // value = {destinationCountry}
                 isSearchable = {true}
-                defaultValue = {null}
+                isClearable = {true} 
+                defaultValue = {destinationCountry}
                 // isMulti  = {true}
                 onChange ={(e) => {setDestinationCountry(e.value)}}
                 
               />
 
-
-          {/* </div> */}
-
-
             <label>Departure Time</label>
             <input 
                 type='datetime-local'
                 required
-                // onKeyDown={(e) => e.preventDefault()}
-                value={departureTime}
-                
-                // min={departureTime}
-                
-                onChange = {
-                  (e) => {
-                    setDepartureTime(e.target.value)  
-                    setArrivalTime(e.target.value) 
-                }
-              }
+                className='fancy-select'
+                defaultValue={departureTime}
+                min={departureMinTime}
+                onInvalid ={() => {
+                  setDepartureMinTime(departureMinTime)
+                }}
+                onChange = {(e) => {
+                  setDepartureTime(e.target.value)
+                  setArrivalTime(e.target.value)
+                }}
                 >
                 </input>
                 
@@ -155,10 +154,12 @@ let getContries = async () => {
             <input 
                 type='datetime-local'
                 required
+                onInvalid={() => {setArrivalTime(departureTime)}}
+                className='fancy-select'
                 min={departureTime}
                 value = {arrivalTime}
-                
                 onChange ={(e) => {
+
                   // time_validation(e.target.value)
                   setArrivalTime(e.target.value)
                 }
@@ -174,17 +175,18 @@ let getContries = async () => {
             <label>Number Of Tickets</label>
             <input
                 required
+                defaultValue ={tickets}
                 type='number'
                 step="1"
                 min="1"
-                value={tickets}
-                onChange ={(e) => setTickets(e.target.value)}
+                onChange={(e) => setTickets(e.target.value)}
                 >
 
                 </input>
 
-            {!isPending && <button>Add Flight</button>}
-            {isPending && <button disabled>Adding Flight....</button>}
+                <button type='submit' >Add Flight</button>
+            {/* {!isPending &&  */}
+            {/* {isPending && <button type='submit' disabled>Adding Flight....</button>} */}
 
 
         </form>
@@ -196,4 +198,4 @@ let getContries = async () => {
 
 }
 
-export default CreateFlight
+export default CreateFlightForm
