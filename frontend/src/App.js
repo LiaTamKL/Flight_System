@@ -41,7 +41,7 @@ function App() {
 
             <Route path='/admin'  exact element={<LoggedinRoute account_role="Admin"/>}>
               <Route path='' element={<AdminDashboard/>}/>
-              <Route path='view_airlines' element={<AdminDashboard/>}/>
+              <Route path='view_airlines' element={<FlightsListPage/>}/>
               <Route path='view_admins' element={<AdminDashboard/>}/>
               <Route path='view_specific' element={<AdminDashboard/>}/>
             </Route>
