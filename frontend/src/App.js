@@ -9,6 +9,8 @@ import LoggedinRoute from './utilities/route_authentication';
 import {LoggedinGeneric, LoggedOut} from './utilities/route_authentication';
 import CreateFlightForm from './forms/CreateFlightForm'
 import MainPage from './pages/main';
+import Register from './pages/registration';
+import NotFound from './pages/404Page';
 import {
   Routes,
   Route,
@@ -23,6 +25,7 @@ function App() {
         <AuthenticationProvider>
           <Header />
           <Routes>
+            <Route path='*' element={<NotFound/>} />
             <Route path = "/" exact element={<MainPage />} />
             <Route path = "/flights" element={<FlightsListPage />} />
 
@@ -30,7 +33,7 @@ function App() {
               <Route path="" element={<LoginPage/>} />
             </Route>  
             <Route path="/register" element={<LoggedOut/>}>
-              <Route path='' element={<FlightsListPage/>}/>
+              <Route path='' element={<Register/>}/>
             </Route>
             <Route path='/update' exact element={<LoggedinGeneric/>}> 
               <Route path='' element={<FlightsListPage/>}/>
@@ -57,8 +60,6 @@ function App() {
 
             <Route path = '/flights/create' element={<CreateFlightForm />} />
             <Route path = '/flights/:id' element={<FlightPage />} />
-
-            
           </Routes>
         </AuthenticationProvider>
       </div>
