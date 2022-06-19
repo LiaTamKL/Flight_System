@@ -164,15 +164,16 @@ def register_api(request):
                 cus_form['address'] = request.data['address']
                 cus_form['phone_number'] = request.data['phone_number']
                 cus_form['credit_card_no'] = request.data['credit_card_no']
-            except: raise Http404
+            except: return Response({'ERROR':'Json parameters not entered correctly.'}, status=status.HTTP_400_BAD_REQUEST)
 
             acc_serializer = AccountSerializer(data=acc_form, many = False)
             cus_serializer = CustomerSerializer(data=cus_form, many = False)
 
             if acc_serializer.is_valid() and cus_serializer.is_valid():
-                created_account = BaseFuncade.create_new_user(acc_serializer)
-                customer = AnonymusFancade.add_customer(cus_serializer , created_account)
-                return Response(({'username':acc_serializer.data['username'], 'email':acc_serializer.data['email'], 'first_name':cus_serializer.data['first_name'], 'last_name':cus_serializer.data['last_name']}))
+                #created_account = BaseFuncade.create_new_user(acc_serializer)
+                #AnonymusFancade.add_customer(cus_serializer , created_account)
+                context = {'data':{'username':acc_serializer.data['username'], 'email':acc_serializer.data['email'], 'first_name':cus_serializer.data['first_name'], 'last_name':cus_serializer.data['last_name']}}
+                return Response(context)
             else:
                 acc_serializer.is_valid()
                 cus_serializer.is_valid()
