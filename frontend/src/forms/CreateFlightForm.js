@@ -1,9 +1,11 @@
 import React, { useState , useEffect } from 'react'
-import { format} from "date-fns";
+import { format , parseISO} from "date-fns";
 import {useNavigate} from "react-router-dom";
 import './Form.css'
 import Select from 'react-select'
 import { CreateFlight } from '../methods/FlightMethods'
+import {ReactComponent as Addflighticon } from '../assets/flight.svg';
+
 
 
 const CreateFlightForm = () => {
@@ -30,8 +32,8 @@ const CreateFlightForm = () => {
     e.preventDefault();
     let data = {airline, originCountry , destinationCountry , departureTime , arrivalTime, tickets}
     console.log(data);
-    CreateFlight(data)
-    navigate("/flights")
+    // CreateFlight(data)
+    // navigate("/flights")
 
 }
 
@@ -41,6 +43,7 @@ useEffect(() => {
     getAirlines()
     getContries()
     setDepartureMinTime(departureTime)
+    
   }
   setCounter(counter + 1)
   // eslint-disable-next-line
@@ -61,42 +64,77 @@ let getContries = async () => {
   setCountryOptions(data.map((country) => ({value:country.id, label:country.country_name})))
     
   }
-  
 
-  // let time_validation = () =>{
-
-  //   let dep = new Date(arrivalTime).getTime()
-  //   let arr = new Date(departureTime).getTime()
-  //   if (arr < dep) {
-  //     setErrorMessage()
-  //   }
+  // let validate_empty = (field_type, e) =>{
+  //   let element1 = document.getElementById(field_type);
+  //   console.log(element1);
+  //   if (!e) {element1.target.setCustomValidity("This Field Cannot Be Empty")
+  //   }else {element1.target.setCustomValidity("")}
     
+
   // }
+
+
+
+// let error_msg = () => {
+// console.log("errror");
+// return (
+//   <span  style={{
+//     fontWeight: 'bold',
+//       color: 'red',
+//         }}>This Field cannot be empty</span>
+// )
+// }
+
+
+
+  let time_validation = (type, error_id) =>{
+    let valid = document.getElementById(type);
+    if (!valid.checkValidity()) {
+     let validation_mes =  `Please select a value that is no earlier than ${format(parseISO(departureTime),  "dd/MM/yyyy HH:mm")}.`
+      document.getElementById(error_id).innerHTML = validation_mes;
+    }
+    else
+    {document.getElementById(error_id).innerHTML = "";}
+  }
+
+
 
 
   return (
     <div className='create'>
     <h2>Create New Flight</h2>
 
-        <form onSubmit={handleSubmit} >
+        <form id='app_form'  onSubmit={handleSubmit} >
             <label>Airline</label>
             {/* <div className='fancy-select'> */}
               
               <Select 
                 required
+                id='airline'
                 // onKeyDown={(e) => e.preventDefault()}
                 isClearable = {true}
                 defaultValue = {airline}
                 className='fancy-select'
                 options ={airlineOptions}
                 isSearchable = {true}
-                // defaultValue = {null}
+                // getOptionLabel={e => (
+                //   <div style={{ display: 'flex', alignItems: 'center' }}>
+                //     {<Addflighticon />}
+                //     <span style={
+                //       { marginLeft: 1}
+                      
+                //       }>{e.name}</span>
+                //   </div>
+                // )}or_msg()}
+                // onlaod = {validate_empty('airline', null)}
                 // isMulti  = {true}
-                onChange ={(e) => {setAirline(e.value)}}
-                // onSubmit={(e) => {setAirline(e.value)}}
+                onChange ={(e) => {
+                  if(e) setAirline(e.value)
+                }}                
                 
                 
-                // More props
+                  // More props
                 //https://react-selecet.com/props#select-props
               />
         
@@ -104,6 +142,7 @@ let getContries = async () => {
             <label>Origin Country</label>
             <Select 
                 required
+                id='origin_country'
                 className='fancy-select'
                 // value={originCountry}
                 options ={countryOptions}
@@ -112,7 +151,9 @@ let getContries = async () => {
                 isClearable = {true} 
 
                 // isMulti  = {true}
-                onChange ={(e) => {setOriginCountry(e.value)}}
+                onChange={(e) => {
+                  if (e) setOriginCountry(e.value)
+                }}
 
 
               />
@@ -120,6 +161,7 @@ let getContries = async () => {
             <label>Destination Country</label>
             <Select 
                 required
+                id='dest_countery'
                 className='fancy-select'
                 options ={countryOptions}
                 // value = {destinationCountry}
@@ -127,54 +169,67 @@ let getContries = async () => {
                 isClearable = {true} 
                 defaultValue = {destinationCountry}
                 // isMulti  = {true}
-                onChange ={(e) => {setDestinationCountry(e.value)}}
+                onChange ={(e) => {
+                  if(e) setDestinationCountry(e.value)
+                }}
                 
+
               />
 
             <label>Departure Time</label>
             <input 
                 type='datetime-local'
                 required
+                id='departure_time'
                 className='fancy-select'
                 defaultValue={departureTime}
                 min={departureMinTime}
                 onInvalid ={() => {
                   setDepartureMinTime(departureMinTime)
+                
                 }}
-                onChange = {(e) => {
+                onChange = {(e) => {    
+                  // time_validation('arrival_time', 'errormes_dep')
                   setDepartureTime(e.target.value)
                   setArrivalTime(e.target.value)
                 }}
                 >
+                  
                 </input>
-                
+                <span id='errormes_dep' style={{
+            fontWeight: 'bold',
+              color: 'red',
+                }}></span>
 
 
             <label>Arrival Time</label>
             <input 
                 type='datetime-local'
+                id='arrival_time'
                 required
                 onInvalid={() => {setArrivalTime(departureTime)}}
+                // onInvalid={() => {time_validation('arrival_time')}}
+                
                 className='fancy-select'
                 min={departureTime}
                 value = {arrivalTime}
                 onChange ={(e) => {
-
-                  // time_validation(e.target.value)
+                  time_validation('arrival_time', 'errormes_arr')
                   setArrivalTime(e.target.value)
                 }
             }
                 >
 
                 </input>
-          {/* <span style={{
+          <span id='errormes_arr' style={{
             fontWeight: 'bold',
               color: 'red',
-                }}>{errorMessage}</span> */}
+                }}></span>
                 
             <label>Number Of Tickets</label>
             <input
                 required
+                id='tickes'
                 defaultValue ={tickets}
                 type='number'
                 step="1"
@@ -184,7 +239,7 @@ let getContries = async () => {
 
                 </input>
 
-                <button type='submit' >Add Flight</button>
+                <button type="submit">Add Flight</button>
             {/* {!isPending &&  */}
             {/* {isPending && <button type='submit' disabled>Adding Flight....</button>} */}
 
