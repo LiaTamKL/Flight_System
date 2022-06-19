@@ -148,11 +148,11 @@ def getcont(requset, id):
 
 ##################### ACCOUNT ACTIONS ############################
 
-@api_view(['POST'])
-def register_api(request):
-    account_role = Account_Role.objects.get(role_name='Customer')
+@api_view(['POST', 'PUT', 'DELETE'])
+def user_api(request):
     if request.method == 'POST':   
             try: 
+                account_role = Account_Role.objects.get(role_name='Customer')
                 acc_form = {}
                 cus_form = {}
                 acc_form['username'] = request.data['username']
@@ -170,14 +170,21 @@ def register_api(request):
             cus_serializer = CustomerSerializer(data=cus_form, many = False)
 
             if acc_serializer.is_valid() and cus_serializer.is_valid():
-                #created_account = BaseFuncade.create_new_user(acc_serializer)
-                #AnonymusFancade.add_customer(cus_serializer , created_account)
+                created_account = BaseFuncade.create_new_user(acc_serializer)
+                AnonymusFancade.add_customer(cus_serializer , created_account)
                 context = {'data':{'username':acc_serializer.data['username'], 'email':acc_serializer.data['email'], 'first_name':cus_serializer.data['first_name'], 'last_name':cus_serializer.data['last_name']}}
                 return Response(context)
             else:
                 acc_serializer.is_valid()
                 cus_serializer.is_valid()
                 return Response((acc_serializer.errors, cus_serializer.errors) ,status=status.HTTP_400_BAD_REQUEST)
+    if request.method == 'PUT':  
+        print(request.data)
+        return Response({'ERROR':'Not complete yet! Please dont use me!.'})
+    if request.method == 'DELETE':  
+        print(request.data)
+        return Response({'ERROR':'Not complete yet! Please dont use me!.'})
+
 
 ##################################################
 ##################################################
