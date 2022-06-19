@@ -9,6 +9,8 @@ const Register= () => {
     let nav = useNavigate()
     let [message, setMessage] = useState(null)
     const [error, setError] = useState([])
+    const [errmessage, setErrMessage] = useState([])
+    console.log('THE START', error, errmessage)
 
     let register = async (e) =>{
         var csrftoken = GetCookie('csrftoken')
@@ -43,24 +45,26 @@ const Register= () => {
             nav('/login')
         }
         else{
-            
-            setMessage(`Something went wrong. Status: ${response.status}. ${error}`)
+            //console.log('!isNaN(error)', !isNaN(error))
+            //console.log('error at the start of the error loop:', error)
+            //setError([])
+            //if (!isNaN(error)){setError([])}
+            setMessage(`Something went wrong. Status: ${response.status}.`)
             for (const [key] of Object.entries(data)){
                 const errors = data[key]
-                console.log(errors)
+                //console.log(errors)
                 for (const [k] of Object.entries(errors)){
 
-                    console.log(errors[k][0])
-                    console.log(error)
-                    console.log(error===3)
-                    if (error===3){setError([])}
-                    setError(error.push(errors[k][0]))
+                    //console.log(errors[k][0])
+                    setError(error.push(errors[k][0] + ' '))
                     //console.log(error)
                     //setMessage(message + errors[k][0] )
                 }
             }
-            setMessage(`Something went wrong. Status: ${response.status}. ${error}`)
+            setMessage(`Something went wrong. Status: ${response.status}.`)
             console.log('END', error)
+            setErrMessage(error)
+            setError([])
             }
 
     }}
@@ -86,13 +90,14 @@ const Register= () => {
     return (
     <>
     <div id='message'>{message}</div>
-    <h1>to add to here: a fetch which will be imported as a component and two form components once they're made</h1>
     <form onSubmit={(e)=>register(e)}>
         <AccountForm/>
         <CustomerForm/>
         <input type="submit"/>
     </form>
-    
+    <ul>{errmessage.map((e)=>(
+        <li>{e}</li>
+                        ))}</ul>
     </>
     
     )
