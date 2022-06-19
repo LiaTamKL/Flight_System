@@ -1,22 +1,52 @@
-import React, { useContext } from 'react'
+import React, { useContext,} from 'react'
 import AuthContext from '../context/authentication'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import Select from 'react-select'
 
+
+let admin_options = [
+  { value: 'admin/view_specific', label: 'Search User' },
+  { value: 'admin', label: 'All Customers' },
+  { value: 'admin/view_admins', label: 'All Admins' },
+  { value: 'admin/view_airlines', label: 'All Airlines' }
+]
+
+let cust_options  = [
+  { value: 'cust', label: 'Search for my ticket' },
+  { value: 'cust/view_my_tickets', label: 'View my tickets' }
+]
+
+let airline_options = [
+  { value: 'airline', label: 'Search for flight' },
+  { value: 'airline/add_fli', label: 'Add flight' },
+]
+
+let general_options = [
+  { value: '', label: 'Home Page' },
+  { value: 'flights', label: 'All flights' },
+]
 const Header = () => {
+  let nav = useNavigate()
+
+  const handleNavigateSelect = (url) => {
+    nav(`/${url}`)
+  }
   let {user, logout} = useContext(AuthContext)
+
   return (
     <div className='app-header'>
-        <h1>Flight list</h1>
         <br/>
-        {user ? (<>{user.account_role === 'Admin' ? (
-                  <Link to="/admin" >Admin page</Link>
+        <Select placeholder="General Commands" onChange={e=>handleNavigateSelect(e.value)} options={general_options}/>
+        {user ? (<>{user.account_role === 'Admin' ? (<>
+                  <Select placeholder="Admin Commands" onChange={e=>handleNavigateSelect(e.value)} options={admin_options}/>
+                  </>
                 ):<></>}
-                {user.account_role === 'Customer' ? (
-                  <Link to="/cust" >Customer page</Link>
+                {user.account_role === 'Customer' ? (<>
+                  <Select placeholder="Customer Commands" onChange={e=>handleNavigateSelect(e.value)} options={cust_options}/></>
                 ):<></>}
-                {user.account_role === 'Airline' ? (
-                  <Link to="/airline" >Airline page</Link>
-                ):<></>}
+                {user.account_role === 'Airline' ? (<>
+                  <Select placeholder="Airline Commands" onChange={e=>handleNavigateSelect(e.value)} options={airline_options}/>
+                  </>):<></>}
                  <button onClick={logout}>Logout</button>
                  <Link to="/update" >Update</Link></>
             ):(<>
