@@ -17,7 +17,7 @@ const Register= () => {
         }
         else{
         //change the url when final package
-        let response = await fetch('http://127.0.0.1:8000/backend/unknownfornow',{
+        let response = await fetch('http://127.0.0.1:8000/backend/api/user_api',{
                 method:'POST',
                 headers:{
                     'Accept': 'application/json',
@@ -68,7 +68,7 @@ const Register= () => {
     <>
     <div id='message'>{message}</div>
     <h1>to add to here: a fetch which will be imported as a component and two form components once they're made</h1>
-    <form onSubmit={(e)=>test(e)}>
+    <form onSubmit={(e)=>register(e)}>
         <AccountForm/>
         <CustomerForm/>
         <input type="submit"/>
