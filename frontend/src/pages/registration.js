@@ -3,12 +3,14 @@ import {useState} from 'react'
 import AccountForm from '../forms/AccountForm'
 import { CheckPasswords } from '../forms/AccountForm'
 import CustomerForm from '../forms/CustomerForm'
+import GetCookie from '../utilities/csrf_token'
 
 const Register= () => {
     let nav = useNavigate()
     let [message, setMessage] = useState(null)
 
     let register = async (e) =>{
+        var csrftoken = GetCookie('csrftoken')
         e.preventDefault()
         if (CheckPasswords(e)===false){
             setMessage('Passwords must match and be 8 characters long')
@@ -18,7 +20,9 @@ const Register= () => {
         let response = await fetch('http://127.0.0.1:8000/backend/unknownfornow',{
                 method:'POST',
                 headers:{
-                        'Content-Type':'application/json'
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken
                     },
                     body:JSON.stringify({'username': e.target.username.value,
                                         'email':e.target.email.value, 
