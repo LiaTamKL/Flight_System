@@ -184,7 +184,7 @@ def user_api(request):
                 print(acc_serializer.errors)
                 print(cus_serializer.errors)
                 print(context)
-                return Response((acc_serializer.errors, cus_serializer.errors) ,status=status.HTTP_400_BAD_REQUEST)
+                return Response(data=(acc_serializer.errors, cus_serializer.errors) ,status=status.HTTP_400_BAD_REQUEST)
     if request.method == 'PUT':  
         print(request.data)
         return Response({'ERROR':'Not complete yet! Please dont use me!.'})

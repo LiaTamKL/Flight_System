@@ -8,17 +8,19 @@ import GetCookie from '../utilities/csrf_token'
 const Register= () => {
     let nav = useNavigate()
     let [message, setMessage] = useState(null)
-    const [error, setError] = useState([])
-    const [errmessage, setErrMessage] = useState([])
-    console.log('THE START', error, errmessage)
+    const [errors, setErrors] = useState([])
+    console.log('THE START', errors)
 
     let register = async (e) =>{
         var csrftoken = GetCookie('csrftoken')
         e.preventDefault()
+        setErrors([])
         if (CheckPasswords(e)===false){
             setMessage('Passwords must match and be 8 characters long')
         }
         else{
+        setMessage('')
+
         //change the url when final package
         let response = await fetch('http://127.0.0.1:8000/backend/api/user_api',{
                 method:'POST',
@@ -45,57 +47,38 @@ const Register= () => {
             nav('/login')
         }
         else{
-            //console.log('!isNaN(error)', !isNaN(error))
-            //console.log('error at the start of the error loop:', error)
-            //setError([])
-            //if (!isNaN(error)){setError([])}
-            setMessage(`Something went wrong. Status: ${response.status}.`)
-            for (const [key] of Object.entries(data)){
-                const errors = data[key]
-                //console.log(errors)
-                for (const [k] of Object.entries(errors)){
 
-                    //console.log(errors[k][0])
-                    setError(error.push(errors[k][0] + ' '))
-                    //console.log(error)
-                    //setMessage(message + errors[k][0] )
+            setMessage(`Something went wrong. Status: ${response.status}.`)
+            let error = []
+
+            //gathers all the errors into errors
+            for (const [key] of Object.entries(data)){
+                const er = data[key]
+                for (const [k] of Object.entries(er)){
+                    error.push(er[k][0] + ' ')
+
                 }
             }
-            setMessage(`Something went wrong. Status: ${response.status}.`)
-            console.log('END', error)
-            setErrMessage(error)
-            setError([])
+            console.log('END', errors)
+
+            setErrors(error //prevError =>[
+                //error, ...prevError]
+            )
             }
 
     }}
 
-    let test = (e) =>{
-        e.preventDefault()
-        if (CheckPasswords(e)===false){
-            setMessage('Passwords must match and be 8 characters long')}
-        else{
-        let data = {'username': e.target.username.value,
-        'email':e.target.email.value, 
-        'password':e.target.password.value,
-        'password2': e.target.password2.value,
-        'first_name': e.target.first_name.value,
-        'last_name': e.target.last_name.value,
-        'address':e.target.address.value,
-        'phone_number':e.target.phone_number.value,
-        'credit_card_no': e.target.credit_card_no.value}
-        console.log(data)
-        setMessage(`successful registration of ${e.target.username.value}`)
-    }
-    }
     return (
     <>
-    <div id='message'>{message}</div>
     <form onSubmit={(e)=>register(e)}>
         <AccountForm/>
         <CustomerForm/>
+        <br/>
         <input type="submit"/>
     </form>
-    <ul>{errmessage.map((e)=>(
+    <br/>
+    <div id='message'>{message}</div>
+    <ul>{errors.map((e)=>(
         <li>{e}</li>
                         ))}</ul>
     </>
