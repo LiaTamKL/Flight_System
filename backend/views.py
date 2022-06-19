@@ -1,3 +1,4 @@
+from distutils.log import error
 from urllib import response
 from django.shortcuts import render ,redirect
 from .models import *
@@ -177,6 +178,12 @@ def user_api(request):
             else:
                 acc_serializer.is_valid()
                 cus_serializer.is_valid()
+                context = {}
+                for k in acc_serializer.errors:
+                    print(acc_serializer.errors[k][0])
+                print(acc_serializer.errors)
+                print(cus_serializer.errors)
+                print(context)
                 return Response((acc_serializer.errors, cus_serializer.errors) ,status=status.HTTP_400_BAD_REQUEST)
     if request.method == 'PUT':  
         print(request.data)

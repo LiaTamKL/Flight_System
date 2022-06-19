@@ -8,6 +8,7 @@ import GetCookie from '../utilities/csrf_token'
 const Register= () => {
     let nav = useNavigate()
     let [message, setMessage] = useState(null)
+    const [error, setError] = useState([])
 
     let register = async (e) =>{
         var csrftoken = GetCookie('csrftoken')
@@ -42,7 +43,25 @@ const Register= () => {
             nav('/login')
         }
         else{
-            setMessage(`Something went wrong. Status: ${response.status}: ${data.detail}`)}
+            
+            setMessage(`Something went wrong. Status: ${response.status}. ${error}`)
+            for (const [key] of Object.entries(data)){
+                const errors = data[key]
+                console.log(errors)
+                for (const [k] of Object.entries(errors)){
+
+                    console.log(errors[k][0])
+                    console.log(error)
+                    console.log(error===3)
+                    if (error===3){setError([])}
+                    setError(error.push(errors[k][0]))
+                    //console.log(error)
+                    //setMessage(message + errors[k][0] )
+                }
+            }
+            setMessage(`Something went wrong. Status: ${response.status}. ${error}`)
+            console.log('END', error)
+            }
 
     }}
 
