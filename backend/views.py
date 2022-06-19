@@ -1,3 +1,4 @@
+from urllib import response
 from django.shortcuts import render ,redirect
 from .models import *
 from .forms import *
@@ -20,7 +21,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 import pytz
-
+from rest_framework import status
 utc=pytz.UTC
 
 from .serializers import *
@@ -48,6 +49,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['account_role'] = role_name
         token['email'] = user.email
         token['main_name'] = main_name
+        token['is_superuser'] = user.is_superuser
 
         return token
 
@@ -144,7 +146,37 @@ def getcont(requset, id):
     seralizer = CountrySerializer(airline, many = False)
     return Response(seralizer.data)
 
+##################### ACCOUNT ACTIONS ############################
 
+@api_view(['POST'])
+def register_api(request):
+    account_role = Account_Role.objects.get(role_name='Customer')
+    if request.method == 'POST':   
+            try: 
+                acc_form = {}
+                cus_form = {}
+                acc_form['username'] = request.data['username']
+                acc_form['email'] = request.data['email']
+                acc_form['password'] = request.data['password']
+                acc_form['account_role'] = account_role.pk
+                cus_form['first_name'] = request.data['first_name']
+                cus_form['last_name'] = request.data['last_name']
+                cus_form['address'] = request.data['address']
+                cus_form['phone_number'] = request.data['phone_number']
+                cus_form['credit_card_no'] = request.data['credit_card_no']
+            except: raise Http404
+
+            acc_serializer = AccountSerializer(data=acc_form, many = False)
+            cus_serializer = CustomerSerializer(data=cus_form, many = False)
+
+            if acc_serializer.is_valid() and cus_serializer.is_valid():
+                created_account = BaseFuncade.create_new_user(acc_serializer)
+                customer = AnonymusFancade.add_customer(cus_serializer , created_account)
+                return Response((acc_serializer.data, cus_serializer.data))
+            else:
+                acc_serializer.is_valid()
+                cus_serializer.is_valid()
+                return Response((acc_serializer.errors, cus_serializer.errors) ,status=status.HTTP_400_BAD_REQUEST)
 
 ##################################################
 ##################################################

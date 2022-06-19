@@ -57,16 +57,19 @@ class BaseFuncade():
     # on commit login details will be sent here for user creation.
     # also will generate token for the user?
     
-    def create_new_user(form , account_role):
-        form.save()
-        email = form.cleaned_data['email']
+    def create_new_user(form):
+        user = form.save()
+        user.set_password(user.password)
+        user.is_customer = True
+        user.save()
+        #email = form.data['email']
         
-        created_account = Account.objects.get(email = email)
+        #created_account = Account.objects.get(email = email)
         # raise Exception({account_role})
-        created_account.account_role_id = account_role
-        created_account.is_customer = True
-        created_account.save()
-        return  created_account
+        #created_account.account_role_id = account_role
+        #created_account.is_customer = True
+        #created_account.save()
+        return  user
 
 
 
