@@ -172,7 +172,7 @@ def register_api(request):
             if acc_serializer.is_valid() and cus_serializer.is_valid():
                 created_account = BaseFuncade.create_new_user(acc_serializer)
                 customer = AnonymusFancade.add_customer(cus_serializer , created_account)
-                return Response((acc_serializer.data, cus_serializer.data))
+                return Response(({'username':acc_serializer.data['username'], 'email':acc_serializer.data['email'], 'first_name':cus_serializer.data['first_name'], 'last_name':cus_serializer.data['last_name']}))
             else:
                 acc_serializer.is_valid()
                 cus_serializer.is_valid()
