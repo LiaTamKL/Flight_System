@@ -7,8 +7,8 @@ const LoginPage = () => {
         <div>
             {user&& <h1>Hello {user.main_name}</h1>}
             <form onSubmit={loginUser}>
-                <input type="email" name="email" placeholder="Your email" />
-                <input type="password" name="password" placeholder="Your Password" />
+                <input type="email" name="email" placeholder="Your email" required/>
+                <input type="password" name="password" placeholder="Your Password" required/>
                 <input type="submit"/>
             </form>
         </div>
