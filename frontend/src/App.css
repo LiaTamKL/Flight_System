@@ -107,29 +107,29 @@ a {
 }
 
 
-/* flightS STYLES */
+/* all STYLES */
 
-.flights-header {
+.all-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 16px;
 }
 
-.flights-title,
-.flights-count {
+.all-title,
+.all-count {
   color: var(--color-main);
   font-size: 24px;
   font-weight: 600;
 }
 
-.flights-count {
+.all-count {
   font-size: 18px;
   color: var(--color-gray);
 }
 
 
-.flights-list {
+.all-list {
   padding: 0;
   margin: 16px 0;
   height: 70vh;
@@ -137,35 +137,35 @@ a {
   scrollbar-width: none; /* Firefox */
 }
 
-.flights-list::-webkit-scrollbar {
+.all-list::-webkit-scrollbar {
   display: none;
 }
 
-.flights-list-item {
+.all-list-item {
   border-bottom: 1px solid  var(--color-border);
   margin-bottom: 12px;
   padding: 8px 16px;
   transition: all 0.2s ease-in-out;
 }
 
-.flights-list-item:hover {
+.all-list-item:hover {
   background-color: var(--color-bg);
   cursor: pointer;
 }
 
-.flights-list-item h3,
-.flights-list-item p span {
+.all-list-item h3,
+.all-list-item p span {
   font-weight: 600;
 }
 
 
-.flights-list-item p span {
+.all-list-item p span {
   color: var(--color-gray);
   display: inline-block;
   margin-right: 8px;
 }
 
-.flights-list-item p {
+.all-list-item p {
   font-size: 14px;
   color: var(--color-light);
 }
@@ -187,7 +187,7 @@ a {
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
 }
 
-.floating-flight-button{
+.floating-all-button{
   font-size: 48px;
   /* position: absolute; */
   bottom: 550px;
@@ -205,7 +205,7 @@ a {
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
 }
 
-.loating-flight-button > svg {
+.loating-all-button > svg {
   fill: var(--color-bg);
 }
 
@@ -216,11 +216,13 @@ a {
 
 
 
+
+
 /*==============================
-=>  flight Styles
+=>  all Styles
 ================================*/
 
-.flight-header {
+.all-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -228,20 +230,20 @@ a {
   padding: 10px;
 }
 
-.flight-header h3 {
+.all-header h3 {
   display: flex;
   align-items: center;
   font-size: 24px;
   cursor: pointer;
 }
 
-.flight-header h3 svg {
+.all-header h3 svg {
   fill: var(--color-main);
   width: 20px;
   margin-right: 8px;
 }
 
-.flight-header button {
+.all-header button {
   border: none;
   outline: none;
   font-weight: 600;
@@ -250,7 +252,7 @@ a {
   cursor: pointer;
 }
 
-.flight textarea {
+.all textarea {
   background-color: var(--color-white);
   border: none;
   padding: 16px 12px;
@@ -260,8 +262,8 @@ a {
   scrollbar-width: none; /* Firefox */
 }
 
-.flight textarea:active,
-.flight textarea:focus {
+.all textarea:active,
+.all textarea:focus {
   outline: none;
   border: none;
 }

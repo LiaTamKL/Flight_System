@@ -48,8 +48,8 @@ const FlightPage = () => {
 }
 
     return (
-    <div className='flight' >
-        <div className='flight-header'>
+    <div className='all' >
+        <div className='all-header'>
           <h3> 
               <Arrow onClick={() =>{navigate('/flights')} }/>
 

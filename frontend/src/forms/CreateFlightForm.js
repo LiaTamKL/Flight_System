@@ -33,6 +33,8 @@ const CreateFlightForm = () => {
   let [arrivalTime, setArrivalTime] = useState(departureTime) 
   let [departureMinTime, setDepartureMinTime] = useState() ;
 
+
+  
   // console.log(airline);
   // console.log(airlineOptions.find(e => e.label === flight.airline))
 
