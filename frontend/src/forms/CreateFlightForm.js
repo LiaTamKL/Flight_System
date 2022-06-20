@@ -148,13 +148,7 @@ let getContries = async () => {
                 // onKeyDown={(e) => e.preventDefault()}
                 isClearable = {true}
                 // defautValue = {}
-                // defaultInputValue = {airlineOptions.find(e => e.label === airline)} 
                 options ={airlineOptions}
-                // value = {airlineOptions.filter(option => option.value === 1)}
-                // defaultValue = {{
-                //   "value": 1,
-                //   "label": "CheapSkate Airlines"
-                // }}
                 className='fancy-select'
                 isSearchable = {true}
                 // getOptionLabel={e => (
