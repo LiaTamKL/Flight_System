@@ -1,7 +1,7 @@
 
 import AuthContext from '../context/authentication'
 import React, { useContext,} from 'react'
-import AccountForm from '../forms/AccountForm'
+import UpdateAccountForm from '../forms/AccountForm'
 import CustomerForm from '../forms/CustomerForm'
 import AirlineForm from '../forms/AirlineForm'
 import AdminForm from '../forms/AdminForm'
@@ -13,7 +13,7 @@ const UpdatePage = () =>{
 
 return(
     <form onSubmit={(e)=>console.log(e)}>
-        <AccountForm/>
+        <UpdateAccountForm/>
                 {user.account_role === 'Airline' ? (
                     <AirlineForm/>
                 ):<></>}
