@@ -167,8 +167,10 @@ def user_api(request):
         if request.method == 'PATCH':  
             print(request.data)
             return Response({'ERROR':'Not complete yet! Please dont use me!.'})
-            
+
         if request.method == 'DELETE':  
+            if not request.user.is_admin:
+                return response(data="Only administrators may take this action", status=status.HTTP_401_UNAUTHORIZED)
             print(request.data)
             return Response({'ERROR':'Not complete yet! Please dont use me!.'})
 
