@@ -34,6 +34,8 @@ urlpatterns = [
     path('logout/', views.logout,name='logout'),
 
     
+
+    
     ############## Tests #########################
     path('test/', views.test),
     path ('flights/', views.allfli),
@@ -46,8 +48,14 @@ urlpatterns = [
     path('airlines/', views.allair,),
     path('airlines/<str:id>/', views.getair),
 
-    path('countries/', views.allcont,),
-    path('countries/<str:id>/', views.getcont),
+ 
+
+ 
+    path ('countries/create', views.createfli),
+    path ('countries/<str:id>/update', views.updatecount),
+    path ('countries/<str:id>/delete', views.deletecount),
+    path ('countries/<str:id>/', views.createcount),
+
 
 
 

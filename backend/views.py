@@ -63,7 +63,7 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
 
 ##################################################
-############### Testing ##########################
+############### flight ##########################
 
 
 @api_view(['GET'])
@@ -137,16 +137,51 @@ def getair(requset, id):
 #Country
 
 @api_view(['GET'])
-def allcont(requset):
+def allcount(requset):
     ailines =  Country.objects.all()
     seralizer = CountrySerializer(ailines, many = True)
     return Response(seralizer.data)
 
 @api_view(['GET'])
-def getcont(requset, id):
+def getcount(requset, id):
     airline = BaseFuncade.get_country_by_id(id)
     seralizer = CountrySerializer(airline, many = False)
     return Response(seralizer.data)
+
+
+@api_view(['PATCH'])
+def updatecount(request, id):
+    data = request.data
+    country = BaseFuncade.get_country_by_id(id)
+    seralizer = CountrySerializer(instance=country, data=data)
+    
+    if seralizer.is_valid():
+        seralizer.save()
+    return Response(seralizer.data)
+
+
+
+@api_view(['DELETE'])
+def deletecount(request, id):
+    country = BaseFuncade.get_country_by_id(id)
+    country.delete()
+    return Response("Deleted")
+
+
+@api_view(['POST'])
+def createcount(request):
+    data = request.data
+    country = Country.objects.create(
+        country_name = data["countryName"],
+        flag = data["flag"]
+    )
+    seralizer = CountrySerializer(country, many = False)
+    return Response(seralizer.data)
+
+
+
+
+
 
 ##################### ACCOUNT ACTIONS ############################
 

@@ -6,34 +6,34 @@ import AddCreateButton from '../components/AddCreateButton'
 
 
 
-const FlightsListPage = () => {
-     let [flights , setFlights] = useState([])
+const CountriesListPage = () => {
+     let [Countries , setCountries] = useState([])
     
 
      
      useEffect(() => {
-        getFlights()
+        getCountries()
      }, [])
   
      
-     let getFlights = async () => {
-        let response = await fetch('/backend/flights')
+     let getCountries = async () => {
+        let response = await fetch('/backend/Countries')
         let data = await response.json()
-        setFlights(data)
+        setCountries(data)
      }
 
       return (
         <div className='all'>
           <div className='all-header'>
-            <h2 className='all-title'>&#9782; Flights </h2>
-            <p className='all-count'>{flights.length}</p>
+            <h2 className='all-title'>&#9782; Countries </h2>
+            <p className='all-count'>{Countries.length}</p>
           </div>
 
 
 
             <div className="all-list">         
-                    {flights.map((flight, index) => (
-                    <ListItem key={index} flight={flight} />
+                    {Countries.map((Country, index) => (
+                    <ListItem key={index} Country={Country} />
                     
                 ))}
 
@@ -44,4 +44,4 @@ const FlightsListPage = () => {
 }
 
 
-export default FlightsListPage
+export default CountriesListPage
