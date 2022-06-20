@@ -5,11 +5,34 @@ import UpdateAccountForm from '../forms/AccountForm'
 import CustomerForm from '../forms/CustomerForm'
 import AirlineForm from '../forms/AirlineForm'
 import AdminForm from '../forms/AdminForm'
+import { useState, useEffect } from 'react'
 
 const UpdatePage = () =>{
-    let {user} = useContext(AuthContext)
-    console.log(user)
+    let {user, authToken} = useContext(AuthContext)
+    let [userData, setUserData]= useState([])
 
+    useEffect(()=>{
+        GetLoggedUserData()
+    }, [])
+
+    let GetLoggedUserData = async() =>{
+        let response = await fetch('http://127.0.0.1:8000/backend/api/user_api', {
+            method:'GET',
+            headers:{
+                'Content-Type':'application/json',
+                'Authorization':'Bearer ' + String(authToken.access)
+            }
+        })
+        let data = await response.json()
+
+        if(response.status === 200){
+            console.log(data.username)
+        }
+        else{
+            console.log(response.statusText)
+        }
+
+    }
 
 return(
     <form onSubmit={(e)=>console.log(e)}>

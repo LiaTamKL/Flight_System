@@ -1,11 +1,13 @@
 
 from rest_framework import status
 from rest_framework.response import Response
-from ..serializers import AccountSerializer, CustomerSerializer
+from ..serializers import AccountSerializer, CustomerSerializer, AirlineSerializer, AdminSerializer
 from ..DAL.base_facade import BaseFuncade
 from ..DAL.anony_facade import AnonymusFancade
 from ..models import *
+from ..DAL.admin_facade import AdministratorFuncade
 
+#takes request, creates from it a new customer account
 def register_user(request):
             try: 
                 account_role = Account_Role.objects.get(role_name='Customer')
@@ -40,4 +42,26 @@ def register_user(request):
                     context.append(cus_serializer.errors[key][0])
                 print(context)
                 return Response(data=context ,status=status.HTTP_400_BAD_REQUEST)
-                #return Response(data=(acc_serializer.errors, cus_serializer.errors) ,status=status.HTTP_400_BAD_REQUEST)
+
+#takes a request, gets the user and the linked account, serializes, throws into a context and send it as a server response
+def get_user(request):
+        user=AdministratorFuncade.get_by_username(request.user.username)
+        role = user['account_role']
+        account = user['account']
+        user=user['user']
+        context = {}
+        acc_serializer = AccountSerializer(account, many = False)
+        if role == 'Admin':
+                second_serializer = AdminSerializer(user, many=False)
+        elif role == 'Airline':
+                second_serializer = AirlineSerializer(user, many=False)
+        elif role == 'Customer':
+                second_serializer = CustomerSerializer(user, many=False)
+        else: second_serializer = {'super':''}
+            
+        for key in acc_serializer.data:
+                context[key] = acc_serializer.data[key]
+        for key in second_serializer.data:
+                context[key] = second_serializer.data[key]
+        print(context)
+        return Response(context)

@@ -23,7 +23,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 import pytz
 from rest_framework import status
-from .top_level_methods.user_api import register_user
+from .top_level_methods.user_api import *
 
 utc=pytz.UTC
 
@@ -166,8 +166,8 @@ def user_api(request):
 
         #This will be to get the user account and linked data for updates
         if request.method=='GET':
-            print(request.data)
-            return Response({'ERROR':'Not complete yet! Please dont use me!.'})
+            respon = get_user(request)
+            return respon
 
         #This will be to update the data
         if request.method == 'PATCH':  

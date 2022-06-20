@@ -59,6 +59,14 @@ class AccountSerializer(ModelSerializer):
     #     raise ValidationError(f'email: {email} is already in use')
 
 class CustomerSerializer(ModelSerializer):
+    account = db_link("username")
+
+    class Meta:
+        model = Customer
+        fields = '__all__'
+
+class AdminSerializer(ModelSerializer):
+    account = db_link("username")
 
     class Meta:
         model = Customer
