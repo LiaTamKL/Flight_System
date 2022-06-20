@@ -44,9 +44,11 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         else:
             account_role = user.account_role
             role_name = account_role.role_name
+            main_name=AdministratorFuncade.get_by_username(user.username)
+            main_name = main_name['user']
             if role_name == 'Admin' or role_name == 'Customer':
-                main_name = f'{user.first_name} {user.last_name}'
-            else: main_name = user.name
+                main_name = f'{main_name.first_name} {main_name.last_name}'
+            else: main_name = main_name.name
         # Add custom claims
         token['username'] = user.username
         token['account_role'] = role_name
@@ -172,7 +174,7 @@ def user_api(request):
             print(request.data)
             return Response({'ERROR':'Not complete yet! Please dont use me!.'})
 
-        #This will be to delete a user. Only admins may use it
+        #This will be to delete a user. Only admins may use it.
         if request.method == 'DELETE':  
             if not request.user.is_admin:
                 return response(data="Only administrators may take this action", status=status.HTTP_401_UNAUTHORIZED)

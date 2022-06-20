@@ -1,4 +1,5 @@
 
+
 export const CheckPasswords = (e)=>{
     if (e.target.password.value===e.target.password2.value && e.target.password.value.length === 8){
         return true

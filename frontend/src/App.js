@@ -11,6 +11,7 @@ import CreateFlightForm from './forms/CreateFlightForm'
 import MainPage from './pages/main';
 import Register from './pages/registration';
 import NotFound from './pages/404Page';
+import UpdatePage from './pages/update';
 import {
   Routes,
   Route,
@@ -36,7 +37,7 @@ function App() {
               <Route path='' element={<Register/>}/>
             </Route>
             <Route path='/update' exact element={<LoggedinGeneric/>}> 
-              <Route path='' element={<FlightsListPage/>}/>
+              <Route path='' element={<UpdatePage/>}/>
             </Route>
 
             <Route path='/admin'  exact element={<LoggedinRoute account_role="Admin"/>}>

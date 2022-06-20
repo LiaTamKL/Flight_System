@@ -33,10 +33,11 @@ def register_user(request):
             else:
                 acc_serializer.is_valid()
                 cus_serializer.is_valid()
-                context = {}
-                for k in acc_serializer.errors:
-                    print(acc_serializer.errors[k][0])
-                print(acc_serializer.errors)
-                print(cus_serializer.errors)
+                context = []
+                for key in acc_serializer.errors:
+                    context.append(acc_serializer.errors[key][0])
+                for key in cus_serializer.errors:
+                    context.append(cus_serializer.errors[key][0])
                 print(context)
-                return Response(data=(acc_serializer.errors, cus_serializer.errors) ,status=status.HTTP_400_BAD_REQUEST)
+                return Response(data=context ,status=status.HTTP_400_BAD_REQUEST)
+                #return Response(data=(acc_serializer.errors, cus_serializer.errors) ,status=status.HTTP_400_BAD_REQUEST)
