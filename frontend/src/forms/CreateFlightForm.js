@@ -34,7 +34,8 @@ const CreateFlightForm = () => {
   let [departureMinTime, setDepartureMinTime] = useState() ;
 
   // console.log(airline);
-  // console.log(airlineOptions)
+  // console.log(airlineOptions.find(e => e.label === flight.airline))
+
   // console.log(countryOptions.find(e => e.label === flight.destination_country))
 
   // let [isPending, setisPending] = useState(false)
@@ -42,7 +43,7 @@ const CreateFlightForm = () => {
 
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     let data = {airline, originCountry , destinationCountry , departureTime , arrivalTime, tickets}
     console.log(data)
     // CreateFlight(data)
@@ -64,11 +65,18 @@ useEffect(() => {
     getAirlines()
     getContries()
     setDepartureMinTime(departureTime)
+    // navigate(`\=${airlineOptions}`)
     
   // }
   // setCounter(counter + 1)
   }, [departureTime])
 
+
+  useEffect(() => {
+    
+    window.sessionStorage.setItem("airlineOptions", airlineOptions)
+
+  },[airlineOptions])
 
 let getAirlines = async () => {
   let response = await fetch(`/backend/airlines`)
@@ -160,12 +168,11 @@ let getContries = async () => {
                 // isMulti  = {true}
 
                 // onChange ={(e) => {
-                //   setAirline(e.value)
+                //   if(e) setAirline(e.value)
                 // }}                
-                onChange ={(e) => {
-                  console.log('do i fire?')
-                  setAirline(e.value)
-                }}  
+                onSubmit ={(e) => {
+                  if(e) setAirline(e.value)
+                }}
                 
                   // More props
                 //https://react-selecet.com/props#select-props
