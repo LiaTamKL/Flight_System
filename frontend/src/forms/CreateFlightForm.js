@@ -162,7 +162,8 @@ let getContries = async () => {
                 // onChange ={(e) => {
                 //   setAirline(e.value)
                 // }}                
-                onSubmit ={(e) => {
+                onChange ={(e) => {
+                  console.log('do i fire?')
                   setAirline(e.value)
                 }}  
                 
