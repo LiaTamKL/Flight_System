@@ -148,12 +148,10 @@ def getcont(requset, id):
 
 ##################### ACCOUNT ACTIONS ############################
 
-@api_view(['POST', 'PATCH', 'DELETE'])
+@api_view(['GET', 'POST', 'PATCH', 'DELETE'])
 def user_api(request):
 
-    #register the user, if good, returns details on user and status 200
-    #if json is incorrect, returns 400
-    #if account details exist or incorrect, returns 400 and list of errors
+    #register the user, if good, returns details on user and status 200, returns 400 and errors otherwise
     if request.method == 'POST':   
         respon = register_user(request)
         return respon
@@ -164,10 +162,17 @@ def user_api(request):
 
     else:
 
+        #This will be to get the user account and linked data for updates
+        if request.method=='GET':
+            print(request.data)
+            return Response({'ERROR':'Not complete yet! Please dont use me!.'})
+
+        #This will be to update the data
         if request.method == 'PATCH':  
             print(request.data)
             return Response({'ERROR':'Not complete yet! Please dont use me!.'})
 
+        #This will be to delete a user. Only admins may use it
         if request.method == 'DELETE':  
             if not request.user.is_admin:
                 return response(data="Only administrators may take this action", status=status.HTTP_401_UNAUTHORIZED)
