@@ -18,7 +18,7 @@ const CreateFlightForm = () => {
   let [countryOptions, setCountryOptions] = useState()
 
 
-  // console.log(airlineOptions?.find(({ label }) => label === flight?.airline));
+  console.log(airlineOptions?.find(({ label }) => label === flight?.airline));
   // console.log(defaultval);
 
   let navigate = useNavigate();
@@ -36,8 +36,8 @@ const CreateFlightForm = () => {
   let [arrivalTime, setArrivalTime] = useState(departureTime) 
   let [departureMinTime, setDepartureMinTime] = useState() ;
   // let [opt, setOpt] = useState(airlineOptions?.find(({ label }) => label === flight?.airline))
-  let [opt, setOpt] = useState('')
-  console.log(opt);
+  // let [opt, setOpt] = useState('')
+  // console.log(opt);
   // console.log(airline);
   // console.log(airlineOptions.find(e => e.label === flight.airline))
 
@@ -68,20 +68,22 @@ useEffect(() => {
 
    getAirlines()
    getContries()
-   setsss()
+  //  setsss()
 
   }, [departureTime])
 
 
-let setsss = () => {
-  console.log(airlineOptions);
-  // console.log(flight);
-  // setOpt(airlineOptions?.find(({ label }) => label === flight?.airline))
+// let setsss = () => {
+//   console.log(airlineOptions);
+//   // console.log(flight);
+//   // setOpt(airlineOptions?.find(({ label }) => label === flight?.airline))
 
-  let test = airlineOptions?.find(({ label }) => label === flight?.airline)
-  // console.log(test)
+//   let test = airlineOptions?.find(({ label }) => label === flight?.airline)
+//   // console.log(test)
 
-}
+// }
+
+
 let getAirlines = async () => {
   let response = await fetch(`/backend/airlines`)
   let data = await response.json()
@@ -153,7 +155,7 @@ let getContries = async () => {
                 //   "value": 2,
                 //   "label": "CrashAir Airlines"
                 // }}
-                value = {opt}
+                // value = {opt}
                 options ={airlineOptions}
                 className='fancy-select'
                 isSearchable = {true}
