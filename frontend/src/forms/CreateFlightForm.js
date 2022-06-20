@@ -14,7 +14,7 @@ const CreateFlightForm = () => {
   if (flight.state) {flight = flight.state.flightobj}
 //  flight.state? {console.log("hey");} 
 
-  console.log(flight);
+  // console.log(flight);
 
   let [airlineOptions, setAirlineOptions] = useState()
   let [countryOptions, setCountryOptions] = useState()
@@ -61,8 +61,8 @@ useEffect(() => {
   // pul data from the backend only once
   // if (counter < 1){
     // getAirlines()
-    setAirlineOptions(getAirlines())
-    setCountryOptions(getContries())
+    getAirlines()
+    getContries()
     setDepartureMinTime(departureTime)
     
   // }
@@ -74,7 +74,7 @@ let getAirlines = async () => {
   let response = await fetch(`/backend/airlines`)
   let data = await response.json()
   console.log(data);
-  return(data.map((airline) => ({value:airline.id, label:airline.name})))
+  setAirlineOptions(data.map((airline) => ({value:airline.id, label:airline.name})))
 
   
   }
@@ -82,7 +82,7 @@ let getAirlines = async () => {
 let getContries = async () => {
   let response = await fetch(`/backend/countries`)
   let data = await response.json()
-  return(data.map((country) => ({value:country.id, label:country.country_name})))
+  setCountryOptions(data.map((country) => ({value:country.id, label:country.country_name})))
     
   }
 
@@ -159,12 +159,12 @@ let getContries = async () => {
                 // onlaod = {validate_empty('airline', null)}
                 // isMulti  = {true}
 
-                onChange ={(e) => {
-                  setAirline(e.value)
-                }}                
-                // onSubmit ={(e) => {
+                // onChange ={(e) => {
                 //   setAirline(e.value)
-                // }}  
+                // }}                
+                onSubmit ={(e) => {
+                  setAirline(e.value)
+                }}  
                 
                   // More props
                 //https://react-selecet.com/props#select-props
@@ -271,8 +271,8 @@ let getContries = async () => {
                 >
 
                 </input>
-
-          <button type='submit'>Add Flight</button>
+                <input type='submit'></input>
+          {/* <button type='submit'>Add Flight</button> */}
             {/* {!isPending &&  */}
             {/* {isPending && <button type='submit' disabled>Adding Flight....</button>} */}
 
