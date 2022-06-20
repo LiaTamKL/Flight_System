@@ -138,7 +138,7 @@ let getContries = async () => {
       <FormHeader headercheck = {flight} />
     {/* <h2>Create New Flight</h2> */}
 
-        <form id='app_form'  onSubmit={(e) => handleSubmit(e)} >
+        {/* <form id='app_form'  onSubmit={(e) => handleSubmit(e)} > */}
             <label>Airline</label>
             {/* <div className='fancy-select'> */}
               
@@ -287,7 +287,7 @@ let getContries = async () => {
             {/* {isPending && <button type='submit' disabled>Adding Flight....</button>} */}
 
 
-        </form>
+        {/* </form> */}
         
     </div>
    
