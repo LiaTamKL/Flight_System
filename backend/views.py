@@ -146,7 +146,7 @@ def getcont(requset, id):
 
 ##################### ACCOUNT ACTIONS ############################
 
-@api_view(['POST', 'PUT', 'DELETE'])
+@api_view(['POST', 'PATCH', 'DELETE'])
 def user_api(request):
     if request.method == 'POST':   
             try: 
@@ -182,12 +182,15 @@ def user_api(request):
                 print(cus_serializer.errors)
                 print(context)
                 return Response(data=(acc_serializer.errors, cus_serializer.errors) ,status=status.HTTP_400_BAD_REQUEST)
-    if request.method == 'PUT':  
-        print(request.data)
-        return Response({'ERROR':'Not complete yet! Please dont use me!.'})
-    if request.method == 'DELETE':  
-        print(request.data)
-        return Response({'ERROR':'Not complete yet! Please dont use me!.'})
+    if request.user.is_authenticated == False:
+        return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
+    else:
+        if request.method == 'PATCH':  
+            print(request.data)
+            return Response({'ERROR':'Not complete yet! Please dont use me!.'})
+        if request.method == 'DELETE':  
+            print(request.data)
+            return Response({'ERROR':'Not complete yet! Please dont use me!.'})
 
 
 ##################################################
