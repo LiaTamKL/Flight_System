@@ -1,6 +1,13 @@
 import React from 'react'
 
 
+const GetFlightMethod = async (flightid) => {
+  let response = await fetch(`/backend/flights/${flightid}/`)
+  let data = await response.json()
+  return data
+
+}
+
 const CreateFlight = async  (submitted) => {
     console.log(submitted)
 
@@ -28,5 +35,17 @@ const UpdateFlight = async (submitted , flightid) => {
 }
 
 
-export { CreateFlight , UpdateFlight }
+let DeleteFlight = async(flightid) => {
+  fetch(`/backend/flights/${flightid}/delete` , {
+    method: "DELETE",
+    headers: {
+              'content-Type': 'application/json'
+    }
+  })
+
+}
+
+
+export { CreateFlight , UpdateFlight , DeleteFlight ,GetFlightMethod }
+
 

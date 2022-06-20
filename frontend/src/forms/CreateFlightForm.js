@@ -1,28 +1,41 @@
-import React, { useState , useEffect } from 'react'
+import React, { useState , useEffect, useCallback } from 'react'
 import { format , parseISO} from "date-fns";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams, useLocation} from "react-router-dom";
 import './Form.css'
 import Select from 'react-select'
-import { CreateFlight } from '../methods/FlightMethods'
-import {ReactComponent as Addflighticon } from '../assets/flight.svg';
+import { CreateFlight} from '../methods/FlightMethods'
+import FormHeader from '../components/FormHeader'
+// import {ReactComponent as Addflighticon } from '../assets/flight.svg';
 
 
 
 const CreateFlightForm = () => {
-  let navigate = useNavigate();
-  let  [counter, setCounter] = useState(0)
+  let  flight = useLocation();
+  if (flight.state) {flight = flight.state.flightobj}
+//  flight.state? {console.log("hey");} 
 
-  let [airline, setAirline] = useState('')
+  console.log(flight);
+
+  let [airlineOptions, setAirlineOptions] = useState()
+  let [countryOptions, setCountryOptions] = useState()
+
+
+  let navigate = useNavigate();
+  // let  [counter, setCounter] = useState(0)
+  // let [inopt, setIncopt] = useState(airlineOptions.find(e => e.label === flight.airline)) 
+  let [airline, setAirline] = useState()
   let [originCountry, setOriginCountry] = useState('')
   let [destinationCountry, setDestinationCountry] = useState('')
   let [tickets, setTickets] = useState(1)
-  let [airlineOptions, setAirlineOptions] = useState()
-  let [countryOptions, setCountryOptions] = useState()
+ 
 
   let [departureTime, setDepartureTime] = useState(format(new Date(), "yyyy-MM-dd'T'HH:mm")) ;
   let [arrivalTime, setArrivalTime] = useState(departureTime) 
   let [departureMinTime, setDepartureMinTime] = useState() ;
 
+  // console.log(airline);
+  // console.log(airlineOptions)
+  // console.log(countryOptions.find(e => e.label === flight.destination_country))
 
   // let [isPending, setisPending] = useState(false)
   // let [errorMessage, setErrorMessage] = useState('')
@@ -31,29 +44,37 @@ const CreateFlightForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let data = {airline, originCountry , destinationCountry , departureTime , arrivalTime, tickets}
-    console.log(data);
+    console.log(data)
     // CreateFlight(data)
     // navigate("/flights")
 
 }
 
+
+// const test = useCallback(() => {
+//   getAirlines()
+//   getContries()
+// }, []);
+
+
 useEffect(() => {
   // pul data from the backend only once
-  if (counter < 1){
-    getAirlines()
-    getContries()
+  // if (counter < 1){
+    // getAirlines()
+    setAirlineOptions(getAirlines())
+    setCountryOptions(getContries())
     setDepartureMinTime(departureTime)
     
-  }
-  setCounter(counter + 1)
-  // eslint-disable-next-line
-  }, [airline])
+  // }
+  // setCounter(counter + 1)
+  }, [departureTime])
 
 
 let getAirlines = async () => {
   let response = await fetch(`/backend/airlines`)
   let data = await response.json()
-  setAirlineOptions(data.map((airline) => ({value:airline.id, label:airline.name})))
+  console.log(data);
+  return(data.map((airline) => ({value:airline.id, label:airline.name})))
 
   
   }
@@ -61,9 +82,10 @@ let getAirlines = async () => {
 let getContries = async () => {
   let response = await fetch(`/backend/countries`)
   let data = await response.json()
-  setCountryOptions(data.map((country) => ({value:country.id, label:country.country_name})))
+  return(data.map((country) => ({value:country.id, label:country.country_name})))
     
   }
+
 
   // let validate_empty = (field_type, e) =>{
   //   let element1 = document.getElementById(field_type);
@@ -103,9 +125,10 @@ let getContries = async () => {
 
   return (
     <div className='create'>
-    <h2>Create New Flight</h2>
+      <FormHeader headercheck = {flight} />
+    {/* <h2>Create New Flight</h2> */}
 
-        <form id='app_form'  onSubmit={handleSubmit} >
+        <form id='app_form'  onSubmit={(e) => handleSubmit(e)} >
             <label>Airline</label>
             {/* <div className='fancy-select'> */}
               
@@ -114,9 +137,15 @@ let getContries = async () => {
                 id='airline'
                 // onKeyDown={(e) => e.preventDefault()}
                 isClearable = {true}
-                defaultValue = {airline}
-                className='fancy-select'
+                // defautValue = {}
+                // defaultInputValue = {airlineOptions.find(e => e.label === airline)} 
                 options ={airlineOptions}
+                // value = {airlineOptions.filter(option => option.value === 1)}
+                // defaultValue = {{
+                //   "value": 1,
+                //   "label": "CheapSkate Airlines"
+                // }}
+                className='fancy-select'
                 isSearchable = {true}
                 // getOptionLabel={e => (
                 //   <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -129,10 +158,13 @@ let getContries = async () => {
                 // )}or_msg()}
                 // onlaod = {validate_empty('airline', null)}
                 // isMulti  = {true}
+
                 onChange ={(e) => {
-                  if(e) setAirline(e.value)
+                  setAirline(e.value)
                 }}                
-                
+                // onSubmit ={(e) => {
+                //   setAirline(e.value)
+                // }}  
                 
                   // More props
                 //https://react-selecet.com/props#select-props
@@ -144,7 +176,7 @@ let getContries = async () => {
                 required
                 id='origin_country'
                 className='fancy-select'
-                // value={originCountry}
+                // placeholder = {flight.origin_country}
                 options ={countryOptions}
                 isSearchable = {true}
                 defaultValue = {originCountry}
@@ -161,7 +193,7 @@ let getContries = async () => {
             <label>Destination Country</label>
             <Select 
                 required
-                id='dest_countery'
+                id='dest_country'
                 className='fancy-select'
                 options ={countryOptions}
                 // value = {destinationCountry}
@@ -220,7 +252,8 @@ let getContries = async () => {
             }
                 >
 
-                </input>
+            </input>
+            
           <span id='errormes_arr' style={{
             fontWeight: 'bold',
               color: 'red',
@@ -239,12 +272,13 @@ let getContries = async () => {
 
                 </input>
 
-                <button type="submit">Add Flight</button>
+          <button type='submit'>Add Flight</button>
             {/* {!isPending &&  */}
             {/* {isPending && <button type='submit' disabled>Adding Flight....</button>} */}
 
 
         </form>
+        
     </div>
    
    

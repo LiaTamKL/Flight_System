@@ -27,7 +27,7 @@ function App() {
           <Routes>
             <Route path='*' element={<NotFound/>} />
             <Route path = "/" exact element={<MainPage />} />
-            <Route path = "/flights" element={<FlightsListPage />} />
+            {/* <Route path = "/flights" element={<FlightsListPage />} /> */}
 
             <Route path="/login" element={<LoggedOut/>}>
               <Route path="" element={<LoginPage/>} />
@@ -57,9 +57,12 @@ function App() {
               <Route path='update_flight'element={<AdminDashboard/>}/>
             </Route>
 
+            <Route path = '/flights' exact element={<FlightsListPage />}/>
+            <Route path = '/flights/:id/update' element={<CreateFlightForm />} />
+            <Route path = '/flights/create'  element={<CreateFlightForm />}  />
+            <Route path = 'flights/:id' element={<FlightPage />} />
+           
 
-            <Route path = '/flights/create' element={<CreateFlightForm />} />
-            <Route path = '/flights/:id' element={<FlightPage />} />
           </Routes>
         </AuthenticationProvider>
       </div>

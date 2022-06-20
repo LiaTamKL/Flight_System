@@ -1,49 +1,40 @@
 import React, {useState, useEffect}  from 'react'
-import { useParams , useNavigate, Navigate} from "react-router-dom";
+import { useParams , useNavigate} from "react-router-dom";
 import { ReactComponent as Arrow } from '../assets/arrow-left.svg'
 import CreateFlightForm from '../forms/CreateFlightForm'
-
+import { DeleteFlight , GetFlightMethod} from '../methods/FlightMethods'
 
 const FlightPage = () => {
     let navigate = useNavigate();
     let flightid  = useParams().id;
     let [flight , setFlight] = useState(null);
 
-
-
     useEffect(() => {
         getFlight()
      // eslint-disable-next-line
      }, [flightid])
   
-     
-     let getFlight = async () => {
-      if (flightid === 'new') return
 
-      let response = await fetch(`/backend/flights/${flightid}/`)
-      let data = await response.json()
-      setFlight(data)
-  }
-
+  let getFlight = async() => {
+    setFlight(await GetFlightMethod(flightid)
+    )
+}
 
     let createflight = async () => {
        <CreateFlightForm />
   }
 
 
-    let updateflight = async () => {
-      console.log(flight)
-        // <CreateFlightForm forupdate ={flight} />
-     }
+  let updateflight = async () => {
+  // <CreateFlightForm flight/>
+    navigate(`/flights/${flightid}/update` , {state :{flightobj: flight}})
 
+
+  
+  }
 
     let deleteFlight = async() => {
-      fetch(`/backend/flights/${flightid}/delete` , {
-        method: "DELETE",
-        headers: {
-                  'content-Type': 'application/json'
-        }
-      })
+      DeleteFlight(flightid)
       navigate('/flights')
 
    }

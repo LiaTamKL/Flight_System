@@ -73,18 +73,15 @@ def getfli(requset, id):
     seralizer = FlightSerializer(flight, many = False)
     return Response(seralizer.data)
 
-@api_view(['PUT'])
+@api_view(['PATCH'])
 def updatefli(request, id):
     data = request.data
     flight = BaseFuncade.get_flight_by_id(id)
     seralizer = FlightSerializer(instance=flight, data=data)
-
-    
     
     if seralizer.is_valid():
         seralizer.save()
     return Response(seralizer.data)
-
 
 
 
