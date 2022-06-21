@@ -45,12 +45,15 @@ def change_account_role(request):
         if searched['account_role']=='Superuser':
             return Response(data='The superuser may not be changed!', status=status.HTTP_400_BAD_REQUEST)
         if request.data['make']=='Admin':
-            print("we're making an admin!")
+            if account.account_role == 'Admin':
+                return Response(data='Already an admin!', status=status.HTTP_400_BAD_REQUEST)
             form['first_name'] = request.data['first_name']
             form['last_name'] = request.data['last_name']
             AdministratorFuncade.add_admin(account=account, form=form)
         elif request.data['make']=='Customer':
-            print("we're making a Customer!")
+            if account.account_role == 'Customer':
+                return Response(data='Already a customer!', status=status.HTTP_400_BAD_REQUEST)
+
             try: 
                 phonetest = Customer.objects.get(phone_number=request.data['phone_number'])
                 return Response(data='Phone number already in use!', status=status.HTTP_400_BAD_REQUEST)
@@ -66,6 +69,8 @@ def change_account_role(request):
                     form['credit_card_no'] = request.data['credit_card_no']
                     AdministratorFuncade.add_customer_admin_command(account=account, form=form)
         elif request.data['make']=='Airline':
+            if account.account_role == 'Airline':
+                return Response(data='Already an Airline!', status=status.HTTP_400_BAD_REQUEST)
             print("we're making an airline!")
             country = Country.objects.get(country_name=request.data['country'])
             form['country'] =  country
