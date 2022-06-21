@@ -148,7 +148,7 @@ class AdministratorFuncade(BaseFuncade):
 
         except:
             raise Http404("Account does not exist")
-        if account.account_role == Account_Role.objects.get(role_name='Admin'):
+        if account.account_role == Account_Role.objects.get(role_name='Admin') and account.is_superuser ==False:
             user = Administrator.objects.get(account=account)
             role = "Admin"
         elif account.account_role == Account_Role.objects.get(role_name='Airline'):
