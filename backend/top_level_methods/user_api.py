@@ -50,18 +50,14 @@ def get_user(request):
         account = user['account']
         user=user['user']
         context = {}
-        acc_serializer = AccountSerializer(account, many = False)
         if role == 'Admin':
                 second_serializer = AdminSerializer(user, many=False)
         elif role == 'Airline':
                 second_serializer = AirlineSerializer(user, many=False)
         elif role == 'Customer':
                 second_serializer = CustomerSerializer(user, many=False)
-        else: second_serializer = {'super':''}
-            
-        for key in acc_serializer.data:
-                context[key] = acc_serializer.data[key]
-        for key in second_serializer.data:
-                context[key] = second_serializer.data[key]
-        print(context)
-        return Response(context)
+        else: second_serializer = False
+
+        if not second_serializer == False:
+            return Response(second_serializer.data)
+        else: return Response(['superuser'])

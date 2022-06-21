@@ -16,6 +16,7 @@ const UpdatePage = () =>{
     }, [])
 
     let GetLoggedUserData = async() =>{
+        if (!user.is_superuser){
         let response = await fetch('http://127.0.0.1:8000/backend/api/user_api', {
             method:'GET',
             headers:{
@@ -24,13 +25,14 @@ const UpdatePage = () =>{
             }
         })
         let data = await response.json()
-
+        console.log(data)
         if(response.status === 200){
-            console.log(data.username)
+            console.log(data.name)
+            setUserData(data)
         }
         else{
             console.log(response.statusText)
-        }
+        }}
 
     }
 
@@ -38,7 +40,7 @@ return(
     <form onSubmit={(e)=>console.log(e)}>
         <UpdateAccountForm/>
                 {user.account_role === 'Airline' ? (
-                    <AirlineForm/>
+                    <AirlineForm userInfo={userData}/>
                 ):<></>}
                 {user.account_role === 'Customer' ? (<>
                     <CustomerForm/></>

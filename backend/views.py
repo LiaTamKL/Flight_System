@@ -216,6 +216,58 @@ def user_api(request):
             print(request.data)
             return Response({'ERROR':'Not complete yet! Please dont use me!.'})
 
+##################### ADMIN ACTIONS ############################
+
+@api_view(['GET', 'POST', 'DELETE'])
+def user_api(request):
+    if request.user.is_authenticated == False:
+        return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
+    if request.user.is_admin == False:
+        return Response(data='Must be admin to use!', status=status.HTTP_401_UNAUTHORIZED)
+    
+    if request.method == 'GET':
+        if request.data['view']=='Customers': 
+            customers = AdministratorFuncade.get_all_customers()
+            serializer = CustomerSerializer(customers, many=True)
+        elif request.data['view']=='Airlines':
+            airlines = AdministratorFuncade.get_all_airlines()
+            serializer = AirlineSerializer(airlines, many=True)
+        elif request.data['view']=='Admins':
+            admins = AdministratorFuncade.get_all_admins(request.user)
+            serializer = AdminSerializer(admins, many=True)
+        elif request.data['view']=='Specific':
+
+            searched = AdministratorFuncade.get_by_username(request.data['username'])
+            role = searched['account_role']
+            user = searched['user']
+            account = user['account']
+            acc_serializer = AccountSerializer(account, many=False)
+            if role == 'Admin':
+                second_serializer = AdminSerializer(user, many=False)
+            elif role == 'Airline':
+                second_serializer = AirlineSerializer(user, many=False)
+            elif role == 'Customer':
+                second_serializer = CustomerSerializer(user, many=False)
+            else: second_serializer = False
+
+            if second_serializer == False:
+                return Response(acc_serializer.data)
+            else: return Response((acc_serializer.data, second_serializer.data))
+
+        else: 
+            return Response(data='You must enter a view value.', status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.data)
+
+
+    if request.method == 'POST':   
+        print(request.data)
+        return Response({'ERROR':'Not complete yet! Please dont use me!.'})
+
+    if request.method == 'DELETE':   
+        print(request.data)
+        return Response({'ERROR':'Not complete yet! Please dont use me!.'})
+
+
 
 ##################################################
 ##################################################
