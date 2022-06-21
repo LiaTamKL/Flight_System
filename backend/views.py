@@ -248,13 +248,19 @@ def admin_api(request):
             print(request.data['first_name'])
             print(request.data['last_name'])
             print(request.data['address'])
-            print(request.data['phone_number'])
-            print(request.data['credit_card_no'])
-            print(account)
+            try: 
+                phonetest = Customer.objects.get(phone_number=request.data['phone_number'])
+                cardtest = Customer.objects.get(phone_number=request.data['cardtest'])
+                return Response(data='Card or phone number already in use!', status=status.HTTP_400_BAD_REQUEST)
+            except:
+                print(request.data['phone_number'])
+                print(request.data['credit_card_no'])
+                print(account)
         elif request.data['make']=='Airline':
             print("we're making an airline!")
             print(request.data['country'])
             print(request.data['name'])
+            print(account)
         else: return Response(data='make must specify Admin, Customer, or Airline!', status=status.HTTP_400_BAD_REQUEST)
         return Response({'ERROR':'Not complete yet! Please dont use me!.'})
 
