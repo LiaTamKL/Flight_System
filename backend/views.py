@@ -222,9 +222,9 @@ def user_api(request):
 @api_view(['POST', 'PATCH'])
 def admin_api(request):
     if request.user.is_authenticated == False:
-        return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
+         return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
     if request.user.is_admin == False:
-        return Response(data='Must be admin to use!', status=status.HTTP_401_UNAUTHORIZED)
+         return Response(data='Must be admin to use!', status=status.HTTP_401_UNAUTHORIZED)
     
     #this expects you to enter a view (Airlines, Admins, Customers, Specific)
     #it will either return all accounts of that type
@@ -253,7 +253,7 @@ def admin_api(request):
                 return Response(data='Phone number already in use!', status=status.HTTP_400_BAD_REQUEST)
             except Customer.DoesNotExist: 
                 try:
-                    cardtest = Customer.objects.get(phone_number=request.data['credit_card_no'])
+                    cardtest = Customer.objects.get(credit_card_no=request.data['credit_card_no'])
                     return Response(data='Card number already in use!', status=status.HTTP_400_BAD_REQUEST)
                 except Customer.DoesNotExist:
                     form['first_name'] = request.data['first_name']
@@ -269,15 +269,15 @@ def admin_api(request):
             form['name'] = request.data['name']
             AdministratorFuncade.add_airline(account=account, form=form)
         else: return Response(data='make must specify Admin, Customer, or Airline!', status=status.HTTP_400_BAD_REQUEST)
-        return Response({'ERROR':'Not complete yet! Please dont use me!.'})
+        return Response(data=f'successful update of {account} to {account.account_role}')
 
 
 @api_view(['DELETE'])
 def admin_delete(request, username):
     if request.user.is_authenticated == False:
-        return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
+         return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
     if request.user.is_admin == False:
-        return Response(data='Must be admin to use!', status=status.HTTP_401_UNAUTHORIZED)
+         return Response(data='Must be admin to use!', status=status.HTTP_401_UNAUTHORIZED)
 
     if request.method == 'DELETE':   
         print(request.data)
