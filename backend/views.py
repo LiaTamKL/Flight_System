@@ -222,9 +222,9 @@ def user_api(request):
 @api_view(['POST', 'PATCH', 'DELETE'])
 def admin_api(request):
     if request.user.is_authenticated == False:
-           return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
+        return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
     if request.user.is_admin == False:
-           return Response(data='Must be admin to use!', status=status.HTTP_401_UNAUTHORIZED)
+        return Response(data='Must be admin to use!', status=status.HTTP_401_UNAUTHORIZED)
     
     #this expects you to enter a view (Airlines, Admins, Customers, Specific)
     #it will either return all accounts of that type
@@ -238,11 +238,17 @@ def admin_api(request):
         print(request.data)
         return Response({'ERROR':'Not complete yet! Please dont use me!.'})
 
+
+@api_view(['DELETE'])
+def admin_delete(request, id):
+    if request.user.is_authenticated == False:
+        return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
+    if request.user.is_admin == False:
+        return Response(data='Must be admin to use!', status=status.HTTP_401_UNAUTHORIZED)
+
     if request.method == 'DELETE':   
         print(request.data)
         return Response({'ERROR':'Not complete yet! Please dont use me!.'})
-
-
 
 ##################################################
 ##################################################
