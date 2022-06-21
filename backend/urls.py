@@ -61,7 +61,7 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/user_api', views.user_api),
     path('api/admin_api', views.admin_api),
-    path('api/admin_api/<str:id>', views.admin_delete),
+    path('api/admin_api/<str:username>', views.admin_delete),
 
     #############################################
 

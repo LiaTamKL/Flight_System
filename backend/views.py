@@ -219,7 +219,7 @@ def user_api(request):
 
 ##################### ADMIN ACTIONS ############################
 
-@api_view(['POST', 'PATCH', 'DELETE'])
+@api_view(['POST', 'PATCH'])
 def admin_api(request):
     if request.user.is_authenticated == False:
         return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
@@ -240,7 +240,7 @@ def admin_api(request):
 
 
 @api_view(['DELETE'])
-def admin_delete(request, id):
+def admin_delete(request, username):
     if request.user.is_authenticated == False:
         return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
     if request.user.is_admin == False:
@@ -248,6 +248,15 @@ def admin_delete(request, id):
 
     if request.method == 'DELETE':   
         print(request.data)
+        searched = AdministratorFuncade.get_by_username(username=username)
+        if searched['account_role']=='Customer':
+            print('a customer! ', searched['user'])
+        elif searched['account_role']=='Airline':
+            print('an airline! ',searched['user'])
+        elif searched['account_role']=='Admin':
+            print('an admin! ',searched['user'])
+        else: print('a superuser! ',searched['account'])
+        
         return Response({'ERROR':'Not complete yet! Please dont use me!.'})
 
 ##################################################
