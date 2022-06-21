@@ -252,7 +252,7 @@ def admin_api(request):
                 phonetest = Customer.objects.get(phone_number=request.data['phone_number'])
                 cardtest = Customer.objects.get(phone_number=request.data['cardtest'])
                 return Response(data='Card or phone number already in use!', status=status.HTTP_400_BAD_REQUEST)
-            except:
+            except Customer.DoesNotExist:
                 print(request.data['phone_number'])
                 print(request.data['credit_card_no'])
                 print(account)
