@@ -206,45 +206,47 @@ def user_api(request):
             return respon
 
         #This will be to update the data
-        if request.method == 'PATCH':  
-            try:
-                account = Account.objects.exclude(pk=request.user).get(email=request.data['email'])
-                return Response(data='This email is already in use!', status=status.HTTP_400_BAD_REQUEST)
-            except Account.DoesNotExist:
-                form = {}
-                emailform={}
-                emailform['email'] = request.data['email']
-            if request.user.account_role == Account_Role.objects.get(role_name='Customer'):
-                try: 
-                    phonetest = Customer.objects.exclude(account=request.user).get(phone_number=request.data['phone_number'])
-                    return Response(data='Phone number already in use!', status=status.HTTP_400_BAD_REQUEST)
-                except Customer.DoesNotExist: 
-                    try:
-                        cardtest = Customer.objects.exclude(account=request.user).get(credit_card_no=request.data['credit_card_no'])
-                        return Response(data='Card number already in use!', status=status.HTTP_400_BAD_REQUEST)
-                    except Customer.DoesNotExist:
-                        form['credit_card_no'] = request.data['credit_card_no']
-                form['first_name'] = request.data['first_name']
-                form['last_name'] = request.data['last_name']
-                form['address'] = request.data['address']
-                form['phone_number'] = request.data['phone_number']
-                AdministratorFuncade.update_customer(account=request.user, form=form, emailform=emailform)
+        if request.method == 'PATCH':
+            res = update_user(request)
+            return res
+            # try:
+            #     account = Account.objects.exclude(pk=request.user).get(email=request.data['email'])
+            #     return Response(data='This email is already in use!', status=status.HTTP_400_BAD_REQUEST)
+            # except Account.DoesNotExist:
+            #     form = {}
+            #     emailform={}
+            #     emailform['email'] = request.data['email']
+            # if request.user.account_role == Account_Role.objects.get(role_name='Customer'):
+            #     try: 
+            #         phonetest = Customer.objects.exclude(account=request.user).get(phone_number=request.data['phone_number'])
+            #         return Response(data='Phone number already in use!', status=status.HTTP_400_BAD_REQUEST)
+            #     except Customer.DoesNotExist: 
+            #         try:
+            #             cardtest = Customer.objects.exclude(account=request.user).get(credit_card_no=request.data['credit_card_no'])
+            #             return Response(data='Card number already in use!', status=status.HTTP_400_BAD_REQUEST)
+            #         except Customer.DoesNotExist:
+            #             form['credit_card_no'] = request.data['credit_card_no']
+            #     form['first_name'] = request.data['first_name']
+            #     form['last_name'] = request.data['last_name']
+            #     form['address'] = request.data['address']
+            #     form['phone_number'] = request.data['phone_number']
+            #     AdministratorFuncade.update_customer(account=request.user, form=form, emailform=emailform)
 
-            elif request.user.account_role == Account_Role.objects.get(role_name='Airline'):
-                country = Country.objects.get(country_name=request.data['country'])
-                form['country'] =  country
-                form['name'] = request.data['name']
-                Airline_Facade.update_airline(account=request.user, form=form, emailform=emailform)
-            elif request.user.is_superuser == True:
-                AdministratorFuncade.update_account(account=request.user, form=emailform)
-            elif request.user.is_admin == True:
-                form['first_name'] = request.data['first_name']
-                form['last_name'] = request.data['last_name']
-                AdministratorFuncade.update_admin(account=request.user, form=form.cleaned_data, emailform=emailform.cleaned_data)
-            else: 
-                return Response(data='This account seems to not be any user type. Please contact an admin.', status=status.HTTP_400_BAD_REQUEST)
+            # elif request.user.account_role == Account_Role.objects.get(role_name='Airline'):
+            #     country = Country.objects.get(country_name=request.data['country'])
+            #     form['country'] =  country
+            #     form['name'] = request.data['name']
+            #     Airline_Facade.update_airline(account=request.user, form=form, emailform=emailform)
+            # elif request.user.is_superuser == True:
+            #     AdministratorFuncade.update_account(account=request.user, form=emailform)
+            # elif request.user.is_admin == True:
+            #     form['first_name'] = request.data['first_name']
+            #     form['last_name'] = request.data['last_name']
+            #     AdministratorFuncade.update_admin(account=request.user, form=form.cleaned_data, emailform=emailform.cleaned_data)
+            # else: 
+            #     return Response(data='This account seems to not be any user type. Please contact an admin.', status=status.HTTP_400_BAD_REQUEST)
 
-            return Response(f'Account for {request.user.account_role} {request.user.username} updated successfully')
+            # return Response(f'Account for {request.user.account_role} {request.user.username} updated successfully')
 
         #This will be to delete current user. 
         if request.method == 'DELETE':  
