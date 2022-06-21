@@ -219,6 +219,7 @@ def user_api(request):
 
 ##################### ADMIN ACTIONS ############################
 
+#For either viewing all accounts of a certain type (POST), searching a specific type (POST) or changing an account role (PATCH)
 @api_view(['POST', 'PATCH'])
 def admin_api(request):
     if request.user.is_authenticated == False:
@@ -233,45 +234,15 @@ def admin_api(request):
         res = get_users_admin(request)
         return res
 
-
+    #to use this, you must enter a make value (Customer, Airline, Admin) and give it the necessary fields
+    #it will make an account into that type
     if request.method == 'PATCH':   
         print(request.data)
-        searched = AdministratorFuncade.get_by_username(username=request.data['username'])
-        account = searched['account']
-        form = {}
-        if searched['account_role']=='Superuser':
-            return Response(data='The superuser may not be changed!', status=status.HTTP_400_BAD_REQUEST)
-        if request.data['make']=='Admin':
-            print("we're making an admin!")
-            form['first_name'] = request.data['first_name']
-            form['last_name'] = request.data['last_name']
-            AdministratorFuncade.add_admin(account=account, form=form)
-        elif request.data['make']=='Customer':
-            print("we're making a Customer!")
-            try: 
-                phonetest = Customer.objects.get(phone_number=request.data['phone_number'])
-                return Response(data='Phone number already in use!', status=status.HTTP_400_BAD_REQUEST)
-            except Customer.DoesNotExist: 
-                try:
-                    cardtest = Customer.objects.get(credit_card_no=request.data['credit_card_no'])
-                    return Response(data='Card number already in use!', status=status.HTTP_400_BAD_REQUEST)
-                except Customer.DoesNotExist:
-                    form['first_name'] = request.data['first_name']
-                    form['last_name'] = request.data['last_name']
-                    form['address'] = request.data['address']
-                    form['phone_number'] = request.data['phone_number']
-                    form['credit_card_no'] = request.data['credit_card_no']
-                    AdministratorFuncade.add_customer_admin_command(account=account, form=form)
-        elif request.data['make']=='Airline':
-            print("we're making an airline!")
-            country = Country.objects.get(country_name=request.data['country'])
-            form['country'] =  country
-            form['name'] = request.data['name']
-            AdministratorFuncade.add_airline(account=account, form=form)
-        else: return Response(data='make must specify Admin, Customer, or Airline!', status=status.HTTP_400_BAD_REQUEST)
-        return Response(data=f'successful update of {account} to {account.account_role}')
+        res = change_account_role(request)
+        return res
 
 
+#deletes a given account by the username value
 @api_view(['DELETE'])
 def admin_delete(request, username):
     if request.user.is_authenticated == False:
@@ -279,23 +250,9 @@ def admin_delete(request, username):
     if request.user.is_admin == False:
          return Response(data='Must be admin to use!', status=status.HTTP_401_UNAUTHORIZED)
 
-    if request.method == 'DELETE':   
-        print(request.data)
-        searched = AdministratorFuncade.get_by_username(username=username)
-        if searched['account_role']=='Customer':
-            print('a customer! ', searched['user'])
-            AdministratorFuncade.remove_customer(searched['user'])
-        elif searched['account_role']=='Airline':
-            print('an airline! ',searched['user'])
-            AdministratorFuncade.remove_airline(searched['user'])
-        elif searched['account_role']=='Admin':
-            print('an admin! ',searched['user'])
-            AdministratorFuncade.remove_admin(searched['user'])
-        else: 
-            print('a superuser! ',searched['account'])
-            return Response(data='Cannot delete the superuser!', status=status.HTTP_400_BAD_REQUEST)
-        AdministratorFuncade.remove_account(searched['account'])
-        return Response(data=f'successful deletion of {username}')
+    if request.method == 'DELETE':
+        res = delete_full_account(request, username)
+        return res
 
 ##################################################
 ##################################################
