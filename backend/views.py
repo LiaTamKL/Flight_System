@@ -236,6 +236,26 @@ def admin_api(request):
 
     if request.method == 'PATCH':   
         print(request.data)
+        searched = AdministratorFuncade.get_by_username(username=request.data['username'])
+        account = searched['account']
+        if request.data['make']=='Admin':
+            print("we're making an admin!")
+            print(request.data['first_name'])
+            print(request.data['last_name'])
+            print(account)
+        elif request.data['make']=='Customer':
+            print("we're making a Customer!")
+            print(request.data['first_name'])
+            print(request.data['last_name'])
+            print(request.data['address'])
+            print(request.data['phone_number'])
+            print(request.data['credit_card_no'])
+            print(account)
+        elif request.data['make']=='Airline':
+            print("we're making an airline!")
+            print(request.data['country'])
+            print(request.data['name'])
+        else: return Response(data='make must specify Admin, Customer, or Airline!', status=status.HTTP_400_BAD_REQUEST)
         return Response({'ERROR':'Not complete yet! Please dont use me!.'})
 
 
