@@ -1,10 +1,11 @@
-import React, { useState , useEffect, useCallback } from 'react'
+import React, { useState , useEffect, useCallback ,useMemo } from 'react'
 import { format , parseISO} from "date-fns";
 import {useNavigate, useParams, useLocation} from "react-router-dom";
 import './Form.css'
 import Select from 'react-select'
 import { CreateFlight} from '../methods/FlightMethods'
 import FormHeader from '../components/FormHeader'
+
 // import {ReactComponent as Addflighticon } from '../assets/flight.svg';
 
 
@@ -12,17 +13,19 @@ import FormHeader from '../components/FormHeader'
 const CreateFlightForm = () => {
   let  flight = useLocation();
   if (flight.state) {flight = flight.state.flightobj}
-//  flight.state? {console.log("hey");} 
-
-  // console.log(flight);
 
   let [airlineOptions, setAirlineOptions] = useState()
   let [countryOptions, setCountryOptions] = useState()
 
 
+  console.log(airlineOptions?.find(({ label }) => label === flight?.airline));
+  // console.log(defaultval);
+
   let navigate = useNavigate();
   // let  [counter, setCounter] = useState(0)
-  // let [inopt, setIncopt] = useState(airlineOptions.find(e => e.label === flight.airline)) 
+  // let [inopt, setIncopt] = useState(defaultval)
+  
+  // console.log(inopt);
   let [airline, setAirline] = useState()
   let [originCountry, setOriginCountry] = useState('')
   let [destinationCountry, setDestinationCountry] = useState('')
@@ -32,9 +35,9 @@ const CreateFlightForm = () => {
   let [departureTime, setDepartureTime] = useState(format(new Date(), "yyyy-MM-dd'T'HH:mm")) ;
   let [arrivalTime, setArrivalTime] = useState(departureTime) 
   let [departureMinTime, setDepartureMinTime] = useState() ;
-
-
-  
+  // let [opt, setOpt] = useState(airlineOptions?.find(({ label }) => label === flight?.airline))
+  // let [opt, setOpt] = useState('')
+  // console.log(opt);
   // console.log(airline);
   // console.log(airlineOptions.find(e => e.label === flight.airline))
 
@@ -45,7 +48,7 @@ const CreateFlightForm = () => {
 
 
   const handleSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     let data = {airline, originCountry , destinationCountry , departureTime , arrivalTime, tickets}
     console.log(data)
     // CreateFlight(data)
@@ -61,33 +64,34 @@ const CreateFlightForm = () => {
 
 
 useEffect(() => {
-  // pul data from the backend only once
-  // if (counter < 1){
-    // getAirlines()
-    getAirlines()
-    getContries()
     setDepartureMinTime(departureTime)
-    // navigate(`\=${airlineOptions}`)
-    
-  // }
-  // setCounter(counter + 1)
+
+   getAirlines()
+   getContries()
+  //  setsss()
+
   }, [departureTime])
 
 
-  useEffect(() => {
-    
-    window.sessionStorage.setItem("airlineOptions", airlineOptions)
+// let setsss = () => {
+//   console.log(airlineOptions);
+//   // console.log(flight);
+//   // setOpt(airlineOptions?.find(({ label }) => label === flight?.airline))
 
-  },[airlineOptions])
+//   let test = airlineOptions?.find(({ label }) => label === flight?.airline)
+//   // console.log(test)
+
+// }
+
 
 let getAirlines = async () => {
   let response = await fetch(`/backend/airlines`)
   let data = await response.json()
-  console.log(data);
   setAirlineOptions(data.map((airline) => ({value:airline.id, label:airline.name})))
-
   
   }
+
+
 
 let getContries = async () => {
   let response = await fetch(`/backend/countries`)
@@ -147,7 +151,11 @@ let getContries = async () => {
                 id='airline'
                 // onKeyDown={(e) => e.preventDefault()}
                 isClearable = {true}
-                // defautValue = {}
+                // value = {{
+                //   "value": 2,
+                //   "label": "CrashAir Airlines"
+                // }}
+                // value = {opt}
                 options ={airlineOptions}
                 className='fancy-select'
                 isSearchable = {true}
