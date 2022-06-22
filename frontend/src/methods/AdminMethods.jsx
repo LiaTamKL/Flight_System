@@ -112,4 +112,47 @@ export let TurnIntoAirline=async(username,e,authToken)=>{
 
 }
 
+export let TurnIntoAdmin=async(username,e,authToken)=>{
+    var csrftoken = GetCookie('csrftoken')
+
+    let response = await fetch('http://127.0.0.1:8000/backend/api/admin_api', {
+        method:'PATCH',
+        headers:{
+            'Content-Type':'application/json',
+            'Authorization':'Bearer ' + String(authToken.access),
+            'X-CSRFToken': csrftoken
+        },
+        body:JSON.stringify({"make":"Admin",
+            "username":username,
+            "first_name": e.target.first_name.value,
+            "last_name": e.target.last_name.value})
+    })
+    let data = await response.json()
+    return {'data':data, 'status':response.status}
+
+}
+
+export let TurnIntoCustomer=async(username,e,authToken)=>{
+    var csrftoken = GetCookie('csrftoken')
+
+    let response = await fetch('http://127.0.0.1:8000/backend/api/admin_api', {
+        method:'PATCH',
+        headers:{
+            'Content-Type':'application/json',
+            'Authorization':'Bearer ' + String(authToken.access),
+            'X-CSRFToken': csrftoken
+        },
+        body:JSON.stringify({"make":"Customer",
+            "username":username,
+            "first_name": e.target.first_name.value,
+            "last_name": e.target.last_name.value,
+            'address':e.target.address.value,
+            'phone_number':e.target.phone_number.value,
+            'credit_card_no': e.target.credit_card_no.value})
+    })
+    let data = await response.json()
+    return {'data':data, 'status':response.status}
+
+}
+
 export default GetUsers
