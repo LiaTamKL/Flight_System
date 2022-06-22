@@ -4,7 +4,7 @@ import CustomerCard from "../components/UserCards";
 import AuthContext from "../context/authentication";
 import { Link } from "react-router-dom";
 import GetUsers from "../methods/AdminMethods";
-import { DeleteUser } from "../methods/AdminMethods";
+import { DeleteUser, UpdateToAdminFromCus } from "../methods/AdminMethods";
 
 const AdminDashboard= () => {
     const [customers, setCustomers] = useState([]);
@@ -37,6 +37,15 @@ const AdminDashboard= () => {
 
     }
 
+    let UpdateToAdmin= async(e) =>{
+        console.log(e)
+        let result = await UpdateToAdminFromCus(e, authToken)
+        console.log(result.data)
+        message.current =result.data
+        GetCustomers()
+
+    }
+
 
     console.log('WELCOME ADMIN')
     return (<div>
@@ -55,10 +64,9 @@ const AdminDashboard= () => {
                         {customers.map((customer)=>(
                         <div key={customer.account} className="list-group-item list-group-item-action flex-column align-items-start">
                             <CustomerCard customer={customer}/>
-                            <button className="btn btn-primary btn-sm" >Add as Admin</button>
                             <button className="btn btn-primary btn-sm" >Add as Airline</button>
-                            <button onClick={()=>
-                                Delete(customer.account)}className="btn btn-danger btn-sm" >Delete</button>
+                            <button onClick={()=>UpdateToAdmin(customer)}className="btn btn-primary btn-sm" >Add as Admin</button>
+                            <button onClick={()=>Delete(customer.account)}className="btn btn-danger btn-sm" >Delete</button>
                         </div>
                         ))}</>
                 ) : (
