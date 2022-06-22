@@ -205,7 +205,7 @@ def user_api(request):
             respon = get_user(request)
             return respon
 
-        #This will be to update the data
+        #This handles updates, please insert all values an account type is meant to have + email
         if request.method == 'PATCH':
             res = update_user(request)
             return res
@@ -258,10 +258,10 @@ def user_api(request):
 #For either viewing all accounts of a certain type (POST), searching a specific type (POST) or changing an account role (PATCH)
 @api_view(['POST', 'PATCH'])
 def admin_api(request):
-    if request.user.is_authenticated == False:
-         return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
-    if request.user.is_admin == False:
-         return Response(data='Must be admin to use!', status=status.HTTP_401_UNAUTHORIZED)
+    # if request.user.is_authenticated == False:
+    #      return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
+    # if request.user.is_admin == False:
+    #      return Response(data='Must be admin to use!', status=status.HTTP_401_UNAUTHORIZED)
     
     #this expects you to enter a view value (Airlines, Admins, Customers, Specific)
     #it will either return all accounts of that type

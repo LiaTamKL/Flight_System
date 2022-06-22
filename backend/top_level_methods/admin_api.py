@@ -29,10 +29,17 @@ def get_users_admin(request):
             elif role == 'Customer':
                 second_serializer = CustomerSerializer(user, many=False)
             else: second_serializer = False
-
             if second_serializer == False:
                 return Response(acc_serializer.data)
-            else: return Response((acc_serializer.data, second_serializer.data))
+
+
+            else: 
+                context = {}
+                for key in acc_serializer.data:
+                    context[key] = acc_serializer.data[key]
+                for key in second_serializer.data:
+                    context[key] = second_serializer.data[key]
+                return Response(context)
 
         else: 
             return Response(data='You must enter a view value.', status=status.HTTP_400_BAD_REQUEST)
