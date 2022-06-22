@@ -16,7 +16,7 @@ def get_users_admin(request):
             admins = AdministratorFuncade.get_all_admins(request.user)
             serializer = AdminSerializer(admins, many=True)
         elif request.data['view']=='Specific':
-
+            print(request.data)
             searched = AdministratorFuncade.get_by_username(request.data['username'])
             role = searched['account_role']
             user = searched['user']
@@ -80,7 +80,7 @@ def change_account_role(request):
             if account.account_role == 'Airline':
                 return Response(data='Already an Airline!', status=status.HTTP_400_BAD_REQUEST)
             print("we're making an airline!")
-            country = Country.objects.get(country_name=request.data['country'])
+            country = Country.objects.get(pk=request.data['country'])
             form['country'] =  country
             form['name'] = request.data['name']
             AdministratorFuncade.add_airline(account=account, form=form)

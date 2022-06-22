@@ -60,6 +60,8 @@ class BaseFuncade():
     def create_new_user(form):
         user = form.save()
         user.set_password(user.password)
+        role = Account_Role.objects.get(role_name="Customer")
+        user.account_role= role
         user.is_customer = True
         user.save()
         #email = form.data['email']

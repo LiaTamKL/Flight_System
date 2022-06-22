@@ -145,7 +145,7 @@ class AdministratorFuncade(BaseFuncade):
     def get_by_username(username):
         try:
             account = Account.objects.get(username=username)
-
+            print(account)
         except:
             raise Http404("Account does not exist")
         if account.account_role == Account_Role.objects.get(role_name='Admin') and account.is_superuser ==False:

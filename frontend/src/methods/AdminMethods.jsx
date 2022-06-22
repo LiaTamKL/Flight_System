@@ -91,4 +91,25 @@ export let Check_if_User = async(user, params,role, authToken, nav)=>{
     return(data)
 
     }
+
+export let TurnIntoAirline=async(username,e,authToken)=>{
+    var csrftoken = GetCookie('csrftoken')
+
+    let response = await fetch('http://127.0.0.1:8000/backend/api/admin_api', {
+        method:'PATCH',
+        headers:{
+            'Content-Type':'application/json',
+            'Authorization':'Bearer ' + String(authToken.access),
+            'X-CSRFToken': csrftoken
+        },
+        body:JSON.stringify({"make":"Airline",
+            "username":username,
+            "country": e.target.country.value,
+            "name": e.target.name.value})
+    })
+    let data = await response.json()
+    return {'data':data, 'status':response.status}
+
+}
+
 export default GetUsers

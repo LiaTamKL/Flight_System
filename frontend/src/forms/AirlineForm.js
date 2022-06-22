@@ -50,7 +50,8 @@ const AirlineForm = (userInfo)=>{
         <input type="text" name="name" placeholder="Airline Name" defaultValue = {userInfomation?(userInfomation.name):null} required />
             <Select 
                 required
-                id='origin_country'
+                name='country'
+                id='country'
                 className='fancy-select'
                 placeholder = {countrydefault?(countrydefault):'Country'}
                 options ={countryOptions}
