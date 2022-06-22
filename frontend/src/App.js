@@ -21,6 +21,8 @@ import {
 import 'bootstrap/dist/css/bootstrap.css'
 import MakeAnAdmin from './pages/Make_Admin_Page';
 import MakeACustomer from './pages/Make_Customer_Page';
+import ViewAirlines from './pages/View_all_Airlines';
+import ViewAdmins from './pages/View_all_Admins';
 
 function App() {
   return (
@@ -45,8 +47,8 @@ function App() {
 
             <Route path='/admin'  exact element={<LoggedinRoute account_role="Admin"/>}>
               <Route path='' element={<AdminDashboard/>}/>
-              <Route path='view_airlines' element={<FlightsListPage/>}/>
-              <Route path='view_admins' element={<AdminDashboard/>}/>
+              <Route path='view_airlines' element={<ViewAirlines/>}/>
+              <Route path='view_admins' element={<ViewAdmins/>}/>
               <Route path='view_specific' element={<AdminDashboard/>}/>
               <Route path='make_airline/:username' element={<MakeAnAirline/>}/>
               <Route path='make_admin/:username' element={<MakeAnAdmin/>}/>

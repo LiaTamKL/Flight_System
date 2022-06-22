@@ -25,12 +25,12 @@ const MakeACustomer = () =>{
 
     let check_user = async()=>{
         let data = await Check_if_User(user, params,"Customer", authToken, nav)
-        
+        console.log('heres the final data', data)
     }
 
     useEffect(() => {
         check_user()
-        console.log('heres the final data', data)},[])
+        },[])
         
     return(
         <form onSubmit={(e)=>customermaker(e)}>
