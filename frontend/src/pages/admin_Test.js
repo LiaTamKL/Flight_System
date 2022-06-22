@@ -1,5 +1,5 @@
 
-import {useState, useEffect, useContext} from "react";
+import {useState, useEffect, useContext, useRef} from "react";
 import CustomerCard from "../components/UserCards";
 import AuthContext from "../context/authentication";
 import { Link } from "react-router-dom";
@@ -9,7 +9,7 @@ import { DeleteUser } from "../methods/AdminMethods";
 const AdminDashboard= () => {
     const [customers, setCustomers] = useState([]);
     let {user, authToken} = useContext(AuthContext)
-    let {message, setMessage} = useState('')
+    const message = useRef()
     useEffect(()=>{
         GetCustomers()
     },[])
@@ -32,7 +32,7 @@ const AdminDashboard= () => {
         console.log(e)
         let result = await DeleteUser(e, authToken)
         console.log(result.data)
-        alert(result.data)
+        message.current =result.data
         GetCustomers()
 
     }
@@ -47,7 +47,7 @@ const AdminDashboard= () => {
         <Link className="btn btn-primary btn-sm" to="/admin/view_specific" >Search for user</Link>
         </div>
         <div className="card text-center">All Customers</div>
-        {message? (<p className="alert alert-secondary">{message}</p>):<></>}
+        {message.current? (<p className="alert alert-secondary">{message.current}</p>):<></>}
         
         {
                 customers?.length > 0
