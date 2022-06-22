@@ -12,6 +12,7 @@ import MainPage from './pages/main';
 import Register from './pages/registration';
 import NotFound from './pages/404Page';
 import UpdatePage from './pages/update';
+import MakeAnAirline from './pages/make_airline_page';
 import {
   Routes,
   Route,
@@ -45,6 +46,7 @@ function App() {
               <Route path='view_airlines' element={<FlightsListPage/>}/>
               <Route path='view_admins' element={<AdminDashboard/>}/>
               <Route path='view_specific' element={<AdminDashboard/>}/>
+              <Route path='make_airline/:username' element={<MakeAnAirline/>}/>
             </Route>
 
             <Route path='/cust'  exact element={<LoggedinRoute account_role="Customer"/>}>

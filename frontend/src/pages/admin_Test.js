@@ -64,7 +64,7 @@ const AdminDashboard= () => {
                         {customers.map((customer)=>(
                         <div key={customer.account} className="list-group-item list-group-item-action flex-column align-items-start">
                             <CustomerCard customer={customer}/>
-                            <button className="btn btn-primary btn-sm" >Add as Airline</button>
+                            <Link className="btn btn-primary btn-sm" to={`/admin/make_airline/${customer.account}`} >Add as Airline</Link>
                             <button onClick={()=>UpdateToAdmin(customer)}className="btn btn-primary btn-sm" >Add as Admin</button>
                             <button onClick={()=>Delete(customer.account)}className="btn btn-danger btn-sm" >Delete</button>
                         </div>

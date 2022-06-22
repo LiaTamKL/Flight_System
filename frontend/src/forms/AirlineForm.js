@@ -47,7 +47,7 @@ const AirlineForm = (userInfo)=>{
     // }
     return(
         <>
-        <input type="text" name="name" placeholder="Airline Name" defaultValue = {userInfo['userInfo']=== undefined?(userInfomation.name):null} required />
+        <input type="text" name="name" placeholder="Airline Name" defaultValue = {userInfomation?(userInfomation.name):null} required />
             <Select 
                 required
                 id='origin_country'

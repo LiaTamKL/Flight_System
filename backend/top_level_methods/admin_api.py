@@ -21,6 +21,7 @@ def get_users_admin(request):
             role = searched['account_role']
             user = searched['user']
             account = searched['account']
+            print(searched)
             acc_serializer = AccountSerializer(account, many=False)
             if role == 'Admin':
                 second_serializer = AdminSerializer(user, many=False)

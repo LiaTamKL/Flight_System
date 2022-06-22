@@ -45,6 +45,7 @@ class AllAccount_rolesSerializer(ModelSerializer):
         fields = '__all__'
 
 class AccountSerializer(ModelSerializer):
+    account_role = db_link("role_name")
 
 
     class Meta:
@@ -69,5 +70,5 @@ class AdminSerializer(ModelSerializer):
     account = db_link("username")
 
     class Meta:
-        model = Customer
+        model = Administrator
         fields = '__all__'
