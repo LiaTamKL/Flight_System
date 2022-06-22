@@ -1,59 +1,65 @@
 import React, { useState , useEffect, useCallback ,useMemo } from 'react'
-import { format , parseISO} from "date-fns";
+import { format , parseISO, set} from "date-fns";
 import {useNavigate, useParams, useLocation} from "react-router-dom";
 import './Form.css'
 import Select from 'react-select'
-import { CreateFlight} from '../methods/FlightMethods'
+import { CreateFlight, UpdateFlight} from '../methods/FlightMethods'
 import FormHeader from '../components/FormHeader'
+import { useRef } from 'react';
+
 
 // import {ReactComponent as Addflighticon } from '../assets/flight.svg';
 
 
-
 const CreateFlightForm = () => {
-  let  flight = useLocation();
-  if (flight.state) {flight = flight.state.flightobj}
+  let navigate = useNavigate()
+  let flight = useLocation()
 
-  let [airlineOptions, setAirlineOptions] = useState()
-  let [countryOptions, setCountryOptions] = useState()
+  //Checks if it comes from update page , sets true if it does
+  let update = true
+  let flightstate = flight.state? flight.state.flightobj : update = false
 
+  // console.log("before" + flightstate.departure_time);
 
-  console.log(airlineOptions?.find(({ label }) => label === flight?.airline));
-  // console.log(defaultval);
-
-  let navigate = useNavigate();
-  // let  [counter, setCounter] = useState(0)
-  // let [inopt, setIncopt] = useState(defaultval)
-  
-  // console.log(inopt);
-  let [airline, setAirline] = useState()
+  let [airline, setAirline] = useState("")
   let [originCountry, setOriginCountry] = useState('')
   let [destinationCountry, setDestinationCountry] = useState('')
-  let [tickets, setTickets] = useState(1)
- 
+  let [tickets, setTickets] = useState(update? flightstate.remaining_tickets: 1)
 
-  let [departureTime, setDepartureTime] = useState(format(new Date(), "yyyy-MM-dd'T'HH:mm")) ;
-  let [arrivalTime, setArrivalTime] = useState(departureTime) 
-  let [departureMinTime, setDepartureMinTime] = useState() ;
-  // let [opt, setOpt] = useState(airlineOptions?.find(({ label }) => label === flight?.airline))
-  // let [opt, setOpt] = useState('')
-  // console.log(opt);
-  // console.log(airline);
-  // console.log(airlineOptions.find(e => e.label === flight.airline))
+  let [departureTime, setDepartureTime] = useState( 
+    update? 
+    format(new Date(flightstate.departure_time), "yyyy-MM-dd'T'HH:mm") :
+    format(new Date(), "yyyy-MM-dd'T'HH:mm")
+    );
 
-  // console.log(countryOptions.find(e => e.label === flight.destination_country))
 
-  // let [isPending, setisPending] = useState(false)
-  // let [errorMessage, setErrorMessage] = useState('')
+  let [arrivalTime, setArrivalTime] = useState(
+    update? 
+    format(new Date(flightstate.landing_time), "yyyy-MM-dd'T'HH:mm") :
+    departureTime
+  ) 
+
+  let [departureMinTime, setDepartureMinTime] = useState(format(new Date(), "yyyy-MM-dd'T'HH:mm")) ;
+
+
+  const airlineOptions = useRef("");
+  // const incflight = useRef(flight.state? flight.state.flightobj : null)
+  const incflight = useRef(flightstate)
+
+  const defaultAirlineOption = useRef("")
+  const countryOptions = useRef("")
+  const defaultCountryOriginOption = useRef("")
+  const defaultCountryDestOption = useRef("")
+  // console.log(incflight.current.destination_country)
+
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let data = {airline, originCountry , destinationCountry , departureTime , arrivalTime, tickets}
     console.log(data)
-    // CreateFlight(data)
-    // navigate("/flights")
-
+    // flightstate ? CreateFlight(data) : UpdateFlight(flightstate.id , data)
+    navigate("/flights")
 }
 
 
@@ -64,41 +70,61 @@ const CreateFlightForm = () => {
 
 
 useEffect(() => {
-    setDepartureMinTime(departureTime)
-
-   getAirlines()
-   getContries()
-  //  setsss()
-
-  }, [departureTime])
-
-
-// let setsss = () => {
-//   console.log(airlineOptions);
-//   // console.log(flight);
-//   // setOpt(airlineOptions?.find(({ label }) => label === flight?.airline))
-
-//   let test = airlineOptions?.find(({ label }) => label === flight?.airline)
-//   // console.log(test)
-
-// }
-
-
-let getAirlines = async () => {
-  let response = await fetch(`/backend/airlines`)
-  let data = await response.json()
-  setAirlineOptions(data.map((airline) => ({value:airline.id, label:airline.name})))
   
-  }
+  // console.log(airlineOptions.current);
+  // getFlight()
+   getAirlines()
+   getCountries()
+  //  defaultval()
+  //  setDepartureMinTime(departureTime)
+  }, [])
+
+  let getAirlines = async () => {
+    let response = await fetch(`/backend/airlines`)
+    let data = await response.json() 
+    // airlineOptions.current = data
+
+    airlineOptions.current =  data.map((airline) => ({value:airline.id, label:airline.name}))
+
+    if (update) {defaultAirlineOption.current = airlineOptions.current.find(({ label }) => label === incflight.current?.airline)}
+    else{defaultAirlineOption.current = [{value: "", label: ""}]}
+
+    // console.log(defaultAirlineOption.current);
+    setAirline(defaultAirlineOption.current.value)
+        
+    }
+
+ 
 
 
+  let getCountries = async () => {
+    let response = await fetch(`/backend/countries`)
+    let data = await response.json()
 
-let getContries = async () => {
-  let response = await fetch(`/backend/countries`)
-  let data = await response.json()
-  setCountryOptions(data.map((country) => ({value:country.id, label:country.country_name})))
+    countryOptions.current =  data.map((country) => ({value:country.id, label:country.country_name}))
+    // console.log(defaultCountryOriginOption);
+
+
+    if (update) { defaultCountryOriginOption.current = countryOptions.current.find(({ label }) => label === incflight.current?.origin_country)}
+    else{defaultCountryOriginOption.current = [{value: "", label: ""}]}
+    setOriginCountry(defaultCountryOriginOption.current.value)
+
+    if (update) {defaultCountryDestOption.current = countryOptions.current.find(({ label }) => label === incflight.current?.destination_country)}
+    else{defaultCountryDestOption.current = [{value: "", label: ""}]}
+    setDestinationCountry(defaultCountryDestOption.current.value) 
+
+    // setCountryOptions(data.map((country) => ({value:country.id, label:country.country_name})))
     
   }
+
+// let getContries = async () => {
+//   let response = await fetch(`/backend/countries`)
+//   let data = await response.json()
+
+
+//   setCountryOptions(data.map((country) => ({value:country.id, label:country.country_name})))
+    
+//   }
 
 
   // let validate_empty = (field_type, e) =>{
@@ -127,19 +153,28 @@ let getContries = async () => {
   let time_validation = (type, error_id) =>{
     let valid = document.getElementById(type);
     if (!valid.checkValidity()) {
+      // valid.setCustomValidity(`Please select a value that is no earlier than ${format(parseISO(departureTime),  "dd/MM/yyyy HH:mm")}.`)
      let validation_mes =  `Please select a value that is no earlier than ${format(parseISO(departureTime),  "dd/MM/yyyy HH:mm")}.`
       document.getElementById(error_id).innerHTML = validation_mes;
     }
     else
+    // console.log("im here");
+    // valid.setCustomValidity('')
     {document.getElementById(error_id).innerHTML = "";}
   }
 
+
+// const optionstemp=
+//   [ {
+//     "value": test.current.value,
+//     "label": test.current.label
+//   }]
 
 
 
   return (
     <div className='create'>
-      <FormHeader headercheck = {flight} />
+      <FormHeader headercheck = {flightstate} />
     {/* <h2>Create New Flight</h2> */}
 
         <form id='app_form'  onSubmit={(e) => handleSubmit(e)} >
@@ -149,16 +184,11 @@ let getContries = async () => {
               <Select 
                 required
                 id='airline'
-                // onKeyDown={(e) => e.preventDefault()}
-                isClearable = {true}
-                // value = {{
-                //   "value": 2,
-                //   "label": "CrashAir Airlines"
-                // }}
-                // value = {opt}
-                options ={airlineOptions}
+                isClearable
+                placeholder = {defaultAirlineOption.current.label}
+                options = {airlineOptions.current}
                 className='fancy-select'
-                isSearchable = {true}
+                isSearchable
                 // getOptionLabel={e => (
                 //   <div style={{ display: 'flex', alignItems: 'center' }}>
                 //     {<Addflighticon />}
@@ -174,8 +204,9 @@ let getContries = async () => {
                 // onChange ={(e) => {
                 //   if(e) setAirline(e.value)
                 // }}                
-                onSubmit ={(e) => {
-                  if(e) setAirline(e.value)
+                onChange ={(e) => {
+                  e? setAirline(e.value): 
+                  setAirline(defaultAirlineOption.current.value)
                 }}
                 
                   // More props
@@ -188,15 +219,17 @@ let getContries = async () => {
                 required
                 id='origin_country'
                 className='fancy-select'
-                // placeholder = {flight.origin_country}
-                options ={countryOptions}
-                isSearchable = {true}
-                defaultValue = {originCountry}
-                isClearable = {true} 
+                isSearchable
+                isClearable
+                placeholder = {defaultCountryOriginOption.current.label}
+                options ={countryOptions.current}               
+                // defaultValue = {originCountry}
+                
 
                 // isMulti  = {true}
                 onChange={(e) => {
-                  if (e) setOriginCountry(e.value)
+                  e? setOriginCountry(e.value):
+                  setOriginCountry(defaultCountryOriginOption.current.value)
                 }}
 
 
@@ -207,14 +240,15 @@ let getContries = async () => {
                 required
                 id='dest_country'
                 className='fancy-select'
-                options ={countryOptions}
-                // value = {destinationCountry}
-                isSearchable = {true}
-                isClearable = {true} 
-                defaultValue = {destinationCountry}
+                isSearchable
+                isClearable 
+                placeholder = {defaultCountryDestOption.current.label}
+                options ={countryOptions.current}
+                // defaultValue = {destinationCountry}
                 // isMulti  = {true}
                 onChange ={(e) => {
-                  if(e) setDestinationCountry(e.value)
+                   e? setDestinationCountry(e.value):
+                   setDestinationCountry(defaultCountryDestOption.current.value)
                 }}
                 
 
@@ -228,22 +262,21 @@ let getContries = async () => {
                 className='fancy-select'
                 defaultValue={departureTime}
                 min={departureMinTime}
-                onInvalid ={() => {
-                  setDepartureMinTime(departureMinTime)
+                // onInvalid ={() => {
+                //   setDepartureMinTime(departureMinTime)
                 
-                }}
+                // }}
+
                 onChange = {(e) => {    
-                  // time_validation('arrival_time', 'errormes_dep')
+                  time_validation('departure_time', 'errormes_dep')
                   setDepartureTime(e.target.value)
                   setArrivalTime(e.target.value)
+                  console.log(update);
                 }}
                 >
                   
                 </input>
-                <span id='errormes_dep' style={{
-            fontWeight: 'bold',
-              color: 'red',
-                }}></span>
+                <span id='errormes_dep'></span>
 
 
             <label>Arrival Time</label>
@@ -251,12 +284,12 @@ let getContries = async () => {
                 type='datetime-local'
                 id='arrival_time'
                 required
-                onInvalid={() => {setArrivalTime(departureTime)}}
+                // onInvalid={() => {setArrivalTime(departureTime)}}
                 // onInvalid={() => {time_validation('arrival_time')}}
                 
                 className='fancy-select'
                 min={departureTime}
-                value = {arrivalTime}
+                defaultValue = {arrivalTime}
                 onChange ={(e) => {
                   time_validation('arrival_time', 'errormes_arr')
                   setArrivalTime(e.target.value)
@@ -266,10 +299,7 @@ let getContries = async () => {
 
             </input>
             
-          <span id='errormes_arr' style={{
-            fontWeight: 'bold',
-              color: 'red',
-                }}></span>
+          <span id='errormes_arr'></span>
                 
             <label>Number Of Tickets</label>
             <input

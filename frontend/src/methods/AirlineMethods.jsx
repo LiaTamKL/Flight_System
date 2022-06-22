@@ -1,3 +1,7 @@
+
+
+
+
 const GetAirlineMethod = async (airlineid) => {
     let response = await fetch(`/backend/airlines/${airlineid}/`)
     let data = await response.json()

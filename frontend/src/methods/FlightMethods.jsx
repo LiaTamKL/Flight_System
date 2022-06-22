@@ -9,8 +9,6 @@ const GetFlightMethod = async (flightid) => {
 }
 
 const CreateFlight = async  (submitted) => {
-    console.log(submitted)
-
     fetch(`/backend/flights/create`, {
       method: "POST",
       headers: {'Content-Type': 'application/json'},

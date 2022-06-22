@@ -3,6 +3,8 @@ import { useParams , useNavigate} from "react-router-dom";
 import { ReactComponent as Arrow } from '../assets/arrow-left.svg'
 import CreateFlightForm from '../forms/CreateFlightForm'
 import { DeleteFlight , GetFlightMethod} from '../methods/FlightMethods'
+import { format , parseISO} from "date-fns";
+
 
 const FlightPage = () => {
     let navigate = useNavigate();
@@ -28,6 +30,7 @@ const FlightPage = () => {
   let updateflight = async () => {
   // <CreateFlightForm flight/>
     navigate(`/flights/${flightid}/update` , {state :{flightobj: flight}})
+    // navigate(`/flights/${flightid}/update`)
 
 
   
@@ -38,12 +41,13 @@ const FlightPage = () => {
       navigate('/flights')
 
    }
-
-
    
    let formatTime = (flight) => {
-    let date = new Date(flight)
-    let datastring = (`${date.getDate()}/${(date.getMonth()+1)}/${ date.getFullYear()}, ${date.getHours()}:${date.getMinutes()}`)
+
+    let datastring
+    if(flight) {datastring =  format(parseISO(flight),  "dd/MM/yyyy HH:mm")}
+
+    // let datastring = (`${date.getDate()}/${(date.getMonth()+1)}/${ date.getFullYear()}, ${date.getHours()}:${date.getMinutes()}`)
     return datastring
 }
 

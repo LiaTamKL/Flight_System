@@ -48,3 +48,17 @@ input::-webkit-inner-spin-button {
 }
 
 
+.create span{
+    font-size: 12px;
+    padding: 3px;
+    color: red;
+    display: none;
+}
+
+.create input:invalid[focused="true"]{
+    border: 1px solid red;
+}
+
+.create input:invalid[focused="true"] ~ span{
+    display: block;
+}
