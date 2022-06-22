@@ -9,10 +9,10 @@ const MakeACustomer = () =>{
     let params = useParams();
     let {user, authToken} = useContext(AuthContext)
     let nav = useNavigate()
+    let [reference, setReference] = useState()
 
     const customermaker = async(e)=>{
     e.preventDefault()
-    console.log(e.target.country.value)
     let result = await TurnIntoCustomer(params.username,e,authToken)
     if (result.status===200){
         console.log('success!')
@@ -25,16 +25,16 @@ const MakeACustomer = () =>{
 
     let check_user = async()=>{
         let data = await Check_if_User(user, params,"Customer", authToken, nav)
-        console.log('heres the final data', data)
+        setReference(data)
     }
 
     useEffect(() => {
         check_user()
         },[])
-        
+        console.log('heres current ref:', reference)
     return(
         <form onSubmit={(e)=>customermaker(e)}>
-        <CustomerForm />
+        <CustomerForm userData= {reference}/>
         <br/>
         <input type="submit"/>
         </form>

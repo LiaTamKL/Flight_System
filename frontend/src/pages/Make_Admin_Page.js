@@ -9,10 +9,10 @@ const MakeAnAdmin = () =>{
     let params = useParams();
     let {user, authToken} = useContext(AuthContext)
     let nav = useNavigate()
+    let [reference, setReference] = useState()
 
     const adminmaker = async(e)=>{
     e.preventDefault()
-    console.log(e.target.country.value)
     let result = await TurnIntoAdmin(params.username,e,authToken)
     if (result.status===200){
         console.log('success!')
@@ -25,8 +25,7 @@ const MakeAnAdmin = () =>{
 
     let check_user = async()=>{
         let data = await Check_if_User(user, params,"Admin", authToken, nav)
-        console.log('heres the final data', data)
-    }
+        setReference(data)    }
 
     useEffect(() => {
         check_user()
@@ -34,7 +33,7 @@ const MakeAnAdmin = () =>{
         
     return(
         <form onSubmit={(e)=>adminmaker(e)}>
-        <AdminForm />
+        <AdminForm userData= {reference}/>
         <br/>
         <input type="submit"/>
         </form>
