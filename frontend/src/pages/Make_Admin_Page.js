@@ -1,0 +1,47 @@
+import {useState, useEffect, useContext, useRef} from "react";
+import AuthContext from "../context/authentication";
+import { useParams } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { Check_if_User, TurnIntoAdmin } from "../methods/AdminMethods";
+import AdminForm from "../forms/AdminForm";
+
+const MakeAnAdmin = () =>{
+    let params = useParams();
+    let {user, authToken} = useContext(AuthContext)
+    let nav = useNavigate()
+
+    const adminmaker = async(e)=>{
+    e.preventDefault()
+    console.log(e.target.country.value)
+    let result = await TurnIntoAdmin(params.username,e,authToken)
+    if (result.status===200){
+        console.log('success!')
+        nav('/admin/view_admins')
+    }
+    else{
+        alert('error:', result.data)
+    }
+    }
+
+    let check_user = async()=>{
+        let data = await Check_if_User(user, params,"Admin", authToken, nav)
+        
+    }
+
+    useEffect(() => {
+        check_user()
+        console.log('heres the final data', data)},[])
+        
+    return(
+        <form onSubmit={(e)=>adminmaker(e)}>
+        <AdminForm />
+        <br/>
+        <input type="submit"/>
+        </form>
+    )
+
+
+
+}
+
+export default MakeAnAdmin

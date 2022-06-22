@@ -19,6 +19,8 @@ import {
 } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.css'
+import MakeAnAdmin from './pages/Make_Admin_Page';
+import MakeACustomer from './pages/Make_Customer_Page';
 
 function App() {
   return (
@@ -47,6 +49,9 @@ function App() {
               <Route path='view_admins' element={<AdminDashboard/>}/>
               <Route path='view_specific' element={<AdminDashboard/>}/>
               <Route path='make_airline/:username' element={<MakeAnAirline/>}/>
+              <Route path='make_admin/:username' element={<MakeAnAdmin/>}/>
+              <Route path='make_customer/:username' element={<MakeACustomer/>}/>
+
             </Route>
 
             <Route path='/cust'  exact element={<LoggedinRoute account_role="Customer"/>}>
