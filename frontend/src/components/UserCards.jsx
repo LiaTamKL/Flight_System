@@ -1,4 +1,13 @@
 
+export const AccountCard = ({account}) => {
+    return (
+            <div className="d-flex w-100 justify-content-between">
+                <h5 className="mb-1">{account.username} {account.email}</h5>
+                <small className="text-muted">Role: {account.account_role}, Superuser Status: {account.is_superuser}</small><br/><br/>
+
+            </div>
+    )
+}
 
 const CustomerCard = ({customer}) => {
     return (
@@ -29,4 +38,7 @@ export const AdminCard = ({admin}) => {
             </div>
     )
 }
+
+
+
 export default CustomerCard

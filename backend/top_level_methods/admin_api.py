@@ -6,6 +6,10 @@ from rest_framework.response import Response
 
 
 def get_users_admin(request):
+        if request.data['view']=='Accounts':
+            accounts = AdministratorFuncade.get_all_accounts(request.user)
+            serializer = AccountSerializer(accounts, many=True)
+            return Response(serializer.data)
         if request.data['view']=='Customers': 
             customers = AdministratorFuncade.get_all_customers()
             serializer = CustomerSerializer(customers, many=True)

@@ -263,7 +263,7 @@ def admin_api(request):
     # if request.user.is_admin == False:
     #      return Response(data='Must be admin to use!', status=status.HTTP_401_UNAUTHORIZED)
     
-    #this expects you to enter a view value (Airlines, Admins, Customers, Specific)
+    #this expects you to enter a view value (Airlines, Admins, Customers, Specific, Accounts)
     #it will either return all accounts of that type
     #if you use specific, state a username and it will return it
     if request.method == 'POST':

@@ -13,8 +13,8 @@ class AdministratorFuncade(BaseFuncade):
         return cus
 
     #returns all account objects
-    def get_all_accounts():
-        account = Account.objects.all()
+    def get_all_accounts(account):
+        account = Account.objects.exclude(pk=account.id)
         return account
 
     #returns all admin objects but the one in use
