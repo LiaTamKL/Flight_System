@@ -24,4 +24,19 @@ let UserForm = async (e, account_role, method, url) =>{
     let data = await response.json()
     return {'data':data, 'status':response.status}}
 
+export const UpdateUser=async(e, authToken)=>{
+    var csrftoken = GetCookie('csrftoken')
+    let response = 'needs to be built, dont forget authtokens'
+    //backend not tested yet so make sure to test it with this with all 4 user types.
+    //make sure to test with bad data of existing users.
+    //remember to return the data and status
+}
+
+export const PassWordUpdate=async(e, authToken)=>{
+    var csrftoken = GetCookie('csrftoken')
+    let response = 'needs to be built, dont forget authtokens'
+    //build a password checker first
+    //build second response from server to updated password if the checker confirms its the correct password
+}
+
 export default UserForm
