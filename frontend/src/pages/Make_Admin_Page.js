@@ -10,6 +10,7 @@ const MakeAnAdmin = () =>{
     let {user, authToken} = useContext(AuthContext)
     let nav = useNavigate()
     let [reference, setReference] = useState()
+    let [message, setMessage] = useState()
 
     const adminmaker = async(e)=>{
     e.preventDefault()
@@ -20,6 +21,8 @@ const MakeAnAdmin = () =>{
     }
     else{
         alert('error:', result.data)
+        console.log(result.data)
+        setMessage(result.data)
     }
     }
 
@@ -31,12 +34,13 @@ const MakeAnAdmin = () =>{
         check_user()
         },[])
         
-    return(
+    return(<>
+        {message? (<p className="alert alert-warning">{message}</p>):<></>}
         <form onSubmit={(e)=>adminmaker(e)}>
         <AdminForm userData= {reference}/>
         <br/>
         <input type="submit"/>
-        </form>
+        </form></>
     )
 
 

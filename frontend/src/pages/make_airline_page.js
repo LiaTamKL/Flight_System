@@ -9,6 +9,7 @@ const MakeAnAirline = () =>{
     let params = useParams();
     let {user, authToken} = useContext(AuthContext)
     let nav = useNavigate()
+    let [message, setMessage] = useState()
 
     const airlineMaker = async(e)=>{
     e.preventDefault()
@@ -20,6 +21,7 @@ const MakeAnAirline = () =>{
     }
     else{
         alert('error:', result.data)
+        setMessage(result.data)
     }
     }
 
@@ -27,12 +29,13 @@ const MakeAnAirline = () =>{
         let data = Check_if_User(user, params,"Airline", authToken, nav)
         console.log('heres the final data', data)},[])
         
-    return(
+    return(<>
+        {message? (<p className="alert alert-warning">{message}</p>):<></>}
         <form onSubmit={(e)=>airlineMaker(e)}>
         <AirlineForm />
         <br/>
         <input type="submit"/>
-        </form>
+        </form></>
     )
 
 

@@ -10,6 +10,7 @@ const MakeACustomer = () =>{
     let {user, authToken} = useContext(AuthContext)
     let nav = useNavigate()
     let [reference, setReference] = useState()
+    let [message, setMessage] = useState()
 
     const customermaker = async(e)=>{
     e.preventDefault()
@@ -19,7 +20,8 @@ const MakeACustomer = () =>{
         nav('/admin')
     }
     else{
-        alert('error:', result.data)
+        console.log(result.data)
+        setMessage(result.data)
     }
     }
 
@@ -32,12 +34,13 @@ const MakeACustomer = () =>{
         check_user()
         },[])
         console.log('heres current ref:', reference)
-    return(
+    return(<>
+        {message? (<p className="alert alert-warning">{message}</p>):<></>}
         <form onSubmit={(e)=>customermaker(e)}>
         <CustomerForm userData= {reference}/>
         <br/>
         <input type="submit"/>
-        </form>
+        </form></>
     )
 
 
