@@ -131,8 +131,76 @@ def getair(requset, id):
     seralizer = AirlineSerializer(airline, many = False)
     return Response(seralizer.data)
 
+@api_view(['GET', 'POST'])
+def airline_api(request):
+    if request.user.is_authenticated == False:
+         return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
+    if request.user.account_role != Account_Role.objects.get(role_name = 'Airline'):
+         return Response(data='Must be an airline to use this!', status=status.HTTP_401_UNAUTHORIZED)
 
+    if request.method == 'GET':
+        airline = Airline.objects.get(account=request.user)
+        flights =  Flight.objects.filter(airline=airline).order_by('departure_time')
+        seralizer = FlightSerializer(flights, many = True)
+        return Response(seralizer.data)
+    
+    if request.method == 'POST':
+        serializer = FlightSerializer(data=request.data, many = False)
+        if serializer.is_valid():
+            print(serializer.data)
+            return Response(seralizer.data)
+            
+            if request.data['origin_country']  == request.data['destination_country']:
+                return Response(data='Destination and origin countries must not be the same!', status=status.HTTP_400_BAD_REQUEST)
+            data= request.data
+            departure_time = utc.localize(datetime.fromisoformat(request.data['departureTime'])),
+            landing_time = utc.localize(datetime.fromisoformat(request.data['arrivalTime']))
+            if departure_time < utc.localize(datetime.now()):
+                return Response(data='You cannot choose a date in the past', status=status.HTTP_400_BAD_REQUEST)
+            if landing_time <= departure_time:
+                return Response(data='A landing must be after a departure', status=status.HTTP_400_BAD_REQUEST)
+            data['departureTime'] = departure_time
+            data['landing_time'] = landing_time
+            flight=Flight()
+            Airline_Facade.add_flight(airline=airline, form=data, flight=flight)
 
+        else:
+            return Response(serializer.error_messages, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PATCH','DELETE'])
+def airline_delete_update(request, id):  
+    if request.user.is_authenticated == False:
+         return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
+    if request.user.account_role != Account_Role.objects.get(role_name = 'Airline'):
+         return Response(data='Must be an airline to use this!', status=status.HTTP_401_UNAUTHORIZED) 
+    
+    try:
+            flight = Flight.objects.get(pk = id)
+            airline = Airline.objects.get(account=request.user)
+    except Flight.DoesNotExist:
+        return Response (data="Flight does not exist", status=status.HTTP_404_NOT_FOUND)
+    if airline != flight.airline:
+            return Response(data="This is not your flight!", status=status.HTTP_401_UNAUTHORIZED)
+    
+    if request.method == 'PATCH':
+        return Response(request.data)
+
+        if request.data['origin_country']  == request.data['destination_country']:
+            return Response(data='Destination and origin countries must not be the same!', status=status.HTTP_400_BAD_REQUEST)
+        data= request.data
+        departure_time = utc.localize(datetime.fromisoformat(request.data['departureTime'])),
+        landing_time = utc.localize(datetime.fromisoformat(request.data['arrivalTime']))
+        if departure_time < utc.localize(datetime.now()):
+            return Response(data='You cannot choose a date in the past', status=status.HTTP_400_BAD_REQUEST)
+        if landing_time <= departure_time:
+            return Response(data='A landing must be after a departure', status=status.HTTP_400_BAD_REQUEST)
+        data['departureTime'] = departure_time
+        data['landing_time'] = landing_time
+        Airline_Facade.update_flight(airline=airline, form=data, flight=flight)
+    
+    if request.method=='DELETE':
+        return Response(request.data)
+        Airline_Facade.remove_flight(flight, airline)
 
 ####################################################
 #Country
