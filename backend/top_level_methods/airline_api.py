@@ -8,12 +8,14 @@ utc=pytz.UTC
 from ..models import Country, Flight
 
 def get_all_my_flights(airline):
+    """takes an airline, returns all flights by said airline"""
     flights =  Flight.objects.filter(airline=airline).order_by('departure_time')
     seralizer = FlightSerializer(flights, many = True)
     return Response(seralizer.data)
 
 
 def create_flight_airline_api(request, airline):
+    """takes request data and an airline, creates a flight after validating variables"""
     serializer = FlightSerializer(data=request.data, many = False)
     if serializer.is_valid():
             if request.data['origin_country']  == request.data['destination_country']:
@@ -38,6 +40,7 @@ def create_flight_airline_api(request, airline):
 
 
 def update_flight_airline_api(request, airline, flight):
+    """takes request data, a flight and an airline, updates said flight after validating variables"""
     serializer = FlightSerializer(data=request.data, many = False)
     if serializer.is_valid():
             if request.data['origin_country']  == request.data['destination_country']:
@@ -60,5 +63,6 @@ def update_flight_airline_api(request, airline, flight):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 def get_specific_flight_airline_api(flight):
+    """takes a flight, returns it as a serialized response"""
     serializer = FlightSerializer(data=flight, many = False)
     return Response(serializer.data)
