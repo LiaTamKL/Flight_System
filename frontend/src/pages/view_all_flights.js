@@ -53,6 +53,7 @@ const ViewAirlineFlights= () => {
                         <div key={flight.id} className="list-group-item list-group-item-action flex-column align-items-start">
                             <FlightCard flight={flight}/>
                             <button onClick={()=>Delete(flight.id)}className="btn btn-danger btn-sm" >Delete</button>
+                            <Link className="btn btn-primary btn-sm" to="/airline/add_fli" state={{flightobj: flight}} >Update Flight</Link>
                         </div>
                         ))}</>
                 ) : (

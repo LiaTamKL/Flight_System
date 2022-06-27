@@ -171,7 +171,7 @@ def airline_delete_update(request, id):
         return respon
 
     if request.method == 'PATCH':
-        respon = update_flight_airline_api(request=request, airline=airline, flight=flight)
+        respon = update_flight_airline_api(request=request, airline=airline.id, flight=flight)
         return respon
     
     if request.method=='DELETE':

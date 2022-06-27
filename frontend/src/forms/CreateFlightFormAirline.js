@@ -3,7 +3,7 @@ import { format , parseISO, set} from "date-fns";
 import {useNavigate, useLocation} from "react-router-dom";
 import './Form.css'
 import Select from 'react-select'
-import { CreateMyFlight } from '../methods/AirlineMethods';
+import { CreateMyFlight, UpdateMyFlight } from '../methods/AirlineMethods';
 import FormHeader from '../components/FormHeader'
 import { useRef } from 'react';
 import AuthContext from '../context/authentication';
@@ -64,7 +64,10 @@ const CreateFlightFormAirline = () => {
     else{
     let airline = user.user_id
     let data = {airline, originCountry , destinationCountry , departureTime , arrivalTime, tickets}
-    let result = await CreateMyFlight(data, authToken)
+    if (update===false){
+      var result = await CreateMyFlight(data, authToken)}
+    else{
+      var result = await UpdateMyFlight(data, flightstate.id, authToken)}
     console.log(result.data)
     if (result.status===200){
         nav('/airline')

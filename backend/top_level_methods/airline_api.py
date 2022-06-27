@@ -54,7 +54,7 @@ def update_flight_airline_api(request, airline, flight):
             data['origin_country'] = Country.objects.get(pk=data['origin_country'])
             data['destination_country'] = Country.objects.get(pk=data['destination_country'])
             Airline_Facade.update_flight(airline=airline, form=data, flight=flight)
-            return Response(f'Successfully made new flight by {request.user}')
+            return Response(f'Successfully updated flight {flight.id} by {request.user}')
 
     else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
