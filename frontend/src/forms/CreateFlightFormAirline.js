@@ -11,7 +11,7 @@ import AuthContext from '../context/authentication';
 
 
 const CreateFlightFormAirline = () => {
-  let navigate = useNavigate()
+  let nav = useNavigate()
   let flight = useLocation()
   let {user, authToken} = useContext(AuthContext)
 
@@ -65,7 +65,13 @@ const CreateFlightFormAirline = () => {
     let airline = user.user_id
     let data = {airline, originCountry , destinationCountry , departureTime , arrivalTime, tickets}
     let result = await CreateMyFlight(data, authToken)
-    console.log(result.data)}}
+    console.log(result.data)
+    if (result.status===200){
+        nav('/airline')
+    }
+    else{
+        alert(result.data)
+    }}}
 }
 
 

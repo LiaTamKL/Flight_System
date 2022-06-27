@@ -5,6 +5,7 @@ import AuthContext from "../context/authentication";
 import { Link } from "react-router-dom";
 import { ViewMyFlights } from "../methods/AirlineMethods";
 import { DeleteUser, UpdateToAdminFromCus } from "../methods/AdminMethods";
+import FlightCard from "../components/FlightCard";
 
 const ViewAirlineFlights= () => {
     const [flights, setFlights] = useState([]);
@@ -22,7 +23,7 @@ const ViewAirlineFlights= () => {
         let status = result.status
         console.log(data)
         if (status ===200){
-            console.log('success!')
+            setFlights(data)
         }
         else{
             alert(status, data)
@@ -39,7 +40,6 @@ const ViewAirlineFlights= () => {
     }
 
 
-    console.log('WELCOME ADMIN')
     return (<div>
         <h5>Airline: {user.username}</h5>
         <div className="card text-center">
@@ -54,6 +54,7 @@ const ViewAirlineFlights= () => {
                 ? (<>
                         {flights.map((flight)=>(
                         <div key={flight.id} className="list-group-item list-group-item-action flex-column align-items-start">
+                            <FlightCard flight={flight}/>
                             <button onClick={()=>Delete(flight.id)}className="btn btn-danger btn-sm" >Delete</button>
                         </div>
                         ))}</>
