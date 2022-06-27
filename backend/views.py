@@ -150,7 +150,7 @@ def airline_api(request):
         respon = create_flight_airline_api(request, airline)
         return respon
 
-@api_view(['PATCH','DELETE'])
+@api_view(['PATCH','DELETE', 'GET'])
 def airline_delete_update(request, id):  
     if request.user.is_authenticated == False:
          return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
@@ -165,25 +165,18 @@ def airline_delete_update(request, id):
     if airline != flight.airline:
             return Response(data="This is not your flight!", status=status.HTTP_401_UNAUTHORIZED)
     
-    if request.method == 'PATCH':
-        return Response(request.data)
 
-        if request.data['origin_country']  == request.data['destination_country']:
-            return Response(data='Destination and origin countries must not be the same!', status=status.HTTP_400_BAD_REQUEST)
-        data= request.data
-        departure_time = utc.localize(datetime.fromisoformat(request.data['departureTime'])),
-        landing_time = utc.localize(datetime.fromisoformat(request.data['arrivalTime']))
-        if departure_time < utc.localize(datetime.now()):
-            return Response(data='You cannot choose a date in the past', status=status.HTTP_400_BAD_REQUEST)
-        if landing_time <= departure_time:
-            return Response(data='A landing must be after a departure', status=status.HTTP_400_BAD_REQUEST)
-        data['departureTime'] = departure_time
-        data['landing_time'] = landing_time
-        Airline_Facade.update_flight(airline=airline, form=data, flight=flight)
+    if request.method == 'GET':
+        respon = get_specific_flight_airline_api(flight)
+        return respon
+
+    if request.method == 'PATCH':
+        respon = update_flight_airline_api(request=request, airline=airline, flight=flight)
+        return respon
     
     if request.method=='DELETE':
-        return Response(request.data)
-        Airline_Facade.remove_flight(flight, airline)
+        Airline_Facade.remove_flight(id, airline)
+        return Response(data=f"Flight #{id} deleted successfully")
 
 ####################################################
 #Country

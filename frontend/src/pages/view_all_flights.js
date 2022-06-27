@@ -1,10 +1,8 @@
 
 import {useState, useEffect, useContext, useRef} from "react";
-import { AdminCard} from "../components/UserCards";
 import AuthContext from "../context/authentication";
 import { Link } from "react-router-dom";
-import { ViewMyFlights } from "../methods/AirlineMethods";
-import { DeleteUser, UpdateToAdminFromCus } from "../methods/AdminMethods";
+import { DeleteFlightAsAirline, ViewMyFlights } from "../methods/AirlineMethods";
 import FlightCard from "../components/FlightCard";
 
 const ViewAirlineFlights= () => {
@@ -30,11 +28,11 @@ const ViewAirlineFlights= () => {
     }
 
     let Delete= async(e) =>{
-        console.log(e)
-        // let result = await DeleteUser(e, authToken)
-        // console.log(result.data)
-        // message.current =result.data
-        // GetAdmins()
+        console.log("i started,", e)
+        let result = await DeleteFlightAsAirline(e, authToken)
+        console.log(result.data)
+        message.current =result.data
+        getflights()
 
     }
 

@@ -63,7 +63,7 @@ urlpatterns = [
     path('api/admin_api', views.admin_api),
     path('api/admin_api/<str:username>', views.admin_delete),
     path('api/airline_api', views.airline_api),
-    path('api/airline_api/<int:id>', views.airline_api),
+    path('api/airline_api/<int:id>', views.airline_delete_update),
 
 
     #############################################

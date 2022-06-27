@@ -80,6 +80,20 @@ export const CreateMyFlight = async(e, authToken) =>{
   let data = await response.json()
   return {'data':data, 'status':response.status}}
 
+export const  DeleteFlightAsAirline = async(id,authToken)=>{
+    var csrftoken = GetCookie('csrftoken')
+
+    let response = await fetch(`http://127.0.0.1:8000/backend/api/airline_api/${id}`, {
+            method:'DELETE',
+            headers:{
+                'Content-Type':'application/json',
+                'Authorization':'Bearer ' + String(authToken.access),
+                'X-CSRFToken': csrftoken
+            }
+        })
+    let data = await response.json()
+    return {'data':data, 'status':response.status}}
+
   
   
   export { CreateAirlineMethod , UpdateAirlineMethod , DeleteAirlineMethod, GetAirlineMethod }
