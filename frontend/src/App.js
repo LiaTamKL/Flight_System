@@ -24,6 +24,8 @@ import MakeACustomer from './pages/Make_Customer_Page';
 import ViewAirlines from './pages/View_all_Airlines';
 import ViewAdmins from './pages/View_all_Admins';
 import SearchForUser from './pages/View_Specific_User';
+import ViewAirlineFlights from './pages/view_all_flights';
+import CreateFlightFormAirline from './forms/CreateFlightFormAirline';
 
 function App() {
   return (
@@ -63,9 +65,10 @@ function App() {
             </Route>
 
             <Route path='/airline'  exact element={<LoggedinRoute account_role="Airline"/>}>
-              <Route path='' element={<AdminDashboard/>}/>
-              <Route path='add_fli' element={<AdminDashboard/>}/>
-              <Route path='update_flight'element={<AdminDashboard/>}/>
+              <Route path='' element={<ViewAirlineFlights/>}/>
+              <Route path='add_fli' element={<CreateFlightFormAirline/>}/>
+              <Route path='update_flight/:int'element={<AdminDashboard/>}/>
+              <Route path='search' element={<AdminDashboard/>}/>
             </Route>
 
             <Route path = '/flights' exact element={<FlightsListPage />}/>

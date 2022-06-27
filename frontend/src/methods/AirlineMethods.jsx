@@ -1,4 +1,4 @@
-
+import GetCookie from "../utilities/csrf_token";
 
 
 
@@ -44,6 +44,42 @@ const GetAirlineMethod = async (airlineid) => {
     })
   
   }
+
+
+export const ViewMyFlights = async(authToken) =>{
+  var csrftoken = GetCookie('csrftoken')
+
+  let response = await fetch('http://127.0.0.1:8000/backend/api/airline_api', {
+      method:'GET',
+      headers:{
+          'Content-Type':'application/json',
+          'Authorization':'Bearer ' + String(authToken.access),
+          'X-CSRFToken': csrftoken
+      }})
+  let data = await response.json()
+  return {'data':data, 'status':response.status}}
+
+
+export const CreateMyFlight = async(e, authToken) =>{
+    var csrftoken = GetCookie('csrftoken')
+  
+    let response = await fetch('http://127.0.0.1:8000/backend/api/airline_api', {
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json',
+            'Authorization':'Bearer ' + String(authToken.access),
+            'X-CSRFToken': csrftoken
+        },
+        body:JSON.stringify({"airline":e.airline,
+        "origin_country":e.originCountry,
+        "destination_country":e.destinationCountry,
+        "departure_time": e.departureTime,
+        "landing_time":e.arrivalTime,
+        "remaining_tickets":e.tickets
+      })})
+  let data = await response.json()
+  return {'data':data, 'status':response.status}}
+
   
   
   export { CreateAirlineMethod , UpdateAirlineMethod , DeleteAirlineMethod, GetAirlineMethod }
