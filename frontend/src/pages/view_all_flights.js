@@ -21,7 +21,6 @@ const ViewAirlineFlights= () => {
         let result = await ViewMyFlights(authToken)
         let data =  result.data
         let status = result.status
-        console.log(data)
         if (status ===200){
             setFlights(data)
         }
