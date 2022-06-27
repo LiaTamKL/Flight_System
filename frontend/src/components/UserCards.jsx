@@ -10,12 +10,15 @@ export const AccountCard = ({account}) => {
 }
 
 const CustomerCard = ({customer}) => {
-    return (
+    return (<>
             <div className="d-flex w-100 justify-content-between">
                 <h5 className="mb-1">{customer.first_name} {customer.last_name}</h5>
-                <small className="text-muted">Username: {customer.account}</small>          <br/><br/>
-            <p className="mb-1">Lives in {customer.address}. Phone Number: {customer.phone_number}</p>
-            </div>
+                <small className="text-muted">Username: {customer.account}</small></div>
+            <div className="d-flex w-100 justify-content-between">
+            <p className="mb-1">Lives in {customer.address}</p></div>
+            <div className="d-flex w-100 justify-content-between">
+            <p className="mb-1">Phone Number: {customer.phone_number}</p>
+            </div></>
     )
 }
 export const AirlineCard = ({airline}) => {
