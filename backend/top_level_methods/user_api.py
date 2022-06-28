@@ -7,6 +7,7 @@ from ..DAL.anony_facade import AnonymusFancade
 from ..models import *
 from ..DAL.admin_facade import AdministratorFuncade
 from ..DAL.airline_facade import Airline_Facade
+from ..DAL.customer_facade import CustomerFancade
 
 #takes request, creates from it a new customer account
 def register_user(request):
@@ -64,9 +65,10 @@ def get_user(request):
         else: return Response(['superuser'])
 
 
-def update_user(request):
+def update_user_user_api(request):
+            print('im patching too!')
             try:
-                account = Account.objects.exclude(pk=request.user).get(email=request.data['email'])
+                account = Account.objects.exclude(pk=request.user.pk).get(email=request.data['email'])
                 return Response(data='This email is already in use!', status=status.HTTP_400_BAD_REQUEST)
             except Account.DoesNotExist:
                 form = {}
@@ -86,7 +88,7 @@ def update_user(request):
                 form['last_name'] = request.data['last_name']
                 form['address'] = request.data['address']
                 form['phone_number'] = request.data['phone_number']
-                AdministratorFuncade.update_customer(account=request.user, form=form, emailform=emailform)
+                CustomerFancade.update_customer(account=request.user, form=form, emailform=emailform)
 
             elif request.user.account_role == Account_Role.objects.get(role_name='Airline'):
                 country = Country.objects.get(country_name=request.data['country'])
@@ -98,7 +100,7 @@ def update_user(request):
             elif request.user.is_admin == True:
                 form['first_name'] = request.data['first_name']
                 form['last_name'] = request.data['last_name']
-                AdministratorFuncade.update_admin(account=request.user, form=form.cleaned_data, emailform=emailform.cleaned_data)
+                AdministratorFuncade.update_admin(account=request.user, form=form, emailform=emailform)
             else: 
                 return Response(data='This account seems to not be any user type. Please contact an admin.', status=status.HTTP_400_BAD_REQUEST)
 

@@ -134,6 +134,7 @@ def getair(requset, id):
 
 @api_view(['GET', 'POST'])
 def airline_api(request):
+    #checks if user is auth, an airline
     if request.user.is_authenticated == False:
          return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
     if request.user.account_role != Account_Role.objects.get(role_name = 'Airline'):
@@ -141,17 +142,19 @@ def airline_api(request):
 
     airline = (Airline.objects.get(account=request.user)).id
 
-
+    #returns all of user's flights
     if request.method == 'GET':
         respon = get_all_my_flights(airline)
         return respon
     
+    #creates a new flight based on post data
     if request.method == 'POST':
         respon = create_flight_airline_api(request, airline)
         return respon
 
 @api_view(['PATCH','DELETE', 'GET'])
-def airline_delete_update(request, id):  
+def airline_delete_update(request, id): 
+    #checks if user is auth, an airline, and if the flight exists and if the user is the airline for the flight
     if request.user.is_authenticated == False:
          return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
     if request.user.account_role != Account_Role.objects.get(role_name = 'Airline'):
@@ -165,15 +168,17 @@ def airline_delete_update(request, id):
     if airline != flight.airline:
             return Response(data="This is not your flight!", status=status.HTTP_401_UNAUTHORIZED)
     
-
+    #returns specific flight data
     if request.method == 'GET':
         respon = get_specific_flight_airline_api(flight)
         return respon
 
+    #updates specific flight
     if request.method == 'PATCH':
         respon = update_flight_airline_api(request=request, airline=airline.id, flight=flight)
         return respon
     
+    #deletes specific flight
     if request.method=='DELETE':
         Airline_Facade.remove_flight(id, airline)
         return Response(data=f"Flight #{id} deleted successfully")
@@ -251,7 +256,8 @@ def user_api(request):
 
         #This handles updates, please insert all values an account type is meant to have + email
         if request.method == 'PATCH':
-            res = update_user(request)
+            print('im patching')
+            res = update_user_user_api(request)
             return res
             # try:
             #     account = Account.objects.exclude(pk=request.user).get(email=request.data['email'])

@@ -24,13 +24,25 @@ let UserForm = async (e, account_role, method, url) =>{
     let data = await response.json()
     return {'data':data, 'status':response.status}}
 
-export const UpdateUser=async(e, authToken)=>{
+export const UpdateUser=async(context, authToken)=>{
     var csrftoken = GetCookie('csrftoken')
-    let response = 'needs to be built, dont forget authtokens'
-    //backend not tested yet so make sure to test it with this with all 4 user types.
-    //make sure to test with bad data of existing users.
-    //remember to return the data and status
-}
+    console.log('im inside')
+    let response = await fetch('http://127.0.0.1:8000/backend/api/user_api',{
+        method:'PATCH',
+        headers:{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization':'Bearer ' + String(authToken.access),
+            'X-CSRFToken': csrftoken
+            },
+            body:JSON.stringify(context)
+        })
+    console.log('i sent a response')
+    let data = await response.json()
+    console.log(data)
+    return {'data':data, 'status':response.status}}
+
+
 
 export const PassWordUpdate=async(e, authToken)=>{
     var csrftoken = GetCookie('csrftoken')
