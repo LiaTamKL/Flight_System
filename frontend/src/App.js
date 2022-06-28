@@ -67,7 +67,6 @@ function App() {
             <Route path='/airline'  exact element={<LoggedinRoute account_role="Airline"/>}>
               <Route path='' element={<ViewAirlineFlights/>}/>
               <Route path='add_fli' element={<CreateFlightFormAirline/>}/>
-              <Route path='search' element={<AdminDashboard/>}/>
             </Route>
 
             <Route path = '/flights' exact element={<FlightsListPage />}/>
