@@ -27,9 +27,9 @@ const UpdatePage = () =>{
             }
         })
         let data = await response.json()
-        console.log(data)
+        //console.log(data)
         if(response.status === 200){
-            console.log(data.name)
+            //console.log(data.name)
             setUserData(data)
         }
         else{
@@ -56,6 +56,11 @@ const UpdatePage = () =>{
                 'email':e.target.email.value, 
                 'first_name': e.target.first_name.value,
                 'last_name': e.target.last_name.value,}
+        }else{
+            var context = {
+                'email':e.target.email.value, 
+                'name': e.target.name.value,
+                'country': e.target.country.value,}
         }
         let result = await UpdateUser(context, authToken)
         if (result.status===200){
@@ -73,7 +78,7 @@ return(<>
     <form onSubmit={(e)=>handleSubmit(e)}>
         <UpdateAccountForm/>
                 {user.account_role === 'Airline' ? (
-                    <AirlineForm userInfo={userData}/>
+                    <AirlineForm userData={userData}/>
                 ):<></>}
                 {user.account_role === 'Customer' ? (<>
                     <CustomerForm userData={userData}/></>

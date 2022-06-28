@@ -91,7 +91,7 @@ def update_user_user_api(request):
                 CustomerFancade.update_customer(account=request.user, form=form, emailform=emailform)
 
             elif request.user.account_role == Account_Role.objects.get(role_name='Airline'):
-                country = Country.objects.get(country_name=request.data['country'])
+                country = Country.objects.get(pk=request.data['country'])
                 form['country'] =  country
                 form['name'] = request.data['name']
                 Airline_Facade.update_airline(account=request.user, form=form, emailform=emailform)
