@@ -24,7 +24,7 @@ const ViewAirlineFlights= () => {
         let status = result.status
         if (status ===200){
             setFlights(data)
-            setFlightOptions(data.map((flight) => ({value:flight.id, label:`Flight #${flight.id}, from ${flight.origin_country} to ${flight.destination_country}`})))
+            setFlightOptions(data.map((flight) => ({value:flight.id, label:`Flight #${flight.id}, from ${flight.origin_country} to ${flight.destination_country}. Departing at ${flight.departure_time}`})))
 
         }
         else{
@@ -81,9 +81,7 @@ const ViewAirlineFlights= () => {
         <Link className="btn btn-primary btn-sm" to="/airline/add_fli" state={{flightobj: searched}} >Update Flight</Link>
         </div>
         }</>
-        :<></>}
-
-        <div className="card p3" >
+        :<div className="card p3" >
         {
                 flights?.length > 0
                 ? (<>
@@ -98,7 +96,9 @@ const ViewAirlineFlights= () => {
                         <h2>No Flights found</h2>
                 )
             }
-    </div></div>)
+    </div>}
+
+</div>)
 }
 
 export default ViewAirlineFlights
