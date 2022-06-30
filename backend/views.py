@@ -27,6 +27,10 @@ from .top_level_methods.user_api import *
 from .top_level_methods.admin_api import *
 from .top_level_methods.airline_api import *
 
+from rest_framework.generics import ListAPIView
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.viewsets import ModelViewSet
 utc=pytz.UTC
 
 from .serializers import *
@@ -67,15 +71,22 @@ class MyTokenObtainPairView(TokenObtainPairView):
 ##################################################
 ############### flight ##########################
 
+class Flightfilter(ListAPIView):
+    queryset = Flight.objects.all()
+    serializer_class = FlightSerializer
+    filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
+    # filterset_fields =  ('id', 'airline' , 'origin_country', 'destination_country', 'departure_time', 'landing_time', "remaining_tickets")
+    filterset_fields = '__all__'
+    search_fields = ('departure_time, landing_time')
+
+# @api_view(['GET'])
+# def allfli(request):
+#     flights =  Flight.objects.all().order_by('departure_time')
+#     seralizer = FlightSerializer(flights, many = True)
+#     return Response(seralizer.data)
 
 @api_view(['GET'])
-def allfli(requset):
-    flights =  Flight.objects.all().order_by('departure_time')
-    seralizer = FlightSerializer(flights, many = True)
-    return Response(seralizer.data)
-
-@api_view(['GET'])
-def getfli(requset, id):
+def getfli(request, id):
     flight = BaseFuncade.get_flight_by_id(id)
     seralizer = FlightSerializer(flight, many = False)
     return Response(seralizer.data)
@@ -188,14 +199,14 @@ def airline_delete_update(request, id):
 
 @api_view(['GET'])
 def allcount(requset):
-    ailines =  Country.objects.all()
-    seralizer = CountrySerializer(ailines, many = True)
+    countries =  Country.objects.all()
+    seralizer = CountrySerializer(countries, many = True)
     return Response(seralizer.data)
 
 @api_view(['GET'])
 def getcount(requset, id):
-    airline = BaseFuncade.get_country_by_id(id)
-    seralizer = CountrySerializer(airline, many = False)
+    country = BaseFuncade.get_country_by_id(id)
+    seralizer = CountrySerializer(country, many = False)
     return Response(seralizer.data)
 
 
@@ -227,7 +238,6 @@ def createcount(request):
     )
     seralizer = CountrySerializer(country, many = False)
     return Response(seralizer.data)
-
 
 
 

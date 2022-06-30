@@ -64,7 +64,7 @@ a {
 
 .app {
   width: 100%;
-  max-width: 480px;
+  max-width: 880px;
   height: 88vh;
   margin: 0 auto;
   background-color: var(--color-white);
@@ -273,4 +273,7 @@ a {
 }
 
 
+.GeneralSearch .input {
+  color: black;
 
+}

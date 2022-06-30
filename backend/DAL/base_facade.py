@@ -1,8 +1,8 @@
 from ..models import *
 from ..forms import *
-from django.http import Http404
 from django.contrib.auth.models import User
 from django.http import HttpResponse, Http404
+from django.db.models import Q
 class BaseFuncade():
  
     def get_all_flights():
@@ -12,14 +12,23 @@ class BaseFuncade():
         return Flight.objects.get(pk=id)
         
 
-    def get_flights_by_parameters(airline, origin_country_id, destination_country_id, departure_time, landing_time, remaining_tickets ): # fix it later
-        flight_by_params = list(Flight.objects
-        .filter(airline = airline)
-        .filter(origin_country_id = origin_country_id)
-        .filter(origin_country_id = destination_country_id)
-        .filter(departure_time = departure_time)
-        .filter(landing_time = landing_time)
-        .filter(remaining_tickets = remaining_tickets))    
+    def get_flights_by_parameters(
+        airline_id = 0, 
+        origin_country_id= 0, 
+        destination_country_id = 0, 
+        departure_time = "0001-01-01 00:00:00", 
+        landing_time = "0001-01-01 00:00:00",
+        remaining_tickets = -1 
+        ):
+        flight_by_params = list(Flight.objects.filter(
+            Q(airline = airline_id)|
+            Q(origin_country_id = origin_country_id)|
+            Q(destination_country_id = destination_country_id)|
+            Q(departure_time = departure_time)|
+            Q(landing_time = landing_time)|
+            Q(remaining_tickets = remaining_tickets)
+         ))
+
         
         return flight_by_params
 

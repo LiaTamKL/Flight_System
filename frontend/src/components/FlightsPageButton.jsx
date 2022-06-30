@@ -6,7 +6,7 @@ import {ReactComponent as Addflighticon } from '../assets/flight.svg';
 
 const FlightsPageButton = () => {
   return (
-    <Link to="/flights/" className="floating-all-button">
+    <Link to="/flights/search" className="floating-all-button">
         <Addflighticon />
     </Link>
   )

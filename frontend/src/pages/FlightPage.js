@@ -55,7 +55,7 @@ const FlightPage = () => {
     <div className='all' >
         <div className='all-header'>
           <h3> 
-              <Arrow onClick={() =>{navigate('/flights')} }/>
+              <Arrow onClick={() =>{navigate('/flights/search')} }/>
 
           </h3> 
           {flightid !=='new' ? (

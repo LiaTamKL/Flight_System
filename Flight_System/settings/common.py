@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -190,10 +191,12 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 # Sets datetime format for all rest_faramework
 REST_FRAMEWORK = {
-    # 'DATETIME_FORMAT': "%d-%m-%Y,%H:%M", # * causes sortig not to work properly 
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
 }
 
 

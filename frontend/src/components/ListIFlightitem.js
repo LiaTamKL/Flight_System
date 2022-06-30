@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const ListItem = ({ flight }) => {
+const ListIFlightitem = ({ flight }) => {
     return (
   
         <Link to={`/flights/${flight.id}`}>
@@ -13,4 +13,4 @@ const ListItem = ({ flight }) => {
   )
 }
 
-export default ListItem
+export default ListIFlightitem

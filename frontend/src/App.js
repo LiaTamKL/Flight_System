@@ -26,6 +26,7 @@ import ViewAdmins from './pages/View_all_Admins';
 import SearchForUser from './pages/View_Specific_User';
 import ViewAirlineFlights from './pages/view_all_flights';
 import CreateFlightFormAirline from './forms/CreateFlightFormAirline';
+import FlightSearch from './forms/FlightSearch'
 
 function App() {
   return (
@@ -74,6 +75,9 @@ function App() {
             <Route path = '/flights/:id/update' element={<CreateFlightForm />} />
             <Route path = '/flights/create'  element={<CreateFlightForm />}  />
             <Route path = 'flights/:id' element={<FlightPage />} />
+
+            <Route path='flights/search' element={<FlightSearch />}/>
+
            
 
           </Routes>

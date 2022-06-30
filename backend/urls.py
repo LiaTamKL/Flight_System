@@ -36,14 +36,18 @@ urlpatterns = [
     
 
     
-    ############## Tests #########################
-    path('test/', views.test),
-    path ('flights/', views.allfli),
-    
+    ############## backend #########################
+    # path('test/', views.test),
+        
+
+    path('flights/search/', views.Flightfilter.as_view()),
+    path ('flights/',views.Flightfilter.as_view()),
     path ('flights/create', views.createfli),
     path ('flights/<str:id>/update', views.updatefli),
     path ('flights/<str:id>/delete', views.deletefli),
     path ('flights/<str:id>/', views.getfli),
+    
+
 
     path('airlines/', views.allair,),
     path('airlines/<str:id>/', views.getair),
@@ -53,6 +57,7 @@ urlpatterns = [
     path ('countries/<str:id>/update', views.updatecount),
     path ('countries/<str:id>/delete', views.deletecount),
     path ('countries/<str:id>/', views.createcount),
+
 
 
 

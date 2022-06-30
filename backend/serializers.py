@@ -2,6 +2,8 @@ from rest_framework.serializers import ModelSerializer , SlugRelatedField, Valid
 from .models import *
 
 
+
+
 #helper function to connect pk with name
 def db_link(field):
         return SlugRelatedField(many=False,read_only=True,slug_field=field)
@@ -72,3 +74,5 @@ class AdminSerializer(ModelSerializer):
     class Meta:
         model = Administrator
         fields = '__all__'
+
+
