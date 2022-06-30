@@ -42,7 +42,6 @@ def register_user(request):
                     context.append(acc_serializer.errors[key][0])
                 for key in cus_serializer.errors:
                     context.append(cus_serializer.errors[key][0])
-                print(context)
                 return Response(data=context ,status=status.HTTP_400_BAD_REQUEST)
 
 #takes a request, gets the user and the linked account, serializes, throws into a context and send it as a server response
@@ -66,7 +65,6 @@ def get_user(request):
 
 
 def update_user_user_api(request):
-            print('im patching too!')
             try:
                 account = Account.objects.exclude(pk=request.user.pk).get(email=request.data['email'])
                 return Response(data='This email is already in use!', status=status.HTTP_400_BAD_REQUEST)

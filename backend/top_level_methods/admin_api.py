@@ -20,12 +20,10 @@ def get_users_admin(request):
             admins = AdministratorFuncade.get_all_admins(request.user)
             serializer = AdminSerializer(admins, many=True)
         elif request.data['view']=='Specific':
-            print(request.data)
             searched = AdministratorFuncade.get_by_username(request.data['username'])
             role = searched['account_role']
             user = searched['user']
             account = searched['account']
-            print(searched)
             acc_serializer = AccountSerializer(account, many=False)
             if role == 'Admin':
                 second_serializer = AdminSerializer(user, many=False)
@@ -83,7 +81,6 @@ def change_account_role(request):
         elif request.data['make']=='Airline':
             if account.account_role == 'Airline':
                 return Response(data='Already an Airline!', status=status.HTTP_400_BAD_REQUEST)
-            print("we're making an airline!")
             country = Country.objects.get(pk=request.data['country'])
             form['country'] =  country
             form['name'] = request.data['name']
@@ -94,16 +91,12 @@ def change_account_role(request):
 def delete_full_account(request, username):
     searched = AdministratorFuncade.get_by_username(username=username)
     if searched['account_role']=='Customer':
-            print('a customer! ', searched['user'])
             AdministratorFuncade.remove_customer(searched['user'])
     elif searched['account_role']=='Airline':
-            print('an airline! ',searched['user'])
             AdministratorFuncade.remove_airline(searched['user'])
     elif searched['account_role']=='Admin':
-            print('an admin! ',searched['user'])
             AdministratorFuncade.remove_admin(searched['user'])
     else: 
-            print('a superuser! ',searched['account'])
             return Response(data='Cannot delete the superuser!', status=status.HTTP_400_BAD_REQUEST)
     AdministratorFuncade.remove_account(searched['account'])
     return Response(data=f'successful deletion of {username}')
