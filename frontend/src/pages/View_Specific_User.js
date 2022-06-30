@@ -3,11 +3,12 @@ import AccountCard from "../components/UserCards";
 import AuthContext from "../context/authentication";
 import { Link } from "react-router-dom";
 import GetUsers from "../methods/AdminMethods";
-import { DeleteUser, UpdateToAdminFromCus, GetSpecificUser } from "../methods/AdminMethods";
+import { DeleteUser} from "../methods/AdminMethods";
 import Select from 'react-select'
 
 const SearchForUser = ()=>{
     const [accounts, setAccounts] = useState([]);
+    const [allAccounts, setAllAccounts] = useState([]);
     const [searchedItem, setSearchedItem] = useState(null);
     let {user, authToken} = useContext(AuthContext)
     const message = useRef()
@@ -23,7 +24,8 @@ const SearchForUser = ()=>{
         let data =  result.data
         let status = result.status
         if (status ===200){
-            setAccounts(data.map((account) => ({value:account.username, label:`${account.username}, Account type: ${account.account_role}`})))
+            setAccounts(data.map((account) => ({value:account.id, label:`${account.username}, Account type: ${account.account_role}`})))
+            setAllAccounts(data)
         }
         else{
             alert(status, data)
@@ -33,19 +35,15 @@ const SearchForUser = ()=>{
 
     const searchforaccount = async(e)=>{
         e.preventDefault()
-        let result = await GetSpecificUser(e.target.username.value, authToken)
-        let data =  result.data
-        let status = result.status
-        if (status ===200){
-            setSearchedItem(data)
-        }
-        else{
-            alert(status, data)
-        }
+        for(var i=0; i<allAccounts.length; i++) {
+            if (allAccounts[i].id===parseInt(e.target.username.value)){
+            setSearchedItem(allAccounts[i])
+            break 
+            }
+          }
     }
     let Delete= async(e) =>{
         let result = await DeleteUser(e, authToken)
-        console.log(result.data)
         message.current =result.data
         GetAccounts()
         setSearchedItem(null)
