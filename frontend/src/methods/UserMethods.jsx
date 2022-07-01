@@ -52,9 +52,7 @@ export const UpdateUser=async(context, authToken)=>{
             },
             body:JSON.stringify(context)
         })
-    console.log('i sent a response')
     let data = await response.json()
-    console.log(data)
     return {'data':data, 'status':response.status}}
 
 
@@ -64,6 +62,25 @@ export const PassWordUpdate=async(e, authToken)=>{
     let response = 'needs to be built, dont forget authtokens'
     //build a password checker first
     //build second response from server to updated password if the checker confirms its the correct password
+}
+
+
+/**
+ * get a user's customer, airline or admin data
+ * @param  {Dictionary} authToken The authentication token
+ * @return {Dictionary} The data and the response.status
+ * 
+ */
+export const getUserInfo = async(authToken) =>{
+        let response = await fetch('http://127.0.0.1:8000/backend/api/user_api', {
+            method:'GET',
+            headers:{
+                'Content-Type':'application/json',
+                'Authorization':'Bearer ' + String(authToken.access)
+            }
+        })
+        let data = await response.json()
+        return {'data':data, 'status':response.status}
 }
 
 export default UserForm

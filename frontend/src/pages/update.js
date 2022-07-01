@@ -6,7 +6,7 @@ import CustomerForm from '../forms/CustomerForm'
 import AirlineForm from '../forms/AirlineForm'
 import AdminForm from '../forms/AdminForm'
 import { useState, useEffect } from 'react'
-import { UpdateUser } from '../methods/UserMethods'
+import { UpdateUser, getUserInfo } from '../methods/UserMethods'
 
 const UpdatePage = () =>{
     let {user, authToken, logout} = useContext(AuthContext)
@@ -19,21 +19,12 @@ const UpdatePage = () =>{
 
     let GetLoggedUserData = async() =>{
         if (!user.is_superuser){
-        let response = await fetch('http://127.0.0.1:8000/backend/api/user_api', {
-            method:'GET',
-            headers:{
-                'Content-Type':'application/json',
-                'Authorization':'Bearer ' + String(authToken.access)
-            }
-        })
-        let data = await response.json()
-        //console.log(data)
-        if(response.status === 200){
-            //console.log(data.name)
-            setUserData(data)
+            let result = await getUserInfo(authToken)
+            if(result.status === 200){
+                setUserData(result.data)
         }
         else{
-            console.log(response.statusText)
+            console.log(result.status)
         }}
 
     }
