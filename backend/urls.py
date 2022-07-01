@@ -52,7 +52,7 @@ urlpatterns = [
     path('airlines/', views.allair,),
     path('airlines/<str:id>/', views.getair),
 
-    path ('countries/', views.country_api),
+    path ('countries', views.country_api),
     path ('countries/<str:id>/', views.specific_country_api),
 
 

@@ -28,6 +28,7 @@ import CreateFlightFormAirline from './forms/CreateFlightFormAirline';
 import FlightSearch from './forms/FlightSearch'
 import CustomerPage from './pages/CustomerPage'
 import FlightForm from './forms/NewFlightForm';
+import MakeCountry from './pages/Make_Country';
 
 
 function App() {
@@ -59,8 +60,7 @@ function App() {
               <Route path='make_airline/:username' element={<MakeAnAirline/>}/>
               <Route path='make_admin/:username' element={<MakeAnAdmin/>}/>
               <Route path='make_customer/:username' element={<MakeACustomer/>}/>
-              <Route path='view_countries' element={<AdminDashboard/>}/>
-              <Route path='make_country' element={<AdminDashboard/>}/>
+              <Route path='make_country' element={<MakeCountry/>}/>
             </Route>
 
             <Route path='/cust'  exact element={<LoggedinRoute account_role="Customer"/>}>

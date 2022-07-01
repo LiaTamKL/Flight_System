@@ -74,14 +74,15 @@ def create_country_api(request):
     if __check_if_admin(request) == 400:
         return Response(data='Only admins may do this', status=status.HTTP_400_BAD_REQUEST)
     data = request.data
-    data['country_name'] = data["countryName"]
     # country = Country.objects.create(
     #     country_name = data["countryName"],
     #     flag = data["flag"]
     # )
+    print(request.data)
     seralizer = CountrySerializer(data=data, many = False)
     if seralizer.is_valid():
         seralizer.save()
         return Response('country made successfully')
     else:
+        print(seralizer.errors)
         return Response(data=seralizer.errors ,status=status.HTTP_400_BAD_REQUEST)
