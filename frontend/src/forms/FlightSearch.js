@@ -70,12 +70,11 @@ const FlightSearch = () => {
     }
 
     let getfilteredflights = async () => {
-        let searchurl = '/backend/flights/?positive_tickets_number=0'
+        let searchurl = '/backend/flights/?'
         // consosle.log(departureTime.toUTCString());
         // console.log(range[0].startDate);
         let formatteddeptime =  format(new Date(range[0].startDate), "yyyy-MM-dd'T'HH:mm")
         let formattedlandtime =  format(new Date(range[0].endDate), "yyyy-MM-dd'T'HH:mm")
-
 
         // let formatteddeptime =  format(new Date(departureTime), "yyyy-MM-dd'T'HH:mm")
         // let formattedlandtime =  format(new Date(arrivalTime), "yyyy-MM-dd'T'HH:mm")
@@ -109,6 +108,7 @@ const FlightSearch = () => {
            <h1>Search For a Flight</h1>
 
             <Select
+                className='countryinputfrom'
                 placeholder='From Everywhere'
                 options = {countryOptions}
                 isSearchable
@@ -129,6 +129,7 @@ const FlightSearch = () => {
                 </div>
 
             <Select
+                className='countryinputto'
                 placeholder = "To Everywhere"
                 // cacheOptions
                 // value={toSearchOption}
@@ -173,10 +174,11 @@ const FlightSearch = () => {
             }
                 >
             </input> */}
+            <h3>Flight Dates</h3>
             <input 
+                className = "dateinput"
                 value={`${format(range[0].startDate, "dd/MM/yyyy")}  -  ${format(range[0].endDate, "dd/MM/yyyy")}`}
                 readOnly
-                className="inputBox"
                 onClick={ () => setOpen(open => !open) }
              />
 

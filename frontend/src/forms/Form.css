@@ -64,7 +64,7 @@ input::-webkit-inner-spin-button {
 }
 
 
-.inputBox {
+.dateinput {
     size: 30px;
     width: 100%;
     border: 1px solid black;
@@ -73,4 +73,16 @@ input::-webkit-inner-spin-button {
     background: url("../assets/callendar.svg") no-repeat left;
     background-size: 20px;
     background-color: white;
+    flex: 3;
+}
+
+.countryinputfrom{
+    
+    color: black;
+    flex: 1;
+}
+
+.countryinputto{
+    color: black;
+    flex: 2;
 }
