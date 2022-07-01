@@ -27,6 +27,7 @@ import ViewAirlineFlights from './pages/view_all_flights';
 import CreateFlightFormAirline from './forms/CreateFlightFormAirline';
 import FlightSearch from './forms/FlightSearch'
 import CustomerPage from './pages/CustomerPage'
+import FlightForm from './forms/NewFlightForm';
 
 
 function App() {

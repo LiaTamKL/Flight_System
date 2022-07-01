@@ -26,6 +26,7 @@ from rest_framework import status
 from .top_level_methods.user_api import *
 from .top_level_methods.admin_api import *
 from .top_level_methods.airline_api import *
+from .top_level_methods.country_api import *
 
 from rest_framework.generics import ListAPIView
 from django_filters.rest_framework import DjangoFilterBackend
@@ -202,6 +203,37 @@ def airline_delete_update(request, id):
 
 ####################################################
 #Country
+
+@api_view(['GET', 'POST'])
+def country_api(request):
+    if request.method == 'GET':
+        return all_countries_api()
+
+    if request.user.is_authenticated == False:
+        return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
+    else:
+        if request.method == 'POST':
+            result = create_country_api(request)
+            return result
+
+@api_view(['GET', 'PATCH', 'DELETE'])
+def specific_country_api(request, id):
+    if request.method == 'GET':
+        result = get_country_api(id)
+        return result
+
+    
+    if request.user.is_authenticated == False:
+        return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
+    else:
+        if request.method == 'PATCH':
+            result = update_country_api(request, id)
+            return result 
+
+        if request.method == 'DELETE':
+            result = delete_country_api
+            return result 
+
 
 @api_view(['GET'])
 def allcount(requset):

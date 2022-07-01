@@ -23,7 +23,6 @@ const AirlineForm = (userData)=>{
         let response = await fetch(`/backend/countries`)
         let data = await response.json()
         if (response.status===200){
-            console.log(data)
             //CHANGE THIS IN THE FINAL VERSION
             setCountryOptions(data.map((country) => ({value:country.id, label:(<><span>{country.country_name}  </span><img src={window.location.origin +country.flag} height="15px" width="20px"/></>)})))
         }}    
