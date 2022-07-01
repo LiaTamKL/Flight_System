@@ -7,7 +7,6 @@ import {AuthenticationProvider} from './context/authentication'
 import AdminDashboard from './pages/admin_Test';
 import LoggedinRoute from './utilities/route_authentication';
 import {LoggedinGeneric, LoggedOut} from './utilities/route_authentication';
-import CreateFlightForm from './forms/CreateFlightForm'
 import MainPage from './pages/main';
 import Register from './pages/registration';
 import NotFound from './pages/404Page';
@@ -27,6 +26,8 @@ import SearchForUser from './pages/View_Specific_User';
 import ViewAirlineFlights from './pages/view_all_flights';
 import CreateFlightFormAirline from './forms/CreateFlightFormAirline';
 import FlightSearch from './forms/FlightSearch'
+import CustomerPage from './pages/CustomerPage'
+
 
 function App() {
   return (
@@ -61,21 +62,24 @@ function App() {
             </Route>
 
             <Route path='/cust'  exact element={<LoggedinRoute account_role="Customer"/>}>
-              <Route path='' element={<AdminDashboard/>}/>
+              <Route path='' element={<CustomerPage />}/>
               <Route path='view_my_tickets' element={<AdminDashboard/>}/>
             </Route>
+
 
             <Route path='/airline'  exact element={<LoggedinRoute account_role="Airline"/>}>
               <Route path='' element={<ViewAirlineFlights/>}/>
               <Route path='add_fli' element={<CreateFlightFormAirline/>}/>
             </Route>
 
-            <Route path = '/flights' exact element={<FlightsListPage />}/>
-            <Route path = '/flights/:id/update' element={<CreateFlightForm />} />
-            <Route path = '/flights/create'  element={<CreateFlightForm />}  />
+            {/* <Route path = '/flights' exact element={<FlightsListPage />}/> */}
+            {/* <Route path = '/flights/:id/update' element={<CreateFlightForm />} />
+            <Route path = '/flights/create'  element={<CreateFlightForm />}  /> */}
+            
+            <Route path = '/flights' exact element={<FlightSearch />}/>
             <Route path = 'flights/:id' element={<FlightPage />} />
-
             <Route path='flights/search' element={<FlightSearch />}/>
+            
 
            
 

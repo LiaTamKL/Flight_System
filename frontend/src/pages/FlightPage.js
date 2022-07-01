@@ -1,7 +1,6 @@
 import React, {useState, useEffect}  from 'react'
 import { useParams , useNavigate} from "react-router-dom";
 import { ReactComponent as Arrow } from '../assets/arrow-left.svg'
-import CreateFlightForm from '../forms/CreateFlightForm'
 import { DeleteFlight , GetFlightMethod} from '../methods/FlightMethods'
 import { format , parseISO} from "date-fns";
 
@@ -12,26 +11,25 @@ const FlightPage = () => {
     let [flight , setFlight] = useState(null);
 
     useEffect(() => {
-        getFlight()
+        // getFlight()
      // eslint-disable-next-line
      }, [flightid])
   
 
-  let getFlight = async() => {
-    setFlight(await GetFlightMethod(flightid)
-    )
-}
+//   let getFlight = async() => {
+//     setFlight(await GetFlightMethod(flightid)
+//     )
+// }
 
-    let createflight = async () => {
-       <CreateFlightForm />
-  }
+  //   let createflight = async () => {
+  //      <CreateFlightForm />
+  // }
 
 
   let updateflight = async () => {
   // <CreateFlightForm flight/>
     navigate(`/flights/${flightid}/update` , {state :{flightobj: flight}})
     // navigate(`/flights/${flightid}/update`)
-
 
   
   }
@@ -43,11 +41,8 @@ const FlightPage = () => {
    }
    
    let formatTime = (flight) => {
-
     let datastring
     if(flight) {datastring =  format(parseISO(flight),  "dd/MM/yyyy HH:mm")}
-
-    // let datastring = (`${date.getDate()}/${(date.getMonth()+1)}/${ date.getFullYear()}, ${date.getHours()}:${date.getMinutes()}`)
     return datastring
 }
 
@@ -61,7 +56,9 @@ const FlightPage = () => {
           {flightid !=='new' ? (
             <button onClick={deleteFlight}>Delete</button> ) 
             : (
-              <button onClick={createflight}>create</button>
+              // <button onClick={createflight}>create</button>
+              <button onClick={console.log("hello")}>create</button>
+
               
             )}
          <button onClick={updateflight}>Update</button>
