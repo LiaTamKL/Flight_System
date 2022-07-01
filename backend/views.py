@@ -235,47 +235,47 @@ def specific_country_api(request, id):
             return result 
 
 
-@api_view(['GET'])
-def allcount(requset):
-    countries =  Country.objects.all()
-    seralizer = CountrySerializer(countries, many = True)
-    return Response(seralizer.data)
+# @api_view(['GET'])
+# def allcount(requset):
+#     countries =  Country.objects.all()
+#     seralizer = CountrySerializer(countries, many = True)
+#     return Response(seralizer.data)
 
-@api_view(['GET'])
-def getcount(requset, id):
-    country = BaseFuncade.get_country_by_id(id)
-    seralizer = CountrySerializer(country, many = False)
-    return Response(seralizer.data)
+# @api_view(['GET'])
+# def getcount(requset, id):
+#     country = BaseFuncade.get_country_by_id(id)
+#     seralizer = CountrySerializer(country, many = False)
+#     return Response(seralizer.data)
 
 
-@api_view(['PATCH'])
-def updatecount(request, id):
-    data = request.data
-    country = BaseFuncade.get_country_by_id(id)
-    seralizer = CountrySerializer(instance=country, data=data)
+# @api_view(['PATCH'])
+# def updatecount(request, id):
+#     data = request.data
+#     country = BaseFuncade.get_country_by_id(id)
+#     seralizer = CountrySerializer(instance=country, data=data)
     
-    if seralizer.is_valid():
-        seralizer.save()
-    return Response(seralizer.data)
+#     if seralizer.is_valid():
+#         seralizer.save()
+#     return Response(seralizer.data)
 
 
 
-@api_view(['DELETE'])
-def deletecount(request, id):
-    country = BaseFuncade.get_country_by_id(id)
-    country.delete()
-    return Response("Deleted")
+# @api_view(['DELETE'])
+# def deletecount(request, id):
+#     country = BaseFuncade.get_country_by_id(id)
+#     country.delete()
+#     return Response("Deleted")
 
 
-@api_view(['POST'])
-def createcount(request):
-    data = request.data
-    country = Country.objects.create(
-        country_name = data["countryName"],
-        flag = data["flag"]
-    )
-    seralizer = CountrySerializer(country, many = False)
-    return Response(seralizer.data)
+# @api_view(['POST'])
+# def createcount(request):
+#     data = request.data
+#     country = Country.objects.create(
+#         country_name = data["countryName"],
+#         flag = data["flag"]
+#     )
+#     seralizer = CountrySerializer(country, many = False)
+#     return Response(seralizer.data)
 
 
 
