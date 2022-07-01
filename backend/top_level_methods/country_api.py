@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from ..DAL.base_facade import BaseFuncade
 
 def __check_if_exists(id):
+    """checks if country exists, returns it if true, returns 404 if not"""
     try:
         country = Country.objects.get(pk = id)
         return country
@@ -12,6 +13,7 @@ def __check_if_exists(id):
         return 404
 
 def __check_if_admin(request):
+    """checks if logged in user is admin, returns 400 if not and True if user is"""
     if request.user.is_admin == False:
         return 400
     else: return True
@@ -19,11 +21,14 @@ def __check_if_admin(request):
 
 
 def all_countries_api():
+    """returns all countries"""
     countries =  Country.objects.all()
     seralizer = CountrySerializer(countries, many = True)
     return Response(seralizer.data)
 
 def get_country_api(id):
+    """takes id, returns 200 and country with said id
+    returns 404 if country does not exist."""
     country = __check_if_exists(id)
     if country == 404:
         return Response(data='Country does not exist', status=status.HTTP_404_NOT_FOUND)
@@ -31,6 +36,8 @@ def get_country_api(id):
     return Response(seralizer.data)
 
 def update_country_api(request, id):
+    """takes request and id, updates country with said id using request data and returns 200
+    returns 400 if not admin, 404 if country does not exist. returns 400 and errors if form was not filled properly"""
     if __check_if_admin(request) == 400:
         return Response(data='Only admins may do this', status=status.HTTP_400_BAD_REQUEST)
     data = request.data
@@ -47,6 +54,8 @@ def update_country_api(request, id):
         return Response(data=seralizer.errors ,status=status.HTTP_400_BAD_REQUEST)
 
 def delete_country_api(request, id):
+    """takes request and id, deletes country with said id and returns 200
+    returns 400 if not admin, 404 if country does not exist"""
     if __check_if_admin(request) == 400:
         return Response(data='Only admins may do this', status=status.HTTP_400_BAD_REQUEST)
     data = request.data
@@ -59,6 +68,9 @@ def delete_country_api(request, id):
     return Response("Deleted")
 
 def create_country_api(request):
+    """takes request, creates a new country from data and returns 200
+    returns 400 if not admin
+    returns 400 with errors if the form has issues (such as the name being used already)"""
     if __check_if_admin(request) == 400:
         return Response(data='Only admins may do this', status=status.HTTP_400_BAD_REQUEST)
     data = request.data
