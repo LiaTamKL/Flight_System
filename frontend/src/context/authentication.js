@@ -65,7 +65,7 @@ export const AuthenticationProvider = ({children}) => {
             setAuthToken(data)
             setAccount(jwt_decode(data.access))
             localStorage.setItem('authToken', JSON.stringify(data))
-            nav('/')
+            nav(-1)
 
 
         }

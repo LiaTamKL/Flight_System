@@ -39,9 +39,9 @@ function App() {
             <Route path = "/" exact element={<MainPage />} />
             {/* <Route path = "/flights" element={<FlightsListPage />} /> */}
 
-            <Route path="/login" element={<LoggedOut/>}>
-              <Route path="" element={<LoginPage/>} />
-            </Route>  
+            {/* <Route path="/login" element={<LoggedOut/>}> */}
+              <Route path="/login" element={<LoginPage/>} />
+            {/* </Route>   */}
             <Route path="/register" element={<LoggedOut/>}>
               <Route path='' element={<Register/>}/>
             </Route>
