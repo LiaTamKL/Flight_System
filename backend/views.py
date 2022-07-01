@@ -97,41 +97,41 @@ def getfli(request, id):
     seralizer = FlightSerializer(flight, many = False)
     return Response(seralizer.data)
 
-@api_view(['PATCH'])
-def updatefli(request, id):
-    data = request.data
-    flight = BaseFuncade.get_flight_by_id(id)
-    seralizer = FlightSerializer(instance=flight, data=data)
+# @api_view(['PATCH'])
+# def updatefli(request, id):
+#     data = request.data
+#     flight = BaseFuncade.get_flight_by_id(id)
+#     seralizer = FlightSerializer(instance=flight, data=data)
     
-    if seralizer.is_valid():
-        seralizer.save()
-    return Response(seralizer.data)
+#     if seralizer.is_valid():
+#         seralizer.save()
+#     return Response(seralizer.data)
 
 
 
-@api_view(['DELETE'])
-def deletefli(request, id):
-    flight = BaseFuncade.get_flight_by_id(id)
-    flight.delete()
-    return Response("Deleted")
+# @api_view(['DELETE'])
+# def deletefli(request, id):
+#     flight = BaseFuncade.get_flight_by_id(id)
+#     flight.delete()
+#     return Response("Deleted")
 
 
 
-@api_view(['POST'])
-def createfli(request):
-    data = request.data
-    flight = Flight.objects.create(
-        airline_id = data['airline'],
-        origin_country_id = data['originCountry'],
-        destination_country_id = data['destinationCountry'],
-        departure_time = utc.localize(datetime.fromisoformat(data['departureTime'])),
-        landing_time = utc.localize(datetime.fromisoformat(data['arrivalTime'])),
-        remaining_tickets = data['tickets'],
+# @api_view(['POST'])
+# def createfli(request):
+#     data = request.data
+#     flight = Flight.objects.create(
+#         airline_id = data['airline'],
+#         origin_country_id = data['originCountry'],
+#         destination_country_id = data['destinationCountry'],
+#         departure_time = utc.localize(datetime.fromisoformat(data['departureTime'])),
+#         landing_time = utc.localize(datetime.fromisoformat(data['arrivalTime'])),
+#         remaining_tickets = data['tickets'],
 
 
-    )
-    seralizer = FlightSerializer(flight, many = False)
-    return Response(seralizer.data)
+#     )
+#     seralizer = FlightSerializer(flight, many = False)
+#     return Response(seralizer.data)
 
 ####################################################
 #airline

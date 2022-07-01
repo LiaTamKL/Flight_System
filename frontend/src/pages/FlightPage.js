@@ -1,8 +1,9 @@
 import React, {useState, useEffect}  from 'react'
 import { useParams , useNavigate} from "react-router-dom";
 import { ReactComponent as Arrow } from '../assets/arrow-left.svg'
-import CreateFlightForm from '../forms/CreateFlightForm'
-import { DeleteFlight , GetFlightMethod} from '../methods/FlightMethods'
+// import CreateFlightForm from '../forms/CreateFlightForm'
+import {GetFlightMethod} from '../methods/FlightMethods'
+// import { DeleteFlight} from '../methods/FlightMethods'
 import { format , parseISO} from "date-fns";
 
 
@@ -22,25 +23,25 @@ const FlightPage = () => {
     )
 }
 
-    let createflight = async () => {
-       <CreateFlightForm />
-  }
+  //   let createflight = async () => {
+  //      <CreateFlightForm />
+  // }
 
 
-  let updateflight = async () => {
-  // <CreateFlightForm flight/>
-    navigate(`/flights/${flightid}/update` , {state :{flightobj: flight}})
-    // navigate(`/flights/${flightid}/update`)
+  // let updateflight = async () => {
+  // // <CreateFlightForm flight/>
+  //   navigate(`/flights/${flightid}/update` , {state :{flightobj: flight}})
+  //   // navigate(`/flights/${flightid}/update`)
 
 
   
-  }
+  // }
 
-    let deleteFlight = async() => {
-      DeleteFlight(flightid)
-      navigate('/flights')
+  //   let deleteFlight = async() => {
+  //     DeleteFlight(flightid)
+  //     navigate('/flights')
 
-   }
+  //  }
    
    let formatTime = (flight) => {
 
@@ -58,13 +59,13 @@ const FlightPage = () => {
               <Arrow onClick={() =>{navigate('/flights/search')} }/>
 
           </h3> 
-          {flightid !=='new' ? (
+          {/* {flightid !=='new' ? (
             <button onClick={deleteFlight}>Delete</button> ) 
             : (
               <button onClick={createflight}>create</button>
               
             )}
-         <button onClick={updateflight}>Update</button>
+         <button onClick={updateflight}>Update</button> */}
         
         </div>
 
