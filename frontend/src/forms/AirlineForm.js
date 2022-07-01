@@ -1,7 +1,6 @@
 import Select from 'react-select'
 import React, {useEffect, useState, useRef} from 'react'
 
-
 const AirlineForm = (userData)=>{
     let [countryOptions, setCountryOptions] = useState()
     userData = userData.userData
@@ -24,7 +23,9 @@ const AirlineForm = (userData)=>{
         let response = await fetch(`/backend/countries`)
         let data = await response.json()
         if (response.status===200){
-            setCountryOptions(data.map((country) => ({value:country.id, label:country.country_name})))
+            console.log(data)
+            //CHANGE THIS IN THE FINAL VERSION
+            setCountryOptions(data.map((country) => ({value:country.id, label:(<><span>{country.country_name}  </span><img src={window.location.origin +country.flag} height="15px" width="20px"/></>)})))
         }}    
     useEffect(() => {getContries()},[])
 
