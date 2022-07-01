@@ -45,7 +45,12 @@ const GetAirlineMethod = async (airlineid) => {
   
   }
 
-
+/**
+ * Get all logged in airline's flights
+ * @param  {Dictionary} authToken The authentication token
+ * @return {Dictionary} The data and the response.status
+ * 
+ */
 export const ViewMyFlights = async(authToken) =>{
   var csrftoken = GetCookie('csrftoken')
 
@@ -59,7 +64,13 @@ export const ViewMyFlights = async(authToken) =>{
   let data = await response.json()
   return {'data':data, 'status':response.status}}
 
-
+/**
+ * Creates a new flight
+ * @param  {Dictionary} e The information (airline, originCountry, destinationCountry, departureTime, arrivalTime, tickets)
+ * @param  {Dictionary} authToken The authentication token
+ * @return {Dictionary} The data and the response.status
+ * 
+ */
 export const CreateMyFlight = async(e, authToken) =>{
     var csrftoken = GetCookie('csrftoken')
   
@@ -80,6 +91,13 @@ export const CreateMyFlight = async(e, authToken) =>{
   let data = await response.json()
   return {'data':data, 'status':response.status}}
 
+/**
+ * Deletes a flight
+ * @param  {String} id The id of the flight to be deleted
+ * @param  {Dictionary} authToken The authentication token
+ * @return {Dictionary} The data and the response.status
+ * 
+ */
 export const  DeleteFlightAsAirline = async(id,authToken)=>{
     var csrftoken = GetCookie('csrftoken')
 
@@ -94,7 +112,14 @@ export const  DeleteFlightAsAirline = async(id,authToken)=>{
     let data = await response.json()
     return {'data':data, 'status':response.status}}
 
-
+/**
+ * Updates a flight
+ * @param  {Dictionary} e The information (airline, originCountry, destinationCountry, departureTime, arrivalTime, tickets)
+ * @param  {String} id The id of the flight to be updated
+ * @param  {Dictionary} authToken The authentication token
+ * @return {Dictionary} The data and the response.status
+ * 
+ */
 export const UpdateMyFlight = async(e, id, authToken) =>{
       var csrftoken = GetCookie('csrftoken')
     
