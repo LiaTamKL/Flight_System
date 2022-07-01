@@ -1,11 +1,13 @@
 import GetCookie from "../utilities/csrf_token";
-import AuthContext from "../context/authentication";
-import {useContext} from "react";
-import { useNavigate } from "react-router-dom";
 
 
-//insert in the authtoken and what kind of user types you're looking for (Admins, Customers, Airlines, Accounts)
-//will return the end data as data and status as status in a dict. Check if the status is 200 after using.
+/**
+ * Returns all users of a specific type
+ * @param  {String} view Which account type you wish to pull from the server (Admins, Customers, Airlines)
+ * @param  {Dictionary} authToken The authentication token
+ * @return {Dictionary} The data and the response.status
+ * 
+ */
 const GetUsers = async(view, authToken) =>{
     var csrftoken = GetCookie('csrftoken')
 
@@ -21,8 +23,12 @@ const GetUsers = async(view, authToken) =>{
     let data = await response.json()
     return {'data':data, 'status':response.status}}
 
-//insert a username and authtokens, will delete said user.
-//will return the end data as data and status as status in a dict. Check if the status is 200 after using.
+/**
+ * Deletes a user
+ * @param  {String} username The username of the user you wish to delete
+ * @param  {Dictionary} authToken The authentication token
+ * @return {Dictionary}      The data and the response.status
+ */
 export const  DeleteUser = async(username,authToken)=>{
     var csrftoken = GetCookie('csrftoken')
 
@@ -37,8 +43,12 @@ export const  DeleteUser = async(username,authToken)=>{
     let data = await response.json()
     return {'data':data, 'status':response.status}}
 
-//insert admin data as e and authtokens, will turn admin into customer.
-//will return the end data as data and status as status in a dict. Check if the status is 200 after using.
+/**
+ * Updates a Customer to an Admin
+ * @param  {Dictionary} e The form information (username, first_name, last_name)
+ * @param  {Dictionary} authToken The authentication token
+ * @return {Dictionary} The data and the response.status
+ */
 export const UpdateToAdminFromCus = async(e,authToken)=>{
     var csrftoken = GetCookie('csrftoken')
 
@@ -58,8 +68,12 @@ export const UpdateToAdminFromCus = async(e,authToken)=>{
     return {'data':data, 'status':response.status}
 }
 
-//insert username and authtokens, will return said user.
-//will return the end data as data and status as status in a dict. Check if the status is 200 after using.
+/**
+ * Gets a specific user's data
+ * @param  {String} username The user 
+ * @param  {Dictionary} authToken The authentication token
+ * @return {Dictionary} The data and the response.status
+ */
 export const GetSpecificUser = async(username, authToken) =>{
     var csrftoken = GetCookie('csrftoken')
     let response = await fetch('http://127.0.0.1:8000/backend/api/admin_api', {
@@ -76,9 +90,15 @@ export const GetSpecificUser = async(username, authToken) =>{
     let data = await response.json()
     return {'data':data, 'status':response.status}}
 
-//insert the logged in user, the parameters, the userrole you're trying to change this user into, authtokens and nav
-//will check that: user is not trying to change own account, requested user isn't already of said userrole, that the user exists and that user isn't superuser
-//will return the end data as data.
+/**
+ * Checks if it's ok to change a user (that it's not the logged in user, that not already of the role you wish to change to, that not a super user)
+ * @param  {Dictionary} user The logged in user
+ * @param  {Dictionary} params The parameters for the user
+ * @param  {String} role The account role you wish to change the user into
+ * @param  {Dictionary} authToken The authentication token
+ * @param  {Node} nav The navigator to move the user back to the main page if need be
+ * @return {Dictionary} The data and the response.status
+ */
 export let Check_if_User = async(user, params,role, authToken, nav)=>{
     if (user.username===params.username){
         nav('/')
@@ -101,8 +121,13 @@ export let Check_if_User = async(user, params,role, authToken, nav)=>{
 
     }
 
-//insert username you wish to change, form data as e and authtokens, will turn into airline.
-//will return the end data as data and status as status in a dict. Check if the status is 200 after using.
+/**
+ * Turns any user into an airline
+ * @param  {String} username The username of the user you're sending to the server
+ * @param  {Dictionary} e The form information (name, country)
+ * @param  {Dictionary} authToken The authentication token
+ * @return {Dictionary} The data and the response.status
+ */
 export let TurnIntoAirline=async(username,e,authToken)=>{
     var csrftoken = GetCookie('csrftoken')
 
@@ -123,8 +148,14 @@ export let TurnIntoAirline=async(username,e,authToken)=>{
 
 }
 
-//insert username you wish to change, form data as e and authtokens, will turn into admin.
-//will return the end data as data and status as status in a dict. Check if the status is 200 after using.
+/**
+ * Turns any user into an admin
+ * @param  {String} username The username of the user you're sending to the server
+ * @param  {Dictionary} e The form information (first_name, last_name)
+ * @param  {Dictionary} authToken The authentication token
+ * @return {Dictionary} The data and the response.status
+ * 
+ */
 export let TurnIntoAdmin=async(username,e,authToken)=>{
     var csrftoken = GetCookie('csrftoken')
 
@@ -145,8 +176,14 @@ export let TurnIntoAdmin=async(username,e,authToken)=>{
 
 }
 
-//insert username you wish to change, form data as e and authtokens, will turn into customer.
-//will return the end data as data and status as status in a dict. Check if the status is 200 after using.
+/**
+ * Turns any user into a customer
+ * @param  {String} username The username of the user you're sending to the server
+ * @param  {Dictionary} e The form information (first_name, last_name)
+ * @param  {Dictionary} authToken The authentication token
+ * @return {Dictionary} The data and the response.status
+ * 
+ */
 export let TurnIntoCustomer=async(username,e,authToken)=>{
     var csrftoken = GetCookie('csrftoken')
 

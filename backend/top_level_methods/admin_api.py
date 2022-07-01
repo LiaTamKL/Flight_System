@@ -6,6 +6,9 @@ from rest_framework.response import Response
 
 
 def get_users_admin(request):
+        """returns what's requested (you request via the variable 'view'). if you request Accounts, all Accounts are given
+        if you request Customers, all customers are given. Same for Airline and Admins. If you request specific, it will search for an account
+        based on a variable 'username' and return details on said account"""
         if request.data['view']=='Accounts':
             accounts = AdministratorFuncade.get_all_accounts(request.user)
             serializer = AccountSerializer(accounts, many=True)
@@ -49,6 +52,10 @@ def get_users_admin(request):
         return Response(serializer.data)
 
 def change_account_role(request):
+        """this changes an account's role based on the variable 'make' (Admin, Airline, Customer), on a variable 'username' (the username of the account you wish to change) and on request data
+        if the requested account is a superuser, no change is allowed, 400 is returned. If account is customer, it will check if the credit card number and phone numbers are unique, if not, 400.
+        returns 200 if all is good.
+        """
         searched = AdministratorFuncade.get_by_username(username=request.data['username'])
         account = searched['account']
         form = {}
@@ -89,6 +96,8 @@ def change_account_role(request):
         return Response(data=f'successful update of {account} to {account.account_role}')
 
 def delete_full_account(request, username):
+    """deletes an account and all details about it. takes username of said account to do so. Returns 400 if the delete request is for a superuser account.
+    """
     searched = AdministratorFuncade.get_by_username(username=username)
     if searched['account_role']=='Customer':
             AdministratorFuncade.remove_customer(searched['user'])
