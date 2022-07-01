@@ -2,6 +2,8 @@ import React, { useState , useEffect } from 'react'
 import { format , parseISO, set} from "date-fns";
 import {useNavigate, useParams, useLocation} from "react-router-dom";
 import './Form.css'
+import { CreateFlight, UpdateFlight } from '../methods/FlightMethods';
+
 import Select from 'react-select'
 import FormHeader from '../components/FormHeader'
 import { useRef } from 'react';
@@ -57,8 +59,8 @@ const CreateFlightForm = () => {
     e.preventDefault();
     let data = {airline, originCountry , destinationCountry , departureTime , arrivalTime, tickets}
     console.log(data)
-    // flightstate ? CreateFlight(data) : UpdateFlight(flightstate.id , data)
-    navigate("/flights")
+    flightstate ? CreateFlight(data) : UpdateFlight(flightstate.id , data)
+    navigate("/flights/search")
 }
 
 

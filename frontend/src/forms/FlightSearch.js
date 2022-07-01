@@ -1,9 +1,20 @@
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+
+import {
+    DateRange,
+  } from "react-date-range";
+
 import React, {useEffect} from 'react'
+
+
 import { HiOutlineSwitchHorizontal } from 'react-icons/hi'
 import { useState } from 'react';
-import { format , parseISO, set} from "date-fns";
+import { format , addDays} from "date-fns";
 import Select from 'react-select';
 import FlightsListPage from "../pages/FlightsListPage";
+import './Form.css'
+
 
 
 
@@ -11,25 +22,40 @@ const FlightSearch = () => {
     let[updatedcountryOptions, setupdatedCountryOptions] = useState();
     let[filteredFlights, setFilteredFlights] = useState();
 
-    let[display,setDisplayOption] = useState();
 
+    const [range, setRange] = useState([
+        {
+          startDate: new Date(),
+          endDate: addDays(new Date(), 7),
+          key: 'selection'
+        }
+      ])
+    
+
+      // open close
+      const [open, setOpen] = useState(false)    
+    
+    
+    let[display,setDisplayOption] = useState();
 
     let[fromSearchOption, setFromSearchOption] = useState(0);
     let[toSearchOption, settoSearchOption] = useState(0);
+    
     let[countryOptions, setCountryOptions] = useState();
 
 
     let [departureTime, setDepartureTime] = useState( 
-        format(new Date(), "yyyy-MM-dd'T'HH:mm")
+        format(new Date(), "yyyy-MM-dd")
         );
-    let [arrivalTime, setArrivalTime] = useState(departureTime)
+
+    let [arrivalTime, setArrivalTime] = useState(format(new Date(), "yyyy-MM-dd"))
 
 
     useEffect(() => { 
         getCountries()
         getfilteredflights()
 
-        }, [fromSearchOption, toSearchOption])
+        }, [fromSearchOption, toSearchOption, departureTime, arrivalTime, range[0].startDate, range[0].endDate])
 
 
     let getCountries = async () => {
@@ -44,19 +70,21 @@ const FlightSearch = () => {
     }
 
     let getfilteredflights = async () => {
-        let searchurl = '/backend/flights/?'
-        // console.log(toSearchOption)
-        // console.log(fromSearchOption)
+        let searchurl = '/backend/flights/?positive_tickets_number=0'
+        // consosle.log(departureTime.toUTCString());
+        // console.log(range[0].startDate);
+        let formatteddeptime =  format(new Date(range[0].startDate), "yyyy-MM-dd'T'HH:mm")
+        let formattedlandtime =  format(new Date(range[0].endDate), "yyyy-MM-dd'T'HH:mm")
 
-       if (fromSearchOption) {searchurl +=`&origin_country=${fromSearchOption}`;}
-       if (toSearchOption) {searchurl +=`&destination_country=${toSearchOption}`;}
-    
-        // console.log(searchurl)
+
+        // let formatteddeptime =  format(new Date(departureTime), "yyyy-MM-dd'T'HH:mm")
+        // let formattedlandtime =  format(new Date(arrivalTime), "yyyy-MM-dd'T'HH:mm")
+        if (fromSearchOption) {searchurl +=`&origin_country=${fromSearchOption}`;}
+        if (toSearchOption) {searchurl +=`&destination_country=${toSearchOption}`;}
+        if (departureTime){ searchurl += `&from_departure_time=${formatteddeptime}`}
+        if (departureTime){searchurl += `&to_arrival_time=${formattedlandtime}`}
+        console.log(searchurl);
         let response = await fetch(searchurl)
-        // let response = await fetch(`/backend/flights/?origin_country=${fromSearchOption}&destination_country=${toSearchOption}`)
-
-        
-        // let response = await fetch(`/backend/flights/?origin_country=${fromSearchOption}&destination_country=${toSearchOption}`)
         let data = await response.json()
         // console.log(data)
         setFilteredFlights(data)
@@ -81,13 +109,12 @@ const FlightSearch = () => {
            <h1>Search For a Flight</h1>
 
             <Select
-                placeholder='From'
-                // value={fromSearchOption}
-                options = {updatedcountryOptions? updatedcountryOptions : countryOptions}
+                placeholder='From Everywhere'
+                options = {countryOptions}
                 isSearchable
                 isClearable
-                maxMenuHeight = {5}
-                Value={display} 
+                maxMenuHeight = {300}
+                value={display} 
                 onChange = {
                 (e)=> e? (
                     setFromSearchOption(e.value),
@@ -102,11 +129,11 @@ const FlightSearch = () => {
                 </div>
 
             <Select
-                placeholder = "To"
+                placeholder = "To Everywhere"
                 // cacheOptions
                 // value={toSearchOption}
-                options = {updatedcountryOptions? updatedcountryOptions : countryOptions}
-                maxMenuHeight = {5}
+                options = {countryOptions}
+                maxMenuHeight = {300}
                 hideSelectedOptions
                 isSearchable
                 isClearable
@@ -117,31 +144,25 @@ const FlightSearch = () => {
                 }
                 
                 />
-
-            <input 
-                type='datetime-local'
+            {/* <h3>Departure Time</h3>
+            <input
+                label="Departure Time" 
+                type='date'
                 required
                 id='departure_time'
                 className='fancy-select'
                 defaultValue={departureTime}
-                // onInvalid ={() => {
-                //   setDepartureMinTime(departureMinTime)
-                
-                // }}
-
                 onChange = {(e) => {    
                   setDepartureTime(e.target.value)
-                  setArrivalTime(e.target.value)
                 }}
                 >
-                    </input>
-                  
-            <input 
-                type='datetime-local'
+            </input>
+            <h3>Arrival Time</h3>
+            <input
+                label="Arrival Time"  
+                type='date'
                 id='arrival_time'
                 required
-                // onInvalid={() => {setArrivalTime(departureTime)}}
-                // onInvalid={() => {time_validation('arrival_time')}}
                 
                 className='fancy-select'
                 min={departureTime}
@@ -151,7 +172,30 @@ const FlightSearch = () => {
                 }
             }
                 >
-            </input>
+            </input> */}
+            <input 
+                value={`${format(range[0].startDate, "dd/MM/yyyy")}  -  ${format(range[0].endDate, "dd/MM/yyyy")}`}
+                readOnly
+                className="inputBox"
+                onClick={ () => setOpen(open => !open) }
+             />
+
+                <div>
+            {open && 
+            <DateRange
+                onChange={
+                    item => setRange([item.selection])
+                }
+                editableDateInputs={false}
+                moveRangeOnFirstSelection={false}
+                ranges={range}
+                months={2}
+                direction="horizontal"
+                className="calendarElement"
+                showDateDisplay = {false}
+                />
+            }
+      </div>
 
         <FlightsListPage filteredFlights={filteredFlights} />
         </div>

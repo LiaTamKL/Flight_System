@@ -30,7 +30,10 @@ from .top_level_methods.airline_api import *
 from rest_framework.generics import ListAPIView
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
-from rest_framework.viewsets import ModelViewSet
+from .filters import *
+
+
+
 utc=pytz.UTC
 
 from .serializers import *
@@ -75,9 +78,12 @@ class Flightfilter(ListAPIView):
     queryset = Flight.objects.all()
     serializer_class = FlightSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
-    # filterset_fields =  ('id', 'airline' , 'origin_country', 'destination_country', 'departure_time', 'landing_time', "remaining_tickets")
-    filterset_fields = '__all__'
-    search_fields = ('departure_time, landing_time')
+    filterset_class = Flightfilter
+
+
+    # }
+    # search_fields = ('to_departure_time, landing_time')
+
 
 # @api_view(['GET'])
 # def allfli(request):

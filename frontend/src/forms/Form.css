@@ -62,3 +62,15 @@ input::-webkit-inner-spin-button {
 .create input:invalid[focused="true"] ~ span{
     display: block;
 }
+
+
+.inputBox {
+    size: 30px;
+    width: 100%;
+    border: 1px solid black;
+    color: black;
+    padding-left: 25px;
+    background: url("../assets/callendar.svg") no-repeat left;
+    background-size: 20px;
+    background-color: white;
+}

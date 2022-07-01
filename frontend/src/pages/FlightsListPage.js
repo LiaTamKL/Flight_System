@@ -7,7 +7,6 @@ import AddCreateButton from '../components/AddCreateButton'
 
 
 const FlightsListPage = ({ filteredFlights }) => {
-    console.log(filteredFlights)
 
     //  let [flights , setFlights] = useState()
     //   console.log(filteredFlights)
