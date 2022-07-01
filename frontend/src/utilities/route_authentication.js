@@ -1,13 +1,7 @@
 import { Navigate, Outlet } from 'react-router-dom'
-import { useContext } from 'react'
+import { Component, useContext } from 'react'
 import AuthContext from '../context/authentication'
 
-// export const Logged_in = ({children, ...rest}) => {
-//     let {user} = useContext(AuthContext)
-//     return(
-//         <Route {...rest}>{!user ? <Navigate  to="/login" /> :   children}</Route>
-//     )
-// }
 
 const logged = (user) => {
     if (user === null){
@@ -16,7 +10,11 @@ const logged = (user) => {
     else{return true}
 }
 
-/////check if logged in//////////////////
+/**
+ * checks if logged in, else returns to login page
+ * @return {Component} outlet
+ * 
+ */
 export const LoggedinGeneric= () => {
     console.log('in LoggedinGeneric')
     let {user} = useContext(AuthContext)
@@ -31,7 +29,11 @@ export const LoggedinGeneric= () => {
     }
 }
 
-//////////check if not logged in//////////
+/**
+ * checks if logged out, else returns to home
+ * @return {Component} outlet
+ * 
+ */
 export const LoggedOut= () => {
     console.log('in LoggedOut')
     let {user} = useContext(AuthContext)
@@ -46,8 +48,12 @@ export const LoggedOut= () => {
     }
 }
 
-//Type refers to account role, give this as a string.
-//children and rest are just the normal parameters you give to a route
+/**
+ * checks if logged in as the right account role, else returns to home or the login page if not logged in
+ * @param  {String} account_role the account role you check for
+ * @return {Component} outlet
+ * 
+ */
  const LoggedinRoute = ({account_role}) => {
     let {user} = useContext(AuthContext)
     let result = logged(user)

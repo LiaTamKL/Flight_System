@@ -42,9 +42,9 @@ urlpatterns = [
 
     path('flights/search/', views.Flightfilter.as_view()),
     path ('flights/',views.Flightfilter.as_view()),
-    path ('flights/create', views.createfli),
-    path ('flights/<str:id>/update', views.updatefli),
-    path ('flights/<str:id>/delete', views.deletefli),
+    # path ('flights/create', views.createfli),
+    # path ('flights/<str:id>/update', views.updatefli),
+    # path ('flights/<str:id>/delete', views.deletefli),
     path ('flights/<str:id>/', views.getfli),
     
 
@@ -53,7 +53,7 @@ urlpatterns = [
     path('airlines/<str:id>/', views.getair),
 
     path ('countries/', views.allcount),
-    path ('countries/create', views.createfli),
+    #path ('countries/create', views.createfli),
     path ('countries/<str:id>/update', views.updatecount),
     path ('countries/<str:id>/delete', views.deletecount),
     path ('countries/<str:id>/', views.createcount),

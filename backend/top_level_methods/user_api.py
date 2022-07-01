@@ -11,6 +11,8 @@ from ..DAL.customer_facade import CustomerFancade
 
 #takes request, creates from it a new customer account
 def register_user(request):
+            """registers a user based on form data, returns 400 if anything is missing, if password, email, credit card, username or phone num issues.
+            """
             try: 
                 account_role = Account_Role.objects.get(role_name='Customer')
                 acc_form = {}
@@ -46,6 +48,8 @@ def register_user(request):
 
 #takes a request, gets the user and the linked account, serializes, throws into a context and send it as a server response
 def get_user(request):
+        """gets details for logged in user based on their account role
+        """
         user=AdministratorFuncade.get_by_username(request.user.username)
         role = user['account_role']
         account = user['account']
@@ -65,6 +69,9 @@ def get_user(request):
 
 
 def update_user_user_api(request):
+            """update an account based on a request. checks if updated email is already in use and throws 400 if yes. checks phonenumber and credit card and does the same if cust.
+            else, updates account based on data and account role and returns 200.
+            """
             try:
                 account = Account.objects.exclude(pk=request.user.pk).get(email=request.data['email'])
                 return Response(data='This email is already in use!', status=status.HTTP_400_BAD_REQUEST)
