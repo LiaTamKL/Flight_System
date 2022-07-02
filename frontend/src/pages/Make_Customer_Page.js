@@ -1,4 +1,4 @@
-import {useState, useEffect, useContext} from "react";
+import {useState, useEffect, useContext, useRef} from "react";
 import AuthContext from "../context/authentication";
 import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
@@ -33,6 +33,7 @@ const MakeACustomer = () =>{
     useEffect(() => {
         check_user()
         },[])
+        console.log('heres current ref:', reference)
     return(<>
         {message? (<p className="alert alert-warning">{message}</p>):<></>}
         <form onSubmit={(e)=>customermaker(e)}>
