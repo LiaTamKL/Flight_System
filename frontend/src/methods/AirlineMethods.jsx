@@ -51,7 +51,7 @@ const GetAirlineMethod = async (airlineid) => {
  * @return {Dictionary} The data and the response.status
  * 
  */
-export const ViewMyFlights = async(authToken) =>{
+export const ViewMyFlights = async(authToken) => {
   var csrftoken = GetCookie('csrftoken')
 
   let response = await fetch('http://127.0.0.1:8000/backend/api/airline_api', {
@@ -63,6 +63,7 @@ export const ViewMyFlights = async(authToken) =>{
       }})
   let data = await response.json()
   return {'data':data, 'status':response.status}}
+
 
 /**
  * Creates a new flight

@@ -111,6 +111,7 @@ class Flight(Model):
 class Flight_Ticket(Model):
     customer = ForeignKey(Customer, null=False, on_delete=PROTECT)
     flight = ForeignKey(Flight, null=False, on_delete=PROTECT)
+    
     class Meta:
         ordering = ['flight']
     def __str__(self) -> str:

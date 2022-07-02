@@ -1,43 +1,49 @@
-from rest_framework.serializers import ModelSerializer , SlugRelatedField, ValidationError
+from rest_framework.serializers import ModelSerializer , SlugRelatedField
 from .models import *
 
 
 
 
-#helper function to connect pk with name
-def db_link(field):
+#helper function to connect forigin key and pull the name instead of id
+def foreign_key_link(field):
         return SlugRelatedField(many=False,read_only=True,slug_field=field)
+
+
  
 
 class FlightSerializer(ModelSerializer):
 
 
-    destination_country = db_link("country_name")
-    origin_country = db_link("country_name")
-    airline = db_link("name")
+    destination_country = foreign_key_link("country_name")
+    origin_country = foreign_key_link("country_name")
+    airline = foreign_key_link("name")
 
     class Meta:
         model = Flight
         fields = '__all__'
 
 
+class TicketSerializer(ModelSerializer):
+    customer = foreign_key_link("first_name")
+
+    class Meta:
+        model = Flight_Ticket
+        fields = '__all__'
 
 class AirlineSerializer(ModelSerializer):
 
-    country = db_link("country_name")
-    account = db_link("username")
+    country = foreign_key_link("country_name")
+    account = foreign_key_link("username")
     
     class Meta:
         model = Airline
         fields = '__all__'
 
-
-
 class CountrySerializer(ModelSerializer):
     class Meta:
         model = Country
-        fields = '__all__'
-
+        # fields = ['country_name']
+        fields = '__all__' 
 
 class AllAccount_rolesSerializer(ModelSerializer):
 
@@ -47,7 +53,7 @@ class AllAccount_rolesSerializer(ModelSerializer):
         fields = '__all__'
 
 class AccountSerializer(ModelSerializer):
-    account_role = db_link("role_name")
+    account_role = foreign_key_link("role_name")
 
 
     class Meta:
@@ -62,17 +68,20 @@ class AccountSerializer(ModelSerializer):
     #     raise ValidationError(f'email: {email} is already in use')
 
 class CustomerSerializer(ModelSerializer):
-    account = db_link("username")
+    account = foreign_key_link("username")
 
     class Meta:
         model = Customer
         fields = '__all__'
 
 class AdminSerializer(ModelSerializer):
-    account = db_link("username")
+    account = foreign_key_link("username")
 
     class Meta:
         model = Administrator
         fields = '__all__'
+
+
+
 
 

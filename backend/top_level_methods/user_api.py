@@ -110,3 +110,5 @@ def update_user_user_api(request):
                 return Response(data='This account seems to not be any user type. Please contact an admin.', status=status.HTTP_400_BAD_REQUEST)
 
             return Response(f'Account for {request.user.account_role} {request.user.username} updated successfully')
+
+

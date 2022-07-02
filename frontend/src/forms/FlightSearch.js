@@ -44,11 +44,16 @@ const FlightSearch = () => {
     let[countryOptions, setCountryOptions] = useState();
 
 
-    let [departureTime, setDepartureTime] = useState( 
-        format(new Date(), "yyyy-MM-dd")
-        );
+    // let [departureTime, setDepartureTime] = useState( 
+    //     format(new Date(), "yyyy-MM-dd")
+    //     );
 
-    let [arrivalTime, setArrivalTime] = useState(format(new Date(), "yyyy-MM-dd"))
+    let [departureTime, setDepartureTime] = useState();
+
+
+    // let [arrivalTime, setArrivalTime] = useState(format(new Date(), "yyyy-MM-dd"))
+    let [arrivalTime, setArrivalTime] = useState()
+
 
 
     useEffect(() => { 
@@ -73,15 +78,16 @@ const FlightSearch = () => {
         let searchurl = '/backend/flights/?'
         // consosle.log(departureTime.toUTCString());
         // console.log(range[0].startDate);
-        let formatteddeptime =  format(new Date(range[0].startDate), "yyyy-MM-dd'T'HH:mm")
-        let formattedlandtime =  format(new Date(range[0].endDate), "yyyy-MM-dd'T'HH:mm")
+        // let formatteddeptime =  format(new Date(range[0].startDate), "yyyy-MM-dd'T'HH:mm")
+        // let formattedlandtime =  format(new Date(range[0].endDate), "yyyy-MM-dd'T'HH:mm")
+        // if (departureTime){ searchurl += `&from_departure_time=${formatteddeptime}`}
+        // if (arrivalTime){searchurl += `&to_arrival_time=${formattedlandtime}`}
 
-        // let formatteddeptime =  format(new Date(departureTime), "yyyy-MM-dd'T'HH:mm")
-        // let formattedlandtime =  format(new Date(arrivalTime), "yyyy-MM-dd'T'HH:mm")
+        if (departureTime){searchurl += `&to_arrival_time=${format(new Date(departureTime), "yyyy-MM-dd'T'HH:mm")}`}
+        if (arrivalTime){searchurl += `&to_arrival_time=${format(new Date(arrivalTime), "yyyy-MM-dd'T'HH:mm")}`}        
         if (fromSearchOption) {searchurl +=`&origin_country=${fromSearchOption}`;}
         if (toSearchOption) {searchurl +=`&destination_country=${toSearchOption}`;}
-        if (departureTime){ searchurl += `&from_departure_time=${formatteddeptime}`}
-        if (departureTime){searchurl += `&to_arrival_time=${formattedlandtime}`}
+
         console.log(searchurl);
         let response = await fetch(searchurl)
         let data = await response.json()
@@ -145,7 +151,7 @@ const FlightSearch = () => {
                 }
                 
                 />
-            {/* <h3>Departure Time</h3>
+            <h3>Departure Time</h3>
             <input
                 label="Departure Time" 
                 type='date'
@@ -173,14 +179,14 @@ const FlightSearch = () => {
                 }
             }
                 >
-            </input> */}
-            <h3>Flight Dates</h3>
+            </input> 
+            {/* <h3>Flight Dates</h3>
             <input 
                 className = "dateinput"
                 value={`${format(range[0].startDate, "dd/MM/yyyy")}  -  ${format(range[0].endDate, "dd/MM/yyyy")}`}
                 readOnly
                 onClick={ () => setOpen(open => !open) }
-             />
+             /> */}
 
                 <div>
             {open && 

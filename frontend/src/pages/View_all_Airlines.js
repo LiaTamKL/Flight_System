@@ -28,6 +28,7 @@ const ViewAirlines= () => {
         }
     }
 
+    
     let Delete= async(e) =>{
         console.log(e)
         let result = await DeleteUser(e, authToken)
