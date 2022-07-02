@@ -26,8 +26,11 @@ import SearchForUser from './pages/View_Specific_User';
 import ViewAirlineFlights from './pages/view_all_flights';
 import CreateFlightFormAirline from './forms/CreateFlightFormAirline';
 import FlightSearch from './forms/FlightSearch'
-import CustomerPage from './pages/CustomerPage'
 import TicketPage from './pages/TicketPage';
+import CustomerPage from './pages/CustomerPage'
+import FlightForm from './forms/NewFlightForm';
+import MakeCountry from './pages/Make_Country';
+
 
 
 function App() {
@@ -59,13 +62,12 @@ function App() {
               <Route path='make_airline/:username' element={<MakeAnAirline/>}/>
               <Route path='make_admin/:username' element={<MakeAnAdmin/>}/>
               <Route path='make_customer/:username' element={<MakeACustomer/>}/>
-
+              <Route path='make_country' element={<MakeCountry/>}/>
             </Route>
 
             <Route path='/customer'  exact element={<LoggedinRoute account_role="Customer"/>}>
               <Route path='tickets/' element={<CustomerPage />}/>
-              <Route path='tickets/:id' element={<TicketPage />}/>
-            </Route>
+              <Route path='tickets/:id' element={<TicketPage />}/>            </Route>
 
 
             <Route path='/airline'  exact element={<LoggedinRoute account_role="Airline"/>}>

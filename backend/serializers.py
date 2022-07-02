@@ -13,7 +13,6 @@ def foreign_key_link(field):
 
 class FlightSerializer(ModelSerializer):
 
-
     destination_country = foreign_key_link("country_name")
     origin_country = foreign_key_link("country_name")
     airline = foreign_key_link("name")

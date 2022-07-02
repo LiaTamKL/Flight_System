@@ -27,6 +27,7 @@ from .top_level_methods.user_api import *
 from .top_level_methods.admin_api import *
 from .top_level_methods.airline_api import *
 from .top_level_methods.customer_api import *
+from .top_level_methods.country_api import *
 
 from rest_framework.generics import ListAPIView
 from django_filters.rest_framework import DjangoFilterBackend
@@ -81,7 +82,6 @@ class Flightfilter(ListAPIView):
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
     # filter_backends = (DjangoFilterBackend)
     filterset_class = Flightfilter
-
 
 
 @api_view(['GET', 'POST'])
@@ -239,30 +239,62 @@ def airline_delete_update(request, id):
 ####################################################
 #Country
 
-@api_view(['GET'])
-def allcount(requset):
-    countries =  Country.objects.all()
-    seralizer = CountrySerializer(countries, many = True)
-    return Response(seralizer.data)
 
-@api_view(['GET'])
-def getcount(requset, id):
-    country = BaseFuncade.get_country_by_id(id)
-    seralizer = CountrySerializer(country, many = False)
-    return Response(seralizer.data)
+@api_view(['GET', 'POST'])
+def country_api(request):
+    if request.method == 'GET':
+        return all_countries_api()
+
+    if request.user.is_authenticated == False:
+        return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
+    else:
+        if request.method == 'POST':
+            for value in request.FILES:
+                print(request.FILES[value])
+            result = create_country_api(request)
+            return result
 
 
-@api_view(['PATCH'])
-def updatecount(request, id):
-    data = request.data
-    country = BaseFuncade.get_country_by_id(id)
-    seralizer = CountrySerializer(instance=country, data=data)
+@api_view(['GET', 'PATCH', 'DELETE'])
+def specific_country_api(request, id):
+    if request.method == 'GET':
+        result = get_country_api(id)
+        return result
+
     
-    if seralizer.is_valid():
-        seralizer.save()
-    return Response(seralizer.data)
+    if request.user.is_authenticated == False:
+        return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
+    else:
+        if request.method == 'PATCH':
+            result = update_country_api(request, id)
+            return result 
+
+        if request.method == 'DELETE':
+            result = delete_country_api
+            return result 
 
 
+# @api_view(['GET'])
+# def allcount(requset):
+#     countries =  Country.objects.all()
+#     seralizer = CountrySerializer(countries, many = True)
+#     return Response(seralizer.data)
+
+# @api_view(['GET'])
+# def getcount(requset, id):
+#     country = BaseFuncade.get_country_by_id(id)
+#     seralizer = CountrySerializer(country, many = False)
+#     return Response(seralizer.data)
+
+
+# @api_view(['PATCH'])
+# def updatecount(request, id):
+#     data = request.data
+#     country = BaseFuncade.get_country_by_id(id)
+#     seralizer = CountrySerializer(instance=country, data=data)
+    #     if seralizer.is_valid():
+#         seralizer.save()
+#     return Response(seralizer.data)
 
 @api_view(['DELETE'])
 def deletecount(request, id):
@@ -271,18 +303,22 @@ def deletecount(request, id):
     return Response("Deleted")
 
 
-@api_view(['POST'])
-def createcount(request):
-    data = request.data
-    country = Country.objects.create(
-        country_name = data["countryName"],
-        flag = data["flag"]
-    )
-    seralizer = CountrySerializer(country, many = False)
-    return Response(seralizer.data)
+# @api_view(['DELETE'])
+# def deletecount(request, id):
+#     country = BaseFuncade.get_country_by_id(id)
+#     country.delete()
+#     return Response("Deleted")
 
 
-
+# @api_view(['POST'])
+# def createcount(request):
+#     data = request.data
+#     country = Country.objects.create(
+#         country_name = data["countryName"],
+#         flag = data["flag"]
+#     )
+#     seralizer = CountrySerializer(country, many = False)
+#     return Response(seralizer.data)
 
 
 ##################### ACCOUNT ACTIONS ############################
