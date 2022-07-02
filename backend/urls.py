@@ -66,6 +66,8 @@ urlpatterns = [
 
     # path('cust/tickes/str:id'),
 
+    path ('countries/', country_api),
+    path ('countries/<str:id>/', specific_country_api),
 
 
 
