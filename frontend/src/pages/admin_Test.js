@@ -29,25 +29,23 @@ const AdminDashboard= () => {
     }
 
     let Delete= async(e) =>{
-        console.log(e)
+
         let result = await DeleteUser(e, authToken)
-        console.log(result.data)
         message.current =result.data
         GetCustomers()
 
     }
 
     let UpdateToAdmin= async(e) =>{
-        console.log(e)
+
         let result = await UpdateToAdminFromCus(e, authToken)
-        console.log(result.data)
+
         message.current =result.data
         GetCustomers()
 
     }
 
 
-    console.log('WELCOME ADMIN')
     return (<div>
         <h5>YOU'VE ARRIVED AT THE ADMIN PAGE {user.username}</h5>
         <div className="card text-center">

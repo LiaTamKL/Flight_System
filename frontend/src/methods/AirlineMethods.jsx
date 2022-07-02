@@ -10,7 +10,6 @@ const GetAirlineMethod = async (airlineid) => {
   }
   
   const CreateAirlineMethod  = async  (submitted) => {
-      console.log(submitted)
   
       fetch(`/backend/airlines/create`, {
         method: "POST",

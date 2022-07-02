@@ -41,7 +41,6 @@ let UserForm = async (e, account_role, method, url) =>{
  */
 export const UpdateUser=async(context, authToken)=>{
     var csrftoken = GetCookie('csrftoken')
-    console.log('im inside')
     let response = await fetch('http://127.0.0.1:8000/backend/api/user_api',{
         method:'PATCH',
         headers:{

@@ -21,7 +21,6 @@ const MakeAnAdmin = () =>{
     }
     else{
         alert('error:', result.data)
-        console.log(result.data)
         setMessage(result.data)
     }
     }

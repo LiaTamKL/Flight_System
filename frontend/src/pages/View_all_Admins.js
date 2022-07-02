@@ -29,16 +29,16 @@ const ViewAdmins= () => {
     }
 
     let Delete= async(e) =>{
-        console.log(e)
+
         let result = await DeleteUser(e, authToken)
-        console.log(result.data)
+
         message.current =result.data
         GetAdmins()
 
     }
 
 
-    console.log('WELCOME ADMIN')
+
     return (<div>
         <h5>Admin: {user.username}</h5>
         <div className="card text-center">
