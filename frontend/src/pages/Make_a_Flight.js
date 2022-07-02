@@ -22,6 +22,7 @@ const CreateAFlight = () =>{
     }
     return(<>
         {message? (<p className="alert alert-warning">{message}</p>):<></>}
+        <h3>Making flight for {user.username}</h3>
         <form onSubmit={(e)=>handleSubmit(e)}>
         <NewFlightForm/>
         <input type='submit'></input>

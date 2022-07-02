@@ -1,7 +1,7 @@
 
 import Select from 'react-select'
-import React, {useEffect, useState, useRef} from 'react'
-import { format , parseISO, set} from "date-fns";
+import React, {useEffect, useState} from 'react'
+import { format , parseISO} from "date-fns";
 
 
 const NewFlightForm = (flightData)=>{
@@ -12,6 +12,9 @@ const NewFlightForm = (flightData)=>{
     let set = null
     if (flightData!==undefined){
         set = true
+        let d = new Date(flightData.departure_time)
+        console.log(d)
+        console.log(d.toUTCString())
     }
 
 
@@ -26,7 +29,6 @@ const NewFlightForm = (flightData)=>{
         
         }}    
     useEffect(() => {getContries()},[])
-
 
     return(
         <>
@@ -53,7 +55,7 @@ const NewFlightForm = (flightData)=>{
             <input
                 required
                 id='tickets'
-                defaultValue ={set?flightData.tickets:1}
+                defaultValue ={set?flightData.remaining_tickets:1}
                 type='number'
                 step="1"
                 min="0"
@@ -65,7 +67,7 @@ const NewFlightForm = (flightData)=>{
                 required
                 id='departure_time'
                 className='fancy-select'
-                defaultValue={set?(format(flightData.departure_time, "yyyy-MM-dd' 'HH:mm")):(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
+                defaultValue={set?(format(new Date(flightData.departure_time), "yyyy-MM-dd' 'HH:mm")):(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
                 min={(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
                 />
             <h5>Arrival</h5>
@@ -76,7 +78,7 @@ const NewFlightForm = (flightData)=>{
                 required
                 className='fancy-select'
                 min={(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
-                defaultValue = {set?(format(flightData.landing_time, "yyyy-MM-dd' 'HH:mm")):(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
+                defaultValue = {set?(format(new Date(flightData.landing_time), "yyyy-MM-dd' 'HH:mm")):(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
                 />
             
 

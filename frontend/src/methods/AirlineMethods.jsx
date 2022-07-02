@@ -115,7 +115,7 @@ export const  DeleteFlightAsAirline = async(id,authToken)=>{
 
 /**
  * Updates a flight
- * @param  {Dictionary} e The information (airline, originCountry, destinationCountry, departureTime, arrivalTime, tickets)
+ * @param  {Dictionary} e The information (origin_country, destination_country, departure_time, landing_time, tickets)
  * @param  {String} id The id of the flight to be updated
  * @param  {Dictionary} authToken The authentication token
  * @return {Dictionary} The data and the response.status
@@ -131,12 +131,12 @@ export const UpdateMyFlight = async(e, id, authToken) =>{
               'Authorization':'Bearer ' + String(authToken.access),
               'X-CSRFToken': csrftoken
           },
-          body:JSON.stringify({"airline":e.airline,
-          "origin_country":e.originCountry,
-          "destination_country":e.destinationCountry,
-          "departure_time": e.departureTime,
-          "landing_time":e.arrivalTime,
-          "remaining_tickets":e.tickets
+          body:JSON.stringify({
+          "origin_country":e.target.origin_country.value,
+          "destination_country":e.target.destination_country.value,
+          "departure_time": e.target.departure_time.value,
+          "landing_time":e.target.landing_time.value,
+          "remaining_tickets":e.target.tickets.value
         })})
     let data = await response.json()
     return {'data':data, 'status':response.status}}
