@@ -13,7 +13,9 @@ const MakeAnAirline = () =>{
 
     const airlineMaker = async(e)=>{
     e.preventDefault()
-    console.log(e.target.country.value)
+    if(!e.target.country.value){
+        setMessage('You must choose a country!')
+    }else{
     let result = await TurnIntoAirline(params.username,e,authToken)
     if (result.status===200){
         console.log('success!')
@@ -23,7 +25,7 @@ const MakeAnAirline = () =>{
         alert('error:', result.data)
         setMessage(result.data)
     }
-    }
+    }}
 
     useEffect(() => {
         let data = Check_if_User(user, params,"Airline", authToken, nav)
