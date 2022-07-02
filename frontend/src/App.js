@@ -30,6 +30,7 @@ import TicketPage from './pages/TicketPage';
 import CustomerPage from './pages/CustomerPage'
 import FlightForm from './forms/NewFlightForm';
 import MakeCountry from './pages/Make_Country';
+import CreateAFlight from './pages/Make_a_Flight';
 
 
 
@@ -72,7 +73,7 @@ function App() {
 
             <Route path='/airline'  exact element={<LoggedinRoute account_role="Airline"/>}>
               <Route path='' element={<ViewAirlineFlights/>}/>
-              <Route path='add_fli' element={<CreateFlightFormAirline/>}/>
+              <Route path='add_fli' element={<CreateAFlight/>}/>
             </Route>
 
             {/* <Route path = '/flights' exact element={<FlightsListPage />}/> */}

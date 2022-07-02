@@ -1,177 +1,88 @@
-import React, { useState , useEffect, useContext } from 'react'
-import { format , parseISO, set} from "date-fns";
-import {useNavigate, useLocation} from "react-router-dom";
-import './Form.css'
+
 import Select from 'react-select'
-import { CreateMyFlight, UpdateMyFlight } from '../methods/AirlineMethods';
-import FormHeader from '../components/FormHeader'
-import { useRef } from 'react';
-import AuthContext from '../context/authentication';
+import React, {useEffect, useState, useRef} from 'react'
+import { format , parseISO, set} from "date-fns";
 
 
-
-const FlightForm = () => {
-  let nav = useNavigate()
-  let {user, authToken} = useContext(AuthContext)
-  let flight = useLocation()
-
-  let update = true
-  let flightstate = flight.state? flight.state.flightobj : update = false
-
-  let [departureTime, setDepartureTime] = useState( 
-    update? 
-    format(new Date(flightstate.departure_time), "yyyy-MM-dd'T'HH:mm") :
-    format(new Date(), "yyyy-MM-dd'T'HH:mm")
-    );
+const NewFlightForm = (flightData)=>{
 
 
-  let [arrivalTime, setArrivalTime] = useState(
-    update? 
-    format(new Date(flightstate.landing_time), "yyyy-MM-dd'T'HH:mm") :
-    departureTime
-  ) 
-
-  let [countryOptions, setCountryOptions] = useState()
-
-  const CheckCountryValidation = (e)=>{
-    if (e.target.origin_country.value===e.target.dest_country.value){
-        return false
+    let [countryOptions, setCountryOptions] = useState()
+    flightData = flightData.flightData
+    let set = null
+    if (flightData!==undefined){
+        set = true
     }
-    else{return true}
-}
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (e.target.origin_country.value===undefined || e.target.dest_country.value ===undefined){
-        alert('Please fill in the origin and destination countries')
-    }
-    else{
-    if (CheckCountryValidation(e)===false){
-        alert('Origin and destination countries cannot be the same!')
-    }
-    else{
-        console.log(e.target.value)
-    }
-        }}
 
 
+    let getContries = async () => {
 
-
-useEffect(() => {
-  
-   getCountries()
-  }, [])
-
-  let getCountries = async () => {
-    let response = await fetch(`/backend/countries`)
-    let data = await response.json()
-
-    setCountryOptions(data.map((country) => ({value:country.id, label:(<><span>{country.country_name}  </span><img src={window.location.origin +country.flag} height="15px" width="20px"/></>)})))
-  }
-
-
-
-
-  let time_validation = (type, error_id) =>{
-    let valid = document.getElementById(type);
-    if (!valid.checkValidity()) {
-     let validation_mes =  `Please select a value that is no earlier than ${format(parseISO(departureTime),  "dd/MM/yyyy HH:mm")}.`
-      document.getElementById(error_id).innerHTML = validation_mes;
-    }
-    else
-    {document.getElementById(error_id).innerHTML = "";}
-  }
-
-
-
-  return (
-    <div className='create'>
-
-        <form id='app_form'  onSubmit={(e) => handleSubmit(e)} >
-            <label>Flight by {user.username}</label>
+        let response = await fetch(`/backend/countries`)
+        let data = await response.json()
+        if (response.status===200){
+            //CHANGE THIS IN THE FINAL VERSION
+            setCountryOptions(data.map((country) => ({value:country.id, label:(<><span>{country.country_name}  </span><img src={window.location.origin +country.flag} height="15px" width="20px"/></>)})))        
         
+        
+        }}    
+    useEffect(() => {getContries()},[])
 
-            <label>Origin Country</label>
+
+    return(
+        <>
             <Select 
                 required
+                name='origin_country'
                 id='origin_country'
                 className='fancy-select'
-                isSearchable
-                isClearable
-                placeholder = {update?`Your original origin was: ${flightstate.origin_country}`:'Origin Country'}
                 options ={countryOptions}
-              />
-
-            <label>Destination Country</label>
+                isSearchable = {true}
+                placeholder={set?`Please pick an origin country, your original one is ${flightData.origin_country}`:`Please pick an origin country`}
+                isClearable = {true}  />
             <Select 
                 required
-                id='dest_country'
+                name='destination_country'
+                id='destination_country'
                 className='fancy-select'
-                isSearchable
-                isClearable 
-                placeholder = {update?`Your original origin was: ${flightstate.destination_country}`:'Destination Country'}
                 options ={countryOptions}
-                
+                isSearchable = {true}
+                placeholder={set?`Please pick an destination country, your original one is ${flightData.destination_country}`:`Please pick an destination country`}
+                isClearable = {true}  />        
 
-              />
-
-            <label>Departure Time</label>
+            <h5>Number of Tickets: </h5>
+            <input
+                required
+                id='tickets'
+                defaultValue ={set?flightData.tickets:1}
+                type='number'
+                step="1"
+                min="0"
+                />
+            
+            <h5>Departure</h5>
             <input 
                 type='datetime-local'
                 required
                 id='departure_time'
                 className='fancy-select'
-                defaultValue={departureTime}
-                min={format(new Date(), "yyyy-MM-dd'T'HH:mm")}
-                onChange = {(e) => {    
-                  time_validation('departure_time', 'errormes_dep')
-                  setDepartureTime(e.target.value)
-                  setArrivalTime(e.target.value)
-                }}
-                >
-                </input>
-                <span id='errormes_dep'></span>
-
-
-            <label>Arrival Time</label>
+                defaultValue={set?(format(flightData.departure_time, "yyyy-MM-dd' 'HH:mm")):(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
+                min={(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
+                />
+            <h5>Arrival</h5>
+            
             <input 
                 type='datetime-local'
-                id='arrival_time'
+                id='landing_time'
                 required
                 className='fancy-select'
-                min={departureTime+ (30*60000)}
-                defaultValue = {arrivalTime}
-                onChange ={(e) => {
-                  time_validation('arrival_time', 'errormes_arr')
-                  setArrivalTime(e.target.value)
-                }
-            }
-                >
-
-            </input>
+                min={(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
+                defaultValue = {set?(format(flightData.landing_time, "yyyy-MM-dd' 'HH:mm")):(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
+                />
             
-          <span id='errormes_arr'></span>
-                
-            <label>Number Of Tickets</label>
-            <input
-                required
-                id='tickes'
-                defaultValue ={update?flightstate.tickets:1}
-                type='number'
-                step="1"
-                min="0"
-                >
 
-                </input>
-                <input type='submit'></input>
-        </form>
-        
-    </div>
-   
-   
-  
-  )
-
+                </>
+    )
 }
 
-export default FlightForm
+
+export default NewFlightForm

@@ -67,7 +67,7 @@ export const ViewMyFlights = async(authToken) => {
 
 /**
  * Creates a new flight
- * @param  {Dictionary} e The information (airline, originCountry, destinationCountry, departureTime, arrivalTime, tickets)
+ * @param  {Dictionary} e The information (origin_country, destination_country, departure_time, landing_time, tickets)
  * @param  {Dictionary} authToken The authentication token
  * @return {Dictionary} The data and the response.status
  * 
@@ -82,12 +82,12 @@ export const CreateMyFlight = async(e, authToken) =>{
             'Authorization':'Bearer ' + String(authToken.access),
             'X-CSRFToken': csrftoken
         },
-        body:JSON.stringify({"airline":e.airline,
-        "origin_country":e.originCountry,
-        "destination_country":e.destinationCountry,
-        "departure_time": e.departureTime,
-        "landing_time":e.arrivalTime,
-        "remaining_tickets":e.tickets
+        body:JSON.stringify({
+        "origin_country":e.target.origin_country.value,
+        "destination_country":e.target.destination_country.value,
+        "departure_time": e.target.departure_time.value,
+        "landing_time":e.target.landing_time.value,
+        "remaining_tickets":e.target.tickets.value
       })})
   let data = await response.json()
   return {'data':data, 'status':response.status}}
@@ -140,6 +140,29 @@ export const UpdateMyFlight = async(e, id, authToken) =>{
         })})
     let data = await response.json()
     return {'data':data, 'status':response.status}}
+
+/**
+ * checks that origin and destination don't match and that landing > destination
+ * @param  {Dictionary} e The information (origin_country, destination_country, departure_time, landing_time)
+ * @return {Boolean} true if all is good, error message (string) if not
+ * 
+ */
+export const CheckIfFlightFormIsValid = (e)=>{
+  if (!e.target.origin_country.value){
+    return "Missing origin country!"
+  }
+  if (!e.target.destination_country.value){
+    return "Missing destination country!"
+  }
+  if (e.target.destination_country.value===e.target.origin_country.value){
+    return "Origin and destination may not be the same!"
+  }
+  if (new Date(e.target.departure_time.value)>=new Date(e.target.landing_time.value)){
+    return "Landing must be after departure!"
+  }
+  return true
+}
+  
   
   export { CreateAirlineMethod , UpdateAirlineMethod , DeleteAirlineMethod, GetAirlineMethod }
   
