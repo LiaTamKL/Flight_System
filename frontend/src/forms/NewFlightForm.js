@@ -6,15 +6,21 @@ import { format , parseISO} from "date-fns";
 
 const NewFlightForm = (flightData)=>{
 
-
+    let l = null
+    let d = null
     let [countryOptions, setCountryOptions] = useState()
     flightData = flightData.flightData
     let set = null
     if (flightData!==undefined){
         set = true
-        let d = new Date(flightData.departure_time)
-        console.log(d)
-        console.log(d.toUTCString())
+        d = new Date(flightData.departure_time)
+        //console.log(d)
+        //console.log(d.toUTCString())
+        d = new Date (flightData.departure_time)
+        d.setHours(d.getHours()-3)
+        l = new Date (flightData.landing_time)
+        l.setHours(l.getHours()-3)
+        //console.log((format(d.toUTCString(), "yyyy-MM-dd' 'HH:mm")))
     }
 
 
@@ -67,7 +73,7 @@ const NewFlightForm = (flightData)=>{
                 required
                 id='departure_time'
                 className='fancy-select'
-                defaultValue={set?(format(new Date(flightData.departure_time), "yyyy-MM-dd' 'HH:mm")):(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
+                defaultValue={set?(format(d, "yyyy-MM-dd' 'HH:mm")):(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
                 min={(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
                 />
             <h5>Arrival</h5>
@@ -78,7 +84,7 @@ const NewFlightForm = (flightData)=>{
                 required
                 className='fancy-select'
                 min={(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
-                defaultValue = {set?(format(new Date(flightData.landing_time), "yyyy-MM-dd' 'HH:mm")):(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
+                defaultValue = {set?(format(l, "yyyy-MM-dd' 'HH:mm")):(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
                 />
             
 
