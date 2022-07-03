@@ -14,12 +14,22 @@ const NewFlightForm = (flightData)=>{
     if (flightData!==undefined){
         set = true
         d = new Date(flightData.departure_time)
-        console.log(typeof flightData.departure_time)
-        console.log(d)
-        d = new Date (flightData.departure_time)
-        d.setHours(d.getHours()-3)
+        //console.log('d at start', d)
+        // var now_utc = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(),
+        // d.getUTCDate(), d.getUTCHours(),
+        // d.getUTCMinutes(), d.getUTCSeconds());
+        //console.log('trying utc', new Date(now_utc));
+        // console.log('trying d as ISOString', d.toISOString());
+        // console.log('trying utc', d.toISOString().replace('T', ' ').slice(0, 16));
+
+        //d = d.toISOString().replace('T', ' ')
+        //console.log('trying utc', d.slice(0, 14));
+        //d = new Date (flightData.departure_time)
+        //d.setHours(d.getHours()-3)
         l = new Date (flightData.landing_time)
-        l.setHours(l.getHours()-3)
+        // l.setHours(l.getHours()-3)
+        // console.log('this if format type:', typeof format(l, "yyyy-MM-dd' 'HH:mm"))
+        // console.log('this if format:', format(l, "yyyy-MM-dd' 'HH:mm"))
         //console.log((format(d.toUTCString(), "yyyy-MM-dd' 'HH:mm")))
     }
 
@@ -72,7 +82,7 @@ const NewFlightForm = (flightData)=>{
                 required
                 id='departure_time'
                 className='fancy-select'
-                defaultValue={set?(format(d, "yyyy-MM-dd' 'HH:mm")):(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
+                defaultValue={set?(d.toISOString().replace('T', ' ').slice(0, 16)):(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
                 min={(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
                 />
             <h5>Arrival</h5>
@@ -83,7 +93,7 @@ const NewFlightForm = (flightData)=>{
                 required
                 className='fancy-select'
                 min={(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
-                defaultValue = {set?(format(l, "yyyy-MM-dd' 'HH:mm")):(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
+                defaultValue = {set?(l.toISOString().replace('T', ' ').slice(0, 16)):(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
                 />
             
 
