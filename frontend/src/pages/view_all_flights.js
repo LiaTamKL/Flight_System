@@ -58,16 +58,16 @@ const ViewAirlineFlights= () => {
 
     let handleUpdate=async(e)=>{
         e.preventDefault()
-        let is_form_valid = CheckIfFlightFormIsValid(e)
-        if (is_form_valid!==true){
-            setMessage(is_form_valid)
-        }
-        else{
-            let result = await UpdateMyFlight(e,update.id, authToken)
-            setMessage(result.data)
-            setBack()
-            getflights()
-        }
+         let is_form_valid = CheckIfFlightFormIsValid(e)
+         if (is_form_valid!==true){
+             setMessage(is_form_valid)
+         }
+         else{
+             let result = await UpdateMyFlight(e,update.id, authToken)
+             setMessage(result.data)
+             setBack()
+             getflights()
+         }
     }
 
     return (<div>

@@ -1,13 +1,11 @@
 import {useState, useContext} from "react";
 import AuthContext from "../context/authentication";
-import { useNavigate } from "react-router-dom";
 import { CreateCountry } from "../methods/CountriesMethods";
 import CountryForm from "../forms/CountryForm";
 import { useLocation} from "react-router-dom";
 
 const MakeCountry= () =>{
-    let {user, authToken} = useContext(AuthContext)
-    let nav = useNavigate()
+    let {authToken} = useContext(AuthContext)
     let countr = useLocation()
     let [message, setMessage] = useState()
 
@@ -22,7 +20,7 @@ const MakeCountry= () =>{
         }
         else{
             console.log(result.data)
-            //setMessage(result.data)
+            setMessage('Country with this name already exists!')
         }
         }
 
@@ -33,7 +31,11 @@ const MakeCountry= () =>{
         <CountryForm/> 
         <br/>
         <input type="submit"/>
-        </form></>
+        </form>
+        
+        
+        </>
+
     )
 
 

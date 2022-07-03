@@ -5,13 +5,13 @@ const LoginPage = () => {
     let {loginUser, user} = useContext(AuthContext)
     return (
         <div>
-            {user&& <h1>Hello {user.main_name}</h1>}
+            {user? <h1>Hello {user.main_name}, logout if you wish to login as a different user</h1>:<>
             <form onSubmit={loginUser}>
                 <input type="email" name="email" placeholder="Your email" required/>
                 <input type="password" name="password" placeholder="Your Password" required/>
                 <input type="submit"/>
             </form>
-        </div>
+        </>}</div>
     )
 
 

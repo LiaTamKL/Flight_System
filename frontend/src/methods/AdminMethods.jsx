@@ -130,7 +130,6 @@ export let Check_if_User = async(user, params,role, authToken, nav)=>{
  */
 export let TurnIntoAirline=async(username,e,authToken)=>{
     var csrftoken = GetCookie('csrftoken')
-
     let response = await fetch('http://127.0.0.1:8000/backend/api/admin_api', {
         method:'PATCH',
         headers:{

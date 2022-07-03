@@ -249,8 +249,6 @@ def country_api(request):
         return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
     else:
         if request.method == 'POST':
-            for value in request.FILES:
-                print(request.FILES[value])
             result = create_country_api(request)
             return result
 

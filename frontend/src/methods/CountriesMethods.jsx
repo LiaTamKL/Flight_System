@@ -42,17 +42,17 @@ const UpdateCountryMethod  = async (submitted , countryid) => {
 export const CreateCountry = async(e, authToken) =>{
  var csrftoken = GetCookie('csrftoken')
  console.log("what is file 0?", e.target.flag.files[0])
- let response = await fetch('http://127.0.0.1:8000/backend/countries', {
+ let formData = new FormData()
+ formData.append("flag", e.target.flag.files[0])
+ formData.append("country_name",e.target.country_name.value)
+ console.log(formData.get('country_name'))
+ let response = await fetch('http://127.0.0.1:8000/backend/countries/', {
      method:'POST',
      headers:{
-         'Content-Type':'application/json',
          'Authorization':'Bearer ' + String(authToken.access),
          'X-CSRFToken': csrftoken
      },
-     body:JSON.stringify({"country_name":e.target.country_name.value,
-     "flag":e.target.flag.files[0],
-     "flag name":e.target.flag.value
-   })})
+     body:formData})
 let data = await response.json()
 return {'data':data, 'status':response.status}}
 

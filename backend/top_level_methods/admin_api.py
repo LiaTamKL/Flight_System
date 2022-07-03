@@ -88,10 +88,16 @@ def change_account_role(request):
         elif request.data['make']=='Airline':
             if account.account_role == 'Airline':
                 return Response(data='Already an Airline!', status=status.HTTP_400_BAD_REQUEST)
-            country = Country.objects.get(pk=request.data['country'])
-            form['country'] =  country
-            form['name'] = request.data['name']
-            AdministratorFuncade.add_airline(account=account, form=form)
+            
+            
+            try: 
+                airlinetest = Airline.objects.get(name=request.data['name'])
+                return Response(data='An Airline with this name already exists!', status=status.HTTP_400_BAD_REQUEST)
+            except Airline.DoesNotExist: 
+                country = Country.objects.get(pk=request.data['country'])
+                form['name'] = request.data['name']
+                form['country'] =  country
+                AdministratorFuncade.add_airline(account=account, form=form)
         else: return Response(data='make must specify Admin, Customer, or Airline!', status=status.HTTP_400_BAD_REQUEST)
         return Response(data=f'successful update of {account} to {account.account_role}')
 

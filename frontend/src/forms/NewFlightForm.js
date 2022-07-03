@@ -14,8 +14,8 @@ const NewFlightForm = (flightData)=>{
     if (flightData!==undefined){
         set = true
         d = new Date(flightData.departure_time)
-        //console.log(d)
-        //console.log(d.toUTCString())
+        console.log(typeof flightData.departure_time)
+        console.log(d)
         d = new Date (flightData.departure_time)
         d.setHours(d.getHours()-3)
         l = new Date (flightData.landing_time)
@@ -25,7 +25,6 @@ const NewFlightForm = (flightData)=>{
 
 
     let getContries = async () => {
-
         let response = await fetch(`/backend/countries`)
         let data = await response.json()
         if (response.status===200){

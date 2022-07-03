@@ -22,14 +22,13 @@ const MakeAnAirline = () =>{
         nav('/admin/view_airlines')
     }
     else{
-        alert('error:', result.data)
         setMessage(result.data)
     }
     }}
 
     useEffect(() => {
         let data = Check_if_User(user, params,"Airline", authToken, nav)
-        console.log('heres the final data', data)},[])
+        },[])
         
     return(<>
         {message? (<p className="alert alert-warning">{message}</p>):<></>}
