@@ -21,7 +21,7 @@ class Airline_Facade(BaseFuncade):
     #same as the above, just a different name to clarify
     def update_flight(airline, form, flight):
         Airline_Facade.add_flight(airline, form, flight)
-
+        
 
     #remove a flight.returns 1 if successful
     def remove_flight(flight, airline):

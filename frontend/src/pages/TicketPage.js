@@ -2,29 +2,30 @@ import React, {useState, useEffect}  from 'react'
 import { useParams , useNavigate, useLocation} from "react-router-dom";
 import { ReactComponent as Arrow } from '../assets/arrow-left.svg'
 // import CreateFlightForm from '../forms/CreateFlightForm'
-import { GetFlightMethod } from '../methods/FlightMethods'
+// import { GetFlightMethod } from '../methods/FlightMethods'
 // import { DeleteFlight} from '../methods/FlightMethods'
 import { format , parseISO} from "date-fns";
 
 
 const TicketPage = () => {
     let navigate = useNavigate();
-    let flightid  = useParams().id;
-    // let test  = useLocation().state.test1;
+
+    // let flightid  = useParams().id;
+    let test  = useLocation().state.test1;
     let [flight , setFlight] = useState(null);
 
     // console.log(test)
 
-    useEffect(() => {
-        getFlight()
-     // eslint-disable-next-line
-     }, [flightid])
+    // useEffect(() => {
+    //     getFlight()
+    //  // eslint-disable-next-line
+    //  }, [flightid])
   
 
-  let getFlight = async() => {
-    setFlight(await GetFlightMethod(flightid)
-    )
-}
+//   let getFlight = async() => {
+//     setFlight(await GetFlightMethod(flightid)
+//     )
+// }
 
    let formatTime = (flight) => {
     let datastring
@@ -38,7 +39,7 @@ const TicketPage = () => {
     <div className='all' >
         <div className='all-header'>
           <h3> 
-              <Arrow onClick={() =>{navigate('/Customer/tickets')} }/>
+              <Arrow onClick={() =>{navigate(-1)} }/>
 
           </h3> 
           {/* {flightid !=='new' ? (

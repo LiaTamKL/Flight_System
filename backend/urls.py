@@ -42,29 +42,22 @@ urlpatterns = [
 
     path('flights/search/', Flightfilter.as_view()),
     path ('flights/',Flightfilter.as_view()),
-    # path ('flights/create', createfli),
-    # path ('flights/<str:id>/update', updatefli),
-    # path ('flights/<str:id>/delete', deletefli),
+
     path ('flights/<str:id>/', getfli),
     
 
 
+    
+
     path('airlines/', allair,),
     path('airlines/<str:id>/', getair),
 
-    # path ('countries/', allcount),
-    # #path ('countries/create', createfli),
-    # path ('countries/<str:id>/update', updatecount),
-    # path ('countries/<str:id>/delete', deletecount),
-    # path ('countries/<str:id>/', createcount),
 
     path('api/country/', Countryfilterget.as_view()),
-
-    path('api/tickets/', TicketByUserfilter.as_view()),
+    
+    # path('api/tickets/', TicketByUserfilter.as_view()),
 
     path('api/customer_api', tickets_api),
-
-    # path('cust/tickes/str:id'),
 
     path ('countries/', country_api),
     path ('countries/<str:id>/', specific_country_api),
@@ -141,3 +134,15 @@ urlpatterns = [
 #    path('ouradmin/', view_all_customers, name="admin home"),
 #    path('ouradmin/delete/<customer_id>',delete_customer, name="delete customer"),
 #    path('ouradmin/add_from_customer/<account>', add_admin_from_customer, name="admin from customer"),
+
+
+    # path ('countries/', allcount),
+    # #path ('countries/create', createfli),
+    # path ('countries/<str:id>/update', updatecount),
+    # path ('countries/<str:id>/delete', deletecount),
+    # path ('countries/<str:id>/', createcount),
+
+
+    # path ('flights/create', createfli),
+    # path ('flights/<str:id>/update', updatefli),
+    # path ('flights/<str:id>/delete', deletefli),

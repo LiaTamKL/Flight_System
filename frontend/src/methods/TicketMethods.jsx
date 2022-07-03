@@ -5,9 +5,9 @@ import GetCookie from "../utilities/csrf_token";
 
 
 const ViewMyTickets = async (authToken) => {
-   var csrftoken = GetCookie('csrftoken')
+  let csrftoken = GetCookie('csrftoken')
 
-    let response = await fetch('/backend/api/customer_api', {
+  let response = await fetch('/backend/api/customer_api', {
       method:'GET',
       headers:{
           'Content-Type':'application/json',
@@ -19,58 +19,52 @@ const ViewMyTickets = async (authToken) => {
   return {'data':data, 'status':response.status}}
 
 
-// const FlightByTicket = async (tickets) => {
-//   tickets?.map((ticket) => (
+
+
+const CreateTicket = async (flight_id, authToken) => {
+    let csrftoken = GetCookie('csrftoken')
+    let response = await fetch(`/backend/api/customer_api`, {
     
-//     // Blog.objects.filter(pk__in=[1, 4, 7])
-//   ))
-
-  
-
-// }
-
-
-// needs updateing 
-// ############################################################
-
-const CreateTicket = async  (submitted) => {
-    fetch(`/backend/tickets/create`, {
       method: "POST",
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(submitted)
-    }).then(() => {
-    console.log('flight added')
-    });
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization':'Bearer ' + String(authToken.access),
+        'X-CSRFToken': csrftoken
 
+      },
+      body:JSON.stringify({
+        "flight":flight_id
+      })})
+
+    let data = await response.json()
+    return {'data':data, 'status':response.status}
+      
 }
 
 
 
 
-const UpdateTicket = async (submitted , flightid) => {
+let RemoveTicket = async(flight_id, ticket_id, authToken) => {
+  let csrftoken = GetCookie('csrftoken')
 
-  fetch(`/backend/tickets/${flightid}/update` , {
-    method: "PUT",
-    headers: {
-              'content-Type': 'application/json'
-    },
-    remaining_tickets: JSON.stringify(submitted)
-  })
-
-}
-
-
-let DeleteTicket = async(flightid) => {
-  fetch(`/backend/tickets/${flightid}/delete` , {
+  let response = await fetch(`/backend/api/customer_api`, {
+  
     method: "DELETE",
     headers: {
-              'content-Type': 'application/json'
-    }
-  })
+      'Content-Type': 'application/json',
+      'Authorization':'Bearer ' + String(authToken.access),
+      'X-CSRFToken': csrftoken
 
-}
+    },
+    body:JSON.stringify({
+      "flight":flight_id,
+      "ticket":ticket_id
+    })})
 
+  let data = await response.json()
+  return {'data':data, 'status':response.status}
 
-export { DeleteTicket , UpdateTicket , CreateTicket ,ViewMyTickets }
+  }
+export { RemoveTicket  , CreateTicket ,ViewMyTickets }
 
 

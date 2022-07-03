@@ -73,8 +73,9 @@ class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 
+
 ##################################################
-############### flight ##########################
+############### Filters ##########################
 
 class Flightfilter(ListAPIView):
     queryset = Flight.objects.all()
@@ -82,22 +83,6 @@ class Flightfilter(ListAPIView):
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
     # filter_backends = (DjangoFilterBackend)
     filterset_class = Flightfilter
-
-
-@api_view(['GET', 'POST'])
-def tickets_api(request):
-    
-    #checks if user is auth, an customer
-    if request.user.is_authenticated == False:
-         return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
-    if request.user.account_role != Account_Role.objects.get(role_name = 'Customer'):
-         return Response(data='Must be a customer to use this!', status=status.HTTP_401_UNAUTHORIZED)
-    
-
-    customer = (Customer.objects.get(account=request.user)).id
-    mytickets = get_all_my_tickets(customer)
-    return Response(mytickets.data)
-
 
 
 class TicketByUserfilter(ListAPIView):
@@ -113,18 +98,39 @@ class Countryfilterget(ListAPIView):
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
     # filter_backends = (DjangoFilterBackend)
     filterset_class = Countryfilter
+    search_fields = ['country_name']
     
 
+#########################################################
+#################### Tickets ############################
 
-    # }
-    # search_fields = ('to_departure_time, landing_time')
 
 
-# @api_view(['GET'])
-# def allfli(request):
-#     flights =  Flight.objects.all().order_by('departure_time')
-#     seralizer = FlightSerializer(flights, many = True)
-#     return Response(seralizer.data)
+@api_view(['GET', 'POST', 'DELETE'])
+def tickets_api(request):
+    
+    #checks if user is auth, an customer
+    if request.user.is_authenticated == False:
+         return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
+    if request.user.account_role != Account_Role.objects.get(role_name = 'Customer'):
+         return Response(data='Must be a customer to use this!', status=status.HTTP_401_UNAUTHORIZED)
+    
+    customer = (Customer.objects.get(account=request.user)).id
+
+    if request.method == 'GET':
+        mytickets = get_all_my_tickets(customer)
+        return mytickets
+    
+    if request.method == 'POST':
+        mytickets = add_ticket_api(request, customer)
+
+    if request.method == 'DELETE':
+        mytickets = remove_ticket_api(request)    
+
+        return mytickets
+
+    
+
 
 @api_view(['GET'])
 def getfli(request, id):
@@ -132,41 +138,6 @@ def getfli(request, id):
     seralizer = FlightSerializer(flight, many = False)
     return Response(seralizer.data)
 
-# @api_view(['PATCH'])
-# def updatefli(request, id):
-#     data = request.data
-#     flight = BaseFuncade.get_flight_by_id(id)
-#     seralizer = FlightSerializer(instance=flight, data=data)
-    
-#     if seralizer.is_valid():
-#         seralizer.save()
-#     return Response(seralizer.data)
-
-
-
-# @api_view(['DELETE'])
-# def deletefli(request, id):
-#     flight = BaseFuncade.get_flight_by_id(id)
-#     flight.delete()
-#     return Response("Deleted")
-
-
-
-# @api_view(['POST'])
-# def createfli(request):
-#     data = request.data
-#     flight = Flight.objects.create(
-#         airline_id = data['airline'],
-#         origin_country_id = data['originCountry'],
-#         destination_country_id = data['destinationCountry'],
-#         departure_time = utc.localize(datetime.fromisoformat(data['departureTime'])),
-#         landing_time = utc.localize(datetime.fromisoformat(data['arrivalTime'])),
-#         remaining_tickets = data['tickets'],
-
-
-#     )
-#     seralizer = FlightSerializer(flight, many = False)
-#     return Response(seralizer.data)
 
 ####################################################
 #airline
@@ -183,6 +154,7 @@ def getair(requset, id):
     airline = BaseFuncade.get_airline_by_id(id)
     seralizer = AirlineSerializer(airline, many = False)
     return Response(seralizer.data)
+
 
 
 @api_view(['GET', 'POST'])
@@ -204,6 +176,7 @@ def airline_api(request):
     if request.method == 'POST':
         respon = create_flight_airline_api(request, airline)
         return respon
+
 
 @api_view(['PATCH','DELETE', 'GET'])
 def airline_delete_update(request, id): 
@@ -253,6 +226,8 @@ def country_api(request):
             return result
 
 
+
+
 @api_view(['GET', 'PATCH', 'DELETE'])
 def specific_country_api(request, id):
     if request.method == 'GET':
@@ -272,27 +247,6 @@ def specific_country_api(request, id):
             return result 
 
 
-# @api_view(['GET'])
-# def allcount(requset):
-#     countries =  Country.objects.all()
-#     seralizer = CountrySerializer(countries, many = True)
-#     return Response(seralizer.data)
-
-# @api_view(['GET'])
-# def getcount(requset, id):
-#     country = BaseFuncade.get_country_by_id(id)
-#     seralizer = CountrySerializer(country, many = False)
-#     return Response(seralizer.data)
-
-
-# @api_view(['PATCH'])
-# def updatecount(request, id):
-#     data = request.data
-#     country = BaseFuncade.get_country_by_id(id)
-#     seralizer = CountrySerializer(instance=country, data=data)
-    #     if seralizer.is_valid():
-#         seralizer.save()
-#     return Response(seralizer.data)
 
 @api_view(['DELETE'])
 def deletecount(request, id):
@@ -301,22 +255,6 @@ def deletecount(request, id):
     return Response("Deleted")
 
 
-# @api_view(['DELETE'])
-# def deletecount(request, id):
-#     country = BaseFuncade.get_country_by_id(id)
-#     country.delete()
-#     return Response("Deleted")
-
-
-# @api_view(['POST'])
-# def createcount(request):
-#     data = request.data
-#     country = Country.objects.create(
-#         country_name = data["countryName"],
-#         flag = data["flag"]
-#     )
-#     seralizer = CountrySerializer(country, many = False)
-#     return Response(seralizer.data)
 
 
 ##################### ACCOUNT ACTIONS ############################
@@ -1459,3 +1397,94 @@ def register(request, account_role):
 #         'form' : contact_from,
 #     }
 #     return render(request,'search_country_page.html' , context)
+
+
+    # }
+    # search_fields = ('to_departure_time, landing_time')
+
+
+# @api_view(['GET'])
+# def allfli(request):
+#     flights =  Flight.objects.all().order_by('departure_time')
+#     seralizer = FlightSerializer(flights, many = True)
+#     return Response(seralizer.data)
+
+
+
+
+
+# @api_view(['PATCH'])
+# def updatefli(request, id):
+#     data = request.data
+#     flight = BaseFuncade.get_flight_by_id(id)
+#     seralizer = FlightSerializer(instance=flight, data=data)
+    
+#     if seralizer.is_valid():
+#         seralizer.save()
+#     return Response(seralizer.data)
+
+
+
+# @api_view(['DELETE'])
+# def deletefli(request, id):
+#     flight = BaseFuncade.get_flight_by_id(id)
+#     flight.delete()
+#     return Response("Deleted")
+
+
+
+# @api_view(['POST'])
+# def createfli(request):
+#     data = request.data
+#     flight = Flight.objects.create(
+#         airline_id = data['airline'],
+#         origin_country_id = data['originCountry'],
+#         destination_country_id = data['destinationCountry'],
+#         departure_time = utc.localize(datetime.fromisoformat(data['departureTime'])),
+#         landing_time = utc.localize(datetime.fromisoformat(data['arrivalTime'])),
+#         remaining_tickets = data['tickets'],
+
+
+#     )
+#     seralizer = FlightSerializer(flight, many = False)
+#     return Response(seralizer.data)
+
+
+# @api_view(['GET'])
+# def allcount(requset):
+#     countries =  Country.objects.all()
+#     seralizer = CountrySerializer(countries, many = True)
+#     return Response(seralizer.data)
+
+# @api_view(['GET'])
+# def getcount(requset, id):
+#     country = BaseFuncade.get_country_by_id(id)
+#     seralizer = CountrySerializer(country, many = False)
+#     return Response(seralizer.data)
+
+
+# @api_view(['PATCH'])
+# def updatecount(request, id):
+#     data = request.data
+#     country = BaseFuncade.get_country_by_id(id)
+#     seralizer = CountrySerializer(instance=country, data=data)
+    #     if seralizer.is_valid():
+#         seralizer.save()
+#     return Response(seralizer.data)
+
+# @api_view(['DELETE'])
+# def deletecount(request, id):
+#     country = BaseFuncade.get_country_by_id(id)
+#     country.delete()
+#     return Response("Deleted")
+
+
+# @api_view(['POST'])
+# def createcount(request):
+#     data = request.data
+#     country = Country.objects.create(
+#         country_name = data["countryName"],
+#         flag = data["flag"]
+#     )
+#     seralizer = CountrySerializer(country, many = False)
+#     return Response(seralizer.data)

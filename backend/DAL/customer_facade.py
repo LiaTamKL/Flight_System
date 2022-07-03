@@ -18,15 +18,28 @@ class CustomerFancade(BaseFuncade):
 
 
     def add_ticket(form , customer_id):
+        
         flight_Ticket = Flight_Ticket()
         flight_Ticket.customer_id = customer_id
-        flight_Ticket.flight = form['flight_id']
+        flight_Ticket.flight_id = form['flight']
         flight_Ticket.save()
+        
+        #Remove Ticket From Flight
+        flight = Flight.objects.get(pk = form['flight'] )
+        flight.remaining_tickets -= 1
+        flight.save() 
 
-    def remove_ticket(ticket):
-        ticket_to_remove = Flight_Ticket.objects.get(pk = ticket["ticket_id"].id)
+
+
+    def remove_ticket(form):
+        ticket_to_remove = Flight_Ticket.objects.get(pk =form['ticket'].id)
         ticket_to_remove.delete()
-
+        
+        # Add removed ticket to flight
+        flight = Flight.objects.get(pk = form['flight'] )
+        flight.remaining_tickets += 1
+        flight.save() 
+   
 
 
     #need to be logged in

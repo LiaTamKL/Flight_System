@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/Header'
 import FlightsListPage from './pages/FlightsListPage'; 
-import FlightPage from './pages/FlightPage';
+import FlightPage from './components/FlightPage';
 import LoginPage from './pages/login_page';
 import {AuthenticationProvider} from './context/authentication'
 import AdminDashboard from './pages/admin_Test';
@@ -15,6 +15,7 @@ import MakeAnAirline from './pages/make_airline_page';
 import {
   Routes,
   Route,
+  Navigate
 } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -34,6 +35,7 @@ import CreateAFlight from './pages/Make_a_Flight';
 
 
 
+
 function App() {
   return (
     <div className="container dark" >
@@ -41,6 +43,7 @@ function App() {
         <AuthenticationProvider>
           <Header />
           <Routes>
+
             <Route path='*' element={<NotFound/>} />
             <Route path = "/" exact element={<MainPage />} />
             {/* <Route path = "/flights" element={<FlightsListPage />} /> */}
@@ -67,8 +70,12 @@ function App() {
             </Route>
 
             <Route path='/customer'  exact element={<LoggedinRoute account_role="Customer"/>}>
-              <Route path='tickets/' element={<CustomerPage />}/>
-              <Route path='tickets/:id' element={<TicketPage />}/>            </Route>
+              <Route path = '' element={<Navigate to="tickets" replace />} /> 
+              <Route path='tickets' element={<CustomerPage />}/>
+              <Route path='tickets/:id' element={<FlightPage />}/>
+              <Route path='flight/search' element={<FlightSearch />}/>           
+            </Route>
+
 
 
             <Route path='/airline'  exact element={<LoggedinRoute account_role="Airline"/>}>
@@ -80,9 +87,9 @@ function App() {
             {/* <Route path = '/flights/:id/update' element={<CreateFlightForm />} />
             <Route path = '/flights/create'  element={<CreateFlightForm />}  /> */}
             
-            <Route path = '/flights' exact element={<FlightSearch />}/>
+            <Route path = '/flights' exact element={<FlightsListPage />}/>
             <Route path = 'flights/:id' element={<FlightPage />} />
-            <Route path='flights/search' element={<FlightSearch />}/>
+            {/* <Route path='flights/search' element={<FlightSearch />}/> */}
             
 
            

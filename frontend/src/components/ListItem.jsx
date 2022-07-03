@@ -2,24 +2,22 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-const ListTicketitem = ({ ticket }) => {
-    return (
-        <Link to={`/tickets/${ticket.id}`}>
-            <div className="all-list-item" >
-                <p> {ticket.flight}</p>
-            </div>
-        </Link>
+// const ListTicketitem = ({ ticket }) => {
+//     return (
+//         <Link to={`/tickets/${ticket.id}`}>
+//             <div className="all-list-item" >
+//                 <p> {ticket.flight}</p>
+//             </div>
+//         </Link>
 
-    )
-}
-
-
+//     )
+// }
 
 
-const ListIFlightitem = ({ flight , userrole }) => {
+const ListIFlightitem = ({ flight , userrole , }) => {
     let linkto
     if (userrole === "Customer"){
-        linkto = `/Customer/tickets/${flight.id}`
+        linkto = `/customer/tickets/${flight.id}`
     }
     else{
         linkto = `/flights/${flight.id}`
@@ -28,7 +26,7 @@ const ListIFlightitem = ({ flight , userrole }) => {
 
     return (
         //pass variable thru link state={{ flight:flight,  "hello" }}
-        <Link to={linkto} >
+        <Link to={linkto}  state={{ flight:flight }} >
             <div className="all-list-item" >
                 <p> {flight.airline}</p>
             </div>
@@ -37,4 +35,4 @@ const ListIFlightitem = ({ flight , userrole }) => {
   )
 }
 
-export  { ListIFlightitem, ListTicketitem }
+export  { ListIFlightitem }

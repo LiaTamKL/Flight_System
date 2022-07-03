@@ -7,21 +7,23 @@ import {
 
 import React, {useEffect} from 'react'
 
-
 import { HiOutlineSwitchHorizontal } from 'react-icons/hi'
 import { useState } from 'react';
 import { format , addDays} from "date-fns";
-import Select from 'react-select';
+import Select  from 'react-select';
+import AsyncSelect from 'react-select/async';
 import FlightsListPage from "../pages/FlightsListPage";
+import { useNavigate , useLocation } from "react-router-dom"
 import './Form.css'
 
 
 
 
 const FlightSearch = () => {
-    let[updatedcountryOptions, setupdatedCountryOptions] = useState();
+    let navigate = useNavigate();
     let[filteredFlights, setFilteredFlights] = useState();
 
+    // console.log(menuIsOpen);
 
     const [range, setRange] = useState([
         {
@@ -31,22 +33,12 @@ const FlightSearch = () => {
         }
       ])
     
-
-      // open close
-      const [open, setOpen] = useState(false)    
-    
     
     let[display,setDisplayOption] = useState();
-
     let[fromSearchOption, setFromSearchOption] = useState(0);
     let[toSearchOption, settoSearchOption] = useState(0);
     
     let[countryOptions, setCountryOptions] = useState();
-
-
-    // let [departureTime, setDepartureTime] = useState( 
-    //     format(new Date(), "yyyy-MM-dd")
-    //     );
 
     let [departureTime, setDepartureTime] = useState();
 
@@ -57,18 +49,27 @@ const FlightSearch = () => {
 
 
     useEffect(() => { 
-        getCountries()
+        // getCountries()
         getfilteredflights()
 
-        }, [fromSearchOption, toSearchOption, departureTime, arrivalTime, range[0].startDate, range[0].endDate])
+        // }, [fromSearchOption, toSearchOption, departureTime, arrivalTime, range[0].startDate, range[0].endDate])
+    }, [departureTime, arrivalTime, fromSearchOption , toSearchOption])
 
 
-    let getCountries = async () => {
 
-        let response = await fetch(`/backend/countries`)
+    let getCountries = async (searchTerm) => {
+
+        // console.log(searchTerm);
+
+        let response = await fetch(`/backend/api/country/?search=${searchTerm}`)
+
+        // let response = await fetch(`/backend/countries`)
         let data = await response.json()
         // countryOptions.current =  data.map((country) => ({value:country.id, label:country.country_name}))
-        setCountryOptions (data.map((country) => ({value:country.id, label:country.country_name})))
+        return data?.map((country) => ({value:country.id, label:country.country_name}))
+
+
+        // setCountryOptions (data?.map((country) => ({value:country.id, label:country.country_name})))
 
         // console.log(countryOptions.current);
 
@@ -83,19 +84,23 @@ const FlightSearch = () => {
         // if (departureTime){ searchurl += `&from_departure_time=${formatteddeptime}`}
         // if (arrivalTime){searchurl += `&to_arrival_time=${formattedlandtime}`}
 
-        if (departureTime){searchurl += `&to_arrival_time=${format(new Date(departureTime), "yyyy-MM-dd'T'HH:mm")}`}
+
+
+        if (departureTime){searchurl += `&from_departure_time=${format(new Date(departureTime), "yyyy-MM-dd'T'HH:mm")}`}
         if (arrivalTime){searchurl += `&to_arrival_time=${format(new Date(arrivalTime), "yyyy-MM-dd'T'HH:mm")}`}        
         if (fromSearchOption) {searchurl +=`&origin_country=${fromSearchOption}`;}
         if (toSearchOption) {searchurl +=`&destination_country=${toSearchOption}`;}
 
-        console.log(searchurl);
         let response = await fetch(searchurl)
         let data = await response.json()
         // console.log(data)
+        // return(data)
         setFilteredFlights(data)
 
-
     }
+
+
+
 
     let switchFileds= () => {
         let temp =   fromSearchOption
@@ -109,39 +114,48 @@ const FlightSearch = () => {
 
     return (
     
-        <div className='flightselect'>
-            
-           <h1>Search For a Flight</h1>
-
-            <Select
+        <div className='flightselect'>  
+            <AsyncSelect
+                 
                 className='countryinputfrom'
                 placeholder='From Everywhere'
-                options = {countryOptions}
+                cacheOptions
+                // options = {getCountries}
+                loadOptions = {getCountries}
                 isSearchable
                 isClearable
                 maxMenuHeight = {300}
-                value={display} 
+                // value={display}
+                onInputChange = {(e) => {getCountries(e)}} 
                 onChange = {
                 (e)=> e? (
-                    setFromSearchOption(e.value),
-                    setDisplayOption(e)
+                    setFromSearchOption(e.value)
                     )
                     : setFromSearchOption(0)
                 }
+
+                // onChange = {
+                // (e)=> e? (
+                //     setFromSearchOption(e.value),
+                //     setDisplayOption(e)
+                //     )
+                //     : setFromSearchOption(0)
+                // }
                 />
 
                 <div className="switch-fields" onClick={() =>{switchFileds()}}>
                     <HiOutlineSwitchHorizontal />  
                 </div>
 
-            <Select
+            <AsyncSelect
+
                 className='countryinputto'
                 placeholder = "To Everywhere"
-                // cacheOptions
+                cacheOptions
                 // value={toSearchOption}
-                options = {countryOptions}
+                loadOptions = {getCountries}
                 maxMenuHeight = {300}
-                hideSelectedOptions
+                onInputChange = {(e) => {getCountries(e)}} 
                 isSearchable
                 isClearable
                 onChange = {
@@ -188,25 +202,34 @@ const FlightSearch = () => {
                 onClick={ () => setOpen(open => !open) }
              /> */}
 
-                <div>
-            {open && 
-            <DateRange
-                onChange={
-                    item => setRange([item.selection])
-                }
-                editableDateInputs={false}
-                moveRangeOnFirstSelection={false}
-                ranges={range}
-                months={2}
-                direction="horizontal"
-                className="calendarElement"
-                showDateDisplay = {false}
-                />
-            }
-      </div>
+                {/* <div> */}
+            {/* {open && 
+            // <DateRange
+            //     onChange={
+            //         item => setRange([item.selection])
+            //     }
+            //     editableDateInputs={false}
+            //     moveRangeOnFirstSelection={false}
+            //     ranges={range}
+            //     months={2}
+            //     direction="horizontal"
+            //     className="calendarElement"
+            //     showDateDisplay = {false}
+            //     />
+            } */}
+      {/* </div> */}
+        <button 
+            label="Search Flight" 
+            onClick={() => {
+                // let filtered = getfilteredflights()
+                navigate("/flights/", { state: {filteredFlights: filteredFlights 
+                }})}}
+        >"Search Flight"</button>
 
-        <FlightsListPage filteredFlights={filteredFlights} />
-        </div>
+
+
+        {/* <FlightsListPage filteredFlights={filteredFlights} /> */}
+    </div>
         
     )
 }

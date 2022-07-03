@@ -1,11 +1,11 @@
 import React , {useContext , useEffect , useState, useRef} from 'react';
-import TicketFrom from '../forms/TicketFrom';
 import AuthContext from "../context/authentication";
 import { Link, useNavigate } from "react-router-dom";
 import { getUserInfo } from '../methods/UserMethods';
 import { ViewMyTickets } from "../methods/TicketMethods";
-import AddCreateButton from '../components/AddCreateButton'
+import AddTicketCreateButton from '../components/AddTicketCreateButton'
 import { ListTicketitem , ListIFlightitem } from '../components/ListItem'
+
 
 import './Pages.css';
 
@@ -18,16 +18,12 @@ const CustomerPage = () => {
 
     // const flight_id = useRef(tickets.flight)
 
-
+// console.log(user , userData);
     useEffect(() => {
         getUserData() 
         getMyTickets()
         // flightsByTickets()
     }, [user])
-
-
-// console.log(userData);
-
 
 
 let getUserData = async () => {
@@ -36,6 +32,7 @@ let getUserData = async () => {
         setUserData(result.data)
     }
 }
+
 
 //gets tickets and flights connected to them 
 let getMyTickets = async () => {
@@ -55,9 +52,40 @@ let getMyTickets = async () => {
         setMyFlights(data)
 
     }
+
     else{alert(status, data)}
 
 }
+
+
+
+    return (
+        <div className='all'>
+          <div className='all-header'>
+            <h2 className='all-title'>&#9782; Tickets of {userData?.first_name} {userData?.last_name} </h2>
+            <p className='all-count'>{tickets?.length}</p>
+          </div>
+
+          {/* tickets.find(id) => id === flight.id)} */}
+          <div className="all-list">
+                    {myFlights?.map((myflight, index) => (
+                    <ListIFlightitem key={index} flight={myflight} userrole={user.account_role}  />
+                    
+                ))}
+
+            </div>  
+            {/* <AddTicketCreateButton tickets_id = {tickets.id} userData = { userData } /> */}
+            <AddTicketCreateButton userData = { userData }  />
+
+        </div>
+  )
+
+  
+}
+
+export default CustomerPage
+
+
 
 
 
@@ -98,28 +126,3 @@ let getMyTickets = async () => {
 
 
     
-
-
-    return (
-        <div className='all'>
-          <div className='all-header'>
-            <h2 className='all-title'>&#9782; Tickets of {userData?.first_name} {userData?.last_name} </h2>
-            <p className='all-count'>{tickets?.length}</p>
-          </div>
-
-          {/* tickets.find(id) => id === flight.id)} */}
-          <div className="all-list">
-                    {myFlights?.map((myflight, index) => (
-                    <ListIFlightitem key={index} flight={myflight} userrole={user.account_role}  />
-                    
-                ))}
-
-            </div>  
-            <AddCreateButton />
-        </div>
-  )
-
-  
-}
-
-export default CustomerPage
