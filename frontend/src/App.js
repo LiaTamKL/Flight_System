@@ -73,7 +73,7 @@ function App() {
 
             <Route path='/airline'  exact element={<LoggedinRoute account_role="Airline"/>}>
               <Route path='' element={<ViewAirlineFlights/>}/>
-              <Route path='add_fli' element={<CreateAFlight/>}/>
+              <Route path='add_flight' element={<CreateAFlight/>}/>
             </Route>
 
             {/* <Route path = '/flights' exact element={<FlightsListPage />}/> */}

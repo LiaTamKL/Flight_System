@@ -26,7 +26,7 @@ const ViewAirlineFlights= () => {
         let status = result.status
         if (status ===200){
             setFlights(data)
-            setFlightOptions(data.map((flight) => ({value:flight.id, label:`Flight #${flight.id}, from ${flight.origin_country} to ${flight.destination_country}. Departing at ${(new Date(flight.departure_time)).toUTCString()}`})))
+            setFlightOptions(data.map((flight) => ({value:flight.id, label:`Flight #${flight.id}, from ${flight.origin_country} to ${flight.destination_country}. Departing at ${(new Date(flight.departure_time)).toUTCString()}. Tickets left: ${flight.remaining_tickets}.`})))
 
         }
         else{
@@ -73,7 +73,7 @@ const ViewAirlineFlights= () => {
     return (<div>
         <h5>Airline: {user.username}</h5>
         <div className="card text-center">
-        <Link className="btn btn-primary btn-sm" to="/airline/add_fli" >Add a flight</Link>
+        <Link className="btn btn-primary btn-sm" to="/airline/add_flight" >Add a flight</Link>
         <button className="btn btn-primary btn-sm" onClick={()=>setBack()}>All Flights</button>
 
         </div>
