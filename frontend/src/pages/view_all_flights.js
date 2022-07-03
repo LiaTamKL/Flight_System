@@ -43,12 +43,7 @@ const ViewAirlineFlights= () => {
     }
     let setsearchresults = (e)=>{
         e.preventDefault()
-        for(var i=0; i<flights.length; i++) {
-            if (flights[i].id===parseInt(e.target.flight.value)){
-            setSearched(flights[i])
-            break 
-            }
-          }
+        setSearched(flights.find(flight=> flight.id===parseInt(e.target.flight.value)))
     }
 
     let setBack = ()=>{
