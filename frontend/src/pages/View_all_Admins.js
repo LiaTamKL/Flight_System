@@ -4,7 +4,7 @@ import { AdminCard} from "../components/UserCards";
 import AuthContext from "../context/authentication";
 import { Link } from "react-router-dom";
 import GetUsers from "../methods/AdminMethods";
-import { DeleteUser, UpdateToAdminFromCus } from "../methods/AdminMethods";
+import { DeleteUser } from "../methods/AdminMethods";
 
 const ViewAdmins= () => {
     const [admins, setAdmins] = useState([]);

@@ -1,6 +1,5 @@
-import React, { useState , useEffect, useContext } from 'react'
-import {useLocation} from "react-router-dom";
-import { CheckIfFlightFormIsValid, CreateMyFlight, UpdateMyFlight } from '../methods/AirlineMethods';
+import React, { useState , useContext } from 'react'
+import { CheckIfFlightFormIsValid, CreateMyFlight } from '../methods/AirlineMethods';
 import AuthContext from '../context/authentication';
 import NewFlightForm from '../forms/NewFlightForm';
 

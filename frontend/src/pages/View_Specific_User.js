@@ -35,12 +35,7 @@ const SearchForUser = ()=>{
 
     const searchforaccount = async(e)=>{
         e.preventDefault()
-        for(var i=0; i<allAccounts.length; i++) {
-            if (allAccounts[i].id===parseInt(e.target.username.value)){
-            setSearchedItem(allAccounts[i])
-            break 
-            }
-          }
+        setSearchedItem(allAccounts.find(account=> account.id===parseInt(e.target.username.value)))
     }
     let Delete= async(e) =>{
         let result = await DeleteUser(e, authToken)

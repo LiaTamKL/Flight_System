@@ -18,7 +18,7 @@ let cust_options  = [
 
 let airline_options = [
   { value: 'airline', label: 'All my Flights' },
-  { value: 'airline/add_fli', label: 'Add flight' },
+  { value: 'airline/add_flight', label: 'Add flight' },
 ]
 
 let general_options = [
