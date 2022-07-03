@@ -9,7 +9,6 @@ const Register= () => {
     let nav = useNavigate()
     let [message, setMessage] = useState(null)
     const [errors, setErrors] = useState([])
-    console.log('THE START', errors)
 
     let register = async (e) =>{
         e.preventDefault()
