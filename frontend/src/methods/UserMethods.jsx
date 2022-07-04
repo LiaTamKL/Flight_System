@@ -41,7 +41,7 @@ let UserForm = async (e, account_role, method, url) =>{
  */
 export const UpdateUser=async(context, authToken)=>{
     var csrftoken = GetCookie('csrftoken')
-    let response = await fetch('http://127.0.0.1:8000/backend/api/user_api',{
+    let response = await fetch('/backend/api/user_api',{
         method:'PATCH',
         headers:{
             'Accept': 'application/json',
@@ -71,7 +71,7 @@ export const PassWordUpdate=async(e, authToken)=>{
  * 
  */
 export const getUserInfo = async(authToken) =>{
-        let response = await fetch('http://127.0.0.1:8000/backend/api/user_api', {
+        let response = await fetch('/backend/api/user_api', {
             method:'GET',
             headers:{
                 'Content-Type':'application/json',

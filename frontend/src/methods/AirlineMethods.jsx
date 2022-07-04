@@ -12,7 +12,7 @@ import GetCookie from "../utilities/csrf_token";
 export const ViewMyFlights = async(authToken) => {
   var csrftoken = GetCookie('csrftoken')
 
-  let response = await fetch('http://127.0.0.1:8000/backend/api/airline_api', {
+  let response = await fetch('/backend/api/airline_api', {
       method:'GET',
       headers:{
           'Content-Type':'application/json',
@@ -33,7 +33,7 @@ export const ViewMyFlights = async(authToken) => {
 export const CreateMyFlight = async(e, authToken) =>{
     var csrftoken = GetCookie('csrftoken')
   
-    let response = await fetch('http://127.0.0.1:8000/backend/api/airline_api', {
+    let response = await fetch('/backend/api/airline_api', {
         method:'POST',
         headers:{
             'Content-Type':'application/json',
@@ -60,7 +60,7 @@ export const CreateMyFlight = async(e, authToken) =>{
 export const  DeleteFlightAsAirline = async(id,authToken)=>{
     var csrftoken = GetCookie('csrftoken')
 
-    let response = await fetch(`http://127.0.0.1:8000/backend/api/airline_api/${id}`, {
+    let response = await fetch(`/backend/api/airline_api/${id}`, {
             method:'DELETE',
             headers:{
                 'Content-Type':'application/json',
@@ -82,7 +82,7 @@ export const  DeleteFlightAsAirline = async(id,authToken)=>{
 export const UpdateMyFlight = async(e, id, authToken) =>{
       var csrftoken = GetCookie('csrftoken')
     
-      let response = await fetch(`http://127.0.0.1:8000/backend/api/airline_api/${id}`, {
+      let response = await fetch(`/backend/api/airline_api/${id}`, {
           method:'PATCH',
           headers:{
               'Content-Type':'application/json',

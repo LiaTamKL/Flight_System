@@ -11,7 +11,7 @@ import GetCookie from "../utilities/csrf_token";
 const GetUsers = async(view, authToken) =>{
     var csrftoken = GetCookie('csrftoken')
 
-    let response = await fetch('http://127.0.0.1:8000/backend/api/admin_api', {
+    let response = await fetch('/backend/api/admin_api', {
         method:'POST',
         headers:{
             'Content-Type':'application/json',
@@ -32,7 +32,7 @@ const GetUsers = async(view, authToken) =>{
 export const  DeleteUser = async(username,authToken)=>{
     var csrftoken = GetCookie('csrftoken')
 
-    let response = await fetch(`http://127.0.0.1:8000/backend/api/admin_api/${username}`, {
+    let response = await fetch(`/backend/api/admin_api/${username}`, {
             method:'DELETE',
             headers:{
                 'Content-Type':'application/json',
@@ -52,7 +52,7 @@ export const  DeleteUser = async(username,authToken)=>{
 export const UpdateToAdminFromCus = async(e,authToken)=>{
     var csrftoken = GetCookie('csrftoken')
 
-    let response = await fetch('http://127.0.0.1:8000/backend/api/admin_api', {
+    let response = await fetch('/backend/api/admin_api', {
         method:'PATCH',
         headers:{
             'Content-Type':'application/json',
@@ -76,7 +76,7 @@ export const UpdateToAdminFromCus = async(e,authToken)=>{
  */
 export const GetSpecificUser = async(username, authToken) =>{
     var csrftoken = GetCookie('csrftoken')
-    let response = await fetch('http://127.0.0.1:8000/backend/api/admin_api', {
+    let response = await fetch('/backend/api/admin_api', {
         method:'POST',
         headers:{
             'Content-Type':'application/json',
@@ -130,7 +130,7 @@ export let Check_if_User = async(user, params,role, authToken, nav)=>{
  */
 export let TurnIntoAirline=async(username,e,authToken)=>{
     var csrftoken = GetCookie('csrftoken')
-    let response = await fetch('http://127.0.0.1:8000/backend/api/admin_api', {
+    let response = await fetch('/backend/api/admin_api', {
         method:'PATCH',
         headers:{
             'Content-Type':'application/json',
@@ -158,7 +158,7 @@ export let TurnIntoAirline=async(username,e,authToken)=>{
 export let TurnIntoAdmin=async(username,e,authToken)=>{
     var csrftoken = GetCookie('csrftoken')
 
-    let response = await fetch('http://127.0.0.1:8000/backend/api/admin_api', {
+    let response = await fetch('/backend/api/admin_api', {
         method:'PATCH',
         headers:{
             'Content-Type':'application/json',
@@ -186,7 +186,7 @@ export let TurnIntoAdmin=async(username,e,authToken)=>{
 export let TurnIntoCustomer=async(username,e,authToken)=>{
     var csrftoken = GetCookie('csrftoken')
 
-    let response = await fetch('http://127.0.0.1:8000/backend/api/admin_api', {
+    let response = await fetch('/backend/api/admin_api', {
         method:'PATCH',
         headers:{
             'Content-Type':'application/json',

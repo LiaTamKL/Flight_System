@@ -23,7 +23,7 @@ class AnonymusFancade(BaseFuncade):
 
     def add_customer(form , created_account) :
         form.save()
-        created_customer = models.Customer.objects.get(phone_number =  form.data['phone_number'])
+        created_customer = Customer.objects.get(phone_number =  form.data['phone_number'])
         created_customer.account_id = created_account.id
         created_customer.save()
 

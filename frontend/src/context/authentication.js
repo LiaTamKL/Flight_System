@@ -27,7 +27,7 @@ export const AuthenticationProvider = ({children}) => {
     let RefreshToken = async ()=>{
         console.log('HELLO IM REFRESHING NOW')
         //change the url when final package
-        let response = await fetch('http://127.0.0.1:8000/backend/token/refresh/',{
+        let response = await fetch('/backend/token/refresh/',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -53,7 +53,7 @@ export const AuthenticationProvider = ({children}) => {
     let loginUser = async (e)=>{
         e.preventDefault()
         //change the url when final package
-         let response = await fetch('http://127.0.0.1:8000/backend/token/',{
+         let response = await fetch('/backend/token/',{
              method:'POST',
              headers:{
                  'Content-Type':'application/json'

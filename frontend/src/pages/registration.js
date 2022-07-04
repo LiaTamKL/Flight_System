@@ -20,7 +20,7 @@ const Register= () => {
         setMessage('')
 
         //change the url when final package
-        let result = await UserForm(e, 'Customer', 'POST', 'http://127.0.0.1:8000/backend/api/user_api')
+        let result = await UserForm(e, 'Customer', 'POST', '/backend/api/user_api')
         let data =  result.data
         let status = result.status
         
