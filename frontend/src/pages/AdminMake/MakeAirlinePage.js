@@ -1,9 +1,8 @@
 import {useState, useEffect, useContext} from "react";
-import AuthContext from "../context/authentication";
-import AirlineForm from "../forms/AirlineForm";
-import { useParams } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
-import { Check_if_User, TurnIntoAirline } from "../methods/AdminMethods";
+import AuthContext from "../../context/authentication";
+import AirlineForm from "../../forms/AirlineForm";
+import { useParams , useNavigate } from 'react-router-dom';
+import { Check_if_User, TurnIntoAirline } from "../../methods/AdminMethods";
 
 const MakeAnAirline = () =>{
     let params = useParams();

@@ -2,7 +2,6 @@ import React, {useState, useEffect, useContext}  from 'react'
 import { useParams , useNavigate,useLocation, renderMatches  } from "react-router-dom";
 import { ReactComponent as Arrow } from '../assets/arrow-left.svg'
 // import CreateFlightForm from '../forms/CreateFlightForm'
-import { GetFlightMethod } from '../methods/FlightMethods'
 // import { DeleteFlight} from '../methods/FlightMethods'
 import { format , parseISO} from "date-fns";
 import { CreateTicket, RemoveTicket } from '../methods/TicketMethods';

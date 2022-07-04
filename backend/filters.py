@@ -18,18 +18,16 @@ class Flightfilter(FilterSet):
             "departure_time": ["exact"],
             "landing_time": ["exact"],
             "remaining_tickets":["exact"],
-           # for multiple country search , add ["exact" , "in"]  
 
         }
-        # fields = ('from_departure_time', 'to_arrival_time')
 
-class Ticketfilter(FilterSet):
-    class Meta:
-        model = Flight_Ticket
-        fields = {
-            'customer': ["in", "exact"],
-            'flight': ["in", "exact"]
-        }
+# class Ticketfilter(FilterSet):
+#     class Meta:
+#         model = Flight_Ticket
+#         fields = {
+#             'customer': ["in", "exact"],
+#             'flight': ["in", "exact"]
+#         }
 
 class Countryfilter(FilterSet):
     class Meta:

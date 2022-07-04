@@ -1,9 +1,9 @@
 import {useState, useEffect, useContext} from "react";
-import AuthContext from "../context/authentication";
+import AuthContext from "../../context/authentication";
 import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import { Check_if_User, TurnIntoAdmin } from "../methods/AdminMethods";
-import AdminForm from "../forms/AdminForm";
+import { Check_if_User, TurnIntoAdmin } from "../../methods/AdminMethods";
+import AdminForm from "../../forms/AdminForm";
 
 const MakeAnAdmin = () =>{
     let params = useParams();

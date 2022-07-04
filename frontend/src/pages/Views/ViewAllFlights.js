@@ -1,11 +1,11 @@
 
 import {useState, useEffect, useContext, useRef} from "react";
-import AuthContext from "../context/authentication";
+import AuthContext from "../../context/authentication";
 import { Link } from "react-router-dom";
-import { DeleteFlightAsAirline, ViewMyFlights, CheckIfFlightFormIsValid, UpdateMyFlight } from "../methods/AirlineMethods";
-import FlightCard from "../components/FlightCard";
+import { DeleteFlightAsAirline, ViewMyFlights, CheckIfFlightFormIsValid, UpdateMyFlight } from "../../methods/AirlineMethods";
+import FlightCard from "../../components/FlightCard";
 import Select from 'react-select'
-import NewFlightForm from "../forms/NewFlightForm";
+import NewFlightForm from "../../forms/NewFlightForm";
 
 const ViewAirlineFlights= () => {
     const [searched, setSearched] = useState(false);

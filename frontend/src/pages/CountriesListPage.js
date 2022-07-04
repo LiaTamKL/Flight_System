@@ -3,9 +3,6 @@ import ListItem from '../components/ListItem'
 import AddCreateButton from '../components/AddCreateButton'
 
 
-
-
-
 const CountriesListPage = () => {
      let [Countries , setCountries] = useState([])
     

@@ -50,12 +50,10 @@ let getMyTickets = async () => {
         let response = await fetch(searchurl)
         data = await response.json()
         setMyFlights(data)
-
     }
-
     else{alert(status, data)}
-
 }
+
 
 
 

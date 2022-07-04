@@ -58,13 +58,6 @@ class AccountSerializer(ModelSerializer):
     class Meta:
         model = Account
         fields = '__all__'
-    # def validate_email(self, data):
-    #     email = data['email']
-    #     try:
-    #         account = Account.objects.exclude(pk=self.instance.pk).get(email=email)
-    #     except Account.DoesNotExist:
-    #         return email
-    #     raise ValidationError(f'email: {email} is already in use')
 
 class CustomerSerializer(ModelSerializer):
     account = foreign_key_link("username")

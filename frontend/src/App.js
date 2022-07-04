@@ -1,4 +1,5 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.css'
 import Header from './components/Header'
 import FlightsListPage from './pages/FlightsListPage'; 
 import FlightPage from './components/FlightPage';
@@ -11,27 +12,27 @@ import MainPage from './pages/main';
 import Register from './pages/registration';
 import NotFound from './pages/404Page';
 import UpdatePage from './pages/update';
-import MakeAnAirline from './pages/make_airline_page';
 import {
   Routes,
   Route,
   Navigate
 } from "react-router-dom";
 
-import 'bootstrap/dist/css/bootstrap.css'
-import MakeAnAdmin from './pages/Make_Admin_Page';
-import MakeACustomer from './pages/Make_Customer_Page';
-import ViewAirlines from './pages/View_all_Airlines';
-import ViewAdmins from './pages/View_all_Admins';
-import SearchForUser from './pages/View_Specific_User';
-import ViewAirlineFlights from './pages/view_all_flights';
-import CreateFlightFormAirline from './forms/CreateFlightFormAirline';
+
 import FlightSearch from './forms/FlightSearch'
-import TicketPage from './pages/TicketPage';
 import CustomerPage from './pages/CustomerPage'
-import FlightForm from './forms/NewFlightForm';
-import MakeCountry from './pages/Make_Country';
-import CreateAFlight from './pages/Make_a_Flight';
+
+
+import ViewAirlines from './pages/Views/ViewAllAirlines';
+import ViewAdmins from './pages/Views/ViewAllAdmins';
+import SearchForUser from './pages/Views/ViewSpecificUser';
+import ViewAirlineFlights from './pages/Views/ViewAllFlights';
+
+import MakeAnAirline from './pages/AdminMake/MakeAirlinePage';
+import MakeAnAdmin from './pages/AdminMake/MakeAdminPage';
+import MakeACustomer from './pages/AdminMake/MakeCustomerPage';
+import MakeCountry from './pages/AdminMake/MakeCountry';
+import CreateAFlight from './pages/AdminMake/MakeAFlight';
 
 
 
@@ -46,11 +47,8 @@ function App() {
 
             <Route path='*' element={<NotFound/>} />
             <Route path = "/" exact element={<MainPage />} />
-            {/* <Route path = "/flights" element={<FlightsListPage />} /> */}
 
-            {/* <Route path="/login" element={<LoggedOut/>}> */}
               <Route path="/login" element={<LoginPage/>} />
-            {/* </Route>   */}
             <Route path="/register" element={<LoggedOut/>}>
               <Route path='' element={<Register/>}/>
             </Route>
@@ -82,14 +80,9 @@ function App() {
               <Route path='' element={<ViewAirlineFlights/>}/>
               <Route path='add_flight' element={<CreateAFlight/>}/>
             </Route>
-
-            {/* <Route path = '/flights' exact element={<FlightsListPage />}/> */}
-            {/* <Route path = '/flights/:id/update' element={<CreateFlightForm />} />
-            <Route path = '/flights/create'  element={<CreateFlightForm />}  /> */}
             
             <Route path = '/flights' exact element={<FlightsListPage />}/>
             <Route path = 'flights/:id' element={<FlightPage />} />
-            {/* <Route path='flights/search' element={<FlightSearch />}/> */}
             
 
            

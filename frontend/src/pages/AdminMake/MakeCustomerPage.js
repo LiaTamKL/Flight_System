@@ -1,9 +1,8 @@
 import {useState, useEffect, useContext} from "react";
-import AuthContext from "../context/authentication";
-import { useParams } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
-import { Check_if_User, TurnIntoCustomer } from "../methods/AdminMethods";
-import CustomerForm from "../forms/CustomerForm";
+import AuthContext from "../../context/authentication";
+import { useParams , useNavigate} from 'react-router-dom';
+import { Check_if_User, TurnIntoCustomer } from "../../methods/AdminMethods";
+import CustomerForm from "../../forms/CustomerForm";
 
 const MakeACustomer = () =>{
     let params = useParams();

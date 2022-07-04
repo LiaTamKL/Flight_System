@@ -1,7 +1,7 @@
 import React, { useState , useContext } from 'react'
-import { CheckIfFlightFormIsValid, CreateMyFlight } from '../methods/AirlineMethods';
-import AuthContext from '../context/authentication';
-import NewFlightForm from '../forms/NewFlightForm';
+import { CheckIfFlightFormIsValid, CreateMyFlight } from '../../methods/AirlineMethods';
+import AuthContext from '../../context/authentication';
+import NewFlightForm from '../../forms/NewFlightForm';
 
 const CreateAFlight = () =>{
     let [message, setMessage] = useState()

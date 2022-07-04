@@ -1,12 +1,12 @@
 
 import {useState, useEffect, useContext, useRef} from "react";
-import { AirlineCard } from "../components/UserCards";
-import AuthContext from "../context/authentication";
+import { AirlineCard } from "../../components/UserCards";
+import AuthContext from "../../context/authentication";
 import { Link } from "react-router-dom";
-import GetUsers from "../methods/AdminMethods";
-import { DeleteUser } from "../methods/AdminMethods";
+import GetUsers from "../../methods/AdminMethods";
+import { DeleteUser } from "../../methods/AdminMethods";
 
-const ViewAirlines= () => {
+const ViewAirlines = () => {
     const [airlines, setAirlines] = useState([]);
     let {user, authToken} = useContext(AuthContext)
     const message = useRef()

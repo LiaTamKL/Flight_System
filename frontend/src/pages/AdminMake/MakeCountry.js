@@ -1,10 +1,10 @@
 import {useState, useContext} from "react";
-import AuthContext from "../context/authentication";
-import { CreateCountry } from "../methods/CountriesMethods";
-import CountryForm from "../forms/CountryForm";
+import AuthContext from "../../context/authentication";
+import { CreateCountry } from "../../methods/CountriesMethods";
+import CountryForm from "../../forms/CountryForm";
 import { useLocation} from "react-router-dom";
 
-const MakeCountry= () =>{
+const MakeCountry = () =>{
     let {authToken} = useContext(AuthContext)
     let countr = useLocation()
     let [message, setMessage] = useState()
