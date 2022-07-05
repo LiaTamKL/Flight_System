@@ -258,7 +258,7 @@ def specific_country_api(request, id):
 
 ##################### ACCOUNT ACTIONS ############################
 
-@api_view(['GET', 'POST', 'PATCH', 'DELETE'])
+@api_view(['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
 def user_api(request):
 
     #register the user, if good, returns details on user and status 200, returns 400 and errors otherwise
@@ -278,9 +278,15 @@ def user_api(request):
             return respon
 
         #This handles updates, please insert all values an account type is meant to have + email
-        if request.method == 'PATCH':
+        if request.method == 'PUT':
             res = update_user_user_api(request)
             return res
+
+        #This handles password updates
+        if request.method == 'PATCH':
+            res = change_password(request)
+            return res
+
 
         #This will be to delete current user. 
         if request.method == 'DELETE':  

@@ -8,7 +8,8 @@ let admin_options = [
   { value: 'admin/view_specific', label: 'Search User' },
   { value: 'admin', label: 'All Customers' },
   { value: 'admin/view_admins', label: 'All Admins' },
-  { value: 'admin/view_airlines', label: 'All Airlines' }
+  { value: 'admin/view_airlines', label: 'All Airlines' },
+  { value: 'admin/make_country', label: 'New Country' },
 ]
 
 let cust_options  = [

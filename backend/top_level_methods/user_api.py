@@ -8,6 +8,7 @@ from ..models import *
 from ..DAL.admin_facade import AdministratorFuncade
 from ..DAL.airline_facade import Airline_Facade
 from ..DAL.customer_facade import CustomerFancade
+from django.contrib.auth.hashers import check_password
 
 #takes request, creates from it a new customer account
 def register_user(request):
@@ -112,3 +113,14 @@ def update_user_user_api(request):
             return Response(f'Account for {request.user.account_role} {request.user.username} updated successfully')
 
 
+def change_password(request):
+    """takes form data, changes logged in user password
+    if old password does not match what entered, returns 400
+    """
+    if not check_password(request.data['old_password'], request.user.password):
+        return Response("Old Password does not match what was typed", status=status.HTTP_400_BAD_REQUEST)
+    else:
+        user = request.user
+        user.set_password(request.data['password'])
+        user.save()
+        return Response('Your Password has been changed!')

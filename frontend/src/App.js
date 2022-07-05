@@ -33,6 +33,7 @@ import MakeAnAdmin from './pages/AdminMake/MakeAdminPage';
 import MakeACustomer from './pages/AdminMake/MakeCustomerPage';
 import MakeCountry from './pages/AdminMake/MakeCountry';
 import CreateAFlight from './pages/AdminMake/MakeAFlight';
+import UpdatePassword from './pages/update_password';
 
 
 
@@ -47,13 +48,13 @@ function App() {
 
             <Route path='*' element={<NotFound/>} />
             <Route path = "/" exact element={<MainPage />} />
-
               <Route path="/login" element={<LoginPage/>} />
             <Route path="/register" element={<LoggedOut/>}>
               <Route path='' element={<Register/>}/>
             </Route>
             <Route path='/update' exact element={<LoggedinGeneric/>}> 
               <Route path='' element={<UpdatePage/>}/>
+              <Route path='password' element={<UpdatePassword/>}/>
             </Route>
 
             <Route path='/admin'  exact element={<LoggedinRoute account_role="Admin"/>}>

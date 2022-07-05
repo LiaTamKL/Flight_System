@@ -7,6 +7,7 @@ import AirlineForm from '../forms/AirlineForm'
 import AdminForm from '../forms/AdminForm'
 import { useState, useEffect } from 'react'
 import { UpdateUser, getUserInfo } from '../methods/UserMethods'
+import { Link } from "react-router-dom";
 
 const UpdatePage = () =>{
     let {user, authToken, logout} = useContext(AuthContext)
@@ -64,8 +65,12 @@ const UpdatePage = () =>{
     }
 
 return(<>
+    <Link className="btn btn-primary btn-sm" to="/update/password" >Change Password</Link>
+    <br/><br/>
     <p className="alert alert-warning">Warning: this will ask you to log back in if you update your account</p>
     {message? (<p className="alert alert-warning">{message}</p>):<></>}
+
+
     <form onSubmit={(e)=>handleSubmit(e)}>
         <UpdateAccountForm/>
                 {user.account_role === 'Airline' ? (
@@ -80,8 +85,10 @@ return(<>
                 ):<></>}  
                   </>):<></>}
                   <br/>
-        <input type="submit"/>
-    </form></>
+        <input className="btn btn-primary btn-sm" type="submit"/>
+    </form>
+    
+    </>
 )
 
 }

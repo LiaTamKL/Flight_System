@@ -42,7 +42,7 @@ let UserForm = async (e, account_role, method, url) =>{
 export const UpdateUser=async(context, authToken)=>{
     var csrftoken = GetCookie('csrftoken')
     let response = await fetch('/backend/api/user_api',{
-        method:'PATCH',
+        method:'PUT',
         headers:{
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -81,5 +81,30 @@ export const getUserInfo = async(authToken) =>{
         let data = await response.json()
         return {'data':data, 'status':response.status}
 }
+
+/**
+ * update password
+ * @param  {Dictionary} e The information to update (old_password, password)
+ * @param  {Dictionary} authToken The authentication token
+ * @return {Dictionary} The data and the response.status
+ * 
+ */
+ export const PasswordChange=async(e, authToken)=>{
+    var csrftoken = GetCookie('csrftoken')
+    let response = await fetch('/backend/api/user_api',{
+        method:'PATCH',
+        headers:{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization':'Bearer ' + String(authToken.access),
+            'X-CSRFToken': csrftoken
+            },
+            body:JSON.stringify({'old_password':e.target.old_password.value,
+                                 'password': e.target.password.value,},)
+        })
+    let data = await response.json()
+    return {'data':data, 'status':response.status}}
+
+
 
 export default UserForm
