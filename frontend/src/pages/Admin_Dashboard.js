@@ -5,9 +5,12 @@ import AuthContext from "../context/authentication";
 import { Link } from "react-router-dom";
 import GetUsers from "../methods/AdminMethods";
 import { DeleteUser, UpdateToAdminFromCus } from "../methods/AdminMethods";
+import Select from 'react-select'
 
 const AdminDashboard= () => {
     const [customers, setCustomers] = useState([]);
+    const [searchedItem, setSearchedItem] = useState(null);
+    const [searchOptions, setSearchOptions] = useState([]);
     let {user, authToken} = useContext(AuthContext)
     const message = useRef()
     useEffect(()=>{
@@ -22,6 +25,7 @@ const AdminDashboard= () => {
         let status = result.status
         if (status ===200){
             setCustomers(data)
+            setSearchOptions(data.map((account) => ({value:account.id, label:`${account.account}, ${account.first_name} ${account.last_name}. Number is ${account.phone_number}`})))
         }
         else{
             alert(status, data)
@@ -46,15 +50,48 @@ const AdminDashboard= () => {
     }
 
 
+    const searchforaccount = async(e)=>{
+        e.preventDefault()
+        setSearchedItem(customers.find(account=> account.id===parseInt(e.target.username.value)))}
+
+
     return (<div>
-        <h5>YOU'VE ARRIVED AT THE ADMIN PAGE {user.username}</h5>
+        <h5>Welcome Admin {user.username}</h5>
         <div className="card text-center">
         <Link className="btn btn-primary btn-sm" to="/admin/view_admins" >View All Admins</Link>
+        <button className="btn btn-primary btn-sm" onClick={()=>setSearchedItem(false)}>All Customers</button>
         <Link className="btn btn-primary btn-sm" to="/admin/view_airlines" >View All Airlines</Link>
         <Link className="btn btn-primary btn-sm" to="/admin/view_specific" >Search for user</Link>
         </div>
         <div className="card text-center">All Customers</div>
         {message.current? (<p className="alert alert-secondary">{message.current}</p>):<></>}
+
+
+        <form onSubmit={(e)=>searchforaccount(e)}>
+        <Select 
+                required
+                name='username'
+                id='username'
+                className='fancy-select'
+                placeholder = 'Search for a user'
+                options ={searchOptions}
+                isSearchable = {true}
+                isClearable = {true}  />
+            <div className="col-md-12 text-center">
+        <input type="submit" className="btn btn-primary btn-sm" value='search'/></div>
+        </form>
+
+        {searchedItem?<>
+        {
+        <div key={searchedItem.id} className="list-group-item list-group-item-action flex-column align-items-start">
+        <p>Searched for:</p>
+        <CustomerCard customer={searchedItem}/>
+        <Link className="btn btn-primary btn-sm" to={`/admin/make_airline/${searchedItem.account}`} >Add as Airline</Link>
+        <button onClick={()=>UpdateToAdmin(searchedItem)}className="btn btn-primary btn-sm" >Add as Admin</button>
+        <button onClick={()=>Delete(searchedItem.account)}className="btn btn-danger btn-sm" >Delete</button>
+        </div>
+        }</>
+        :<>
         
         {
                 customers?.length > 0
@@ -70,7 +107,7 @@ const AdminDashboard= () => {
                 ) : (
                         <h2>No Customers found</h2>
                 )
-            }
+            }</>}
     </div>)
 }
 

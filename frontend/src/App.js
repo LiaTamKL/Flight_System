@@ -5,7 +5,7 @@ import FlightsListPage from './pages/FlightsListPage';
 import FlightPage from './components/FlightPage';
 import LoginPage from './pages/login_page';
 import {AuthenticationProvider} from './context/authentication'
-import AdminDashboard from './pages/admin_Test';
+import AdminDashboard from './pages/Admin_Dashboard';
 import LoggedinRoute from './utilities/route_authentication';
 import {LoggedinGeneric, LoggedOut} from './utilities/route_authentication';
 import MainPage from './pages/main';
