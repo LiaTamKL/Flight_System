@@ -28,11 +28,10 @@ class CustomerFancade(BaseFuncade):
         flight = Flight.objects.get(pk = form['flight'] )
         flight.remaining_tickets -= 1
         flight.save() 
-
-
+        return 1
 
     def remove_ticket(form):
-        ticket_to_remove = Flight_Ticket.objects.get(pk =form['ticket'].id)
+        ticket_to_remove = Flight_Ticket.objects.get(pk= form['ticket'])
         ticket_to_remove.delete()
         
         # Add removed ticket to flight
@@ -40,6 +39,7 @@ class CustomerFancade(BaseFuncade):
         flight.remaining_tickets += 1
         flight.save() 
    
+
 
 
     #need to be logged in
@@ -57,3 +57,6 @@ class CustomerFancade(BaseFuncade):
         flight.landing_time = form['landing_time']
         flight.remaining_tickets = form['remaining_tickets']
         flight.save()
+
+
+ 

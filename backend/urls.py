@@ -13,13 +13,10 @@ urlpatterns = [
     # path('test/', test),
         
 
-    path('flights/search/', Flightfilter.as_view()),
-    # path ('flights/',Flightfilter.as_view()),
+    # path('flights/search/', Flightfilter.as_view()),
+    path ('flights/',Flightfilter.as_view()),
 
     # path ('flights/<str:id>/', getfli),
-    
-
-
     
 
     # path('airlines/', allair,),

@@ -15,7 +15,7 @@ import AsyncSelect from 'react-select/async';
 import FlightsListPage from "../pages/FlightsListPage";
 import { useNavigate , useLocation } from "react-router-dom"
 import './Form.css'
-
+import { FilteredFlightsMethod, FilteredCountryMethod} from "../methods/FilterMethods"
 
 
 
@@ -23,93 +23,58 @@ const FlightSearch = () => {
     let navigate = useNavigate();
     let[filteredFlights, setFilteredFlights] = useState();
 
-    // console.log(menuIsOpen);
-
-    const [range, setRange] = useState([
-        {
-          startDate: new Date(),
-          endDate: addDays(new Date(), 7),
-          key: 'selection'
-        }
-      ])
+    // const [range, setRange] = useState([
+    //     {
+    //       startDate: new Date(),
+    //       endDate: addDays(new Date(), 7),
+    //       key: 'selection'
+    //     }
+    //   ])
     
     
-    let[display,setDisplayOption] = useState();
     let[fromSearchOption, setFromSearchOption] = useState(0);
     let[toSearchOption, settoSearchOption] = useState(0);
-    
-    let[countryOptions, setCountryOptions] = useState();
-
+    // let[countryOptions, setCountryOptions] = useState();
     let [departureTime, setDepartureTime] = useState();
-
-
     // let [arrivalTime, setArrivalTime] = useState(format(new Date(), "yyyy-MM-dd"))
     let [arrivalTime, setArrivalTime] = useState()
 
 
 
     useEffect(() => { 
-        // getCountries()
         getfilteredflights()
 
-        // }, [fromSearchOption, toSearchOption, departureTime, arrivalTime, range[0].startDate, range[0].endDate])
     }, [departureTime, arrivalTime, fromSearchOption , toSearchOption])
 
+ 
+
+    let getfilteredflights = async () => {
+        let filtered = await FilteredFlightsMethod(
+            {departureTime: departureTime,
+            arrivalTime: arrivalTime,
+            fromSearchOption:fromSearchOption,
+            toSearchOption:toSearchOption}
+            );
+
+        // console.log(filtered);
+        setFilteredFlights(filtered);
+    }
 
 
     let getCountries = async (searchTerm) => {
-
-        // console.log(searchTerm);
-
-        let response = await fetch(`/backend/api/country/?search=${searchTerm}`)
-
-        // let response = await fetch(`/backend/countries`)
-        let data = await response.json()
-        // countryOptions.current =  data.map((country) => ({value:country.id, label:country.country_name}))
-        return data?.map((country) => ({value:country.id, label:country.country_name}))
-
-
-        // setCountryOptions (data?.map((country) => ({value:country.id, label:country.country_name})))
-
-        // console.log(countryOptions.current);
-
-    }
-
-    let getfilteredflights = async () => {
-        let searchurl = '/backend/flights/?'
-        // consosle.log(departureTime.toUTCString());
-        // console.log(range[0].startDate);
-        // let formatteddeptime =  format(new Date(range[0].startDate), "yyyy-MM-dd'T'HH:mm")
-        // let formattedlandtime =  format(new Date(range[0].endDate), "yyyy-MM-dd'T'HH:mm")
-        // if (departureTime){ searchurl += `&from_departure_time=${formatteddeptime}`}
-        // if (arrivalTime){searchurl += `&to_arrival_time=${formattedlandtime}`}
-
-
-
-        if (departureTime){searchurl += `&from_departure_time=${format(new Date(departureTime), "yyyy-MM-dd'T'HH:mm")}`}
-        if (arrivalTime){searchurl += `&to_arrival_time=${format(new Date(arrivalTime), "yyyy-MM-dd'T'HH:mm")}`}        
-        if (fromSearchOption) {searchurl +=`&origin_country=${fromSearchOption}`;}
-        if (toSearchOption) {searchurl +=`&destination_country=${toSearchOption}`;}
-
-        let response = await fetch(searchurl)
-        let data = await response.json()
-        // console.log(data)
-        // return(data)
-        setFilteredFlights(data)
-
+        let filtered = await FilteredCountryMethod(searchTerm) 
+        return filtered?.map((country) => ({value:country.id, label:country.country_name}))
     }
 
 
-
-
-    let switchFileds= () => {
-        let temp =   fromSearchOption
-        setFromSearchOption(toSearchOption)
-        settoSearchOption(temp)
-        temp = countryOptions.find(({ value }) => value === fromSearchOption)
-        console.log(temp);
-        setDisplayOption(temp)
-    }
+    // let switchFileds= () => {
+    //     let temp =   fromSearchOption
+    //     setFromSearchOption(toSearchOption)
+    //     settoSearchOption(temp)
+    //     temp = countryOptions.find(({ value }) => value === fromSearchOption)
+    //     console.log(temp);
+    //     setDisplayOption(temp)
+    // }
 
 
     return (
@@ -143,9 +108,9 @@ const FlightSearch = () => {
                 // }
                 />
 
-                <div className="switch-fields" onClick={() =>{switchFileds()}}>
+                {/* <div className="switch-fields" onClick={() =>{switchFileds()}}>
                     <HiOutlineSwitchHorizontal />  
-                </div>
+                </div> */}
 
             <AsyncSelect
 

@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom'
 // }
 
 
-const ListIFlightitem = ({ flight , userrole , }) => {
+const ListIFlightitem = ({ flight , userrole }) => {
     let linkto
     if (userrole === "Customer"){
         linkto = `/customer/tickets/${flight.id}`
@@ -26,7 +26,7 @@ const ListIFlightitem = ({ flight , userrole , }) => {
 
     return (
         //pass variable thru link state={{ flight:flight,  "hello" }}
-        <Link to={linkto}  state={{ flight:flight }} >
+        <Link to={linkto}  state={{ flight:flight  }} >
             <div className="all-list-item" >
                 <p> {flight.airline}</p>
             </div>

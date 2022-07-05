@@ -1,4 +1,3 @@
-import React from 'react'
 import GetCookie from "../utilities/csrf_token";
 
 
@@ -42,9 +41,7 @@ const CreateTicket = async (flight_id, authToken) => {
 }
 
 
-
-
-let RemoveTicket = async(flight_id, ticket_id, authToken) => {
+let RemoveTicket = async(ticket, authToken) => {
   let csrftoken = GetCookie('csrftoken')
 
   let response = await fetch(`/backend/api/customer_api`, {
@@ -57,8 +54,8 @@ let RemoveTicket = async(flight_id, ticket_id, authToken) => {
 
     },
     body:JSON.stringify({
-      "flight":flight_id,
-      "ticket":ticket_id
+      "ticket":ticket.id,
+      "flight":ticket.flight,
     })})
 
   let data = await response.json()

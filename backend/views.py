@@ -123,12 +123,11 @@ def tickets_api(request):
     
     if request.method == 'POST':
         mytickets = add_ticket_api(request, customer)
+        return mytickets
 
     if request.method == 'DELETE':
         mytickets = remove_ticket_api(request)    
-
         return mytickets
-
     
 
 

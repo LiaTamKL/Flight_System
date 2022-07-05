@@ -1,10 +1,11 @@
-import React , {useContext , useEffect , useState, useRef} from 'react';
+import React , {useContext , useEffect , useState } from 'react';
 import AuthContext from "../context/authentication";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getUserInfo } from '../methods/UserMethods';
 import { ViewMyTickets } from "../methods/TicketMethods";
 import AddTicketCreateButton from '../components/AddTicketCreateButton'
-import { ListTicketitem , ListIFlightitem } from '../components/ListItem'
+import { ListIFlightitem } from '../components/ListItem'
+import { FilteredFlightsByIdMethod } from '../methods/FilterMethods';
 
 
 import './Pages.css';
@@ -22,9 +23,8 @@ const CustomerPage = () => {
     useEffect(() => {
         getUserData() 
         getMyTickets()
-        // flightsByTickets()
+        // eslint-disable-next-line
     }, [user])
-
 
 let getUserData = async () => {
         let result = await getUserInfo(authToken)
@@ -36,21 +36,17 @@ let getUserData = async () => {
 
 //gets tickets and flights connected to them 
 let getMyTickets = async () => {
+
     let result = await ViewMyTickets(authToken)
     let data =  result.data
     let status = result.status
-    if (status ===200)
-    {
-        setTickets(data)
 
-        let searchurl = '/backend/flights/?id__in='
-        data.map((ticket) => (
-            searchurl += ticket.flight + ','
-        ))
-        let response = await fetch(searchurl)
-        data = await response.json()
-        setMyFlights(data)
-    }
+
+    if (status ===200){
+        setTickets(data)
+        data = await FilteredFlightsByIdMethod(data)
+        setMyFlights(data)}
+
     else{alert(status, data)}
 }
 

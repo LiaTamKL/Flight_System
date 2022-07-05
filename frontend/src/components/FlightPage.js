@@ -1,36 +1,84 @@
-import React, {useState, useEffect, useContext}  from 'react'
-import { useParams , useNavigate,useLocation, renderMatches  } from "react-router-dom";
+import React, {useState, useEffect, useContext, useRef}  from 'react'
+import { useNavigate,useLocation } from "react-router-dom";
 import { ReactComponent as Arrow } from '../assets/arrow-left.svg'
-// import CreateFlightForm from '../forms/CreateFlightForm'
-// import { DeleteFlight} from '../methods/FlightMethods'
-import { format , parseISO} from "date-fns";
+import { format , parseISO, set} from "date-fns";
 import { CreateTicket, RemoveTicket } from '../methods/TicketMethods';
 import AuthContext from "../context/authentication";
+import { ViewMyTickets } from "../methods/TicketMethods";
+
 
 
 
 const FlightPage = () => {
   let  navigate = useNavigate();
+  let [isDisabledAdd, setIsDisabledAdd] = useState(false)
+  let [isDisabledRemove, setIsDisabledRemove] = useState(!isDisabledAdd)
+
+
+  let [addTicketMsg, setAddTicketMsg] = useState("Add a Ticket")
+  let [tickets, setTickets] = useState()
+  let [currentTicket,  setCurrentTicket] = useState()
+
+  // const tickets = useRef()
   let {user, authToken} = useContext(AuthContext);
   let { state } = useLocation();
   let flight = state.flight
-
   let formatTime = (flight) => {return format(parseISO(flight),  "dd/MM/yyyy HH:mm")}
   
-   
+  // using 2 useEffects to set tickets before checking validity.
+  // it forces rerender after setting the tickets
+  useEffect(() => { if(authToken) {getMyTickets()}}, [])
+
   useEffect(() => {
-     // eslint-disable-next-line
-     }, [flight])
+    checkIfBooked()
+    getCurrentTicket()
+   // eslint-disable-next-line
+     }, [flight, isDisabledRemove,isDisabledAdd, tickets])
+
+
+  let getMyTickets = async () => {
+
+  let result = await ViewMyTickets(authToken)
+  let data =  result.data
+  let status = result.status
+  if (status ===200){setTickets(data)}
+  else{alert(status, data)}
+
+}
+
+
+let getCurrentTicket = () => {
+   setCurrentTicket (tickets?.find((ticket) => ticket.flight === flight.id))
+}
+
+let checkIfBooked = () => {
+
+  if (currentTicket ){
+    setAddTicketMsg("Ticket Is Booked")
+    setIsDisabledAdd(true)
+    setIsDisabledRemove(false)
+    return
+   }
+    
+  if (flight?.remaining_tickets === 0 ){
+    setAddTicketMsg("No Tickets left")
+    setIsDisabledAdd(true)
+  }
   
 
+}
+  
+
+
+
   let handleAddTicket = () => {
-    CreateTicket(flight.id, authToken)
+    if (authToken){CreateTicket(flight.id, authToken)}
     navigate("/customer/tickets")
   }
 
- let handleRemoveTicket = () => {
 
-    RemoveTicket(flight.id, authToken)
+ let handleRemoveTicket = () => {
+    RemoveTicket(currentTicket, authToken)
     navigate("/customer/tickets")
 
  }
@@ -57,13 +105,19 @@ const FlightPage = () => {
         <button 
           type="button" 
           className="btn btn-outline-primary"
-          onClick={handleAddTicket}>
-            Add Ticket</button>
+          onClick={handleAddTicket}
+          disabled = {isDisabledAdd}>
+          
+
+           { addTicketMsg }
+           </button>
+
 
         <button 
         type="button" 
         className="btn btn-outline-danger"
-        onClick={handleRemoveTicket}>
+        onClick={handleRemoveTicket}
+        disabled = {isDisabledRemove}>
           Remove Ticket
         </button>
 
