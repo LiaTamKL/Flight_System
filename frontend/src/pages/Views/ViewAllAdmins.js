@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import GetUsers from "../../methods/AdminMethods";
 import { DeleteUser } from "../../methods/AdminMethods";
 import Select from 'react-select'
+import ReactPaginate from "react-paginate"
 
 const ViewAdmins= () => {
     const [admins, setAdmins] = useState([]);
@@ -44,6 +45,24 @@ const ViewAdmins= () => {
     const searchforaccount = async(e)=>{
         e.preventDefault()
         setSearchedItem(admins.find(account=> account.id===parseInt(e.target.username.value)))}
+
+    const [pagenumber, setPageNumber] = useState(0)
+    const adminPerPage = 3
+    const pagesSeen = pagenumber * adminPerPage
+
+    const displayAdmins = admins.slice(pagesSeen, pagesSeen + adminPerPage).map((admin)=>{
+    return (
+        <div key={admin.account} className="list-group-item list-group-item-action flex-column align-items-start">
+        <AdminCard admin={admin}/>
+        <Link className="btn btn-primary btn-sm" to={`/admin/make_customer/${admin.account}`} >Add as Customer</Link>
+        <Link className="btn btn-primary btn-sm" to={`/admin/make_airline/${admin.account}`} >Add as Airline</Link>
+        <button onClick={()=>Delete(admin.account)}className="btn btn-danger btn-sm" >Delete</button>
+    </div>
+    )})
+    const pageCount = Math.ceil(admins.length / adminPerPage)
+    const changePage = ({selected})=>{
+        setPageNumber(selected)
+    }
 
 
     return (<div>
@@ -89,14 +108,19 @@ const ViewAdmins= () => {
         {
                 admins?.length > 0
                 ? (<>
-                        {admins.map((admin)=>(
-                        <div key={admin.account} className="list-group-item list-group-item-action flex-column align-items-start">
-                            <AdminCard admin={admin}/>
-                            <Link className="btn btn-primary btn-sm" to={`/admin/make_customer/${admin.account}`} >Add as Customer</Link>
-                            <Link className="btn btn-primary btn-sm" to={`/admin/make_airline/${admin.account}`} >Add as Airline</Link>
-                            <button onClick={()=>Delete(admin.account)}className="btn btn-danger btn-sm" >Delete</button>
-                        </div>
-                        ))}</>
+                    {displayAdmins}
+                    <ReactPaginate
+                    previousLabel = {'Back'}
+                    nextLabel = {'Next'}
+                    pageCount={pageCount}
+                    onPageChange={changePage}
+                    siblingCount = {0}
+                    containerClassName={""}
+                    previousLinkClassName={"btn btn-outline-info"}
+                    nextLinkClassName={"btn btn-outline-info"}
+                    />
+                    </>
+                    
                 ) : (
                         <h2>No Admins found</h2>
                 )

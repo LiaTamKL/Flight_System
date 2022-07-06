@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import GetUsers from "../methods/AdminMethods";
 import { DeleteUser, UpdateToAdminFromCus } from "../methods/AdminMethods";
 import Select from 'react-select'
+import ReactPaginate from "react-paginate"
+
 
 const AdminDashboard= () => {
     const [customers, setCustomers] = useState([]);
@@ -55,6 +57,25 @@ const AdminDashboard= () => {
         setSearchedItem(customers.find(account=> account.id===parseInt(e.target.username.value)))}
 
 
+    const [pagenumber, setPageNumber] = useState(0)
+    const cusPerPage = 3
+    const pagesSeen = pagenumber * cusPerPage
+
+    const displayCustomers = customers.slice(pagesSeen, pagesSeen + cusPerPage).map((customer)=>{
+    return (
+        <div key={customer.account} className="list-group-item list-group-item-action flex-column align-items-start">
+        <CustomerCard customer={customer}/>
+        <Link className="btn btn-primary btn-sm" to={`/admin/make_airline/${customer.account}`} >Add as Airline</Link>
+        <button onClick={()=>UpdateToAdmin(customer)}className="btn btn-primary btn-sm" >Add as Admin</button>
+        <button onClick={()=>Delete(customer.account)}className="btn btn-danger btn-sm" >Delete</button>
+    </div>
+    )})
+    const pageCount = Math.ceil(customers.length / cusPerPage)
+    const changePage = ({selected})=>{
+        setPageNumber(selected)
+    }
+
+
     return (<div>
         <h5>Welcome Admin {user.username}</h5>
         <div className="card text-center">
@@ -95,15 +116,20 @@ const AdminDashboard= () => {
         
         {
                 customers?.length > 0
-                ? (<>
-                        {customers.map((customer)=>(
-                        <div key={customer.account} className="list-group-item list-group-item-action flex-column align-items-start">
-                            <CustomerCard customer={customer}/>
-                            <Link className="btn btn-primary btn-sm" to={`/admin/make_airline/${customer.account}`} >Add as Airline</Link>
-                            <button onClick={()=>UpdateToAdmin(customer)}className="btn btn-primary btn-sm" >Add as Admin</button>
-                            <button onClick={()=>Delete(customer.account)}className="btn btn-danger btn-sm" >Delete</button>
-                        </div>
-                        ))}</>
+                ? (
+                     <>
+                    {displayCustomers}
+                    <ReactPaginate
+                    previousLabel = {'Back'}
+                    nextLabel = {'Next'}
+                    pageCount={pageCount}
+                    onPageChange={changePage}
+                    siblingCount = {0}
+                    containerClassName={""}
+                    previousLinkClassName={"btn btn-outline-info"}
+                    nextLinkClassName={"btn btn-outline-info"}
+                    />
+                    </>
                 ) : (
                         <h2>No Customers found</h2>
                 )

@@ -6,11 +6,13 @@ import { DeleteFlightAsAirline, ViewMyFlights, CheckIfFlightFormIsValid, UpdateM
 import FlightCard from "../../components/FlightCard";
 import Select from 'react-select'
 import NewFlightForm from "../../forms/NewFlightForm";
+import ReactPaginate from "react-paginate"
 
 const ViewAirlineFlights= () => {
     const [searched, setSearched] = useState(false);
     const [flightOptions, setFlightOptions] = useState([]);
     const [flights, setFlights] = useState([]);
+    const [countries, setCountries] = useState([]);
     const [update, setUpdate] = useState(false)
     let {user, authToken} = useContext(AuthContext)
     let [message, setMessage] = useState()
@@ -27,6 +29,12 @@ const ViewAirlineFlights= () => {
         if (status ===200){
             setFlights(data)
             setFlightOptions(data.map((flight) => ({value:flight.id, label:`Flight #${flight.id}, from ${flight.origin_country} to ${flight.destination_country}. Departing at ${(new Date(flight.departure_time)).toUTCString()}. Tickets left: ${flight.remaining_tickets}.`})))
+            let response = await fetch(`/backend/countries`)
+            data = await response.json()
+            if (response.status===200){
+                setCountries(data)        
+    
+        }
 
         }
         else{
@@ -63,6 +71,23 @@ const ViewAirlineFlights= () => {
              setBack()
              getflights()
          }
+    }
+
+    const [pagenumber, setPageNumber] = useState(0)
+    const flightsPerPage = 2
+    const pagesSeen = pagenumber * flightsPerPage
+
+    const displayFlights = flights.slice(pagesSeen, pagesSeen + flightsPerPage).map((flight)=>{
+    return (
+        <div key={flight.id} className="list-group-item list-group-item-action flex-column align-items-start">
+        <FlightCard flight={flight} countries={countries}/>
+        <button onClick={()=>Delete(flight.id)}className="btn btn-danger btn-sm" >Delete</button>
+        <button onClick={()=>setUpdate(flight)}className="btn btn-primary btn-sm" >Update</button>
+    </div>
+    )})
+    const pageCount = Math.ceil(flights.length / flightsPerPage)
+    const changePage = ({selected})=>{
+        setPageNumber(selected)
     }
 
     return (<div>
@@ -108,7 +133,7 @@ const ViewAirlineFlights= () => {
         {
         <div key={searched.id} className="list-group-item list-group-item-action flex-column align-items-start">
         <p>Searched for:</p>
-        <FlightCard flight={searched}/>
+        <FlightCard flight={searched} countries={countries}/>
         <button onClick={()=>Delete(searched.id)}className="btn btn-danger btn-sm" >Delete</button>
         <button onClick={()=>setUpdate(searched)}className="btn btn-primary btn-sm" >Update</button>
         </div>
@@ -123,13 +148,18 @@ const ViewAirlineFlights= () => {
         {
                 flights?.length > 0
                 ? (<>
-                        {flights.map((flight)=>(
-                        <div key={flight.id} className="list-group-item list-group-item-action flex-column align-items-start">
-                            <FlightCard flight={flight}/>
-                            <button onClick={()=>Delete(flight.id)}className="btn btn-danger btn-sm" >Delete</button>
-                            <button onClick={()=>setUpdate(flight)}className="btn btn-primary btn-sm" >Update</button>
-                        </div>
-                        ))}</>
+                    {displayFlights}
+                    <ReactPaginate
+                    previousLabel = {'Back'}
+                    nextLabel = {'Next'}
+                    pageCount={pageCount}
+                    onPageChange={changePage}
+                    siblingCount = {0}
+                    containerClassName={""}
+                    previousLinkClassName={"btn btn-outline-info"}
+                    nextLinkClassName={"btn btn-outline-info"}
+                    />
+                    </>
                 ) : (
                         <h2>No Flights found</h2>
                 )

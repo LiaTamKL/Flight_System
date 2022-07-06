@@ -1,21 +1,44 @@
 
-import {useState, useEffect, useContext, useRef} from "react";
+import React, {useState, useEffect, useContext, useRef} from "react";
 import { AirlineCard } from "../../components/UserCards";
 import AuthContext from "../../context/authentication";
 import { Link } from "react-router-dom";
 import GetUsers from "../../methods/AdminMethods";
 import { DeleteUser } from "../../methods/AdminMethods";
 import Select from 'react-select'
+import ReactPaginate from "react-paginate"
 
 const ViewAirlines = () => {
     const [airlines, setAirlines] = useState([]);
     const [searchOptions, setSearchOptions] = useState([]);
     const [searchedItem, setSearchedItem] = useState(null);
+    const [countries, setCountries] = useState([]);
     let {user, authToken} = useContext(AuthContext)
+
     const message = useRef()
     useEffect(()=>{
         GetAirlines()
     },[])
+
+
+    const [pagenumber, setPageNumber] = useState(0)
+    const airlinesPerPage = 3
+    const pagesSeen = pagenumber * airlinesPerPage
+
+    const displayAirlines = airlines.slice(pagesSeen, pagesSeen + airlinesPerPage).map((airline)=>{
+    return (
+    <div key={airline.account} className="list-group-item list-group-item-action flex-column align-items-start">
+        <AirlineCard airline={airline} countries={countries}/>
+        <Link className="btn btn-primary btn-sm" to={`/admin/make_customer/${airline.account}`} >Add as Customer</Link>
+        <Link className="btn btn-primary btn-sm" to={`/admin/make_admin/${airline.account}`} >Add as Admin</Link>
+        <button onClick={()=>Delete(airline.account)}className="btn btn-danger btn-sm" >Delete</button>
+    </div>
+    )})
+    const pageCount = Math.ceil(airlines.length / airlinesPerPage)
+    const changePage = ({selected})=>{
+        setPageNumber(selected)
+    }
+
 
 
     let GetAirlines = async() =>{
@@ -26,7 +49,12 @@ const ViewAirlines = () => {
         if (status ===200){
             setAirlines(data)
             setSearchOptions(data.map((account) => ({value:account.id, label:`${account.account}, ${account.name}, from ${account.country}`})))
-        }
+            let response = await fetch(`/backend/countries`)
+            data = await response.json()
+            if (response.status===200){
+                setCountries(data)        
+    
+        }}
         else{
             alert(status, data)
         }
@@ -75,7 +103,7 @@ const ViewAirlines = () => {
         {
         <div key={searchedItem.id} className="list-group-item list-group-item-action flex-column align-items-start">
         <p>Searched for:</p>
-        <AirlineCard airline={searchedItem}/>
+        <AirlineCard airline={searchedItem} countries={countries}/>
         <Link className="btn btn-primary btn-sm" to={`/admin/make_customer/${searchedItem.account}`} >Add as Customer</Link>
         <Link className="btn btn-primary btn-sm" to={`/admin/make_admin/${searchedItem.account}`} >Add as Admin</Link>
         <button onClick={()=>Delete(searchedItem.account)}className="btn btn-danger btn-sm" >Delete</button>
@@ -86,14 +114,19 @@ const ViewAirlines = () => {
         {
                 airlines?.length > 0
                 ? (<>
-                        {airlines.map((airline)=>(
-                        <div key={airline.account} className="list-group-item list-group-item-action flex-column align-items-start">
-                            <AirlineCard airline={airline}/>
-                            <Link className="btn btn-primary btn-sm" to={`/admin/make_customer/${airline.account}`} >Add as Customer</Link>
-                            <Link className="btn btn-primary btn-sm" to={`/admin/make_admin/${airline.account}`} >Add as Admin</Link>
-                            <button onClick={()=>Delete(airline.account)}className="btn btn-danger btn-sm" >Delete</button>
-                        </div>
-                        ))}</>
+                    {displayAirlines}
+                    <ReactPaginate
+                    previousLabel = {'Back'}
+                    nextLabel = {'Next'}
+                    pageCount={pageCount}
+                    onPageChange={changePage}
+                    siblingCount = {0}
+                    containerClassName={""}
+                    previousLinkClassName={"btn btn-outline-info"}
+                    nextLinkClassName={"btn btn-outline-info"}
+                    />
+                    </>
+                    
                 ) : (
                         <h2>No Airlines found</h2>
                 )
