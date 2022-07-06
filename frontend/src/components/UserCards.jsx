@@ -28,7 +28,7 @@ export const AirlineCard = ({airline, countries}) => {
             <div className="d-flex w-100 justify-content-between">
                 <h5 className="mb-1">{airline.name}</h5>
                 <small className="text-muted">Username: {airline.account}</small>          <br/><br/>
-            <p className="mb-1">From {airline.country}. <img src={country?.flag} height="15px" width="20px"/> </p>
+            <p className="mb-1">From {airline.country}. <img src={country?.flag} height="15px" width="20px" alt={airline.country + ' flag'}/> </p>
             
 
             </div>

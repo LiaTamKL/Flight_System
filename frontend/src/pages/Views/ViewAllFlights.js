@@ -1,5 +1,5 @@
 
-import {useState, useEffect, useContext, useRef} from "react";
+import {useState, useEffect, useContext} from "react";
 import AuthContext from "../../context/authentication";
 import { Link } from "react-router-dom";
 import { DeleteFlightAsAirline, ViewMyFlights, CheckIfFlightFormIsValid, UpdateMyFlight } from "../../methods/AirlineMethods";

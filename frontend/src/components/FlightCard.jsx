@@ -9,7 +9,7 @@ const FlightCard = ({flight, countries}) => {
     return (<>
         <h5>Flight #{flight.id} by {flight.airline}</h5>
             <div className="d-flex w-100 justify-content-between">
-                <h6 className="p-2 bg-light border">To {flight.destination_country} <img src={d_country?.flag} height="15px" width="20px"/> from {flight.origin_country} <img src={o_country?.flag} height="15px" width="20px"/></h6>
+                <h6 className="p-2 bg-light border">To {flight.destination_country} <img src={d_country?.flag} height="15px" width="20px" alt={flight.destination_country + ' flag'}/> from {flight.origin_country} <img src={o_country?.flag} height="15px" width="20px" alt={flight.origin_country + ' flag'}/></h6>
                 <small className="text-muted">{flight.remaining_tickets} tickets left</small>
             </div>
             <div className="d-flex w-100 justify-content-between">
