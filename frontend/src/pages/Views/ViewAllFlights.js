@@ -7,6 +7,7 @@ import FlightCard from "../../components/FlightCard";
 import Select from 'react-select'
 import NewFlightForm from "../../forms/NewFlightForm";
 import ReactPaginate from "react-paginate"
+import { AllCountries } from "../../methods/CountriesMethods";
 
 const ViewAirlineFlights= () => {
     const [searched, setSearched] = useState(false);
@@ -29,10 +30,9 @@ const ViewAirlineFlights= () => {
         if (status ===200){
             setFlights(data)
             setFlightOptions(data.map((flight) => ({value:flight.id, label:`Flight #${flight.id}, from ${flight.origin_country} to ${flight.destination_country}. Departing at ${(new Date(flight.departure_time)).toUTCString()}. Tickets left: ${flight.remaining_tickets}.`})))
-            let response = await fetch(`/backend/countries`)
-            data = await response.json()
-            if (response.status===200){
-                setCountries(data)        
+            let country_data = await AllCountries()
+            if (country_data){
+                setCountries(country_data)       
     
         }
 

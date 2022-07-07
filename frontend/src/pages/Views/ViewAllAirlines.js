@@ -7,6 +7,7 @@ import GetUsers from "../../methods/AdminMethods";
 import { DeleteUser } from "../../methods/AdminMethods";
 import Select from 'react-select'
 import ReactPaginate from "react-paginate"
+import { AllCountries } from "../../methods/CountriesMethods";
 
 const ViewAirlines = () => {
     const [airlines, setAirlines] = useState([]);
@@ -16,9 +17,6 @@ const ViewAirlines = () => {
     let {user, authToken} = useContext(AuthContext)
 
     const message = useRef()
-    useEffect(()=>{
-        GetAirlines()
-    },[])
 
 
     const [pagenumber, setPageNumber] = useState(0)
@@ -49,18 +47,19 @@ const ViewAirlines = () => {
         if (status ===200){
             setAirlines(data)
             setSearchOptions(data.map((account) => ({value:account.id, label:`${account.account}, ${account.name}, from ${account.country}`})))
-            let response = await fetch(`/backend/countries`)
-            data = await response.json()
-            if (response.status===200){
-                setCountries(data)        
-    
+            let country_data = await AllCountries()
+            if (country_data){
+                setCountries(country_data)        
         }}
         else{
             alert(status, data)
         }
     }
 
-    
+    useEffect(()=>{
+        GetAirlines()
+    },[])
+
     let Delete= async(e) =>{
 
         let result = await DeleteUser(e, authToken)

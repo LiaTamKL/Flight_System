@@ -2,14 +2,13 @@
 import Select from 'react-select'
 import React, {useEffect, useState} from 'react'
 import { format} from "date-fns";
-
+import { AllCountries } from '../methods/CountriesMethods';
 
 const NewFlightForm = (flightData)=>{
-
     let l = null
     let d = null
-    let [countryOptions, setCountryOptions] = useState()
     flightData = flightData.flightData
+    let [countryOptions, setCountryOptions] = useState()
     let set = null
     if (flightData!==undefined){
         set = true
@@ -35,11 +34,10 @@ const NewFlightForm = (flightData)=>{
 
 
     let getContries = async () => {
-        let response = await fetch(`/backend/countries`)
-        let data = await response.json()
-        if (response.status===200){
-            //CHANGE THIS IN THE FINAL VERSION
-            setCountryOptions(data.map((country) => ({value:country.id, label:country.country_name})))        
+        let country_data = await AllCountries()
+        if (country_data){
+
+            setCountryOptions(country_data.map((country) => ({value:country.id, label:country.country_name})))        
         
         
         }}    
@@ -47,7 +45,7 @@ const NewFlightForm = (flightData)=>{
 
     return(
         <>
-            <Select 
+            <Select
                 required
                 name='origin_country'
                 id='origin_country'
@@ -56,7 +54,7 @@ const NewFlightForm = (flightData)=>{
                 isSearchable = {true}
                 placeholder={set?`Please pick an origin country, your original one is ${flightData.origin_country}`:`Please pick an origin country`}
                 isClearable = {true}  />
-            <Select 
+            <Select
                 required
                 name='destination_country'
                 id='destination_country'
@@ -64,7 +62,7 @@ const NewFlightForm = (flightData)=>{
                 options ={countryOptions}
                 isSearchable = {true}
                 placeholder={set?`Please pick an destination country, your original one is ${flightData.destination_country}`:`Please pick an destination country`}
-                isClearable = {true}  />        
+                isClearable = {true}  />
 
             <h5>Number of Tickets: </h5>
             <input
@@ -75,9 +73,9 @@ const NewFlightForm = (flightData)=>{
                 step="1"
                 min="0"
                 />
-            
+
             <h5>Departure</h5>
-            <input 
+            <input
                 type='datetime-local'
                 required
                 id='departure_time'
@@ -86,8 +84,8 @@ const NewFlightForm = (flightData)=>{
                 min={(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
                 />
             <h5>Arrival</h5>
-            
-            <input 
+
+            <input
                 type='datetime-local'
                 id='landing_time'
                 required
@@ -95,7 +93,7 @@ const NewFlightForm = (flightData)=>{
                 min={(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
                 defaultValue = {set?(l.toISOString().replace('T', ' ').slice(0, 16)):(format(new Date(), "yyyy-MM-dd' 'HH:mm"))}
                 />
-            
+
 
                 </>
     )

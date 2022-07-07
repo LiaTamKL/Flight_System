@@ -1,6 +1,6 @@
 import Select from 'react-select'
 import React, {useEffect, useState} from 'react'
-
+import { AllCountries } from '../methods/CountriesMethods'
 
 const AirlineForm = (userData)=>{
     let [countryOptions, setCountryOptions] = useState()
@@ -21,13 +21,9 @@ const AirlineForm = (userData)=>{
     //defaultcountry.current = userData.country
     let getContries = async () => {
 
-        let response = await fetch(`/backend/countries`)
-        let data = await response.json()
-        if (response.status===200){
-            //CHANGE THIS IN THE FINAL VERSION
+        let data = await AllCountries()
+        if (data){
             setCountryOptions(data.map((country) => ({value:country.id, label:country.country_name})))        
-        
-        
         }}    
     useEffect(() => {getContries()},[])
 

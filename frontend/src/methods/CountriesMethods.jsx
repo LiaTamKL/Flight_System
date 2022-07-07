@@ -65,6 +65,16 @@ let DeleteCountryMethod  = async(countryid) => {
 
 }
 
+export const AllCountries = async ()=>{
+  let response = await fetch(`/backend/countries`)
+  let data = await response.json()
+  if (response.status===200){
+    return data}
+  else{
+    alert('something went wrong, please refresh the page')
+    return null
+  }
+}
 
 export { CreateCountryMethod , UpdateCountryMethod , DeleteCountryMethod, GetCountryMethod }
 

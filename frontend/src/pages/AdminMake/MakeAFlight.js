@@ -1,11 +1,13 @@
-import React, { useState , useContext } from 'react'
+import React, { useState , useContext, useEffect } from 'react'
 import { CheckIfFlightFormIsValid, CreateMyFlight } from '../../methods/AirlineMethods';
 import AuthContext from '../../context/authentication';
 import NewFlightForm from '../../forms/NewFlightForm';
+import { AllCountries } from '../../methods/CountriesMethods';
 
 const CreateAFlight = () =>{
     let [message, setMessage] = useState()
     let {user, authToken} = useContext(AuthContext)
+
 
     const handleSubmit = async(e)=>{
         e.preventDefault()
