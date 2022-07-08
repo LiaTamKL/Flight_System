@@ -65,6 +65,11 @@ let DeleteCountryMethod  = async(countryid) => {
 
 }
 
+/**
+* gets all countries data
+* @return {Dictionary} all countries data, null if server issues
+* 
+*/
 export const AllCountries = async ()=>{
   let response = await fetch(`/backend/countries`)
   let data = await response.json()

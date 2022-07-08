@@ -16,13 +16,12 @@ const logged = (user) => {
  * 
  */
 export const LoggedinGeneric= () => {
-    console.log('in LoggedinGeneric')
     let {user} = useContext(AuthContext)
     let result = logged(user)
     if (result === false){
         alert('You are not logged in, Please log in.')
         return(
-           <Navigate to="/login" />
+            <Navigate to="/login" state={window.location.pathname}/>
         ) }
     else{return (<Outlet/>)
 
@@ -35,7 +34,6 @@ export const LoggedinGeneric= () => {
  * 
  */
 export const LoggedOut= () => {
-    console.log('in LoggedOut')
     let {user} = useContext(AuthContext)
     let result = logged(user)
     if (result === true){
@@ -60,7 +58,7 @@ export const LoggedOut= () => {
     if (result === false){
         alert('You are not logged in, Please log in.')
         return(
-           <Navigate to="/login" />
+           <Navigate to="/login" state={window.location.pathname}/>
         ) 
     }else{
         if (user.account_role !== account_role){

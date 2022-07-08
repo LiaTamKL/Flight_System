@@ -15,6 +15,11 @@ export const AuthenticationProvider = ({children}) => {
     /////////////////////////FUNCTIONS START HERE//////////////////////////////
 
     /////////////////LOG THE USER OUT, REDIRECT THEM TO MAIN PAGE/////////////////////
+
+    /**
+    * Logs user out
+    * 
+    */
     let logout = () => {
         setAuthToken(null)
         setAccount(null)
@@ -24,9 +29,13 @@ export const AuthenticationProvider = ({children}) => {
 
     /////////////////REFRESH THE TOKEN, IF TOKEN MISSING, LOGS THE USER OUT AND REDIRECTS TO MAIN PAGE/////////////////////
     /////////////////IF LOADING IS STILL TRUE (ONLY TRUE AT START OF SESSION), TURNS IT INTO FALSE TO RENDER EVERYTHING/////////////////////
+    
+    /**
+    * gets new refresh and acces token for the user.
+    * 
+    */
     let RefreshToken = async ()=>{
         console.log('HELLO IM REFRESHING NOW')
-        //change the url when final package
         let response = await fetch('/backend/token/refresh/',{
             method:'POST',
             headers:{
@@ -50,9 +59,15 @@ export const AuthenticationProvider = ({children}) => {
 
 ////////LOG THE USER IN, REDIRECT THEM TO MAIN PAGE ONCE IN///////////////////////
 ///////IF STATUS CODE NOT 200, TELL USER WHATS WRONG//////////////
-    let loginUser = async (e)=>{
+
+    /**
+    * logs user in if user details are currect (gets access and refresh token)
+    * @param  {Dictionary} e The information (email and password)
+    * @param  {String} url Where to redirect to upon login
+    * 
+    */
+    let loginUser = async (e, url)=>{
         e.preventDefault()
-        //change the url when final package
          let response = await fetch('/backend/token/',{
              method:'POST',
              headers:{
@@ -65,14 +80,13 @@ export const AuthenticationProvider = ({children}) => {
             setAuthToken(data)
             setAccount(jwt_decode(data.access))
             localStorage.setItem('authToken', JSON.stringify(data))
-            nav(-1)
+            nav(url)
 
 
         }
         else{
             alert(`Something went wrong. Status: ${response.status}: ${data.detail}`)
         }
-        //console.log(data.detail) <-- how to get the error
     }
 
     useEffect(()=>{
