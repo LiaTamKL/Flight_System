@@ -1,13 +1,37 @@
 
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { ListIFlightitem } from '../components/ListItem'
 // import AddCreateButton from '../components/AddCreateButton'
 import { useLocation } from 'react-router-dom' ;
+import { FilteredFlightsMethod} from "../methods/FilterMethods"
+
+
 
 
 const FlightsListPage = () => {
   const { state } = useLocation();
-  let filteredFlights = state.filteredFlights
+  let[filteredFlights, setFilteredFlights] = useState();
+
+
+
+useEffect(() => {
+    
+if(!state) {getfilteredflights() }
+else { setFilteredFlights(state.filteredFlights)}
+
+  }, []);
+
+  let getfilteredflights = async () => {
+    let filtered = await FilteredFlightsMethod(
+      {departureTime: "",
+      arrivalTime: "",
+      fromSearchOption:"",
+      toSearchOption:""}
+      );
+    setFilteredFlights(filtered);
+}
+
+
 
   return (
         <div className='all'>

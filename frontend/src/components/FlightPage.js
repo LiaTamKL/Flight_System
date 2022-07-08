@@ -11,11 +11,17 @@ import { ViewMyTickets } from "../methods/TicketMethods";
 
 const FlightPage = () => {
   let  navigate = useNavigate();
-  let [isDisabledAdd, setIsDisabledAdd] = useState(false)
-  let [isDisabledRemove, setIsDisabledRemove] = useState(!isDisabledAdd)
+  // let [isDisabledAdd, setIsDisabledAdd] = useState(false)
+  // let [isDisabledRemove, setIsDisabledRemove] = useState(!isDisabledAdd)
+  let [isHiddenAdd, setIsHiddenAdd] = useState(false)
+  let [isHiddenRemove, setIsHiddenRemove] = useState(true)
+  let [hideAll, setHideAll] = useState(false)
 
 
-  let [addTicketMsg, setAddTicketMsg] = useState("Add a Ticket")
+
+
+
+  let [addTicketMsg, setAddTicketMsg] = useState("")
   let [tickets, setTickets] = useState()
   let [currentTicket,  setCurrentTicket] = useState()
 
@@ -24,18 +30,24 @@ const FlightPage = () => {
   let { state } = useLocation();
   let flight = state.flight
   let formatTime = (flight) => {return format(parseISO(flight),  "dd/MM/yyyy HH:mm")}
+
   
   // using 2 useEffects to set tickets before checking validity.
   // it forces rerender after setting the tickets
-  useEffect(() => { if(authToken) {getMyTickets()}}, [])
+  useEffect(() => {
+  if(user?.account_role === 'Customer') {getMyTickets()}
+  }, [])
 
+  
   useEffect(() => {
     checkIfBooked()
     getCurrentTicket()
+    // console.log(user);
    // eslint-disable-next-line
-     }, [flight, isDisabledRemove,isDisabledAdd, tickets])
+     }, [flight, isHiddenRemove,isHiddenAdd, tickets])
 
 
+    
   let getMyTickets = async () => {
 
   let result = await ViewMyTickets(authToken)
@@ -54,22 +66,18 @@ let getCurrentTicket = () => {
 let checkIfBooked = () => {
 
   if (currentTicket ){
-    setAddTicketMsg("Ticket Is Booked")
-    setIsDisabledAdd(true)
-    setIsDisabledRemove(false)
+    setAddTicketMsg("This Ticket Is Booked")
+    setIsHiddenAdd(true)
+    setIsHiddenRemove(false)
     return
    }
     
   if (flight?.remaining_tickets === 0 ){
-    setAddTicketMsg("No Tickets left")
-    setIsDisabledAdd(true)
+    setIsHiddenAdd(true)
   }
-  
 
 }
   
-
-
 
   let handleAddTicket = () => {
     if (authToken){CreateTicket(flight.id, authToken)}
@@ -89,45 +97,43 @@ let checkIfBooked = () => {
         <div className='all-header'>
           <h3> 
               <Arrow onClick={() =>{navigate(-1)} }/>
-              {/* <Arrow onClick={() =>{navigate('/flights/search/')} }/> */}
-
-
-          </h3> 
-          {/* 
-            <button onClick={deleteFlight}>Delete</button> ) 
-             button onClick={updateflight}>Update</button> */}
-        
+          </h3>       
         </div>
 
         <p><span>Flight number {flight?.id} from {flight?.origin_country}  to {flight?.destination_country} by {flight?.airline} leaves at {formatTime(flight?.departure_time)} and arrives at {formatTime(flight?.landing_time)}</span></p>
-        <p>Hurry up because only {flight?.remaining_tickets} tickets left </p>
-
+        <p> {(flight.remaining_tickets !== 0)? (`Hurry up because only ${flight?.remaining_tickets} tickets left`):('No tickets left') } </p>
+     
+      {!(user && user?.account_role !== 'Customer') ? (<>
+                
         <button 
           type="button" 
           className="btn btn-outline-primary"
           onClick={handleAddTicket}
-          disabled = {isDisabledAdd}>
-          
-
-           { addTicketMsg }
+          hidden = {isHiddenAdd}
+          // disabled = {isDisabledAdd}
+          >   Add Ticket
            </button>
-
+        
 
         <button 
         type="button" 
         className="btn btn-outline-danger"
         onClick={handleRemoveTicket}
-        disabled = {isDisabledRemove}>
+        // disabled = {isHiddenRemove}
+        hidden = {isHiddenRemove}
+        
+        >
           Remove Ticket
         </button>
+      <p>{ addTicketMsg }</p>
 
+      </>):<></>}
 
 
   </div>
       
   )
 }
-
 
 export default FlightPage 
 
