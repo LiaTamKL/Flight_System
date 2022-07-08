@@ -1,5 +1,5 @@
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap/dist/css/bootstrap.css'
 import Header from './components/Header'
 import FlightsListPage from './pages/FlightsListPage'; 
 import FlightPage from './components/FlightPage';
@@ -47,7 +47,13 @@ function App() {
           <Routes>
 
             <Route path='*' element={<NotFound/>} />
-            <Route path = "/" exact element={<MainPage />} />
+
+            <Route path = "/" exact element={<Navigate to="home" replace />} />
+            <Route path = "/home" exact element={<MainPage />} />
+
+            
+
+
               <Route path="/login" element={<LoginPage/>} />
             <Route path="/register" element={<LoggedOut/>}>
               <Route path='' element={<Register/>}/>

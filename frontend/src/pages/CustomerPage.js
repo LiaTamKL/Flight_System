@@ -8,7 +8,7 @@ import { ListIFlightitem } from '../components/ListItem'
 import { FilteredFlightsByIdMethod } from '../methods/FilterMethods';
 
 
-import './Pages.css';
+// import './Pages.css';
 
 const CustomerPage = () => {
     let navigate = useNavigate();
