@@ -23,7 +23,7 @@ const LoggedDropdownMenu = (props) => {
   
     const HandleClick = (navLink) => {
         if ( navLink === "logout") {
-            navigate('/')
+            //navigate('/')
             logout()
           
         }

@@ -24,7 +24,7 @@ export const AuthenticationProvider = ({children}) => {
         setAuthToken(null)
         setAccount(null)
         localStorage.removeItem('authToken')
-        nav('/')
+        nav('/home')
     }
 
     /////////////////REFRESH THE TOKEN, IF TOKEN MISSING, LOGS THE USER OUT AND REDIRECTS TO MAIN PAGE/////////////////////
