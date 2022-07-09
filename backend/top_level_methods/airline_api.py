@@ -1,3 +1,4 @@
+from urllib import response
 from rest_framework import status
 from rest_framework.response import Response
 from ..DAL.airline_facade import Airline_Facade
@@ -5,7 +6,28 @@ from ..serializers import FlightSerializer
 from datetime import datetime
 import pytz
 utc=pytz.UTC
-from ..models import Country, Flight
+from ..models import Country, Flight, Account_Role, Airline
+
+
+def does_flight_exist_is_it_yours(request, id):
+    """checks if if flight exists and belongs to logged in airline, returns {'result':True, 'flight':flight, 'airline':airline} if all is fine, returns {'result':False, 'response':401 response}"""
+    try:
+        flight = Flight.objects.get(pk = id)
+        airline = Airline.objects.get(account=request.user)
+    except Flight.DoesNotExist:
+        return {'result':False, 'response': Response(data="Flight does not exist", status=status.HTTP_404_NOT_FOUND)}
+    if airline != flight.airline:
+        return {'result':False, 'response': Response(data="This is not your flight!", status=status.HTTP_401_UNAUTHORIZED)}
+    return {'result':True, 'flight':flight, 'airline':airline}
+
+def are_you_an_airline(request):
+    """checks if user is logged in and an airline, returns {'result':True, 'airline':airline(id)} , returns {'result':False, 'response':401 response}"""
+    if request.user.is_authenticated == False:
+         return {'result':False, 'response': Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)}
+    if request.user.account_role != Account_Role.objects.get(role_name = 'Airline'):
+         return {'result':False, 'response': Response(data='Must be an airline to use this!', status=status.HTTP_401_UNAUTHORIZED)}
+    airline = (Airline.objects.get(account=request.user)).id
+    return {'result':True, 'airline':airline}
 
 def get_all_my_flights(airline):
     """takes an airline, returns all flights by said airline"""

@@ -157,13 +157,12 @@ def getfli(request, id):
 
 @api_view(['GET', 'POST'])
 def airline_api(request):
-    #checks if user is auth, an airline
-    if request.user.is_authenticated == False:
-         return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
-    if request.user.account_role != Account_Role.objects.get(role_name = 'Airline'):
-         return Response(data='Must be an airline to use this!', status=status.HTTP_401_UNAUTHORIZED)
 
-    airline = (Airline.objects.get(account=request.user)).id
+    result = are_you_an_airline(request)
+    if result['result'] == False:
+        return result
+    else:
+        airline = result['airline']
 
     #returns all of user's flights
     if request.method == 'GET':
@@ -178,20 +177,18 @@ def airline_api(request):
 
 @api_view(['PATCH','DELETE', 'GET'])
 def airline_delete_update(request, id): 
-    #checks if user is auth, an airline, and if the flight exists and if the user is the airline for the flight
-    if request.user.is_authenticated == False:
-         return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
-    if request.user.account_role != Account_Role.objects.get(role_name = 'Airline'):
-         return Response(data='Must be an airline to use this!', status=status.HTTP_401_UNAUTHORIZED) 
-    
-    try:
-            flight = Flight.objects.get(pk = id)
-            airline = Airline.objects.get(account=request.user)
-    except Flight.DoesNotExist:
-        return Response (data="Flight does not exist", status=status.HTTP_404_NOT_FOUND)
-    if airline != flight.airline:
-            return Response(data="This is not your flight!", status=status.HTTP_401_UNAUTHORIZED)
-    
+
+    result = are_you_an_airline(request)
+    if result['result'] == False:
+        return result
+
+    result = does_flight_exist_is_it_yours(request,id)
+    if result['result'] == False:
+        return result['response']
+    else:
+        flight = result['flight']
+        airline = result['airline']
+        
     #returns specific flight data
     if request.method == 'GET':
         respon = get_specific_flight_airline_api(flight)
@@ -216,8 +213,9 @@ def country_api(request):
     if request.method == 'GET':
         return all_countries_api()
 
-    if request.user.is_authenticated == False:
-        return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
+    result = are_you_an_admin(request)
+    if result != True:
+        return result
     else:
         if request.method == 'POST':
             result = create_country_api(request)
@@ -233,8 +231,9 @@ def specific_country_api(request, id):
         return result
 
     
-    if request.user.is_authenticated == False:
-        return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
+    result = are_you_an_admin(request)
+    if result != True:
+        return result
     else:
         if request.method == 'PATCH':
             result = update_country_api(request, id)
@@ -266,9 +265,9 @@ def user_api(request):
         respon = register_user(request)
         return respon
 
-    #check if user is logged in, return 401 if not
-    if request.user.is_authenticated == False:
-        return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
+    result = are_you_logged_in(request)
+    if result != True:
+        return result
 
     else:
 
@@ -297,10 +296,9 @@ def user_api(request):
 #For either viewing all accounts of a certain type (POST), searching a specific type (POST) or changing an account role (PATCH)
 @api_view(['POST', 'PATCH'])
 def admin_api(request):
-    if request.user.is_authenticated == False:
-          return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
-    if request.user.is_admin == False:
-          return Response(data='Must be admin to use!', status=status.HTTP_401_UNAUTHORIZED)
+    result = are_you_an_admin(request)
+    if result != True:
+        return result
     
     #this expects you to enter a view value (Airlines, Admins, Customers, Specific, Accounts)
     #it will either return all accounts of that type
@@ -319,10 +317,9 @@ def admin_api(request):
 #deletes a given account by the username value
 @api_view(['DELETE'])
 def admin_delete(request, username):
-    if request.user.is_authenticated == False:
-         return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
-    if request.user.is_admin == False:
-         return Response(data='Must be admin to use!', status=status.HTTP_401_UNAUTHORIZED)
+    result = are_you_an_admin(request)
+    if result != True:
+        return result
 
     if request.method == 'DELETE':
         res = delete_full_account(request, username)

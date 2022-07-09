@@ -11,6 +11,13 @@ from ..DAL.customer_facade import CustomerFancade
 from django.contrib.auth.hashers import check_password
 
 #takes request, creates from it a new customer account
+
+def are_you_logged_in(request):
+    """checks if user is logged in, returns true if all is fine, returns 401 response if not"""
+    if request.user.is_authenticated == False:
+        return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
+    return True
+
 def register_user(request):
             """registers a user based on form data, returns 400 if anything is missing, if password, email, credit card, username or phone num issues.
             """

@@ -5,6 +5,14 @@ from rest_framework import status
 from rest_framework.response import Response
 
 
+def are_you_an_admin(request):
+    """checks if user is logged in and whether or not they're an admin, returns true if all is fine, returns 401 response if not"""
+    if request.user.is_authenticated == False:
+          return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
+    if request.user.is_admin == False:
+          return Response(data='Must be admin to use!', status=status.HTTP_401_UNAUTHORIZED)
+    return True
+
 def get_users_admin(request):
         """returns what's requested (you request via the variable 'view'). if you request Accounts, all Accounts are given
         if you request Customers, all customers are given. Same for Airline and Admins. If you request specific, it will search for an account
