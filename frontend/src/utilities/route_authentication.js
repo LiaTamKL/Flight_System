@@ -19,7 +19,6 @@ export const LoggedinGeneric= () => {
     let {user} = useContext(AuthContext)
     let result = logged(user)
     if (result === false){
-        alert('You are not logged in, Please log in.')
         return(
             <Navigate to="/login" state={window.location.pathname}/>
         ) }
@@ -56,7 +55,6 @@ export const LoggedOut= () => {
     let {user} = useContext(AuthContext)
     let result = logged(user)
     if (result === false){
-        alert('You are not logged in, Please log in.')
         return(
            <Navigate to="/login" state={window.location.pathname}/>
         ) 

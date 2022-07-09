@@ -23,8 +23,8 @@ const LoggedDropdownMenu = (props) => {
   
     const HandleClick = (navLink) => {
         if ( navLink === "logout") {
-            //navigate('/')
-            logout()
+          navigate('/login')
+          logout()
           
         }
         setDestAddress(navLink)

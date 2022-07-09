@@ -37,8 +37,6 @@ let	RegisterRedirect= async(e) =>{
 	
 	setMessege(result.message)
 	setErrors(result.errors)
-	console.log(result.errors.length === 0)
-	console.log(result.message.length===0)
 
 	}
 	
