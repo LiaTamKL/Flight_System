@@ -11,6 +11,11 @@ const LoginPage = () => {
         var url = location.state
         }
     let {loginUser, user} = useContext(AuthContext)
+    
+    
+    
+    
+    
     return (
         <div>
             {user? <h1>Hello {user.main_name}, logout if you wish to login as a different user</h1>:<>

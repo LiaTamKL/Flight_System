@@ -36,7 +36,7 @@ import CreateAFlight from './pages/AdminMake/MakeAFlight';
 import UpdatePassword from './pages/update_password';
 
 
-
+import Login from './components/Login/Login';
 
 function App() {
   return (
@@ -51,10 +51,11 @@ function App() {
             <Route path = "/" exact element={<Navigate to="home" replace />} />
             <Route path = "/home" exact element={<MainPage />} />
 
-            
+            {/* <Route path="/login" element={<LoginPage/>} /> */}
+            <Route path="/login" element={<Login/>} />
 
 
-              <Route path="/login" element={<LoginPage/>} />
+
             <Route path="/register" element={<LoggedOut/>}>
               <Route path='' element={<Register/>}/>
             </Route>

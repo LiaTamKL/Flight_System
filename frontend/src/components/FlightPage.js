@@ -7,17 +7,12 @@ import AuthContext from "../context/authentication";
 import { ViewMyTickets } from "../methods/TicketMethods";
 
 
-
-
 const FlightPage = () => {
   let  navigate = useNavigate();
   // let [isDisabledAdd, setIsDisabledAdd] = useState(false)
   // let [isDisabledRemove, setIsDisabledRemove] = useState(!isDisabledAdd)
   let [isHiddenAdd, setIsHiddenAdd] = useState(false)
   let [isHiddenRemove, setIsHiddenRemove] = useState(true)
-  let [hideAll, setHideAll] = useState(false)
-
-
 
 
 

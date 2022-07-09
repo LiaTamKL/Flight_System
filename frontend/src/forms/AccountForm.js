@@ -11,10 +11,10 @@ const AccountForm = ()=>{
 
     return(
         <>
-        <input type="text" name="username" placeholder="Username" required />
-        <input type="email" name="email" placeholder="Email" required/>
-        <input type="password" name="password" minLength="8" maxLength='8' placeholder="Password" required/>
-        <input type="password" name="password2" placeholder="Confirm Password" required/>
+        <input className='login-form-input'type="text" name="username" placeholder="Username" required />
+        <input className='login-form-input' type="email" name="email" placeholder="Email" required/>
+        <input className='login-form-input' type="password" name="password" minLength="8" maxLength='8' placeholder="Password" required/>
+        <input className='login-form-input' type="password" name="password2" placeholder="Confirm Password" required/>
         </>
     )
 }
