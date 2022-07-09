@@ -5,10 +5,13 @@ import { CheckPasswords } from '../forms/AccountForm'
 import CustomerForm from '../forms/CustomerForm'
 import UserForm from '../methods/UserMethods'
 
+
 const Register= () => {
     let nav = useNavigate()
     let [message, setMessage] = useState(null)
     const [errors, setErrors] = useState([])
+
+    
 
     let register = async (e) =>{
         e.preventDefault()
@@ -35,6 +38,7 @@ const Register= () => {
             }
 
     }}
+
 
     return (
     <>
