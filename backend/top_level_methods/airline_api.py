@@ -1,4 +1,4 @@
-from urllib import response
+
 from rest_framework import status
 from rest_framework.response import Response
 from ..DAL.airline_facade import Airline_Facade
@@ -87,3 +87,8 @@ def get_specific_flight_airline_api(flight):
     """takes a flight, returns it as a serialized response"""
     serializer = FlightSerializer(data=flight, many = False)
     return Response(serializer.data)
+
+def remove_flight_airline_api(id, airline):
+    """takes flight id and airline, removes flight"""
+    Airline_Facade.remove_flight(id, airline)
+    return Response(data=f"Flight #{id} deleted successfully")

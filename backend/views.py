@@ -1,34 +1,17 @@
-from distutils.log import error
-from urllib import response
-from django.shortcuts import render ,redirect
-from .models import *
-from .forms import *
-from .DAL.base_facade import BaseFuncade
-from .DAL.airline_facade import Airline_Facade
-from .DAL.customer_facade import CustomerFancade
-from .DAL.anony_facade import AnonymusFancade
+from .models import Flight, Country
 from .DAL.admin_facade import AdministratorFuncade
-from django.http import HttpResponse, Http404
-from django.core.exceptions import PermissionDenied
 # from django.contrib.auth.hashers import make_password
-from django.db import transaction
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
-from django.forms import formset_factory
-from django.contrib import auth
-from datetime import datetime
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 import pytz
-from rest_framework import status
 from .top_level_methods.user_api import *
 from .top_level_methods.admin_api import *
 from .top_level_methods.airline_api import *
 from .top_level_methods.customer_api import *
 from .top_level_methods.country_api import *
-
+from .serializers import FlightSerializer, CountrySerializer
 from rest_framework.generics import ListAPIView
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
@@ -38,7 +21,7 @@ from .filters import *
 
 utc=pytz.UTC
 
-from .serializers import *
+
 
 #######JWT CUSTOM CLAIM
 ########THIS IS WHERE WE SET WHAT INFO THE TOKENS WILL GRAB ON THE FRONT END
@@ -198,8 +181,8 @@ def airline_delete_update(request, id):
     
     #deletes specific flight
     if request.method=='DELETE':
-        Airline_Facade.remove_flight(id, airline)
-        return Response(data=f"Flight #{id} deleted successfully")
+        respon = remove_flight_airline_api(id, airline)
+        return respon
 
 ####################################################
 ###################Country#########################3
@@ -297,15 +280,10 @@ def admin_api(request):
     if result != True:
         return result
     
-    #this expects you to enter a view value (Airlines, Admins, Customers, Specific, Accounts)
-    #it will either return all accounts of that type
-    #if you use specific, state a username and it will return it
     if request.method == 'POST':
         res = get_users_admin(request)
         return res
 
-    #to use this, you must enter a make value (Customer, Airline, Admin) and give it the necessary fields
-    #it will make an account into that type
     if request.method == 'PATCH':   
         res = change_account_role(request)
         return res

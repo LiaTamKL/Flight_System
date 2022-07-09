@@ -69,12 +69,16 @@ def change_account_role(request):
         form = {}
         if searched['account_role']=='Superuser':
             return Response(data='The superuser may not be changed!', status=status.HTTP_400_BAD_REQUEST)
+
+
         if request.data['make']=='Admin':
             if account.account_role == 'Admin':
                 return Response(data='Already an admin!', status=status.HTTP_400_BAD_REQUEST)
             form['first_name'] = request.data['first_name']
             form['last_name'] = request.data['last_name']
             AdministratorFuncade.add_admin(account=account, form=form)
+
+
         elif request.data['make']=='Customer':
             if account.account_role == 'Customer':
                 return Response(data='Already a customer!', status=status.HTTP_400_BAD_REQUEST)
@@ -93,6 +97,8 @@ def change_account_role(request):
                     form['phone_number'] = request.data['phone_number']
                     form['credit_card_no'] = request.data['credit_card_no']
                     AdministratorFuncade.add_customer_admin_command(account=account, form=form)
+
+
         elif request.data['make']=='Airline':
             if account.account_role == 'Airline':
                 return Response(data='Already an Airline!', status=status.HTTP_400_BAD_REQUEST)
@@ -107,6 +113,8 @@ def change_account_role(request):
                 form['country'] =  country
                 AdministratorFuncade.add_airline(account=account, form=form)
         else: return Response(data='make must specify Admin, Customer, or Airline!', status=status.HTTP_400_BAD_REQUEST)
+
+        
         return Response(data=f'successful update of {account} to {account.account_role}')
 
 def delete_full_account(request, username):

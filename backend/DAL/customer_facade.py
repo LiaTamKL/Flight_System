@@ -1,11 +1,10 @@
-from ..models import *
-from ..forms import *
-from django.http import Http404
+from ..models import Flight, Flight_Ticket, Customer
 from .base_facade import BaseFuncade
 
 class CustomerFancade(BaseFuncade):
 
     def update_customer(account, form, emailform):
+        """updates customer account and customer details based on emailform, form, and account"""
         customer = Customer.objects.get(account = account)
         customer.first_name = form['first_name']
         customer.last_name = form['last_name']
@@ -18,7 +17,7 @@ class CustomerFancade(BaseFuncade):
 
 
     def add_ticket(form , customer_id):
-        
+        """makes flight ticket based on form data and customer_id"""
         flight_Ticket = Flight_Ticket()
         flight_Ticket.customer_id = customer_id
         flight_Ticket.flight_id = form['flight']
@@ -31,6 +30,7 @@ class CustomerFancade(BaseFuncade):
         return 1
 
     def remove_ticket(form):
+        """removes ticket based on ticket id in dictionary"""
         ticket_to_remove = Flight_Ticket.objects.get(pk= form['ticket'])
         ticket_to_remove.delete()
         
@@ -44,11 +44,13 @@ class CustomerFancade(BaseFuncade):
 
     #need to be logged in
     def get_my_tickets(id):
-           return Flight_Ticket.objects.filter(customer_id = id)
+        """gets all tickets for customer based on id given"""
+        return Flight_Ticket.objects.filter(customer_id = id)
 
 
 
     def add_flight(airline, form):
+        """adds a flight based on form data and airline"""
         flight = Flight()
         flight.airline = airline
         flight.origin_country = form['origin_country']
