@@ -131,11 +131,11 @@ def tickets_api(request):
     
 
 
-@api_view(['GET'])
-def getfli(request, id):
-    flight = BaseFuncade.get_flight_by_id(id)
-    seralizer = FlightSerializer(flight, many = False)
-    return Response(seralizer.data)
+# @api_view(['GET'])
+# def getfli(request, id):
+#     flight = BaseFuncade.get_flight_by_id(id)
+#     seralizer = FlightSerializer(flight, many = False)
+#     return Response(seralizer.data)
 
 
 ####################################################
@@ -162,7 +162,7 @@ def airline_api(request):
     if result['result'] == False:
         return result
     else:
-        airline = result['airline']
+        airline = (result['airline']).id
 
     #returns all of user's flights
     if request.method == 'GET':
@@ -181,13 +181,12 @@ def airline_delete_update(request, id):
     result = are_you_an_airline(request)
     if result['result'] == False:
         return result
+    airline = result['airline']
 
-    result = does_flight_exist_is_it_yours(request,id)
+    result = does_flight_exist_is_it_yours(airline,id)
     if result['result'] == False:
         return result['response']
-    else:
-        flight = result['flight']
-        airline = result['airline']
+    flight = result['flight']
         
     #returns specific flight data
     if request.method == 'GET':
