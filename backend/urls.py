@@ -10,22 +10,13 @@ urlpatterns = [
   
     
     ############## backend #########################
-    # path('test/', test),
-        
 
-    # path('flights/search/', Flightfilter.as_view()),
     path ('flights/',Flightfilter.as_view()),
 
-    # path ('flights/<str:id>/', getfli),
-    
-
-    # path('airlines/', allair,),
-    # path('airlines/<str:id>/', getair),
 
 
     path('api/country/', Countryfilterget.as_view()),
     
-    # path('api/tickets/', TicketByUserfilter.as_view()),
 
     path('api/customer_api', tickets_api),
 
@@ -42,36 +33,6 @@ urlpatterns = [
     path('api/airline_api', airline_api),
     path('api/airline_api/<int:id>', airline_delete_update),
 
-
+]
     #############################################
 
-]
-
-
-
-  # path('', lambda request: redirect('home/', permanent=True)),
-    # path('home/', homeview, name='home') ,
-
-    # path('admin/', lambda request: redirect('/admin/login/', permanent=True)),
-    
-    # path('members/', include('backend.members_urls')),
-    # path('ouradmin/', include('backend.admin_urls')),
- 
-    # path('login/',user_login, name='login'),
-    
-    # path('country/all/', view_all_countries, name="view all countries anony"),
-    # path('flights/all/', view_all_flights, name="view all flights anony"),
-    # path('airline/all/', view_all_airlines, name="view all airlines anony"),
-    # path('airline/bycountry/', view_airline_by_country, name="view airline by country anony"),
-
-
-    # path("search/flights/", view_flights_by_params, name="view flight by params anony"),
-    # path("search/flights/departure/", view_departure_by_country, name= "departure by country anony"),
-    # path("search/flights/arrival/", view_arrival_by_country, name='arrival by country anony'),
-    # path("search/flights/byairline/", view_flights_by_airline_cust, name='flights by airline anony'),
-
-
-    # path('register/', register_customer, name='login'),
-    # path('logout/', logout,name='logout'),
-
-    

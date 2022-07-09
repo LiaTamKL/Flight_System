@@ -42,23 +42,9 @@ class CustomerFancade(BaseFuncade):
 
 
 
-    #need to be logged in
     def get_my_tickets(id):
         """gets all tickets for customer based on id given"""
         return Flight_Ticket.objects.filter(customer_id = id)
-
-
-
-    # def add_flight(airline, form):
-    #     """adds a flight based on form data and airline"""
-    #     flight = Flight()
-    #     flight.airline = airline
-    #     flight.origin_country = form['origin_country']
-    #     flight.destination_country = form['destination_country']
-    #     flight.departure_time = form['departure_time']
-    #     flight.landing_time = form['landing_time']
-    #     flight.remaining_tickets = form['remaining_tickets']
-    #     flight.save()
 
 
  
