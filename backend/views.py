@@ -108,15 +108,13 @@ class Countryfilterget(ListAPIView):
 
 @api_view(['GET', 'POST', 'DELETE'])
 def tickets_api(request):
-    
-    #checks if user is auth, an customer
-    if request.user.is_authenticated == False:
-         return Response(data='You are not logged in!', status=status.HTTP_401_UNAUTHORIZED)
-    if request.user.account_role != Account_Role.objects.get(role_name = 'Customer'):
-         return Response(data='Must be a customer to use this!', status=status.HTTP_401_UNAUTHORIZED)
-    
-    customer = (Customer.objects.get(account=request.user)).id
 
+    result = are_you_a_customer(request)
+    if result['result'] == False:
+        return result
+    else:
+        customer = result['customer']
+    
     if request.method == 'GET':
         mytickets = get_all_my_tickets(customer)
         return mytickets
