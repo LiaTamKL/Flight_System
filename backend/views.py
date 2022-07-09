@@ -91,23 +91,23 @@ class Countryfilterget(ListAPIView):
 
 @api_view(['GET', 'POST', 'DELETE'])
 def tickets_api(request):
-
-    result = are_you_a_customer(request)
+    
+    result = Customer_API_Actions.are_you_a_customer(request)
     if result['result'] == False:
         return result
     else:
         customer = result['customer']
     
     if request.method == 'GET':
-        mytickets = get_all_my_tickets(customer)
+        mytickets = Customer_API_Actions.get_all_my_tickets(customer)
         return mytickets
     
     if request.method == 'POST':
-        mytickets = add_ticket_api(request, customer)
+        mytickets = Customer_API_Actions.add_ticket_api(request, customer)
         return mytickets
 
     if request.method == 'DELETE':
-        mytickets = remove_ticket_api(request)    
+        mytickets = Customer_API_Actions.remove_ticket_api(request)    
         return mytickets
     
 
@@ -139,7 +139,7 @@ def tickets_api(request):
 @api_view(['GET', 'POST'])
 def airline_api(request):
 
-    result = are_you_an_airline(request)
+    result = Airline_API_Actions.are_you_an_airline(request)
     if result['result'] == False:
         return result
     else:
@@ -147,41 +147,41 @@ def airline_api(request):
 
     #returns all of user's flights
     if request.method == 'GET':
-        respon = get_all_my_flights(airline)
+        respon = Airline_API_Actions.get_all_my_flights(airline)
         return respon
     
     #creates a new flight based on post data
     if request.method == 'POST':
-        respon = create_flight_airline_api(request, airline)
+        respon = Airline_API_Actions.create_flight_airline_api(request, airline)
         return respon
 
 
 @api_view(['PATCH','DELETE', 'GET'])
 def airline_delete_update(request, id): 
 
-    result = are_you_an_airline(request)
+    result = Airline_API_Actions.are_you_an_airline(request)
     if result['result'] == False:
         return result
     airline = result['airline']
 
-    result = does_flight_exist_is_it_yours(airline,id)
+    result = Airline_API_Actions.does_flight_exist_is_it_yours(airline,id)
     if result['result'] == False:
         return result['response']
     flight = result['flight']
         
     #returns specific flight data
     if request.method == 'GET':
-        respon = get_specific_flight_airline_api(flight)
+        respon = Airline_API_Actions.get_specific_flight_airline_api(flight)
         return respon
 
     #updates specific flight
     if request.method == 'PATCH':
-        respon = update_flight_airline_api(request=request, airline=airline.id, flight=flight)
+        respon = Airline_API_Actions.update_flight_airline_api(request=request, airline=airline.id, flight=flight)
         return respon
     
     #deletes specific flight
     if request.method=='DELETE':
-        respon = remove_flight_airline_api(id, airline)
+        respon = Airline_API_Actions.remove_flight_airline_api(id, airline)
         return respon
 
 ####################################################
@@ -191,14 +191,14 @@ def airline_delete_update(request, id):
 @api_view(['GET', 'POST'])
 def country_api(request):
     if request.method == 'GET':
-        return all_countries_api()
-
-    result = are_you_an_admin(request)
+        return Country_API_Actions.all_countries_api()
+    Admin_API_Actions
+    result = Admin_API_Actions.are_you_an_admin(request)
     if result != True:
         return result
     else:
         if request.method == 'POST':
-            result = create_country_api(request)
+            result = Country_API_Actions.create_country_api(request)
             return result
 
 
@@ -207,20 +207,20 @@ def country_api(request):
 @api_view(['GET', 'PATCH', 'DELETE'])
 def specific_country_api(request, id):
     if request.method == 'GET':
-        result = get_country_api(id)
+        result = Country_API_Actions.get_country_api(id)
         return result
 
     
-    result = are_you_an_admin(request)
+    result = Admin_API_Actions.are_you_an_admin(request)
     if result != True:
         return result
     else:
         if request.method == 'PATCH':
-            result = update_country_api(request, id)
+            result = Country_API_Actions.update_country_api(request, id)
             return result 
 
         if request.method == 'DELETE':
-            result = delete_country_api
+            result = Country_API_Actions.delete_country_api
             return result 
 
 
@@ -239,13 +239,13 @@ def specific_country_api(request, id):
 
 @api_view(['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
 def user_api(request):
-
+    
     #register the user, if good, returns details on user and status 200, returns 400 and errors otherwise
     if request.method == 'POST':   
-        respon = register_user(request)
+        respon = User_API_Actions.register_user(request)
         return respon
 
-    result = are_you_logged_in(request)
+    result = User_API_Actions.are_you_logged_in(request)
     if result != True:
         return result
 
@@ -253,17 +253,17 @@ def user_api(request):
 
         #This gets the user account and linked data for updates
         if request.method=='GET':
-            respon = get_user(request)
+            respon = User_API_Actions.get_user(request)
             return respon
 
         #This handles updates, please insert all values an account type is meant to have + email
         if request.method == 'PUT':
-            res = update_user_user_api(request)
+            res = User_API_Actions.update_user_user_api(request)
             return res
 
         #This handles password updates
         if request.method == 'PATCH':
-            res = change_password(request)
+            res = User_API_Actions.change_password(request)
             return res
 
 
@@ -276,28 +276,28 @@ def user_api(request):
 #For either viewing all accounts of a certain type (POST), searching a specific type (POST) or changing an account role (PATCH)
 @api_view(['POST', 'PATCH'])
 def admin_api(request):
-    result = are_you_an_admin(request)
+    result = Admin_API_Actions.are_you_an_admin(request)
     if result != True:
         return result
     
     if request.method == 'POST':
-        res = get_users_admin(request)
+        res = Admin_API_Actions.get_users_admin(request)
         return res
 
     if request.method == 'PATCH':   
-        res = change_account_role(request)
+        res = Admin_API_Actions.change_account_role(request)
         return res
 
 
 #deletes a given account by the username value
 @api_view(['DELETE'])
 def admin_delete(request, username):
-    result = are_you_an_admin(request)
+    result = Admin_API_Actions.are_you_an_admin(request)
     if result != True:
         return result
 
     if request.method == 'DELETE':
-        res = delete_full_account(request, username)
+        res = Admin_API_Actions.delete_full_account(request, username)
         return res
 
 ##################################################
