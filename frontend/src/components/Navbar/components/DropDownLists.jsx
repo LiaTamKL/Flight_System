@@ -156,11 +156,11 @@ const DropdownItem = (props) => {
             <div className="menu">
               <DropdownItem
                 leftIcon = { <BsPlusCircleFill /> }
-                naviLink = "admin/make_airline/:username"
+                naviLink = "admin/make_country"
 
                 // goToMenu="settings"
                 >
-                Add Airline
+                Add Country
               </DropdownItem>
               
   

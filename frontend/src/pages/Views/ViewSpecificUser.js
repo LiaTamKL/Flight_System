@@ -1,5 +1,4 @@
 import {useState, useEffect, useContext, useRef} from "react";
-import AccountCard from "../../components/UserCards";
 import AuthContext from "../../context/authentication";
 import { Link } from "react-router-dom";
 import GetUsers from "../../methods/AdminMethods";
