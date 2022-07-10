@@ -78,7 +78,7 @@ const UserLinks = () => {
         id="collasible-nav-dropdown" 
         className="custom-style"
         >
-        <NavDropdown.Item href="airline/add_fli">
+        <NavDropdown.Item href="/airline/add_flight">
             <BsPlusCircleFill/ >  Add Flight
 
         </NavDropdown.Item>
