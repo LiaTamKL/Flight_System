@@ -1,8 +1,8 @@
 
 import React, { useContext, useEffect, useState} from 'react'
-import {Navbar ,  NavLogo } from "./Navbar/Navbar";
+// import {Navbar ,  NavLogo } from "./Navbar/Navbar";
 
-import ContextMenu from './Navbar/components/ContextMenu';
+// import ContextMenu from './Navbar/components/ContextMenu';
 
 // let admin_options = [
 //   { value: 'admin/view_specific', label: 'Search User' },
@@ -30,7 +30,7 @@ import ContextMenu from './Navbar/components/ContextMenu';
 // // ]
 
 
-
+import BrandExample from './Navbar/Navbar';
 const Header = ({ state }) => {
   // let nav = useNavigate()
   
@@ -47,13 +47,15 @@ const Header = ({ state }) => {
 
   return (
     <div className='app-header'>
+
+      <BrandExample />
     
-      <Navbar>
+      {/* <Navbar>
         <NavLogo />
 
       <ContextMenu />
 
-      </Navbar>
+      </Navbar> */}
 
 {/* <Sidenav /> */}
 
