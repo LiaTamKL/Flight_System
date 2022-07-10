@@ -47,50 +47,14 @@ const UserLinks = () => {
             return ( 
             <>
 
-    <Nav.Link href="/admin">Home</Nav.Link>
+    <Nav.Link href="/admin">All Customers</Nav.Link>
 
-    <NavDropdown 
-        title='User Options'
-        id="collasible-nav-dropdown" 
-        className="custom-style"
-        >
-        <NavDropdown.Item href="#">
-            <BsPlusCircleFill/ >  Add User
-
-        </NavDropdown.Item>
-            <NavDropdown.Item href="/admin/view_specific" >
-                <RiAdminLine /> Search For Users
-            </NavDropdown.Item>         
-    </NavDropdown>
+    <Nav.Link href="/admin/view_admins">View All Admins</Nav.Link>
+    <Nav.Link href="/admin/view_airlines">View All Airlines</Nav.Link>
+    <Nav.Link href="/admin/make_country">Add A Country</Nav.Link>
+    <Nav.Link href="/admin/view_specific">Search For Users</Nav.Link>
 
 
-
-    <NavDropdown 
-        title='Admin Options'
-        id="collasible-nav-dropdown" 
-        className="custom-style"
-        >
-        <NavDropdown.Item href="#">
-            <BsPlusCircleFill/ >  Add Admin
-
-        </NavDropdown.Item>
-            <NavDropdown.Item href="/admin/view_admins" >
-                <RiAdminLine /> View All Admins
-            </NavDropdown.Item>         
-    </NavDropdown>
-
-    <NavDropdown 
-        title='Flight Options'
-        id="collasible-nav-dropdown" 
-        className="custom-style"
-        >
-        <NavDropdown.Item href="#">
-            <BsPlusCircleFill/ >  Add Airline
-        </NavDropdown.Item>
-            <NavDropdown.Item href="/admin/view_airlines" >
-                <MdFlight /> View All Airlines 
-            </NavDropdown.Item>         
-    </NavDropdown>
         <UserLinks />               
             </>
             )
