@@ -1,18 +1,18 @@
-body {
+/* body { */
   /*  margin: 0;
     background: #151616;
     font-family: roboto;*/
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; 
+    /* -webkit-font-smoothing: antialiased; */
+    /* -moz-osx-font-smoothing: grayscale;  */
   
-  }
+  /* } */
   
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  }
+  /* code { */
+    /* font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', */
+      /* monospace; */
+  /* } */
   
-  
+/*   
   :root {
     --bg:  #242526;
     --bg-accent: #484a4d;
@@ -22,4 +22,4 @@ body {
     --border-radius: 8px;
     --speed: 500ms; 
     
-  } 
+  }  */
