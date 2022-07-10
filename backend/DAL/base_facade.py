@@ -43,10 +43,9 @@ class BaseFuncade():
             """returns airline by id"""
             return Airline.objects.get(pk=id)
 
-    # customer shouldn't have access to account_id 
+
     def get_airline_by_parameters(airline_name, country_id):
         """returns airline by airline_name and country_id"""
-        # raise Exception (airline_name, country_by_id)
 
         airline_by_params = list(Airline.objects
         .filter(name = airline_name)
@@ -65,11 +64,6 @@ class BaseFuncade():
             return Country.objects.get(pk=id)
 
 
-
-    # new user creation , user will be in list format to extract usernmae and password
-    # create login screen form with Create new user button which moves to user details page
-    # on commit login details will be sent here for user creation.
-    # also will generate token for the user?
     
     def create_new_user(form):
         """takes form, makes new account"""
@@ -81,24 +75,6 @@ class BaseFuncade():
         user.save()
         return  user
 
-
-
-
-        # user = User.objects.create_user(
-        #     username = form['username'], 
-        #     password = form['password1'],
-        #     email = form['email']
-        # )
-        # user.save()
-
-        # new_user = User()
-        # user_role = 2
-        # new_user.username = form[username']
-        # new_user.password = form['password']
-        # new_user.email = form['email']
-        # new_user.user_role =  User_Role.objects.get(pk = user_role)
-        # new_user.save()
-        # return  new_user.id
 
 
 
