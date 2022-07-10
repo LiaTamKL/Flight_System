@@ -26,7 +26,7 @@ const CreateAFlight = () =>{
         <h3>Making flight for {user.username}</h3>
         <form onSubmit={(e)=>handleSubmit(e)}>
         <NewFlightForm/>
-        <input type='submit'></input>
+        <input type='submit' className="btn btn-primary btn-sm" value='Add this flight'></input>
         </form></>
     )
 }

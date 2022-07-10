@@ -38,7 +38,7 @@ const MakeAnAdmin = () =>{
         <form onSubmit={(e)=>adminmaker(e)}>
         <AdminForm userData= {reference}/>
         <br/>
-        <input type="submit"/>
+        <input type="submit" className="btn btn-primary btn-sm"  value='Add them as an admin'/>
         </form></>
     )
 
