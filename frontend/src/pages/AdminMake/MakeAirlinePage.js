@@ -34,7 +34,7 @@ const MakeAnAirline = () =>{
         <form onSubmit={(e)=>airlineMaker(e)}>
         <AirlineForm />
         <br/>
-        <input type="submit"/>
+        <input type="submit" className="btn btn-primary btn-sm"  value='Add them as an airline'/>
         </form></>
     )
 

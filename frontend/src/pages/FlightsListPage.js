@@ -4,13 +4,14 @@ import { ListIFlightitem } from '../components/ListItem'
 // import AddCreateButton from '../components/AddCreateButton'
 import { useLocation } from 'react-router-dom' ;
 import { FilteredFlightsMethod} from "../methods/FilterMethods"
-
+import ReactPaginate from "react-paginate"
 
 
 
 const FlightsListPage = () => {
   const { state } = useLocation();
   let[filteredFlights, setFilteredFlights] = useState();
+
 
 
 
@@ -31,7 +32,20 @@ else { setFilteredFlights(state.filteredFlights)}
     setFilteredFlights(filtered);
 }
 
+const [pagenumber, setPageNumber] = useState(0)
+const flightsPerPage = 5
+const pagesSeen = pagenumber * flightsPerPage
+if (filteredFlights!==undefined){
+  var displayFlights = filteredFlights.slice(pagesSeen, pagesSeen + flightsPerPage).map((flight, index)=>{
+    return (
+      <ListIFlightitem key={index} flight={flight} />
+   )})
+   var pageCount = Math.ceil(filteredFlights.length / flightsPerPage)
+}
 
+  const changePage = ({selected})=>{
+      setPageNumber(selected)
+  }
 
   return (
         <div className='all'>
@@ -40,11 +54,30 @@ else { setFilteredFlights(state.filteredFlights)}
             <p className='all-count'>{filteredFlights?.length}</p>
           </div>
 
-          <div className="all-list">         
-                    {filteredFlights?.map((flight, index) => (
-                    <ListIFlightitem key={index} flight={flight} />
+          <div className="all-list">
+                     
+          {
+                filteredFlights?.length > 0
+                ? (<>
+                    {displayFlights}
+                    <ReactPaginate
+                    previousLabel = {'Back'}
+                    nextLabel = {'Next'}
+                    pageCount={pageCount}
+                    onPageChange={changePage}
+                    siblingCount = {0}
+                    containerClassName={""}
+                    previousLinkClassName={"btn btn-outline-info"}
+                    nextLinkClassName={"btn btn-outline-info"}
+                    />
+                    </>
+                ) :(
+                  <></>
+          )}
+                    {/* {filteredFlights?.map((flight, index) => (
+                    <ListIFlightitem key={index} flight={flight} /> 
                     
-                ))}
+                 ))}  */}
 
             </div>  
         </div>

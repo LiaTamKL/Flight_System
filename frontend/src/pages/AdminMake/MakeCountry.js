@@ -27,10 +27,11 @@ const MakeCountry = () =>{
 
     return(<>
         {message? (<p className="alert alert-warning">{message}</p>):<></>}
+        <h1>Add a country</h1>
         <form onSubmit={(e)=>makeCountry(e)}>
         <CountryForm/> 
         <br/>
-        <input type="submit"/>
+        <input className="btn btn-outline-secondary" type="submit"/>
         </form>
         
         

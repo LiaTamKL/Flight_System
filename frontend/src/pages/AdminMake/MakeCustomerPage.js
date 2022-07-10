@@ -38,7 +38,7 @@ const MakeACustomer = () =>{
         <form onSubmit={(e)=>customermaker(e)}>
         <CustomerForm userData= {reference}/>
         <br/>
-        <input type="submit"/>
+        <input type="submit" className="btn btn-primary btn-sm"  value='Add them as a customer'/>
         </form></>
     )
 
