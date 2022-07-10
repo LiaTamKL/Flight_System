@@ -9,7 +9,7 @@ import AuthContext from '../../context/authentication'
 import { BsPlusCircleFill } from "react-icons/bs";
 import { MdFlight } from "react-icons/md";
 import { RiAdminLine , RiUserSearchFill } from "react-icons/ri";
-
+import "./Navbar.css"
 
 
 const UserLinks = () => {

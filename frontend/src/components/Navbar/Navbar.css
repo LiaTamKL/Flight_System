@@ -1,12 +1,15 @@
 
 
-.navbar-brand {
-size: 10px;
+.navbar-brand
+{
+  font-size: x-large;
 }
 
-.navbar-dark {}
+.justify-content-end {
+  font-size: large !important;
+}
 
-.nav-logo {
+/* .nav-logo {
     display: flex;
     align-items: auto;
     margin-right: auto;
@@ -19,13 +22,13 @@ size: 10px;
     /* width: calc(var(--button-size));
     height: var(--button-size); */
     
-  }
+  /* } */
   
-  
+/*   
   .nav-logo .logo-name {
     display: flex;
     align-items: center;
     font-size: 20px;
     
     
-  }
+  } */ 

@@ -1,11 +1,15 @@
-/* body { */
-  /*  margin: 0;
+body {
+  /* /*  margin: 0; */
     background: #151616;
-    font-family: roboto;*/
-    /* -webkit-font-smoothing: antialiased; */
-    /* -moz-osx-font-smoothing: grayscale;  */
-  
-  /* } */
+    font-family: roboto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; 
+    background-image: url("./assets//Background//Backgound1.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
   
   /* code { */
     /* font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', */
@@ -23,3 +27,5 @@
     --speed: 500ms; 
     
   }  */
+
+
