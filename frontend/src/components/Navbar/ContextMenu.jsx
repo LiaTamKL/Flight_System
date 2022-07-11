@@ -95,7 +95,8 @@ const UserLinks = () => {
         return (  
         <>
           <Nav.Link href="/">Home </Nav.Link>
-          <Nav.Link href="/login">Login </Nav.Link>
+        
+          <Nav.Link href="/login">Login</Nav.Link>
         </>
         )
     

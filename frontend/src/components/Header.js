@@ -41,10 +41,6 @@ const Header = ({ state }) => {
 
   // let {user, logout} = useContext(AuthContext)
 
-  
-        
-
-
   return (
     <div className='app-header'>
 

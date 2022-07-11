@@ -4,16 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import ContextMenu from './ContextMenu'
 import { ReactComponent as FlightLogo } from "./icons/flight_logo.svg";
-// import "./Navbar.css"
-
-// const NavLogo = () => {
-//   return (
-//     <NavLink to="home" className="nav-logo">
-//       <FlightLogo className="logo-icon" />
-//       <span className="logo-name" >Flight App</span>
-//     </NavLink>
- 
-// )}
+import "./Navbar.css"
 
 
 
@@ -27,13 +18,13 @@ const  BrandExample = () => {
         {/* <Container> */}
           <Navbar.Brand 
           href="/home" >
-          <img
-            src= {<FlightLogo />}
+          {/* <img
+            src= "./icons/flight_logo.svg"
             alt = ""
             width="30"
             height="30"
             className="d-inline-block align-top"
-            />
+            /> */}
             Flight App
             </Navbar.Brand>
 

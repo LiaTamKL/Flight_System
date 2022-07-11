@@ -9,10 +9,9 @@ const MainPage = (message) => {
     return (
     
     <div>
-        <h3>Give Your Life A Rest,   </h3>
-        <h3>Plan a vacation Today</h3>
+
+        <h1>Where You Want To Go?</h1>
         <br></br>
-        <h5>Where You Want To Go?</h5>
         <FlightSearch />
     
     

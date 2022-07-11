@@ -11,7 +11,7 @@
 }
 .main{
 	width: 350px;
-	height: 600px;
+	height: 400px;
 	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
 	overflow: hidden;
 	border-radius: 5px;
@@ -76,10 +76,10 @@
 
 /* signup pulltab */
 .signup{
-	height: 900px;
+	height: 640px;
 	background: rgb(234, 234, 234);
 	border-radius: 50% / 10%;
-	transform: translateY(-130px);
+	transform: translateY(-110px);
 	transition: .8s ease-in-out;
 }
 
@@ -91,11 +91,11 @@
 
 /*move distance */
 #chk:checked ~ .signup{
-	transform: translatey(-450px);
+	transform: translatey(-370px);
 }
 
 #chkk:checked ~ .signup{
-	transform: translatey(-1000px);
+	transform: translatey(-700px);
 }
 
 

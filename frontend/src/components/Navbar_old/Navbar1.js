@@ -2,6 +2,7 @@ import { NavLink, useNavigate} from "react-router-dom";
 import ProfilePic from './profile/ProfilePic';
 // import './Navbar.css';
 import { GrLogout } from "react-icons/gr";
+
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { ReactComponent as FlightLogo } from "./icons/flight_logo.svg";

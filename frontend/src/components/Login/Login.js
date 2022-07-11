@@ -56,8 +56,6 @@ let	RegisterRedirect= async(e) =>{
 
 	// <div>
     //     {user? <h1>Hello {user.main_name}, logout if you wish to login as a different user</h1>:<>
-
-
 	<div className ="signup-login">
 		<div className="main">  	
 			<input className='login-form-label' type="checkbox" id="chk" aria-hidden="true" />
@@ -86,9 +84,7 @@ let	RegisterRedirect= async(e) =>{
 
 						<input type="submit" className='login-form-button' value = "Sign up" />	
 					</form>
-					<br></br>
-
-
+					
 				</div>
 		</div>
 	</div>

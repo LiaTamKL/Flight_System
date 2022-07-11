@@ -1,4 +1,8 @@
 
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700");
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+
+
 .create {
     max-width: 400px;
     margin: 0 auto;
@@ -29,6 +33,8 @@
 
 }
 
+
+
 .create button{
     background: red;
     color: #fff;
@@ -36,6 +42,9 @@
     padding: 8px;
     border-radius: 8px;
     cursor: pointer;
+    font-family: var(--font-roboto);
+    background-color: #212426;
+
 }
 
 /* removes the arrows at numerinc input */
@@ -64,8 +73,8 @@ input::-webkit-inner-spin-button {
 }
 
 
-.dateinput {
-    size: 30px;
+/* .dateinput { */
+    /* size: 30px;
     width: 100%;
     border: 1px solid black;
     color: black;
@@ -73,16 +82,114 @@ input::-webkit-inner-spin-button {
     background: url("../assets/callendar.svg") no-repeat left;
     background-size: 20px;
     background-color: white;
-    flex: 3;
+    flex: 3; */
+/* } */
+
+
+
+
+
+
+/* Flight Search */
+
+.search-container {
+display: flex;
+flex-direction: row;
+/* flex-wrap: wrap; */
+justify-content: flex-start;
+width: 100%;
+padding: 10px;
+/* margin: 10px; */
+background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+border-radius: 10px;
+box-shadow: 5px 20px 50px #000;
+
 }
 
-.countryinputfrom{
+/* 
+.date-input::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: block;
+    background: url(https://mywildalberta.ca/images/GFX-MWA-Parks-Reservations.png) no-repeat;
+    width: 20px;
+    height: 20px;
+    border-width: thin;
+} */
+
+.date-input {
+
+  /* background: url("../assets/callendar.svg") no-repeat left; */
+ 
+  /* flex: 100%; */
+  align-items: center;
+  border-radius: 4px;
+  width: 20%;
+  margin: 1vw;
+  /* flex:20% */
+  /* background-color: gray; */
+
+ }
+
+
+
+input[type="date"]::-webkit-calendar-picker-indicator { 
+    background-color: red;
+    outline: none;
+  }
+
+
+
+.country-input{
+    /* padding: 1vw; */
+    align-items: center;
+    margin: 1vw;
+    /* color: black; */
+    /* flex: 25%; */
+    width: 20%;
+    /* flex:20% */
+}
+
+
+.search-button {
+    justify-content: center;
+    align-items: auto;
+    margin-left: auto;
+    margin-right: auto;
+    /* display: block !important; */
+    background: #f0d658;
+    color: white;
+    font-size: 20px;
+    border: 1px solid grey;
+    cursor: pointer;
+    width: 10% ;
+    margin: 1vw;
+    border-radius: 6px;
+    /* flex: 20%; */
+    /* height: 1vw; */
+
+}
+
+.search-icon {
+    display: flex;
+    justify-content: center;
+    color: #000;
     
-    color: black;
-    flex: 1;
+    /* color: black; */
+    
 }
 
-.countryinputto{
-    color: black;
-    flex: 2;
+.search-button:hover , .country-input:hover, .date-input:hover{
+    filter: brightness(85%);
+  }
+ 
+
+
+@media (max-width: 800px) {
+    .search-container {
+      flex-direction: column;
+    }
+    .country-input,.date-input, .search-button {
+        width: 100%;
+    }
 }

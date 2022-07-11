@@ -4,22 +4,26 @@
 import {
     DateRange,
   } from "react-date-range";
-
+import './Form.css'
 import React, {useEffect} from 'react'
 
 import { HiOutlineSwitchHorizontal } from 'react-icons/hi'
+import { FaSearch } from "react-icons/fa";
+
+
 import { useState } from 'react';
-import { format , addDays} from "date-fns";
-import Select  from 'react-select';
 import AsyncSelect from 'react-select/async';
-import FlightsListPage from "../pages/FlightsListPage";
 import { useNavigate , useLocation } from "react-router-dom"
-import './Form.css'
+
 import { FilteredFlightsMethod, FilteredCountryMethod} from "../methods/FilterMethods"
+import { ReactComponent as flightIcon } from "../assets/flight.svg"
+
+
 
 
 
 const FlightSearch = () => {
+
     let navigate = useNavigate();
     let[filteredFlights, setFilteredFlights] = useState();
 
@@ -31,12 +35,9 @@ const FlightSearch = () => {
     //     }
     //   ])
     
-    
     let[fromSearchOption, setFromSearchOption] = useState(0);
     let[toSearchOption, settoSearchOption] = useState(0);
-    // let[countryOptions, setCountryOptions] = useState();
     let [departureTime, setDepartureTime] = useState();
-    // let [arrivalTime, setArrivalTime] = useState(format(new Date(), "yyyy-MM-dd"))
     let [arrivalTime, setArrivalTime] = useState()
 
 
@@ -45,8 +46,6 @@ const FlightSearch = () => {
         getfilteredflights()
 
     }, [departureTime, arrivalTime, fromSearchOption , toSearchOption])
-
- 
 
     let getfilteredflights = async () => {
         let filtered = await FilteredFlightsMethod(
@@ -77,123 +76,81 @@ const FlightSearch = () => {
     // }
 
 
+
     return (
     
-        <div className='flightselect'>  
-            <AsyncSelect
-                 
-                className='countryinputfrom'
-                placeholder='From Everywhere'
-                cacheOptions
-                // options = {getCountries}
-                loadOptions = {getCountries}
-                isSearchable
-                isClearable
-                maxMenuHeight = {300}
-                // value={display}
-                onInputChange = {(e) => {getCountries(e)}} 
-                onChange = {
-                (e)=> e? (
-                    setFromSearchOption(e.value)
-                    )
-                    : setFromSearchOption(0)
+        <div className="search-container">
+
+                <AsyncSelect 
+                    className='country-input'
+                    placeholder="&#x1F6EA; From?" 
+                    cacheOptions
+                    loadOptions = {getCountries}
+                    isSearchable
+                    isClearable
+                    maxMenuHeight = {300}
+                    onInputChange = {(e) => {getCountries(e)}} 
+                    onChange = {
+                    (e)=> e? (
+                        setFromSearchOption(e.value)
+                        )
+                        : setFromSearchOption(0)
+                    }/>
+
+
+                <AsyncSelect
+
+                    className='country-input'
+                    placeholder = "&#x1F6EA; To?"
+                    cacheOptions
+                    loadOptions = {getCountries}
+                    maxMenuHeight = {300}
+                    onInputChange = {(e) => {getCountries(e)}} 
+                    isSearchable
+                    isClearable
+                    onChange = {
+                    (e)=>  e? (
+                        settoSearchOption(e.value))
+                        : settoSearchOption(0)
+                    }
+                    />
+{/* <input placeholder="Date" class="textbox-n" type= {inpType} onfocus= {setInpType}  onblur= {setInpType('text')} id="date" /> */}
+                <input
+                    className='date-input'
+                    placeholder="Landing"
+                    label="Departure Time" 
+                    type='date'
+                    // id='departure_time'
+                    
+                    defaultValue={departureTime}
+                    onChange = {(e) => {    
+                    setDepartureTime(e.target.value)
+                    }}
+                    >
+
+                </input>
+
+                <input
+                    label="Arrival Time"  
+                    type='date'
+                    placeholder="Departure"
+                    // id='arrival_time'
+                    className='date-input'
+                    min={departureTime}
+                    defaultValue = {arrivalTime}
+                    onChange ={(e) => {
+                    setArrivalTime(e.target.value)
+                    }
                 }
+                    >
+                </input> 
 
-                // onChange = {
-                // (e)=> e? (
-                //     setFromSearchOption(e.value),
-                //     setDisplayOption(e)
-                //     )
-                //     : setFromSearchOption(0)
-                // }
-                />
-
-                {/* <div className="switch-fields" onClick={() =>{switchFileds()}}>
-                    <HiOutlineSwitchHorizontal />  
-                </div> */}
-
-            <AsyncSelect
-
-                className='countryinputto'
-                placeholder = "To Everywhere"
-                cacheOptions
-                // value={toSearchOption}
-                loadOptions = {getCountries}
-                maxMenuHeight = {300}
-                onInputChange = {(e) => {getCountries(e)}} 
-                isSearchable
-                isClearable
-                onChange = {
-                (e)=>  e? (
-                    settoSearchOption(e.value))
-                    : settoSearchOption(0)
-                }
-                
-                />
-            <h3>Departure Time</h3>
-            <input
-                label="Departure Time" 
-                type='date'
-                required
-                id='departure_time'
-                className='fancy-select'
-                defaultValue={departureTime}
-                onChange = {(e) => {    
-                  setDepartureTime(e.target.value)
-                }}
-                >
-            </input>
-            <h3>Arrival Time</h3>
-            <input
-                label="Arrival Time"  
-                type='date'
-                id='arrival_time'
-                required
-                
-                className='fancy-select'
-                min={departureTime}
-                defaultValue = {arrivalTime}
-                onChange ={(e) => {
-                  setArrivalTime(e.target.value)
-                }
-            }
-                >
-            </input> 
-            {/* <h3>Flight Dates</h3>
-            <input 
-                className = "dateinput"
-                value={`${format(range[0].startDate, "dd/MM/yyyy")}  -  ${format(range[0].endDate, "dd/MM/yyyy")}`}
-                readOnly
-                onClick={ () => setOpen(open => !open) }
-             /> */}
-
-                {/* <div> */}
-            {/* {open && 
-            // <DateRange
-            //     onChange={
-            //         item => setRange([item.selection])
-            //     }
-            //     editableDateInputs={false}
-            //     moveRangeOnFirstSelection={false}
-            //     ranges={range}
-            //     months={2}
-            //     direction="horizontal"
-            //     className="calendarElement"
-            //     showDateDisplay = {false}
-            //     />
-            } */}
-      {/* </div> */}
-        <button 
-            label="Search Flight" 
-            onClick={() => {
-                // let filtered = getfilteredflights()
-                navigate("/flights/", { state: {filteredFlights: filteredFlights 
-                }})}}
-        >"Search Flight"</button>
-
-
-
-        {/* <FlightsListPage filteredFlights={filteredFlights} /> */}
+          <button
+                className="search-button" 
+                onClick={() => {
+                    navigate("/flights/", { state: {filteredFlights: filteredFlights 
+                    }})}}
+            ><i className="search-icon"><FaSearch /></i></button> 
     </div>
         
     )
