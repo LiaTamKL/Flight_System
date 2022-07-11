@@ -76,10 +76,7 @@ const ViewAirlines = () => {
     return (<div>
         <h5>Admin: {user.username}</h5>
         <div className="card text-center">
-        <Link className="btn btn-primary btn-sm" to="/admin/view_admins" >View All Admins</Link>
-        <Link className="btn btn-primary btn-sm" to="/admin" >View All Customers</Link>
-        <button className="btn btn-primary btn-sm" onClick={()=>setSearchedItem(false)}>All Airlines</button>
-        <Link className="btn btn-primary btn-sm" to="/admin/view_specific" >Search for user</Link>
+        <button className="btn btn-primary btn-sm" onClick={()=>setSearchedItem(false)}>Clear search and view all airlines</button>
         </div>
         <div className="card text-center">All Airlines</div>
         {message.current? (<p className="alert alert-secondary">{message.current}</p>):<></>}

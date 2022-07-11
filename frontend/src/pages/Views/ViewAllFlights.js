@@ -1,7 +1,6 @@
 
 import {useState, useEffect, useContext} from "react";
 import AuthContext from "../../context/authentication";
-import { Link } from "react-router-dom";
 import { DeleteFlightAsAirline, ViewMyFlights, CheckIfFlightFormIsValid, UpdateMyFlight } from "../../methods/AirlineMethods";
 import FlightCard from "../../components/FlightCard";
 import Select from 'react-select'
@@ -93,8 +92,7 @@ const ViewAirlineFlights= () => {
     return (<div>
         <h5>Airline: {user.username}</h5>
         <div className="card text-center">
-        <Link className="btn btn-primary btn-sm" to="/airline/add_flight" >Add a flight</Link>
-        <button className="btn btn-primary btn-sm" onClick={()=>setBack()}>All Flights</button>
+        <button className="btn btn-primary btn-sm" onClick={()=>setBack()}>Clear search and view all flights</button>
 
         </div>
         {message? (<p className="alert alert-secondary">{message}</p>):<></>}
