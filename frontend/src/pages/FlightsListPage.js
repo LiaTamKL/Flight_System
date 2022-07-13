@@ -13,8 +13,6 @@ const FlightsListPage = () => {
   let[filteredFlights, setFilteredFlights] = useState();
 
 
-
-
 useEffect(() => {
     
 if(!state) {getfilteredflights() }
@@ -35,10 +33,17 @@ else { setFilteredFlights(state.filteredFlights)}
 const [pagenumber, setPageNumber] = useState(0)
 const flightsPerPage = 5
 const pagesSeen = pagenumber * flightsPerPage
+
+
 if (filteredFlights!==undefined){
   var displayFlights = filteredFlights.slice(pagesSeen, pagesSeen + flightsPerPage).map((flight, index)=>{
     return (
+
+      
       <ListIFlightitem key={index} flight={flight} />
+
+
+
    )})
    var pageCount = Math.ceil(filteredFlights.length / flightsPerPage)
 }
@@ -51,7 +56,8 @@ if (filteredFlights!==undefined){
         <div className='all'>
           <div className='all-header'>
             <h2 className='all-title'>&#9782; Flights Found  </h2>
-            <p className='all-count'>{filteredFlights?.length}</p>
+            
+            {/* <p className='all-count'>{filteredFlights?.length}</p> */}
           </div>
 
           <div className="all-list">
@@ -74,11 +80,6 @@ if (filteredFlights!==undefined){
                 ) :(
                   <></>
           )}
-                    {/* {filteredFlights?.map((flight, index) => (
-                    <ListIFlightitem key={index} flight={flight} /> 
-                    
-                 ))}  */}
-
             </div>  
         </div>
   )

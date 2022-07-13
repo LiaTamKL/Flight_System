@@ -30,7 +30,7 @@ import React, { useContext, useEffect, useState} from 'react'
 // // ]
 
 
-import BrandExample from './Navbar/Navbar';
+import MainNavbar from './Navbar/Navbar';
 const Header = ({ state }) => {
   // let nav = useNavigate()
   
@@ -44,8 +44,7 @@ const Header = ({ state }) => {
   return (
     <div className='app-header'>
 
-      <BrandExample />
-    
+      <MainNavbar />
       {/* <Navbar>
         <NavLogo />
 

@@ -2,7 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import Header from './components/Header'
-import FlightsListPage from './pages/FlightsListPage'; 
+
 import FlightPage from './components/FlightPage';
 // import LoginPage from './pages/login_page';
 import {AuthenticationProvider} from './context/authentication'
@@ -35,6 +35,10 @@ import MakeACustomer from './pages/AdminMake/MakeCustomerPage';
 import MakeCountry from './pages/AdminMake/MakeCountry';
 import CreateAFlight from './pages/AdminMake/MakeAFlight';
 import UpdatePassword from './pages/update_password';
+
+
+// import FlightsListPage from './pages/FlightsListPage'; 
+import FlightsListPage from './components/FlightPage/FlightsListPage'; 
 
 
 import Login from './components/Login/Login';

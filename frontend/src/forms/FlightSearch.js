@@ -1,64 +1,37 @@
-// import 'react-date-range/dist/styles.css'; // main css file
-// import 'react-date-range/dist/theme/default.css'; // theme css file
 
 import {
     DateRange,
   } from "react-date-range";
 import './Form.css'
 import React, {useEffect} from 'react'
-
-import { HiOutlineSwitchHorizontal } from 'react-icons/hi'
 import { FaSearch } from "react-icons/fa";
-
-
 import { useState } from 'react';
 import AsyncSelect from 'react-select/async';
-import { useNavigate , useLocation } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 import { FilteredFlightsMethod, FilteredCountryMethod} from "../methods/FilterMethods"
-import { ReactComponent as flightIcon } from "../assets/flight.svg"
-
-
-
 
 
 const FlightSearch = () => {
 
-    let navigate = useNavigate();
-    let[filteredFlights, setFilteredFlights] = useState();
-
-    // const [range, setRange] = useState([
-    //     {
-    //       startDate: new Date(),
-    //       endDate: addDays(new Date(), 7),
-    //       key: 'selection'
-    //     }
-    //   ])
-    
+    let navigate = useNavigate();    
     let[fromSearchOption, setFromSearchOption] = useState(0);
     let[toSearchOption, settoSearchOption] = useState(0);
-    let [departureTime, setDepartureTime] = useState();
-    let [arrivalTime, setArrivalTime] = useState()
+    let [departureTime, setDepartureTime] = useState("");
+    let [arrivalTime, setArrivalTime] = useState("")
 
+
+
+let handleClick = () => {
+    let flightSearchParams = {'fromSearchOption':fromSearchOption, 'toSearchOption':toSearchOption ,departureTime:departureTime, arrivalTime:arrivalTime}
+    navigate("/flights/",  { state: {  flightSearchParams: flightSearchParams }} )
+                       
+}
 
 
     useEffect(() => { 
-        getfilteredflights()
 
     }, [departureTime, arrivalTime, fromSearchOption , toSearchOption])
-
-    let getfilteredflights = async () => {
-        let filtered = await FilteredFlightsMethod(
-            {departureTime: departureTime,
-            arrivalTime: arrivalTime,
-            fromSearchOption:fromSearchOption,
-            toSearchOption:toSearchOption}
-            );
-
-        // console.log(filtered);
-        setFilteredFlights(filtered);
-    }
-
 
     let getCountries = async (searchTerm) => {
         let filtered = await FilteredCountryMethod(searchTerm) 
@@ -147,10 +120,9 @@ const FlightSearch = () => {
 
           <button
                 className="search-button" 
-                onClick={() => {
-                    navigate("/flights/", { state: {filteredFlights: filteredFlights 
-                    }})}}
-            ><i className="search-icon"><FaSearch /></i></button> 
+                onClick={handleClick}
+                >
+            <i className="search-icon"><FaSearch /></i></button> 
     </div>
         
     )

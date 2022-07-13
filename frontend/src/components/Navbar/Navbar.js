@@ -8,7 +8,7 @@ import "./Navbar.css"
 
 
 
-const  BrandExample = () => {
+const  MainNavbar = () => {
 
     return (
 
@@ -41,4 +41,4 @@ const  BrandExample = () => {
     );
   }
 
-export default BrandExample;
+export default MainNavbar;

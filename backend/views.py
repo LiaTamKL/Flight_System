@@ -65,6 +65,7 @@ class Flightfilter(ListAPIView):
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
     # filter_backends = (DjangoFilterBackend)
     filterset_class = Flightfilter
+    ordering = ['origin_country', 'destination_country']
 
 
 # class TicketByUserfilter(ListAPIView):
