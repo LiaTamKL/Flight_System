@@ -19,37 +19,29 @@ const  FilteredFlightsMethod = async (...params) => {
     var grouped = [];
 
 
-    // for (let index = 0; index < data.length; index++) { 
-    //     data.map( (flight, index , data) => {
-    //         if ([data[index].destination_country, data[index].origin_country ] in hist) 
-    //         {
-    //             hist[[data[index].destination_country, data[index].origin_country ]] ++ ;
-    //             grouped.push([data[index], data[index +1]]);
-    //             // data.splice(index, 1)
 
-    //             // grouped.splice(index-1, 1)
+
+        data.map( (flight, index , data) => {
+            if ([data[index].destination_country, data[index].origin_country ] in hist) 
+            {
+                hist[[data[index].destination_country, data[index].origin_country ]] ++ ;
+                grouped.push([data[index], data[index +1]]);
+                // data.splice(index, 1)
+
+                // grouped.splice(index-1, 1)
                 
-    //         }
-    //             else { hist[[data[index].destination_country, data[index].origin_country]] = 1;
-    //         grouped.push(data[index]);
-    //         }});
+            }
+                else { hist[[data[index].destination_country, data[index].origin_country]] = 1;
+            grouped.push(data[index]);
+            }});
 
         
 
-    //         let arr = [
-    //             { name:"string 1", value:"this", other: "that" },
-    //             { name:"string 2", value:"this", other: "that" }
-    //         ];
-            
-    //         let obj = arr.find(o => o.name === 'string 1');
-            
-    //         console.log(obj);
-
+    
     // // console.log(hist);
-    // console.log(grouped);
+    console.log(grouped);
 
-    // console.log(data)
-    //    console.log(hist)
+    console.log(data)
     
 
     return (data)
