@@ -68,10 +68,7 @@ const ViewAdmins= () => {
     return (<div>
         <h5>Admin: {user.username}</h5>
         <div className="card text-center">
-        <button className="btn btn-primary btn-sm" onClick={()=>setSearchedItem(false)}>All Admins</button>
-        <Link className="btn btn-primary btn-sm" to="/admin" >View All Customers</Link>
-        <Link className="btn btn-primary btn-sm" to="/admin/view_airlines" >View All Airlines</Link>
-        <Link className="btn btn-primary btn-sm" to="/admin/view_specific" >Search for user</Link>
+        <button className="btn btn-primary btn-sm" onClick={()=>setSearchedItem(false)}>Clear search and view all admins</button>
         </div>
         <div className="card text-center">All Admins</div>
 

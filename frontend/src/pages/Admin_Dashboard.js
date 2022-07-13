@@ -79,10 +79,7 @@ const AdminDashboard= () => {
     return (<div>
         <h5>Welcome Admin {user.username}</h5>
         <div className="card text-center">
-        <Link className="btn btn-primary btn-sm" to="/admin/view_admins" >View All Admins</Link>
-        <button className="btn btn-primary btn-sm" onClick={()=>setSearchedItem(false)}>All Customers</button>
-        <Link className="btn btn-primary btn-sm" to="/admin/view_airlines" >View All Airlines</Link>
-        <Link className="btn btn-primary btn-sm" to="/admin/view_specific" >Search for user</Link>
+        <button className="btn btn-primary btn-sm" onClick={()=>setSearchedItem(false)}>Clear search and view all customers</button>
         </div>
         <div className="card text-center">All Customers</div>
         {message.current? (<p className="alert alert-secondary">{message.current}</p>):<></>}

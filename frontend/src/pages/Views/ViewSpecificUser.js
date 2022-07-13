@@ -50,9 +50,6 @@ const SearchForUser = ()=>{
     return(<div>
         <h5>Admin: {user.username}</h5>
         <div className="card text-center">
-        <Link className="btn btn-primary btn-sm" to="/admin" >View All Customers</Link>
-        <Link className="btn btn-primary btn-sm" to="/admin/view_airlines" >View All Airlines</Link>
-        <Link className="btn btn-primary btn-sm" to="/admin/view_admins" >View All Admins</Link>
         </div>
         {message.current? (<p className="alert alert-secondary">{message.current}</p>):<></>}
         <form onSubmit={(e)=>searchforaccount(e)}>
