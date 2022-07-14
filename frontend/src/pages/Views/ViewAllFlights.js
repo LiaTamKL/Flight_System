@@ -148,6 +148,7 @@ const ViewAirlineFlights= () => {
                 ? (<>
                     {displayFlights}
                     <ReactPaginate
+                    className= {"pagination"}
                     previousLabel = {'Back'}
                     nextLabel = {'Next'}
                     pageCount={pageCount}

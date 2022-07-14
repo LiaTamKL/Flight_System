@@ -118,6 +118,7 @@ const AdminDashboard= () => {
                      <>
                     {displayCustomers}
                     <ReactPaginate
+                    className= {"pagination"}
                     previousLabel = {'Back'}
                     nextLabel = {'Next'}
                     pageCount={pageCount}

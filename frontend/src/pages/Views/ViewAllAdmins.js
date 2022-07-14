@@ -109,6 +109,7 @@ const ViewAdmins= () => {
                 ? (<>
                     {displayAdmins}
                     <ReactPaginate
+                    className= {"pagination"}
                     previousLabel = {'Back'}
                     nextLabel = {'Next'}
                     pageCount={pageCount}
