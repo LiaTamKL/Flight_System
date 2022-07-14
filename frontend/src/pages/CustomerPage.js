@@ -7,7 +7,7 @@ import AddTicketCreateButton from '../components/AddTicketCreateButton'
 import { ListIFlightitem } from '../components/ListItem'
 import { FilteredFlightsByIdMethod } from '../methods/FilterMethods';
 import FlightCard from '../components/FlightPage/Components/FlightCard';
-
+import { AllCountries } from '../methods/CountriesMethods';
 import ReactPaginate from "react-paginate"
 
 // import './Pages.css';
@@ -19,6 +19,7 @@ const CustomerPage = () => {
     let {user, authToken} = useContext(AuthContext)
     let [myFlights, setMyFlights] = useState();
     const [noData, setNoData] = useState();
+    const [countries, setCountries] = useState([]);
     
     const [pagenumber, setPageNumber] = useState(0)
     const flightsPerPage = 5
@@ -66,7 +67,14 @@ let getMyTickets = async () => {
        setNoData(data.length === 0)
         // setTickets(data)
         data = await FilteredFlightsByIdMethod(data)
-        if (status ===200){setMyFlights(data)}
+        if (status ===200){
+            setMyFlights(data)
+            let country_data = await AllCountries()
+            if (country_data){
+                setCountries(country_data)       
+      
+        }
+        }
         else{alert(status, data)}
     
     }
@@ -83,7 +91,7 @@ if (myFlights!==undefined && !noData){
         
         return (
 
-                <FlightCard key={index} flight={flight}/>
+                <FlightCard key={index} flight={flight} countries={countries}/>
 
             )})
             var pageCount = Math.ceil(myFlights.length / flightsPerPage)
