@@ -6,27 +6,34 @@
     padding-top: 100px;
 } */
 ---------------------------------
+
+
+
 .mb15 {
     margin-bottom: 15px;
+
 }
 
+/* @media (max-width: 50%) {
+    .card  {
+      flex-direction: column;
+    }
+    /* .country-input,.date-input, .search-button {
+        width: 100%; */
 
 
 .card {
     border-radius: 8px;
     overflow: hidden;
     margin-bottom: 2vw ;
-    /* width: 10%; */
     /* transition: .2s ease-in-out 0s; */
-
-
 
 
 }
 .card .card__img-wrap {
     height: 150px;
     width: 100%;
-    border-radius: 8px 8px 0 0;
+    border-radius: 6px 6px 0 0;
     position: relative;
     background-color: #ccc;
     overflow: hidden;
@@ -60,6 +67,7 @@
     float: left;
     width: 100%;
     border-bottom: 1px dashed #D1D1D1;
+    
 }
 .card .card__info {
     padding: 15px;
@@ -91,60 +99,83 @@
     width: 40%;
     text-align: right;
 }
+
+/*#######################################*/
+/* flight page */
+/*#######################################*/
+
 .card-big .card__ticketlist {
     background-color: #fff;
-    border-radius: 6px 6px 0 0;
-    float: left;
-    width: 100%;
-}
-.card-big .cost {
-    float: left;
-    width: 100%;
-    padding: 10px 15px;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    /* float: left;
+    width: 100%; */
+    /* position: absulute; */
+
+    padding: 10px 10px;
     border-bottom: 1px dashed #F5F5F5;
+    transition: .2s ease-in-out 0s;
+
 }
-.card-big .logo-wrap {
+.card-big .airline-wrap {
     float: left;
-    width: 30%;
+    max-width: 20%;
+    font-size: 100%; 
     /* border: 1px solid #F5F5F5; */
     /* border-radius: 8px; */
     height: 36px;
+
     text-align: left;
+
+
 }
-.card-big .logo-wrap img {
-    max-height: 34px;
-}
+
+
+/* .card__ticketlist:hover{
+    transform: scale(1.2);
+    height: 150% ;
+} */
 
 
 
-
-.card-big .icon-wrap {
+.card-big .icon-wrap{
     float: left;
-    width: 35%;
+    width: 30%;
     text-align: center;
     overflow: hidden;
+    transition: .2s ease-in-out 0s;
 }
 
 .card-big .icon-wrap i {
     display: block;
     color: #D1D1D1;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 
+/* .icon-wrap:hover { */
+    /* width: 200%; */
+    /* cursor: pointer; */
+    /* transform: scale(1.5); */
+    /* text-align: center; */
+
+
+/* } */
 
 .card-big .icon-wrap .book-btn , .remove-btn {
     color: #8B8B8B;
 }
 
 .card-big .ticket-wrap {
-    float: right;
-    width: 35%;
+    /* float: right; */
+    max-width: 30%;
     text-align: right;
-    /* display: block; */
-
         
 }
+
+
+
 .card .ticket {
     color: #113F6D;
     font-weight: 600;
@@ -153,20 +184,18 @@
     display: block;
     font-size: 15px;
     padding-bottom: 5px;
-
-    
 }
+
 .card .ticket .ticket-left {
     font-size: 85%;
     color: #8B8B8B;
 }
 .card-big .ticket-wrap .book-btn {
-    display: block;
+
     background-color: #b5a553;
     color: white;
     font-size: 20px;
     border: 1px solid grey;
-    
 
     text-transform: uppercase;
     padding: 3px 5px;
@@ -178,7 +207,7 @@
 
 
 .card-big .ticket-wrap .remove-btn {
-        display: block;
+
         background-color: red;
         color: white;
         font-size: 20px;

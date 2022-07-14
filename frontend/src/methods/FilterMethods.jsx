@@ -14,40 +14,62 @@ const  FilteredFlightsMethod = async (...params) => {
     let response = await fetch(searchurl)
     let data = await response.json()
     
-    
     var hist = {};
-    var grouped = [];
+    var grouped = []
+    
 
+        // data.map( (flight, index , data) => {
+        //     if ([data[index].destination_country, data[index].origin_country]  in hist) 
+        //     {
+        //         hist[[data[index].destination_country, data[index].origin_country ]] ++ ;
 
-
-
-        data.map( (flight, index , data) => {
-            if ([data[index].destination_country, data[index].origin_country ] in hist) 
-            {
-                hist[[data[index].destination_country, data[index].origin_country ]] ++ ;
-                grouped.push([data[index], data[index +1]]);
-                // data.splice(index, 1)
-
-                // grouped.splice(index-1, 1)
                 
-            }
-                else { hist[[data[index].destination_country, data[index].origin_country]] = 1;
-            grouped.push(data[index]);
-            }});
+        //         grouped.push(data[index]);
+        //         // data.splice(index, 1)
+        //         // data.splice(index-1, 1)
+        //         // grouped.splice(index-1, 1)
+                
+        //     }
+        //         else { hist[[data[index].destination_country, data[index].origin_country]] = 1;
+        //         // grouped.push(data[index]);   
+        //     }});
 
-        
+        //         console.log(grouped);
+        //         console.log(hist);
+    // console.log(hist);
+    // console.log(grouped);
 
-    
-    // // console.log(hist);
-    console.log(grouped);
+//       const myFunc = (obj, prop) => {
+      
+//         return obj.reduce((acc, item) => {
 
-    console.log(data)
-    
+            
+//           let key = item[prop]
+      
+//           if (!acc[key]) {
+//             acc[key] = []
+//           }
+      
+//           acc[key].push(item)
+      
+//           return acc
+      
+//         }, {})
+      
+//       }
+//     let gro = ["destination_country", "origin_country"] 
+//    let groupedStudent = myFunc(data, gro)
+// console.log(groupedStudent);
+
+
+    // console.log(grouped);
+    // console.log(data)
 
     return (data)
 
 
 }
+
 
 
 const  FilteredFlightsByIdMethod = async (ticket_ids) => {

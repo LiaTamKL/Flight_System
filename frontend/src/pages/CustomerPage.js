@@ -6,23 +6,30 @@ import { ViewMyTickets } from "../methods/TicketMethods";
 import AddTicketCreateButton from '../components/AddTicketCreateButton'
 import { ListIFlightitem } from '../components/ListItem'
 import { FilteredFlightsByIdMethod } from '../methods/FilterMethods';
+import FlightCard from '../components/FlightPage/Components/FlightCard';
 
+import ReactPaginate from "react-paginate"
 
 // import './Pages.css';
 
 const CustomerPage = () => {
     let navigate = useNavigate();
-    let [tickets, setTickets] = useState();
+    // let [tickets, setTickets] = useState();
     let [userData, setUserData] = useState();
     let {user, authToken} = useContext(AuthContext)
     let [myFlights, setMyFlights] = useState();
-
-    // const flight_id = useRef(tickets.flight)
+    const [noData, setNoData] = useState();
+    
+    const [pagenumber, setPageNumber] = useState(0)
+    const flightsPerPage = 5
+    const pagesSeen = pagenumber * flightsPerPage
+  
 
 // console.log(user , userData);
     useEffect(() => {
         getUserData() 
         getMyTickets()
+        
         // eslint-disable-next-line
     }, [user])
 
@@ -34,6 +41,19 @@ let getUserData = async () => {
 }
 
 
+const handleNoTickets = () => {
+    
+    
+    return (
+        <div className='flights-header'>
+        <h2 className='flights-title'>  No Tickets for {userData?.first_name} {userData?.last_name}  </h2>
+        </div> 
+    )
+
+}
+
+
+
 //gets tickets and flights connected to them 
 let getMyTickets = async () => {
 
@@ -43,39 +63,107 @@ let getMyTickets = async () => {
 
 
     if (status ===200){
-        setTickets(data)
+       setNoData(data.length === 0)
+        // setTickets(data)
         data = await FilteredFlightsByIdMethod(data)
-        setMyFlights(data)}
-
+        if (status ===200){setMyFlights(data)}
+        else{alert(status, data)}
+    
+    }
+    
     else{alert(status, data)}
 }
 
 
+if (myFlights!==undefined && !noData){
 
 
+    if (myFlights!==undefined){
+        var displayFlights = myFlights.slice(pagesSeen, pagesSeen + flightsPerPage).map((flight, index)=>{
+        
+        return (
+
+                <FlightCard key={index} flight={flight}/>
+
+            )})
+            var pageCount = Math.ceil(myFlights.length / flightsPerPage)
+        }
+
+            const changePage = ({selected})=>{
+                setPageNumber(selected)
+            }
+
+console.log(noData);
     return (
-        <div className='all'>
-          <div className='all-header'>
-            <h2 className='all-title'>&#9782; Tickets of {userData?.first_name} {userData?.last_name} </h2>
-            <p className='all-count'>{tickets?.length}</p>
-          </div>
-
-          {/* tickets.find(id) => id === flight.id)} */}
-          <div className="all-list">
-                    {myFlights?.map((myflight, index) => (
-                    <ListIFlightitem key={index} flight={myflight} userrole={user.account_role}  />
-                    
-                ))}
-
-            </div>  
-            {/* <AddTicketCreateButton tickets_id = {tickets.id} userData = { userData } /> */}
-            <AddTicketCreateButton userData = { userData }  />
-
+        <>
+        <div className='flights-header'>
+        <h2 className='flights-title'>  Tickets of {userData?.first_name} {userData?.last_name}  </h2>
         </div>
-  )
+
+                <div className="container">
+                <div className="row">
+                        
+            {
+                    myFlights?.length > 0
+                    ? (<>
+                        {displayFlights}
+                        <ReactPaginate
+                        className= {"pagination"}
+                        previousLabel = {'Back'}
+                        nextLabel = {'Next'}
+                        pageCount={pageCount}
+                        onPageChange={changePage}
+                        siblingCount = {0}
+                        containerClassName={""}
+                        previousLinkClassName={"btn btn-outline-info"}
+                        nextLinkClassName={"btn btn-outline-info"}
+                        />
+                        </>
+                    ) :(
+                    <></>
+            )}
+                </div>  
+            </div>
+        </>  
+
+        )
+    }else{  
+        return (
+        <div className='flights-header'>
+        <h2 className='flights-title'>  No Tickets for {userData?.first_name} {userData?.last_name}  </h2>
+        </div> 
+    )
+
+    }
+
+    }
+
+
+
+
+//     return (
+//         // <div className='all'>
+//         //   <div className='all-header'>
+//             <h2 className='all-title'>&#9782; Tickets of {userData?.first_name} {userData?.last_name} </h2>
+//             {/* <p className='all-count'>{tickets?.length}</p> */}
+//           </div>
+
+//           {/* tickets.find(id) => id === flight.id)} */}
+//           <div className="all-list">
+//                     {myFlights?.map((myflight, index) => (
+//                     <ListIFlightitem key={index} flight={myflight} userrole={user.account_role}  />
+                    
+//                 ))}
+
+//             </div>  
+//             {/* <AddTicketCreateButton tickets_id = {tickets.id} userData = { userData } /> */}
+//             <AddTicketCreateButton userData = { userData }  />
+
+//         </div>
+//   )
 
   
-}
+// }
 
 export default CustomerPage
 

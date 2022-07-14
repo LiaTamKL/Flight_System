@@ -2,3 +2,55 @@
     align-self: center;
     color: blanchedalmond;
   } */
+
+  .flights-header{
+    display: flex ;
+    justify-content: center
+}
+
+.flights-header .flights-title {
+
+    margin-bottom: 2vw ;
+
+    
+    
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items:center;
+  /* border: 1px solid #e2e2e2; */
+
+}
+
+.pagination a {
+  border: 1px solid #ddd; 
+  margin: 0 10px;
+  color:white;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination a:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.pagination a:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.pagination .btn.btn-outline-info {
+  color:black;
+  background-color: white
+}
+
+.pagination li.selected a {
+  background-color: #ffffff;
+}
+
+
+.pagination a:hover:not(.active) {background-color: #ddd;}

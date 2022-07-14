@@ -1,26 +1,16 @@
 import { MdFlight } from 'react-icons/md';
 import FlightItem from './FlightItem'
-
+import "./FlightPage.css"
 
 
 const FlightCard = (props) => {
     let flight = props.flight
 
-    // var hist = {};
-    // var grouped = [];
-    // filtered.map( (flight, index , data) => {
-    //     if ([flight.destination_country, flight.origin_country ] in hist) 
-    //     {
-    //         hist[[flight.destination_country, flight.origin_country ]] ++ ;
-    //         grouped.push(data[index], data[index-1]);
-    //     }
-    //         else hist[[flight.destination_country, flight.origin_country]] = 1;} 
-    //     );
-
+  
 
     return (
         <>
-        <div className="col-sm-6">    
+        <div className="col-lg-4">    
         <article className="card card-big mb15">
             <div className="card__img-wrap">
 

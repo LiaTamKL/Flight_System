@@ -64,6 +64,7 @@ const UserLinks = () => {
            return (    
             <>    
             <Nav.Link href="/customer">Home</Nav.Link>
+            <Nav.Link href="/Home">Add Tickets</Nav.Link>
                 <UserLinks /> 
             </>
             )

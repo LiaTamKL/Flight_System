@@ -1,72 +1,82 @@
 
-import React, {useState, useEffect} from 'react'
-import { ListIFlightitem } from '../components/ListItem'
+import React, {useState, useEffect, useContext} from 'react'
 // import AddCreateButton from '../components/AddCreateButton'
-import { useLocation } from 'react-router-dom' ;
-import { FilteredFlightsMethod} from "../methods/FilterMethods"
+import { useLocation ,useNavigate } from 'react-router-dom' ;
+import { FilteredFlightsMethod } from "../methods/FilterMethods"
 import ReactPaginate from "react-paginate"
+import AuthContext from "../context/authentication";
 
-
+import FlightCard from '../components/FlightPage/Components/FlightCard'
+import "./Pages.css"
 
 const FlightsListPage = () => {
   const { state } = useLocation();
+  let  navigate = useNavigate();
+  let {user, authToken} = useContext(AuthContext);
   let[filteredFlights, setFilteredFlights] = useState();
+  let flightSearchParams = {'fromSearchOption':0, 'toSearchOption':0 ,departureTime:"", arrivalTime:""}
 
-
-useEffect(() => {
-    
-if(!state) {getfilteredflights() }
-else { setFilteredFlights(state.filteredFlights)}
-
-  }, []);
-
-  let getfilteredflights = async () => {
-    let filtered = await FilteredFlightsMethod(
-      {departureTime: "",
-      arrivalTime: "",
-      fromSearchOption:"",
-      toSearchOption:""}
-      );
-    setFilteredFlights(filtered);
-}
-
-const [pagenumber, setPageNumber] = useState(0)
-const flightsPerPage = 5
-const pagesSeen = pagenumber * flightsPerPage
-
-
-if (filteredFlights!==undefined){
-  var displayFlights = filteredFlights.slice(pagesSeen, pagesSeen + flightsPerPage).map((flight, index)=>{
-    return (
-
+  useEffect(() => {
       
-      <ListIFlightitem key={index} flight={flight} />
+  if(!state) {getfilteredflights(flightSearchParams) }
+  else { getfilteredflights(state.flightSearchParams)}
+
+    }, []);
 
 
+  let getfilteredflights = async (flightSearchParams) => {
 
-   )})
-   var pageCount = Math.ceil(filteredFlights.length / flightsPerPage)
-}
+      let filtered = await FilteredFlightsMethod(
+        {
+          departureTime: flightSearchParams.departureTime,
+          arrivalTime: flightSearchParams.arrivalTime,
+          fromSearchOption:flightSearchParams.fromSearchOption,
+          toSearchOption:flightSearchParams.toSearchOption
+        }
+    );
 
-  const changePage = ({selected})=>{
-      setPageNumber(selected)
+      setFilteredFlights(filtered);
   }
 
-  return (
-        <div className='all'>
-          <div className='all-header'>
-            <h2 className='all-title'>&#9782; Flights Found  </h2>
-            
-            {/* <p className='all-count'>{filteredFlights?.length}</p> */}
-          </div>
+  const [pagenumber, setPageNumber] = useState(0)
+  const flightsPerPage = 5
+  const pagesSeen = pagenumber * flightsPerPage
 
-          <div className="all-list">
+
+// if (user?.account_role === "Customer"){ navigate ("/customer/tickets/")}
+
+
+  if (filteredFlights!==undefined){
+    var displayFlights = filteredFlights.slice(pagesSeen, pagesSeen + flightsPerPage).map((flight, index)=>{
+    
+      return (
+
+              <FlightCard key={index} flight={flight}/>
+
+        )})
+        var pageCount = Math.ceil(filteredFlights.length / flightsPerPage)
+      }
+
+        const changePage = ({selected})=>{
+            setPageNumber(selected)
+        }
+
+
+  return (
+    <>
+    <div className='flights-header'>
+      <h2 className='flights-title'>  Flights Found  </h2>
+    </div>
+
+            <div className="container">
+              <div className="row">
                      
           {
                 filteredFlights?.length > 0
                 ? (<>
                     {displayFlights}
                     <ReactPaginate
+                    className= {"pagination"}
                     previousLabel = {'Back'}
                     nextLabel = {'Next'}
                     pageCount={pageCount}
@@ -82,6 +92,7 @@ if (filteredFlights!==undefined){
           )}
             </div>  
         </div>
+      </>  
   )
 }
 

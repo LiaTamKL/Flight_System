@@ -25,6 +25,7 @@ const FlightItem = (props) => {
   let [tickets, setTickets] = useState()
   let [currentTicket,  setCurrentTicket] = useState()
 
+
   // const tickets = useRef()
   let {user, authToken} = useContext(AuthContext);
 
@@ -77,12 +78,14 @@ let checkIfBooked = () => {
   let handleAddTicket = () => {
     if (authToken){CreateTicket(flight.id, authToken)}
     navigate("/customer/tickets")
+    
   }
 
 
  let handleRemoveTicket = () => {
     RemoveTicket(currentTicket, authToken)
     navigate("/customer/tickets")
+    window.location.reload(false);
 
  }
 
@@ -94,22 +97,21 @@ let checkIfBooked = () => {
         <div className="airline-wrap">{flight?.airline}</div>
       
 
-
-        <div className="icon-wrap-departure" >
+        <div className="icon-wrap" >
           
-          {/* <i><MdFlightTakeoff /></i> */}
+          <i><MdFlightTakeoff /></i>
           <small >{formatTime(flight?.departure_time).slice(0,11)} </small> 
           {/* <i><BiTime /></i> */}
           <small >{formatTime(flight?.departure_time).slice(11,)} </small> 
       </div> 
-
+{/* 
       <div className="icon-wrap-landing" >
-          {/* <i><MdFlightLand /></i>  */}
+          <i><MdFlightLand /></i> 
           <small >{formatTime(flight?.landing_time).slice(0,11)} </small> 
-          {/* <i><BiTime /></i> */}
+          <i><BiTime /></i>
           <small >{formatTime(flight?.landing_time).slice(11,)} </small> 
           
-      </div> 
+      </div>  */}
 
 
 
@@ -119,7 +121,7 @@ let checkIfBooked = () => {
       </div> */}
 
 
-        <div className="ticket-wrap"><var className="ticket"><span className="ticket-left">Tikets</span> {flight?.remaining_tickets} </var> 
+        <div className="ticket-wrap"><var className="ticket"><span className="ticket-left">Tikets left</span> {flight?.remaining_tickets} </var> 
 
           {!(user && user?.account_role !== 'Customer') ? (<>
 

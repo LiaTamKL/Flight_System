@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import Header from './components/Header'
 
-import FlightPage from './components/FlightPage';
 // import LoginPage from './pages/login_page';
 import {AuthenticationProvider} from './context/authentication'
 import AdminDashboard from './pages/Admin_Dashboard';
@@ -38,7 +37,7 @@ import UpdatePassword from './pages/update_password';
 
 
 // import FlightsListPage from './pages/FlightsListPage'; 
-import FlightsListPage from './components/FlightPage/FlightsListPage'; 
+import FlightsListPage from './pages/FlightsListPage'; 
 
 
 import Login from './components/Login/Login';
@@ -83,7 +82,7 @@ function App() {
             <Route path='/customer'  exact element={<LoggedinRoute account_role="Customer"/>}>
               <Route path = '' element={<Navigate to="tickets" replace />} /> 
               <Route path='tickets' element={<CustomerPage />}/>
-              <Route path='tickets/:id' element={<FlightPage />}/>
+              {/* <Route path='tickets/:id' element={<FlightsListPage />}/> */}
               <Route path='flight/search' element={<FlightSearch />}/>           
             </Route>
 
@@ -95,7 +94,7 @@ function App() {
             </Route>
             
             <Route path = '/flights' exact element={<FlightsListPage />}/>
-            <Route path = 'flights/:id' element={<FlightPage />} />
+            {/* <Route path = 'flights/:id' element={<FlightsListPage />} /> */}
             
 
            
