@@ -7,7 +7,6 @@ const FlightCard = (props) => {
     let flight = props.flight
     let d_country = props.countries?.find(count=> count.country_name===flight.destination_country)
 
-  
 
     return (
         <>
@@ -24,7 +23,7 @@ const FlightCard = (props) => {
                 <div className="title-right-wrap"> <h5>{flight?.destination_country}</h5> <small>{flight?.destination_country.slice(0, 3)} </small></div>
             </div> 
             
-            <FlightItem  flight={flight} />
+            <FlightItem  flight={flight} CusPage={props.CusPage} />
 
         </article> 
     </div>

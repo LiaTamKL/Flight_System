@@ -91,7 +91,7 @@ if (myFlights!==undefined && !noData){
         
         return (
 
-                <FlightCard key={index} flight={flight} countries={countries}/>
+                <FlightCard key={index} flight={flight} countries={countries} CusPage={true}/>
 
             )})
             var pageCount = Math.ceil(myFlights.length / flightsPerPage)
@@ -101,7 +101,7 @@ if (myFlights!==undefined && !noData){
                 setPageNumber(selected)
             }
 
-console.log(noData);
+
     return (
         <>
         <div className='flights-header'>

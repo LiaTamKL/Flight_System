@@ -13,7 +13,6 @@ import { MdFlightTakeoff } from 'react-icons/md';
 const FlightItem = (props) => {
   let  navigate = useNavigate();
  
-
   let flight = props.flight
   let formatTime = (flight) => {return format(parseISO(flight),  "dd MMM yyyy hh:mm")}
 
@@ -61,7 +60,7 @@ let getCurrentTicket = () => {
 
 let checkIfBooked = () => {
 
-  if (currentTicket ){
+  if (currentTicket || props.CusPage==true){
     setAddTicketMsg("This Ticket Is Booked")
     setIsHiddenAdd(true)
     setIsHiddenRemove(false)
