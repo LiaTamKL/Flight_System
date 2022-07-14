@@ -7,6 +7,7 @@ import GetUsers from "../methods/AdminMethods";
 import { DeleteUser, UpdateToAdminFromCus } from "../methods/AdminMethods";
 import Select from 'react-select'
 import ReactPaginate from "react-paginate"
+import "./Pages.css"
 
 
 const AdminDashboard= () => {

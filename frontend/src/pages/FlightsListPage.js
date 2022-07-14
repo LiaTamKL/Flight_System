@@ -5,7 +5,7 @@ import { useLocation ,useNavigate } from 'react-router-dom' ;
 import { FilteredFlightsMethod } from "../methods/FilterMethods"
 import ReactPaginate from "react-paginate"
 import AuthContext from "../context/authentication";
-
+import { AllCountries } from '../methods/CountriesMethods';
 import FlightCard from '../components/FlightPage/Components/FlightCard'
 import "./Pages.css"
 
@@ -15,6 +15,7 @@ const FlightsListPage = () => {
   let {user, authToken} = useContext(AuthContext);
   let[filteredFlights, setFilteredFlights] = useState();
   let flightSearchParams = {'fromSearchOption':0, 'toSearchOption':0 ,departureTime:"", arrivalTime:""}
+  const [countries, setCountries] = useState([]);
 
   useEffect(() => {
       
@@ -36,6 +37,11 @@ const FlightsListPage = () => {
     );
 
       setFilteredFlights(filtered);
+      let country_data = await AllCountries()
+      if (country_data){
+          setCountries(country_data)       
+
+  }
   }
 
   const [pagenumber, setPageNumber] = useState(0)
@@ -51,7 +57,7 @@ const FlightsListPage = () => {
     
       return (
 
-              <FlightCard key={index} flight={flight}/>
+              <FlightCard key={index} flight={flight} countries={countries}/>
 
         )})
         var pageCount = Math.ceil(filteredFlights.length / flightsPerPage)
