@@ -23,7 +23,7 @@ const NewForm = () => {
             <div className="portada"></div>
             <div className="title-total">   
                 <div className="title">User ID </div>
-                <h2 className='username-style' >somedd ddddddddddd </h2>
+                <h2 className='username-style' >User Name </h2>
                 {/* <AirlineForm /> */}
                 {/* <AdminForm /> */}
                 {/* <CountryForm /> */}
