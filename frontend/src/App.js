@@ -2,6 +2,8 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css'
 import Header from './components/Header'
+import Footer from './components/Footer/Footer';
+
 
 // import LoginPage from './pages/login_page';
 import {AuthenticationProvider} from './context/authentication'
@@ -41,7 +43,7 @@ import FlightsListPage from './pages/FlightsListPage';
 
 
 import Login from './components/Login/Login';
-
+import NewForm from './forms/NewForm/NewForm'
 function App() {
   return (
     <div className="container dark" >
@@ -100,6 +102,8 @@ function App() {
            
 
           </Routes>
+          {/* <NewForm /> */}
+          {/* <Footer /> */}
         </AuthenticationProvider>
       </div>
     </div>

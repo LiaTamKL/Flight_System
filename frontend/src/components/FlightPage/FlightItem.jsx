@@ -2,9 +2,9 @@ import React, {useState, useEffect, useContext, useRef}  from 'react'
 import { BiTime } from 'react-icons/bi';
 import { format , parseISO } from "date-fns";
 import { useNavigate,useLocation } from "react-router-dom";
-import { CreateTicket, RemoveTicket } from '../../../methods/TicketMethods';
-import AuthContext from "../../../context/authentication";
-import { ViewMyTickets } from "../../../methods/TicketMethods";
+import { CreateTicket, RemoveTicket } from '../../methods/TicketMethods';
+import AuthContext from "../../context/authentication";
+import { ViewMyTickets } from "../../methods/TicketMethods";
 import { MdFlightLand } from 'react-icons/md';
 import { MdFlightTakeoff } from 'react-icons/md';
 

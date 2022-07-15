@@ -30,16 +30,17 @@ const AirlineForm = (userData)=>{
 
     return(
         <>
-        <input type="text" name="name" placeholder="Airline Name" defaultValue = {set?(userData.name):null} required />
+        <input className='form-input' type="text" name="name" placeholder="  Airline Name" defaultValue = {set?(userData.name):null} required />
             <Select 
                 required
                 name='country'
                 id='country'
-                className='fancy-select'
+                className='dopdown-select'
                 options ={countryOptions}
-                isSearchable = {true}
-                placeholder={set?`Please pick a country, your original one is ${userData.country}`:`Please pick a country`}
-                isClearable = {true}  />
+                isSearchable
+                placeholder={<div className="select-placeholder-text"> {set?`Please pick a country, your original one is ${userData.country}`:`Please pick a country`}</div> }
+                isClearable
+                 />
                 
                 
                 </>

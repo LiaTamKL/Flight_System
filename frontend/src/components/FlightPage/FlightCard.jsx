@@ -14,8 +14,8 @@ const FlightCard = (props) => {
         <article className="card card-big mb15">
             <div className="card__img-wrap">
 
-                <img src={d_country?.flag} height="15px" width="20px" alt={flight.destination_country + ' flag'} />
-                <h4 className="title title-overlay-center"> Explore {flight?.destination_country}</h4>
+                <img src={d_country?.flag} alt={flight.destination_country + ' flag'} />
+                <h4 className="title-overlay-center"> Explore {flight?.destination_country}</h4>
             </div>
             <div className="card__info">
                 <div className="title-left-wrap"> <h5>{flight?.origin_country}</h5> <small> {flight?.origin_country.slice(0, 3)} </small></div>

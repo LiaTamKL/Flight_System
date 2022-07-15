@@ -1,5 +1,3 @@
-
-import React, { useContext, useEffect, useState} from 'react'
 // import {Navbar ,  NavLogo } from "./Navbar/Navbar";
 
 // import ContextMenu from './Navbar/components/ContextMenu';
@@ -31,7 +29,9 @@ import React, { useContext, useEffect, useState} from 'react'
 
 
 import MainNavbar from './Navbar/Navbar';
-const Header = ({ state }) => {
+
+
+const Header = () => {
   // let nav = useNavigate()
   
 
@@ -45,6 +45,7 @@ const Header = ({ state }) => {
     <div className='app-header'>
 
       <MainNavbar />
+     
       {/* <Navbar>
         <NavLogo />
 

@@ -1,3 +1,6 @@
+import { FaBeer } from 'react-icons/fa';
+
+
 const CountryForm = (country)=>{
     country = country.country
     let set = null
@@ -6,7 +9,10 @@ const CountryForm = (country)=>{
     }
     return(
         <>
-        <input type="text" name="country_name" className="mb-3" placeholder="Country Name" defaultValue = {set?country.country_name:null} required />
+        {/* <input type="text" name="country_name" className="mb-3" placeholder="Country Name" defaultValue = {set?country.country_name:null} required /> */}
+
+        <input type="text" name="country_name" className="form-input" placeholder="Country Name" defaultValue = {set?country.country_name:null} required />
+
         <input type="file" className="custom-file-input" id="flag" name="flag" accept="image/*" required />
         </>
     )

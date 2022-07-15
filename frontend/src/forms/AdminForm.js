@@ -6,8 +6,8 @@ const AdminForm = (userData)=>{
     }
     return(
         <>
-        <input type="text" name="first_name" placeholder="First Name" defaultValue = {set?userData.first_name:null} required />
-        <input type="text" name="last_name" placeholder="Last Name" defaultValue = {set?userData.last_name:null} required />
+        <input className="form-input" type="text" name="first_name" placeholder="First Name" defaultValue = {set?userData.first_name:null} required />
+        <input className="form-input" type="text" name="last_name" placeholder="Last Name" defaultValue = {set?userData.last_name:null} required />
         </>
     )
 }

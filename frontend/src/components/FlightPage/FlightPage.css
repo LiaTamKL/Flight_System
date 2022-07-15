@@ -7,8 +7,6 @@
 } */
 ---------------------------------
 
-
-
 .mb15 {
     margin-bottom: 15px;
 
@@ -39,20 +37,22 @@
     overflow: hidden;
 }
 .card .card__img-wrap img {
-    min-height: 100%;
-    min-width: 100%;
-    
-}
-.card .title-overlay-center {
-    color: #fff;
-}
-.card .title-overlay-center {
-    text-align: center;
-    display: block;
     width: 100%;
     height: 100%;
+    
+}
+
+.card .title-overlay-center {
+    color: #fff;
+    text-align: center;
+
+    /* display: block; */
+    width: 100%;
+
+    
     position: absolute;
     top: 45%;
+
 }
 .h1, h2, h3, h4, h5, h6 {
     margin: 0;
@@ -64,7 +64,7 @@
 .card-big .card__info {
     border-radius: 0 0 6px 6px;
     background-color: #fff;
-    float: left;
+    float: right;
     width: 100%;
     border-bottom: 1px dashed #D1D1D1;
     

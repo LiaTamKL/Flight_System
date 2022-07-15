@@ -3,6 +3,13 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
 
 
+
+
+
+/* ########################################################## */
+/*                       LOGIN / REFISTER                     */
+/* ########################################################## */
+
 .create {
     max-width: 400px;
     margin: 0 auto;
@@ -32,8 +39,6 @@
 
 
 }
-
-
 
 .create button{
     background: red;
@@ -73,33 +78,17 @@ input::-webkit-inner-spin-button {
 }
 
 
-/* .dateinput { */
-    /* size: 30px;
-    width: 100%;
-    border: 1px solid black;
-    color: black;
-    padding-left: 25px;
-    background: url("../assets/callendar.svg") no-repeat left;
-    background-size: 20px;
-    background-color: white;
-    flex: 3; */
-/* } */
 
-
-
-
-
-
-/* Flight Search */
+/* ########################################################## */
+/*                     FLIGHT SEARCH                          */
+/* ########################################################## */
 
 .search-container {
 display: flex;
 flex-direction: row;
-/* flex-wrap: wrap; */
 justify-content: flex-start;
 width: 100%;
 padding: 10px;
-/* margin: 10px; */
 background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
 border-radius: 10px;
 box-shadow: 5px 20px 50px #000;
@@ -118,36 +107,17 @@ box-shadow: 5px 20px 50px #000;
 } */
 
 .date-input {
-
-  /* background: url("../assets/callendar.svg") no-repeat left; */
- 
-  /* flex: 100%; */
   align-items: center;
   border-radius: 4px;
   width: 20%;
   margin: 1vw;
-  /* flex:20% */
-  /* background-color: gray; */
-
  }
 
 
-
-input[type="date"]::-webkit-calendar-picker-indicator { 
-    background-color: red;
-    outline: none;
-  }
-
-
-
 .country-input{
-    /* padding: 1vw; */
     align-items: center;
     margin: 1vw;
-    /* color: black; */
-    /* flex: 25%; */
     width: 20%;
-    /* flex:20% */
 }
 
 
@@ -158,22 +128,24 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-right: auto;
     /* display: block !important; */
     background: #f0d658;
-    color: white;
     font-size: 20px;
     border: 1px solid grey;
     cursor: pointer;
     width: 10% ;
     margin: 1vw;
     border-radius: 6px;
+    
     /* flex: 20%; */
     /* height: 1vw; */
 
 }
 
-.search-icon {
+.search-button .search-icon {
     display: flex;
     justify-content: center;
-    color: #000;
+    color: black;
+    
+    font-size: 20px;
     
     /* color: black; */
     
@@ -193,3 +165,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         width: 100%;
     }
 }
+
+
+
+/* ########################################################## */
+/*                      AIRLINE FROM USER                   */
+/* ########################################################## */

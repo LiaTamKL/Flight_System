@@ -48,10 +48,7 @@ let handleClick = () => {
     //     setDisplayOption(temp)
     // }
 
-
-
-    return (
-    
+    return ( 
         <div className="search-container">
 
                 <AsyncSelect 
@@ -104,11 +101,10 @@ let handleClick = () => {
                 </input>
 
                 <input
+                className='date-input'
                     label="Arrival Time"  
                     type='date'
                     placeholder="Departure"
-                    // id='arrival_time'
-                    className='date-input'
                     min={departureTime}
                     defaultValue = {arrivalTime}
                     onChange ={(e) => {

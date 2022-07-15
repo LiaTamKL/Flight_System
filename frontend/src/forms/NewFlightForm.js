@@ -51,18 +51,18 @@ const NewFlightForm = (flightData)=>{
                 id='origin_country'
                 className='fancy-select'
                 options ={countryOptions}
-                isSearchable = {true}
+                isSearchable
                 placeholder={set?`Please pick an origin country, your original one is ${flightData.origin_country}`:`Please pick an origin country`}
-                isClearable = {true}  />
+                isClearable />
             <Select
                 required
                 name='destination_country'
                 id='destination_country'
                 className='fancy-select'
                 options ={countryOptions}
-                isSearchable = {true}
+                isSearchable
                 placeholder={set?`Please pick an destination country, your original one is ${flightData.destination_country}`:`Please pick an destination country`}
-                isClearable = {true}  />
+                isClearable />
 
             <h5>Number of Tickets: </h5>
             <input

@@ -6,7 +6,7 @@ import { FilteredFlightsMethod } from "../methods/FilterMethods"
 import ReactPaginate from "react-paginate"
 import AuthContext from "../context/authentication";
 import { AllCountries } from '../methods/CountriesMethods';
-import FlightCard from '../components/FlightPage/Components/FlightCard'
+import FlightCard from '../components/FlightPage/FlightCard'
 import "./Pages.css"
 
 const FlightsListPage = () => {
@@ -50,6 +50,8 @@ const FlightsListPage = () => {
 
 
 // if (user?.account_role === "Customer"){ navigate ("/customer/tickets/")}
+
+
 
 
   if (filteredFlights!==undefined){
