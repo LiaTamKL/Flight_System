@@ -35,10 +35,10 @@ const AirlineForm = (userData)=>{
                 required
                 name='country'
                 id='country'
-                className='dopdown-select'
+                className='select-dropdown'
                 options ={countryOptions}
                 isSearchable
-                placeholder={<div className="select-placeholder-text"> {set?`Please pick a country, your original one is ${userData.country}`:`Please pick a country`}</div> }
+                placeholder={<div className="select-dropdown-placeholder"> {set?`Please pick a country, your original one is ${userData.country}`:`Please pick a country`}</div> }
                 isClearable
                  />
                 

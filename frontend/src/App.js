@@ -102,7 +102,7 @@ function App() {
            
 
           </Routes>
-          {/* <NewForm /> */}
+          <NewForm />
           {/* <Footer /> */}
         </AuthenticationProvider>
       </div>

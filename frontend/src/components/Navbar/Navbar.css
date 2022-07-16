@@ -8,22 +8,14 @@
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;  
   filter: brightness(1.2);
+  font-weight: bold;
+
 
 }
-
-/* 
- .navbar{
-  height: var(--nav-size);
-  background-color: var(--bg);
-  padding: 0 1rem;
-  border-bottom: var(--border);
-  border-radius: 20px;
-  z-index:1; 
-}  */
-
 .navbar-brand
 {
   font-size: x-large;
+  
   
 }
 /* custom icons */ 

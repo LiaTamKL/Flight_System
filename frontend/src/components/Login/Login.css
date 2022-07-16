@@ -1,3 +1,16 @@
+:root {
+
+--form-hight:550px;
+
+--pull-tab-hight: calc(var(--form-hight) + 370px);
+
+--pull-tab-travel: calc(var(--form-hight) - 1030px)
+/* --pull-tab: -480px;	 */
+
+
+}
+
+
 .signup-login{
 	margin: 0;
 	padding: 0;
@@ -11,10 +24,10 @@
 }
 .main{
 	width: 350px;
-	height: 400px;
+	height: var(--form-hight);
 	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
 	overflow: hidden;
-	border-radius: 5px;
+	border-radius: 25px;
 	box-shadow: 5px 20px 50px #000;
 }
 #chk{
@@ -41,27 +54,29 @@
 	cursor: pointer;
 	transition: .5s ease-in-out;
 }
+
+
 .login-form-input{
 	width: 60%;
-	height: 20px;
 	background: #e0dede;
 	justify-content: center;
 	display: flex;
 	margin: 20px auto;
 	padding: 10px;
+	font-size: 18px;
 	border: none;
 	outline: none;
 	border-radius: 5px;
 }
 .login-form-button{
 	width: 60%;
-	height: 30px;
+	height: 45px;
 	margin: 10px auto;
 	justify-content: center;
 	display: block;
 	color: #fff;
 	background: #573b8a;
-	font-size: 1em;
+	font-size: 1.5em;
 	font-weight: bold;
 	margin-top: 20px;
 	outline: none;
@@ -76,7 +91,7 @@
 
 /* signup pulltab */
 .signup{
-	height: 640px;
+	height:var(--pull-tab-hight);
 	background: rgb(234, 234, 234);
 	border-radius: 50% / 10%;
 	transform: translateY(-110px);
@@ -91,11 +106,12 @@
 
 /*move distance */
 #chk:checked ~ .signup{
-	transform: translatey(-370px);
+	transform: translatey(var(--pull-tab-travel));
+
 }
 
 #chkk:checked ~ .signup{
-	transform: translatey(-700px);
+	transform: translatey(calc(var(--pull-tab-travel) * 2));
 }
 
 

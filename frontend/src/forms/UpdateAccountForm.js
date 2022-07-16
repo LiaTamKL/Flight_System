@@ -6,7 +6,7 @@ import AuthContext from '../context/authentication'
 const UpdateAccountForm = ()=>{
     let {user} = useContext(AuthContext)
     return(
-        <input type="email" name="email" placeholder="Email" defaultValue = {user ?(user.email):null} required/>
+        <input className='form-input' type="email" name="email" placeholder="Email" defaultValue = {user ?(user.email):null} required/>
     )
 }
 

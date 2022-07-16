@@ -2,12 +2,12 @@ import React from 'react'
 import './NewForm.css'
 import {ReactComponent as Profile} from './image.svg';
 import AirlineForm from '../AirlineForm';
-import AccountForm from '../AccountForm';
 import AdminForm from '../AdminForm';
 import CountryForm from '../CountryForm';
 import NewFlightForm from '../NewFlightForm';
 import UpdateAccountForm from '../UpdateAccountForm';
 import UpdatePasswordForm from '../UpdatePasswordForm';
+
 
 
 
@@ -21,12 +21,12 @@ const NewForm = () => {
         </div>
         <div className="card-text">
             <div className="portada"></div>
-            <div className="title-total">   
+            <div className="input-fileds">   
                 <div className="title">User ID </div>
                 <h2 className='username-style' >User Name </h2>
                 {/* <AirlineForm /> */}
                 {/* <AdminForm /> */}
-                {/* <CountryForm /> */}
+                <CountryForm />
                 {/* <NewFlightForm /> */}
                 {/* <UpdateAccountForm /> */}
                 {/* <UpdatePasswordForm /> */}

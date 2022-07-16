@@ -13,7 +13,7 @@ const  MainNavbar = () => {
     return (
 
       // <Navbar collapseOnSelect expand="xl" bg="dark" variant="dark" sticky = "top">
-      <Navbar collapseOnSelect  expand="md" sticky = "top">
+      <Navbar collapseOnSelect  expand="md" sticky= "top"> {/*fixed = "top*/}
 
         {/* <Container> */}
           <Navbar.Brand 

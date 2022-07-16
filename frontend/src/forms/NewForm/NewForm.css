@@ -1,11 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
 
+:root {
+
+  --collapse-on:400px
+}
+
 
 .card {
-  border-radius: 4px;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
-  /* width: 100%; */
-  max-width: 400px;
+  width: 100%;
+  max-width: var(--collapse-on);
 
   border-radius: 25px;
   position: relative;
@@ -19,11 +23,10 @@
 }
 
 .card .title {
-    padding: 1rem;
-    text-align: right;
-    color: green;
-    font-weight: bold;
-    font-size: 12px;
+  padding-bottom: 20px;
+  color: green;
+  font-weight: bold;
+  font-size: 12px;
 }
 
 
@@ -34,16 +37,15 @@
     border-radius: 50%;
     border: 6px solid white;    
     background-image: linear-gradient(-60deg, #16a085 0%, #f4d03f 100%);
-    top: 10px;
-    left: 30px;
+    top: 2%;
+    right: 55%;
 }
 
 .card-text {
   display: grid;
-  grid-template-columns: 70px 2fr;
+  grid-template-columns: 1fr 2fr;
 
 }
-
 
 .portada {
     width: 100%;
@@ -56,72 +58,152 @@
   }
   
 
-.title-total {
+.input-fileds {
     display: flex;
-    padding: 2.5em 1.5em 1.5em 0.5em;
+    padding-top:3em ;
+    padding-bottom: 0.5em;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
    
-
 }
 
-.title-total .username-style {
+ .username-style {
     padding-bottom: 20px;
-    font-size: 160%;
+    font-size: 120%;
     word-wrap: break-word;
-
 }
 
+/*Inputs formatting */
 
 .form-input {
     height: 40px;
     font-size: 18px;
     border-radius: 4px;
     margin-bottom: 20px ;
-    margin-left: 5%;
-    /* margin-right: 20px; */
-    width: 100%;
+    width: 90%;
     
  } 
+
+
 
  .form-input::placeholder{
     font-style: italic;
     
  }
 
-.dopdown-select{
+
+
+.select-dropdown{
     margin-bottom: 20px;
     border-radius: 4px;
     font-size: 18px;
-    margin-left: 5%;
-    width: 100%;
+    width: 90%;
 }
 
 
-
-.select-placeholder-text {
+.select-dropdown-placeholder {
      font-style: italic;
 }
 
-/* input::file-selector-button {
-    font-weight: bold;
-    color:  #16a085;
-    padding: 0.5em;
-    border: thin solid grey;
-    border-radius: 3px;
-    margin-bottom: 20px;
-
-} */
 
 
+/*########################################
+          file upload field
+######################################## */
+
+
+#file-upload-label{
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  flex-wrap: wrap;
+  border: #16a085;
+  border-width: 5px;
+  border-style:dashed ;
+  width: 90%;
+  border-radius: 5px;
+  overflow: hidden;
+
+
+}
+
+
+#file-upload-label:active  {
+
+  transform: translateY(4px);
+}
+
+#file-upload-label:hover{
+  filter: brightness(120%)
+}
+#photo-icon {
+  color: white;
+  font-size: 150%;
+}
+
+#selected-file{
+  text-overflow: ellipsis
+}
+
+.file-input {
+width: 80%;
+display: none;
+
+}
+
+
+
+#clear-label {
+  color:red;
+  font-style: oblique;
+  border: red;
+  border-width: 5px;
+  border-style:dashed ;
+  width: 90%;
+  border-radius: 5px;
+  /* margin-bottom: 20px; */
+  text-align: center;
+}
+
+
+#clear-label:active   {
+  transform: translateY(4px);
+
+}
+
+
+/*########################################*/
+
+
+.form-input-datetime{
+  height: 40px;
+  font-size: 18px;
+  border-radius: 4px;
+  margin-bottom: 20px ;
+  width: 80.5%;
+  text-align: center;
+}
+
+.new-flight-label {
+  color: white;
+  margin-bottom: 5px;
+}
+
+#form-input-number {
+  width: 60%;
+}
 
 
 .submit-button  {
+    margin-top: 20px;
     display: flex;
     background-color: #c2fbd7;
     border-radius: 100px;
     box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
-    color: rgb(69, 136, 69);
+    color: rgb(33, 65, 33);
     cursor: pointer;
     display: inline-block;
     font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
@@ -134,7 +216,6 @@
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    margin-left: 5%;
       
     }
     
@@ -142,3 +223,22 @@
       box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
       transform: scale(1.05) rotate(-1deg);
     }
+    
+
+
+
+    /* @media (max-width: 450px) { */
+      /* .input-fileds ,  */
+      /* .username-style,  */
+      /* .form-input, */
+      /* .custom-file-input, */
+      /* .form-input-datetime, */
+      /* .new-flight-label{ */
+      /* position: relative; */
+      /* padding-right: */
+
+   
+      /* }  */
+  
+  /* } */
+  
