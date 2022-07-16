@@ -19,7 +19,6 @@ const MakeCountry = () =>{
             setMessage('Successfully made this country!')
         }
         else{
-            console.log(result.data)
             setMessage('Country with this name already exists!')
         }
         }
