@@ -3,9 +3,9 @@
     display: flex;
     color: white;
     margin-top: 20px;
-    
+    max-width: 500px;
     width: 100%;
-    height: 200px;
+    height: 100px;
     border-radius: 10px;
     overflow: hidden;
 }
@@ -17,15 +17,7 @@
     overflow-wrap: normal;
     /* background-color: rgb(21, 234, 10); */
     left: 50p;
-    width: 20%;
-
-    /* border-style: dotted; */
-    /* border: 0px  2px  0px  0px; */
-    /* border-left: 2px;
-    border-top: 0px;
-    border-bottom:0px ;
-    border-width: 5px;
-    border-color: rgb(187, 187, 187); */
+    width: 10%;
 }
 #logo-box #flight-logo {
     color: black;
@@ -40,29 +32,119 @@
 #time-box {
     /* background-color: brown; */
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
     justify-content: space-evenly;
     overflow-wrap: normal;
-    width: 60%;
-    border-left: 5x dashed rgb(187, 187, 187); 
-    border-right: 5x dashed rgb(187, 187, 187); 
-
+    width: 70%;
+    border: dashed;
+    border-top: 0px;
+    border-bottom: 0px;
+    border-left: 2x  ;
+    border-right: 2x ;
+    border-color: rgb(194, 193, 193);
+    color: black;
+    margin: 20px 0px 20px 0px;
+    padding-left: 2%;
+    padding-right: 2%;
+    
     /* border-bottom:0px ; */
 
 
    
-color: black;
+
 
 }
 
-#time-box #dep-time {
+#time-box #dep-time , #arr-time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+
     color: black;
-}
 
-.show-date {
-    color:black ;
+}
+.show-date , .country-label {
+    font-size: 12px;
+    color: #8B8B8B;
+    text-transform: uppercase;
+    /* color:black ; */
 }
 
 .show-time {
-    color:black ;
+    font-size: 17px;
+    font-weight: bold;
+
+}
+
+
+#duration-time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: dashed;
+    position: relative;
+    
+    /* border-width: 5px; */
+    border-bottom: 3px dashed  ;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-color: rgb(194, 193, 193);
+    /* background-color: aqua; */
+    height: 50%;
+    width: 40%;
+    margin-top: 10px;
+
+}
+
+#flight-icon {
+    
+    background-color: white;
+    position:absolute;
+    
+    border: 1px solid black;
+    border-radius: 50%;
+    border-color: rgb(194, 193, 193);
+    top: 7px ;
+    font-size: 20px;
+    padding: 10px 10px 10px 10px;
+}
+#flight-icon #icon-label {
+    display: flex;
+    align-items: center;
+    color: aqua;
+}
+
+#select-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: auto;
+
+}
+
+
+#ticket-box {
+    background-color: blue;
+
+}
+
+#ticket-label, #number-label {
+        color: #113F6D;
+    font-weight: 600;
+    font-style: normal;
+    line-height: normal;
+    display: block;
+    font-size: 15px;
+    padding-bottom: 5px;
+    color: black;
+}
+#ticket-label {
+    font-size: 85%;
+    color: #8B8B8B;
+
+    color: rgb(194, 193, 193);
 }
