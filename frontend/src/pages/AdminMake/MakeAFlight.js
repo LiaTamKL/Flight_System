@@ -2,9 +2,7 @@ import React, { useState , useContext, useEffect } from 'react'
 import { CheckIfFlightFormIsValid, CreateMyFlight } from '../../methods/AirlineMethods';
 import AuthContext from '../../context/authentication';
 import NewFlightForm from '../../forms/NewFlightForm';
-import { AllCountries } from '../../methods/CountriesMethods';
 import FormTemplate from '../../forms/FormTemplate/FormTemplate';
-
 
 const CreateAFlight = () =>{
     let [message, setMessage] = useState()

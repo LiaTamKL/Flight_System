@@ -21,7 +21,6 @@ const MakeACustomer = () =>{
         nav('/admin')
     }
     else{
-        console.log(result.data)
         setMessage(result.data)
     }
     }
