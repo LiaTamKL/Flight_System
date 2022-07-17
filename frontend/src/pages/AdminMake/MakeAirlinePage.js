@@ -3,6 +3,8 @@ import AuthContext from "../../context/authentication";
 import AirlineForm from "../../forms/AirlineForm";
 import { useParams , useNavigate } from 'react-router-dom';
 import { Check_if_User, TurnIntoAirline } from "../../methods/AdminMethods";
+import FormTemplate from '../../forms/FormTemplate/FormTemplate';
+
 
 const MakeAnAirline = () =>{
     let params = useParams();
@@ -30,11 +32,18 @@ const MakeAnAirline = () =>{
         },[])
         
     return(<>
-        {message? (<p className="alert alert-warning">{message}</p>):<></>}
+        {/* {message? (<p className="alert alert-warning">{message}</p>):<></>} */}
         <form onSubmit={(e)=>airlineMaker(e)}>
-        <AirlineForm />
+        <FormTemplate 
+            formName= {"Add as an Airline"}
+            btnDesc = {'Add'} 
+            formFields = {<AirlineForm /> }
+            formErrors = {message? (<p className="alert alert-warning">{message}</p>):<></>}
+             />
+
+C        {/* <AirlineForm />
         <br/>
-        <input type="submit" className="btn btn-primary btn-sm"  value='Add them as an airline'/>
+        <input type="submit" className="btn btn-primary btn-sm"  value='Add them as an airline'/> */}
         </form></>
     )
 

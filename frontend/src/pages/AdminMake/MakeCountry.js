@@ -3,6 +3,8 @@ import AuthContext from "../../context/authentication";
 import { CreateCountry } from "../../methods/CountriesMethods";
 import CountryForm from "../../forms/CountryForm";
 import { useLocation} from "react-router-dom";
+import FormTemplate from '../../forms/FormTemplate/FormTemplate';
+
 
 const MakeCountry = () =>{
     let {authToken} = useContext(AuthContext)
@@ -24,14 +26,21 @@ const MakeCountry = () =>{
         }
         }
 
-
+ {/* {message? (<p className="alert alert-warning">{message}</p>):<></>} */}
     return(<>
-        {message? (<p className="alert alert-warning">{message}</p>):<></>}
-        <h1>Add a country</h1>
+       
+        {/* <h1>Add a country</h1> */}
         <form onSubmit={(e)=>makeCountry(e)}>
-        <CountryForm/> 
-        <br/>
-        <input className="btn btn-outline-secondary" type="submit"/>
+            <FormTemplate 
+            formName= {"New Country Form"}
+            btnDesc = {'Add a Country'} 
+            formFields = {<CountryForm /> }
+            formErrors = {message? (<p className="alert alert-warning">{message}</p>):<></>}
+             />
+            {/* <CountryForm />  */}
+            {/* <br/> */}
+            {/* <input className="btn btn-outline-secondary" type="submit"/> */}
+
         </form>
         
         

@@ -3,6 +3,8 @@ import { CheckIfFlightFormIsValid, CreateMyFlight } from '../../methods/AirlineM
 import AuthContext from '../../context/authentication';
 import NewFlightForm from '../../forms/NewFlightForm';
 import { AllCountries } from '../../methods/CountriesMethods';
+import FormTemplate from '../../forms/FormTemplate/FormTemplate';
+
 
 const CreateAFlight = () =>{
     let [message, setMessage] = useState()
@@ -22,11 +24,18 @@ const CreateAFlight = () =>{
 
     }
     return(<>
-        {message? (<p className="alert alert-warning">{message}</p>):<></>}
-        <h3>Making flight for {user.username}</h3>
+        {/* {message? (<p className="alert alert-warning">{message}</p>):<></>} */}
+        {/* <h3>Making flight for {user.username}</h3> */}
         <form onSubmit={(e)=>handleSubmit(e)}>
-        <NewFlightForm/>
-        <input type='submit' className="btn btn-primary btn-sm" value='Add this flight'></input>
+            <FormTemplate 
+                formName= {`New Flight for ${user.username}`}
+                btnDesc = {'Add this flight'} 
+                formFields = {<NewFlightForm /> }
+                formErrors = {message? (<p className="alert alert-warning">{message}</p>):<></>}
+                />
+
+            {/* <NewFlightForm/> */}
+        {/* <input type='submit' className="btn btn-primary btn-sm" value='Add this flight'></input> */}
         </form></>
     )
 }

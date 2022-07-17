@@ -1,6 +1,5 @@
-import React, { useRef ,useState  } from 'react';
+import React, {useState  } from 'react';
 import { BsFillCameraFill } from 'react-icons/bs';
-import { MdClear } from 'react-icons/md';
 
 
 const CountryForm = (country)=>{
@@ -23,8 +22,9 @@ const CountryForm = (country)=>{
         <label  id="file-upload-label">
             <i id="photo-icon" ><BsFillCameraFill /></i>
             <span id="selected-file" > {!selectedFile? 'Select File' :selectedFile.name }</span>
-            <input className="file-input" type="file"  id="flag" name="flag" accept="image/*"  required onChange={changeHandler} />     
-        </label>
+            {/* <input className="file-input" type="file"  id="flag" name="flag" accept="image/*"  required onChange={changeHandler} />      */}
+            <input id="file-input" type="file" name="flag" accept="image/*"  required onChange={changeHandler} />     
+            </label>
         <label id='clear-label' hidden={!selectedFile?.name}  onClick={clearSelected}> Clear </label>
 
         </>

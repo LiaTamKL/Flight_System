@@ -11,9 +11,10 @@ import AdminDashboard from './pages/Admin_Dashboard';
 import LoggedinRoute from './utilities/route_authentication';
 import {LoggedinGeneric, LoggedOut} from './utilities/route_authentication';
 import MainPage from './pages/main';
-import Register from './pages/registration';
+// import Register from './pages/registration_old';
 import NotFound from './pages/404Page';
-import UpdatePage from './pages/update';
+import UpdatePage from './pages/Update/UpdateAccount';
+
 import {
   Routes,
   Route,
@@ -21,7 +22,7 @@ import {
 } from "react-router-dom";
 
 
-import FlightSearch from './forms/FlightSearch'
+import FlightSearch from './forms/FlightSearchForm'
 import CustomerPage from './pages/CustomerPage'
 
 
@@ -35,15 +36,15 @@ import MakeAnAdmin from './pages/AdminMake/MakeAdminPage';
 import MakeACustomer from './pages/AdminMake/MakeCustomerPage';
 import MakeCountry from './pages/AdminMake/MakeCountry';
 import CreateAFlight from './pages/AdminMake/MakeAFlight';
-import UpdatePassword from './pages/update_password';
-
+import UpdatePassword from './pages/Update/UpdatePassword';
+import Login from './components/Login/Login';
 
 // import FlightsListPage from './pages/FlightsListPage'; 
 import FlightsListPage from './pages/FlightsListPage'; 
 
 
-import Login from './components/Login/Login';
-import NewForm from './forms/NewForm/NewForm'
+
+import FlightCardNew from './components/FlightPage/FlightCardNew'
 function App() {
   return (
     <div className="container dark" >
@@ -62,9 +63,9 @@ function App() {
 
 
 
-            <Route path="/register" element={<LoggedOut/>}>
+            {/* <Route path="/register" element={<LoggedOut/>}>
               <Route path='' element={<Register/>}/>
-            </Route>
+            </Route> */}
             <Route path='/update' exact element={<LoggedinGeneric/>}> 
               <Route path='' element={<UpdatePage/>}/>
               <Route path='password' element={<UpdatePassword/>}/>
@@ -102,7 +103,7 @@ function App() {
            
 
           </Routes>
-          <NewForm />
+          {/* <FlightCardNew /> */}
           {/* <Footer /> */}
         </AuthenticationProvider>
       </div>

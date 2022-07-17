@@ -18,7 +18,9 @@ const UserLinks = () => {
 
     return (
         <NavDropdown 
-        title={<AiOutlineUser/ >}
+        // title={<AiOutlineUser/ >}
+        title="Profile"
+
         id="collasible-nav-dropdown" 
         className="custom-style"
         >

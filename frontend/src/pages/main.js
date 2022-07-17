@@ -1,5 +1,5 @@
 import React from 'react'
-import FlightSearch from '../forms/FlightSearch';
+import FlightSearch from '../forms/FlightSearchForm';
 // import FlightPage from '../components/FlightPage//Flight_page_new/FlightPage'
 
 // import { FlightPage1 } from '../components/FlightPage/FlightPage1'

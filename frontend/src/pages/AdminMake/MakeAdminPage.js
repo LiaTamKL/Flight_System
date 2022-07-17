@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { Check_if_User, TurnIntoAdmin } from "../../methods/AdminMethods";
 import AdminForm from "../../forms/AdminForm";
+import FormTemplate from '../../forms/FormTemplate/FormTemplate';
+
 
 const MakeAnAdmin = () =>{
     let params = useParams();
@@ -36,9 +38,16 @@ const MakeAnAdmin = () =>{
     return(<>
         {message? (<p className="alert alert-warning">{message}</p>):<></>}
         <form onSubmit={(e)=>adminmaker(e)}>
-        <AdminForm userData= {reference}/>
-        <br/>
-        <input type="submit" className="btn btn-primary btn-sm"  value='Add them as an admin'/>
+        <FormTemplate 
+            formName= {`Add as Admin`}
+            btnDesc = {'Add'} 
+            formFields = {<AdminForm userData= {reference} /> }
+            formErrors = {message? (<p className="alert alert-warning">{message}</p>):<></>}
+            
+             />
+            {/* <AdminForm userData= {reference}/> */}
+            {/* <br/> */}
+            {/* <input type="submit" className="btn btn-primary btn-sm"  value='Add them as an admin'/> */}
         </form></>
     )
 
