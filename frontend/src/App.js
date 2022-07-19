@@ -44,7 +44,7 @@ import FlightsListPage from './pages/FlightsListPage';
 
 
 
-import FlightCardNew from './components/FlightPage/FlightCardNew'
+// import FlightCardNew from './components/FlightPage/FlightCardNew'
 function App() {
   return (
     <div className="container dark" >

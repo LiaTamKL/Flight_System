@@ -19,10 +19,10 @@ const CustomerPage = () => {
     let {user, authToken} = useContext(AuthContext)
     let [myFlights, setMyFlights] = useState();
     const [noData, setNoData] = useState();
-    const [countries, setCountries] = useState([]);
+    // const [countries, setCountries] = useState([]);
     
     const [pagenumber, setPageNumber] = useState(0)
-    const flightsPerPage = 5
+    const flightsPerPage = 6
     const pagesSeen = pagenumber * flightsPerPage
   
 
@@ -61,11 +61,11 @@ let getMyTickets = async () => {
         data = await FilteredFlightsByIdMethod(data)
         if (status ===200){
             setMyFlights(data)
-        let country_data = await AllCountries()
-            if (country_data){
-                setCountries(country_data)       
+        // let country_data = await AllCountries()
+        //     if (country_data){
+        //         setCountries(country_data)       
       
-        }
+        // }
         }
         else{alert(status, data)}
     
@@ -83,7 +83,9 @@ if (myFlights!==undefined && !noData){
         
         return (
 
-                <FlightCard key={index} flight={flight} countries={countries} CusPage={true}/>
+                // <FlightCard key={index} flight={flight} countries={countries} CusPage={true}/>
+                <FlightCard key={index} flight={flight} CusPage={true}/>
+
 
             )})
             var pageCount = Math.ceil(myFlights.length / flightsPerPage)

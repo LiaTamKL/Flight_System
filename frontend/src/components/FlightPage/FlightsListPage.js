@@ -1,6 +1,5 @@
 
 import React, {useState, useEffect} from 'react'
-// import AddCreateButton from '../components/AddCreateButton'
 import { useLocation } from 'react-router-dom' ;
 import { FilteredFlightsMethod} from "../../methods/FilterMethods"
 import ReactPaginate from "react-paginate"
@@ -32,21 +31,17 @@ const FlightsListPage = () => {
   }
 
   const [pagenumber, setPageNumber] = useState(0)
-  const flightsPerPage = 5
+  const flightsPerPage = 6
   const pagesSeen = pagenumber * flightsPerPage
 
 
   if (filteredFlights!==undefined){
     var displayFlights = filteredFlights.slice(pagesSeen, pagesSeen + flightsPerPage).map((flight, index)=>{
-    
-    //########################
-    // customer check
-    //########################
+
     return (
       <div className="container">
       <div className="row">
           <FlightCard key={index} flight={flight}/>
-          {/* <ListIFlightitem key={index} flight={flight} />           */}
       
       </div>
 </div> 

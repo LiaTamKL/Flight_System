@@ -1,36 +1,184 @@
-import { MdFlight } from 'react-icons/md';
-import FlightItem from './FlightItem'
-import "./FlightPage.css"
+import './FlightCard.css'
+import { MdFlight ,   MdFlightTakeoff } from 'react-icons/md';
+
+import React, {useState, useEffect, useContext}  from 'react'
+import { format , parseISO} from "date-fns";
+import { useNavigate} from "react-router-dom";
+import { CreateTicket, RemoveTicket } from '../../methods/TicketMethods';
+import AuthContext from "../../context/authentication";
+import { ViewMyTickets } from "../../methods/TicketMethods";
+import moment from 'moment';
 
 
 const FlightCard = (props) => {
-    let flight = props.flight
-    let d_country = props.countries?.find(count=> count.country_name===flight.destination_country)
+  let flight = props.flight
+  let  navigate = useNavigate();
+  let formatTime = (flight) => {return format(parseISO(flight),  "dd/MM/yy HH:mm")}
+
+  let [isHiddenAdd, setIsHiddenAdd] = useState(false)
+  let [isHiddenRemove, setIsHiddenRemove] = useState(true)
+  // let [addTicketMsg, setAddTicketMsg] = useState("")
+  let [tickets, setTickets] = useState()
+  let [currentTicket,  setCurrentTicket] = useState()
+
+  let {user, authToken} = useContext(AuthContext);
+
+    // using 2 useEffects to set tickets before checking validity.
+  // it forces rerender after setting the tickets
+  useEffect(() => {
+  if(user?.account_role === 'Customer') {getMyTickets()}
+  }, [])
+
+  
+  useEffect(() => {
+    checkIfBooked()
+    getCurrentTicket()
+   // eslint-disable-next-line
+     }, [flight, isHiddenRemove,isHiddenAdd, tickets])
 
 
-    return (
-        <>
-        <div className="col-lg-4">    
-        <article className="card card-big mb15">
-            <div className="card__img-wrap">
+    
+  let getMyTickets = async () => {
 
-                <img src={d_country?.flag} alt={flight.destination_country + ' flag'} />
-                <h4 className="title-overlay-center"> Explore {flight?.destination_country}</h4>
-            </div>
-            <div className="card__info">
-                <div className="title-left-wrap"> <h5>{flight?.origin_country}</h5> <small> {flight?.origin_country.slice(0, 3)} </small></div>
-                <span className="icon-center-wrap"><i className='icon-size'><MdFlight className='flight-icon' /> </i></span>
-                <div className="title-right-wrap"> <h5>{flight?.destination_country}</h5> <small>{flight?.destination_country.slice(0, 3)} </small></div>
-            </div> 
-            
-            <FlightItem  flight={flight} CusPage={props.CusPage} />
+  let result = await ViewMyTickets(authToken)
+  let data =  result.data
+  let status = result.status
+  if (status ===200){setTickets(data)}
+  else{alert(status, data)}
 
-        </article> 
-    </div>
-    </>
-  )
 }
 
+
+let getCurrentTicket = () => {
+   setCurrentTicket (tickets?.find((ticket) => ticket.flight === flight.id))
+}
+
+let checkIfBooked = () => {
+
+  if (currentTicket || props.CusPage===true){
+    // setAddTicketMsg("This Ticket Is Booked")
+    setIsHiddenAdd(true)
+    setIsHiddenRemove(false)
+    return
+   }
+    
+  if (flight?.remaining_tickets === 0 ){
+    setIsHiddenAdd(true)
+    }
+
+  }
+
+
+  let handleAddTicket = () => {
+    if (authToken){CreateTicket(flight.id, authToken)}
+    navigate("/customer/tickets")
+    
+  }
+
+ let handleRemoveTicket = () => {
+    RemoveTicket(currentTicket, authToken)
+    navigate("/customer/tickets")
+    window.location.reload(false);
+
+ }
+
+let showDuration = () => { 
+  let duration = moment.duration(moment(flight.landing_time).diff(moment(flight.departure_time)));
+  let totalHours = duration.asHours()
+  if (totalHours % 1 !== 0) {totalHours = Math.floor(totalHours)}
+return `${totalHours}h ${duration.minutes()}m`
+}
+
+
+  return (
+   <> 
+  <div className="col-lg-4">  
+    <div className="mb15">
+      <div className="flight-display-card">
+        <div id="card-header">
+            <label id="airline-name">{ flight?.airline }</label>
+
+            <div id="flight-id-display">
+              <small>flight</small>
+              <strong>{ flight?.id }</strong>
+            </div>
+        </div>
+
+
+      <section id="cities-section">
+        <div className="city-display">
+          <small id='city-left'>{ flight?.origin_country }</small>
+          <strong>{ flight?.origin_country.slice(0, 3) }</strong>
+        </div>
+
+        <div id='flight-icon'>
+          <MdFlight />
+        </div>
+
+        <div className="city-display">
+          <small id='city-right'>{ flight?.destination_country }</small>
+          <strong>{ flight?.destination_country.slice(0, 3) }</strong>
+        </div>
+      </section>
+
+
+      <section id="times-section">
+        <div className='time'>
+          <small id="date-left">{formatTime(flight?.departure_time).slice(0,9)} </small>
+          <strong>{ formatTime(flight?.departure_time).slice(9,) } </strong>
+        </div>
+            
+        <div id='duration-time'>
+          <label id="duration" >{ showDuration() }</label>
+          <div id='flight-icon' >
+            <div id="icon-label"> <MdFlightTakeoff /></div>
+          </div>
+        </div>
+            
+        <div className='time'>
+          <small id="date-right">{ formatTime(flight?.landing_time).slice(0,9) }</small>
+          <strong>{ formatTime(flight?.landing_time).slice(9,) }</strong>  
+        </div>
+    
+      </section>
+
+      <div id='tickets-box'>
+          <small id="tickets-num">tickets left:</small>
+          <label id='ticket-number' >{ flight?.remaining_tickets }</label>
+        </div>
+
+
+      <section id="btn-select-box">
+        {!(user && user?.account_role !== 'Customer') ? (<>
+
+          <input 
+          type="button" 
+          id='book-btn' 
+          value = "Book"
+          onClick={handleAddTicket}
+          hidden = {isHiddenAdd}
+          // onMouseEnter={() => console.log(flight?.id)}
+          // onMouseLeave={() => console.log("leave")}
+          />
+          <input 
+          type="button" 
+          id='remove-btn' 
+          value = "Remove"
+          onClick={handleRemoveTicket}
+          hidden = {isHiddenRemove}
+          />
+
+
+            </>):<></>}
+      </section>
+    </div>
+  </div>
+  </div>
+
+</>
+
+  )
+}
 
 
 export default FlightCard
