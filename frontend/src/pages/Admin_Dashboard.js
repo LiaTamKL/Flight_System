@@ -20,7 +20,9 @@ const AdminDashboard= () => {
         GetCustomers()
     },[])
 
-
+    /**
+    * sets all customers along with search options
+    */  
     let GetCustomers = async() =>{
         
         let result = await GetUsers("Customers", authToken)
@@ -35,6 +37,10 @@ const AdminDashboard= () => {
         }
     }
 
+    /**
+    * deletes a customer. gets customers and resets search item after usage to show update
+    * @param  {Dictionary} e The information
+    */  
     let Delete= async(e) =>{
 
         let result = await DeleteUser(e, authToken)
@@ -44,6 +50,10 @@ const AdminDashboard= () => {
 
     }
 
+    /**
+    * updates a customer to an admin, gets all customers again to update with results
+    * @param  {Dictionary} e The information (username, first_name, last_name)
+    */  
     let UpdateToAdmin= async(e) =>{
 
         let result = await UpdateToAdminFromCus(e, authToken)
@@ -53,7 +63,10 @@ const AdminDashboard= () => {
 
     }
 
-
+    /**
+    * sets the searched item to the searched account
+    * @param  {Dictionary} e The information (username)
+    */  
     const searchforaccount = async(e)=>{
         e.preventDefault()
         setSearchedItem(customers.find(account=> account.id===parseInt(e.target.username.value)))}
@@ -63,6 +76,10 @@ const AdminDashboard= () => {
     const cusPerPage = 3
     const pagesSeen = pagenumber * cusPerPage
 
+
+    /**
+    * shows card for each user, sets it up for the pagination
+    */
     const displayCustomers = customers.slice(pagesSeen, pagesSeen + cusPerPage).map((customer)=>{
     return (
         <div key={customer.account} className="list-group-item list-group-item-action flex-column align-items-start">

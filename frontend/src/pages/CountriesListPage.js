@@ -12,7 +12,9 @@ const CountriesListPage = () => {
         getCountries()
      }, [])
   
-     
+     /**
+     * gets all countries and sets them
+    */
      let getCountries = async () => {
         let response = await fetch('/backend/Countries')
         let data = await response.json()

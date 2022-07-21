@@ -5,13 +5,11 @@ import Header from './components/Header'
 import Footer from './components/Footer/Footer';
 
 
-// import LoginPage from './pages/login_page';
 import {AuthenticationProvider} from './context/authentication'
 import AdminDashboard from './pages/Admin_Dashboard';
 import LoggedinRoute from './utilities/route_authentication';
 import {LoggedinGeneric, LoggedOut} from './utilities/route_authentication';
 import MainPage from './pages/main';
-// import Register from './pages/registration_old';
 import NotFound from './pages/404Page';
 import UpdatePage from './pages/Update/UpdateAccount';
 
@@ -39,12 +37,10 @@ import CreateAFlight from './pages/AdminMake/MakeAFlight';
 import UpdatePassword from './pages/Update/UpdatePassword';
 import Login from './components/Login/Login';
 
-// import FlightsListPage from './pages/FlightsListPage'; 
 import FlightsListPage from './pages/FlightsListPage'; 
 
 
 
-// import FlightCardNew from './components/FlightPage/FlightCardNew'
 function App() {
   return (
     <div className="container dark" >
@@ -58,14 +54,10 @@ function App() {
             <Route path = "/" exact element={<Navigate to="home" replace />} />
             <Route path = "/home" exact element={<MainPage />} />
 
-            {/* <Route path="/login" element={<LoginPage/>} /> */}
             <Route path="/login" element={<Login/>} />
 
 
 
-            {/* <Route path="/register" element={<LoggedOut/>}>
-              <Route path='' element={<Register/>}/>
-            </Route> */}
             <Route path='/update' exact element={<LoggedinGeneric/>}> 
               <Route path='' element={<UpdatePage/>}/>
               <Route path='password' element={<UpdatePassword/>}/>

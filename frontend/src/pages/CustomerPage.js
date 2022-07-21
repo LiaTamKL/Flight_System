@@ -34,6 +34,10 @@ const CustomerPage = () => {
         // eslint-disable-next-line
     }, [user])
 
+    
+/**
+* gets specific user's data
+*/
 let getUserData = async () => {
         let result = await getUserInfo(authToken)
         if(result.status === 200){
@@ -43,7 +47,9 @@ let getUserData = async () => {
 
 
 
-//gets tickets and flights connected to them 
+/**
+* gets all tickets for user to set flights accourdingly
+*/
 let getMyTickets = async () => {
 
     let result = await ViewMyTickets(authToken)

@@ -78,7 +78,7 @@ const UpdatePage = () =>{
     * sets which form to use based on account role
     */  
     let fieldOptionChooice = () => {
-        if (user.is_superuser != true){
+        if (user.is_superuser !== true){
         switch (user?.account_role)
         {
             case 'Customer':
