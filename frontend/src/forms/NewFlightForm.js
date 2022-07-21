@@ -13,26 +13,14 @@ const NewFlightForm = (flightData)=>{
     if (flightData!==undefined){
         set = true
         d = new Date(flightData.departure_time)
-        //console.log('d at start', d)
-        // var now_utc = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(),
-        // d.getUTCDate(), d.getUTCHours(),
-        // d.getUTCMinutes(), d.getUTCSeconds());
-        //console.log('trying utc', new Date(now_utc));
-        // console.log('trying d as ISOString', d.toISOString());
-        // console.log('trying utc', d.toISOString().replace('T', ' ').slice(0, 16));
 
-        //d = d.toISOString().replace('T', ' ')
-        //console.log('trying utc', d.slice(0, 14));
-        //d = new Date (flightData.departure_time)
-        //d.setHours(d.getHours()-3)
         l = new Date (flightData.landing_time)
-        // l.setHours(l.getHours()-3)
-        // console.log('this if format type:', typeof format(l, "yyyy-MM-dd' 'HH:mm"))
-        // console.log('this if format:', format(l, "yyyy-MM-dd' 'HH:mm"))
-        //console.log((format(d.toUTCString(), "yyyy-MM-dd' 'HH:mm")))
+
     }
 
-
+    /**
+    * Gets all countries and sets them up for react select
+    */
     let getContries = async () => {
         let country_data = await AllCountries()
         if (country_data){
@@ -87,7 +75,6 @@ const NewFlightForm = (flightData)=>{
             <h5 className='new-flight-label'>Ticket Number</h5>
             <input
                 className='form-input'
-                //id="form-input-number"
                 required
                 id='tickets'
                 defaultValue ={set?flightData.remaining_tickets:1}

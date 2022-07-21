@@ -15,14 +15,12 @@ const CountryForm = (country)=>{
     }
     return(
         <>
-        {/* <input type="text" name="country_name" className="mb-3" placeholder="Country Name" defaultValue = {set?country.country_name:null} required /> */}
 
         <input className="form-input" type="text" name="country_name"  placeholder="Country Name" defaultValue = {set?country.country_name:null} required />
         
         <label  id="file-upload-label">
             <i id="photo-icon" ><BsFillCameraFill /></i>
             <span id="selected-file" > {!selectedFile? 'Select File' :selectedFile.name }</span>
-            {/* <input className="file-input" type="file"  id="flag" name="flag" accept="image/*"  required onChange={changeHandler} />      */}
             <input id="file-input" type="file" name="flag" accept="image/*"  required onChange={changeHandler} />     
             </label>
         <label id='clear-label' hidden={!selectedFile?.name}  onClick={clearSelected}> Clear </label>
