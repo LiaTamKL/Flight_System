@@ -65,6 +65,7 @@ const ViewAirlines = () => {
         let result = await DeleteUser(e, authToken)
         message.current =result.data
         GetAirlines()
+        setSearchedItem(false)
 
     }
 

@@ -41,6 +41,7 @@ const ViewAdmins= () => {
 
         message.current =result.data
         GetAdmins()
+        setSearchedItem(false)
 
     }
 

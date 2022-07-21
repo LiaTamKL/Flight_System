@@ -63,7 +63,7 @@ const SearchForUser = ()=>{
                 isSearchable = {true}
                 isClearable = {true}  />
 
-            <input type="submit" value='search'/>
+            <input className="btn btn-outline-primary" type="submit" value='search'/>
         </form>
         {searchedItem?
              (<>

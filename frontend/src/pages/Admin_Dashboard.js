@@ -40,6 +40,7 @@ const AdminDashboard= () => {
         let result = await DeleteUser(e, authToken)
         message.current =result.data
         GetCustomers()
+        setSearchedItem(false)
 
     }
 

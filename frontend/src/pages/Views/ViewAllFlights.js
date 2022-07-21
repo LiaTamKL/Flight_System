@@ -46,6 +46,7 @@ const ViewAirlineFlights= () => {
         let result = await DeleteFlightAsAirline(e, authToken)
         setMessage(result.data)
         getflights()
+        setBack()
 
     }
     let setsearchresults = (e)=>{
