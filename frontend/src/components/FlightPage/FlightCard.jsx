@@ -117,7 +117,7 @@ return `${totalHours}h ${duration.minutes()}m`
         </div>
 
         <div className="city-display">
-          <small id='city-right'>{ flight?.destination_country }  <img src={d_country?.flag} height="13px" width="20px" alt={flight?.destination_country + ' flag'}/></small>
+          <small id='city-right'><img src={d_country?.flag} height="13px" width="20px" alt={flight?.destination_country + ' flag'}/>{ flight?.destination_country }  </small>
           <strong>{ flight?.destination_country.slice(0, 3) } </strong>
         </div>
       </section>

@@ -20,8 +20,6 @@ const  FilteredFlightsMethod = async (...params) => {
     let data = await response.json()
 
     return (data)
-
-
 }
 
 
@@ -32,13 +30,14 @@ const  FilteredFlightsMethod = async (...params) => {
  * 
  */
 const  FilteredFlightsByIdMethod = async (ticket_ids) => {
+
         let searchurl = '/backend/flights/?id__in='
         ticket_ids.map((ticket) => (
             searchurl += ticket.flight + ','
         ))
         let response = await fetch(searchurl)
-        ticket_ids = await response.json()
-        return ticket_ids
+        response = await response.json()
+        return response
 }
 
 
@@ -57,3 +56,13 @@ const  FilteredCountryMethod = async (searchTerm) => {
 
 
 export { FilteredFlightsMethod, FilteredCountryMethod, FilteredFlightsByIdMethod}
+
+
+
+// export default FilteredFlightsMethod
+// consosle.log(departureTime.toUTCString());
+// console.log(range[0].startDate);
+// let formatteddeptime =  format(new Date(range[0].startDate), "yyyy-MM-dd'T'HH:mm")
+// let formattedlandtime =  format(new Date(range[0].endDate), "yyyy-MM-dd'T'HH:mm")
+// if (departureTime){ searchurl += `&from_departure_time=${formatteddeptime}`}
+// if (arrivalTime){searchurl += `&to_arrival_time=${formattedlandtime}`}
