@@ -1,4 +1,7 @@
-
+/**
+    * returns a display card for a user account
+    * @param  {Dictionary} account The account
+    */  
 export const AccountCard = ({account}) => {
     return (
             <div className="d-flex w-100 justify-content-between">
@@ -9,6 +12,10 @@ export const AccountCard = ({account}) => {
     )
 }
 
+/**
+    * returns a display card for a customer
+    * @param  {Dictionary} customer The customer
+    */  
 const CustomerCard = ({customer}) => {
     return (<>
             <div className="d-flex w-100 justify-content-between">
@@ -21,6 +28,12 @@ const CustomerCard = ({customer}) => {
             </div></>
     )
 }
+
+/**
+    * returns a display card for an airline
+    * @param  {Dictionary} airline The airline
+    * @param  {Dictionary} countries countries, in order to display the flag of the country the airline is from
+    */  
 export const AirlineCard = ({airline, countries}) => {
     const country = countries.find(count=> count.country_name===airline.country)
     
@@ -35,7 +48,10 @@ export const AirlineCard = ({airline, countries}) => {
     )
 }
 
-
+/**
+    * returns a display card for an admin
+    * @param  {Dictionary} admin The admin
+    */  
 export const AdminCard = ({admin}) => {
     return (
             <div className="d-flex w-100 justify-content-between">

@@ -20,7 +20,9 @@ const ViewAirlineFlights= () => {
         getflights()
     },[])
 
-
+    /**
+    * sets all flights along with search options. also gets and sets all countries
+    */  
     let getflights = async() =>{
         
         let result = await ViewMyFlights(authToken)
@@ -41,7 +43,10 @@ const ViewAirlineFlights= () => {
         }
     }
     
-
+    /**
+    * deletes a flight. gets flights and resets search item after usage to show update
+    * @param  {Dictionary} e The information (flight_id)
+    */  
     let Delete= async(e) =>{
         let result = await DeleteFlightAsAirline(e, authToken)
         setMessage(result.data)
@@ -49,16 +54,29 @@ const ViewAirlineFlights= () => {
         setBack()
 
     }
+
+    
+    /**
+    * sets the searched item to the searched flight
+    * @param  {Dictionary} e The information (flight)
+    */  
     let setsearchresults = (e)=>{
         e.preventDefault()
         setSearched(flights.find(flight=> flight.id===parseInt(e.target.flight.value)))
     }
 
+    /**
+    * resets searched item, resets to not show flight update page
+    */
     let setBack = ()=>{
         setSearched(false)
         setUpdate(false)
     }
 
+    /**
+    * checks if flight update is valid, if so updates it and sets a message. if not, sets errors as message. then resets search, gets flights and goes back to main page
+    * @param  {Dictionary} e The information (flight)
+    */  
     let handleUpdate=async(e)=>{
         e.preventDefault()
          let is_form_valid = CheckIfFlightFormIsValid(e)
@@ -77,6 +95,10 @@ const ViewAirlineFlights= () => {
     const flightsPerPage = 2
     const pagesSeen = pagenumber * flightsPerPage
 
+
+    /**
+    * shows card for each flight, sets it up for the pagination
+    */
     const displayFlights = flights.slice(pagesSeen, pagesSeen + flightsPerPage).map((flight)=>{
     return (
         <div key={flight.id} className="list-group-item list-group-item-action flex-column align-items-start">
@@ -89,7 +111,7 @@ const ViewAirlineFlights= () => {
     const changePage = ({selected})=>{
         setPageNumber(selected)
     }
-
+ 
     return (<div>
         <h5>Airline: {user.username}</h5>
         <div className="card text-center">

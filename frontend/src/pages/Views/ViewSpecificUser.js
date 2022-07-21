@@ -16,7 +16,9 @@ const SearchForUser = ()=>{
         GetAccounts()
     },[])
 
-
+    /**
+    * sets all accounts along with search options
+    */  
     let GetAccounts = async() =>{
         
         let result = await GetUsers("Accounts", authToken)
@@ -31,11 +33,19 @@ const SearchForUser = ()=>{
         }
     }
 
-
+    /**
+    * sets the searched item to the searched account
+    * @param  {Dictionary} e The information (username)
+    */  
     const searchforaccount = async(e)=>{
         e.preventDefault()
         setSearchedItem(allAccounts.find(account=> account.id===parseInt(e.target.username.value)))
     }
+
+    /**
+    * deletes an account. gets accounts and resets search item after usage to show update
+    * @param  {Dictionary} e The information
+    */  
     let Delete= async(e) =>{
         let result = await DeleteUser(e, authToken)
         message.current =result.data

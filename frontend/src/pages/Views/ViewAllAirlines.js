@@ -23,6 +23,10 @@ const ViewAirlines = () => {
     const airlinesPerPage = 3
     const pagesSeen = pagenumber * airlinesPerPage
 
+
+    /**
+    * shows card for each airline, sets it up for the pagination
+    */
     const displayAirlines = airlines.slice(pagesSeen, pagesSeen + airlinesPerPage).map((airline)=>{
     return (
     <div key={airline.account} className="list-group-item list-group-item-action flex-column align-items-start">
@@ -38,7 +42,9 @@ const ViewAirlines = () => {
     }
 
 
-
+    /**
+    * sets all airlines, along with search options and all countries
+    */  
     let GetAirlines = async() =>{
         
         let result = await GetUsers("Airlines", authToken)
@@ -60,6 +66,10 @@ const ViewAirlines = () => {
         GetAirlines()
     },[])
 
+    /**
+    * deletes an airline. gets airline and resets search item after usage to show update
+    * @param  {Dictionary} e The information (username)
+    */  
     let Delete= async(e) =>{
 
         let result = await DeleteUser(e, authToken)
@@ -69,6 +79,10 @@ const ViewAirlines = () => {
 
     }
 
+    /**
+    * sets the searched item to the searched airline
+    * @param  {Dictionary} e The information (username)
+    */  
     const searchforaccount = async(e)=>{
         e.preventDefault()
         setSearchedItem(airlines.find(account=> account.id===parseInt(e.target.username.value)))}

@@ -20,7 +20,9 @@ const ViewAdmins= () => {
         GetAdmins()
     },[])
 
-
+    /**
+    * sets all admins along with search options
+    */  
     let GetAdmins = async() =>{
         
         let result = await GetUsers("Admins", authToken)
@@ -35,6 +37,11 @@ const ViewAdmins= () => {
         }
     }
 
+
+    /**
+    * deletes an admin. gets admins and resets search item after usage to show update
+    * @param  {Dictionary} e The information (username)
+    */  
     let Delete= async(e) =>{
 
         let result = await DeleteUser(e, authToken)
@@ -45,6 +52,10 @@ const ViewAdmins= () => {
 
     }
 
+    /**
+    * sets the searched item to the searched admin
+    * @param  {Dictionary} e The information (username)
+    */  
     const searchforaccount = async(e)=>{
         e.preventDefault()
         setSearchedItem(admins.find(account=> account.id===parseInt(e.target.username.value)))}
@@ -52,7 +63,10 @@ const ViewAdmins= () => {
     const [pagenumber, setPageNumber] = useState(0)
     const adminPerPage = 3
     const pagesSeen = pagenumber * adminPerPage
-
+    
+    /**
+    * shows card for each admin, sets it up for the pagination
+    */
     const displayAdmins = admins.slice(pagesSeen, pagesSeen + adminPerPage).map((admin)=>{
     return (
         <div key={admin.account} className="list-group-item list-group-item-action flex-column align-items-start">

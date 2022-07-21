@@ -1,7 +1,7 @@
 import React from 'react'
 
 const FormHeader = ( {headercheck} ) => {
-  // let data = useLocation()
+
   if (headercheck.id){
     return(
       <div>
@@ -12,7 +12,7 @@ const FormHeader = ( {headercheck} ) => {
 
 
   } else {
-  // console.log(headercheck)
+
 
   return (
     <div>
