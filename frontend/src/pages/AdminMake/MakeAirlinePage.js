@@ -12,6 +12,10 @@ const MakeAnAirline = () =>{
     let nav = useNavigate()
     let [message, setMessage] = useState()
 
+    /**
+    * Makes user into an airline, if all's ok, sends to view_airlines page, if not, displays error
+    * @param  {Dictionary} e The information (name, country)
+    */  
     const airlineMaker = async(e)=>{
     e.preventDefault()
     if(!e.target.country.value){
@@ -28,11 +32,10 @@ const MakeAnAirline = () =>{
     }}
 
     useEffect(() => {
-        let data = Check_if_User(user, params,"Airline", authToken, nav)
+        Check_if_User(user, params,"Airline", authToken, nav)
         },[])
         
     return(<>
-        {/* {message? (<p className="alert alert-warning">{message}</p>):<></>} */}
         <form onSubmit={(e)=>airlineMaker(e)}>
         <FormTemplate 
             formName= {"Add as an Airline"}
@@ -41,9 +44,7 @@ const MakeAnAirline = () =>{
             formErrors = {message? (<p className="alert alert-warning">{message}</p>):<></>}
              />
 
-C        {/* <AirlineForm />
-        <br/>
-        <input type="submit" className="btn btn-primary btn-sm"  value='Add them as an airline'/> */}
+
         </form></>
     )
 

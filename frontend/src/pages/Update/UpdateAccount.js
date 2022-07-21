@@ -20,6 +20,9 @@ const UpdatePage = () =>{
         GetLoggedUserData()
     }, [])
 
+    /**
+    * Gets logged in user's data.
+    */  
     let GetLoggedUserData = async() =>{
         if (!user.is_superuser){
             let result = await getUserInfo(authToken)
@@ -32,7 +35,12 @@ const UpdatePage = () =>{
 
     }
 
+    /**
+    * gets user info from form, updates profile and logs user out
+    * @param  {Dictionary} e The information (email. the rest changes depending on account role. If customer, first_name, last_name, address, phone_number, credit_card_no. if airline, name, country. if admin, first_name, last_name )
+    */  
     let handleSubmit = async(e)=>{
+        
         e.preventDefault();
         if (user.account_role==='Customer'){
             var context = {
@@ -66,13 +74,15 @@ const UpdatePage = () =>{
         
     }
 
-
+    /**
+    * sets which form to use based on account role
+    */  
     let fieldOptionChooice = () => {
-
+        if (user.is_superuser != true){
         switch (user?.account_role)
         {
             case 'Customer':
-                console.log();
+                
                 return  <CustomerForm userData={userData}/>
             case 'Airline':
                 return <AirlineForm userData={userData}/>
@@ -82,28 +92,17 @@ const UpdatePage = () =>{
                 return ""        
         }   
     }
+    else{return ""}
+    }
 
 return(<>
-    {/* <Link className="btn btn-primary btn-sm" to="/update/password" >Change Password</Link> */}
-    {/* <br/><br/> */}
+
     <p className="alert alert-warning">Warning: this will ask you to log back in if you update your account</p>
-    {/* {message? (<p className="alert alert-warning">{message}</p>):<></>} */}
 
 
     <form onSubmit={(e)=>handleSubmit(e)}> 
 
-        {/* <UpdateAccountForm/> */}
-                {/* {user.account_role === 'Airline' ? (
-                 fieldOption =  <AirlineForm userData={userData}/>
-                ):<></>}
-                {user.account_role === 'Customer' ? (
-                  fieldOption = <CustomerForm userData={userData}/>
-                ):<></>}
-                {user.account_role==='Admin' ?(<>{user.is_superuser===false? (
-                   fieldOption = <AdminForm userData={userData}/>
-                ):<></>}  
-                  </>):<></>}
-                  <br/> */}
+
 
         <FormTemplate 
             formName= {"Account Update"}
@@ -114,7 +113,6 @@ return(<>
             additionalButtons = {<Link id="reset-password-button" to="/update/password" >Change Password</Link>}
         />
 
-        {/* <input className="btn btn-primary btn-sm" type="submit"/> */}
     </form>
     
     </>

@@ -13,6 +13,10 @@ const MakeACustomer = () =>{
     let [reference, setReference] = useState()
     let [message, setMessage] = useState()
 
+    /**
+    * Makes user into a customer, if all's ok, sends to admin dashboard page, if not, displays error
+    * @param  {Dictionary} e The information (first_name, last_name, address, phone_number, credit_card_no)
+    */  
     const customermaker = async(e)=>{
     e.preventDefault()
     let result = await TurnIntoCustomer(params.username,e,authToken)
@@ -25,6 +29,9 @@ const MakeACustomer = () =>{
     }
     }
 
+    /**
+    * Runs "check if user" (that it's not the logged in user, that not already of the role you wish to change to, that not a super user), and checks if user is already a customer
+    */  
     let check_user = async()=>{
         let data = await Check_if_User(user, params,"Customer", authToken, nav)
         setReference(data)
@@ -35,7 +42,6 @@ const MakeACustomer = () =>{
         },[])
 
     return(<>
-        {/* {message? (<p className="alert alert-warning">{message}</p>):<></>} */}
 
         <form onSubmit={(e)=>customermaker(e)}>
         <FormTemplate 
@@ -46,10 +52,6 @@ const MakeACustomer = () =>{
             formErrors = {message? (<p className="alert alert-warning">{message}</p>):<></>}
              />
 
-{/* 
-             <CustomerForm userData= {reference}/>
-            <br/>
-            <input type="submit" className="btn btn-primary btn-sm"  value='Add them as a customer'/>  */}
         </form></>
     )
 

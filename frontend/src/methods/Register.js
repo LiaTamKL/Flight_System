@@ -1,13 +1,14 @@
-import { useNavigate } from 'react-router-dom'
-import {useState, useEffect} from 'react'
-import AccountForm from '../forms/AccountForm'
+
 import { CheckPasswords } from '../forms/AccountForm'
-import CustomerForm from '../forms/CustomerForm'
 import UserForm from './UserMethods'
 
-
+/**
+* Register a new user
+* @param  {Dictionary} e The information (register details: email, password, confirm password, username, first_name, last_name, address, phone_number, credit_card_num)
+* @return {Dictionary} Message(string), and errors(dictionary)
+*/
 const Register = async (e) => {
-    // let nav = useNavigate()
+
     let message 
     let errors = []
 
@@ -16,7 +17,6 @@ const Register = async (e) => {
     }
     else{
         message=''
-    //     //change the url when final package
     let result = await UserForm(e, 'Customer', 'POST', '/backend/api/user_api')
     let data =  result.data
     let status = result.status
@@ -30,16 +30,3 @@ const Register = async (e) => {
 }
 
 export { Register }
-
-
-
-// if (status ===200){
-//     // console.log('successful registration, ', {data})
-//     // message = `successful registration of ${e.target.username.value}`
-//     // nav('/login')
-// }
-// else{
-//     // message = `Something went wrong. Status: ${status}.`
-//     errors = data
-//     }
-// }

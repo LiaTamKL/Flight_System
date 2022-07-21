@@ -10,7 +10,10 @@ const UpdatePassword = ()=>{
     let [message, setMessage] = useState()
     let {authToken} = useContext(AuthContext)
     
-
+    /**
+    * gets user info from form, updates password for user and sets a message. shows errors instead as message if things are off.
+    * @param  {Dictionary} e The information (old password, password, confirm password)
+    */  
     let handleSubmit = async(e)=>{
         e.preventDefault();
         if (CheckPasswords(e)===false){
@@ -22,7 +25,6 @@ const UpdatePassword = ()=>{
     }
     }
     return(<>
-        {/* {message? (<p className="alert alert-warning">{message}</p>):<></>} */}
         <form onSubmit={(e)=>handleSubmit(e)}>
         <FormTemplate 
             formName= {"Change Password"}
@@ -30,9 +32,7 @@ const UpdatePassword = ()=>{
             formFields = {<PasswordForm/>}
             formErrors = {message? (<p className="alert alert-warning">{message}</p>):<></>}
              />
-            {/* <PasswordForm/> */}
-            {/* <br/> */}
-            {/* <input className="btn btn-primary btn-sm" type="submit"/> */}
+
         </form>  
         </>
 

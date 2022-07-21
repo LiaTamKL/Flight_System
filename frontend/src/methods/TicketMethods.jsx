@@ -2,7 +2,12 @@ import GetCookie from "../utilities/csrf_token";
 
 
 
-
+/**
+ * get all logged in user's tickets
+ * @param  {Dictionary} authToken The authentication token
+ * @return {Dictionary} The data and the response.status
+ * 
+ */
 const ViewMyTickets = async (authToken) => {
   let csrftoken = GetCookie('csrftoken')
 
@@ -19,7 +24,13 @@ const ViewMyTickets = async (authToken) => {
 
 
 
-
+/**
+ * create a ticket for a user for a selected flight
+  * @param  {string} flight_id The flight id
+ * @param  {Dictionary} authToken The authentication token
+ * @return {Dictionary} The data and the response.status
+ * 
+ */
 const CreateTicket = async (flight_id, authToken) => {
     let csrftoken = GetCookie('csrftoken')
     let response = await fetch(`/backend/api/customer_api`, {
@@ -40,7 +51,13 @@ const CreateTicket = async (flight_id, authToken) => {
       
 }
 
-
+/**
+ * delete a selected ticket
+  * @param  {string} ticket The ticket id
+ * @param  {Dictionary} authToken The authentication token
+ * @return {Dictionary} The data and the response.status
+ * 
+ */
 let RemoveTicket = async(ticket, authToken) => {
   let csrftoken = GetCookie('csrftoken')
 

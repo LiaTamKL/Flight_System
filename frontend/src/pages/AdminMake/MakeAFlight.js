@@ -8,7 +8,10 @@ const CreateAFlight = () =>{
     let [message, setMessage] = useState()
     let {user, authToken} = useContext(AuthContext)
 
-
+    /**
+    * checks validatety of form data, if it is, creates a flight based on the form data and sets a message. if not, sets an error message
+    * @param  {Dictionary} e The information (origin_country, destination_country, departure_time, landing_time)
+    */  
     const handleSubmit = async(e)=>{
         e.preventDefault()
         let is_form_valid = CheckIfFlightFormIsValid(e)
@@ -22,8 +25,7 @@ const CreateAFlight = () =>{
 
     }
     return(<>
-        {/* {message? (<p className="alert alert-warning">{message}</p>):<></>} */}
-        {/* <h3>Making flight for {user.username}</h3> */}
+
         <form onSubmit={(e)=>handleSubmit(e)}>
             <FormTemplate 
                 formName= {`New Flight for ${user.username}`}
@@ -32,8 +34,6 @@ const CreateAFlight = () =>{
                 formErrors = {message? (<p className="alert alert-warning">{message}</p>):<></>}
                 />
 
-            {/* <NewFlightForm/> */}
-        {/* <input type='submit' className="btn btn-primary btn-sm" value='Add this flight'></input> */}
         </form></>
     )
 }

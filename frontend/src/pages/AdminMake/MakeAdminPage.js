@@ -14,6 +14,10 @@ const MakeAnAdmin = () =>{
     let [reference, setReference] = useState()
     let [message, setMessage] = useState()
 
+    /**
+    * Makes user into an admin, if all's ok, sends to view_admins page, if not, displays error
+    * @param  {Dictionary} e The information (first_name, last_name)
+    */  
     const adminmaker = async(e)=>{
     e.preventDefault()
     let result = await TurnIntoAdmin(params.username,e,authToken)
@@ -22,11 +26,13 @@ const MakeAnAdmin = () =>{
         nav('/admin/view_admins')
     }
     else{
-        alert('error:', result.data)
         setMessage(result.data)
     }
     }
 
+    /**
+    * Runs "check if user" (that it's not the logged in user, that not already of the role you wish to change to, that not a super user), and checks if user is already an admin
+    */  
     let check_user = async()=>{
         let data = await Check_if_User(user, params,"Admin", authToken, nav)
         setReference(data)    }
@@ -45,9 +51,6 @@ const MakeAnAdmin = () =>{
             formErrors = {message? (<p className="alert alert-warning">{message}</p>):<></>}
             
              />
-            {/* <AdminForm userData= {reference}/> */}
-            {/* <br/> */}
-            {/* <input type="submit" className="btn btn-primary btn-sm"  value='Add them as an admin'/> */}
         </form></>
     )
 

@@ -178,7 +178,7 @@ export let TurnIntoAdmin=async(username,e,authToken)=>{
 /**
  * Turns any user into a customer
  * @param  {String} username The username of the user you're sending to the server
- * @param  {Dictionary} e The form information (first_name, last_name)
+ * @param  {Dictionary} e The form information (first_name, last_name, address, phone_number, credit_card_no)
  * @param  {Dictionary} authToken The authentication token
  * @return {Dictionary} The data and the response.status
  * 
