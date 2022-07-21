@@ -14,6 +14,8 @@ const FlightCard = (props) => {
   let flight = props.flight
   let  navigate = useNavigate();
   let formatTime = (flight) => {return format(parseISO(flight),  "dd/MM/yy HH:mm")}
+  const d_country = props.countries?.find(count=> count.country_name===flight.destination_country)
+  const o_country = props.countries?.find(count=> count.country_name===flight.origin_country)
 
   let [isHiddenAdd, setIsHiddenAdd] = useState(false)
   let [isHiddenRemove, setIsHiddenRemove] = useState(true)
@@ -89,7 +91,6 @@ let showDuration = () => {
 return `${totalHours}h ${duration.minutes()}m`
 }
 
-
   return (
    <> 
   <div className="col-lg-4">  
@@ -107,8 +108,8 @@ return `${totalHours}h ${duration.minutes()}m`
 
       <section id="cities-section">
         <div className="city-display">
-          <small id='city-left'>{ flight?.origin_country }</small>
-          <strong>{ flight?.origin_country.slice(0, 3) }</strong>
+          <small id='city-left'>{ flight?.origin_country } <img src={o_country?.flag} height="13px" width="20px" alt={flight?.origin_country + ' flag'}/> </small>
+          <strong>{ flight?.origin_country.slice(0, 3) } </strong>
         </div>
 
         <div id='flight-icon'>
@@ -116,8 +117,8 @@ return `${totalHours}h ${duration.minutes()}m`
         </div>
 
         <div className="city-display">
-          <small id='city-right'>{ flight?.destination_country }</small>
-          <strong>{ flight?.destination_country.slice(0, 3) }</strong>
+          <small id='city-right'>{ flight?.destination_country }  <img src={d_country?.flag} height="13px" width="20px" alt={flight?.destination_country + ' flag'}/></small>
+          <strong>{ flight?.destination_country.slice(0, 3) } </strong>
         </div>
       </section>
 
