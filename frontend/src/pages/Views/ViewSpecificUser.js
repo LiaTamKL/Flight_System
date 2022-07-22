@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import GetUsers from "../../methods/AdminMethods";
 import { DeleteUser} from "../../methods/AdminMethods";
 import Select from 'react-select'
+import "../Pages.css"
 
 const SearchForUser = ()=>{
     const [accounts, setAccounts] = useState([]);
@@ -57,43 +58,45 @@ const SearchForUser = ()=>{
 
 
 
-    return(<div>
-        <h5>Admin: {user.username}</h5>
+    return(
+        <div id="user-view-container">
         <div className="card text-center">
+            <label id="admin-label" >Admin: {user.username}</label>
+        
         </div>
         {message.current? (<p className="alert alert-secondary">{message.current}</p>):<></>}
         <form onSubmit={(e)=>searchforaccount(e)}>
-        <Select 
-                required
-                name='username'
-                id='username'
-                className='fancy-select'
-                placeholder = 'Search for a user'
-                options ={accounts}
-                isSearchable = {true}
-                isClearable = {true}  />
+                <Select 
+                        required
+                        name='username'
+                        id='username'
+                        className='user-select'
+                        placeholder = 'Search for a user'
+                        options ={accounts}
+                        isSearchable = {true}
+                        isClearable = {true}  />
 
-            <input className="btn btn-outline-primary" type="submit" value='search'/>
+                <input id="user-search-btn" className="btn btn-primary btn-sm" type="submit" value='Search'/>
         </form>
         {searchedItem?
              (<>
-                        <div className="list-group-item list-group-item-action flex-column align-items-start">
-                            <div className="d-flex w-100 justify-content-between">
-                            <h5 className="mb-1">{searchedItem.username} {searchedItem.email}</h5>
-                            <small className="text-muted">Role: {searchedItem.account_role}</small><br/><br/>
+                <div className="list-group-item list-group-item-action flex-column align-items-start">
+                    <div className="d-flex w-100 justify-content-between">
+                    <h5 className="mb-1">{searchedItem.username} {searchedItem.email}</h5>
+                    <small className="text-muted">Role: {searchedItem.account_role}</small><br/><br/>
 
-                            </div>
-                            {searchedItem.is_superuser===true?<p>Superuser may not be altered</p>:<>
-                                {searchedItem.account_role!=="Admin"? <Link className="btn btn-primary btn-sm" to={`/admin/make_admin/${searchedItem.username}`} >Add as Admin</Link>:<></>}
-                                {searchedItem.account_role!=="Customer"? <Link className="btn btn-primary btn-sm" to={`/admin/make_customer/${searchedItem.username}`} >Add as Customer</Link>:<></>}
-                                {searchedItem.account_role!=="Airline"? <Link className="btn btn-primary btn-sm" to={`/admin/make_airline/${searchedItem.username}`} >Add as Airline</Link>:<></>}
-                                <button onClick={()=>Delete(searchedItem.username)}className="btn btn-danger btn-sm" >Delete</button></>
-                            
-                            }
-                        </div>
-                        </>
+                    </div>
+                    {searchedItem.is_superuser===true?<p>Superuser may not be altered</p>:<>
+                        {searchedItem.account_role!=="Admin"? <Link className="btn btn-primary btn-sm" to={`/admin/make_admin/${searchedItem.username}`} >Add as Admin</Link>:<></>}
+                        {searchedItem.account_role!=="Customer"? <Link className="btn btn-primary btn-sm" to={`/admin/make_customer/${searchedItem.username}`} >Add as Customer</Link>:<></>}
+                        {searchedItem.account_role!=="Airline"? <Link className="btn btn-primary btn-sm" to={`/admin/make_airline/${searchedItem.username}`} >Add as Airline</Link>:<></>}
+                        <button onClick={()=>Delete(searchedItem.username)}className="btn btn-danger btn-sm" >Delete</button></>
+                    
+                    }
+                </div>
+                </>
                 ) : (
-                        <h2>Search for a user</h2>
+                        <div id="label-positioning"><label id="after-search-label" >Search for a user</label></div>
                 )
             }
         </div>)

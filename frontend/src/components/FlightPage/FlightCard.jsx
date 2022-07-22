@@ -25,50 +25,19 @@ const FlightCard = (props) => {
 
   
   let  navigate = useNavigate();
-  // console.log(flight);
   let formatTime = (flight) => {return format(parseISO(flight),  "dd/MM/yy HH:mm")}
   const d_country = props.countries?.find(count=> count.country_name===flight.destination_country)
   const o_country = props.countries?.find(count=> count.country_name===flight.origin_country)
 
   let [isHiddenAdd, setIsHiddenAdd] = useState(false)
   let [isHiddenRemove, setIsHiddenRemove] = useState(true)
-  // let [addTicketMsg, setAddTicketMsg] = useState("")
-  // let [tickets, setTickets] = useState()
-  // let [currentTicket,  setCurrentTicket] = useState()
-
-
-    // using 2 useEffects to set tickets before checking validity.
-  // it forces rerender after setting the tickets
-  // useEffect(() => {
-  // if(user?.account_role === 'Customer') {getMyTickets()}
-  // }, [])
 
   
   useEffect(() => {
-    // getCurrentTicket()
     checkIfBooked()
     
    // eslint-disable-next-line
      }, [flight, isHiddenRemove,isHiddenAdd, props])
-
-
-    
-//   let getMyTickets = async () => {
-
-//   let result = await ViewMyTickets(authToken)
-//   let data =  result.data
-//   let status = result.status
-//   if (status ===200){setTickets(data)}
-//   else{alert(status, data)}
-
-// }
-
-
-// let getCurrentTicket = () => {
-//   setCurrentTicket({"id":props.custFlight.id , "flight": currentTicket.flight.id}) 
-
-//   //  setCurrentTicket (tickets?.find((ticket) => ticket.flight === flight.id))
-// }
 
 /**
 * if there is a ticket for the flight or its the customer page, sets the add button to hidden and remove button to shown. hides add as well if no tickets exist for flight

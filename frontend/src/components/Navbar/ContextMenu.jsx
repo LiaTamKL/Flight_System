@@ -12,6 +12,7 @@ import { RiAdminLine , RiUserSearchFill } from "react-icons/ri";
 import "./Navbar.css"
 
 
+
 const UserLinks = () => {
     const {user, logout} = useContext(AuthContext)
 
@@ -99,7 +100,7 @@ const UserLinks = () => {
         <>
           <Nav.Link href="/">Home </Nav.Link>
         
-          <Nav.Link href="/login">Login</Nav.Link>
+          <Nav.Link href="/login">Login / Register</Nav.Link>
         </>
         )
     

@@ -1,11 +1,7 @@
 import React , {useContext , useEffect , useState } from 'react';
 import AuthContext from "../context/authentication";
-// import { useNavigate } from "react-router-dom";
 import { getUserInfo } from '../methods/UserMethods';
 import { ViewMyTickets } from "../methods/TicketMethods";
-// import AddTicketCreateButton from '../components/AddTicketCreateButton'
-// import { ListIFlightitem } from '../components/ListItem'
-import { FilteredFlightsByIdMethod } from '../methods/FilterMethods';
 import FlightCard from '../components/FlightPage/FlightCard';
 import { AllCountries } from '../methods/CountriesMethods';
 import ReactPaginate from "react-paginate"
@@ -13,8 +9,6 @@ import ReactPaginate from "react-paginate"
 // import './Pages.css';
 
 const CustomerPage = () => {
-    // let navigate = useNavigate();
-    // let [tickets, setTickets] = useState();
     let [userData, setUserData] = useState();
     let {user, authToken} = useContext(AuthContext)
     let [myFlights, setMyFlights] = useState();
@@ -26,9 +20,9 @@ const CustomerPage = () => {
     const pagesSeen = pagenumber * flightsPerPage
   
 
-        useEffect(() => {
-            getUserData() 
-            getMyTickets()
+    useEffect(() => {
+        getUserData() 
+        getMyTickets()
             
             // eslint-disable-next-line
         }, [])
@@ -39,18 +33,6 @@ const CustomerPage = () => {
             setUserData(result.data)
         }
     }
-
-
-    // const flatten = (obj, prefix = [], current = {}) => {
-    //     if (typeof(obj) === 'object' && obj !== null) {
-    //       for (const key of Object.keys(obj)) {
-    //         flatten(obj[key], prefix.concat(key), current)
-    //       }
-    //     } else {
-    //       current[prefix.join('_')] = obj
-    //     }
-    //     return current
-    //   }
 
 
     //gets tickets and flights connected to them 
@@ -139,86 +121,3 @@ const CustomerPage = () => {
 
 
 export default CustomerPage
-
-
-
-
-
-// let flightsByTickets = async (flight_id) =>{
-//   let searchurl = '/backend/flights/?id__in='
-
-//   flight_id.map((ticket) => (
-//         searchurl += ticket + ','
-//     ))
-//     console.log(searchurl);
-//     let response = await fetch(searchurl)
-//     let data = await response.json()
-//     console.log(data);
-//     }
-
-
-// let flightsByTickets = async () =>{
-//     if (tickets) {let searchurl = '/backend/flights/?id__in='
-
-//     tickets?.map((ticket) => (
-//         searchurl += ticket.flight + ','
-//     ))
-//     console.log(searchurl);
-//     let response = await fetch(searchurl)
-//     let data = await response.json()
-//     // console.log(data);
-//     }
-
-
-// let test = async () => {
-//     let searchurl = '/backend/api/tickets/?tiket_id=4'
-//     // console.log(searchurl);
-//     let response = await fetch(searchurl)
-//     let data = await response.json()
-//     console.log(data);
-
-// }
-
-
-    
-
-
-
-//     return (
-//         // <div className='all'>
-//         //   <div className='all-header'>
-//             <h2 className='all-title'>&#9782; Tickets of {userData?.first_name} {userData?.last_name} </h2>
-//             {/* <p className='all-count'>{tickets?.length}</p> */}
-//           </div>
-
-//           {/* tickets.find(id) => id === flight.id)} */}
-//           <div className="all-list">
-//                     {myFlights?.map((myflight, index) => (
-//                     <ListIFlightitem key={index} flight={myflight} userrole={user.account_role}  />
-                    
-//                 ))}
-
-//             </div>  
-//             {/* <AddTicketCreateButton tickets_id = {tickets.id} userData = { userData } /> */}
-//             <AddTicketCreateButton userData = { userData }  />
-
-//         </div>
-//   )
-
-  
-// }
-
-
-        //    let  flightData = data.map((flight) => flight = flatten(flight))
-
-
-            // data.map((flight1) => console.log(flight1.flight.id))
-
-            // flightData.map((flight1) => console.log(flight1.origin_country))
-
-            // let flightData = await FilteredFlightsByIdMethod(data)
-            // if (status ===200){
-
-                // flightData.map((flight) => flight.booked = true)
-
-                // console.log(data);

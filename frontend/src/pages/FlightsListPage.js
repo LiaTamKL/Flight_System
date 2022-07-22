@@ -1,7 +1,6 @@
 
 import React, {useState, useEffect, useContext} from 'react'
-// import AddCreateButton from '../components/AddCreateButton'
-import { useLocation ,useNavigate } from 'react-router-dom' ;
+import { useLocation } from 'react-router-dom' ;
 import { FilteredFlightsMethod } from "../methods/FilterMethods"
 import ReactPaginate from "react-paginate"
 import AuthContext from "../context/authentication";
@@ -12,7 +11,6 @@ import "./Pages.css"
 
 const FlightsListPage = () => {
   const { state } = useLocation();
-  // let  navigate = useNavigate();
   let [myFlights, setMyFlights] = useState(null);
   let[filteredFlights, setFilteredFlights] = useState();
   let flightSearchParams = {'fromSearchOption':0, 'toSearchOption':0 ,departureTime:"", arrivalTime:""}

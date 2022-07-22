@@ -9,7 +9,7 @@ import { useState } from 'react';
 import AsyncSelect from 'react-select/async';
 import { useNavigate } from "react-router-dom"
 
-import { FilteredFlightsMethod, FilteredCountryMethod} from "../methods/FilterMethods"
+import { FilteredCountryMethod} from "../methods/FilterMethods"
 
 
 const FlightSearchForm = () => {
@@ -37,16 +37,6 @@ let handleClick = () => {
         let filtered = await FilteredCountryMethod(searchTerm) 
         return filtered?.map((country) => ({value:country.id, label:country.country_name}))
     }
-
-
-    // let switchFileds= () => {
-    //     let temp =   fromSearchOption
-    //     setFromSearchOption(toSearchOption)
-    //     settoSearchOption(temp)
-    //     temp = countryOptions.find(({ value }) => value === fromSearchOption)
-    //     console.log(temp);
-    //     setDisplayOption(temp)
-    // }
 
     return ( 
         <div className="search-container">
@@ -84,7 +74,6 @@ let handleClick = () => {
                         : settoSearchOption(0)
                     }
                     />
-{/* <input placeholder="Date" class="textbox-n" type= {inpType} onfocus= {setInpType}  onblur= {setInpType('text')} id="date" /> */}
                 <input
                     className='date-input'
                     placeholder="Landing"

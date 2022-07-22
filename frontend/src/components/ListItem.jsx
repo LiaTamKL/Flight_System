@@ -2,18 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-// const ListTicketitem = ({ ticket }) => {
-//     return (
-//         <Link to={`/tickets/${ticket.id}`}>
-//             <div className="all-list-item" >
-//                 <p> {ticket.flight}</p>
-//             </div>
-//         </Link>
-
-//     )
-// }
-
-
 const ListIFlightitem = ({ flight , userrole }) => {
     let linkto
     if (userrole === "Customer"){

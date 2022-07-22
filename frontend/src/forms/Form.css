@@ -7,7 +7,7 @@
 
 
 /* ########################################################## */
-/*                       LOGIN / REFISTER                     */
+/*                       LOGIN / REGISTER                     */
 /* ########################################################## */
 
 .create {
@@ -88,18 +88,6 @@ background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
 
 }
 
-/* 
-.date-input::-webkit-calendar-picker-indicator {
-    color: rgba(0, 0, 0, 0);
-    opacity: 1;
-    display: block;
-    background: url(https://mywildalberta.ca/images/GFX-MWA-Parks-Reservations.png) no-repeat;
-    width: 20px;
-    height: 20px;
-    border-width: thin;
-} */
-
-
 .date-input {
   border-radius: 4px;
   width: 20%;
@@ -136,14 +124,9 @@ background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
     color: black;
     font-size: 18px;
     
-    /* color: black; */
-    
 }
 
-/* .search-button:hover , .country-input:hover, .date-input:hover{
-    filter: brightness(85%);
-  }
-  */
+
 
   .search-button:hover {
     filter: brightness(1.2);
