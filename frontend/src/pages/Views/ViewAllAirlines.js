@@ -89,7 +89,7 @@ const ViewAirlines = () => {
 
 
     return (<div>
-        <div className="admin-label-center"><label className="admin-label-display" >Admin: {user.username}</label></div>
+        <div className="admin-label-center"><label className="admin-label-display" >Airline: {user.username}</label></div>
 
         <div className="card text-center">
         <button className="btn btn-primary btn-sm" onClick={()=>setSearchedItem(false)}>Clear search and view all airlines</button>
