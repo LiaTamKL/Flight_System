@@ -70,6 +70,9 @@ const FlightCard = (props) => {
 //   //  setCurrentTicket (tickets?.find((ticket) => ticket.flight === flight.id))
 // }
 
+/**
+* if there is a ticket for the flight or its the customer page, sets the add button to hidden and remove button to shown. hides add as well if no tickets exist for flight
+*/
 let checkIfBooked = () => {
   if (currentTicket|| props.custPage){
     setIsHiddenAdd(true)
@@ -83,12 +86,18 @@ let checkIfBooked = () => {
     }
   }
 
-  
+/**
+* if user is logged in, adds a ticket for the flight selected for them
+*/  
 let handleAddTicket = () => {
     if (authToken){CreateTicket(flight.id, authToken)}
     navigate("/customer/tickets")
   }
 
+
+  /**
+  * removes the current ticket for the user
+  */  
  let handleRemoveTicket = () => {
 
     RemoveTicket(currentTicket, authToken)
@@ -96,7 +105,9 @@ let handleAddTicket = () => {
     window.location.reload(false);
  }
 
-
+  /**
+  * calculates flight time
+  */  
 let showDuration = () => { 
   let duration = moment.duration(moment(flight.landing_time).diff(moment(flight.departure_time)));
   let totalHours = duration.asHours()

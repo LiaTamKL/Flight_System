@@ -30,7 +30,7 @@ const FlightsListPage = () => {
 
 
 /**
-* gets filtered search results for flights. sets the results and all countries from the DB
+* gets filtered search results for flights. sets the results and all countries from the DB. if user is customer, sets myflights based on tickets from the db
 * @param  {Dictionary} flightSearchParams the parameters you wish to filter by (if none, all flights returned)
 */
   let getfilteredflights = async (flightSearchParams) => {
