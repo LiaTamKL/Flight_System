@@ -1,10 +1,11 @@
 import MainNavbar from './Navbar/Navbar';
+import "./Components.css"
 
 
 const Header = () => {
 
   return (
-    <div className='app-header'>
+    <div id='app-header'>
       <MainNavbar />    
     </div>
   )

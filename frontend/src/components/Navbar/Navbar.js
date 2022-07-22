@@ -1,33 +1,24 @@
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import React, { useState, useEffect, useRef, useContext } from 'react';
 import ContextMenu from './ContextMenu'
-import { ReactComponent as FlightLogo } from "./icons/flight_logo.svg";
-import "./Navbar.css"
+import  logo from "./icons/flight_app_logo.png";
 
+import "./Navbar.css"
 
 
 const  MainNavbar = () => {
 
     return (
 
-      // <Navbar collapseOnSelect expand="xl" bg="dark" variant="dark" sticky = "top">
-      <Navbar collapseOnSelect  expand="md" sticky= "top"> {/*fixed = "top*/}
-
-        {/* <Container> */}
-          <Navbar.Brand 
+      <Navbar collapseOnSelect  expand="md" bg="dark" variant="dark" fixed="top">
+      {/* <Navbar collapseOnSelect  expand="md" sticky= "top"> fixed = "top */}
+        
+         <Navbar.Brand
           href="/home" >
-          {/* <img
-            src= "./icons/flight_logo.svg"
-            alt = ""
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-            /> */}
-            Flight App
+            <img id='main-logo' src={logo} alt =""/>
+         
             </Navbar.Brand>
-
+          
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="justify-content-end flex-grow-1 pe-3">
