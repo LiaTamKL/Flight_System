@@ -103,13 +103,13 @@ const ViewAirlineFlights= () => {
     */
     const displayFlights = flights.slice(pagesSeen, pagesSeen + flightsPerPage).map((flight)=>{
     return (
-        <div key={flight.id} >
+        <div key={flight.id} className="col-lg-4" style={{width:60+'em'}}>
 
         <FlightCard flight={flight} countries={countries} custPage = {false}/>
         <div className='card' style={{width: 11 + 'rem'}}>
         <div className="btn-group">
-        <button onClick={()=>Delete(flight.id)} className="btn btn-danger btn-sm"  >Delete</button>
-        <button onClick={()=>setUpdate(flight)}className="btn btn-primary btn-sm" >Update</button></div>
+        <button onClick={()=>Delete(flight.id)} className="btn btn-danger btn-sm"  style={{width:100 + '%' }}>Delete</button>
+        <button onClick={()=>setUpdate(flight)}className="btn btn-primary btn-sm" style={{width:100 + '%' }}>Update</button></div>
         </div>
 
         <br/>
