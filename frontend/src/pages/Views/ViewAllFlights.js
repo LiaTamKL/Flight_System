@@ -1,4 +1,5 @@
 
+import '../../components/FlightPage/FlightCard.css'
 import {useState, useEffect, useContext} from "react";
 import AuthContext from "../../context/authentication";
 import { DeleteFlightAsAirline, ViewMyFlights, CheckIfFlightFormIsValid, UpdateMyFlight } from "../../methods/AirlineMethods";
@@ -136,9 +137,6 @@ const ViewAirlineFlights= () => {
         
         )
         :<>
-
-
-
 
 
         <form onSubmit={(e)=>setsearchresults(e)}>
