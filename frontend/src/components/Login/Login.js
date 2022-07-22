@@ -26,7 +26,9 @@ useEffect(() => {
 	
 }, [message, errors]);
 
-
+/**
+* redirects if register went fine, sets error messages otherwise
+*/
 let	RegisterRedirect= async(e) =>{
     e.preventDefault();
 	let result = await Register(e)
@@ -46,6 +48,9 @@ let	RegisterRedirect= async(e) =>{
 	const [toggle, settoggle] = useState(true);
 	const [text, setText] = useState("Next");
 
+	/**
+	* changes the button text between back and next and sets toggle as the opposite of what it currently is
+	*/
 	let textchange = () => {
 		toggle? setText("Back") :setText("Next")
 		settoggle(!toggle)
