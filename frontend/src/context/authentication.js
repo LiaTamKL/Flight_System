@@ -35,7 +35,7 @@ export const AuthenticationProvider = ({children}) => {
     * 
     */
     let RefreshToken = async ()=>{
-        console.log('HELLO IM REFRESHING NOW')
+        console.log('token refresh')
         let response = await fetch('/backend/token/refresh/',{
             method:'POST',
             headers:{
@@ -95,7 +95,7 @@ export const AuthenticationProvider = ({children}) => {
             RefreshToken()
         }
         /////////REFRESH EVERY 4 MINUTES//////////
-        let four_minutes = 1000 * 6000 * 4
+        let four_minutes = 1000 * 6000 * 15
         let interval = setInterval(()=>{
             if(authToken){
                 RefreshToken()
