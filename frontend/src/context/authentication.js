@@ -95,7 +95,7 @@ export const AuthenticationProvider = ({children}) => {
             RefreshToken()
         }
         /////////REFRESH EVERY 4 MINUTES//////////
-        let four_minutes = 1000 * 6000 * 15
+        let four_minutes = 1000 * 60 * 15
         let interval = setInterval(()=>{
             if(authToken){
                 RefreshToken()
