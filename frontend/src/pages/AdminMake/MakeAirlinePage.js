@@ -23,7 +23,6 @@ const MakeAnAirline = () =>{
     }else{
     let result = await TurnIntoAirline(params.username,e,authToken)
     if (result.status===200){
-        console.log('success!')
         nav('/admin/view_airlines')
     }
     else{

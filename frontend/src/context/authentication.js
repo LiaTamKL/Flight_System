@@ -48,7 +48,7 @@ export const AuthenticationProvider = ({children}) => {
             setAccount(jwt_decode(data.access))
             localStorage.setItem('authToken', JSON.stringify(data))
        }else{
-            console.log(data)
+
             setAuthToken(null)
             setAccount(null)
             localStorage.removeItem('authToken')

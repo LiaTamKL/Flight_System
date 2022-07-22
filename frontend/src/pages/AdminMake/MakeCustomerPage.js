@@ -21,7 +21,6 @@ const MakeACustomer = () =>{
     e.preventDefault()
     let result = await TurnIntoCustomer(params.username,e,authToken)
     if (result.status===200){
-        console.log('success!')
         nav('/admin')
     }
     else{
