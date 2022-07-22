@@ -41,7 +41,6 @@ let	RegisterRedirect= async(e) =>{
 	setErrors(result.errors)
 
 	}
-	
 }
 
 	// change button label
@@ -62,7 +61,7 @@ let	RegisterRedirect= async(e) =>{
 	// <div>
     //     {user? <h1>Hello {user.main_name}, logout if you wish to login as a different user</h1>:<>
 	<div className ="signup-login">
-		<div className="main">  	
+		<div id="main">  	
 			<input className='login-form-label' type="checkbox" id="chk" aria-hidden="true" />
 			<input className='login-form-label' type="checkbox" id="chkk" aria-hidden="true"  />
 				<div className="login">
@@ -75,7 +74,7 @@ let	RegisterRedirect= async(e) =>{
 				</div>
 
 
-				<div className="signup">
+				<div id="signup">
 					<form onSubmit={(e)=> RegisterRedirect(e)}>
 						<label className='login-form-label' htmlFor="chk" aria-hidden="true">Sign up</label>
 						<AccountForm/>

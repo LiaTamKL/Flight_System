@@ -7,23 +7,16 @@
 --pull-tab-travel: calc(var(--form-hight) - 1030px)
 /* --pull-tab: -480px;	 */
 
-
 }
 
 
 .signup-login{
-	position: top;
-	margin: 0;
-	padding: 0;
 	display: flex;
 	justify-content: center;
-	align-items: center;
 	min-height: 100vh;
 	font-family: 'Jost', sans-serif;
-    
-	/* background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e); */
-}
-.main{
+    }
+#main{
 	width: 350px;
 	height: var(--form-hight);
 	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
@@ -92,7 +85,7 @@
 }
 
 /* signup pulltab */
-.signup{
+#signup{
 	height:var(--pull-tab-hight);
 	background: rgb(234, 234, 234);
 	border-radius: 50% / 10%;
@@ -101,24 +94,24 @@
 }
 
 
-.signup .login-form-label{
+#signup .login-form-label{
 	color: #573b8a;
 	transform: scale(.5);
 }
 
 /*move distance */
-#chk:checked ~ .signup{
+#chk:checked ~ #signup{
 	transform: translatey(var(--pull-tab-travel));
 
 }
 
-#chkk:checked ~ .signup{
+#chkk:checked ~ #signup{
 	transform: translatey(calc(var(--pull-tab-travel) * 2));
 }
 
 
 /*lable size animation */
-#chk:checked ~ .signup .login-form-label{
+#chk:checked ~ #signup .login-form-label{
 	transform: scale(0.8);	
 }
 #chk:checked ~ .login .login-form-label{
