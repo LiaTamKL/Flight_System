@@ -1,6 +1,6 @@
 import React , {useContext , useEffect , useState } from 'react';
 import AuthContext from "../context/authentication";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { getUserInfo } from '../methods/UserMethods';
 import { ViewMyTickets } from "../methods/TicketMethods";
 // import AddTicketCreateButton from '../components/AddTicketCreateButton'
@@ -19,87 +19,76 @@ const CustomerPage = () => {
     let {user, authToken} = useContext(AuthContext)
     let [myFlights, setMyFlights] = useState();
     const [noData, setNoData] = useState();
-    // const [countries, setCountries] = useState([]);
+    const [countries, setCountries] = useState([]);
     
     const [pagenumber, setPageNumber] = useState(0)
     const flightsPerPage = 6
     const pagesSeen = pagenumber * flightsPerPage
   
 
-// console.log(user , userData);
-    useEffect(() => {
-        getUserData() 
-        getMyTickets()
-        
-        // eslint-disable-next-line
-    }, [user])
+        useEffect(() => {
+            getUserData() 
+            getMyTickets()
+            
+            // eslint-disable-next-line
+        }, [])
 
-    
-/**
-* gets specific user's data
-*/
-let getUserData = async () => {
-        let result = await getUserInfo(authToken)
-        if(result.status === 200){
-        setUserData(result.data)
+    let getUserData = async () => {
+            let result = await getUserInfo(authToken)
+            if(result.status === 200){
+            setUserData(result.data)
+        }
     }
-}
 
 
-
-/**
-* gets all tickets for user to set flights accourdingly
-*/
-let getMyTickets = async () => {
-
-    let result = await ViewMyTickets(authToken)
-    let data =  result.data
-    let status = result.status
-
-
-    if (status ===200){
-        if (data.length === 0){
-            setNoData(true) 
-            return
-        } 
+    // const flatten = (obj, prefix = [], current = {}) => {
+    //     if (typeof(obj) === 'object' && obj !== null) {
+    //       for (const key of Object.keys(obj)) {
+    //         flatten(obj[key], prefix.concat(key), current)
+    //       }
+    //     } else {
+    //       current[prefix.join('_')] = obj
+    //     }
+    //     return current
+    //   }
 
 
-        data = await FilteredFlightsByIdMethod(data)
-        if (status ===200){
-            setMyFlights(data)
-        // let country_data = await AllCountries()
-        //     if (country_data){
-        //         setCountries(country_data)       
-      
-        // }
+    //gets tickets and flights connected to them 
+    let getMyTickets = async () => {
+
+        let result = await ViewMyTickets(authToken)
+        let data =  result.data
+        let status = result.status
+
+        if (status ===200)
+        {
+            if (data.length === 0){
+                setNoData(true) 
+                return
+            } 
+                setMyFlights(data)
+
+                let country_data = await AllCountries()
+                if (country_data){setCountries(country_data)}
+                else{alert(status, data)}
         }
         else{alert(status, data)}
-    
     }
-    
-    else{alert(status, data)}
-}
 
+    if (myFlights!==undefined && !noData){
 
-if (myFlights!==undefined && !noData){
-
-
-    if (myFlights!==undefined){
-        var displayFlights = myFlights.slice(pagesSeen, pagesSeen + flightsPerPage).map((flight, index)=>{
-        
-        return (
-
-                // <FlightCard key={index} flight={flight} countries={countries} CusPage={true}/>
-                <FlightCard key={index} flight={flight} CusPage={true}/>
-
-
-            )})
-            var pageCount = Math.ceil(myFlights.length / flightsPerPage)
-        }
-
-            const changePage = ({selected})=>{
-                setPageNumber(selected)
+        if (myFlights!==undefined){
+            var displayFlights = myFlights.slice(pagesSeen, pagesSeen + flightsPerPage).map((myFlight, index)=>{
+            
+            return (
+                    <FlightCard key={index} custFlight={myFlight} countries={countries} custPage={true}/>
+                )})
+                var pageCount = Math.ceil(myFlights.length / flightsPerPage)
             }
+
+                const changePage = ({selected})=>{
+                    setPageNumber(selected)
+                }
 
 
     return (
@@ -218,3 +207,18 @@ export default CustomerPage
 
   
 // }
+
+
+        //    let  flightData = data.map((flight) => flight = flatten(flight))
+
+
+            // data.map((flight1) => console.log(flight1.flight.id))
+
+            // flightData.map((flight1) => console.log(flight1.origin_country))
+
+            // let flightData = await FilteredFlightsByIdMethod(data)
+            // if (status ===200){
+
+                // flightData.map((flight) => flight.booked = true)
+
+                // console.log(data);

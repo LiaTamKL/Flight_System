@@ -11,7 +11,7 @@ import "./Pages.css"
 
 const FlightsListPage = () => {
   const { state } = useLocation();
-  let  navigate = useNavigate();
+  // let  navigate = useNavigate();
   let {user, authToken} = useContext(AuthContext);
   let[filteredFlights, setFilteredFlights] = useState();
   let flightSearchParams = {'fromSearchOption':0, 'toSearchOption':0 ,departureTime:"", arrivalTime:""}
@@ -48,30 +48,22 @@ const FlightsListPage = () => {
   }
 
   const [pagenumber, setPageNumber] = useState(0)
-  const flightsPerPage = 5
+  const flightsPerPage = 6
   const pagesSeen = pagenumber * flightsPerPage
-
-
-// if (user?.account_role === "Customer"){ navigate ("/customer/tickets/")}
-
-
-
 
   if (filteredFlights!==undefined){
     var displayFlights = filteredFlights.slice(pagesSeen, pagesSeen + flightsPerPage).map((flight, index)=>{
     
       return (
 
-              <FlightCard key={index} flight={flight} countries={countries}/>
+              <FlightCard key={index} flight={flight} countries={countries} custPage = {false} />
 
         )})
         var pageCount = Math.ceil(filteredFlights.length / flightsPerPage)
       }
-
         const changePage = ({selected})=>{
             setPageNumber(selected)
         }
-
 
   return (
     <>
@@ -110,31 +102,3 @@ const FlightsListPage = () => {
 
 
 export default FlightsListPage
-
-// import React, {useState, useEffect,useRef} from 'react'
-
-
-    //  let [flights , setFlights] = useState()
-    //   console.log(filteredFlights)
-       
-    // const flights = useRef(filteredflights)
-
-
-     
-    //  useEffect(() => {
-    //   // setFlights(filteredflights)
-    //   getFlights()
-    //  }, [flights])
-  
-     
-  //   let getFlights = async () => {
-  //   setFlights(filteredFlights)
-
-  //   // if(filteredflights) {setFlights(filteredflights)}
-  //   // else{
-  //   // let response = await fetch('/backend/flights')
-  //   // let data = await response.json()
-  //   // setFlights(data)
-  //   // }
-
-  // }

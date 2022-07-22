@@ -52,17 +52,19 @@ class Customer_API_Actions:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+
     def remove_ticket_api(request):
         """request, deletes ticket for customer logged in. returns 400 if any issues, 404 if ticket does not exist"""
 
         customer = Customer.objects.get(account=request.user)
-        ticket_test = Flight_Ticket.objects.filter(flight=request.data['flight']).filter(customer=customer)
+        ticket_test = Flight_Ticket.objects.filter(flight=(request.data['flight'])).filter(customer=customer)
+
         try:
             ticket_test = ticket_test[0]
         except:
             return Response(data='Ticket does not exist!', status=status.HTTP_404_NOT_FOUND)
 
-
+        # raise Exception (ticket_test)
         serializer = TicketSerializer(data=request.data, many = False)
         if serializer.is_valid():
             CustomerFancade.remove_ticket(request.data),

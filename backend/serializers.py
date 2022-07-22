@@ -9,8 +9,6 @@ def foreign_key_link(field):
         return SlugRelatedField(many=False,read_only=True,slug_field=field)
 
 
- 
-
 class FlightSerializer(ModelSerializer):
 
     destination_country = foreign_key_link("country_name")
@@ -24,6 +22,7 @@ class FlightSerializer(ModelSerializer):
 
 class TicketSerializer(ModelSerializer):
     customer = foreign_key_link("first_name")
+    flight = FlightSerializer(read_only=True)
 
     class Meta:
         model = Flight_Ticket
@@ -45,7 +44,6 @@ class CountrySerializer(ModelSerializer):
         fields = '__all__' 
 
 class AllAccount_rolesSerializer(ModelSerializer):
-
 
     class Meta:
         model = Account_Role

@@ -20,7 +20,7 @@ import {
 } from "react-router-dom";
 
 
-import FlightSearch from './forms/FlightSearchForm'
+import FlightSearchForm from './forms/FlightSearchForm'
 import CustomerPage from './pages/CustomerPage'
 
 
@@ -78,7 +78,7 @@ function App() {
               <Route path = '' element={<Navigate to="tickets" replace />} /> 
               <Route path='tickets' element={<CustomerPage />}/>
               {/* <Route path='tickets/:id' element={<FlightsListPage />}/> */}
-              <Route path='flight/search' element={<FlightSearch />}/>           
+              <Route path='flight/search' element={<FlightSearchForm />}/>           
             </Route>
 
 

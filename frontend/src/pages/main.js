@@ -1,5 +1,5 @@
 import React from 'react'
-import FlightSearch from '../forms/FlightSearchForm';
+import FlightSearchForm from '../forms/FlightSearchForm';
 // import FlightPage from '../components/FlightPage//Flight_page_new/FlightPage'
 
 // import { FlightPage1 } from '../components/FlightPage/FlightPage1'
@@ -13,7 +13,7 @@ const MainPage = (message) => {
 
         <h1>Where Do You Want To Go?</h1>
         <br></br>
-        <FlightSearch />
+        <FlightSearchForm />
 
     
     

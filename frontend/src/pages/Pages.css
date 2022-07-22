@@ -1,7 +1,5 @@
-/* .mytickets {
-    align-self: center;
-    color: blanchedalmond;
-  } */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 
   .flights-header{
     display: flex ;
@@ -20,7 +18,6 @@
   justify-content: center;
   flex-direction: row;
   align-items:center;
-  /* border: 1px solid #e2e2e2; */
 
 }
 

@@ -62,10 +62,9 @@ class MyTokenObtainPairView(TokenObtainPairView):
 class Flightfilter(ListAPIView):
     queryset = Flight.objects.all()
     serializer_class = FlightSerializer
-    filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
+    filter_backends = (DjangoFilterBackend, SearchFilter)
     # filter_backends = (DjangoFilterBackend)
     filterset_class = Flightfilter
-    ordering = ['origin_country', 'destination_country']
 
 
 # class TicketByUserfilter(ListAPIView):
@@ -91,7 +90,6 @@ class Countryfilterget(ListAPIView):
 
 @api_view(['GET', 'POST', 'DELETE'])
 def tickets_api(request):
-    
     result = Customer_API_Actions.are_you_a_customer(request)
     if result['result'] == False:
         return result

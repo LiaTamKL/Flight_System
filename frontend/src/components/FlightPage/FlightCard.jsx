@@ -6,13 +6,25 @@ import { format , parseISO} from "date-fns";
 import { useNavigate} from "react-router-dom";
 import { CreateTicket, RemoveTicket } from '../../methods/TicketMethods';
 import AuthContext from "../../context/authentication";
-import { ViewMyTickets } from "../../methods/TicketMethods";
 import moment from 'moment';
 
 
 const FlightCard = (props) => {
-  let flight = props.flight
+  let {user, authToken} = useContext(AuthContext);
+  
+  // let cusPage = user?.account_role === 'Customer'
+
+  let flight = null
+  let currentTicket
+  if(props.custPage)
+  {flight = props.custFlight.flight;
+    currentTicket = {"id":props.custFlight.id , "flight": props.custFlight.flight.id};
+  }else
+  {flight = props.flight}
+
+  
   let  navigate = useNavigate();
+  // console.log(flight);
   let formatTime = (flight) => {return format(parseISO(flight),  "dd/MM/yy HH:mm")}
   const d_country = props.countries?.find(count=> count.country_name===flight.destination_country)
   const o_country = props.countries?.find(count=> count.country_name===flight.origin_country)
@@ -20,76 +32,81 @@ const FlightCard = (props) => {
   let [isHiddenAdd, setIsHiddenAdd] = useState(false)
   let [isHiddenRemove, setIsHiddenRemove] = useState(true)
   // let [addTicketMsg, setAddTicketMsg] = useState("")
-  let [tickets, setTickets] = useState()
-  let [currentTicket,  setCurrentTicket] = useState()
+  // let [tickets, setTickets] = useState()
+  // let [currentTicket,  setCurrentTicket] = useState()
 
-  let {user, authToken} = useContext(AuthContext);
 
     // using 2 useEffects to set tickets before checking validity.
   // it forces rerender after setting the tickets
-  useEffect(() => {
-  if(user?.account_role === 'Customer') {getMyTickets()}
-  }, [])
+  // useEffect(() => {
+  // if(user?.account_role === 'Customer') {getMyTickets()}
+  // }, [])
 
   
   useEffect(() => {
+    // getCurrentTicket()
     checkIfBooked()
-    getCurrentTicket()
+    
    // eslint-disable-next-line
-     }, [flight, isHiddenRemove,isHiddenAdd, tickets])
+     }, [flight, isHiddenRemove,isHiddenAdd, props])
 
 
     
-  let getMyTickets = async () => {
+//   let getMyTickets = async () => {
 
-  let result = await ViewMyTickets(authToken)
-  let data =  result.data
-  let status = result.status
-  if (status ===200){setTickets(data)}
-  else{alert(status, data)}
+//   let result = await ViewMyTickets(authToken)
+//   let data =  result.data
+//   let status = result.status
+//   if (status ===200){setTickets(data)}
+//   else{alert(status, data)}
 
-}
+// }
 
 
-let getCurrentTicket = () => {
-   setCurrentTicket (tickets?.find((ticket) => ticket.flight === flight.id))
-}
+// let getCurrentTicket = () => {
+//   setCurrentTicket({"id":props.custFlight.id , "flight": currentTicket.flight.id}) 
+
+//   //  setCurrentTicket (tickets?.find((ticket) => ticket.flight === flight.id))
+// }
 
 let checkIfBooked = () => {
-
-  if (currentTicket || props.CusPage===true){
-    // setAddTicketMsg("This Ticket Is Booked")
+  if (currentTicket|| props.custPage){
     setIsHiddenAdd(true)
     setIsHiddenRemove(false)
     return
    }
     
+
   if (flight?.remaining_tickets === 0 ){
     setIsHiddenAdd(true)
     }
-
   }
 
-
-  let handleAddTicket = () => {
+  
+let handleAddTicket = () => {
     if (authToken){CreateTicket(flight.id, authToken)}
     navigate("/customer/tickets")
-    
   }
 
  let handleRemoveTicket = () => {
+
     RemoveTicket(currentTicket, authToken)
     navigate("/customer/tickets")
     window.location.reload(false);
-
  }
+
 
 let showDuration = () => { 
   let duration = moment.duration(moment(flight.landing_time).diff(moment(flight.departure_time)));
   let totalHours = duration.asHours()
   if (totalHours % 1 !== 0) {totalHours = Math.floor(totalHours)}
-return `${totalHours}h ${duration.minutes()}m`
+  return `${totalHours}h ${duration.minutes()}m`
 }
+
+// console.log("custPage " + props.custPage)
+// console.log("booked " + flight.booked);
+
+
 
   return (
    <> 
@@ -150,17 +167,17 @@ return `${totalHours}h ${duration.minutes()}m`
 
 
       <section id="btn-select-box">
-        {!(user && user?.account_role !== 'Customer') ? (<>
+        {!(user && user?.account_role !== 'Customer')? (<>
 
           <input 
           type="button" 
           id='book-btn' 
           value = "Book"
           onClick={handleAddTicket}
+
           hidden = {isHiddenAdd}
-          // onMouseEnter={() => console.log(flight?.id)}
-          // onMouseLeave={() => console.log("leave")}
           />
+
           <input 
           type="button" 
           id='remove-btn' 
@@ -168,7 +185,6 @@ return `${totalHours}h ${duration.minutes()}m`
           onClick={handleRemoveTicket}
           hidden = {isHiddenRemove}
           />
-
 
             </>):<></>}
       </section>
