@@ -38,9 +38,6 @@ const UserLinks = () => {
 
 
 
-
-
-
  const ContextMenu = () => {
     let {user, logout} = useContext(AuthContext)
 
@@ -100,7 +97,7 @@ const UserLinks = () => {
         <>
           <Nav.Link href="/">Home </Nav.Link>
         
-          <Nav.Link href="/login">Login / Register</Nav.Link>
+          <Nav.Link id='login-register' href="/login">Login / Sign In</Nav.Link>
         </>
         )
     

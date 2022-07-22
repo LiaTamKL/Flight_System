@@ -29,6 +29,21 @@
 }
 
 
+#login-register {
+
+
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+    color: white;
+    height: 40px;
+    border-radius: 24px;
+    cursor: pointer;
+    box-shadow: 5px 20px 50px #000;
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+  }
+
 /* .nav-logo {
     display: flex;
     align-items: auto;
