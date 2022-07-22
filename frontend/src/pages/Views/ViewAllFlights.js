@@ -2,7 +2,8 @@
 import {useState, useEffect, useContext} from "react";
 import AuthContext from "../../context/authentication";
 import { DeleteFlightAsAirline, ViewMyFlights, CheckIfFlightFormIsValid, UpdateMyFlight } from "../../methods/AirlineMethods";
-import FlightCard from "../../components/FlightCard";
+// import FlightCard from "../../components/FlightCard";
+import FlightCard from "../../components/FlightPage/FlightCard";
 import Select from 'react-select'
 import NewFlightForm from "../../forms/NewFlightForm";
 import ReactPaginate from "react-paginate"
@@ -101,10 +102,16 @@ const ViewAirlineFlights= () => {
     */
     const displayFlights = flights.slice(pagesSeen, pagesSeen + flightsPerPage).map((flight)=>{
     return (
-        <div key={flight.id} className="list-group-item list-group-item-action flex-column align-items-start">
-        <FlightCard flight={flight} countries={countries}/>
-        <button onClick={()=>Delete(flight.id)}className="btn btn-danger btn-sm" >Delete</button>
-        <button onClick={()=>setUpdate(flight)}className="btn btn-primary btn-sm" >Update</button>
+        <div key={flight.id} >
+
+        <FlightCard flight={flight} countries={countries} custPage = {false}/>
+        <div className='card' style={{width: 11 + 'rem'}}>
+        <div className="btn-group">
+        <button onClick={()=>Delete(flight.id)} className="btn btn-danger btn-sm"  >Delete</button>
+        <button onClick={()=>setUpdate(flight)}className="btn btn-primary btn-sm" >Update</button></div>
+        </div>
+
+        <br/>
     </div>
     )})
     const pageCount = Math.ceil(flights.length / flightsPerPage)
@@ -154,7 +161,7 @@ const ViewAirlineFlights= () => {
         {
         <div key={searched.id} className="list-group-item list-group-item-action flex-column align-items-start">
         <p>Searched for:</p>
-        <FlightCard flight={searched} countries={countries}/>
+        <FlightCard flight={searched} countries={countries} custPage = {false}/>
         <button onClick={()=>Delete(searched.id)}className="btn btn-danger btn-sm" >Delete</button>
         <button onClick={()=>setUpdate(searched)}className="btn btn-primary btn-sm" >Update</button>
         </div>
@@ -163,9 +170,12 @@ const ViewAirlineFlights= () => {
         
         
         
+        <div className='flights-header'>
+      <h2 className='flights-title'>  My Flights  </h2>
+        </div>
         
-        <div className="card text-center">My Flights</div>
-        <div className="card p3" >
+        <div className="container">
+              <div className="row">
         {
                 flights?.length > 0
                 ? (<>
@@ -186,7 +196,7 @@ const ViewAirlineFlights= () => {
                         <h2>No Flights found</h2>
                 )
             }
-    </div></>}</>}
+    </div></div></>}</>}
 
 </div>)
 }
