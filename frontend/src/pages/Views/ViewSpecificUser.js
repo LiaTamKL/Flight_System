@@ -59,11 +59,12 @@ const SearchForUser = ()=>{
 
 
     return(
-        <div id="user-view-container">
-        <div className="card text-center">
+        <>
+
         <div className="admin-label-center"><label className="admin-label-display" >Admin: {user.username}</label></div>
         
-        </div>
+
+        <div id="user-view-container">
         {message.current? (<p className="alert alert-secondary">{message.current}</p>):<></>}
         <form onSubmit={(e)=>searchforaccount(e)}>
                 <Select 
@@ -99,7 +100,7 @@ const SearchForUser = ()=>{
                         <div id="label-positioning"><label id="after-search-label" >Search for a user</label></div>
                 )
             }
-        </div>)
+        </div></>)
 }
 
 export default SearchForUser

@@ -22,7 +22,7 @@ const MakeAnAdmin = () =>{
     e.preventDefault()
     let result = await TurnIntoAdmin(params.username,e,authToken)
     if (result.status===200){
-        console.log('success!')
+
         nav('/admin/view_admins')
     }
     else{
