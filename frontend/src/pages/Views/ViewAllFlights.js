@@ -120,7 +120,7 @@ const ViewAirlineFlights= () => {
     }
  
     return (<div>
-        <h5>Airline: {user.username}</h5>
+        <div className="admin-label-center"><label className="admin-label-display" >Airline: {user.username}</label></div>
         <div className="card text-center">
         <button className="btn btn-primary btn-sm" onClick={()=>setBack()}>Clear search and view all flights</button>
 

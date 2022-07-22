@@ -54,8 +54,24 @@
 
 
 /*##################################################*/
-/*#################ViewSpecificUser#################*/
+/*#################Viewpages#################*/
 /*##################################################*/
+
+.admin-label-center {
+  display: flex;
+  justify-content: center;
+
+}
+.admin-label-display {
+  font-size: x-large;
+  margin-top: 20px;
+  margin-bottom: 20px;  
+  background-color: white;
+  border: 5px solid rgb(216, 204, 204);
+  padding: 5px;
+  border-radius: 5px;
+  
+}
 
 
 

@@ -61,7 +61,7 @@ const SearchForUser = ()=>{
     return(
         <div id="user-view-container">
         <div className="card text-center">
-            <label id="admin-label" >Admin: {user.username}</label>
+        <div className="admin-label-center"><label className="admin-label-display" >Admin: {user.username}</label></div>
         
         </div>
         {message.current? (<p className="alert alert-secondary">{message.current}</p>):<></>}
