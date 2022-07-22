@@ -35,7 +35,6 @@ export const AuthenticationProvider = ({children}) => {
     * 
     */
     let RefreshToken = async ()=>{
-        console.log('HELLO IM REFRESHING NOW')
         let response = await fetch('/backend/token/refresh/',{
             method:'POST',
             headers:{
@@ -49,6 +48,7 @@ export const AuthenticationProvider = ({children}) => {
             setAccount(jwt_decode(data.access))
             localStorage.setItem('authToken', JSON.stringify(data))
        }else{
+            console.log(data)
             setAuthToken(null)
             setAccount(null)
             localStorage.removeItem('authToken')
@@ -95,7 +95,7 @@ export const AuthenticationProvider = ({children}) => {
             RefreshToken()
         }
         /////////REFRESH EVERY 4 MINUTES//////////
-        let four_minutes = 1000 * 6000 * 4
+        let four_minutes = 1000 * 60 * 15
         let interval = setInterval(()=>{
             if(authToken){
                 RefreshToken()
