@@ -7,15 +7,18 @@ import ReactPaginate from "react-paginate"
 import AuthContext from "../context/authentication";
 import { AllCountries } from '../methods/CountriesMethods';
 import FlightCard from '../components/FlightPage/FlightCard'
+import { ViewMyTickets } from '../methods/TicketMethods';
 import "./Pages.css"
 
 const FlightsListPage = () => {
   const { state } = useLocation();
   // let  navigate = useNavigate();
-  let {user, authToken} = useContext(AuthContext);
+  let [myFlights, setMyFlights] = useState(null);
   let[filteredFlights, setFilteredFlights] = useState();
   let flightSearchParams = {'fromSearchOption':0, 'toSearchOption':0 ,departureTime:"", arrivalTime:""}
   const [countries, setCountries] = useState([]);
+  let {user, authToken} = useContext(AuthContext)
+
 
   useEffect(() => {
       
@@ -23,6 +26,8 @@ const FlightsListPage = () => {
   else { getfilteredflights(state.flightSearchParams)}
 
     }, []);
+
+
 
 /**
 * gets filtered search results for flights. sets the results and all countries from the DB
@@ -42,8 +47,14 @@ const FlightsListPage = () => {
       setFilteredFlights(filtered);
       let country_data = await AllCountries()
       if (country_data){
-          setCountries(country_data)       
+          setCountries(country_data)
+      if (user && user?.account_role === 'Customer'){      
+      let result = await ViewMyTickets(authToken?authToken:null)
+      let data =  result.data
+      let status = result.status
 
+      if (status ===200){setMyFlights(data)}
+      } 
   }
   }
 
@@ -53,10 +64,12 @@ const FlightsListPage = () => {
 
   if (filteredFlights!==undefined){
     var displayFlights = filteredFlights.slice(pagesSeen, pagesSeen + flightsPerPage).map((flight, index)=>{
-    
+      var myticket 
+      if (myFlights){
+        myticket = myFlights.find(ticket=> ticket.flight.id===flight.id)}
       return (
 
-              <FlightCard key={index} flight={flight} countries={countries} custPage = {false} />
+              <FlightCard key={index} flight={flight} countries={countries} custPage = {false} custFlight={myticket}/>
 
         )})
         var pageCount = Math.ceil(filteredFlights.length / flightsPerPage)

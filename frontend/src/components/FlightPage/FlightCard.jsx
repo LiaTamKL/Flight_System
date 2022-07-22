@@ -15,8 +15,9 @@ const FlightCard = (props) => {
   // let cusPage = user?.account_role === 'Customer'
 
   let flight = null
-  let currentTicket
-  if(props.custPage)
+  let currentTicket =null
+
+  if(props.custFlight!==undefined)
   {flight = props.custFlight.flight;
     currentTicket = {"id":props.custFlight.id , "flight": props.custFlight.flight.id};
   }else
