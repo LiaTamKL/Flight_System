@@ -103,17 +103,25 @@ const ViewAirlineFlights= () => {
     */
     const displayFlights = flights.slice(pagesSeen, pagesSeen + flightsPerPage).map((flight)=>{
     return (
-        <div key={flight.id} className="col-lg-4" style={{width:60+'em'}}>
+        <>
+        
+        {/* <div key={flight.id} className="col-lg-4" style={{width:60+'em'}}> */}
+        {/* <div id='button-adjust' > */}
+            <FlightCard className flight={flight} countries={countries} custPage = {false}/>
+            {/* <div className='card' style={{width: 11 + 'rem'}}> */}
+            <div className="btn-group">
+            {/* <button onClick={()=>Delete(flight.id)} className="btn btn-danger btn-sm"  style={{width:100 + '%' }}>Delete</button> */}
+            {/* <button onClick={()=>setUpdate(flight)}className="btn btn-primary btn-sm" style={{width:100 + '%' }}>Update</button> */}
+                <button onClick={()=>Delete(flight.id)} className="btn btn-danger btn-sm" >Delete</button>
+                <button onClick={()=>setUpdate(flight)} className="btn btn-primary btn-sm" >Update</button>
 
-        <FlightCard flight={flight} countries={countries} custPage = {false}/>
-        <div className='card' style={{width: 11 + 'rem'}}>
-        <div className="btn-group">
-        <button onClick={()=>Delete(flight.id)} className="btn btn-danger btn-sm"  style={{width:100 + '%' }}>Delete</button>
-        <button onClick={()=>setUpdate(flight)}className="btn btn-primary btn-sm" style={{width:100 + '%' }}>Update</button></div>
-        </div>
+            </div>
+            {/* </div> */}
 
-        <br/>
-    </div>
+            {/* <br/> */}
+    {/* </div> */}
+    {/* </div> */}
+    </>
     )})
     const pageCount = Math.ceil(flights.length / flightsPerPage)
     const changePage = ({selected})=>{
@@ -121,11 +129,12 @@ const ViewAirlineFlights= () => {
     }
  
     return (<div>
-        <div className="admin-label-center"><label className="admin-label-display" >Airline: {user.username}</label></div>
+        <div className="admin-label-center"><label className="airline-label-display" >Airline: {user.username}</label></div>
         <div className="card text-center">
         <button className="btn btn-primary btn-sm" onClick={()=>setBack()}>Clear search and view all flights</button>
 
         </div>
+
         {message? (<p className="alert alert-secondary">{message}</p>):<></>}
         {update? (
         
@@ -133,7 +142,6 @@ const ViewAirlineFlights= () => {
         <NewFlightForm flightData={update}/>
         <input type="submit" className="btn btn-primary btn-sm" value={'Update Flight #'+update.id}/>
         </form>
-        
         
         )
         :<>
@@ -162,6 +170,7 @@ const ViewAirlineFlights= () => {
         <FlightCard flight={searched} countries={countries} custPage = {false}/>
         <button onClick={()=>Delete(searched.id)}className="btn btn-danger btn-sm" >Delete</button>
         <button onClick={()=>setUpdate(searched)}className="btn btn-primary btn-sm" >Update</button>
+
         </div>
         }</>
         :<>
