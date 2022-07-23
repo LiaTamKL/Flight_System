@@ -12,7 +12,6 @@ import moment from 'moment';
 const FlightCard = (props) => {
   let {user, authToken} = useContext(AuthContext);
   
-  // let cusPage = user?.account_role === 'Customer'
 
   let flight = null
   let currentTicket =null
@@ -84,8 +83,6 @@ let showDuration = () => {
   return `${totalHours}h ${duration.minutes()}m`
 }
 
-// console.log("custPage " + props.custPage)
-// console.log("booked " + flight.booked);
 
 
 
@@ -123,8 +120,8 @@ let showDuration = () => {
 
       <section id="times-section">
         <div className='time'>
-          <small id="date-left">{formatTime(flight?.departure_time).slice(0,9)} </small>
-          <strong>{ formatTime(flight?.departure_time).slice(9,) } </strong>
+          <small id="date-left">{`${flight?.departure_time.slice(8,10)}/${flight?.departure_time.slice(5,7)}/${flight?.departure_time.slice(0,4)}`} </small>
+          <strong>{ flight?.departure_time.slice(11,16) } </strong>
         </div>
             
         <div id='duration-time'>
@@ -135,8 +132,8 @@ let showDuration = () => {
         </div>
             
         <div className='time'>
-          <small id="date-right">{ formatTime(flight?.landing_time).slice(0,9) }</small>
-          <strong>{ formatTime(flight?.landing_time).slice(9,) }</strong>  
+          <small id="date-right">{`${flight?.landing_time.slice(8,10)}/${flight?.landing_time.slice(5,7)}/${flight?.landing_time.slice(0,4)}`}</small>
+          <strong>{ flight?.landing_time.slice(11,16) }</strong>  
         </div>
     
       </section>
