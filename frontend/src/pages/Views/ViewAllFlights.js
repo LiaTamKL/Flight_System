@@ -3,7 +3,6 @@ import '../../components/FlightPage/FlightCard.css'
 import {useState, useEffect, useContext} from "react";
 import AuthContext from "../../context/authentication";
 import { DeleteFlightAsAirline, ViewMyFlights, CheckIfFlightFormIsValid, UpdateMyFlight } from "../../methods/AirlineMethods";
-// import FlightCard from "../../components/FlightCard";
 import FlightCard from "../../components/FlightPage/FlightCard";
 import Select from 'react-select'
 import NewFlightForm from "../../forms/NewFlightForm";
@@ -91,7 +90,7 @@ const ViewAirlineFlights= () => {
 
 
              let result = await UpdateMyFlight(e,update.id, authToken)
-             setMessage(result.data)
+             setMessage(null)
              setBack()
              getflights()
          }
@@ -107,14 +106,14 @@ const ViewAirlineFlights= () => {
     */
     const displayFlights = flights.slice(pagesSeen, pagesSeen + flightsPerPage).map((flight)=>{
     return (
-        <>
-            <FlightCard className flight={flight} countries={countries} custPage = {false} updateDeleteBtn = {
+
+            <FlightCard key={flight.id} className flight={flight} countries={countries} custPage = {false} updateDeleteBtn = {
             <div className="btn-group">
                 <button onClick={()=>Delete(flight.id)} className="btn btn-danger btn-sm" >Delete</button>
                 <button onClick={()=>setUpdate(flight)} className="btn btn-primary btn-sm" >Update</button>
             </div> 
             } />
-    </>
+
     )})
     const pageCount = Math.ceil(flights.length / flightsPerPage)
     const changePage = ({selected})=>{
@@ -128,9 +127,7 @@ const ViewAirlineFlights= () => {
 
         </div>
 
-        {/* {message? (<p className="alert alert-secondary">{message}</p>):<></>} */}
         {update? (
-        // ####################################################################
         <form onSubmit={(e)=>handleUpdate(e)}>
 
             <FormTemplate 
@@ -139,8 +136,6 @@ const ViewAirlineFlights= () => {
                 formFields = { <NewFlightForm flightData={update}/>}
                 formErrors = {message? (<p className="alert alert-warning">{message}</p>):<></>}
             />
-        {/* <NewFlightForm flightData={update}/> */}
-        {/* <input type="submit" className="btn btn-primary btn-sm" value={'Update Flight #'+update.id}/> */}
         </form>
         
         )
@@ -166,11 +161,7 @@ const ViewAirlineFlights= () => {
         {searched?<>
         {
         <>
-        {/* <div key={searched.id} className="list-group-item list-group-item-action flex-column align-items-start"> */}
         <div id='searched-for-container'><label id='searched-for-label' >Searched for:</label> </div>
-        {/* <FlightCard flight={searched} countries={countries} custPage = {false}/>
-        <button onClick={()=>Delete(searched.id)}className="btn btn-danger btn-sm" >Delete</button>
-        <button onClick={()=>setUpdate(searched)}className="btn btn-primary btn-sm" >Update</button> */}
         <div id="center-flightcard">
             <FlightCard  flight={searched} countries={countries} custPage = {false} updateDeleteBtn = {
                 <div className="btn-group">
@@ -179,7 +170,6 @@ const ViewAirlineFlights= () => {
                 </div> 
                 } />
          </div>  
-         {/* </div> */}
         </>
         }</>
         :<>
