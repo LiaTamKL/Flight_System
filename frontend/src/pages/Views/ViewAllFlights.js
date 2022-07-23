@@ -9,8 +9,6 @@ import Select from 'react-select'
 import NewFlightForm from "../../forms/NewFlightForm";
 import ReactPaginate from "react-paginate"
 import { AllCountries } from "../../methods/CountriesMethods";
-import FormTemplate from '../../forms/FormTemplate/FormTemplate';
-
 
 const ViewAirlineFlights= () => {
     const [searched, setSearched] = useState(false);
@@ -88,8 +86,6 @@ const ViewAirlineFlights= () => {
              setMessage(is_form_valid)
          }
          else{
-
-
              let result = await UpdateMyFlight(e,update.id, authToken)
              setMessage(result.data)
              setBack()
@@ -98,7 +94,7 @@ const ViewAirlineFlights= () => {
     }
 
     const [pagenumber, setPageNumber] = useState(0)
-    const flightsPerPage = 3
+    const flightsPerPage = 6
     const pagesSeen = pagenumber * flightsPerPage
 
 
@@ -107,14 +103,14 @@ const ViewAirlineFlights= () => {
     */
     const displayFlights = flights.slice(pagesSeen, pagesSeen + flightsPerPage).map((flight)=>{
     return (
-        <>
-            <FlightCard className flight={flight} countries={countries} custPage = {false} updateDeleteBtn = {
+            <FlightCard key={flight.id} className flight={flight} countries={countries} custPage = {false} updateDeleteBtn = {
             <div className="btn-group">
                 <button onClick={()=>Delete(flight.id)} className="btn btn-danger btn-sm" >Delete</button>
                 <button onClick={()=>setUpdate(flight)} className="btn btn-primary btn-sm" >Update</button>
-            </div> 
+            </div>
+                
             } />
-    </>
+
     )})
     const pageCount = Math.ceil(flights.length / flightsPerPage)
     const changePage = ({selected})=>{
@@ -128,19 +124,12 @@ const ViewAirlineFlights= () => {
 
         </div>
 
-        {/* {message? (<p className="alert alert-secondary">{message}</p>):<></>} */}
+        {message? (<p className="alert alert-secondary">{message}</p>):<></>}
         {update? (
-        // ####################################################################
+        
         <form onSubmit={(e)=>handleUpdate(e)}>
-
-            <FormTemplate 
-                formName= {`Update Flight  #${ update.id }`}
-                btnDesc = { 'Update' }
-                formFields = { <NewFlightForm flightData={update}/>}
-                formErrors = {message? (<p className="alert alert-warning">{message}</p>):<></>}
-            />
-        {/* <NewFlightForm flightData={update}/> */}
-        {/* <input type="submit" className="btn btn-primary btn-sm" value={'Update Flight #'+update.id}/> */}
+        <NewFlightForm flightData={update}/>
+        <input type="submit" className="btn btn-primary btn-sm" value={'Update Flight #'+update.id}/>
         </form>
         
         )
@@ -164,23 +153,21 @@ const ViewAirlineFlights= () => {
 
 
         {searched?<>
-        {
-        <>
-        {/* <div key={searched.id} className="list-group-item list-group-item-action flex-column align-items-start"> */}
-        <div id='searched-for-container'><label id='searched-for-label' >Searched for:</label> </div>
+        {<>
+        <h2 className='flights-title'>Searched for:</h2>
         {/* <FlightCard flight={searched} countries={countries} custPage = {false}/>
         <button onClick={()=>Delete(searched.id)}className="btn btn-danger btn-sm" >Delete</button>
         <button onClick={()=>setUpdate(searched)}className="btn btn-primary btn-sm" >Update</button> */}
-        <div id="center-flightcard">
-            <FlightCard  flight={searched} countries={countries} custPage = {false} updateDeleteBtn = {
-                <div className="btn-group">
-                    <button onClick={()=>Delete(searched.id)} className="btn btn-danger btn-sm" >Delete</button>
-                    <button onClick={()=>setUpdate(searched)} className="btn btn-primary btn-sm" >Update</button>
-                </div> 
-                } />
-         </div>  
-         {/* </div> */}
-        </>
+        <FlightCard className flight={searched} countries={countries} custPage = {false} updateDeleteBtn = {
+            <div className="btn-group">
+                <button onClick={()=>Delete(searched.id)} className="btn btn-danger btn-sm" >Delete</button>
+                <button onClick={()=>setUpdate(searched)} className="btn btn-primary btn-sm" >Update</button>
+            </div>
+                
+            } />
+
+
+</>
         }</>
         :<>
         
