@@ -94,7 +94,7 @@ const ViewAirlineFlights= () => {
     }
 
     const [pagenumber, setPageNumber] = useState(0)
-    const flightsPerPage = 2
+    const flightsPerPage = 3
     const pagesSeen = pagenumber * flightsPerPage
 
 
@@ -104,9 +104,7 @@ const ViewAirlineFlights= () => {
     const displayFlights = flights.slice(pagesSeen, pagesSeen + flightsPerPage).map((flight)=>{
     return (
         <>
-        
-        {/* <div key={flight.id} className="col-lg-4" style={{width:60+'em'}}> */}
-        {/* <div id='button-adjust' > */}
+
             <FlightCard className flight={flight} countries={countries} custPage = {false} updateDeleteBtn = {
             <div className="btn-group">
                 <button onClick={()=>Delete(flight.id)} className="btn btn-danger btn-sm" >Delete</button>
@@ -114,19 +112,6 @@ const ViewAirlineFlights= () => {
             </div>
                 
             } />
-            {/* <div className='card' style={{width: 11 + 'rem'}}> */}
-            {/* <div className="btn-group"> */}
-            {/* <button onClick={()=>Delete(flight.id)} className="btn btn-danger btn-sm"  style={{width:100 + '%' }}>Delete</button> */}
-            {/* <button onClick={()=>setUpdate(flight)}className="btn btn-primary btn-sm" style={{width:100 + '%' }}>Update</button> */}
-                {/* <button onClick={()=>Delete(flight.id)} className="btn btn-danger btn-sm" >Delete</button> */}
-                {/* <button onClick={()=>setUpdate(flight)} className="btn btn-primary btn-sm" >Update</button> */}
-
-            {/* </div> */}
-            {/* </div> */}
-
-            {/* <br/> */}
-    {/* </div> */}
-    {/* </div> */}
     </>
     )})
     const pageCount = Math.ceil(flights.length / flightsPerPage)
