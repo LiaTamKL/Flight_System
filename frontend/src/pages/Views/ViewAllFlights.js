@@ -153,9 +153,8 @@ const ViewAirlineFlights= () => {
 
 
         {searched?<>
-        {
-        <div key={searched.id} className="list-group-item list-group-item-action flex-column align-items-start">
-        <p>Searched for:</p>
+        {<>
+        <h2 className='flights-title'>Searched for:</h2>
         {/* <FlightCard flight={searched} countries={countries} custPage = {false}/>
         <button onClick={()=>Delete(searched.id)}className="btn btn-danger btn-sm" >Delete</button>
         <button onClick={()=>setUpdate(searched)}className="btn btn-primary btn-sm" >Update</button> */}
@@ -168,7 +167,7 @@ const ViewAirlineFlights= () => {
             } />
 
 
-        </div>
+</>
         }</>
         :<>
         
