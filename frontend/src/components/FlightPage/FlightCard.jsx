@@ -168,6 +168,10 @@ let showDuration = () => {
           />
 
             </>):<></>}
+
+            {props.updateDeleteBtn?props.updateDeleteBtn:<></>} 
+
+            
       </section>
     </div>
   </div>
