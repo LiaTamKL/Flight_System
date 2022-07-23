@@ -109,11 +109,8 @@ const ViewAirlineFlights= () => {
         {/* <div id='button-adjust' > */}
             <FlightCard className flight={flight} countries={countries} custPage = {false} updateDeleteBtn = {
             <div className="btn-group">
-            {/* <button onClick={()=>Delete(flight.id)} className="btn btn-danger btn-sm"  style={{width:100 + '%' }}>Delete</button> */}
-            {/* <button onClick={()=>setUpdate(flight)}className="btn btn-primary btn-sm" style={{width:100 + '%' }}>Update</button> */}
                 <button onClick={()=>Delete(flight.id)} className="btn btn-danger btn-sm" >Delete</button>
                 <button onClick={()=>setUpdate(flight)} className="btn btn-primary btn-sm" >Update</button>
-
             </div>
                 
             } />
@@ -176,9 +173,17 @@ const ViewAirlineFlights= () => {
         {
         <div key={searched.id} className="list-group-item list-group-item-action flex-column align-items-start">
         <p>Searched for:</p>
-        <FlightCard flight={searched} countries={countries} custPage = {false}/>
+        {/* <FlightCard flight={searched} countries={countries} custPage = {false}/>
         <button onClick={()=>Delete(searched.id)}className="btn btn-danger btn-sm" >Delete</button>
-        <button onClick={()=>setUpdate(searched)}className="btn btn-primary btn-sm" >Update</button>
+        <button onClick={()=>setUpdate(searched)}className="btn btn-primary btn-sm" >Update</button> */}
+        <FlightCard className flight={searched} countries={countries} custPage = {false} updateDeleteBtn = {
+            <div className="btn-group">
+                <button onClick={()=>Delete(searched.id)} className="btn btn-danger btn-sm" >Delete</button>
+                <button onClick={()=>setUpdate(searched)} className="btn btn-primary btn-sm" >Update</button>
+            </div>
+                
+            } />
+
 
         </div>
         }</>
