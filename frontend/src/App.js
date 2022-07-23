@@ -50,11 +50,13 @@ function App() {
           <Routes>
 
             <Route path='*' element={<NotFound/>} />
-
             <Route path = "/" exact element={<Navigate to="home" replace />} />
             <Route path = "/home" exact element={<MainPage />} />
+            <Route path = '/flights' exact element={<FlightsListPage />}/>
 
-            <Route path="/login" element={<Login/>} />
+            <Route path='/login' exact element={<LoggedOut/>}> 
+              <Route path="" element={<Login/>} />
+            </Route>
 
 
 
@@ -77,26 +79,16 @@ function App() {
             <Route path='/customer'  exact element={<LoggedinRoute account_role="Customer"/>}>
               <Route path = '' element={<Navigate to="tickets" replace />} /> 
               <Route path='tickets' element={<CustomerPage />}/>
-              {/* <Route path='tickets/:id' element={<FlightsListPage />}/> */}
               <Route path='flight/search' element={<FlightSearchForm />}/>           
             </Route>
-
-
 
             <Route path='/airline'  exact element={<LoggedinRoute account_role="Airline"/>}>
               <Route path='' element={<ViewAirlineFlights/>}/>
               <Route path='add_flight' element={<CreateAFlight/>}/>
             </Route>
             
-            <Route path = '/flights' exact element={<FlightsListPage />}/>
-            {/* <Route path = 'flights/:id' element={<FlightsListPage />} /> */}
             
-
-           
-
           </Routes>
-          {/* <FlightCardNew /> */}
-          {/* <Footer /> */}
         </AuthenticationProvider>
       </div>
     </div>
