@@ -6,7 +6,6 @@ import {ReactComponent as Profile} from './image.svg';
 
 
 const FormTemplate = (props) => {
-  // console.log(props.refrence)
   return (
 <>
 

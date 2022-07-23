@@ -99,3 +99,16 @@ font-size: xx-large;
   width: 100%;
 
 }
+
+#searched-for-container, #center-flightcard  {
+  display: flex;
+  justify-content: center;
+  /* justify-items: center; */
+  /* font-size: large; */
+}
+#searched-for-label {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bolder;
+}

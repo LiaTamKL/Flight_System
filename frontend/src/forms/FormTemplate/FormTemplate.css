@@ -7,12 +7,13 @@
 
 
 #card {
+  margin-top: 20px;  
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
   width: 100%;
   max-width: var(--collapse-on);
 
   border-radius: 25px;
-  position: absolute;
+  position: relative;
   overflow: visible;
   /* right: 50%; */
   background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
