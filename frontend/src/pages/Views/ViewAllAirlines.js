@@ -30,10 +30,14 @@ const ViewAirlines = () => {
     const displayAirlines = airlines.slice(pagesSeen, pagesSeen + airlinesPerPage).map((airline)=>{
     return (
     <div key={airline.account} className="list-group-item list-group-item-action flex-column align-items-start">
-        <AirlineCard airline={airline} countries={countries}/>
-        <Link className="btn btn-primary btn-sm" to={`/admin/make_customer/${airline.account}`} >Add as Customer</Link>
-        <Link className="btn btn-primary btn-sm" to={`/admin/make_admin/${airline.account}`} >Add as Admin</Link>
-        <button onClick={()=>Delete(airline.account)}className="btn btn-danger btn-sm" >Delete</button>
+        <AirlineCard airline={airline} countries={countries} buttons={<div>
+
+            <Link className="btn btn-primary btn-sm" to={`/admin/make_customer/${airline.account}`} >Add as Customer</Link>
+            <Link className="btn btn-primary btn-sm" to={`/admin/make_admin/${airline.account}`} >Add as Admin</Link>
+            <button onClick={()=>Delete(airline.account)}className="btn btn-danger btn-sm" >Delete</button>
+
+        </div>}/>
+
     </div>
     )})
     const pageCount = Math.ceil(airlines.length / airlinesPerPage)
@@ -115,10 +119,13 @@ const ViewAirlines = () => {
         {
         <div key={searchedItem.id} className="list-group-item list-group-item-action flex-column align-items-start">
         <p>Searched for:</p>
-        <AirlineCard airline={searchedItem} countries={countries}/>
-        <Link className="btn btn-primary btn-sm" to={`/admin/make_customer/${searchedItem.account}`} >Add as Customer</Link>
-        <Link className="btn btn-primary btn-sm" to={`/admin/make_admin/${searchedItem.account}`} >Add as Admin</Link>
-        <button onClick={()=>Delete(searchedItem.account)}className="btn btn-danger btn-sm" >Delete</button>
+        <AirlineCard airline={searchedItem} countries={countries}buttons={<div>
+
+            <Link className="btn btn-primary btn-sm" to={`/admin/make_customer/${searchedItem.account}`} >Add as Customer</Link>
+            <Link className="btn btn-primary btn-sm" to={`/admin/make_admin/${searchedItem.account}`} >Add as Admin</Link>
+            <button onClick={()=>Delete(searchedItem.account)}className="btn btn-danger btn-sm" >Delete</button>
+
+        </div>}/>
         </div>
         }</>
         :<>
