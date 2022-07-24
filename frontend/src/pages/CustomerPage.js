@@ -1,11 +1,11 @@
 import React , {useContext , useEffect , useState } from 'react';
-import { useNavigate} from "react-router-dom";
+// import { useNavigate} from "react-router-dom";
 import AuthContext from "../context/authentication";
 import { getUserInfo } from '../methods/UserMethods';
 import { ViewMyTickets } from "../methods/TicketMethods";
-import FlightCard from '../components/FlightPage/FlightCard';
+// import FlightCard from '../components/FlightPage/FlightCard';
 import { AllCountries } from '../methods/CountriesMethods';
-import ReactPaginate from "react-paginate"
+// import ReactPaginate from "react-paginate"
 import  Paginator from "../components/Paginator";
 
 // import './Pages.css';
@@ -38,8 +38,6 @@ const CustomerPage = () => {
         }
     }
 
-
-    
 
     //gets tickets and flights connected to them 
     let getMyTickets = async () => {
@@ -94,7 +92,7 @@ const CustomerPage = () => {
         <div className='flights-header'>
             <h2 className='flights-title'>  No Tickets for {userData?.first_name} {userData?.last_name}  </h2>
         </div>
-         
+
         // <>
         // <div className='flights-header'>
         // <h2 className='flights-title'>  Tickets of {userData?.first_name} {userData?.last_name}  </h2>

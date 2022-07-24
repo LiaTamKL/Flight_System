@@ -2,10 +2,10 @@
 import React, {useState, useEffect, useContext} from 'react'
 import { useLocation } from 'react-router-dom' ;
 import { FilteredFlightsMethod } from "../methods/FilterMethods"
-import ReactPaginate from "react-paginate"
+// import ReactPaginate from "react-paginate"
 import AuthContext from "../context/authentication";
 import { AllCountries } from '../methods/CountriesMethods';
-import FlightCard from '../components/FlightPage/FlightCard'
+// import FlightCard from '../components/FlightPage/FlightCard'
 import { ViewMyTickets } from '../methods/TicketMethods';
 import "./Pages.css"
 import  Paginator from "../components/Paginator";
