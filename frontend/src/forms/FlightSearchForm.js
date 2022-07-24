@@ -9,7 +9,8 @@ import { useState } from 'react';
 import AsyncSelect from 'react-select/async';
 import { useNavigate } from "react-router-dom"
 
-import { FilteredCountryMethod} from "../methods/FilterMethods"
+import { FilteredCountryMethod } from "../methods/FilterMethods"
+import { BsCalendar2Date } from 'react-icons/bs';
 
 
 const FlightSearchForm = () => {
@@ -74,19 +75,18 @@ let handleClick = () => {
                         : settoSearchOption(0)
                     }
                     />
+                
                 <input
+
                     className='date-input'
                     placeholder="Landing"
                     label="Departure Time" 
-                    type='date'
-                    // id='departure_time'
-                    
+                    type='date'                    
                     defaultValue={departureTime}
                     onChange = {(e) => {    
                     setDepartureTime(e.target.value)
                     }}
                     >
-
                 </input>
 
                 <input

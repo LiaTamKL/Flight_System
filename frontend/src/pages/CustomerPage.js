@@ -1,4 +1,8 @@
 import React , {useContext , useEffect , useState } from 'react';
+import { useNavigate} from "react-router-dom";
+import { CreateTicket, RemoveTicket } from '../methods/TicketMethods';
+
+
 import AuthContext from "../context/authentication";
 import { getUserInfo } from '../methods/UserMethods';
 import { ViewMyTickets } from "../methods/TicketMethods";
@@ -9,6 +13,8 @@ import ReactPaginate from "react-paginate"
 // import './Pages.css';
 
 const CustomerPage = () => {
+    let  navigate = useNavigate();
+
     let [userData, setUserData] = useState();
     let {user, authToken} = useContext(AuthContext)
     let [myFlights, setMyFlights] = useState();
@@ -57,17 +63,18 @@ const CustomerPage = () => {
         else{alert(status, data)}
     }
 
+
     if (myFlights!==undefined && !noData){
 
         if (myFlights!==undefined){
             var displayFlights = myFlights.slice(pagesSeen, pagesSeen + flightsPerPage).map((myFlight, index)=>{
             
             return (
-                    <FlightCard key={index} custFlight={myFlight} countries={countries} custPage={true}/>
+                    <FlightCard key={index} custFlight={myFlight} countries={countries} custPage={true} />
+
                 )})
                 var pageCount = Math.ceil(myFlights.length / flightsPerPage)
             }
-
                 const changePage = ({selected})=>{
                     setPageNumber(selected)
                 }

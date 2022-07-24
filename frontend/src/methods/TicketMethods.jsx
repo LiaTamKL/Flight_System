@@ -60,6 +60,7 @@ const CreateTicket = async (flight_id, authToken) => {
  */
 let RemoveTicket = async(ticket, authToken) => {
   let csrftoken = GetCookie('csrftoken')
+  console.log(ticket);
 
   let response = await fetch(`/backend/api/customer_api`, {
   

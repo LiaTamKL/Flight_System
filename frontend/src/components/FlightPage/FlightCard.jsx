@@ -1,12 +1,9 @@
 import './FlightCard.css'
 import { MdFlight ,   MdFlightTakeoff } from 'react-icons/md';
-
-import React, {useState, useEffect, useContext}  from 'react'
-import { format , parseISO} from "date-fns";
-import { useNavigate} from "react-router-dom";
-import { CreateTicket, RemoveTicket } from '../../methods/TicketMethods';
+import React, {useEffect, useContext}  from 'react'
 import AuthContext from "../../context/authentication";
 import moment from 'moment';
+import { TicketAddButton , TicketRemoveButton  } from "../Buttons/TicketsButtons";
 
 
 const FlightCard = (props) => {
@@ -22,68 +19,24 @@ const FlightCard = (props) => {
   }else
   {flight = props.flight}
 
-  
-  let  navigate = useNavigate();
-  let formatTime = (flight) => {return format(parseISO(flight),  "dd/MM/yy HH:mm")}
   const d_country = props.countries?.find(count=> count.country_name===flight.destination_country)
   const o_country = props.countries?.find(count=> count.country_name===flight.origin_country)
 
-  let [isHiddenAdd, setIsHiddenAdd] = useState(false)
-  let [isHiddenRemove, setIsHiddenRemove] = useState(true)
-
-  
   useEffect(() => {
-    checkIfBooked()
-    
    // eslint-disable-next-line
-     }, [flight, isHiddenRemove,isHiddenAdd, props])
+     }, [flight, props])
 
-/**
-* if there is a ticket for the flight or its the customer page, sets the add button to hidden and remove button to shown. hides add as well if no tickets exist for flight
-*/
-let checkIfBooked = () => {
-  if (currentTicket|| props.custPage){
-    setIsHiddenAdd(true)
-    setIsHiddenRemove(false)
-    return
-   }
-    
-
-  if (flight?.remaining_tickets === 0 ){
-    setIsHiddenAdd(true)
-    }
-  }
-
-/**
-* if user is logged in, adds a ticket for the flight selected for them
-*/  
-let handleAddTicket = () => {
-    if (authToken){CreateTicket(flight.id, authToken)}
-    navigate("/customer/tickets")
-  }
-
-
-  /**
-  * removes the current ticket for the user
-  */  
- let handleRemoveTicket = () => {
-
-    RemoveTicket(currentTicket, authToken)
-    navigate("/customer/tickets")
-    window.location.reload(false);
- }
 
   /**
   * calculates flight time
   */  
+
 let showDuration = () => { 
   let duration = moment.duration(moment(flight.landing_time).diff(moment(flight.departure_time)));
   let totalHours = duration.asHours()
   if (totalHours % 1 !== 0) {totalHours = Math.floor(totalHours)}
   return `${totalHours}h ${duration.minutes()}m`
 }
-
-
 
 
   return (
@@ -143,28 +96,24 @@ let showDuration = () => {
           <label id='ticket-number' >{ flight?.remaining_tickets }</label>
         </div>
 
-
+        {/* /**
+        Removes the add / remove buttons if the user is other than customer or anonymous 
+        */ }
+        
       <section id="btn-select-box">
         {!(user && user?.account_role !== 'Customer')? (<>
 
-          <input 
-          type="button" 
-          id='book-btn' 
-          value = "Book"
-          onClick={handleAddTicket}
+        {/* /**
+          checkes if the flight is booked bu the customer , if it is, it returns the remove button
+          if the filght is not booked it checkes number of tickets , if there are no tickets for a flight the add button is not added 
+        */ }
 
-          hidden = {isHiddenAdd}
-          />
+        {props.custFlight?
+        <TicketRemoveButton authToken = {authToken} currentTicket = {currentTicket} />
+        :!(flight.remaining_tickets === 0)? <TicketAddButton authToken = {authToken} currentFlight = {flight.id} />:<></>}
 
-          <input 
-          type="button" 
-          id='remove-btn' 
-          value = "Remove"
-          onClick={handleRemoveTicket}
-          hidden = {isHiddenRemove}
-          />
 
-            </>):<></>}
+          </>):<></>}
 
             {props.updateDeleteBtn?props.updateDeleteBtn:<></>} 
 
