@@ -18,9 +18,9 @@ const FlightsListPage = () => {
   let flightSearchParams = {'fromSearchOption':0, 'toSearchOption':0 ,departureTime:"", arrivalTime:""}
   const [countries, setCountries] = useState([]);
   let {user, authToken} = useContext(AuthContext)
-  const [pagenumber, setPageNumber] = useState(0)
-  const flightsPerPage = 6
-  const pagesSeen = pagenumber * flightsPerPage
+  // const [pagenumber, setPageNumber] = useState(0)
+  // const flightsPerPage = 6
+  // const pagesSeen = pagenumber * flightsPerPage
 
   useEffect(() => {
       
@@ -82,7 +82,13 @@ const FlightsListPage = () => {
 
   return (
     // <>
-    <Paginator sourcePage = {"flightListPage"} myFlights = {myFlights} filteredFlights = {filteredFlights}  countries={countries} />
+    <Paginator 
+      sourcePage = {"flightListPage"} 
+      myFlights = {myFlights} 
+      filteredFlights = {filteredFlights}  
+      countries={countries} 
+      />
+
     // </> 
     // <>
 

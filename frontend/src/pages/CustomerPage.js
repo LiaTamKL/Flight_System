@@ -84,11 +84,17 @@ const CustomerPage = () => {
 
     return (
         (myFlights!==undefined && !noData)?
-        <Paginator sourcePage = {"customerPage"}  myFlights = {myFlights} countries={countries} userData = { userData } />
+        <Paginator 
+            sourcePage = {"customerPage"} 
+            myFlights = {myFlights} 
+            countries={countries} 
+            userData = { userData } 
+            />
         :
         <div className='flights-header'>
             <h2 className='flights-title'>  No Tickets for {userData?.first_name} {userData?.last_name}  </h2>
-        </div> 
+        </div>
+         
         // <>
         // <div className='flights-header'>
         // <h2 className='flights-title'>  Tickets of {userData?.first_name} {userData?.last_name}  </h2>
