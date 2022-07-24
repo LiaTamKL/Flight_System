@@ -67,7 +67,7 @@ const FlightsListPage = () => {
         myticket = myFlights.find(ticket=> ticket.flight.id===flight.id)}
       return (
 
-              <FlightCard key={index} flight={flight} countries={countries} custPage = {false} custFlight={myticket} />
+              <FlightCard key={index} flight={flight} countries={countries} custFlight={myticket} />
               
         )})
         var pageCount = Math.ceil(filteredFlights.length / flightsPerPage)

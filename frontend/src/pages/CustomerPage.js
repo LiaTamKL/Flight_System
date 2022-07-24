@@ -70,7 +70,7 @@ const CustomerPage = () => {
             var displayFlights = myFlights.slice(pagesSeen, pagesSeen + flightsPerPage).map((myFlight, index)=>{
             
             return (
-                    <FlightCard key={index} custFlight={myFlight} countries={countries} custPage={true} />
+                    <FlightCard key={index} custFlight={myFlight} countries={countries}/>
 
                 )})
                 var pageCount = Math.ceil(myFlights.length / flightsPerPage)
