@@ -8,6 +8,8 @@ import { AllCountries } from '../methods/CountriesMethods';
 import FlightCard from '../components/FlightPage/FlightCard'
 import { ViewMyTickets } from '../methods/TicketMethods';
 import "./Pages.css"
+import  Paginator from "../components/Paginator";
+
 
 const FlightsListPage = () => {
   const { state } = useLocation();
@@ -16,7 +18,9 @@ const FlightsListPage = () => {
   let flightSearchParams = {'fromSearchOption':0, 'toSearchOption':0 ,departureTime:"", arrivalTime:""}
   const [countries, setCountries] = useState([]);
   let {user, authToken} = useContext(AuthContext)
-
+  const [pagenumber, setPageNumber] = useState(0)
+  const flightsPerPage = 6
+  const pagesSeen = pagenumber * flightsPerPage
 
   useEffect(() => {
       
@@ -24,7 +28,6 @@ const FlightsListPage = () => {
   else { getfilteredflights(state.flightSearchParams)}
 
     }, []);
-
 
 
 /**
@@ -56,57 +59,62 @@ const FlightsListPage = () => {
   }
   }
 
-  const [pagenumber, setPageNumber] = useState(0)
-  const flightsPerPage = 6
-  const pagesSeen = pagenumber * flightsPerPage
 
-  if (filteredFlights!==undefined){
-    var displayFlights = filteredFlights.slice(pagesSeen, pagesSeen + flightsPerPage).map((flight, index)=>{
-      var myticket 
-      if (myFlights){
-        myticket = myFlights.find(ticket=> ticket.flight.id===flight.id)}
-      return (
 
-              <FlightCard key={index} flight={flight} countries={countries} custFlight={myticket} />
+
+  // if (filteredFlights!==undefined){
+  //   var displayFlights = filteredFlights.slice(pagesSeen, pagesSeen + flightsPerPage).map((flight, index)=>{
+  //     var myticket 
+  //     if (myFlights){
+  //       myticket = myFlights.find(ticket=> ticket.flight.id===flight.id)}
+  //     return (
+
+  //             <FlightCard key={index} flight={flight} custFlight={myticket} countries={countries}  />
               
-        )})
-        var pageCount = Math.ceil(filteredFlights.length / flightsPerPage)
-      }
-        const changePage = ({selected})=>{
-            setPageNumber(selected)
-        }
+  //       )})
+  //       var pageCount = Math.ceil(filteredFlights.length / flightsPerPage)
+  //     }
+  //       const changePage = ({selected})=>{
+  //           setPageNumber(selected)
+  //       }
+
+
 
   return (
-    <>
-    <div className='flights-header'>
-      <h2 className='flights-title'>  Flights Found  </h2>
-    </div>
+    // <>
+    <Paginator sourcePage = {"flightListPage"} myFlights = {myFlights} filteredFlights = {filteredFlights}  countries={countries} />
+    // </> 
+    // <>
 
-            <div className="container">
-              <div className="row">
+    // <div className='flights-header'>
+    //   <h2 className='flights-title'>  Flights Found  </h2>
+    // </div>
+
+    //         <div className="container">
+    //           <div className="row">
                      
-          {
-                filteredFlights?.length > 0
-                ? (<>
-                    {displayFlights}
-                    <ReactPaginate
-                    className= {"pagination"}
-                    previousLabel = {'Back'}
-                    nextLabel = {'Next'}
-                    pageCount={pageCount}
-                    onPageChange={changePage}
-                    siblingCount = {0}
-                    containerClassName={""}
-                    previousLinkClassName={"btn btn-outline-info"}
-                    nextLinkClassName={"btn btn-outline-info"}
-                    />
-                    </>
-                ) :(
-                  <></>
-          )}
-            </div>  
-        </div>
-      </>  
+    //       {
+    //             filteredFlights?.length > 0
+    //             ? (<>
+    //                 {displayFlights}
+    //                 <ReactPaginate
+    //                 className= {"pagination"}
+    //                 previousLabel = {'Back'}
+    //                 nextLabel = {'Next'}
+    //                 pageCount={pageCount}
+    //                 onPageChange={changePage}
+    //                 siblingCount = {0}
+    //                 containerClassName={""}
+    //                 previousLinkClassName={"btn btn-outline-info"}
+    //                 nextLinkClassName={"btn btn-outline-info"}
+    //                 />
+    //                 </>
+    //             ) :(
+    //               <></>
+    //       )}
+    //         </div>  
+    //     </div>
+    //   </>  
   )
 }
 

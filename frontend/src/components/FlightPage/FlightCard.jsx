@@ -107,6 +107,7 @@ let showDuration = () => {
           checkes if the flight is booked bu the customer , if it is, it returns the remove button
           if the filght is not booked it checkes number of tickets , if there are no tickets for a flight the add button is not added 
         */ }
+        
 
         {props.custFlight?
         <TicketRemoveButton authToken = {authToken} currentTicket = {currentTicket} />
