@@ -58,11 +58,11 @@ const SearchForUser = ()=>{
 
     let Buttons = (user)=>{
         return <div>
-        {searchedItem.is_superuser===true?<p>Superuser may not be altered</p>:<>
-        {searchedItem.account_role!=="Admin"? <Link className="btn btn-primary btn-sm" to={`/admin/make_admin/${searchedItem.username}`} >Add as Admin</Link>:<></>}
-        {searchedItem.account_role!=="Customer"? <Link className="btn btn-primary btn-sm" to={`/admin/make_customer/${searchedItem.username}`} >Add as Customer</Link>:<></>}
-        {searchedItem.account_role!=="Airline"? <Link className="btn btn-primary btn-sm" to={`/admin/make_airline/${searchedItem.username}`} >Add as Airline</Link>:<></>}
-        <button onClick={()=>Delete(searchedItem.username)}className="btn btn-danger btn-sm" >Delete</button></>
+        {user.is_superuser===true?<p>Superuser may not be altered</p>:<>
+        {user.account_role!=="Admin"? <Link className="btn btn-primary btn-sm" to={`/admin/make_admin/${user.username}`} >Add as Admin</Link>:<></>}
+        {user.account_role!=="Customer"? <Link className="btn btn-primary btn-sm" to={`/admin/make_customer/${user.username}`} >Add as Customer</Link>:<></>}
+        {user.account_role!=="Airline"? <Link className="btn btn-primary btn-sm" to={`/admin/make_airline/${user.username}`} >Add as Airline</Link>:<></>}
+        <button onClick={()=>Delete(user.username)}className="btn btn-danger btn-sm" >Delete</button></>
     
     }</div>
     }
