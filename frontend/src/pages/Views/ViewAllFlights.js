@@ -100,6 +100,16 @@ const ViewAirlineFlights= () => {
     const flightsPerPage = 3
     const pagesSeen = pagenumber * flightsPerPage
 
+    
+    /**
+    * returns all buttons to be displayed in cards
+    */ 
+    let Buttons = (flight)=>{
+    return <div className="btn-group">
+                <button onClick={()=>Delete(flight.id)} className="btn btn-danger btn-sm" >Delete</button>
+                <button onClick={()=>setUpdate(flight)} className="btn btn-primary btn-sm" >Update</button>
+            </div> 
+    }
 
     /**
     * shows card for each flight, sets it up for the pagination
@@ -107,12 +117,7 @@ const ViewAirlineFlights= () => {
     const displayFlights = flights.slice(pagesSeen, pagesSeen + flightsPerPage).map((flight)=>{
     return (
 
-            <FlightCard key={flight.id} className flight={flight} countries={countries} custPage = {false} updateDeleteBtn = {
-            <div className="btn-group">
-                <button onClick={()=>Delete(flight.id)} className="btn btn-danger btn-sm" >Delete</button>
-                <button onClick={()=>setUpdate(flight)} className="btn btn-primary btn-sm" >Update</button>
-            </div> 
-            } />
+            <FlightCard key={flight.id} className flight={flight} countries={countries} custPage = {false} updateDeleteBtn = {Buttons(flight)}/>
 
     )})
 
@@ -166,12 +171,7 @@ const ViewAirlineFlights= () => {
         <>
         <div id='searched-for-container'><label id='searched-for-label' >Searched for:</label> </div>
         <div id="center-flightcard">
-            <FlightCard  flight={searched} countries={countries} custPage = {false} updateDeleteBtn = {
-                <div className="btn-group">
-                    <button onClick={()=>Delete(searched.id)} className="btn btn-danger btn-sm" >Delete</button>
-                    <button onClick={()=>setUpdate(searched)} className="btn btn-primary btn-sm" >Update</button>
-                </div> 
-                } />
+            <FlightCard  flight={searched} countries={countries} custPage = {false} updateDeleteBtn = {Buttons(searched)} />
          </div>  
         </>
         }</>

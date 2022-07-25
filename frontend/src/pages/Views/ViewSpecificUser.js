@@ -56,6 +56,9 @@ const SearchForUser = ()=>{
 
     }
 
+    /**
+    * returns all buttons to be displayed in cards
+    */  
     let Buttons = (user)=>{
         return <div>
         {user.is_superuser===true?<p>Superuser may not be altered</p>:<>
