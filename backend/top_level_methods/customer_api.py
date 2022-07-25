@@ -64,7 +64,6 @@ class Customer_API_Actions:
         except:
             return Response(data='Ticket does not exist!', status=status.HTTP_404_NOT_FOUND)
 
-        # raise Exception (ticket_test)
         serializer = TicketSerializer(data=request.data, many = False)
         if serializer.is_valid():
             CustomerFancade.remove_ticket(request.data),
