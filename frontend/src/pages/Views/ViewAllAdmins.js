@@ -37,6 +37,17 @@ const ViewAdmins= () => {
         }
     }
 
+    /**
+    * returns all buttons to be displayed in cards
+    */  
+    let Buttons = (user)=>{
+
+        return <div>
+                    <Link className="btn btn-primary btn-sm" to={`/admin/make_customer/${user.account}`} >Add as Customer</Link>
+                    <Link className="btn btn-primary btn-sm" to={`/admin/make_airline/${user.account}`} >Add as Airline</Link>
+                    <button onClick={()=>Delete(user.account)}className="btn btn-danger btn-sm" >Delete</button>
+            </div>
+    }
 
     /**
     * deletes an admin. gets admins and resets search item after usage to show update
@@ -70,14 +81,7 @@ const ViewAdmins= () => {
     const displayAdmins = admins.slice(pagesSeen, pagesSeen + adminPerPage).map((admin)=>{
     return (
         <div key={admin.account} className="list-group-item list-group-item-action flex-column align-items-start">
-        <AdminCard admin={admin} buttons={
-        <div>
-            <Link className="btn btn-primary btn-sm" to={`/admin/make_customer/${admin.account}`} >Add as Customer</Link>
-            <Link className="btn btn-primary btn-sm" to={`/admin/make_airline/${admin.account}`} >Add as Airline</Link>
-            <button onClick={()=>Delete(admin.account)}className="btn btn-danger btn-sm" >Delete</button>
-        </div>
-
-        }/>
+        <AdminCard admin={admin} buttons={Buttons(admin)}/>
 
     </div>
     )})
@@ -113,15 +117,7 @@ const ViewAdmins= () => {
         {
         <div key={searchedItem.id} className="list-group-item list-group-item-action flex-column align-items-start">
         <p>Searched for:</p>
-        <AdminCard admin={searchedItem} buttons={
-        <div>
-            <Link className="btn btn-primary btn-sm" to={`/admin/make_customer/${searchedItem.account}`} >Add as Customer</Link>
-            <Link className="btn btn-primary btn-sm" to={`/admin/make_airline/${searchedItem.account}`} >Add as Airline</Link>
-            <button onClick={()=>Delete(searchedItem.account)}className="btn btn-danger btn-sm" >Delete</button>
-        </div>
-
-        }/>
-
+        <AdminCard admin={searchedItem} buttons={Buttons(searchedItem)}/>
         </div>
         }</>
         :<>

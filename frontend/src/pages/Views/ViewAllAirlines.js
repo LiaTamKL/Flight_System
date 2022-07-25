@@ -23,6 +23,19 @@ const ViewAirlines = () => {
     const airlinesPerPage = 3
     const pagesSeen = pagenumber * airlinesPerPage
 
+    /**
+    * returns all buttons to be displayed in cards
+    */  
+         let Buttons = (user)=>{
+
+            return <div>
+
+                        <Link className="btn btn-primary btn-sm" to={`/admin/make_customer/${user.account}`} >Add as Customer</Link>
+                        <Link className="btn btn-primary btn-sm" to={`/admin/make_admin/${user.account}`} >Add as Admin</Link>
+                        <button onClick={()=>Delete(user.account)}className="btn btn-danger btn-sm" >Delete</button>
+
+                </div>
+        }
 
     /**
     * shows card for each airline, sets it up for the pagination
@@ -30,13 +43,7 @@ const ViewAirlines = () => {
     const displayAirlines = airlines.slice(pagesSeen, pagesSeen + airlinesPerPage).map((airline)=>{
     return (
     <div key={airline.account} className="list-group-item list-group-item-action flex-column align-items-start">
-        <AirlineCard airline={airline} countries={countries} buttons={<div>
-
-            <Link className="btn btn-primary btn-sm" to={`/admin/make_customer/${airline.account}`} >Add as Customer</Link>
-            <Link className="btn btn-primary btn-sm" to={`/admin/make_admin/${airline.account}`} >Add as Admin</Link>
-            <button onClick={()=>Delete(airline.account)}className="btn btn-danger btn-sm" >Delete</button>
-
-        </div>}/>
+        <AirlineCard airline={airline} countries={countries} buttons={Buttons(airline)}/>
 
     </div>
     )})
@@ -120,13 +127,7 @@ const ViewAirlines = () => {
         {
         <div key={searchedItem.id} className="list-group-item list-group-item-action flex-column align-items-start">
         <p>Searched for:</p>
-        <AirlineCard airline={searchedItem} countries={countries}buttons={<div>
-
-            <Link className="btn btn-primary btn-sm" to={`/admin/make_customer/${searchedItem.account}`} >Add as Customer</Link>
-            <Link className="btn btn-primary btn-sm" to={`/admin/make_admin/${searchedItem.account}`} >Add as Admin</Link>
-            <button onClick={()=>Delete(searchedItem.account)}className="btn btn-danger btn-sm" >Delete</button>
-
-        </div>}/>
+        <AirlineCard airline={searchedItem} countries={countries}buttons={Buttons(searchedItem)}/>
         </div>
         }</>
         :<>
