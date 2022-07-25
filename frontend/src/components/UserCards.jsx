@@ -1,14 +1,18 @@
 /**
     * returns a display card for a user account
     * @param  {Dictionary} account The account
+    * @param  buttons html buttons that you want to have in the card
     */  
-export const AccountCard = ({account}) => {
+export const AccountCard = ({account, buttons}) => {
     return (
+        <div className="list-group-item list-group-item-action flex-column align-items-start">
             <div className="d-flex w-100 justify-content-between">
                 <h5 className="mb-1">{account.username} {account.email}</h5>
-                <small className="text-muted">Role: {account.account_role}, Superuser Status: {account.is_superuser}</small><br/><br/>
+                <small className="text-muted">Role: {account.account_role}. Superuser Status: {String(account.is_superuser)}</small><br/><br/>
 
             </div>
+            {buttons}
+        </div>
     )
 }
 

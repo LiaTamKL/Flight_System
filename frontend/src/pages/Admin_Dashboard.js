@@ -73,6 +73,7 @@ const AdminDashboard= () => {
 
         message.current =result.data
         GetCustomers()
+        setSearchedItem(null)
 
     }
 
