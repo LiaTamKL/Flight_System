@@ -55,7 +55,6 @@ class User_API_Actions:
                         context.append(cus_serializer.errors[key][0])
                     return Response(data=context ,status=status.HTTP_400_BAD_REQUEST)
 
-    #takes a request, gets the user and the linked account, serializes, throws into a context and send it as a server response
     def get_user(request):
             """gets details for logged in user based on their account role
             """

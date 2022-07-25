@@ -22,8 +22,8 @@ utc=pytz.UTC
 
 
 
-#######JWT CUSTOM CLAIM
-########THIS IS WHERE WE SET WHAT INFO THE TOKENS WILL GRAB ON THE FRONT END
+#######JWT CUSTOM CLAIM#######
+########THIS IS WHERE WE SET WHAT INFO THE TOKENS WILL GRAB ON THE FRONT END#######
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
@@ -63,22 +63,15 @@ class Flightfilter(ListAPIView):
     queryset = Flight.objects.all()
     serializer_class = FlightSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    # filter_backends = (DjangoFilterBackend)
     filterset_class = Flightfilter
 
 
-# class TicketByUserfilter(ListAPIView):
-#     queryset = Flight_Ticket.objects.all()
-#     serializer_class = TicketSerializer
-#     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
-#     filterset_class = Ticketfilter
     
 
 class Countryfilterget(ListAPIView):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
-    # filter_backends = (DjangoFilterBackend)
     filterset_class = Countryfilter
     search_fields = ['country_name']
     
@@ -126,12 +119,10 @@ def airline_api(request):
     else:
         airline = (result['airline']).id
 
-    #returns all of user's flights
     if request.method == 'GET':
         respon = Airline_API_Actions.get_all_my_flights(airline)
         return respon
     
-    #creates a new flight based on post data
     if request.method == 'POST':
         respon = Airline_API_Actions.create_flight_airline_api(request, airline)
         return respon
