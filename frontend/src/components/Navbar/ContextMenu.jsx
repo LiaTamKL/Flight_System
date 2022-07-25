@@ -1,25 +1,21 @@
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { AiOutlineHome , AiOutlineUser } from "react-icons/ai";
+import { AiOutlineUser } from "react-icons/ai";
 import { GrLogout } from "react-icons/gr";
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useContext } from 'react';
 import AuthContext from '../../context/authentication'
 import { BsPlusCircleFill } from "react-icons/bs";
 import { MdFlight } from "react-icons/md";
-import { RiAdminLine , RiUserSearchFill } from "react-icons/ri";
 import "./Navbar.css"
 
 
 
 const UserLinks = () => {
-    const {user, logout} = useContext(AuthContext)
+    const {logout} = useContext(AuthContext)
 
 
     return (
         <NavDropdown 
-        // title={<AiOutlineUser/ >}
         title="Profile"
 		align="end"
 
@@ -40,7 +36,7 @@ const UserLinks = () => {
 
 
  const ContextMenu = () => {
-    let {user, logout} = useContext(AuthContext)
+    let {user} = useContext(AuthContext)
 
     switch (user?.account_role)
     {

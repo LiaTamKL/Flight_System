@@ -1,6 +1,5 @@
 import React from 'react'
 import './FormTemplate.css'
-import {ReactComponent as Profile} from './image.svg';
 
 
 
@@ -10,9 +9,6 @@ const FormTemplate = (props) => {
 <>
 
     <div id="card">
-        {/* <div id="img-avatar">
-                <Profile />
-        </div> */}
         <div id="card-text">
             <div id="portada"></div>
             <div id="input-fileds">   

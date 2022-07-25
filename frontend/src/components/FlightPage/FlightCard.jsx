@@ -23,14 +23,12 @@ const FlightCard = (props) => {
   const o_country = props.countries?.find(count=> count.country_name===flight.origin_country)
 
   useEffect(() => {
-   // eslint-disable-next-line
      }, [flight, props])
 
 
   /**
   * calculates flight time
   */  
-
 let showDuration = () => { 
   let duration = moment.duration(moment(flight.landing_time).diff(moment(flight.departure_time)));
   let totalHours = duration.asHours()

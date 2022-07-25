@@ -11,7 +11,6 @@ const  MainNavbar = () => {
     return (
 
       <Navbar collapseOnSelect  expand="md" bg="dark" variant="dark" fixed="top">
-      {/* <Navbar collapseOnSelect  expand="md" sticky= "top"> fixed = "top */}
         
          <Navbar.Brand
           href="/home" >
@@ -27,7 +26,6 @@ const  MainNavbar = () => {
 
             </Nav>
           </Navbar.Collapse>
-        {/* </Container> */}
       </Navbar>
     );
   }

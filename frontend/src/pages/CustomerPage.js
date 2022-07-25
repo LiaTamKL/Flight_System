@@ -1,17 +1,14 @@
 import React , {useContext , useEffect , useState } from 'react';
-// import { useNavigate} from "react-router-dom";
 import AuthContext from "../context/authentication";
 import { getUserInfo } from '../methods/UserMethods';
 import { ViewMyTickets } from "../methods/TicketMethods";
-// import FlightCard from '../components/FlightPage/FlightCard';
 import { AllCountries } from '../methods/CountriesMethods';
-// import ReactPaginate from "react-paginate"
 import  Pagination from "../components/Pagination";
 
-// import './Pages.css';
+
 
 const CustomerPage = () => {
-    // let  navigate = useNavigate();
+
 
     let [userData, setUserData] = useState();
     let {user, authToken} = useContext(AuthContext)
@@ -19,18 +16,17 @@ const CustomerPage = () => {
     const [noData, setNoData] = useState();
     const [countries, setCountries] = useState([]);
     
-    // const [pagenumber, setPageNumber] = useState(0)
-    // const flightsPerPage = 6
-    // const pagesSeen = pagenumber * flightsPerPage
   
 
     useEffect(() => {
         getUserData() 
         getMyTickets()
             
-            // eslint-disable-next-line
         }, [])
 
+    /**
+    * gets and sets userdata
+    */ 
     let getUserData = async () => {
             let result = await getUserInfo(authToken)
             if(result.status === 200){
@@ -39,7 +35,9 @@ const CustomerPage = () => {
     }
 
 
-    //gets tickets and flights connected to them 
+    /**
+    * gets and sets user tickets, along with countries. alerts if it doesn't work, sets no data if no data
+    */  
     let getMyTickets = async () => {
 
         let result = await ViewMyTickets(authToken)
@@ -63,23 +61,6 @@ const CustomerPage = () => {
 
 
 
-
-    // if (myFlights!==undefined && !noData){
-
-    //     if (myFlights!==undefined){
-    //         var displayFlights = myFlights.slice(pagesSeen, pagesSeen + flightsPerPage).map((myFlight, index)=>{
-            
-    //         return (
-    //                 <FlightCard key={index} custFlight={myFlight} countries={countries}/>
-
-    //             )})
-    //             var pageCount = Math.ceil(myFlights.length / flightsPerPage)
-    //         }
-    //             const changePage = ({selected})=>{
-    //                 setPageNumber(selected)
-    //             }
-
-
     return (
         (myFlights!==undefined && !noData)?
         <Pagination 
@@ -93,46 +74,8 @@ const CustomerPage = () => {
             <h2 className='flights-title'>  No Tickets for {userData?.first_name} {userData?.last_name}  </h2>
         </div>
 
-        // <>
-        // <div className='flights-header'>
-        // <h2 className='flights-title'>  Tickets of {userData?.first_name} {userData?.last_name}  </h2>
-        // </div>
-
-        //         <div className="container">
-        //         <div className="row">
-                        
-        //     {
-        //             myFlights?.length > 0
-        //             ? (<>
-        //                 {displayFlights}
-        //                 <ReactPaginate
-        //                 className= {"pagination"}
-        //                 previousLabel = {'Back'}
-        //                 nextLabel = {'Next'}
-        //                 pageCount={pageCount}
-        //                 onPageChange={changePage}
-        //                 siblingCount = {0}
-        //                 containerClassName={""}
-        //                 previousLinkClassName={"btn btn-outline-info"}
-        //                 nextLinkClassName={"btn btn-outline-info"}
-        //                 />
-        //                 </>
-        //             ) :(
-        //             <></>
-        //     )}
-        //         </div>  
-        //     </div>
-        // </>  
-
-    //     )
-    // }else{  
-    //     return (
-    //     <div className='flights-header'>
-    //     <h2 className='flights-title'>  No Tickets for {userData?.first_name} {userData?.last_name}  </h2>
-    //     </div> 
     )
 
-    // }
 
 }
 

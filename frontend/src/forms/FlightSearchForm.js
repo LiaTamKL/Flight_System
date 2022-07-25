@@ -1,16 +1,11 @@
 
-import {
-    DateRange,
-  } from "react-date-range";
 import './Form.css'
 import React, {useEffect} from 'react'
 import { FaSearch } from "react-icons/fa";
 import { useState } from 'react';
 import AsyncSelect from 'react-select/async';
 import { useNavigate } from "react-router-dom"
-
 import { FilteredCountryMethod } from "../methods/FilterMethods"
-import { BsCalendar2Date } from 'react-icons/bs';
 
 
 const FlightSearchForm = () => {
