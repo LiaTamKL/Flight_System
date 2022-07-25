@@ -1,44 +1,45 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useState} from 'react'
 import ReactPaginate from "react-paginate"
-import FlightCard from '../components/FlightPage/FlightCard'
+import FlightCard from './FlightPage/FlightCard'
 
 
-const Paginator = (props) => {
+const Pagination = (props) => {
     const [pagenumber, setPageNumber] = useState(0)
-    const flightsPerPage = 6
-    const pagesSeen = pagenumber * flightsPerPage
+    const itemsPerPage = 6
+    const pagesSeen = pagenumber * itemsPerPage
 
     let sourcePage = props.sourcePage  
     let title =  null
-    let displayFlights = null
+    let displayitems = null
     let changePage = null
     let pageCount = null
-    let flightsCount = null
+    let itemsLength = null
+
+
 
     if (sourcePage === 'customerPage')
     {
         if (props.myFlights!==undefined){
-            displayFlights = props.myFlights.slice(pagesSeen, pagesSeen + flightsPerPage).map((myFlight, index)=>{
+            displayitems = props.myFlights.slice(pagesSeen, pagesSeen + itemsPerPage).map((myFlight, index)=>{
             
             return (
                     <FlightCard key={index} custFlight={myFlight} countries={props.countries}/>
 
                 )})
-                pageCount = Math.ceil(props.myFlights.length / flightsPerPage)
+                pageCount = Math.ceil(props.myFlights.length / itemsPerPage)
             }
                 changePage = ({selected})=>{
                     setPageNumber(selected)
                 }
         title  =  `Tickets of ${props.userData?.first_name} ${props.userData?.last_name}`
-        flightsCount = (props.myFlights?.length > 0)
+        itemsLength = (props.myFlights?.length > 0)
     }
 
     
-
     if (sourcePage === 'flightListPage')
     {
         if (props.filteredFlights!==undefined){
-            displayFlights = props.filteredFlights.slice(pagesSeen, pagesSeen + flightsPerPage).map((flight, index)=>{
+            displayitems = props.filteredFlights.slice(pagesSeen, pagesSeen + itemsPerPage).map((flight, index)=>{
               var myticket 
               if (props.myFlights){
                 myticket = props.myFlights.find(ticket=> ticket.flight.id===flight.id)}
@@ -47,17 +48,16 @@ const Paginator = (props) => {
                       <FlightCard key={index} flight={flight} custFlight={myticket} countries={props.countries}  />
                       
                 )})
-                pageCount = Math.ceil(props.filteredFlights.length / flightsPerPage)
+                pageCount = Math.ceil(props.filteredFlights.length / itemsPerPage)
               }
                changePage = ({selected})=>{
                     setPageNumber(selected)
                 }
 
                 title  = "Flights Found"
-                flightsCount = (props.filteredFlights?.length > 0)
-
-    
+                itemsLength = (props.filteredFlights?.length > 0)
     }
+
 
 
 
@@ -71,9 +71,9 @@ const Paginator = (props) => {
                 <div className="row">
                         
             {
-                    flightsCount
+                    itemsLength
                     ? (<>
-                        {displayFlights}
+                        {displayitems}
                         <ReactPaginate
                         className= {"pagination"}
                         previousLabel = {'Back'}
@@ -96,4 +96,4 @@ const Paginator = (props) => {
         )
 }
 
-export default Paginator
+export default Pagination

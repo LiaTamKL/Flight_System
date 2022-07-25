@@ -7,7 +7,7 @@ import GetUsers from "../methods/AdminMethods";
 import { DeleteUser, UpdateToAdminFromCus } from "../methods/AdminMethods";
 import Select from 'react-select'
 import ReactPaginate from "react-paginate"
-import "./Pages.css"
+import "./PagesCss/Pages.css"
 
 
 const AdminDashboard= () => {
@@ -80,6 +80,7 @@ const AdminDashboard= () => {
     /**
     * shows card for each user, sets it up for the pagination
     */
+
     const displayCustomers = customers.slice(pagesSeen, pagesSeen + cusPerPage).map((customer)=>{
     return (
         <div key={customer.account} className="list-group-item list-group-item-action flex-column align-items-start">
@@ -95,7 +96,9 @@ const AdminDashboard= () => {
     }
 
 
-    return (<div>
+
+    return (
+    <div>
         <h5>Welcome Admin {user.username}</h5>
         <div className="card text-center">
         <button className="btn btn-primary btn-sm" onClick={()=>setSearchedItem(false)}>Clear search and view all customers</button>
@@ -123,9 +126,9 @@ const AdminDashboard= () => {
         <div key={searchedItem.id} className="list-group-item list-group-item-action flex-column align-items-start">
         <p>Searched for:</p>
         <CustomerCard customer={searchedItem}/>
-        <Link className="btn btn-primary btn-sm" to={`/admin/make_airline/${searchedItem.account}`} >Add as Airline</Link>
-        <button onClick={()=>UpdateToAdmin(searchedItem)}className="btn btn-primary btn-sm" >Add as Admin</button>
-        <button onClick={()=>Delete(searchedItem.account)}className="btn btn-danger btn-sm" >Delete</button>
+            <Link className="btn btn-primary btn-sm" to={`/admin/make_airline/${searchedItem.account}`} >Add as Airline</Link>
+            <button onClick={()=>UpdateToAdmin(searchedItem)}className="btn btn-primary btn-sm" >Add as Admin</button>
+            <button onClick={()=>Delete(searchedItem.account)}className="btn btn-danger btn-sm" >Delete</button>
         </div>
         }</>
         :<>

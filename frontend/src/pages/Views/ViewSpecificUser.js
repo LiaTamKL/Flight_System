@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import GetUsers from "../../methods/AdminMethods";
 import { DeleteUser} from "../../methods/AdminMethods";
 import Select from 'react-select'
-import "../Pages.css"
+import "../PagesCss/Pages.css"
 
 const SearchForUser = ()=>{
     const [accounts, setAccounts] = useState([]);

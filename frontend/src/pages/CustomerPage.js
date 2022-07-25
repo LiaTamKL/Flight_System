@@ -6,7 +6,7 @@ import { ViewMyTickets } from "../methods/TicketMethods";
 // import FlightCard from '../components/FlightPage/FlightCard';
 import { AllCountries } from '../methods/CountriesMethods';
 // import ReactPaginate from "react-paginate"
-import  Paginator from "../components/Paginator";
+import  Pagination from "../components/Pagination";
 
 // import './Pages.css';
 
@@ -82,7 +82,7 @@ const CustomerPage = () => {
 
     return (
         (myFlights!==undefined && !noData)?
-        <Paginator 
+        <Pagination 
             sourcePage = {"customerPage"} 
             myFlights = {myFlights} 
             countries={countries} 

@@ -7,8 +7,8 @@ import AuthContext from "../context/authentication";
 import { AllCountries } from '../methods/CountriesMethods';
 // import FlightCard from '../components/FlightPage/FlightCard'
 import { ViewMyTickets } from '../methods/TicketMethods';
-import "./Pages.css"
-import  Paginator from "../components/Paginator";
+import "./PagesCss/Pages.css"
+import  Pagination from "../components/Pagination";
 
 
 const FlightsListPage = () => {
@@ -82,7 +82,7 @@ const FlightsListPage = () => {
 
   return (
     // <>
-    <Paginator 
+    <Pagination 
       sourcePage = {"flightListPage"} 
       myFlights = {myFlights} 
       filteredFlights = {filteredFlights}  

@@ -115,12 +115,15 @@ const ViewAirlineFlights= () => {
             } />
 
     )})
+
     const pageCount = Math.ceil(flights.length / flightsPerPage)
     const changePage = ({selected})=>{
         setPageNumber(selected)
     }
- 
-    return (<div>
+
+
+    return (
+    <div>
         <div className="admin-label-center"><label className="airline-label-display" >Airline: {user.username}</label></div>
         <div className="card text-center">
         <button className="btn btn-primary btn-sm" onClick={()=>setBack()}>Clear search and view all flights</button>
