@@ -1,5 +1,4 @@
 import { format } from "date-fns";
-import { FaPage4 } from "react-icons/fa";
 
 /**
  * gets all flights based on selected filters
@@ -59,10 +58,3 @@ export { FilteredFlightsMethod, FilteredCountryMethod, FilteredFlightsByIdMethod
 
 
 
-// export default FilteredFlightsMethod
-// consosle.log(departureTime.toUTCString());
-// console.log(range[0].startDate);
-// let formatteddeptime =  format(new Date(range[0].startDate), "yyyy-MM-dd'T'HH:mm")
-// let formattedlandtime =  format(new Date(range[0].endDate), "yyyy-MM-dd'T'HH:mm")
-// if (departureTime){ searchurl += `&from_departure_time=${formatteddeptime}`}
-// if (arrivalTime){searchurl += `&to_arrival_time=${formattedlandtime}`}

@@ -78,7 +78,6 @@ let	RegisterRedirect= async(e) =>{
 						<AccountForm/>
 						<label className='login-form-label' htmlFor="chkk" aria-hidden="true" onClick={textchange}> { text } </label>
 						<CustomerForm/>
-						{/* {console.log(message, errors)} */}
 						<div className='error-list'>{message}</div>
      						<ul className='error-list' >{errors?.map((e)=>(
          					<li>{e}</li>
