@@ -74,13 +74,15 @@ let handleClick = () => {
                 <input
 
                     className='date-input'
-                    placeholder="Landing"
+                    placeholder="Departure Time"
                     label="Departure Time" 
                     type='date'                    
                     defaultValue={departureTime}
+                    onKeyDown={(e) => e.preventDefault()} /* prevents user keyboard input */
                     onChange = {(e) => {    
                     setDepartureTime(e.target.value)
                     }}
+                    
                     >
                 </input>
 
@@ -91,6 +93,7 @@ let handleClick = () => {
                     placeholder="Departure"
                     min={departureTime}
                     defaultValue = {arrivalTime}
+                    onKeyDown={(e) => e.preventDefault()}  /* prevents user keyboard input */
                     onChange ={(e) => {
                     setArrivalTime(e.target.value)
                     }
