@@ -84,10 +84,12 @@ const AdminDashboard= () => {
     const displayCustomers = customers.slice(pagesSeen, pagesSeen + cusPerPage).map((customer)=>{
     return (
         <div key={customer.account} className="list-group-item list-group-item-action flex-column align-items-start">
-        <CustomerCard customer={customer}/>
-        <Link className="btn btn-primary btn-sm" to={`/admin/make_airline/${customer.account}`} >Add as Airline</Link>
-        <button onClick={()=>UpdateToAdmin(customer)}className="btn btn-primary btn-sm" >Add as Admin</button>
-        <button onClick={()=>Delete(customer.account)}className="btn btn-danger btn-sm" >Delete</button>
+        <CustomerCard customer={customer} buttons={<div>
+            <Link className="btn btn-primary btn-sm" to={`/admin/make_airline/${customer.account}`} >Add as Airline</Link>
+            <button onClick={()=>UpdateToAdmin(customer)}className="btn btn-primary btn-sm" >Add as Admin</button>
+            <button onClick={()=>Delete(customer.account)}className="btn btn-danger btn-sm" >Delete</button>
+        </div>}/>
+
     </div>
     )})
     const pageCount = Math.ceil(customers.length / cusPerPage)
@@ -125,10 +127,13 @@ const AdminDashboard= () => {
         {
         <div key={searchedItem.id} className="list-group-item list-group-item-action flex-column align-items-start">
         <p>Searched for:</p>
-        <CustomerCard customer={searchedItem}/>
+
+        <CustomerCard customer={searchedItem} buttons={
+        <div>
             <Link className="btn btn-primary btn-sm" to={`/admin/make_airline/${searchedItem.account}`} >Add as Airline</Link>
             <button onClick={()=>UpdateToAdmin(searchedItem)}className="btn btn-primary btn-sm" >Add as Admin</button>
             <button onClick={()=>Delete(searchedItem.account)}className="btn btn-danger btn-sm" >Delete</button>
+        </div>}/>
         </div>
         }</>
         :<>
