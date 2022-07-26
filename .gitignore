@@ -1,11 +1,11 @@
 venv/
 __pycache__/
-
+*.sqlite3
 todo
-
+db.sqlite3
 *.pyc
 env
 sitelog.log
-
+db.sqlite3-journal
 node_modules
 static/flags
