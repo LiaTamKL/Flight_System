@@ -23,7 +23,7 @@ utc=pytz.UTC
 
 
 #######JWT CUSTOM CLAIM#######
-########THIS IS WHERE WE SET WHAT INFO THE TOKENS WILL GRAB ON THE FRONT END#######
+########THIS IS WHERE WE SET WHAT INFO THE TOKENS WILL GRAB ON THE FRONT END
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
