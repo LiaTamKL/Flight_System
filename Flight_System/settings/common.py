@@ -182,7 +182,7 @@ LOGGING = {
 
 # Prevent CORS Errors , allowing django accept requests outside the app.  
 # https://www.stackhawk.com/blog/django-cors-guide/
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
 
 # CORS_ALLOWED_ORIGINS = [
 # "http://localhost:8000",
