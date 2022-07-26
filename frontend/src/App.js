@@ -72,7 +72,7 @@ function App() {
               <Route path='make_airline/:username' element={<MakeAnAirline/>}/>
               <Route path='make_admin/:username' element={<MakeAnAdmin/>}/>
               <Route path='make_customer/:username' element={<MakeACustomer/>}/>
-              <Route path='make_country' element={<MakeCountry/>}/>
+              {/* <Route path='make_country' element={<MakeCountry/>}/> */}
             </Route>
 
             <Route path='/customer'  exact element={<LoggedinRoute account_role="Customer"/>}>
