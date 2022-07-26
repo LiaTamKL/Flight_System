@@ -62,7 +62,7 @@ ROOT_URLCONF = 'Flight_System.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend/build')],
         #'DIRS': os.path.join(BASE_DIR / 'backend/templates'),
         'APP_DIRS': True,
         'OPTIONS': {
@@ -126,7 +126,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR/'backend', 'static/'), BASE_DIR/'static/'
+    os.path.join(BASE_DIR/'backend', 'static/'), BASE_DIR/'static/',
+    os.path.join(BASE_DIR, 'frontend/build/static')
 )
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
