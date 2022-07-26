@@ -17,11 +17,39 @@ from django.contrib import admin
 from django.urls import path , include
 from django.shortcuts import redirect
 from django.views.generic import TemplateView
-
+import re
 
 urlpatterns = [
     path('adm/', admin.site.urls),
-    #path('', lambda request: redirect('backend/', permanent=True)),  
+
+    #backend paths
     path('backend/', include('backend.urls')),
-    path('', TemplateView.as_view(template_name='index.html'))
+
+
+    #frontend paths
+    path('*', TemplateView.as_view(template_name='index.html')),
+    path('', TemplateView.as_view(template_name='index.html')),
+    path('login', TemplateView.as_view(template_name='index.html')),
+    path('home', TemplateView.as_view(template_name='index.html')),
+    path('Home', TemplateView.as_view(template_name='index.html')),
+    path('flights', TemplateView.as_view(template_name='index.html')),
+    path('update', TemplateView.as_view(template_name='index.html')),
+    path('update/password', TemplateView.as_view(template_name='index.html')),
+
+    path('admin/view_airlines', TemplateView.as_view(template_name='index.html')),
+    path('admin/view_admins', TemplateView.as_view(template_name='index.html')),
+    path('admin/view_specific', TemplateView.as_view(template_name='index.html')),
+    path('admin/make_airline/:username', TemplateView.as_view(template_name='index.html')),
+    path('admin/make_admin/:username', TemplateView.as_view(template_name='index.html')),
+    path('admin/make_customer/:username', TemplateView.as_view(template_name='index.html')),
+    path('admin/make_country', TemplateView.as_view(template_name='index.html')),
+
+    path('customer', TemplateView.as_view(template_name='index.html')),
+    path('customer/tickets', TemplateView.as_view(template_name='index.html')),
+    path('customer/flight/search', TemplateView.as_view(template_name='index.html')),
+
+    path('airline', TemplateView.as_view(template_name='index.html')),
+    path('airline/add_flight', TemplateView.as_view(template_name='index.html')),
+
+
 ]
