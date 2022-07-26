@@ -20,7 +20,7 @@ urlpatterns = [
 
     path('api/customer_api', tickets_api),
 
-    path ('countries/', country_api),
+    path ('countries', country_api),
     path ('countries/<str:id>/', specific_country_api),
 
 
