@@ -5,7 +5,6 @@
 --pull-tab-hight: calc(var(--form-hight) + 370px);
 
 --pull-tab-travel: calc(var(--form-hight) - 1030px)
-/* --pull-tab: -480px;	 */
 
 }
 
@@ -123,7 +122,6 @@
 	font-size: 0.7em;
 	justify-content: center;
 
-	/* display: flex; */
 	margin: 40px;
 	font-weight: bold;
 	cursor: pointer;

@@ -12,7 +12,6 @@
   margin-bottom: 20px;
   
   
-  /* background-color: black; */
   color: white;
 
 }
@@ -26,12 +25,11 @@
 
 #main-label{
   margin-left: 10px;
-  /* color: white; */
-  /* padding-left: 50px; */
+
 }
 
 #main-logo {
-  /* position: absolute; */
+
   overflow: hidden;
   border-radius: 12px;
   height: 60px;
@@ -45,48 +43,4 @@
 .justify-content-end {
   font-size: large !important;
   
-  /* text-shadow: 5px 5px; */
 }
-
-
-/* #login-register {
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    color: white;
-    width: 35%;
-    height: 40px;
-    border-radius: 24px;
-    cursor: pointer;
-    box-shadow: 5px 20px 50px #000;
-    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
-  }
-  #login-register:hover {
-    filter: brightness(1.5);
-  } */
-  
-
-/* .nav-logo {
-    display: flex;
-    align-items: auto;
-    margin-right: auto;
-    
-  }
-
-  .logo-icon {
-    width:10px;
-    display: flex;
-    /* width: calc(var(--button-size));
-    height: var(--button-size); */
-    
-  /* } */
-  
-/*   
-  .nav-logo .logo-name {
-    display: flex;
-    align-items: center;
-    font-size: 20px;
-    
-    
-  } */ 

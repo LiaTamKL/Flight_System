@@ -56,14 +56,6 @@ export const UpdateUser=async(context, authToken)=>{
 
 
 
-export const PassWordUpdate=async(e, authToken)=>{
-    var csrftoken = GetCookie('csrftoken')
-    let response = 'needs to be built, dont forget authtokens'
-    //build a password checker first
-    //build second response from server to updated password if the checker confirms its the correct password
-}
-
-
 /**
  * get a user's customer, airline or admin data
  * @param  {Dictionary} authToken The authentication token
