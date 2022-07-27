@@ -11,7 +11,8 @@ const TicketAddButton = (props) => {
 */  
     let handleAddTicket = () => {
         if (props.authToken){CreateTicket(props.currentFlight, props.authToken)}
-        navigate("/customer/tickets")
+        window.location = "/customer/tickets"
+        // navigate("/customer/tickets")
       }
     
 
@@ -42,8 +43,10 @@ const TicketRemoveButton = (props) => {
     let handleRemoveTicket = () => 
     {
        RemoveTicket(props.currentTicket, props.authToken)
-       navigate("/customer/tickets")
-       window.location.reload(false);
+    //    navigate("/customer/tickets")
+    //    window.location.reload(false);
+    window.location = "/customer/tickets"
+
     }
 
     return (
