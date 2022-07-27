@@ -7,6 +7,7 @@ import { AllCountries } from '../methods/CountriesMethods';
 import { ViewMyTickets } from '../methods/TicketMethods';
 import "./PagesCss/Pages.css"
 import  Pagination from "../components/Pagination";
+import { format } from "date-fns";
 
 
 const FlightsListPage = () => {
@@ -30,6 +31,9 @@ const FlightsListPage = () => {
 * @param  {Dictionary} flightSearchParams the parameters you wish to filter by (if none, all flights returned)
 */
   let getfilteredflights = async (flightSearchParams) => {
+    if (!flightSearchParams.departureTime ) {
+      flightSearchParams.departureTime = format(new Date(), "yyyy-MM-dd")
+    }
 
       let filtered = await FilteredFlightsMethod(
         {
