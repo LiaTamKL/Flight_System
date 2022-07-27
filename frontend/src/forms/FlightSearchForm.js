@@ -6,6 +6,8 @@ import { useState } from 'react';
 import AsyncSelect from 'react-select/async';
 import { useNavigate } from "react-router-dom"
 import { FilteredCountryMethod } from "../methods/FilterMethods"
+import { format} from "date-fns";
+
 
 
 const FlightSearchForm = () => {
@@ -15,11 +17,13 @@ const FlightSearchForm = () => {
     let[toSearchOption, settoSearchOption] = useState(0);
     let [departureTime, setDepartureTime] = useState("");
     let [arrivalTime, setArrivalTime] = useState("")
-
+    
 
 
 let handleClick = () => {
     let flightSearchParams = {'fromSearchOption':fromSearchOption, 'toSearchOption':toSearchOption ,departureTime:departureTime, arrivalTime:arrivalTime}
+
+    console.log(flightSearchParams);
     navigate("/flights/",  { state: {  flightSearchParams: flightSearchParams }} )
                        
 }
@@ -78,10 +82,14 @@ let handleClick = () => {
                     label="Departure Time" 
                     type='date'                    
                     defaultValue={departureTime}
+                    min={format(new Date(), "yyyy-MM-dd")}
                     onKeyDown={(e) => e.preventDefault()} /* prevents user keyboard input */
-                    onChange = {(e) => {    
-                    setDepartureTime(e.target.value)
+                    onChange = {(e) => {
+                    e.target.value?
+                    setDepartureTime(e.target.value):
+                    setDepartureTime(format(new Date(), "yyyy-MM-dd"))
                     }}
+                
                     
                     >
                 </input>
@@ -91,11 +99,12 @@ let handleClick = () => {
                     label="Arrival Time"  
                     type='date'
                     placeholder="Departure"
-                    min={departureTime}
+                    min={departureTime? departureTime : format(new Date(), "yyyy-MM-dd")}
                     defaultValue = {arrivalTime}
                     onKeyDown={(e) => e.preventDefault()}  /* prevents user keyboard input */
                     onChange ={(e) => {
                     setArrivalTime(e.target.value)
+                    if(!departureTime) setDepartureTime(format(new Date(), "yyyy-MM-dd"))
                     }
                 }
                     >
