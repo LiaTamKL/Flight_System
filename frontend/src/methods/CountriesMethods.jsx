@@ -44,7 +44,7 @@ export const CreateCountry = async(e, authToken) =>{
  let formData = new FormData()
  formData.append("flag", e.target.flag.files[0])
  formData.append("country_name",e.target.country_name.value)
- let response = await fetch('/backend/countries/', {
+ let response = await fetch('/backend/countries', {
      method:'POST',
      headers:{
          'Authorization':'Bearer ' + String(authToken.access),

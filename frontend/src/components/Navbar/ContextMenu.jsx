@@ -48,7 +48,7 @@ const UserLinks = () => {
 
     <Nav.Link href="/admin/view_admins">View All Admins</Nav.Link>
     <Nav.Link href="/admin/view_airlines">View All Airlines</Nav.Link>
-    <Nav.Link href="/admin/make_country">Add A Country</Nav.Link>
+    {/* <Nav.Link href="/admin/make_country">Add A Country</Nav.Link> */}
     <Nav.Link href="/admin/view_specific">Search For Users</Nav.Link>
 
 
