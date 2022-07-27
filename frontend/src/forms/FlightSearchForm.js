@@ -22,8 +22,6 @@ const FlightSearchForm = () => {
 
 let handleClick = () => {
     let flightSearchParams = {'fromSearchOption':fromSearchOption, 'toSearchOption':toSearchOption ,departureTime:departureTime, arrivalTime:arrivalTime}
-
-    console.log(flightSearchParams);
     navigate("/flights/",  { state: {  flightSearchParams: flightSearchParams }} )
                        
 }
