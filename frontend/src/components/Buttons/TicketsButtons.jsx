@@ -1,23 +1,21 @@
 import React from 'react'
 import { CreateTicket, RemoveTicket } from '../../methods/TicketMethods'
-import { useNavigate} from "react-router-dom";
 
 
 
 const TicketAddButton = (props) => {
-
     /**
 * if user is logged in, adds a ticket for the flight selected for them
 */  
-    let handleAddTicket = () => {
-        if (props.authToken){CreateTicket(props.currentFlight, props.authToken)}
+    let handleAddTicket = async (e) => {
+        e.preventDefault()
+        if (props.authToken){await CreateTicket(props.currentFlight, props.authToken)}
         window.location = "/customer/tickets"
         // navigate("/customer/tickets")
       }
     
 
 
-    let  navigate = useNavigate();
 
     return (
             <>
@@ -34,18 +32,15 @@ const TicketAddButton = (props) => {
 
 
 const TicketRemoveButton = (props) => {
-    let  navigate = useNavigate();
 
-    
  /**
 * removes the current ticket for the user
 */  
-    let handleRemoveTicket = () => 
-    {
-       RemoveTicket(props.currentTicket, props.authToken)
-    //    navigate("/customer/tickets")
-    //    window.location.reload(false);
-    window.location = "/customer/tickets"
+    let handleRemoveTicket = async (e) => {
+        e.preventDefault()
+    
+        await RemoveTicket(props.currentTicket, props.authToken)
+        window.location = "/customer/tickets"
 
     }
 
