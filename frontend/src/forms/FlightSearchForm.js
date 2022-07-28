@@ -17,15 +17,17 @@ const FlightSearchForm = () => {
     let[toSearchOption, settoSearchOption] = useState(0);
     let [departureTime, setDepartureTime] = useState("");
     let [arrivalTime, setArrivalTime] = useState("")
+    let today = format(new Date(), "yyyy-MM-dd")
     
 
 
 let handleClick = () => {
+
+    console.log();
     let flightSearchParams = {'fromSearchOption':fromSearchOption, 'toSearchOption':toSearchOption ,departureTime:departureTime, arrivalTime:arrivalTime}
     navigate("/flights/",  { state: {  flightSearchParams: flightSearchParams }} )
                        
 }
-
 
     useEffect(() => { 
 
@@ -79,15 +81,13 @@ let handleClick = () => {
                     placeholder="Departure Time"
                     label="Departure Time" 
                     type='date'                    
-                    min={format(new Date(), "yyyy-MM-dd")}
+                    min={today}
                     onKeyDown={(e) => e.preventDefault()} /* prevents user keyboard input */
                     onChange = {(e) => {
                     e.target.value?
                     setDepartureTime(e.target.value):
-                    setDepartureTime(format(new Date(), "yyyy-MM-dd"))
-                    }}
-                
-                    
+                    (setDepartureTime(today))
+                    }}           
                     >
                 </input>
 
@@ -96,11 +96,10 @@ let handleClick = () => {
                     label="Arrival Time"  
                     type='date'
                     placeholder="Departure"
-                    min={departureTime? departureTime : format(new Date(), "yyyy-MM-dd")}
+                    min={departureTime? departureTime : today}
                     onKeyDown={(e) => e.preventDefault()}  /* prevents user keyboard input */
                     onChange ={(e) => {
                     setArrivalTime(e.target.value)
-                    if(!departureTime) setDepartureTime(format(new Date(), "yyyy-MM-dd"))
                     }
                 }
                     >
