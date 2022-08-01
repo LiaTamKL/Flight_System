@@ -8,7 +8,7 @@ const CountrySelectAsync = ({placeHolderLabel, getCountries , setSearchOption}) 
 
   return (
     <AsyncSelect 
-    className='country-input'
+    className='country-input-container'
     classNamePrefix='country-input'
     components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
     noOptionsMessage={() => null}
