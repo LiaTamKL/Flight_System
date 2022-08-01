@@ -1,6 +1,7 @@
 
 @import url("https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700");
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
 
 
 
@@ -82,13 +83,17 @@
     border-radius: 10px;
     box-shadow: 5px 20px 50px #000;
     background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    font: 1em cursive;
+
+
 }
 
 .country-input-container {
     height: 40px;
     width: 20%;
-    font-size: 16px;
     background-color:transparent;
+    
+    
    }
 
 
@@ -96,7 +101,6 @@
     border: 2px solid white;
     border-radius: 4px;
     height: 40px;
-    /* line-height: 10px; */
     box-shadow: none;
     transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
 }
@@ -123,7 +127,7 @@
     border-radius: 4px;
     box-shadow: none;
     text-align: left;
-      
+    /* font-size: 14px; */
    }
 
  .date-picker .date-input-dep {
@@ -135,7 +139,6 @@
 .search-button {
     width: 15% ;
     height: 40px ;
-    /* border: 2px solid black; */
     border-radius: 4px;
 
     background: #f0d658;
