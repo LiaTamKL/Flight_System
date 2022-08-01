@@ -74,7 +74,7 @@ const NewFlightForm = (flightData)=>{
                 />
             <h5 className='new-flight-label'>Ticket Number</h5>
             <input
-                className='form-input'
+                className='form-input-number'
                 required
                 id='tickets'
                 defaultValue ={set?flightData.remaining_tickets:1}
