@@ -18,15 +18,16 @@ body {
 
 
 input {
-    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;      
     font-size: 18px;
+      
+    }
+    
 
-
-  }
   
 
 
-input:focus  {
+input:hover  {
     border-color: rgba(255, 255, 0, 0.8);
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(218, 205, 12, 0.97);
     outline: 0 none;
