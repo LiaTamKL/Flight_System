@@ -13,3 +13,4 @@ static/flags
 *.sqlite3
 db.sqlite3
 /build
+db.sqlite3
