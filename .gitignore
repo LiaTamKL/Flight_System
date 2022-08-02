@@ -7,4 +7,4 @@ db.sqlite3-journal
 node_modules
 static/flags
 db.sqlite3
-
+env/
