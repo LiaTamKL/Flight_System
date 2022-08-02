@@ -31,6 +31,7 @@ const FlightSearchForm = () => {
 
 
     let handleClick = () => {
+
         let flightSearchParams = 
         {
             'fromSearchOption':fromSearchOption, 
@@ -49,7 +50,7 @@ const FlightSearchForm = () => {
     }
 
     return ( 
-        <form className="search-container">
+        <div className="search-container">
 
             <CountrySelectAsync 
                 placeHolderLabel="&#x1F6EA; From?" 
@@ -70,7 +71,7 @@ const FlightSearchForm = () => {
                 onClick={handleClick}
                 >
             <i className="search-icon"><FaSearch /></i></button> 
-    </form>
+    </div>
         
     )
 }

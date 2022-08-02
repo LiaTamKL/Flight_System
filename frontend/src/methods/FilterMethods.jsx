@@ -10,11 +10,10 @@ const  FilteredFlightsMethod = async (...params) => {
     let flightParams = params[0]
     let searchurl = '/backend/flights/?'
 
-    if (flightParams["departureTime"]){searchurl += `&from_departure_time=${format(new Date(flightParams["departureTime"]), "yyyy-MM-dd'T'HH:mm")}`}
-    if (flightParams["arrivalTime"]){searchurl += `&to_arrival_time=${format(new Date(flightParams["arrivalTime"]), "yyyy-MM-dd'T'HH:mm")}`}        
+    if (flightParams["departureTime"]){searchurl += `&from_departure_time=${format(new Date(flightParams["departureTime"]).setHours(0, 0, 0), "yyyy-MM-dd'T'HH:mm")}`}
+    if (flightParams["arrivalTime"]){searchurl += `&to_arrival_time=${format(new Date(flightParams["arrivalTime"]).setHours(23, 59, 59), "yyyy-MM-dd'T'HH:mm")}`}        
     if (flightParams["fromSearchOption"]) {searchurl +=`&origin_country=${flightParams["fromSearchOption"]}`;}
     if (flightParams["toSearchOption"]) {searchurl +=`&destination_country=${flightParams["toSearchOption"]}`;}
-  
     let response = await fetch(searchurl)
     let data = await response.json()
 
