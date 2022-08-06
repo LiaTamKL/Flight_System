@@ -1,6 +1,7 @@
-import Select from 'react-select'
 import React, {useEffect, useState} from 'react'
 import { AllCountries } from '../methods/CountriesMethods'
+import { CountrySelect } from '../components/FormComponents/SelectComponents';
+
 
 const AirlineForm = (userData)=>{
     let [countryOptions, setCountryOptions] = useState()
@@ -22,21 +23,31 @@ const AirlineForm = (userData)=>{
 
     return(
         <>
-        <input className='form-input' type="text" name="name" placeholder="  Airline Name" defaultValue = {set?(userData.name):null} required />
-            <Select 
-                required
+            <input className='form-input' type="text" name="name" placeholder="  Airline Name" defaultValue = {set?(userData.name):null} required />
+                
+            <CountrySelect
                 name='country'
-                className='select-dropdown'
-                options ={countryOptions}
-                isSearchable
-                placeholder={<div className="select-dropdown-placeholder"> {set?`Please pick a country, your original one is ${userData.country}`:`Please pick a country`}</div> }
-                isClearable
-                 />
+                id=""
+                countryOptions={countryOptions}
+                placeholder={set?
+                    `Please pick a country, your original one is ${userData.country}`
+                    :`Please pick a country`}
+            />
+            
                 
-                
-                </>
+        </>
     )
 }
 
 
 export default AirlineForm
+
+//  <Select 
+// required
+// name='country'
+// className='select-dropdown'
+// options ={countryOptions}
+// isSearchable
+// placeholder={<div className="select-dropdown-placeholder"> {set?`Please pick a country, your original one is ${userData.country}`:`Please pick a country`}</div> }
+// isClearable
+//  /> 

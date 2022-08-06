@@ -4,8 +4,10 @@
   moz used for firefox
   o used for opera\
   */ 
+
 body {
-    background: #61b2b2;
+    /* background: #e8ededab; */
+    /* background: rgb(207, 32, 32); */
     font-family: roboto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; 
@@ -23,9 +25,6 @@ input {
       
     }
     
-
-  
-
 
 input:hover  {
     border-color: rgba(255, 255, 0, 0.8);
@@ -48,4 +47,5 @@ input[type=number] {
   -moz-appearance: textfield;
   text-align: center;
 }
+
 

@@ -89,7 +89,6 @@
 
  .form-input::placeholder{
     font-style: italic;
-    
  }
 
   #form-errors{
@@ -176,18 +175,48 @@ display: none;
 
 }
 
-
 /*########################################*/
 
+/*********************** date time picker *************************/
 
-.form-input-datetime{
+/* .form-input-datetime{
   height: 40px;
   font-size: 18px;
   border-radius: 4px;
   margin-bottom: 20px ;
   width: 80.5%;
   text-align: center;
+} */
+
+.date-time-picker {
+
+  height: 40px;
+  font-size: 18px;
+  border-radius: 4px;
+  margin-bottom: 20px ;
+  width: 90%;
+  text-align: center;
+
 }
+.date-time-picker .date-input-dep, .date-time-picker .date-input-arr {
+    width: 50%;
+    height: 40px ; 
+    /* border: 2px solid white; */
+    /* border-radius: 4px; */
+    /* box-shadow: none; */
+    text-align: left;
+    /* font-size: 14px; */
+   
+}
+.date-time-picker .date-input-time{
+  width: 50%;
+  height: 40px ; 
+}
+
+.date-time-picker .date-input-dep {
+  margin-bottom: 20px ;
+}
+/************************************************************************/
 
 .new-flight-label {
   color: white;
@@ -199,9 +228,7 @@ display: none;
 }
 
 
-
-
-
+/* ******************** buttons ************************/
 
 #submit-button  {
     margin-top: 20px;
@@ -263,10 +290,6 @@ display: none;
           transform: scale(1.05) rotate(-1deg);
         }
         
-
-
-
-
 
       #clear-button , #submit-button, #reset-password-button {
         cursor: pointer;

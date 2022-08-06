@@ -112,12 +112,18 @@
     outline: 0 none;
 }
 
+
+
+/*************** date picker ********************/
+
 /*main container*/
 .date-picker {
     width: 40%;
     background-color: transparent;
     border: none;
    }
+
+   
 
 
 .date-input-dep, .date-input-arr {
@@ -134,6 +140,8 @@
     margin-right: 2%;
    } 
 
+
+/* ************************************* */
 
 
 .search-button {
@@ -160,9 +168,6 @@
  
 
 
-  
-
-
 @media (max-width: 800px) {
     .search-container {
         flex-direction: column;
@@ -174,6 +179,7 @@
         width: 100%;
         margin-bottom: 13px; 
     }
+
     .search-button {
         width: 100%;
 

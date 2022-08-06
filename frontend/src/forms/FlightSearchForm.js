@@ -1,14 +1,14 @@
 
 import './Form.css'
-import React, {useEffect ,useCallback, useRef} from 'react'
+import React, {useCallback, useRef} from 'react'
 import { FaSearch } from "react-icons/fa";
 import { useState } from 'react';
-import AsyncSelect from 'react-select/async';
 import { useNavigate } from "react-router-dom"
 import { FilteredCountryMethod } from "../methods/FilterMethods"
 import { format } from "date-fns";
-import DateRangePicker from '../components/SearchComponents/DatePicker/DateRangePicker';
-import CountrySelectAsync from '../components/SearchComponents/CountrySelectAsync';
+import DateRangePicker from '../components/FormComponents/DatePicker/DateRangePicker';
+import { CountrySelectAsync } from '../components/FormComponents/SelectComponents';
+
 
 
 const FlightSearchForm = () => {
@@ -31,7 +31,6 @@ const FlightSearchForm = () => {
 
 
     let handleClick = () => {
-
         let flightSearchParams = 
         {
             'fromSearchOption':fromSearchOption, 
@@ -50,7 +49,7 @@ const FlightSearchForm = () => {
     }
 
     return ( 
-        <div className="search-container">
+        <form className="search-container">
 
             <CountrySelectAsync 
                 placeHolderLabel="&#x1F6EA; From?" 
@@ -64,14 +63,16 @@ const FlightSearchForm = () => {
                 setSearchOption = {settoSearchOption}
              />
              
-            <DateRangePicker  updateDates= { updateDates }/>
+            <DateRangePicker  updateDates = { updateDates }/>
 
           <button
                 className="search-button" 
                 onClick={handleClick}
                 >
-            <i className="search-icon"><FaSearch /></i></button> 
-    </div>
+                <i className="search-icon"><FaSearch /></i>
+        
+        </button> 
+    </form>
         
     )
 }

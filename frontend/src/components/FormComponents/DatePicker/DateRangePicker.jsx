@@ -67,34 +67,33 @@ const DateRangePicker = ({ updateDates } ) => {
   return (
     <>
       <DatePicker
-      ref={datePickerRef}
-      containerClassName="date-picker" 
-      render={<CustomRangeInput datePickerRef = {datePickerRef}/> }
-      onChange={updateDates}
-        animations={[
-          opacity(), 
-          transition({ from: 35, duration: 800 })       
-        ]} 
+        ref={datePickerRef}
+        containerClassName="date-picker" 
+        render={<CustomRangeInput datePickerRef = {datePickerRef}/> }
+        onChange={updateDates}
+          animations={[
+            opacity(), 
+            transition({ from: 35, duration: 800 })       
+          ]} 
 
-        portal 
-        numberOfMonths={numberOfMonths}
-        range
-        fixMainPosition = { true }
-        calendarPosition="bottom-center"
-        format="DD/MM/YYYY"
-        minDate={new Date()} 
-        plugins={[
-          <Toolbar 
-          position="bottom"
-          names ={{
-          today: "TODAY",
-          deselect: "CLEAR",
-          close: "SELECT"
-          }}
-          />,
-          weekends([6])      
-        ]}
-      >
+          numberOfMonths={numberOfMonths}
+          range
+          fixMainPosition 
+          calendarPosition="bottom-center"
+          format="DD/MM/YY"
+          minDate={new Date()} 
+          plugins={[
+            <Toolbar 
+            position="bottom"
+            names ={{
+            today: "TODAY",
+            deselect: "CLEAR",
+            close: "SELECT"
+            }}
+            />,
+            weekends([6])      
+          ]}
+        >
       </DatePicker>
          
     </>

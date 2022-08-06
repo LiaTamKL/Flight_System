@@ -153,6 +153,7 @@ const ViewAirlineFlights= () => {
         <form onSubmit={(e)=>setsearchresults(e)}>
         <Select 
                 required
+                components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
                 name='flight'
                 id='flight'
                 className='fancy-select'

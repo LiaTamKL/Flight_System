@@ -112,6 +112,7 @@ const ViewAirlines = () => {
         <form onSubmit={(e)=>searchforaccount(e)}>
         <Select 
                 required
+                components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
                 name='username'
                 id='username'
                 className='fancy-select'

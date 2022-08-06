@@ -1,6 +1,6 @@
 import React from 'react'
 import AsyncSelect from 'react-select/async';
-
+import Select from 'react-select';
 
 
 const CountrySelectAsync = ({placeHolderLabel, getCountries , setSearchOption}) => {
@@ -26,4 +26,22 @@ const CountrySelectAsync = ({placeHolderLabel, getCountries , setSearchOption}) 
   )
 }
 
-export default CountrySelectAsync
+
+
+const CountrySelect = ({ countryOptions , name , id , placeholder }) => {
+  return (
+    
+    <Select
+      required
+      name={ name }
+      id={ id }
+      className='select-dropdown'
+      options={ countryOptions }
+      components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
+      isSearchable
+      placeholder={<div className="select-dropdown-placeholder">{placeholder}</div>}
+      isClearable 
+    />
+  )
+}
+export  { CountrySelectAsync , CountrySelect }

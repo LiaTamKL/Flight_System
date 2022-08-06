@@ -1,4 +1,4 @@
-import React, { useState , useContext, useEffect } from 'react'
+import React, { useState , useContext } from 'react'
 import { CheckIfFlightFormIsValid, CreateMyFlight } from '../../methods/AirlineMethods';
 import AuthContext from '../../context/authentication';
 import NewFlightForm from '../../forms/NewFlightForm';
