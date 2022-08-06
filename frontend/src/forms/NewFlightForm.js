@@ -12,6 +12,7 @@ const NewFlightForm = ({ flightData })=>{
 
 
     let [countryOptions, setCountryOptions] = useState()
+
     let set = null
     if (flightData!==undefined) set = true 
         
@@ -20,21 +21,22 @@ const NewFlightForm = ({ flightData })=>{
         // land = new Date (flightData.landing_time)
    
 
+
     /**
     * Gets all countries and sets them up for react select
     */
     let getContries = async () => {
         let country_data = await AllCountries()
         if (country_data){
-
-            setCountryOptions(country_data.map((country) => ({value:country.id, label:country.country_name})))        
+            
+            setCountryOptions(country_data.map((country) => ({value:country.id, label:country.country_name})))
+                                  
         }}    
     useEffect(() => {getContries()},[])
-
+    
           
     return(
         <>
-
             <CountrySelect 
                 name='origin_country'
                 id='origin_country'
@@ -42,7 +44,9 @@ const NewFlightForm = ({ flightData })=>{
                 placeholder = {set?
                                 `Please pick an origin country, your original one is ${flightData.origin_country}`
                                 :`Origin country`}
-             />
+                defaultCountry = { flightData?.origin_country }
+
+                />               
 
             <CountrySelect 
                 name='destination_country'
@@ -51,14 +55,16 @@ const NewFlightForm = ({ flightData })=>{
                 placeholder = {set?
                     `Please pick an destination country, your original one is ${flightData.destination_country}`
                     :`Destination country`}
-             />
+                    defaultCountry = { flightData?.destination_country }
+                    />
 
 
             {flightData?
                 <DateRangePickerAirline  
-                    currentDepDate = { flightData.departure_time }  currentArrDate = { flightData.landing_time } /> :
-                <DateRangePickerAirline /> 
-            }
+                    currentDepDate = { flightData.departure_time }  
+                    currentArrDate = { flightData.landing_time } 
+                />
+                :<DateRangePickerAirline /> }
 
             
             <h5 className='new-flight-label'>Ticket Number</h5>
@@ -70,9 +76,8 @@ const NewFlightForm = ({ flightData })=>{
                 type='number'
                 step="1"
                 min="0"
-                /> 
-            
-            </>
+                />     
+        </>
     )
 }
 

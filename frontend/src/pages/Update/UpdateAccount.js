@@ -102,13 +102,10 @@ return(<>
 
     <form onSubmit={(e)=>handleSubmit(e)}> 
 
-
-
         <FormTemplate 
             formName= {"Account Update"}
             btnDesc = {'Update'} 
-            formFields = {<><UpdateAccountForm/>  {fieldOptionChooice()} </>}
-
+            formFields = {<><UpdateAccountForm/>  { fieldOptionChooice() } </>}
             formErrors = {message? (<p className="alert alert-warning">{message}</p>):<></>}
             additionalButtons = {<Link id="reset-password-button" to="/update/password" >Change Password</Link>}
         />

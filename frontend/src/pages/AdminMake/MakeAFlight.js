@@ -28,7 +28,7 @@ const CreateAFlight = () =>{
 
         <form onSubmit={(e)=>handleSubmit(e)}>
             <FormTemplate 
-                formName= {`New Flight for ${user.username}`}
+                formName = {`New Flight for ${user.username}`}
                 btnDesc = {'Add this flight'} 
                 formFields = {<NewFlightForm /> }
                 formErrors = {message? (<p className="alert alert-warning">{message}</p>):<></>}

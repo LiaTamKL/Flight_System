@@ -6,8 +6,6 @@ import './FormTemplate.css'
 
 const FormTemplate = (props) => {
   return (
-<>
-
     <div id="card">
         <div id="card-text">
             <div id="portada"></div>
@@ -19,6 +17,7 @@ const FormTemplate = (props) => {
 
                 <div id="form-errors">{props? props.formErrors:""}</div>
                 {props.additionalButtons? props.additionalButtons:""}
+                
                 <input type="submit" id="submit-button" value={props?props.btnDesc:'Submit'}  />
                 <input type="reset" id="clear-button" value="Reset"  />
             </div>
@@ -26,7 +25,6 @@ const FormTemplate = (props) => {
         </div>
 
     </div>
-</>
   )
 }
 

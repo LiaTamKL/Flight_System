@@ -1,4 +1,4 @@
-import React, { useState ,useEffect , useRef , useCallback } from "react"
+import React, { useState ,useEffect , useRef, useMemo} from "react"
 import TimeSelector from './components/TimeSelector';
 import DatePicker , { DateObject } from "react-multi-date-picker"
 import './DateRangePicker.css'
@@ -11,90 +11,83 @@ import { FcClock } from 'react-icons/fc';
 
 
 
-
-
-
-const DateRangePicker = ({ currentDepDate , currentArrDate } ) => {
+const DateRangePicker = ({ currentDepDate, currentArrDate }) => {
   const datePickerRef = useRef(null)
   const dates = useRef(null)
+
+
 
   const [calPosition, setCalPosition,] = useState("right-center")
   const [timeOnly, setTimeOnly] = useState(false)
   const [numberOfMonths, setNumberOfMonths] = useState(2)
   
-//fiil date if present for flight update 
-  let currentFlightDates
-  currentDepDate? 
-  currentFlightDates = [
-    new DateObject(new Date(currentDepDate).toISOString().replace('T', ' ')),
-    new DateObject(new Date(currentArrDate).toISOString().replace('T', ' '))
-  ] :currentFlightDates= ""
-  
-
-
   useEffect(() => {
-    
 
-    //Initial screen width    
+    //Initial screen width   
+ 
     if (window.matchMedia('(max-width: 900px)').matches) {
     setNumberOfMonths(1)
     setCalPosition("top-end")} 
 
   }, [])
 
-  let updateDates = useCallback((e) => {
-    dates.current = e
-      }, []);
 
-
-  //Set listener for screen change
+  // Set listener for screen change
   const mql = window.matchMedia('(max-width: 900px)');
   mql.onchange = (e) => { 
     if(e.matches) {
       setNumberOfMonths(1) 
       setCalPosition("top-end")}
-      else  {
+    else  {
         setNumberOfMonths(2) 
         setCalPosition("right-center")}
-      }
+    }
 
+  //checks if the component runs the first time and loads the dates , 
+  //fix for dates restored to default every render 
+  currentDepDate && !(datePickerRef.current)?  
+    dates.current =  [
+      new DateObject(new Date(currentDepDate).toISOString().replace('T', ' ')),
+      new DateObject(new Date(currentArrDate).toISOString().replace('T', ' '))
+      ]:<></>
 
   return (
 
       <DatePicker 
-      ref={datePickerRef}
-      value={ currentFlightDates? currentFlightDates :null }
-      containerClassName="date-time-picker" 
-      render={<CustomRangeInput dates = {dates} datePickerRef = { datePickerRef } setTimeOnly = { setTimeOnly }/>}
-      animations={[
-          opacity(), 
-          transition({ from: 35, duration: 800 })       
-        ]} 
-        onChange = {updateDates}
-        portal 
-        numberOfMonths={ numberOfMonths }
-        range
-        disableDayPicker = { timeOnly }
-        calendarPosition = { calPosition }
-        format="DD/MM/YY HH:mm"   
-        minDate={new Date().toISOString().replace('T', ' ')} 
-        plugins={[
-  
+        ref={datePickerRef} 
+        value ={ dates.current  }
+
+        containerClassName="date-time-picker" 
+        render={<CustomRangeInput dates = {dates} datePickerRef = { datePickerRef } setTimeOnly = { setTimeOnly }/>}
+        animations={[
+            opacity(), 
+            transition({ from: 35, duration: 800 })       
+          ]} 
+          onChange={(e) => dates.current = e}
+          portal 
+          numberOfMonths={ numberOfMonths }
+          range
+          disableDayPicker = { timeOnly }
+          calendarPosition = { calPosition }
+          format="DD/MM/YY HH:mm"   
+          minDate={new Date().toISOString().replace('T', ' ')} 
+          plugins={[
+    
           timeOnly?<TimeSelector />:<></>,
 
-        <Toolbar 
-          position="bottom"
-          names ={{
-          today: "TODAY",
-          deselect: "CLEAR",
-          close: "SELECT"
-          }}
-          />,
+          <Toolbar 
+            position="bottom"
+            names ={{
+            today: "TODAY",
+            deselect: "CLEAR",
+            close: "SELECT"
+            }}
+            />,
 
-          weekends([6]),
-           
-        ]}
-      >
+            weekends([6]),
+            
+          ]}
+        >
       </DatePicker>
          
     )
@@ -134,8 +127,8 @@ const CustomRangeInput = ({dates , value, datePickerRef, setTimeOnly }) => {
 
 
 
-        {/* fakeForm is added so those inputs are not included into main form input . 
-          thouse are diplay only inputs  */}
+        {/* fakeForm is added so those inputs are not included in form submit. 
+          those are diplay only */}
         <input
             className='date-input-dep'
             form="fakeForm"
