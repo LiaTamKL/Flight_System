@@ -45,6 +45,7 @@ const NewFlightForm = ({ flightData })=>{
                                 `Please pick an origin country, your original one is ${flightData.origin_country}`
                                 :`Origin country`}
                 defaultCountry = { flightData?.origin_country }
+                update = { set }
 
                 />               
 
@@ -55,7 +56,8 @@ const NewFlightForm = ({ flightData })=>{
                 placeholder = {set?
                     `Please pick an destination country, your original one is ${flightData.destination_country}`
                     :`Destination country`}
-                    defaultCountry = { flightData?.destination_country }
+                    defaultCountry = {flightData?.destination_country }
+                    update = { set }
                     />
 
 

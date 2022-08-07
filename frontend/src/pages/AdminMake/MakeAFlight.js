@@ -33,7 +33,6 @@ const CreateAFlight = () =>{
                 formFields = {<NewFlightForm /> }
                 formErrors = {message? (<p className="alert alert-warning">{message}</p>):<></>}
                 />
-
         </form></>
     )
 }
