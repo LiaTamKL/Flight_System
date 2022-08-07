@@ -30,7 +30,7 @@ const AirlineForm = ({ userData })=>{
                 placeholder={set?
                     `Please pick a country, your original one is ${userData.country}`
                     :`Please pick a country`}
-                defaultCountry = {  userData.country }
+                defaultCountry = {  userData?.country }
                 update = { set }
 
                 
