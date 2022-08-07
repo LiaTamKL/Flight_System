@@ -9,4 +9,3 @@ node_modules
 static/flags
 
 env/
-*.sqlite3
