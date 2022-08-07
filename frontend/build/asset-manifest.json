@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.68263ba4.css",
-    "main.js": "/static/js/main.912c6c3d.js",
+    "main.css": "/static/css/main.84d74794.css",
+    "main.js": "/static/js/main.6015f3ab.js",
     "static/media/Backgound1.jpg": "/static/media/Backgound1.c12fda7d1a4a4bbc73d4.jpg",
     "static/media/flight_app_logo.png": "/static/media/flight_app_logo.60b0266c26ba22b1bddc.png",
     "static/media/clouds.png": "/static/media/clouds.f539d072d4ba4e2990e5.png",
     "index.html": "/index.html",
-    "main.68263ba4.css.map": "/static/css/main.68263ba4.css.map",
-    "main.912c6c3d.js.map": "/static/js/main.912c6c3d.js.map"
+    "main.84d74794.css.map": "/static/css/main.84d74794.css.map",
+    "main.6015f3ab.js.map": "/static/js/main.6015f3ab.js.map"
   },
   "entrypoints": [
-    "static/css/main.68263ba4.css",
-    "static/js/main.912c6c3d.js"
+    "static/css/main.84d74794.css",
+    "static/js/main.6015f3ab.js"
   ]
 }

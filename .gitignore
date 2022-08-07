@@ -5,6 +5,7 @@ todo
 sitelog.log
 db.sqlite3-journal
 db.sqlite3
+
 node_modules
 static/flags
 
