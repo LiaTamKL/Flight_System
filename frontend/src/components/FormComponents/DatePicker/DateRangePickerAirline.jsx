@@ -70,7 +70,7 @@ const DateRangePicker = ({ currentDepDate, currentArrDate }) => {
           disableDayPicker = { timeOnly }
           calendarPosition = { calPosition }
           format="DD/MM/YY HH:mm"   
-          minDate={new Date().toISOString().replace('T', ' ')} 
+          minDate={new Date()} 
           plugins={[
     
           timeOnly?<TimeSelector />:<></>,
