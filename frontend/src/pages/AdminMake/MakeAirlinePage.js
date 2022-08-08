@@ -11,7 +11,8 @@ const MakeAnAirline = () =>{
     let {user, authToken} = useContext(AuthContext)
     let nav = useNavigate()
     let [message, setMessage] = useState()
-
+    let [reset, setReset] = useState(false)
+    
     /**
     * Makes user into an airline, if all's ok, sends to view_airlines page, if not, displays error
     * @param  {Dictionary} e The information (name, country)
@@ -34,17 +35,19 @@ const MakeAnAirline = () =>{
         Check_if_User(user, params,"Airline", authToken, nav)
         },[])
         
-    return(<>
-        <form onSubmit={(e)=>airlineMaker(e)}>
-        <FormTemplate 
-            formName= {"Add as an Airline"}
-            btnDesc = {'Add'} 
-            formFields = {<AirlineForm /> }
-            formErrors = {message? (<p className="alert alert-warning">{message}</p>):<></>}
-             />
 
+    return(
+        <form onSubmit={(e)=>airlineMaker(e)} >
 
-        </form></>
+            <FormTemplate 
+                formName= {"Add as an Airline"}
+                btnDesc = {'Add'} 
+                formFields = {<AirlineForm resetProps = { {'reset' :reset,"setReset" :setReset} }  /> }
+                formErrors = {message? (<p className="alert alert-warning">{message}</p>):<></>}
+                setReset = { setReset }
+            />
+
+        </form>
     )
 
 

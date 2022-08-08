@@ -19,6 +19,9 @@ const ViewAirlineFlights= () => {
     const [update, setUpdate] = useState(false)
     let {user, authToken} = useContext(AuthContext)
     let [message, setMessage] = useState()
+    let [reset, setReset] = useState(false)
+
+
     useEffect(()=>{
         getflights()
     },[])
@@ -80,9 +83,8 @@ const ViewAirlineFlights= () => {
     * checks if flight update is valid, if so updates it and sets a message. if not, sets errors as message. then resets search, gets flights and goes back to main page
     * @param  {Dictionary} e The information (flight)
     */  
-    let handleUpdate=async(e)=>{
+     let handleUpdate=async(e)=>{
         e.preventDefault()
-      
          let is_form_valid = CheckIfFlightFormIsValid(e)
          if (is_form_valid!==true){
              setMessage(is_form_valid)
@@ -137,13 +139,14 @@ const ViewAirlineFlights= () => {
         </div>
 
         {update? (
-        <form onSubmit={(e)=>handleUpdate(e)}>
-
+        <form onSubmit={(e)=>handleUpdate(e)} >
             <FormTemplate 
                 formName= {`Update Flight  #${ update.id }`}
                 btnDesc = { 'Update' }
-                formFields = { <NewFlightForm flightData={update}/>}
+                formFields = { <NewFlightForm flightData={update} resetProps = { {'reset' :reset,"setReset" :setReset}  } />}
                 formErrors = {message? (<p className="alert alert-warning">{message}</p>):<></>}
+                setReset = { setReset }
+
             />
         </form>
         
@@ -162,6 +165,7 @@ const ViewAirlineFlights= () => {
                 options ={flightOptions}
                 isSearchable = {true}
                 isClearable = {true}  />
+
             <div className="col-md-12 text-center">
         <input type="submit" className="btn btn-primary btn-sm" value='search'/></div>
         </form>

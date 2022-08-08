@@ -11,20 +11,17 @@ import { FcClock } from 'react-icons/fc';
 
 
 
-const DateRangePicker = ({ currentDepDate, currentArrDate }) => {
+const DateRangePicker = ({ currentDepDate, currentArrDate , resetProps }) => {
   const datePickerRef = useRef(null)
   const dates = useRef(null)
-
-
-
   const [calPosition, setCalPosition,] = useState("right-center")
   const [timeOnly, setTimeOnly] = useState(false)
   const [numberOfMonths, setNumberOfMonths] = useState(2)
-  
+
+
   useEffect(() => {
 
-    //Initial screen width   
- 
+    //set Initial calendar width and location    
     if (window.matchMedia('(max-width: 900px)').matches) {
     setNumberOfMonths(1)
     setCalPosition("top-end")} 
@@ -32,7 +29,7 @@ const DateRangePicker = ({ currentDepDate, currentArrDate }) => {
   }, [])
 
 
-  // Set listener for screen change
+  // Set listener for screen change and resize the calendar accordingly 
   const mql = window.matchMedia('(max-width: 900px)');
   mql.onchange = (e) => { 
     if(e.matches) {
@@ -44,18 +41,24 @@ const DateRangePicker = ({ currentDepDate, currentArrDate }) => {
     }
 
   //checks if the component runs the first time and loads the dates , 
-  //fix for dates restored to default every render 
-  currentDepDate && !(datePickerRef.current)?  
-    dates.current =  [
+  //fix for dates restored to default every render
+  // if reset is active ( button pressed ) and it on update page, the date time resets to default date   
+
+  if((currentDepDate && !(datePickerRef.current)) || (currentDepDate && resetProps.reset))  
+    {dates.current =  [
       new DateObject(new Date(currentDepDate).toISOString().replace('T', ' ')),
       new DateObject(new Date(currentArrDate).toISOString().replace('T', ' '))
-      ]:<></>
+      ]}
+   
+  // if reset is activated and on new flight page it clears the page     
+  if(resetProps.reset && !currentDepDate ){dates.current = []}
+
 
   return (
 
       <DatePicker 
         ref={datePickerRef} 
-        value ={ dates.current  }
+        value ={ dates.current }
 
         containerClassName="date-time-picker" 
         render={<CustomRangeInput dates = {dates} datePickerRef = { datePickerRef } setTimeOnly = { setTimeOnly }/>}
@@ -71,6 +74,7 @@ const DateRangePicker = ({ currentDepDate, currentArrDate }) => {
           calendarPosition = { calPosition }
           format="DD/MM/YY HH:mm"   
           minDate={new Date()} 
+
           plugins={[
     
           timeOnly?<TimeSelector />:<></>,
@@ -85,6 +89,7 @@ const DateRangePicker = ({ currentDepDate, currentArrDate }) => {
             />,
 
             weekends([6]),
+
             
           ]}
         >
@@ -99,6 +104,9 @@ const CustomRangeInput = ({dates , value, datePickerRef, setTimeOnly }) => {
   let datePickerRefCurrent = datePickerRef.current
   let datesCurrent = dates?.current
 
+  // 'value' is date picker native display only string formatted DD/MM/YY HH:mm. 
+  //'dates' is an output object of date picker , it is easily convertble to other formats. 
+
     return (
       <>
  
@@ -112,9 +120,9 @@ const CustomRangeInput = ({dates , value, datePickerRef, setTimeOnly }) => {
             required 
             readOnly 
             hidden 
-            value= {datesCurrent && datesCurrent[0]? format(new Date(datesCurrent[0]), "yyyy-MM-dd' 'HH:mm") : ""}
-
+            value= {datesCurrent && datesCurrent[0]?format(new Date(datesCurrent[0]), "yyyy-MM-dd' 'HH:mm") : ""} 
         />
+
         <input 
           type='datetime-local' 
           id='landing_time'
@@ -122,76 +130,24 @@ const CustomRangeInput = ({dates , value, datePickerRef, setTimeOnly }) => {
           required 
           readOnly 
           hidden 
-          value= {datesCurrent && datesCurrent[1]? format(new Date(datesCurrent[1]), "yyyy-MM-dd' 'HH:mm") : ""}
-
+          value= {datesCurrent && datesCurrent[1]?format(new Date(datesCurrent[1]), "yyyy-MM-dd' 'HH:mm") : ""}
         />
 
 
-        {/* fakeForm is added so those inputs are not included in form submit. 
-          those are diplay only */}
-        <input
-            className='date-input-dep'
-            form="fakeForm"
-            value={value[0]?value[0].slice(0 ,8): ""}
-            readOnly
-            placeholder="&#x1F4C5; Deaprture"
-            onClick = {(e) => 
-              datePickerRefCurrent.isOpen? (
-                setTimeOnly(false)):
-                (datePickerRefCurrent.openCalendar(),
-                setTimeOnly(false)
-                ) 
-            }
+        <DateTimeFields 
+            className = 'date-input-dep'
+            value = { value[0] }
+            datePickerRefCurrent = { datePickerRefCurrent }
+            setTimeOnly = { setTimeOnly }
+            datePlaceholder = "&#x1F4C5; Deaprture"
         />
-  
-        {/* < FcClock /> */}
-  
-        <input
-            className='date-input-time'
-            form="fakeForm"
-            value={value[0]? value[0].slice(-5): ""}
-            readOnly
-            disabled = {!value[0]}
-            placeholder="&#128336; Time"
-            onClick = {() =>
-                datePickerRefCurrent.isOpen? 
-                (setTimeOnly(true)):
-                (datePickerRefCurrent.openCalendar(),
-                  setTimeOnly(true))
-    
-            }
+        < DateTimeFields 
+          className = 'date-input-arr'
+          value = { value[1] }
+          datePickerRefCurrent = { datePickerRefCurrent }
+          setTimeOnly = { setTimeOnly }
+          datePlaceholder = "&#x1F4C5; Arival"
         />
-        {/* <div class="cal-icon1"><BsFillCalendarDayFill /></div> */}
-  
-        <input      
-          className='date-input-arr'
-          form="fakeForm"
-          placeholder="&#x1F4C5; Arival"
-          value={value[1]? value[1].slice(0 ,8): ""}
-          readOnly
-          onClick = {() =>
-            datePickerRefCurrent.isOpen? 
-            (setTimeOnly(false)):
-            (datePickerRefCurrent.openCalendar(),
-              setTimeOnly(false))
-        }
-        />
-  
-        <input
-            className='date-input-time'
-            form="fakeForm"
-            value={value[1]? value[1].slice(-5): ""}
-            readOnly
-            disabled = {!value[1]}
-            placeholder="&#128336; Time"
-            onClick = {() =>
-              datePickerRefCurrent.isOpen? 
-              (setTimeOnly(true)):
-              (datePickerRefCurrent.openCalendar(),
-                setTimeOnly(true))
-          }
-          />
-        {/* <i class="cal-icon2"><BsFillCalendarDayFill /></i> */}
   
     </>
     )
@@ -199,5 +155,48 @@ const CustomRangeInput = ({dates , value, datePickerRef, setTimeOnly }) => {
   }
   
   
+const DateTimeFields = ({className, value, datePickerRefCurrent, setTimeOnly , datePlaceholder}) => {
+
+  return (
+    <>
+
+      {/* fakeForm is added so those inputs are not included in form submit. 
+        those are diplay only */}
+
+      <input
+        className= { className }
+        form="fakeForm"
+        value={value? value.slice(0 ,8): ""}
+        readOnly
+        placeholder= { datePlaceholder }
+        onClick = {() => 
+          datePickerRefCurrent.isOpen? (
+            setTimeOnly(false)):
+            (datePickerRefCurrent.openCalendar(),
+            setTimeOnly(false)
+            ) 
+        }
+      />
+  
+      <input
+        className='date-input-time'
+        form="fakeForm"
+        value={ value? value.slice(-5): "" }
+        readOnly
+        disabled = { !value }
+        placeholder="&#128336; Time"
+        onClick = {() =>
+          datePickerRefCurrent.isOpen? 
+          (setTimeOnly(true)):
+          (datePickerRefCurrent.openCalendar(),
+            setTimeOnly(true))
+        }
+      />
+
+</>
+  )
+
+}
+
 export default DateRangePicker
 

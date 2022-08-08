@@ -15,6 +15,8 @@ const UpdatePage = () =>{
     let {user, authToken, logout} = useContext(AuthContext)
     let [userData, setUserData]= useState([])
     let [message, setMessage] = useState()
+    let [reset, setReset] = useState(false)
+
 
     useEffect(()=>{
         GetLoggedUserData()
@@ -74,6 +76,13 @@ const UpdatePage = () =>{
         
     }
 
+    const handleReset = ()=>{ 
+        setReset(
+            {resetFields:  true,
+            render :  !reset.render})
+    }
+
+
     /**
     * sets which form to use based on account role
     */  
@@ -85,7 +94,7 @@ const UpdatePage = () =>{
                 
                 return  <CustomerForm userData={userData}/>
             case 'Airline':
-                return <AirlineForm userData={userData}/>
+                return <AirlineForm userData={userData} resetProps = { {'reset' :reset,"setReset" :setReset} }  />
             case 'Admin': 
                 return <AdminForm userData={userData}/>
             default:
@@ -100,7 +109,7 @@ return(<>
     <p className="alert alert-warning">Warning: this will ask you to log back in if you update your account</p>
 
 
-    <form onSubmit={(e)=>handleSubmit(e)}> 
+    <form onSubmit={(e)=>handleSubmit(e)} onReset={handleReset}> 
 
         <FormTemplate 
             formName= {"Account Update"}
@@ -108,6 +117,7 @@ return(<>
             formFields = {<><UpdateAccountForm/>  { fieldOptionChooice() } </>}
             formErrors = {message? (<p className="alert alert-warning">{message}</p>):<></>}
             additionalButtons = {<Link id="reset-password-button" to="/update/password" >Change Password</Link>}
+            setReset = { setReset }
         />
 
     </form>

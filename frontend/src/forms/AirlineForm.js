@@ -3,7 +3,7 @@ import { AllCountries } from '../methods/CountriesMethods'
 import { CountrySelect } from '../components/FormComponents/SelectComponents';
 
 
-const AirlineForm = ({ userData })=>{
+const AirlineForm = ({ userData, resetProps })=>{
     let [countryOptions, setCountryOptions] = useState()
     let set = null
 
@@ -30,13 +30,10 @@ const AirlineForm = ({ userData })=>{
                 placeholder={set?
                     `Please pick a country, your original one is ${userData.country}`
                     :`Please pick a country`}
-                defaultCountry = {  userData?.country }
+                defaultCountry = { userData?.country }
                 update = { set }
-
-                
-            />
-            
-                
+                resetProps = { resetProps }         
+            />             
         </>
     )
 }

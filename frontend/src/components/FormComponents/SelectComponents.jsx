@@ -1,4 +1,4 @@
-import React,  {useRef , useState , useEffect} from 'react'
+import React,  { useRef } from 'react'
 import AsyncSelect from 'react-select/async';
 import Select from 'react-select';
 
@@ -27,9 +27,19 @@ const CountrySelectAsync = ({ placeHolderLabel, getCountries , setSearchOption }
 
 
 
-const CountrySelect = ({ countryOptions , name , id , placeholder , defaultCountry, update }) => {
- // const asyncSelect = useRef(null)
+const CountrySelect = ({ countryOptions , name , id , placeholder , defaultCountry, update ,resetProps }) => {
+ const asyncSelect = useRef(null)
 
+  // if its not  an update clear fields 
+  // if its an update return the original value 
+  if ((asyncSelect && resetProps.reset) && !update ) {
+    asyncSelect.current.clearValue()
+    resetProps.setReset(false)}
+
+  if ((asyncSelect && resetProps.reset) && update ){
+    asyncSelect.current.setValue(countryOptions.find(country => country.label === defaultCountry))
+    resetProps.setReset(false)
+  } 
 
     // the value of defaultCountry is undefined for a couple of renders 
     //this waits until defaultCountry get a value if its on update mode , 
@@ -42,7 +52,7 @@ const CountrySelect = ({ countryOptions , name , id , placeholder , defaultCount
         <Select
           required
           hideSelectedOptions
-          // ref={ asyncSelect }
+          ref={ asyncSelect }
           name={ name }
           id={ id }
           defaultValue={ defaultCountry && update? countryOptions.find(country => country.label === defaultCountry):"" }

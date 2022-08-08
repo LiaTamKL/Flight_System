@@ -5,7 +5,7 @@ import DateRangePickerAirline from '../components/FormComponents/DatePicker/Date
 import { CountrySelect } from '../components/FormComponents/SelectComponents';
 
 
-const NewFlightForm = ({ flightData })=>{
+const NewFlightForm = ({ flightData, resetProps })=>{
     // let dep = null
     // let land = null
     // flightData = flightData?.flightData
@@ -34,7 +34,6 @@ const NewFlightForm = ({ flightData })=>{
         }}    
     useEffect(() => {getContries()},[])
     
-          
     return(
         <>
             <CountrySelect 
@@ -46,8 +45,8 @@ const NewFlightForm = ({ flightData })=>{
                                 :`Origin country`}
                 defaultCountry = { flightData?.origin_country }
                 update = { set }
-
-                />               
+                resetProps = { resetProps }
+            />               
 
             <CountrySelect 
                 name='destination_country'
@@ -58,15 +57,17 @@ const NewFlightForm = ({ flightData })=>{
                     :`Destination country`}
                     defaultCountry = {flightData?.destination_country }
                     update = { set }
-                    />
+                    resetProps = { resetProps }
+            />
 
 
             {flightData?
                 <DateRangePickerAirline  
                     currentDepDate = { flightData.departure_time }  
                     currentArrDate = { flightData.landing_time } 
+                    resetProps = { resetProps }
                 />
-                :<DateRangePickerAirline /> }
+                :<DateRangePickerAirline resetProps = { resetProps } /> }
 
             
             <h5 className='new-flight-label'>Ticket Number</h5>
