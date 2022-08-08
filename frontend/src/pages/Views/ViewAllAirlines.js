@@ -137,6 +137,9 @@ const ViewAirlines = () => {
                 airlines?.length > 0
                 ? (<>
                     {displayAirlines}
+                <div className='pagination-container' >
+
+                    
                     <ReactPaginate
                     className= {"pagination"}
                     previousLabel = {'Back'}
@@ -148,6 +151,7 @@ const ViewAirlines = () => {
                     previousLinkClassName={"btn btn-outline-info"}
                     nextLinkClassName={"btn btn-outline-info"}
                     />
+                </div>
                     </>
                     
                 ) : (

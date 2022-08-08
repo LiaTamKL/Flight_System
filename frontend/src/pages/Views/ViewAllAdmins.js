@@ -130,6 +130,8 @@ const ViewAdmins= () => {
                 admins?.length > 0
                 ? (<>
                     {displayAdmins}
+                <div className='pagination-container' >
+
                     <ReactPaginate
                     className= {"pagination"}
                     previousLabel = {'Back'}
@@ -141,6 +143,7 @@ const ViewAdmins= () => {
                     previousLinkClassName={"btn btn-outline-info"}
                     nextLinkClassName={"btn btn-outline-info"}
                     />
+                </div>  
                     </>
                     
                 ) : (

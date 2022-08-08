@@ -7,49 +7,70 @@
 }
 
 .flights-header .flights-title {
-
     margin-bottom: 2vw ;
-
      
 }
-.pagination {
+
+
+/****************************************** pagination ***********************************/
+.pagination-container {
   display: flex;
   justify-content: center;
-  flex-direction: row;
+  align-items: center;
+  align-content: center;
+}
+
+
+.pagination {
+  justify-content:center;
   align-items:center;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 20px;
+  padding-top: 6px;
+  padding-bottom: 6px;
 
 }
+
 
 .pagination a {
-  border: 1px solid #ddd; 
-  margin: 0 10px;
+  border: 2px solid black; 
+  margin: 0 0.5vw;
   color:white;
-  float: left;
+  font-weight: bold;
   padding: 8px 16px;
-  text-decoration: none;
+  border-radius: 50px;
+  
 }
 
-.pagination a:first-child {
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-
-.pagination a:last-child {
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
 
 .pagination .btn.btn-outline-info {
   color:black;
-  background-color: white
+  background-color: white;
+  box-shadow: none;
+  border: 2px solid black; 
 }
 
-.pagination li.selected a {
-  background-color: #ffffff;
+
+.pagination .btn.btn-outline-info:hover {
+  color:rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+
 }
 
 
-.pagination a:hover:not(.active) {background-color: #ddd;}
+.pagination li.selected a , 
+  .pagination li.selected a:hover ,
+    .pagination a:hover:not(.active)  {
+  background-color: #000000;
+  color:rgb(255, 255, 255)
+}
+
+
+.pagination a:not(.active){
+  background-color: white;
+}
+
 
 
 

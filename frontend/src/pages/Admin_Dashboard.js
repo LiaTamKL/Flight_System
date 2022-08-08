@@ -148,17 +148,20 @@ const AdminDashboard= () => {
                 ? (
                      <>
                     {displayCustomers}
+                    <div className='pagination-container' >
+
                     <ReactPaginate
-                    className= {"pagination"}
-                    previousLabel = {'Back'}
-                    nextLabel = {'Next'}
-                    pageCount={pageCount}
-                    onPageChange={changePage}
-                    siblingCount = {0}
-                    containerClassName={""}
-                    previousLinkClassName={"btn btn-outline-info"}
-                    nextLinkClassName={"btn btn-outline-info"}
+                        className= {"pagination"}
+                        previousLabel = {'Back'}
+                        nextLabel = {'Next'}
+                        pageCount={pageCount}
+                        onPageChange={changePage}
+                        siblingCount = {0}
+                        containerClassName={""}
+                        previousLinkClassName={"btn btn-outline-info"}
+                        nextLinkClassName={"btn btn-outline-info"}
                     />
+                <   /div>
                     </>
                 ) : (
                         <h2>No Customers found</h2>

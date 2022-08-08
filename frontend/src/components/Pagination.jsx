@@ -74,17 +74,19 @@ const Pagination = (props) => {
                     itemsLength
                     ? (<>
                         {displayitems}
-                        <ReactPaginate
-                        className= {"pagination"}
-                        previousLabel = {'Back'}
-                        nextLabel = {'Next'}
-                        pageCount={pageCount}
-                        onPageChange={changePage}
-                        siblingCount = {0}
-                        containerClassName={""}
-                        previousLinkClassName={"btn btn-outline-info"}
-                        nextLinkClassName={"btn btn-outline-info"}
-                        />
+                        <div className='pagination-container' >
+                            <ReactPaginate
+                                className= {"pagination"}
+                                previousLabel = {'Back'}
+                                nextLabel = {'Next'}
+                                pageCount={pageCount}
+                                onPageChange={changePage}
+                                siblingCount = {0}
+                                containerClassName={""}
+                                previousLinkClassName={"btn btn-outline-info"}
+                                nextLinkClassName={"btn btn-outline-info"}
+                            />
+                        </div>
                         </>
                     ) :(
                     <></>

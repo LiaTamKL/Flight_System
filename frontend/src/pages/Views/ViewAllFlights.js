@@ -191,21 +191,24 @@ const ViewAirlineFlights= () => {
         
         <div className="container">
               <div className="row">
+               
         {
                 flights?.length > 0
                 ? (<>
                     {displayFlights}
-                    <ReactPaginate
-                    className= {"pagination"}
-                    previousLabel = {'Back'}
-                    nextLabel = {'Next'}
-                    pageCount={pageCount}
-                    onPageChange={changePage}
-                    siblingCount = {0}
-                    containerClassName={""}
-                    previousLinkClassName={"btn btn-outline-info"}
-                    nextLinkClassName={"btn btn-outline-info"}
-                    />
+                    <div className='pagination-container' >
+                        <ReactPaginate
+                        className= {"pagination"}
+                        previousLabel = {'Back'}
+                        nextLabel = {'Next'}
+                        pageCount={pageCount}
+                        onPageChange={changePage}
+                        siblingCount = {0}
+                        containerClassName={""}
+                        previousLinkClassName={"btn btn-outline-info"}
+                        nextLinkClassName={"btn btn-outline-info"}
+                        />
+                    </div>
                     </>
                 ) : (
                         <h2>No Flights found</h2>
