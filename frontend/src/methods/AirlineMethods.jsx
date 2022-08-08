@@ -32,6 +32,8 @@ export const ViewMyFlights = async(authToken) => {
  */
 export const CreateMyFlight = async(e, authToken) =>{
     var csrftoken = GetCookie('csrftoken')
+
+
   
     let response = await fetch('/backend/api/airline_api', {
         method:'POST',
@@ -81,6 +83,7 @@ export const  DeleteFlightAsAirline = async(id,authToken)=>{
  */
 export const UpdateMyFlight = async(e, id, authToken) =>{
       var csrftoken = GetCookie('csrftoken')
+
     
       let response = await fetch(`/backend/api/airline_api/${id}`, {
           method:'PATCH',

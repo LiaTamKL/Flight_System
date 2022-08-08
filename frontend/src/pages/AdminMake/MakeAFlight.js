@@ -14,6 +14,8 @@ const CreateAFlight = () =>{
     */  
     const handleSubmit = async(e)=>{
         e.preventDefault()
+        
+
         let is_form_valid = CheckIfFlightFormIsValid(e)
         if (is_form_valid!==true){
             setMessage(is_form_valid)

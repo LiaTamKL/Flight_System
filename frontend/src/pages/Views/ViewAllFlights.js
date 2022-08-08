@@ -82,6 +82,7 @@ const ViewAirlineFlights= () => {
     */  
     let handleUpdate=async(e)=>{
         e.preventDefault()
+      
          let is_form_valid = CheckIfFlightFormIsValid(e)
          if (is_form_valid!==true){
              setMessage(is_form_valid)

@@ -112,9 +112,9 @@ const CustomRangeInput = ({dates , value, datePickerRef, setTimeOnly }) => {
             required 
             readOnly 
             hidden 
-            value= {datesCurrent && datesCurrent[0]?format(new Date(datesCurrent[0]), "yyyy-MM-dd HH:mm") : ""} 
-        />
+            value= {datesCurrent && datesCurrent[0]? format(new Date(datesCurrent[0]), "yyyy-MM-dd' 'HH:mm") : ""}
 
+        />
         <input 
           type='datetime-local' 
           id='landing_time'
@@ -122,9 +122,9 @@ const CustomRangeInput = ({dates , value, datePickerRef, setTimeOnly }) => {
           required 
           readOnly 
           hidden 
-          value= {datesCurrent && datesCurrent[1]?format(new Date(datesCurrent[1]), "yyyy-MM-dd HH:mm") : ""}
-        />
+          value= {datesCurrent && datesCurrent[1]? format(new Date(datesCurrent[1]), "yyyy-MM-dd' 'HH:mm") : ""}
 
+        />
 
 
         {/* fakeForm is added so those inputs are not included in form submit. 
