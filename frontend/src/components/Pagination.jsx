@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import ReactPaginate from "react-paginate"
 import FlightCard from './FlightPage/FlightCard'
 
@@ -7,6 +7,8 @@ const Pagination = (props) => {
     const [pagenumber, setPageNumber] = useState(0)
     const itemsPerPage = 6
     const pagesSeen = pagenumber * itemsPerPage
+    const hiddenBack = useRef("hidden-back")
+    const hiddenNext = useRef("")
 
     let sourcePage = props.sourcePage  
     let title =  null
@@ -29,6 +31,8 @@ const Pagination = (props) => {
                 pageCount = Math.ceil(props.myFlights.length / itemsPerPage)
             }
                 changePage = ({selected})=>{
+                    selected === 0? hiddenBack.current = "hidden-back":hiddenBack.current = ""         
+                    selected === (pageCount -1)?hiddenNext.current = "hidden-next":hiddenNext.current = ""            
                     setPageNumber(selected)
                 }
         title  =  `Tickets of ${props.userData?.first_name} ${props.userData?.last_name}`
@@ -51,6 +55,9 @@ const Pagination = (props) => {
                 pageCount = Math.ceil(props.filteredFlights.length / itemsPerPage)
               }
                changePage = ({selected})=>{
+                    selected === 0? hiddenBack.current = "hidden-back":hiddenBack.current = ""         
+                    selected === (pageCount -1)?hiddenNext.current = "hidden-next":hiddenNext.current = ""
+        
                     setPageNumber(selected)
                 }
 
@@ -71,7 +78,7 @@ const Pagination = (props) => {
                 <div className="row">
                         
             {
-                    itemsLength
+                    itemsLength 
                     ? (<>
                         {displayitems}
                         <div className='pagination-container' >
@@ -79,7 +86,13 @@ const Pagination = (props) => {
                                 className= {"pagination"}
                                 previousLabel = {'Back'}
                                 nextLabel = {'Next'}
-                                pageCount={pageCount}
+                                pageCount={pageCount > 1? pageCount: 0}
+                                breakLabel=".."
+                                pageRangeDisplayed={ 4 }
+                                marginPagesDisplayed={ 1 }
+                                renderOnZeroPageCount = {null}
+                                nextClassName = { hiddenNext.current }
+                                previousClassName = { hiddenBack.current }
                                 onPageChange={changePage}
                                 siblingCount = {0}
                                 containerClassName={""}

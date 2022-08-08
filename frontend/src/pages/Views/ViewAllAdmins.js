@@ -16,6 +16,9 @@ const ViewAdmins= () => {
     const [searchOptions, setSearchOptions] = useState([]);
     let {user, authToken} = useContext(AuthContext)
     const message = useRef()
+    const hiddenBack = useRef("hidden-back")
+    const hiddenNext = useRef("")
+
     useEffect(()=>{
         GetAdmins()
     },[])
@@ -87,6 +90,9 @@ const ViewAdmins= () => {
     )})
     const pageCount = Math.ceil(admins.length / adminPerPage)
     const changePage = ({selected})=>{
+        selected === 0? hiddenBack.current = "hidden-back":hiddenBack.current = ""         
+        selected === (pageCount -1)?hiddenNext.current = "hidden-next":hiddenNext.current = ""
+
         setPageNumber(selected)
     }
 
@@ -136,7 +142,13 @@ const ViewAdmins= () => {
                     className= {"pagination"}
                     previousLabel = {'Back'}
                     nextLabel = {'Next'}
-                    pageCount={pageCount}
+                    pageCount={pageCount > 1? pageCount: 0}
+                    breakLabel=".."
+                    pageRangeDisplayed={ 4 }
+                    marginPagesDisplayed={ 1 }
+                    renderOnZeroPageCount = {null}
+                    nextClassName = { hiddenNext.current }
+                    previousClassName = { hiddenBack.current }
                     onPageChange={changePage}
                     siblingCount = {0}
                     containerClassName={""}

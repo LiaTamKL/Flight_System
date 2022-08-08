@@ -14,6 +14,8 @@ const AdminDashboard= () => {
     const [customers, setCustomers] = useState([]);
     const [searchedItem, setSearchedItem] = useState(null);
     const [searchOptions, setSearchOptions] = useState([]);
+    const hiddenBack = useRef("hidden-back")
+    const hiddenNext = useRef("")
     let {user, authToken} = useContext(AuthContext)
     const message = useRef()
     useEffect(()=>{
@@ -104,6 +106,8 @@ const AdminDashboard= () => {
     )})
     const pageCount = Math.ceil(customers.length / cusPerPage)
     const changePage = ({selected})=>{
+        selected === 0? hiddenBack.current = "hidden-back":hiddenBack.current = ""         
+        selected === (pageCount -1)?hiddenNext.current = "hidden-next":hiddenNext.current = ""
         setPageNumber(selected)
     }
 
@@ -127,8 +131,8 @@ const AdminDashboard= () => {
                 className='fancy-select'
                 placeholder = 'Search for a user'
                 options ={searchOptions}
-                isSearchable = {true}
-                isClearable = {true}  />
+                isSearchable 
+                isClearable  />
             <div className="col-md-12 text-center">
         <input type="submit" className="btn btn-primary btn-sm" value='search'/></div>
         </form>
@@ -154,14 +158,20 @@ const AdminDashboard= () => {
                         className= {"pagination"}
                         previousLabel = {'Back'}
                         nextLabel = {'Next'}
-                        pageCount={pageCount}
+                        pageCount={pageCount > 1? pageCount: 0}
+                        breakLabel=".."
+                        pageRangeDisplayed={ 4 }
+                        marginPagesDisplayed={ 1 }
+                        renderOnZeroPageCount = {null}
+                        nextClassName = { hiddenNext.current }
+                        previousClassName = { hiddenBack.current }
                         onPageChange={changePage}
                         siblingCount = {0}
                         containerClassName={""}
                         previousLinkClassName={"btn btn-outline-info"}
                         nextLinkClassName={"btn btn-outline-info"}
                     />
-                <   /div>
+                </div>
                     </>
                 ) : (
                         <h2>No Customers found</h2>

@@ -1,6 +1,6 @@
 
 import '../../components/FlightPage/FlightCard.css'
-import {useState, useEffect, useContext} from "react";
+import {useState, useEffect, useContext, useRef} from "react";
 import AuthContext from "../../context/authentication";
 import { DeleteFlightAsAirline, ViewMyFlights, CheckIfFlightFormIsValid, UpdateMyFlight } from "../../methods/AirlineMethods";
 import FlightCard from "../../components/FlightPage/FlightCard";
@@ -9,6 +9,8 @@ import NewFlightForm from "../../forms/NewFlightForm";
 import ReactPaginate from "react-paginate"
 import { AllCountries } from "../../methods/CountriesMethods";
 import FormTemplate from '../../forms/FormTemplate/FormTemplate';
+import { FaBiRightArrowBeer } from 'react-icons/fa';
+
 
 
 const ViewAirlineFlights= () => {
@@ -20,6 +22,8 @@ const ViewAirlineFlights= () => {
     let {user, authToken} = useContext(AuthContext)
     let [message, setMessage] = useState()
     let [reset, setReset] = useState(false)
+    const hiddenBack = useRef("hidden-back")
+    const hiddenNext = useRef("")
 
 
     useEffect(()=>{
@@ -125,8 +129,12 @@ const ViewAirlineFlights= () => {
     )})
 
     const pageCount = Math.ceil(flights.length / flightsPerPage)
+    
     const changePage = ({selected})=>{
-        setPageNumber(selected)
+        selected === 0? hiddenBack.current = "hidden-back":hiddenBack.current = ""         
+        selected === (pageCount -1)?hiddenNext.current = "hidden-next":hiddenNext.current = ""
+
+        setPageNumber(selected)       
     }
 
 
@@ -192,8 +200,8 @@ const ViewAirlineFlights= () => {
         <div className="container">
               <div className="row">
                
-        {
-                flights?.length > 0
+        { 
+                flights?.length > 0 
                 ? (<>
                     {displayFlights}
                     <div className='pagination-container' >
@@ -201,7 +209,13 @@ const ViewAirlineFlights= () => {
                         className= {"pagination"}
                         previousLabel = {'Back'}
                         nextLabel = {'Next'}
-                        pageCount={pageCount}
+                        pageCount={pageCount > 1? pageCount: 0}
+                        breakLabel=".."
+                        pageRangeDisplayed={ 4 }
+                        marginPagesDisplayed={ 1 }
+                        renderOnZeroPageCount = {null}
+                        nextClassName = { hiddenNext.current }
+                        previousClassName = { hiddenBack.current }
                         onPageChange={changePage}
                         siblingCount = {0}
                         containerClassName={""}

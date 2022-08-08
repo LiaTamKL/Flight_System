@@ -17,7 +17,10 @@ const ViewAirlines = () => {
     let {user, authToken} = useContext(AuthContext)
 
     const message = useRef()
+    const hiddenBack = useRef("hidden-back")
+    const hiddenNext = useRef("")
 
+    
 
     const [pagenumber, setPageNumber] = useState(0)
     const airlinesPerPage = 3
@@ -49,6 +52,9 @@ const ViewAirlines = () => {
     )})
     const pageCount = Math.ceil(airlines.length / airlinesPerPage)
     const changePage = ({selected})=>{
+        selected === 0? hiddenBack.current = "hidden-back":hiddenBack.current = ""         
+        selected === (pageCount -1)?hiddenNext.current = "hidden-next":hiddenNext.current = ""
+        
         setPageNumber(selected)
     }
 
@@ -134,7 +140,7 @@ const ViewAirlines = () => {
         :<>
 
         {
-                airlines?.length > 0
+                airlines?.length > 0 
                 ? (<>
                     {displayAirlines}
                 <div className='pagination-container' >
@@ -144,14 +150,21 @@ const ViewAirlines = () => {
                     className= {"pagination"}
                     previousLabel = {'Back'}
                     nextLabel = {'Next'}
-                    pageCount={pageCount}
+                    pageCount={pageCount > 1? pageCount: 0}
+                    breakLabel=".."
+                    pageRangeDisplayed={ 4 }
+                    marginPagesDisplayed={ 1 }
+                    renderOnZeroPageCount = {null}
+                    nextClassName = { hiddenNext.current }
+                    previousClassName = { hiddenBack.current }
                     onPageChange={changePage}
+                   
                     siblingCount = {0}
                     containerClassName={""}
                     previousLinkClassName={"btn btn-outline-info"}
                     nextLinkClassName={"btn btn-outline-info"}
                     />
-                </div>
+                    /</div>
                     </>
                     
                 ) : (
