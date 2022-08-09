@@ -74,7 +74,7 @@ section {
 }
 
 .flight-display-card #cities-section .city-display {
-  padding: 20px 18px;
+  padding: 20px 15px;
 }
 
 
@@ -83,10 +83,37 @@ section {
   font-weight: 300;
   line-height: 1;
 }
-.flight-display-card #cities-section .city-display #city-right {
-  float: right;
+.city-display #city-right {
+  display: flex;
+  flex-direction: column;
+  align-items:flex-end;
   
 }
+.city-display #city-right img {
+  height: 20px;
+  color: black;
+  text-transform: lowercase;
+  border: 1px solid black;
+
+}
+
+.city-display #city-left img {
+  height: 20px;
+  color: black;
+  text-transform: lowercase;
+  border:1px solid black;
+
+}
+
+.city-display #city-left {
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+  
+}
+
+
+
 
 #cities-section  #flight-icon{
   position: relative;
@@ -96,20 +123,26 @@ section {
 }
 /*##################################################*/
 
-#times-section  .time {
+#times-section #time-left ,#times-section #time-right {
+  display: flex;
+  flex-direction: column;
   padding: 20px 15px;
- 
+
 }
 
-.time strong {
+#time-left strong, #time-right strong {
   font-size: 30px;
   font-weight: 600;
   line-height: 1;
 }
 
 
-.time #date-right {
-  float: right;
+#time-left {
+  align-items:flex-start;
+}
+
+#time-right {
+  align-items:flex-end;
 }
 
 

@@ -1,5 +1,7 @@
 import './FlightCard.css'
 import { MdFlight ,   MdFlightTakeoff } from 'react-icons/md';
+import { GrDocumentMissing } from 'react-icons/gr';
+
 import React, {useEffect, useContext}  from 'react'
 import AuthContext from "../../context/authentication";
 import moment from 'moment';
@@ -54,7 +56,10 @@ let showDuration = () => {
 
       <section id="cities-section">
         <div className="city-display">
-          <small id='city-left'>{ flight?.origin_country } <img src={o_country?.flag} height="13px" width="20px" alt={flight?.origin_country + ' flag'}/> </small>
+          <small id='city-left'>
+          <img src={o_country?.flag} alt={flight?.origin_country.slice(0,3) + ' flag'}/>
+            { flight?.origin_country } 
+          </small>
           <strong>{ flight?.origin_country.slice(0, 3) } </strong>
         </div>
 
@@ -63,14 +68,18 @@ let showDuration = () => {
         </div>
 
         <div className="city-display">
-          <small id='city-right'><img src={d_country?.flag} height="13px" width="20px" alt={flight?.destination_country + ' flag'}/>{ flight?.destination_country }  </small>
+          <small id='city-right'>
+            <img src={d_country?.flag}  alt={flight?.destination_country.slice(0,3) + ' flag'}/>
+
+            { flight?.destination_country }    
+            </small>
           <strong>{ flight?.destination_country.slice(0, 3) } </strong>
         </div>
       </section>
 
 
       <section id="times-section">
-        <div className='time'>
+        <div id='time-left'>
           <small id="date-left">{`${flight?.departure_time.slice(8,10)}/${flight?.departure_time.slice(5,7)}/${flight?.departure_time.slice(0,4)}`} </small>
           <strong>{ flight?.departure_time.slice(11,16) } </strong>
         </div>
@@ -82,7 +91,7 @@ let showDuration = () => {
           </div>
         </div>
             
-        <div className='time'>
+        <div id='time-right'>
           <small id="date-right">{`${flight?.landing_time.slice(8,10)}/${flight?.landing_time.slice(5,7)}/${flight?.landing_time.slice(0,4)}`}</small>
           <strong>{ flight?.landing_time.slice(11,16) }</strong>  
         </div>
