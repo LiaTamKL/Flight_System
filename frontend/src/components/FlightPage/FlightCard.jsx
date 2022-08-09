@@ -34,6 +34,8 @@ const FlightCard = (props) => {
 let showDuration = () => { 
   let duration = moment.duration(moment(flight.landing_time).diff(moment(flight.departure_time)));
   let totalHours = duration.asHours()
+  console.log(duration)
+  console.log(totalHours)
   if (totalHours % 1 !== 0) {totalHours = Math.floor(totalHours)}
   return `${totalHours}h ${duration.minutes()}m`
 }
