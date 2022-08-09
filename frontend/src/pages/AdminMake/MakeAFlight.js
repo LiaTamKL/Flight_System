@@ -16,7 +16,6 @@ const CreateAFlight = () =>{
     */  
     const handleSubmit = async(e)=>{
         e.preventDefault()
-        console.log(e.target.destination_country.value);
 
 
         let is_form_valid = CheckIfFlightFormIsValid(e)
