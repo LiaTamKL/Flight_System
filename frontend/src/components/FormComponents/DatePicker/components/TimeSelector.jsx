@@ -177,7 +177,8 @@ const MinuteSelector = ({addZiro , state, mainBtn, handleChange , temp , depOrAr
     let updateMinutes = (time) => {
         state.selectedDate[depOrArr].setMinute(time)
 
-        if (sameDay && state.selectedDate[0].minute >= state.selectedDate[1].minute) { 
+        if ((sameDay && state.selectedDate[0].hour === state.selectedDate[1].hour) && 
+        (sameDay && state.selectedDate[0].minute >= state.selectedDate[1].minute )) { 
             !depOrArr?  
                 state.selectedDate[1].setMinute(time):
                  state.selectedDate[0].setMinute(time)
