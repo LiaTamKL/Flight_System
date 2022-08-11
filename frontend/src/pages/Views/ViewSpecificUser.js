@@ -2,7 +2,7 @@ import {useState, useEffect, useContext, useRef} from "react";
 import AuthContext from "../../context/authentication";
 import { Link } from "react-router-dom";
 import GetUsers from "../../methods/AdminMethods";
-import { DeleteUser} from "../../methods/AdminMethods";
+import { DeleteUser, UpdateToAdminFromCus} from "../../methods/AdminMethods";
 import Select from 'react-select'
 import "../PagesCss/Pages.css"
 import { AccountCard } from "../../components/UserCards";
@@ -56,18 +56,37 @@ const SearchForUser = ()=>{
 
     }
 
+    
+    /**
+    * updates a customer to an admin, gets all customers again to update with results
+    * @param  {Dictionary} e The information (username, first_name, last_name)
+    */  
+     let UpdateToAdmin= async(e) =>{
+
+        let result = await UpdateToAdminFromCus(e, authToken)
+        message.current =result.data
+        GetAccounts()
+        setSearchedItem(null)
+
+    }
+
     /**
     * returns all buttons to be displayed in cards
     */  
     let Buttons = (user)=>{
         return <div>
         {user.is_superuser===true?<p>Superuser may not be altered</p>:<>
-        {user.account_role!=="Admin"? <Link className="btn btn-primary btn-sm" to={`/admin/make_admin/${user.username}`} >Add as Admin</Link>:<></>}
-        {user.account_role!=="Customer"? <Link className="btn btn-primary btn-sm" to={`/admin/make_customer/${user.username}`} >Add as Customer</Link>:<></>}
-        {user.account_role!=="Airline"? <Link className="btn btn-primary btn-sm" to={`/admin/make_airline/${user.username}`} >Add as Airline</Link>:<></>}
-        <button onClick={()=>Delete(user.username)}className="btn btn-danger btn-sm" >Delete</button></>
-    
-    }</div>
+
+        {user.account_role==="Customer"?
+            <button onClick={()=>UpdateToAdmin(user)}className="btn btn-primary btn-sm" >Add as Admin</button>:<>
+            <Link className="btn btn-primary btn-sm" to={`/admin/make_customer/${user.username}`} >Add as Customer</Link> </>}
+        {user.account_role!=="Airline"?
+            <Link className="btn btn-primary btn-sm" to={`/admin/make_airline/${user.username}`} >Add as Airline</Link>:
+            <Link className="btn btn-primary btn-sm" to={`/admin/make_admin/${user.username}`} >Add as Admin</Link>}
+        <button onClick={()=>Delete(user.username)}className="btn btn-danger btn-sm" >Delete</button>
+
+        </>}
+    </div>
     }
 
 

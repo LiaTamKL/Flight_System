@@ -75,8 +75,13 @@ class Admin_API_Actions:
             if request.data['make']=='Admin':
                 if account.account_role == 'Admin':
                     return Response(data='Already an admin!', status=status.HTTP_400_BAD_REQUEST)
-                form['first_name'] = request.data['first_name']
-                form['last_name'] = request.data['last_name']
+                
+                if request.data['from'] == 'from_search':
+                    form['first_name']=searched['user'].first_name
+                    form['last_name']=searched['user'].last_name
+                else:
+                    form['first_name'] = request.data['first_name']
+                    form['last_name'] = request.data['last_name']
                 AdministratorFuncade.add_admin(account=account, form=form)
 
 
