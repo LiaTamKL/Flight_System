@@ -23,7 +23,7 @@ const FormTemplate = (props) => {
                 {props.additionalButtons? props.additionalButtons:""}
                 
                 <input type="submit" id="submit-button" value={props?props.btnDesc:'Submit'}  />
-                <input type="reset" id="clear-button" value="Reset" onClick={()=>props?.setReset(true)}  />
+                <input type="reset" id="clear-button" value="Reset" onClick={()=>props.setReset? props.setReset(true):""}  />
             </div>
         
         </div>
