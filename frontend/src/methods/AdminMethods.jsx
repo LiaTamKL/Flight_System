@@ -51,7 +51,11 @@ export const  DeleteUser = async(username,authToken)=>{
  */
 export const UpdateToAdminFromCus = async(e,authToken)=>{
     var csrftoken = GetCookie('csrftoken')
-
+    let where = 'from_all'
+    if (e.account===undefined){
+        where = 'from_search'
+        e.account=e.username
+    }
     let response = await fetch('/backend/api/admin_api', {
         method:'PATCH',
         headers:{
@@ -62,7 +66,8 @@ export const UpdateToAdminFromCus = async(e,authToken)=>{
         body:JSON.stringify({"make":"Admin",
             "username":e.account,
             "first_name": e.first_name,
-            "last_name": e.last_name})
+            "last_name": e.last_name,
+            "from":where})
     })
     let data = await response.json()
     return {'data':data, 'status':response.status}
@@ -168,7 +173,8 @@ export let TurnIntoAdmin=async(username,e,authToken)=>{
         body:JSON.stringify({"make":"Admin",
             "username":username,
             "first_name": e.target.first_name.value,
-            "last_name": e.target.last_name.value})
+            "last_name": e.target.last_name.value,
+        'from':'from_all'})
     })
     let data = await response.json()
     return {'data':data, 'status':response.status}

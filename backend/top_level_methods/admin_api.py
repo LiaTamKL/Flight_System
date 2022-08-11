@@ -63,7 +63,7 @@ class Admin_API_Actions:
     def change_account_role(request):
             """this changes an account's role based on the variable 'make' (Admin, Airline, Customer), on a variable 'username' (the username of the account you wish to change) and on request data
             if the requested account is a superuser, no change is allowed, 400 is returned. If account is customer, it will check if the credit card number and phone numbers are unique, if not, 400.
-            returns 200 if all is good.
+            returns 200 if all is good. If you make an admin, it will also need the variable 'from' which, if 'from_search' is selected, it will make the new admin's first and last name the ones that already exist for this user (if they are a customer).
             """
             searched = AdministratorFuncade.get_by_username(username=request.data['username'])
             account = searched['account']
@@ -75,8 +75,13 @@ class Admin_API_Actions:
             if request.data['make']=='Admin':
                 if account.account_role == 'Admin':
                     return Response(data='Already an admin!', status=status.HTTP_400_BAD_REQUEST)
-                form['first_name'] = request.data['first_name']
-                form['last_name'] = request.data['last_name']
+                
+                if request.data['from'] == 'from_search':
+                    form['first_name']=searched['user'].first_name
+                    form['last_name']=searched['user'].last_name
+                else:
+                    form['first_name'] = request.data['first_name']
+                    form['last_name'] = request.data['last_name']
                 AdministratorFuncade.add_admin(account=account, form=form)
 
 
