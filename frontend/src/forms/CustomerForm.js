@@ -9,7 +9,7 @@ const CustomerForm = (userData)=>{
         if (userData.address!==undefined){
             set2 = true       
         }
-        else {disabled_status=true}
+        else if (userData.last_name!== undefined){disabled_status=true}
         }
     // fixes the class formatting clash when accessing the component from anony and profile update  
     else{classchange = 'login-form-input'}
