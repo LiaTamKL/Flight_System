@@ -164,7 +164,7 @@ const ViewAirlines = () => {
                     previousLinkClassName={"btn btn-outline-info"}
                     nextLinkClassName={"btn btn-outline-info"}
                     />
-                    /</div>
+                    </div>
                     </>
                     
                 ) : (

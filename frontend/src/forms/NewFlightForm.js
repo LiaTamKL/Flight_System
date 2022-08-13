@@ -14,8 +14,6 @@ const NewFlightForm = ({ flightData, resetProps })=>{
     if (flightData!==undefined) set = true 
         
 
-
-
     /**
     * Gets all countries and sets them up for react select
     */
@@ -30,6 +28,7 @@ const NewFlightForm = ({ flightData, resetProps })=>{
     
     return(
         <>
+        
             <CountrySelect 
                 name='origin_country'
                 id='origin_country'

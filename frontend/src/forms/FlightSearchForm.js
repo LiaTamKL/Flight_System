@@ -48,8 +48,9 @@ const FlightSearchForm = () => {
         return filtered?.map((country) => ({value:country.id, label:country.country_name}))
     }
 
+
     return ( 
-        <form className="search-container">
+        <div className="search-container">
 
             <CountrySelectAsync 
                 placeHolderLabel="&#x1F6EA; From?" 
@@ -72,7 +73,7 @@ const FlightSearchForm = () => {
                 <i className="search-icon"><FaSearch /></i>
         
         </button> 
-    </form>
+    </div>
         
     )
 }
