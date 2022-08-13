@@ -16,12 +16,11 @@ const FlightSearchForm = () => {
     let navigate = useNavigate();    
     let[fromSearchOption, setFromSearchOption] = useState(0);
     let[toSearchOption, settoSearchOption] = useState(0);
-    // let [departureTime, setDepartureTime] = useState("");
-    // let [arrivalTime, setArrivalTime] = useState("")
     let departureTime = useRef("")   
     let arrivalTime = useRef("")  
 
 
+    
     //Prevents child refresh on date entery , 
     //fix for calendar flicker on data entery    
     let updateDates = useCallback((dates) => {
@@ -79,76 +78,3 @@ const FlightSearchForm = () => {
 }
 
 export default FlightSearchForm
-
-              
-// <input
-
-// className='date-input'
-// placeholder="Departure Time"
-// label="Departure Time" 
-// type='date'                    
-// min={today}
-// onKeyDown={(e) => e.preventDefault()} /* prevents user keyboard input */
-// onChange = {(e) => {
-// e.target.value?
-// setDepartureTime(e.target.value):
-// (setDepartureTime(today))
-// }}           
-// >
-// </input>
-
-// <input
-// className='date-input'
-// label="Arrival Time"  
-// type='date'
-// placeholder="Departure"
-// min={departureTime? departureTime : today}
-// onKeyDown={(e) => e.preventDefault()}  /* prevents user keyboard input */
-// onChange ={(e) => {
-// setArrivalTime(e.target.value)
-// }
-// }
-// >
-// </input> 
-
-
-
-
-// <AsyncSelect 
-//     className='country-input'
-//     classNamePrefix='country-input'
-//     components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
-//     noOptionsMessage={() => null}
-//     placeholder="&#x1F6EA; From?" 
-//     cacheOptions
-//     loadOptions = {getCountries}
-//     isSearchable
-//     isClearable
-//     maxMenuHeight = {300}
-//     onInputChange = {(e) => {getCountries(e)}} 
-//     onChange = {
-//     (e)=> e? 
-//         setFromSearchOption(e.value)
-//         : setFromSearchOption(0)
-//     }/>
-
-
-// <AsyncSelect
-
-//     className='country-input'
-//     classNamePrefix='country-input'
-//     components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
-//     noOptionsMessage={() => null}
-//     placeholder = "&#x1F6EA; To?"
-//     cacheOptions
-//     loadOptions = {getCountries}
-//     maxMenuHeight = {300}
-//     onInputChange = {(e) => {getCountries(e)}} 
-//     isSearchable
-//     isClearable
-//     onChange = {
-//     (e)=>  e? (
-//         settoSearchOption(e.value))
-//         : settoSearchOption(0)
-//     }
-//     />
