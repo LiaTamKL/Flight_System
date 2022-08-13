@@ -6,7 +6,7 @@
   */ 
 
 body {
-    /* background: #e8ededab; */
+    background:#eee !important;
     /* background: rgb(207, 32, 32); */
     font-family: roboto;
     -webkit-font-smoothing: antialiased;
@@ -15,7 +15,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-image: url("./assets/Background/Backgound1.jpg");
+    /* background-image: url("./assets/Background/Backgound1.jpg"); */
   }
 
 

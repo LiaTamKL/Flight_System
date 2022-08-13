@@ -5,19 +5,19 @@ import  logo from "./icons/flight_app_logo.png";
 
 import "./Navbar.css"
 
-
 const  MainNavbar = () => {
 
     return (
 
       <Navbar collapseOnSelect  expand="md" bg="dark" variant="dark" fixed="top">
         
-         <Navbar.Brand
-          href="/home" >
-            <img id='main-logo' src={logo} alt =""/>
+         <Navbar.Brand href="/home" >
+          <div id='logo-container'>
+            <img id='main-logo' src={logo} alt ="Flight App"/>  Flight App
+          </div>   
+          </Navbar.Brand>
          
-            </Navbar.Brand>
-          
+
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="justify-content-end flex-grow-1 pe-3">

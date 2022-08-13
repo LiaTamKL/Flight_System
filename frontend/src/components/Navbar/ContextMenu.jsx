@@ -12,24 +12,31 @@ import "./Navbar.css"
 
 const UserLinks = () => {
     const {logout} = useContext(AuthContext)
+    let {user} = useContext(AuthContext)
+    let loggedUser = 
+        <div id="user-container"> 
+            <div id='user-icon'> <AiOutlineUser/ > </div>  
+            <div id='user-name'> {user.username} </div> 
+        </div> 
 
 
     return (
-        <NavDropdown 
-        title="Profile"
-		align="end"
+        <>
+            <NavDropdown 
+                title= { loggedUser } 
+                align="end"
+                id="collasible-nav-dropdown" 
+                className="custom-style"
+            >
 
-        id="collasible-nav-dropdown" 
-        className="custom-style"
-        >
-        <NavDropdown.Item href="/update">
-        <AiOutlineUser/ > Update Profile
-        </NavDropdown.Item>
-          <NavDropdown.Item href="/" onClick={logout}>
-          <GrLogout /> Logout 
-            </NavDropdown.Item>         
-          </NavDropdown>
-
+            <NavDropdown.Item href="/update">
+                <AiOutlineUser/ > Update
+            </NavDropdown.Item>
+            <NavDropdown.Item href="/" onClick={logout}>
+            <GrLogout /> Logout 
+                </NavDropdown.Item>         
+            </NavDropdown>
+       </>
     )
 }
 
@@ -44,15 +51,13 @@ const UserLinks = () => {
             return ( 
             <>
 
-    <Nav.Link href="/admin">All Customers</Nav.Link>
+                <Nav.Link href="/admin">All Customers</Nav.Link>
 
-    <Nav.Link href="/admin/view_admins">View All Admins</Nav.Link>
-    <Nav.Link href="/admin/view_airlines">View All Airlines</Nav.Link>
-    {/* <Nav.Link href="/admin/make_country">Add A Country</Nav.Link> */}
-    <Nav.Link href="/admin/view_specific">Search For Users</Nav.Link>
-
-
-        <UserLinks />               
+                <Nav.Link href="/admin/view_admins">View All Admins</Nav.Link>
+                <Nav.Link href="/admin/view_airlines">View All Airlines</Nav.Link>
+                <Nav.Link href="/admin/make_country">Add A Country</Nav.Link>
+                <Nav.Link href="/admin/view_specific">Search For Users</Nav.Link>
+                <UserLinks />               
             </>
             )
 
@@ -93,8 +98,9 @@ const UserLinks = () => {
         return (  
         <>
           <Nav.Link href="/">Home </Nav.Link>
-        
-          <Nav.Link id='login-register' href="/login">Login / Sign In</Nav.Link>
+          <div id='login-container'>
+            <Nav.Link id='login-register' href="/login">Login / Sign In</Nav.Link>
+        </div>
         </>
         )
     

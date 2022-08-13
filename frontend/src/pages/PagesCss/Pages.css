@@ -89,7 +89,7 @@ visibility: hidden;
 /*#################Viewpages#################*/
 /*##################################################*/
 
-.admin-label-center {
+.admin-label-center, .airline-label-center{
   display: flex;
   justify-content: center;
 
@@ -104,8 +104,6 @@ visibility: hidden;
   border-radius: 5px;
   
 }
-
-
 
 #user-search-btn {
   margin-top: 20px;
