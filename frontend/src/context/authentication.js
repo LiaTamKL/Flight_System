@@ -12,9 +12,7 @@ export const AuthenticationProvider = ({children}) => {
     let [loading, setLoading] = useState(true)
     let nav = useNavigate()
 
-    /////////////////////////FUNCTIONS START HERE//////////////////////////////
 
-    /////////////////LOG THE USER OUT, REDIRECT THEM TO MAIN PAGE/////////////////////
 
     /**
     * Logs user out
@@ -57,8 +55,6 @@ export const AuthenticationProvider = ({children}) => {
         setLoading(false)
     }}
 
-////////LOG THE USER IN, REDIRECT THEM TO MAIN PAGE ONCE IN///////////////////////
-///////IF STATUS CODE NOT 200, TELL USER WHATS WRONG//////////////
 
     /**
     * logs user in if user details are currect (gets access and refresh token)
@@ -94,13 +90,13 @@ export const AuthenticationProvider = ({children}) => {
         if(loading){
             RefreshToken()
         }
-        /////////REFRESH EVERY 4 MINUTES//////////
-        let four_minutes = 1000 * 60 * 15
+        /////////REFRESH EVERY 15 MINUTES//////////
+        let timer = 60000 * 15
         let interval = setInterval(()=>{
             if(authToken){
                 RefreshToken()
             }
-        }, four_minutes)
+        }, timer)
         return ()=> clearInterval(interval)
     }, [authToken,loading]
     
