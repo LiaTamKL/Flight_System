@@ -24,7 +24,6 @@ const  FilteredFlightsMethod = async (...params) => {
     if (flightParams["departureTime"]){searchurl += `&from_departure_time=${format(new Date(flightParams["departureTime"]), "yyyy-MM-dd'T'HH:mm")}`}
     if (flightParams["arrivalTime"]){searchurl += `&to_landing_time=${format(new Date(flightParams["arrivalTime"]), "yyyy-MM-dd'T'HH:mm")}`}        
 
-    console.log(searchurl);
     let response = await fetch(searchurl)
     let data = await response.json()
 
