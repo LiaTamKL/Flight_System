@@ -36,7 +36,7 @@ class AdministratorFuncade(BaseFuncade):
         form = []
         for ticket in tickets:
             form['ticket'] = ticket
-            CustomerFancade.remove_ticket()
+            CustomerFancade.remove_ticket(form)
         a = customer.account
         customer.delete()
         return a
