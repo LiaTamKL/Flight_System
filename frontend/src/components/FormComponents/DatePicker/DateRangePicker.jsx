@@ -15,9 +15,9 @@ let dateRef = datePickerRef.current
     <>
       <input
           className='date-input-dep'
-          value={value[0]? `Departure at ${value[0]}`: ""}
+          value={value[0]? `Departure from ${value[0]}`: ""}
           readOnly
-          placeholder="&#x1F4C5; Deaprture"
+          placeholder="&#x1F4C5; Deaprture from..."
           onClick = {() =>
             dateRef.isOpen? 
             dateRef.closeCalendar():
@@ -30,7 +30,7 @@ let dateRef = datePickerRef.current
       <input
       
         className='date-input-arr'
-        value={value[1]? `Arrival at ${value[1]}`: ""}
+        value={value[1]? `Arrival until ${value[1]}`: ""}
         readOnly
         onClick = {() =>
           dateRef.isOpen? 
@@ -38,7 +38,7 @@ let dateRef = datePickerRef.current
           dateRef.openCalendar() 
         }
 
-        placeholder="&#x1F4C5; Arival"
+        placeholder="&#x1F4C5; Arival until..."
       />
       {/* <i class="cal-icon2"><BsFillCalendarDayFill /></i> */}
 
