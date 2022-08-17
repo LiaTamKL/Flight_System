@@ -57,7 +57,7 @@ const  FilteredFlightsByIdMethod = async (ticket_ids) => {
  * 
  */
 const  FilteredCountryMethod = async (searchTerm) => {
-    let response = await fetch(`/backend/api/country/country_range/?search=${searchTerm}`)
+    let response = await fetch(`/backend/api/country/?search=${searchTerm}`)
     let data = await response.json()
     return data
 }
