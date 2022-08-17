@@ -61,7 +61,7 @@ const Pagination = (props) => {
                     setPageNumber(selected)
                 }
 
-                title  = "Flights Found"
+                title  = (props.filteredFlights?.length > 0? "Flights Found": "No Flights Found")
                 itemsLength = (props.filteredFlights?.length > 0)
     }
 
