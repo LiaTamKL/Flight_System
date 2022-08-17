@@ -63,7 +63,7 @@ class FlightfilterDate(ListAPIView):
     queryset = Flight.objects.all()
     serializer_class = FlightSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    filterset_class = Flightfilter
+    filterset_class = FlightFilterDate
 
 
 class FlightfilterCountries(ListAPIView):
