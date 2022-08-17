@@ -85,7 +85,6 @@
     background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
     font: 1em cursive;
 
-
 }
 
 .country-input-container {
@@ -124,8 +123,6 @@
    }
 
    
-
-
 .date-input-dep, .date-input-arr {
     width: 49%;
     height: 40px ; 

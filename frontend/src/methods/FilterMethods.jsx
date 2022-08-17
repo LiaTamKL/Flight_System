@@ -8,12 +8,23 @@ import { format } from "date-fns";
  */
 const  FilteredFlightsMethod = async (...params) => {
     let flightParams = params[0]
-    let searchurl = '/backend/flights/?'
+    let searchurl = "/backend/flights"
 
-    if (flightParams["departureTime"]){searchurl += `&from_departure_time=${format(new Date(flightParams["departureTime"]).setHours(0, 0, 0), "yyyy-MM-dd'T'HH:mm")}`}
-    if (flightParams["arrivalTime"]){searchurl += `&to_arrival_time=${format(new Date(flightParams["arrivalTime"]).setHours(23, 59, 59), "yyyy-MM-dd'T'HH:mm")}`}        
+    // sets the filter type in the backend , 
+    // "country_range_filter" url displays the all flights by country not limited by date 
+    // "date_range_filter" url limits the search to specific date , and limits country filter to that date 
+    
+    if (flightParams["departureTime"] === "") {
+        searchurl += '/country_range_filter/?'
+        flightParams["departureTime"] = format(new Date(), "yyyy-MM-dd")}
+    else {searchurl += '/date_range_filter/?'}
+        
     if (flightParams["fromSearchOption"]) {searchurl +=`&origin_country=${flightParams["fromSearchOption"]}`;}
     if (flightParams["toSearchOption"]) {searchurl +=`&destination_country=${flightParams["toSearchOption"]}`;}
+    if (flightParams["departureTime"]){searchurl += `&from_departure_time=${format(new Date(flightParams["departureTime"]), "yyyy-MM-dd'T'HH:mm")}`}
+    if (flightParams["arrivalTime"]){searchurl += `&to_landing_time=${format(new Date(flightParams["arrivalTime"]), "yyyy-MM-dd'T'HH:mm")}`}        
+
+    console.log(searchurl);
     let response = await fetch(searchurl)
     let data = await response.json()
 
@@ -47,7 +58,7 @@ const  FilteredFlightsByIdMethod = async (ticket_ids) => {
  * 
  */
 const  FilteredCountryMethod = async (searchTerm) => {
-    let response = await fetch(`/backend/api/country/?search=${searchTerm}`)
+    let response = await fetch(`/backend/api/country/country_range/?search=${searchTerm}`)
     let data = await response.json()
     return data
 }

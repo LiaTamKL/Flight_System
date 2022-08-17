@@ -31,11 +31,11 @@ const FlightsListPage = () => {
 * @param  {Dictionary} flightSearchParams the parameters you wish to filter by (if none, all flights returned)
 */
   let getfilteredflights = async (flightSearchParams) => {
-    if (!flightSearchParams.departureTime ) {
-      flightSearchParams.departureTime = format(new Date(), "yyyy-MM-dd")
-    }
+    // if (!flightSearchParams.departureTime ) {
+    //   flightSearchParams.departureTime = format(new Date(), "yyyy-MM-dd")
+    // }
 
-      let filtered = await FilteredFlightsMethod(
+    let filtered = await FilteredFlightsMethod(
         {
           departureTime: flightSearchParams.departureTime,
           arrivalTime: flightSearchParams.arrivalTime,

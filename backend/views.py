@@ -59,14 +59,18 @@ class MyTokenObtainPairView(TokenObtainPairView):
 ##################################################
 ############### Filters ##########################
 
-class Flightfilter(ListAPIView):
+class FlightfilterDate(ListAPIView):
     queryset = Flight.objects.all()
     serializer_class = FlightSerializer
     filter_backends = (DjangoFilterBackend, SearchFilter)
     filterset_class = Flightfilter
 
 
-    
+class FlightfilterCountries(ListAPIView):
+    queryset = Flight.objects.all()
+    serializer_class = FlightSerializer
+    filter_backends = (DjangoFilterBackend, SearchFilter)
+    filterset_class = FlightfilterCountries
 
 class Countryfilterget(ListAPIView):
     queryset = Country.objects.all()

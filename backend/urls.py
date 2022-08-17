@@ -10,14 +10,12 @@ urlpatterns = [
   
     
     ############## backend #########################
-
-    path ('flights/',Flightfilter.as_view()),
-
-
-
+    path ('flights/country_range_filter/',FlightfilterCountries.as_view()),
+    path ('flights/',FlightfilterCountries.as_view()),
+    path ('flights/date_range_filter/',FlightfilterDate.as_view()),
+    
     path('api/country/', Countryfilterget.as_view()),
     
-
     path('api/customer_api', tickets_api),
 
     path ('countries', country_api),
@@ -34,5 +32,4 @@ urlpatterns = [
     path('api/airline_api/<int:id>', airline_delete_update),
 
 ]
-    #############################################
 
