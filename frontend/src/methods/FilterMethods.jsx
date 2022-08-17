@@ -23,8 +23,6 @@ const  FilteredFlightsMethod = async (...params) => {
     if (flightParams["toSearchOption"]) {searchurl +=`&destination_country=${flightParams["toSearchOption"]}`;}
     if (flightParams["departureTime"]){searchurl += `&from_departure_time=${format(new Date(flightParams["departureTime"]), "yyyy-MM-dd'T'HH:mm")}`}
     if (flightParams["arrivalTime"]){searchurl += `&to_landing_time=${format(new Date(flightParams["arrivalTime"]), "yyyy-MM-dd'T'HH:mm")}`}        
-
-    console.log(searchurl);
     let response = await fetch(searchurl)
     let data = await response.json()
 
@@ -58,7 +56,7 @@ const  FilteredFlightsByIdMethod = async (ticket_ids) => {
  * 
  */
 const  FilteredCountryMethod = async (searchTerm) => {
-    let response = await fetch(`/backend/api/country/country_range/?search=${searchTerm}`)
+    let response = await fetch(`/backend/api/country/?search=${searchTerm}`)
     let data = await response.json()
     return data
 }

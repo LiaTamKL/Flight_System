@@ -138,3 +138,75 @@ font-size: xx-large;
   font-size: 18px;
   font-weight: bolder;
 }
+
+
+
+/*##################################################*/
+/*#################Admin Pages######################*/
+/*##################################################*/
+
+
+.title-label-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.customers-label, .admins-label, .airline-flights-label, .admin-airline-label, .users-label{
+  display: block;
+  font-size: 30px;
+  padding: 5px 20px 5px 20px;
+  font-weight: bold;
+  padding: 15px 15px 15px 15px;
+  text-align: center;
+  align-items: center;
+  color: white;
+  border-radius: 10px;
+  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+}
+
+.admin-search-container, .airline-search-container{
+  display: flex;
+  flex-direction: column;
+  
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+  border-radius: 10px;
+  
+}
+
+.admin-search-form, .airline-search-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+
+  padding: 15px 15px 15px 15px;
+
+}
+
+
+.admin-select, .airline-select { 
+  width: 80%;
+  font-size: larger;
+}
+
+#admin-search-btn, #airline-search-btn, #user-search-btn {
+  width: 20%;
+  height: 45px;
+  font-size: larger;
+
+}
+  
+#admin-clear-btn, #airline-clear-btn{
+width: 100%;
+font-size: larger;
+border-radius: 0px 0px 10px 10px;
+
+}

@@ -93,25 +93,37 @@ const SearchForUser = ()=>{
     return(
         <>
 
-        <div className="admin-label-center"><label className="admin-label-display" >Admin: {user.username}</label></div>
-        
+        {/* <div className="admin-label-center"><label className="admin-label-display" >Admin: {user.username}</label></div> */}
+        <div className="title-label-container"><div className="users-label">Users</div></div>
 
-        <div id="user-view-container">
+
+        {/* <div id="user-view-container"> */}
+
         {message.current? (<p className="alert alert-secondary">{message.current}</p>):<></>}
-        <form onSubmit={(e)=>searchforaccount(e)}>
-                <Select 
-                        required
-                        components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
-                        name='username'
-                        id='username'
-                        className='user-select'
-                        placeholder = 'Search for a user'
-                        options ={accounts}
-                        isSearchable = {true}
-                        isClearable = {true}  />
+        <div className="admin-search-container">
+            <form className="admin-search-form"  onSubmit={(e)=>searchforaccount(e)}>
+                    <Select 
+                            required
+                            components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
+                            name='username'
+                            id='username'
+                            className='admin-select'
+                            placeholder = 'Search for a user'
+                            options ={accounts}
+                            isSearchable
+                            isClearable />
 
-                <input id="user-search-btn" className="btn btn-primary btn-sm" type="submit" value='Search'/>
-        </form>
+                    <input id="user-search-btn" className="btn btn-primary btn-sm" type="submit" value='Search'/>
+            </form>
+            {searchedItem?<button 
+                id="admin-clear-btn"  
+                className="btn btn-primary btn-sm" 
+                onClick={()=>setSearchedItem(false)}>
+                    Clear search 
+                </button>
+                :<></>}
+        </div>
+
         {searchedItem?
              (<>
                 <AccountCard account={searchedItem} buttons={Buttons(searchedItem)}/>
@@ -121,7 +133,7 @@ const SearchForUser = ()=>{
                         <div id="label-positioning"><label id="after-search-label" >Search for a user</label></div>
                 )
             }
-        </div></>)
+        </>)
 }
 
 export default SearchForUser

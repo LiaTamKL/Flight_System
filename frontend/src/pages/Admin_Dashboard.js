@@ -114,28 +114,34 @@ const AdminDashboard= () => {
 
 
     return (
-    <div>
-        <h5>Welcome Admin {user.username}</h5>
-        <div className="card text-center">
-        <button className="btn btn-primary btn-sm" onClick={()=>setSearchedItem(false)}>Clear search and view all customers</button>
-        </div>
-        <div className="card text-center">All Customers</div>
+    <>
+        <div className="title-label-container"><div className="customers-label">Customers</div></div>
         {message.current? (<p className="alert alert-secondary">{message.current}</p>):<></>}
 
-
-        <form onSubmit={(e)=>searchforaccount(e)}>
-        <Select 
-                required
-                name='username'
-                id='username'
-                className='fancy-select'
-                placeholder = 'Search for a user'
-                options ={searchOptions}
-                isSearchable 
-                isClearable  />
-            <div className="col-md-12 text-center">
-        <input type="submit" className="btn btn-primary btn-sm" value='search'/></div>
-        </form>
+        <div className="admin-search-container">
+            <form className="admin-search-form" onSubmit={(e)=>searchforaccount(e)}>
+                <Select 
+                    required
+                    name='username'
+                    id='username'
+                    className='admin-select'
+                    placeholder = 'Search for a user'
+                    options ={searchOptions}
+                    isSearchable 
+                    components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
+                    isClearable  />
+                
+                <input type="submit" id="admin-search-btn" className="btn btn-primary btn-sm"  value='Search'/>
+       
+            </form>
+            {searchedItem?<button 
+                id="admin-clear-btn"  
+                className="btn btn-primary btn-sm" 
+                onClick={()=>setSearchedItem(false)}>
+                    Clear search and view all customers
+                </button>
+                :<></>}
+        </div> 
 
         {searchedItem?<>
         {
@@ -177,7 +183,7 @@ const AdminDashboard= () => {
                         <h2>No Customers found</h2>
                 )
             }</>}
-    </div>)
+    </>)
 }
 
 export default AdminDashboard

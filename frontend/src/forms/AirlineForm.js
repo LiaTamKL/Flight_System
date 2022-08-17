@@ -40,13 +40,3 @@ const AirlineForm = ({ userData, resetProps })=>{
 
 
 export default AirlineForm
-
-//  <Select 
-// required
-// name='country'
-// className='select-dropdown'
-// options ={countryOptions}
-// isSearchable
-// placeholder={<div className="select-dropdown-placeholder"> {set?`Please pick a country, your original one is ${userData.country}`:`Please pick a country`}</div> }
-// isClearable
-//  /> 

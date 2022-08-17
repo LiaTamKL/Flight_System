@@ -1,5 +1,6 @@
 
 import '../../components/FlightPage/FlightCard.css'
+import'../../pages/PagesCss/Pages.css'
 import {useState, useEffect, useContext, useRef} from "react";
 import AuthContext from "../../context/authentication";
 import { DeleteFlightAsAirline, ViewMyFlights, CheckIfFlightFormIsValid, UpdateMyFlight } from "../../methods/AirlineMethods";
@@ -9,7 +10,6 @@ import NewFlightForm from "../../forms/NewFlightForm";
 import ReactPaginate from "react-paginate"
 import { AllCountries } from "../../methods/CountriesMethods";
 import FormTemplate from '../../forms/FormTemplate/FormTemplate';
-import { FaBiRightArrowBeer } from 'react-icons/fa';
 
 
 
@@ -139,12 +139,8 @@ const ViewAirlineFlights= () => {
 
 
     return (
-    <div>
-        <div className="admin-label-center"><label className="airline-label-display" >Airline: {user.username}</label></div>
-        <div className="card text-center">
-        <button className="btn btn-primary btn-sm" onClick={()=>setBack()}>Clear search and view all flights</button>
-
-        </div>
+    <>
+        <div className="title-label-container"><div className="airline-flights-label">{user.username} Flights</div></div>
 
         {update? (
         <form onSubmit={(e)=>handleUpdate(e)} >
@@ -154,6 +150,7 @@ const ViewAirlineFlights= () => {
                 formFields = { <NewFlightForm flightData={update} resetProps = { {'reset' :reset,"setReset" :setReset}  } />}
                 formErrors = {message? (<p className="alert alert-warning">{message}</p>):<></>}
                 setReset = { setReset }
+                additionalButtons = {<button id="setBack-button" onClick={()=>setBack()}>Back to Search</button>}
 
             />
         </form>
@@ -161,23 +158,31 @@ const ViewAirlineFlights= () => {
         )
         :<>
 
-
-        <form onSubmit={(e)=>setsearchresults(e)}>
-        <Select 
+        <div className="airline-search-container">
+            <form className="airline-search-form" onSubmit={(e)=>setsearchresults(e)}>
+            
+            <Select 
                 required
                 components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
                 name='flight'
                 id='flight'
-                className='fancy-select'
+                className='airline-select'
                 placeholder = 'Search for a flight'
                 options ={flightOptions}
-                isSearchable = {true}
-                isClearable = {true}  />
+                isSearchable
+                isClearable />
 
-            <div className="col-md-12 text-center">
-        <input type="submit" className="btn btn-primary btn-sm" value='search'/></div>
-        </form>
+            <input id="airline-search-btn" type="submit" className="btn btn-primary btn-sm" value='search'/>
+            </form>
 
+            {searched?<button
+                id="airline-clear-btn"
+                className="btn btn-primary btn-sm" 
+                onClick={()=>setBack()}>
+                    Clear search and view all flights
+                </button>
+                :<></>}
+        </div> 
 
 
         {searched?<>
@@ -230,7 +235,7 @@ const ViewAirlineFlights= () => {
             }
     </div></div></>}</>}
 
-</div>)
+</>)
 }
 
 export default ViewAirlineFlights

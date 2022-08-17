@@ -22,7 +22,7 @@ class FlightfilterCountries(FilterSet):
         }
 
 
-class Flightfilter(FilterSet):
+class FlightfilterDate(FilterSet):
     from_departure_time = IsoDateTimeFilter(field_name='departure_time__date', method="filter_departure")
     to_landing_time = IsoDateTimeFilter(field_name='landing_time__date', method="filter_landing")
 

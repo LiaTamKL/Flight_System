@@ -15,7 +15,7 @@ const UserLinks = () => {
     let {user} = useContext(AuthContext)
     let loggedUser = 
         <div id="user-container"> 
-            <div id='user-icon'> <AiOutlineUser/ > </div>  
+            <div id='user-icon'> <AiOutlineUser/ >  </div>  
             <div id='user-name'> {user.username} </div> 
         </div> 
 

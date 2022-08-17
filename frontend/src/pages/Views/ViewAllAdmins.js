@@ -97,27 +97,39 @@ const ViewAdmins= () => {
     }
 
 
-    return (<div>
-        <div className="admin-label-center"><label className="admin-label-display" >Admin: {user.username}</label></div>
-        <div className="card text-center">
-        <button className="btn btn-primary btn-sm" onClick={()=>setSearchedItem(false)}>Clear search and view all admins</button>
-        </div>
-        <div className="card text-center">All Admins</div>
+    return (
+    <>
+        <div className="title-label-container"><div className="admins-label">Admins</div></div>
 
-        <form onSubmit={(e)=>searchforaccount(e)}>
-        <Select 
+        {/* <div className="admin-label-center"><label className="admin-label-display" >Admin: {user.username}</label></div> */}
+        {/* <div className="card text-center"> */}
+        {/* <button className="btn btn-primary btn-sm" onClick={()=>setSearchedItem(false)}>Clear search and view all admins</button> */}
+        {/* </div> */}
+        {/* <div className="card text-center">All Admins</div> */}
+        <div className="admin-search-container">
+            <form  className="admin-search-form" onSubmit={(e)=>searchforaccount(e)}>
+            <Select 
                 required
                 components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
                 name='username'
                 id='username'
-                className='fancy-select'
+                className='admin-select'
                 placeholder = 'Search for a user'
                 options ={searchOptions}
                 isSearchable = {true}
                 isClearable = {true}  />
-            <div className="col-md-12 text-center">
-        <input type="submit" className="btn btn-primary btn-sm" value='search'/></div>
-        </form>
+            
+                <input id="admin-search-btn" type="submit" className="btn btn-primary btn-sm" value='search'/>
+            </form>
+
+        {searchedItem?<button id="admin-clear-btn" 
+        className="btn btn-primary btn-sm" 
+        onClick={()=>setSearchedItem(false)}>
+            Clear search and view all admins
+            </button>
+            :<></>}
+        </div>
+
 
 
         {searchedItem?<>
@@ -162,7 +174,7 @@ const ViewAdmins= () => {
                         <h2>No Admins found</h2>
                 )
             }</>}
-    </div>)
+    </>)
 }
 
 export default ViewAdmins

@@ -179,15 +179,6 @@ display: none;
 
 /*********************** date time picker *************************/
 
-/* .form-input-datetime{
-  height: 40px;
-  font-size: 18px;
-  border-radius: 4px;
-  margin-bottom: 20px ;
-  width: 80.5%;
-  text-align: center;
-} */
-
 .date-time-picker {
 
   height: 40px;
@@ -201,11 +192,7 @@ display: none;
 .date-time-picker .date-input-dep, .date-time-picker .date-input-arr {
     width: 50%;
     height: 40px ; 
-    /* border: 2px solid white; */
-    /* border-radius: 4px; */
-    /* box-shadow: none; */
     text-align: left;
-    /* font-size: 14px; */
    
 }
 .date-time-picker .date-input-time{
@@ -230,6 +217,20 @@ display: none;
 
 /* ******************** buttons ************************/
 
+#clear-button , #submit-button, #reset-password-button, #setBack-button {
+  cursor: pointer;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+
 #submit-button  {
     margin-top: 20px;
     margin-bottom: 1px;
@@ -245,61 +246,65 @@ display: none;
       
     }
     
-    #submit-button:hover {
-      box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
-      transform: scale(1.05) ;
-      width: 80%;
-    }
-    
-
-    #clear-button {
-      position:absolute;
-      width: 20%;
-      height: 45px;  
-      bottom: 0px;
-      right: 0px;
-      background-color: #f71703;
-      border-radius: 25px 0px 25px 0px; 
-      box-shadow: rgba(187, 87, 44, 0.2) 0 -25px 18px -14px inset,rgba(187, 87, 44, 0.2) 0 1px 2px,rgba(187, 87, 44, 0.2) 0 2px 4px,rgba(187, 87, 44, 0.2) 0 4px 8px,rgba(187, 87, 44, 0.2) 0 8px 16px,rgba(187, 87, 44, 0.2) 0 16px 32px;
-      color: rgb(65, 39, 33);
-      cursor: pointer;
-      }
-      
-      #clear-button:hover {
-        box-shadow: rgba(187, 87, 44, 0.2) 0 -25px 18px -14px inset,rgba(187, 87, 44, 0.2) 0 1px 2px,rgba(187, 87, 44, 0.2) 0 2px 4px,rgba(187, 87, 44, 0.2) 0 4px 8px,rgba(187, 87, 44, 0.2) 0 8px 16px,rgba(187, 87, 44, 0.2) 0 16px 32px;
-        transform: scale(1.05) rotate(-1deg);
-      }
+#submit-button:hover {
+  box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+  transform: scale(1.05) ;
+  width: 80%;
+}
 
 
-        #reset-password-button{
-        position:absolute;
-        width: 85px;
-        height: 55px;  
-        white-space: normal;
-        top: 0px;
-        right: 0px;
-        background-color: #e3f703;
-        border-radius: 0px 25px 0px 30px;
-        box-shadow: rgba(177, 187, 44, 0.2) 0 -25px 18px -14px inset,rgba(177, 187, 44, 0.2) 0 1px 2px,rgba(177, 187, 44, 0.2) 0 2px 4px,rgba(177, 187, 44, 0.2) 0 4px 8px,rgba(177, 187, 44, 0.2) 0 8px 16px,rgba(177, 187, 44, 0.2) 0 16px 32px;
-        color: rgb(60, 65, 33);
-        cursor: pointer;
-        }
-        
-        #reset-password-button:hover {
-          box-shadow: rgba(177, 187, 44, 0.2) 0 -25px 18px -14px inset,rgba(177, 187, 44, 0.2) 0 1px 2px,rgba(177, 187, 44, 0.2) 0 2px 4px,rgba(177, 187, 44, 0.2) 0 4px 8px,rgba(177, 187, 44, 0.2) 0 8px 16px,rgba(177, 187, 44, 0.2) 0 16px 32px;
-          transform: scale(1.05) rotate(-1deg);
-        }
-        
+#clear-button {
+  position:absolute;
+  width: 20%;
+  height: 45px;  
+  bottom: 0px;
+  right: 0px;
+  background-color: #f71703;
+  border-radius: 25px 0px 25px 0px; 
+  box-shadow: rgba(187, 87, 44, 0.2) 0 -25px 18px -14px inset,rgba(187, 87, 44, 0.2) 0 1px 2px,rgba(187, 87, 44, 0.2) 0 2px 4px,rgba(187, 87, 44, 0.2) 0 4px 8px,rgba(187, 87, 44, 0.2) 0 8px 16px,rgba(187, 87, 44, 0.2) 0 16px 32px;
+  color: rgb(65, 39, 33);
+  cursor: pointer;
+}
 
-      #clear-button , #submit-button, #reset-password-button {
-        cursor: pointer;
-        font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
-        text-align: center;
-        text-decoration: none;
-        transition: all 250ms;
-        border: 0;
-        font-size: 16px;
-        user-select: none;
-        -webkit-user-select: none;
-        touch-action: manipulation;
-      }
+#clear-button:hover {
+  box-shadow: rgba(187, 87, 44, 0.2) 0 -25px 18px -14px inset,rgba(187, 87, 44, 0.2) 0 1px 2px,rgba(187, 87, 44, 0.2) 0 2px 4px,rgba(187, 87, 44, 0.2) 0 4px 8px,rgba(187, 87, 44, 0.2) 0 8px 16px,rgba(187, 87, 44, 0.2) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+
+
+#reset-password-button , #setBack-button {
+  position:absolute;
+  width: 85px;
+  height: 55px;  
+  white-space: normal;
+  top: 0px;
+  right: 0px;
+  border-radius: 0px 25px 0px 30px;
+  cursor: pointer;
+  }
+  
+
+
+#reset-password-button {
+  color: rgb(60, 65, 33);
+  background-color: #e3f703;
+  box-shadow: rgba(177, 187, 44, 0.2) 0 -25px 18px -14px inset,rgba(177, 187, 44, 0.2) 0 1px 2px,rgba(177, 187, 44, 0.2) 0 2px 4px,rgba(177, 187, 44, 0.2) 0 4px 8px,rgba(177, 187, 44, 0.2) 0 8px 16px,rgba(177, 187, 44, 0.2) 0 16px 32px;    
+  }
+
+#reset-password-button:hover {
+    box-shadow: rgba(177, 187, 44, 0.2) 0 -25px 18px -14px inset,rgba(177, 187, 44, 0.2) 0 1px 2px,rgba(177, 187, 44, 0.2) 0 2px 4px,rgba(177, 187, 44, 0.2) 0 4px 8px,rgba(177, 187, 44, 0.2) 0 8px 16px,rgba(177, 187, 44, 0.2) 0 16px 32px;
+    transform: scale(1.05) rotate(-1deg);
+  }
+  
+#setBack-button {
+  color: white;
+  background-color: #0275d8 ;
+  box-shadow: rgba(44, 51, 187, 0.2) 0 -25px 18px -14px inset,rgba(44, 51, 187, 0.2)  0 1px 2px,rgba(44, 51, 187, 0.2)  0 2px 4px rgba(44, 51, 187, 0.2) 0 4px 8px,rgba(44, 51, 187, 0.2) 0 8px 16px,rgba(44, 51, 187, 0.2) 0 16px 32px; 
+  
+  }
+
+  
+#setBack-button:hover {
+  box-shadow: rgba(44, 46, 187, 0.2) 0 -25px 18px -14px inset,rgba(44, 46, 187, 0.2) 0 1px 2px,rgba(44, 46, 187, 0.2) 0 2px 4px,rgba(44, 46, 187, 0.2) 0 4px 8px,rgba(44, 46, 187, 0.2)0 8px 16px,rgba(44, 46, 187, 0.2)0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}

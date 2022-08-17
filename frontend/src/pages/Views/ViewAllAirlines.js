@@ -106,29 +106,37 @@ const ViewAirlines = () => {
         setSearchedItem(airlines.find(account=> account.id===parseInt(e.target.username.value)))}
 
 
-    return (<div>
-       <div className="admin-label-center"><label className="admin-label-display" >Admin: {user.username}</label></div> 
-
-        <div className="card text-center">
-        <button className="btn btn-primary btn-sm" onClick={()=>setSearchedItem(false)}>Clear search and view all airlines</button>
-        </div>
-        <div className="card text-center">All Airlines</div>
+    return (
+    <>
+       <div className="title-label-container"><div className="admin-airline-label">Airlines</div></div>
         {message.current? (<p className="alert alert-secondary">{message.current}</p>):<></>}
         
-        <form onSubmit={(e)=>searchforaccount(e)}>
-        <Select 
-                required
-                components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
-                name='username'
-                id='username'
-                className='fancy-select'
-                placeholder = 'Search for a user'
-                options ={searchOptions}
-                isSearchable = {true}
-                isClearable = {true}  />
-            <div className="col-md-12 text-center">
-        <input type="submit" className="btn btn-primary btn-sm" value='search'/></div>
-        </form>
+        <div className="admin-search-container">
+            <form className="admin-search-form" onSubmit={(e)=>searchforaccount(e)}>
+                <Select 
+                        required
+                        name='username'
+                        id='username'
+                        className='admin-select'
+                        placeholder = 'Search for a user'
+                        options ={searchOptions}
+                        components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
+                        isSearchable
+                        isClearable />
+
+                <input  type="submit" id="admin-search-btn"  className="btn btn-primary btn-sm" value='search'/>
+            </form>
+
+        {searchedItem?<button 
+            id="admin-clear-btn"  
+            className="btn btn-primary btn-sm" 
+            onClick={()=>setSearchedItem(false)}>
+                Clear search and view all airlines
+            </button>
+            :<></>}
+        </div>
+
+
 
         {searchedItem?<>
         {
@@ -171,7 +179,7 @@ const ViewAirlines = () => {
                         <h2>No Airlines found</h2>
                 )
             }</>}
-    </div>)
+    </>)
 }
 
 export default ViewAirlines
