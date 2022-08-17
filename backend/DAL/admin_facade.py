@@ -33,9 +33,10 @@ class AdministratorFuncade(BaseFuncade):
     def remove_customer(customer):
         """receives a customer id, deletes said customer and their tickets, returns the account"""
         tickets =Flight_Ticket.objects.filter(customer=customer)
-        form = []
+        form = {}
         for ticket in tickets:
-            form['ticket'] = ticket
+            form['ticket'] = ticket.id
+            form['flight'] = ticket.flight.id
             CustomerFancade.remove_ticket(form)
         a = customer.account
         customer.delete()
