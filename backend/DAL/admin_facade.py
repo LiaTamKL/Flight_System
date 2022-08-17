@@ -2,6 +2,7 @@ from backend.DAL.airline_facade import Airline_Facade
 from ..models import Account, Account_Role, Customer, Administrator, Airline, Flight, Flight_Ticket
 from django.http import Http404
 from .base_facade import BaseFuncade
+from customer_facade import CustomerFancade
 
 class AdministratorFuncade(BaseFuncade):
     
@@ -28,12 +29,14 @@ class AdministratorFuncade(BaseFuncade):
         a = airline.account
         airline.delete()
         return a
-
+ 
     def remove_customer(customer):
         """receives a customer id, deletes said customer and their tickets, returns the account"""
         tickets =Flight_Ticket.objects.filter(customer=customer)
+        form = []
         for ticket in tickets:
-            ticket.delete()
+            form['ticket'] = ticket
+            CustomerFancade.remove_ticket()
         a = customer.account
         customer.delete()
         return a
