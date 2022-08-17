@@ -66,6 +66,7 @@ class FlightfilterDate(ListAPIView):
     filterset_class = FlightfilterDate
 
 
+
 class FlightfilterCountries(ListAPIView):
     queryset = Flight.objects.all()
     serializer_class = FlightSerializer
